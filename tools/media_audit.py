@@ -38,9 +38,9 @@ def main() -> int:
     print(f"  missing local : {len(missing)}")
     print(f"  reused local  : {len(duplicate_refs)} paths")
     if remote:
-        print("\nRemote photo records (first-load network; runtime Image Cache is Cache First):")
+        print("\nRemote originals (International mode only when reachable; Mainland mode renders 無此圖 unless localized):")
         for photo_id, src in remote:
-            print(f"  {photo_id:34} {src}")
+            print(f"  {photo_id:34} mainland=無此圖  {src}")
     if missing:
         print("\nMissing local images:")
         for photo_id, src in missing:

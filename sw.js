@@ -1,10 +1,13 @@
 /*
   雲南慢時光 Service Worker
   - VERSION 只作固定 V1 識別。
-  - APP_CACHE: HTML / CSS / JS / JSON，install 時以現行 APP_SHELL 覆寫同名項目，fetch 採 stale-while-revalidate。
+  - APP_CACHE: HTML / CSS / JS / JSON，install 時重新抓取現行 APP_SHELL 並覆寫同名項目，fetch 採 stale-while-revalidate。
   - IMAGE_CACHE: 圖片 Cache First；固定保留 V1 圖片快取，換圖以 URL / filename identity 更新。
-  - OpenStreetMap tile 不進圖片快取，避免地圖瓦片大量佔用儲存空間。
+  - OpenStreetMap / 高德 tile 不進圖片快取，避免地圖瓦片大量佔用儲存空間。
   - VERSION 由 tools/release.py 依 tools/release.json 同步。
+  - UI refresh: International/Mainland network profiles + AMap/QWeather/Open-Meteo weather provider chain.
+  - UI refresh: parenthesized weekday labels.
+  - Photo refresh: complete exact/verified coverage + labeled illustrative/context images; no wrong-subject fallback.
 */
 const VERSION = 'v1';
 const APP_CACHE = `yunnan-app-${VERSION}`;
@@ -15,7 +18,9 @@ const APP_SHELL = [
   './',
   './index.html',
   `./css/style.css?v=${VERSION}`,
+  `./js/network.js?v=${VERSION}`,
   `./js/core.js?v=${VERSION}`,
+  `./js/weather.js?v=${VERSION}`,
   `./js/reader.js?v=${VERSION}`,
   `./js/journey.js?v=${VERSION}`,
   `./js/map.js?v=${VERSION}`,
@@ -49,7 +54,7 @@ function canStore(response) {
 }
 
 function isMapTile(url) {
-  return url.hostname === 'tile.openstreetmap.org' || url.hostname.endsWith('.tile.openstreetmap.org');
+  return url.hostname === 'tile.openstreetmap.org' || url.hostname.endsWith('.tile.openstreetmap.org') || url.hostname === 'is.autonavi.com' || url.hostname.endsWith('.is.autonavi.com');
 }
 
 function isPhotoRequest(request, url) {

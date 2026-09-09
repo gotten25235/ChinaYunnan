@@ -221,6 +221,8 @@ def validate_media(trip: dict) -> None:
         if not isinstance(photo, dict):
             error(f"photos.{photo_id} is not an object")
             continue
+        if "mainlandFallbackPhotoId" in photo:
+            error(f"photos.{photo_id}: unrelated Mainland fallback fields are forbidden by strict photo policy")
         src = photo.get("src")
         if not isinstance(src, str) or not src:
             error(f"photos.{photo_id}.src is missing")
@@ -252,7 +254,52 @@ def validate_media(trip: dict) -> None:
     else:
         passed(f"local image payload is WebP-only ({local_count} photo records, {local_bytes/1024/1024:.2f} MiB unique-record sum)")
     if remote_count:
-        warn(f"{remote_count} photo records still use remote URLs; native image lazy-loading + image Cache First limit repeat traffic")
+        passed(f"{remote_count} remote exact/verified/context sources remain; both network profiles attempt the same subject image and never substitute another place")
+
+    # Strict semantic matching: exact subjects stay exact; only broad activities/transit may use labeled context/illustration.
+    strict_before = len(errors)
+    allowed_generic_places = {"arrival", "carriage", "visit", "tea-diy", "city-free", "return", "night-live"}
+    allowed_matches = {"exact", "verified", "illustrative", "context", "representative"}
+    places = trip.get("places") if isinstance(trip.get("places"), dict) else {}
+    for item_id, obj in places.items():
+        if not isinstance(obj, dict):
+            continue
+        photo_id, match = obj.get("photoId"), obj.get("photoMatch")
+        if not photo_id:
+            error(f"places.{item_id}: photo coverage is required")
+        if match == "reference_only":
+            error(f"places.{item_id}: reference_only must never be displayed")
+        if match in {"illustrative", "context", "representative"} and item_id not in allowed_generic_places:
+            error(f"places.{item_id}: named subject cannot use {match}; require exact/verified")
+        if match and match not in allowed_matches:
+            error(f"places.{item_id}: unsupported photoMatch {match}")
+    for collection in ("foods", "shopping"):
+        for index, obj in enumerate(trip.get(collection, [])):
+            if not isinstance(obj, dict):
+                continue
+            if not obj.get("photoId"):
+                error(f"{collection}[{index}]: photo coverage is required")
+            if obj.get("photoMatch") == "reference_only":
+                error(f"{collection}[{index}]: reference_only must never be displayed")
+    for index, obj in enumerate(trip.get("culture", [])):
+        if not isinstance(obj, dict):
+            continue
+        if not obj.get("photoId"):
+            error(f"culture[{index}]: photo coverage is required")
+        if obj.get("photoMatch") in {"reference_only", "representative", "illustrative"}:
+            error(f"culture[{index}]: culture photos must be exact/verified/context")
+    for index, obj in enumerate(trip.get("photoSpots", [])):
+        if not isinstance(obj, dict):
+            continue
+        if not obj.get("photoId"):
+            error(f"photoSpots[{index}]: photo coverage is required")
+        match = obj.get("photoMatch")
+        if match == "reference_only" or match == "representative" or match == "illustrative":
+            error(f"photoSpots[{index}]: photo spot requires exact/verified/context")
+        if match == "context" and obj.get("id") != "photo-xizhou":
+            error(f"photoSpots[{index}]: context is only allowed for the broad Xizhou courtyard/field composition")
+    if len(errors) == strict_before:
+        passed("photo coverage is complete and strict semantics hold: named subjects use exact/verified; broad imagery is explicitly labeled")
 
 
 def validate_generated_index() -> None:

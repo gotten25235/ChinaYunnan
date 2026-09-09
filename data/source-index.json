@@ -9,7 +9,7 @@
     "nearby20_20260908",
     "hotel_night_nearby20_20260908"
   ],
-  "customItemCount": 31,
+  "customItemCount": 32,
   "sourceCount": 56,
   "referencedSourceCount": 56,
   "defaultCustomIds": [
@@ -43,7 +43,8 @@
     "night-plaza",
     "night-nanqiang",
     "night-kmg-old",
-    "night-nanping"
+    "night-nanping",
+    "snow"
   ],
   "unreferencedSourceIds": [],
   "missingSourceIds": [],
