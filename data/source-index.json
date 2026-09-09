@@ -1,0 +1,186 @@
+{
+  "checkedAt": "2026-09-08T15:00:00+08:00",
+  "batchId": "nearby20_plus_hotel_night_20260908",
+  "customItemCount": 31,
+  "sourceCount": 42,
+  "defaultCustomIds": [
+    "custom-xizhou-yan",
+    "custom-xizhou-woxiang",
+    "custom-dali-art-factory",
+    "custom-three-pagodas-reflection",
+    "custom-shaxi-chichaqu",
+    "custom-shaxi-corvus",
+    "custom-baisha-old-town",
+    "custom-zhongyi-market",
+    "custom-heilongtan",
+    "custom-baiji-temple",
+    "custom-diqing-museum",
+    "custom-napa-overlook",
+    "custom-kunming-qianwang",
+    "custom-kunming-jiangwu",
+    "custom-kunming-zhuanxin",
+    "custom-kunming-cuihu",
+    "night-dali",
+    "night-renmin",
+    "night-foreigner",
+    "night-sanyue",
+    "night-shuhe",
+    "night-shuhe-square",
+    "night-lijiang",
+    "night-dukezong",
+    "night-moon",
+    "night-zhongyi",
+    "night-sifang",
+    "night-plaza",
+    "night-nanqiang",
+    "night-kmg-old",
+    "night-nanping"
+  ],
+  "sourceUsage": {
+    "web_20260908_0001": [
+      "custom-xizhou-yan"
+    ],
+    "web_20260908_0002": [
+      "custom-xizhou-woxiang"
+    ],
+    "web_20260908_0003": [
+      "custom-dali-art-factory"
+    ],
+    "web_20260908_0004": [
+      "custom-dali-art-factory"
+    ],
+    "web_20260908_0005": [
+      "custom-three-pagodas-reflection"
+    ],
+    "web_20260908_0006": [
+      "custom-three-pagodas-reflection"
+    ],
+    "web_20260908_0007": [
+      "custom-shaxi-chichaqu"
+    ],
+    "web_20260908_0008": [
+      "custom-shaxi-chichaqu",
+      "custom-shaxi-corvus"
+    ],
+    "web_20260908_0009": [
+      "custom-shaxi-corvus"
+    ],
+    "web_20260908_0010": [
+      "custom-baisha-old-town"
+    ],
+    "web_20260908_0011": [
+      "custom-zhongyi-market"
+    ],
+    "web_20260908_0012": [
+      "custom-zhongyi-market"
+    ],
+    "web_20260908_0013": [
+      "custom-heilongtan"
+    ],
+    "official_20260908_0001": [
+      "custom-baiji-temple"
+    ],
+    "web_20260908_0014": [
+      "custom-baiji-temple"
+    ],
+    "official_20260908_0002": [
+      "custom-diqing-museum"
+    ],
+    "web_20260908_0015": [
+      "custom-diqing-museum"
+    ],
+    "web_20260908_0016": [
+      "custom-napa-overlook"
+    ],
+    "web_20260908_0017": [
+      "custom-napa-overlook"
+    ],
+    "web_20260908_0018": [
+      "custom-kunming-qianwang"
+    ],
+    "official_20260908_0003": [
+      "custom-kunming-jiangwu"
+    ],
+    "web_20260908_0019": [
+      "custom-kunming-jiangwu"
+    ],
+    "official_20260908_0004": [
+      "custom-kunming-zhuanxin"
+    ],
+    "web_20260908_0020": [
+      "custom-kunming-zhuanxin"
+    ],
+    "web_20260908_0021": [
+      "custom-kunming-cuihu"
+    ],
+    "web_20260908_0022": [
+      "night-dali",
+      "night-renmin",
+      "night-foreigner",
+      "night-sanyue"
+    ],
+    "web_20260908_0023": [
+      "night-dali",
+      "night-renmin"
+    ],
+    "web_20260908_0024": [
+      "night-foreigner"
+    ],
+    "web_20260908_0025": [
+      "night-dali",
+      "night-renmin"
+    ],
+    "web_20260908_0026": [
+      "night-shuhe",
+      "night-shuhe-square",
+      "night-lijiang"
+    ],
+    "official_20260908_0005": [
+      "night-shuhe",
+      "night-shuhe-square"
+    ],
+    "official_20260908_0006": [
+      "night-shuhe",
+      "night-shuhe-square"
+    ],
+    "web_20260908_0027": [
+      "night-dukezong",
+      "night-moon"
+    ],
+    "web_20260908_0028": [
+      "night-dukezong",
+      "night-moon"
+    ],
+    "web_20260908_0029": [
+      "night-zhongyi",
+      "night-lijiang",
+      "night-sifang"
+    ],
+    "official_20260908_0007": [
+      "night-zhongyi",
+      "night-lijiang",
+      "night-sifang"
+    ],
+    "web_20260908_0030": [
+      "night-lijiang",
+      "night-sifang"
+    ],
+    "web_20260908_0031": [
+      "night-plaza",
+      "night-nanqiang",
+      "night-kmg-old",
+      "night-nanping",
+      "night-jinma"
+    ],
+    "official_20260908_0008": [
+      "night-nanqiang",
+      "night-jinma"
+    ],
+    "official_20260908_0009": [
+      "night-nanqiang"
+    ],
+    "web_20260908_0032": [
+      "hotel-kmg-airport"
+    ]
+  }
+}

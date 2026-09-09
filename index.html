@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#183e36">
+  <meta name="description" content="雲南八日隨身旅遊助手：每日行程、夜間逍遙、地圖、美食與收藏。">
+  <title>雲南慢時光 · 8 日雲南旅程</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css?v=20260909-offline-cache1">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script defer src="js/app.js?v=20260909-offline-cache1"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到內容</a>
+  <header class="topbar"><a href="#itinerary" class="brand"><span class="brand-mark">雲</span><span>雲南慢時光<small>YOUR YUNNAN JOURNAL</small></span></a><span class="trip-date" id="header-date"></span></header>
+  <main id="main">
+    <section id="today" hidden></section>
+    <section class="hero" aria-label="旅程概覽">
+      <div class="hero-shade"></div><div class="hero-copy"><span class="eyebrow">一場向山與風出發的旅行</span><h1>雲南<span>慢時光</span><i>Take it slow.</i></h1><p>KUNMING · DALI · LIJIANG · SHANGRI-LA</p><span id="hero-date" class="hero-date"></span></div>
+      <div class="hero-caption">藍月谷 · 把日子留給山海</div>
+      <div class="journey-strip" id="journey-strip"></div>
+    </section>
+    <nav class="section-nav" aria-label="主要功能"><button data-view="itinerary">旅程總覽</button><button data-view="map">探索地圖</button><button data-view="night"><span class="night-tab-mark" aria-hidden="true">☾</span> 夜間逍遙</button><button data-view="food">當地必吃</button><button data-view="shopping">🛍 雲南必買</button><button data-view="favorites">♡ 我的收藏 <span class="fav-count">0</span></button><button data-view="photos">拍照・有風</button><button data-view="culture">風俗與故事</button><button data-view="tips">出發提醒</button></nav>
+    <div class="workspace">
+      <section id="view-itinerary" class="view is-active" aria-hidden="false" aria-labelledby="itinerary-title">
+        <div class="section-heading itinerary-heading"><div><span class="eyebrow">THE ITINERARY</span><h2 id="itinerary-title">八天，剛剛好的遠方。</h2></div></div>
+        <section class="itinerary-timetable-section" aria-labelledby="itinerary-timetable-title">
+          <div class="itinerary-panel-head"><div><span class="eyebrow">INTERACTIVE ITINERARY</span><h3 id="itinerary-timetable-title">行程時刻表</h3><p>班機顯示手冊時間；其餘景點未提供固定時間時，以行程站序顯示。</p></div><div class="itinerary-panel-tools timetable-actions"><span class="itinerary-legend"><i class="activity"></i>景點 <i class="transport"></i>交通 <i class="hotel"></i>飯店</span><button type="button" class="timetable-full-btn" data-timetable-preview aria-label="檢視完整八天時刻表">⛶ <span>檢視完整</span></button><button type="button" class="timetable-download-btn" data-timetable-download aria-label="下載完整八天時刻表 PNG">↓ <span>下載圖片</span></button><button type="button" data-timetable-nav="prev" aria-label="時刻表往前">←</button><button type="button" data-timetable-nav="next" aria-label="時刻表往後">→</button></div></div>
+          <div class="itinerary-timetable-frame"><div id="itinerary-timetable" class="itinerary-timetable"></div></div>
+        </section>
+        <section id="itinerary-carousel-section" class="itinerary-carousel-section" aria-labelledby="itinerary-carousel-title">
+          <div class="itinerary-panel-head compact"><div><span class="eyebrow">DAILY JOURNAL</span><h3 id="itinerary-carousel-title">旅程總覽</h3></div><div class="itinerary-panel-tools itinerary-journal-tools"><span class="journal-slide-hint">左右滑動瀏覽八天</span><button type="button" class="itinerary-layout-toggle journal-layout-toggle" data-itinerary-toggle aria-expanded="false"><span>▦</span> 展開完整行程</button><button type="button" data-itinerary-strip-nav="prev" aria-label="上一天">←</button><button type="button" data-itinerary-strip-nav="next" aria-label="下一天">→</button></div></div>
+          <div id="itinerary-strip" class="itinerary-day-strip" tabindex="0" aria-label="每日行程橫向滑動卡片"></div>
+        </section>
+        <div id="days" class="day-grid" hidden></div>
+      </section>
+      <section id="view-night" class="view" hidden aria-hidden="true" aria-labelledby="night-title"><div class="section-heading"><div><span class="eyebrow">AFTER THE SUN SETS</span><h2 id="night-title">夜間逍遙</h2></div></div><div class="map-date-control night-date-control" aria-label="夜間逍遙日期"><div class="map-date-head"><strong>日期</strong><span>左右滑動切換；與探索地圖同步</span></div><div class="map-date-row"><button type="button" class="map-date-nav" data-night-date-nav="prev" aria-label="前一天">←</button><div id="night-date-rail" class="map-date-rail" tabindex="0" role="listbox" aria-label="夜間逍遙日期滑動選擇"></div><button type="button" class="map-date-nav" data-night-date-nav="next" aria-label="後一天">→</button></div><select id="night-day" hidden aria-hidden="true" tabindex="-1"><option value="all">全部八天</option></select></div><div id="night-content"></div></section>
+      <section id="view-map" class="view" hidden aria-hidden="true" aria-labelledby="map-title"><div class="section-heading"><div><span class="eyebrow">EXPLORE YUNNAN</span><h2 id="map-title">把喜歡的地方，連成旅程。</h2></div></div><div class="map-date-control" aria-label="探索地圖日期"><div class="map-date-head"><strong>日期</strong><span>左右滑動切換；停下後才更新地圖</span><label class="map-provider-setting">導航 <select data-map-provider-select aria-label="導航地圖"><option value="amap">高德地圖</option><option value="google">Google 地圖</option></select></label></div><div class="map-date-row"><button type="button" class="map-date-nav" data-map-date-nav="prev" aria-label="前一天">←</button><div id="map-date-rail" class="map-date-rail" tabindex="0" role="listbox" aria-label="日期滑動選擇"></div><button type="button" class="map-date-nav" data-map-date-nav="next" aria-label="後一天">→</button></div><select id="map-day" hidden aria-hidden="true" tabindex="-1"><option value="all">全部八天</option></select></div><p id="map-status" class="muted" role="status"></p><div class="location-help-row"><div class="location-controls"><button class="action" data-stop-location hidden>停止定位</button></div><p id="location-status" class="small" role="status">若被瀏覽器限制定位，需改用 HTTPS</p></div><div id="map-explorer" class="map-explorer"><div id="map" aria-label="雲南景點互動地圖"></div><aside id="map-feature-card" class="map-feature-card utility-card utility-card--map-feature" aria-live="polite" aria-hidden="true" hidden></aside></div><p class="small">點選有圖示的座標標記，可直接切換左側地點小卡。地圖需連線；導航預設使用高德地圖，可在日期列右上切換 Google 地圖。標記為地區參考點，不代表入口。</p><section class="map-strip-section" aria-labelledby="map-strip-title"><div class="map-strip-head"><div><span class="eyebrow">FEATURED LOCATIONS</span><h3 id="map-strip-title">滑動探索地點</h3></div><div class="map-strip-tools"><span>左右滑動，點卡片看附近提案</span><button type="button" data-map-strip-nav="prev" aria-label="上一批地點">←</button><button type="button" data-map-strip-nav="next" aria-label="下一批地點">→</button></div></div><div id="map-filters" class="chips map-strip-filters" aria-label="地圖分類"></div><div id="map-strip-tabs" class="map-strip-tabs" role="tablist" aria-label="地點清單分類"><button type="button" role="tab" data-map-tab="all" aria-selected="false">全部</button><button type="button" role="tab" data-map-tab="scheduled" aria-selected="true" class="active">已安排</button><button type="button" role="tab" data-map-tab="custom" aria-selected="false">自定義</button></div><div id="map-list" class="map-place-strip" tabindex="0" aria-label="地圖地點滑動卡片"></div></section><aside id="nearby-panel" class="nearby-panel" aria-live="polite"><h3>這附近有什麼可玩？</h3><p>點地圖或下方地點卡片，可顯示該位置直線 3 公里內、有座標的景點、美食與拍照提案；不是即時商家搜尋。</p></aside></section>
+      <section id="view-food" class="view" hidden aria-hidden="true" aria-labelledby="food-title"><div class="section-heading"><div><span class="eyebrow">A TASTE OF YUNNAN</span><h2 id="food-title">用味蕾，記住一座城。</h2></div></div><div id="food-filters" class="chips"></div><p class="muted">料理推薦，非指定餐廳；星等為本站的主觀推薦。</p><div id="food-list" class="content-grid"></div></section>
+      <section id="view-shopping" class="view" hidden aria-hidden="true" aria-labelledby="shopping-title"><div class="section-heading"><div><span class="eyebrow">BRING A LITTLE YUNNAN HOME</span><h2 id="shopping-title">🛍 雲南必買</h2></div><span class="muted">Day 8 · 留一點空間給伴手禮</span></div><div id="shopping-content"></div></section>
+      <section id="view-favorites" class="view" hidden aria-hidden="true" aria-labelledby="favorites-title"><div class="section-heading"><div><span class="eyebrow">SAVED FOR LATER</span><h2 id="favorites-title">我的口袋清單</h2></div><span class="muted">儲存在這個瀏覽器</span></div><div id="favorite-list" class="content-grid"></div></section>
+      <section id="view-photos" class="view" hidden aria-hidden="true" aria-labelledby="photos-title"><div class="section-heading"><div><span class="eyebrow">FRAME THE JOURNEY</span><h2 id="photos-title">拍照・去有風的地方</h2></div></div><p class="muted">沿原行程找畫面，拍攝時段是建議，配合團體停留與天氣。</p><div class="chips"><button data-photo-filter="all" class="active">全部拍照點</button><button data-photo-filter="drama">《去有風的地方》取景</button></div><div id="photo-list" class="content-grid"></div></section><section id="view-culture" class="view" hidden aria-hidden="true" aria-labelledby="culture-title"><div class="section-heading"><div><span class="eyebrow">PEOPLE &amp; THE REPUBLICAN YEARS</span><h2 id="culture-title">風景背後，有人生活過。</h2></div></div><p class="muted">從民國往事，到今天的風俗。沿著八天路線，讀一段再出發。</p><div id="culture-filters" class="chips" aria-label="故事主題"></div><p class="small">本頁民國時期指 1912–1949 年。歷史、文學與傳說分別標示；故事不另增加團體景點。</p><div id="culture-list" class="culture-grid"></div><details class="photo-sources"><summary>實拍照片來源與授權</summary><div id="photo-sources"></div></details></section>
+      <section id="view-tips" class="view" hidden aria-hidden="true" aria-labelledby="tips-title"><div class="section-heading"><div><span class="eyebrow">BEFORE YOU GO</span><h2 id="tips-title">準備好，慢慢玩。</h2></div></div><div id="tips-content"></div></section>
+    </div>
+  </main>
+  <footer><span>雲南慢時光 · 一路收藏風景</span><div id="credits"></div></footer>
+  <nav class="bottom-nav" aria-label="手機導覽"><button data-view="itinerary"><span>⌂</span>行程</button><button data-view="map"><span>◇</span>地圖</button><button data-view="night"><span>☾</span>夜遊</button><button data-view="food"><span>♨</span>美食</button><button data-view="favorites"><span>♡</span>收藏 <b class="fav-count">0</b></button></nav>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <dialog id="copy-dialog"><form method="dialog"><h2>中文地址／搜尋文字</h2><p>長按或選取下方文字，貼到地圖 App 搜尋。</p><textarea id="copy-value" readonly aria-label="可複製的地址"></textarea><button class="primary">完成</button></form></dialog>
+  <dialog id="timetable-preview-dialog" class="timetable-preview-dialog" aria-labelledby="timetable-preview-title"><div class="timetable-preview-shell"><header><div><span class="eyebrow">FULL ITINERARY</span><h2 id="timetable-preview-title">八天完整行程時刻表</h2><p>開啟時會自動縮放顯示完整八天時刻表；下載 PNG 保留完整尺寸。</p></div><button type="button" class="timetable-preview-close" data-timetable-preview-close aria-label="關閉完整時刻表">×</button></header><div class="timetable-preview-canvas"><img id="timetable-preview-image" alt="八天完整行程時刻表預覽"></div><footer><span id="timetable-image-size">產生完整圖片中…</span><div><button type="button" class="action" data-timetable-preview-close>關閉</button><button type="button" class="primary" data-timetable-download>↓ 下載完整 PNG</button></div></footer></div></dialog>
+  <script>
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(error => console.warn('Service Worker registration failed:', error));
+      }, { once: true });
+    }
+  </script>
+  <noscript>請啟用 JavaScript 以查看行程、地圖和收藏。</noscript>
+</body>
+</html>

@@ -1,0 +1,1327 @@
+{
+  "meta": {
+    "schemaVersion": "1.0",
+    "checkedAt": "2026-09-08T15:00:00+08:00",
+    "retentionPolicy": "Source Record 不因貼文刪除、轉私人、登入限制或失效而刪除；只更新 status / lastSeenAt / unavailableAt。",
+    "note": "本批新增住宿附近／夜間活動研究；仍遵守 SOCIAL_DATA_RULES.md：無可驗證原始小紅書/Instagram URL 時不建立假 xhs_* / ig_*，已失效來源亦不刪除。"
+  },
+  "sources": {
+    "web_20260908_0001": {
+      "sourceId": "web_20260908_0001",
+      "platform": "web",
+      "url": "https://map.gaode.com/place/B0FFFXG1UU",
+      "canonicalUrl": "https://map.gaode.com/place/B0FFFXG1UU",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "喜洲古鎮-嚴家大院",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0002": {
+      "sourceId": "web_20260908_0002",
+      "platform": "web",
+      "url": "https://post.smzdm.com/p/avgez4z7/",
+      "canonicalUrl": "https://post.smzdm.com/p/avgez4z7/",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "什麼值得買",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-06-01",
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "喜洲稻田咖啡社群二次整理",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "頁面明確彙整小紅書等社群線索，但本次未取得可驗證的原始小紅書貼文 URL；因此只保存此二次來源，不建立 xhs_* 假來源。"
+      }
+    },
+    "web_20260908_0003": {
+      "sourceId": "web_20260908_0003",
+      "platform": "web",
+      "url": "https://you.ctrip.com/sight/dalicity1445616/1712829.html",
+      "canonicalUrl": "https://you.ctrip.com/sight/dalicity1445616/1712829.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程攻略 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "大理床單廠藝術區",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0004": {
+      "sourceId": "web_20260908_0004",
+      "platform": "web",
+      "url": "https://www.amap.com/place/B0FFFYRQG6",
+      "canonicalUrl": "https://www.amap.com/place/B0FFFYRQG6",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "大理床單廠藝術區",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0005": {
+      "sourceId": "web_20260908_0005",
+      "platform": "web",
+      "url": "https://you.ctrip.com/sight/dalicity1445616/17912.html",
+      "canonicalUrl": "https://you.ctrip.com/sight/dalicity1445616/17912.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程攻略 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "三塔倒影公園",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0006": {
+      "sourceId": "web_20260908_0006",
+      "platform": "web",
+      "url": "https://www.amap.com/place/B036800C0O",
+      "canonicalUrl": "https://www.amap.com/place/B036800C0O",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "三塔倒影公園",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0007": {
+      "sourceId": "web_20260908_0007",
+      "platform": "web",
+      "url": "https://you.ctrip.com/yougourmet/restdetail/shaxitown2025134/33719807.html",
+      "canonicalUrl": "https://you.ctrip.com/yougourmet/restdetail/shaxitown2025134/33719807.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程美食 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "吃茶去",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0008": {
+      "sourceId": "web_20260908_0008",
+      "platform": "web",
+      "url": "https://ditu.amap.com/place/B03680I3LO",
+      "canonicalUrl": "https://ditu.amap.com/place/B03680I3LO",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "沙溪古鎮",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0009": {
+      "sourceId": "web_20260908_0009",
+      "platform": "web",
+      "url": "https://tw.trip.com/restaurant/china/jianchuan/detail/sha-xi-du-ya-ga-fei-26462711/",
+      "canonicalUrl": "https://tw.trip.com/restaurant/china/jianchuan/detail/sha-xi-du-ya-ga-fei-26462711/",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "Trip.com",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "渡鴉咖啡烘焙",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0010": {
+      "sourceId": "web_20260908_0010",
+      "platform": "web",
+      "url": "https://ditu.amap.com/place/B0378157X4",
+      "canonicalUrl": "https://ditu.amap.com/place/B0378157X4",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "白沙古鎮",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0011": {
+      "sourceId": "web_20260908_0011",
+      "platform": "web",
+      "url": "https://ditu.amap.com/place/B03780IGNC",
+      "canonicalUrl": "https://ditu.amap.com/place/B03780IGNC",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "麗江古城-古城忠義市場",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0012": {
+      "sourceId": "web_20260908_0012",
+      "platform": "web",
+      "url": "https://you.ctrip.com/sight/lijiang32/147093.html",
+      "canonicalUrl": "https://you.ctrip.com/sight/lijiang32/147093.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程攻略 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "古城忠義市場",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0013": {
+      "sourceId": "web_20260908_0013",
+      "platform": "web",
+      "url": "https://ditu.amap.com/place/B0FFF5TSNO",
+      "canonicalUrl": "https://ditu.amap.com/place/B0FFF5TSNO",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "麗江黑龍潭",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "official_20260908_0001": {
+      "sourceId": "official_20260908_0001",
+      "platform": "official",
+      "url": "https://dkzgc.cn/col.jsp?id=105",
+      "canonicalUrl": "https://dkzgc.cn/col.jsp?id=105",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "獨克宗古城官方",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "百雞寺與古城景點",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0014": {
+      "sourceId": "web_20260908_0014",
+      "platform": "web",
+      "url": "https://gs.ctrip.com/html5/you/sight/shangri-la106/1712884.html",
+      "canonicalUrl": "https://gs.ctrip.com/html5/you/sight/shangri-la106/1712884.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程攻略 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "百雞寺",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "official_20260908_0002": {
+      "sourceId": "official_20260908_0002",
+      "platform": "official",
+      "url": "https://www.dqbwg.cn/toGeneralService.php",
+      "canonicalUrl": "https://www.dqbwg.cn/toGeneralService.php",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "迪慶藏族自治州博物館",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "參觀服務與開館時間",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0015": {
+      "sourceId": "web_20260908_0015",
+      "platform": "web",
+      "url": "https://www.amap.com/place/B03770LQ40",
+      "canonicalUrl": "https://www.amap.com/place/B03770LQ40",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "迪慶藏族自治州博物館",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0016": {
+      "sourceId": "web_20260908_0016",
+      "platform": "web",
+      "url": "https://travelnews.qunar.com/qa_strategy/xianggelila-food-accommodation-travel-guide",
+      "canonicalUrl": "https://travelnews.qunar.com/qa_strategy/xianggelila-food-accommodation-travel-guide",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "去哪兒旅行攻略",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-05-01",
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "香格里拉景點與駕車時長",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0017": {
+      "sourceId": "web_20260908_0017",
+      "platform": "web",
+      "url": "https://mapcarta.com/N4420670363",
+      "canonicalUrl": "https://mapcarta.com/N4420670363",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "Mapcarta / OpenStreetMap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "Napa Lake Overlook",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0018": {
+      "sourceId": "web_20260908_0018",
+      "platform": "web",
+      "url": "https://www.amap.com/place/B0LGXS90XW",
+      "canonicalUrl": "https://www.amap.com/place/B0LGXS90XW",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "昆明老街錢王街",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "official_20260908_0003": {
+      "sourceId": "official_20260908_0003",
+      "platform": "official",
+      "url": "https://www.yunnanmilitaryacademymuseum.com/intro/open_time",
+      "canonicalUrl": "https://www.yunnanmilitaryacademymuseum.com/intro/open_time",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "雲南陸軍講武堂歷史博物館",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "開放時間與地址",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0019": {
+      "sourceId": "web_20260908_0019",
+      "platform": "web",
+      "url": "https://ditu.amap.com/place/B0367018F9",
+      "canonicalUrl": "https://ditu.amap.com/place/B0367018F9",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "雲南陸軍講武堂歷史博物館",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "official_20260908_0004": {
+      "sourceId": "official_20260908_0004",
+      "platform": "official",
+      "url": "https://culture.yunnan.cn/system/2026/07/21/034091289.shtml",
+      "canonicalUrl": "https://culture.yunnan.cn/system/2026/07/21/034091289.shtml",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "雲南網",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-07-21",
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "鑽進大觀篆新農貿市場，40塊錢吃遍16州市煙火味道",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0020": {
+      "sourceId": "web_20260908_0020",
+      "platform": "web",
+      "url": "https://www.amap.com/place/B0FFHI0BBJ",
+      "canonicalUrl": "https://www.amap.com/place/B0FFHI0BBJ",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "大觀篆新農貿市場",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0021": {
+      "sourceId": "web_20260908_0021",
+      "platform": "web",
+      "url": "https://ditu.amap.com/place/B0367065BF",
+      "canonicalUrl": "https://ditu.amap.com/place/B0367065BF",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "翠湖公園",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "自定義候選"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0022": {
+      "sourceId": "web_20260908_0022",
+      "platform": "web",
+      "url": "https://www.hilton.com.cn/zh-cn/hotels/dluacgi-hilton-garden-inn-dali-ancient-city",
+      "canonicalUrl": "https://www.hilton.com.cn/zh-cn/hotels/dluacgi-hilton-garden-inn-dali-ancient-city",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "Hilton / 希爾頓官方",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "大理古城希爾頓花園酒店位置與附近景點",
+      "excerpt": "酒店位於三月街街場1號，官方標示距大理古城／市中心約0.68公里。",
+      "tags": [
+        "住宿附近",
+        "大理",
+        "夜遊",
+        "官方"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "住宿位置與距離基準。"
+      }
+    },
+    "web_20260908_0023": {
+      "sourceId": "web_20260908_0023",
+      "platform": "web",
+      "url": "https://you.ctrip.com/sight/dalicity1445616/12192.html",
+      "canonicalUrl": "https://you.ctrip.com/sight/dalicity1445616/12192.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程攻略 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "大理古城夜遊資訊",
+      "excerpt": "大理古城全年全天開放；夜間人民路、洋人街一帶有酒吧、小咖啡館與街區夜生活。",
+      "tags": [
+        "住宿附近",
+        "大理",
+        "夜遊",
+        "網路推薦"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "用於夜間活動性質與街區描述。"
+      }
+    },
+    "web_20260908_0024": {
+      "sourceId": "web_20260908_0024",
+      "platform": "web",
+      "url": "https://you.ctrip.com/sight/dalicity1445616/12329.html",
+      "canonicalUrl": "https://you.ctrip.com/sight/dalicity1445616/12329.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程攻略 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "大理洋人街",
+      "excerpt": "洋人街位於大理古城內護國路與復興路交叉口，全年全天開放，屬繁華商業街。",
+      "tags": [
+        "住宿附近",
+        "大理",
+        "夜遊",
+        "網路推薦"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0025": {
+      "sourceId": "web_20260908_0025",
+      "platform": "web",
+      "url": "https://tw.trip.com/moments/theme/poi-dali-ancient-city-78629-nightlife-1002791/",
+      "canonicalUrl": "https://tw.trip.com/moments/theme/poi-dali-ancient-city-78629-nightlife-1002791/",
+      "postId": null,
+      "contentType": "community-summary",
+      "author": {
+        "name": "Trip Moments / Trip.com",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-09-07",
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hant",
+      "title": "2026 大理古城夜生活推薦",
+      "excerpt": "近期旅客分享集中提到人民路現場音樂、清吧與小酒館，古城夜間氛圍較旺。",
+      "tags": [
+        "住宿附近",
+        "大理",
+        "夜遊",
+        "社群二次來源"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "此為旅遊平台社群彙整／AI摘要，不冒充小紅書或 Instagram 原始貼文。"
+      }
+    },
+    "web_20260908_0026": {
+      "sourceId": "web_20260908_0026",
+      "platform": "web",
+      "url": "https://hotels.ctrip.com/hotels/130927799.html",
+      "canonicalUrl": "https://hotels.ctrip.com/hotels/130927799.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程酒店 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "麗江阿德縵花園別墅酒店（束河古鎮店）",
+      "excerpt": "酒店位於束河古鎮旁，住客回饋多次提及出酒店即束河古鎮／過馬路可到。",
+      "tags": [
+        "住宿附近",
+        "麗江",
+        "束河",
+        "夜遊"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "住宿位置與束河古鎮步行關係。"
+      }
+    },
+    "official_20260908_0005": {
+      "sourceId": "official_20260908_0005",
+      "platform": "official",
+      "url": "https://www.ynxc.gov.cn/html/2026/ymkyn_0724/3035990.html",
+      "canonicalUrl": "https://www.ynxc.gov.cn/html/2026/ymkyn_0724/3035990.html",
+      "postId": null,
+      "contentType": "news",
+      "author": {
+        "name": "雲南文明網 / 人民日報相關推介",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-07-24",
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "2026 麗江民謠音樂季與束河四方聽音廣場",
+      "excerpt": "2026麗江民謠音樂季於束河古鎮四方聽音廣場等地舉辦，夏季下午與晚間有公益民謠活動。",
+      "tags": [
+        "住宿附近",
+        "麗江",
+        "束河",
+        "夜間文化",
+        "官方"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "活動具季節性，9月是否續辦需以當日公告為準。"
+      }
+    },
+    "official_20260908_0006": {
+      "sourceId": "official_20260908_0006",
+      "platform": "official",
+      "url": "https://www.lijiang.cn/article/178325.html",
+      "canonicalUrl": "https://www.lijiang.cn/article/178325.html",
+      "postId": null,
+      "contentType": "news",
+      "author": {
+        "name": "麗江網 / 麗江融媒",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-08-07",
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "束河古鎮夜間民俗活動參考",
+      "excerpt": "2026火把節期間，四方聽音廣場舉行納西古樂、勒巴舞、鍋莊舞等夜間民俗活動。",
+      "tags": [
+        "住宿附近",
+        "麗江",
+        "束河",
+        "夜間文化",
+        "官方"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "節慶活動非每日常態；僅用於證明此廣場具夜間文化活動場景。"
+      }
+    },
+    "web_20260908_0027": {
+      "sourceId": "web_20260908_0027",
+      "platform": "web",
+      "url": "https://hotels.ctrip.com/hotels/120456279.html",
+      "canonicalUrl": "https://hotels.ctrip.com/hotels/120456279.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程酒店 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "香格里拉蘭歐國際酒店（松贊林景區店）",
+      "excerpt": "酒店位於康珠大道391號；頁面稱獨克宗古城約5分鐘車程。",
+      "tags": [
+        "住宿附近",
+        "香格里拉",
+        "夜遊"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "住宿至獨克宗的車程基準。"
+      }
+    },
+    "web_20260908_0028": {
+      "sourceId": "web_20260908_0028",
+      "platform": "web",
+      "url": "https://www.thepaper.cn/newsDetail_forward_33595329",
+      "canonicalUrl": "https://www.thepaper.cn/newsDetail_forward_33595329",
+      "postId": null,
+      "contentType": "government-media",
+      "author": {
+        "name": "澎湃新聞·澎湃號政務",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-07-15",
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "獨克宗古城四方街常態鍋莊活動",
+      "excerpt": "報導指出每天傍晚各族居民與遊客會在獨克宗古城四方街自發跳鍋莊廣場舞。",
+      "tags": [
+        "住宿附近",
+        "香格里拉",
+        "夜間文化",
+        "鍋莊"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "作為常態夜間文化活動依據。"
+      }
+    },
+    "web_20260908_0029": {
+      "sourceId": "web_20260908_0029",
+      "platform": "web",
+      "url": "https://hotels.ctrip.com/hotels/450890.html",
+      "canonicalUrl": "https://hotels.ctrip.com/hotels/450890.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程酒店 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "麗江古城滇菌王丨JP希麗酒店",
+      "excerpt": "酒店位於長水路222號；忠義市場約570米、麗江古城約1.6公里。",
+      "tags": [
+        "住宿附近",
+        "麗江",
+        "夜遊"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "對應手冊中的麗江滇菌王南樓住宿。"
+      }
+    },
+    "official_20260908_0007": {
+      "sourceId": "official_20260908_0007",
+      "platform": "official",
+      "url": "https://www.lijiang.cn/article/167807.html",
+      "canonicalUrl": "https://www.lijiang.cn/article/167807.html",
+      "postId": null,
+      "contentType": "news",
+      "author": {
+        "name": "麗江網 / 麗江融媒",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-02-15",
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "麗江古城夜經濟與四方街夜間活動",
+      "excerpt": "報導記錄麗江古城四方街、大水車、官門口的夜景、打跳、美食與旅拍活動。",
+      "tags": [
+        "住宿附近",
+        "麗江",
+        "夜遊",
+        "官方"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0030": {
+      "sourceId": "web_20260908_0030",
+      "platform": "web",
+      "url": "https://you.ctrip.com/sight/lijiang32/4571569.html",
+      "canonicalUrl": "https://you.ctrip.com/sight/lijiang32/4571569.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程攻略 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "麗江古城酒吧街",
+      "excerpt": "酒吧街從大水車延伸到四方街，夜間有酒吧、駐唱、小吃與手工藝店。",
+      "tags": [
+        "住宿附近",
+        "麗江",
+        "夜遊",
+        "網路推薦"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0031": {
+      "sourceId": "web_20260908_0031",
+      "platform": "web",
+      "url": "https://hotels.ctrip.com/hotels/1251700.html",
+      "canonicalUrl": "https://hotels.ctrip.com/hotels/1251700.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程酒店 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "昆明中心假日酒店（昆明老街店）",
+      "excerpt": "酒店位於東風東路29號；恒隆廣場約230米、南屏步行街約1.4公里、昆明老街約1.6公里。",
+      "tags": [
+        "住宿附近",
+        "昆明",
+        "夜遊"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "住宿與市中心夜遊區距離基準。"
+      }
+    },
+    "official_20260908_0008": {
+      "sourceId": "official_20260908_0008",
+      "platform": "official",
+      "url": "https://swt.yn.gov.cn/swxx/202605/t20260522_3218104.html",
+      "canonicalUrl": "https://swt.yn.gov.cn/swxx/202605/t20260522_3218104.html",
+      "postId": null,
+      "contentType": "news",
+      "author": {
+        "name": "雲南省商務廳",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-05-22",
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "昆明夜經濟2026新體驗",
+      "excerpt": "官方報導南強街巷夜間有雲南特色小吃、非遺展示與演藝等業態。",
+      "tags": [
+        "住宿附近",
+        "昆明",
+        "夜遊",
+        "官方"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "official_20260908_0009": {
+      "sourceId": "official_20260908_0009",
+      "platform": "official",
+      "url": "https://www.ynxc.gov.cn/html/2026/whxdjjlb_0730/3036241.html",
+      "canonicalUrl": "https://www.ynxc.gov.cn/html/2026/whxdjjlb_0730/3036241.html",
+      "postId": null,
+      "contentType": "news",
+      "author": {
+        "name": "雲南文明網 / 雲南網",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-07-30",
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "南強街巷藝術生活季",
+      "excerpt": "南強街巷為國家級夜間文化和旅遊消費集聚區，2026持續有流動實景演藝與文化活動。",
+      "tags": [
+        "住宿附近",
+        "昆明",
+        "夜遊",
+        "官方"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": null
+      }
+    },
+    "web_20260908_0032": {
+      "sourceId": "web_20260908_0032",
+      "platform": "web",
+      "url": "https://www.younichuang.com/phone/hotels/show_382.html",
+      "canonicalUrl": "https://www.younichuang.com/phone/hotels/show_382.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "游你創住宿資料",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T14:00:00+08:00",
+      "lastSeenAt": "2026-09-08T14:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "麗怡酒店（昆明長水國際機場店）位置",
+      "excerpt": "酒店位於官渡區大板橋鎮長水航城，距長水機場約15分鐘車程。",
+      "tags": [
+        "住宿附近",
+        "昆明",
+        "機場"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "僅用於住宿位置；Day 1 抵達時間較晚，不新增夜遊活動。"
+      }
+    },
+    "web_20260908_0033": {
+      "sourceId": "web_20260908_0033",
+      "platform": "web",
+      "url": "https://www.amap.com/place/B036800EQZ",
+      "canonicalUrl": "https://www.amap.com/place/B036800EQZ",
+      "postId": null,
+      "contentType": "map-place",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-08T15:00:00+08:00",
+      "lastSeenAt": "2026-09-08T15:00:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "洋人街中心廣場",
+      "excerpt": "地址為大理鎮護國路131號；高德頁面提供 GCJ-02 座標 25.693120,100.159263。網站以標準算法近似轉為 WGS84 供 OpenStreetMap 顯示。",
+      "tags": [
+        "大理",
+        "洋人街",
+        "座標",
+        "地圖"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "1.0",
+        "notes": "原始高德座標屬 GCJ-02；trip-data.json 保存轉換後 WGS84 近似值，避免直接疊加到 OSM 產生中國座標偏移。"
+      }
+    }
+  }
+}
