@@ -1,9 +1,9 @@
 {
   "meta": {
-    "schemaVersion": "1.0",
-    "checkedAt": "2026-09-08T15:00:00+08:00",
+    "schemaVersion": "v1",
+    "checkedAt": "2026-09-09T16:50:00+08:00",
     "retentionPolicy": "Source Record 不因貼文刪除、轉私人、登入限制或失效而刪除；只更新 status / lastSeenAt / unavailableAt。",
-    "note": "本批新增住宿附近／夜間活動研究；仍遵守 SOCIAL_DATA_RULES.md：無可驗證原始小紅書/Instagram URL 時不建立假 xhs_* / ig_*，已失效來源亦不刪除。"
+    "note": "現行來源庫同時保存官方、一般網頁與可驗證的社群來源；無法直接存取的原始貼文保留 status 與可讀二次來源，不建立假社群來源。"
   },
   "sources": {
     "web_20260908_0001": {
@@ -33,7 +33,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -64,7 +64,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "頁面明確彙整小紅書等社群線索，但本次未取得可驗證的原始小紅書貼文 URL；因此只保存此二次來源，不建立 xhs_* 假來源。"
       }
     },
@@ -95,7 +95,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -126,7 +126,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -157,7 +157,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -188,7 +188,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -219,7 +219,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -250,7 +250,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -281,7 +281,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -312,7 +312,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -343,7 +343,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -374,7 +374,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -405,7 +405,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -436,7 +436,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -467,7 +467,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -498,7 +498,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -529,7 +529,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -560,7 +560,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -591,7 +591,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -622,7 +622,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -653,7 +653,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -684,7 +684,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -715,7 +715,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -746,7 +746,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -777,7 +777,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -809,7 +809,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "住宿位置與距離基準。"
       }
     },
@@ -841,7 +841,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "用於夜間活動性質與街區描述。"
       }
     },
@@ -873,7 +873,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -905,7 +905,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "此為旅遊平台社群彙整／AI摘要，不冒充小紅書或 Instagram 原始貼文。"
       }
     },
@@ -937,7 +937,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "住宿位置與束河古鎮步行關係。"
       }
     },
@@ -970,7 +970,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "活動具季節性，9月是否續辦需以當日公告為準。"
       }
     },
@@ -1003,7 +1003,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "節慶活動非每日常態；僅用於證明此廣場具夜間文化活動場景。"
       }
     },
@@ -1034,7 +1034,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "住宿至獨克宗的車程基準。"
       }
     },
@@ -1066,7 +1066,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "作為常態夜間文化活動依據。"
       }
     },
@@ -1097,7 +1097,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "對應手冊中的麗江滇菌王南樓住宿。"
       }
     },
@@ -1129,7 +1129,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -1161,7 +1161,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -1192,7 +1192,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "住宿與市中心夜遊區距離基準。"
       }
     },
@@ -1224,7 +1224,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -1256,7 +1256,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": null
       }
     },
@@ -1287,7 +1287,7 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "僅用於住宿位置；Day 1 抵達時間較晚，不新增夜遊活動。"
       }
     },
@@ -1319,8 +1319,444 @@
       "collection": {
         "method": "public-web-search",
         "collector": "ChatGPT web research",
-        "parserVersion": "1.0",
+        "parserVersion": "v1",
         "notes": "原始高德座標屬 GCJ-02；trip-data.json 保存轉換後 WGS84 近似值，避免直接疊加到 OSM 產生中國座標偏移。"
+      }
+    },
+    "web_20260909_0001": {
+      "sourceId": "web_20260909_0001",
+      "platform": "web",
+      "url": "https://post.smzdm.com/p/a6zwx58o/",
+      "canonicalUrl": "https://post.smzdm.com/p/a6zwx58o/",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "什麼值得買",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-08-19",
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "大理乳扇與古城美食／購物社群彙整",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "公開二次整理頁列出小紅書來源並彙整大理乳扇、喜洲粑粑、酸辣魚與購物線索；原始小紅書連結另保存為 unavailable source record。"
+      }
+    },
+    "xhs_20260909_0001": {
+      "sourceId": "xhs_20260909_0001",
+      "platform": "xiaohongshu",
+      "url": "https://www.xiaohongshu.com/explore/69f8ae41000000002202462d",
+      "canonicalUrl": "https://www.xiaohongshu.com/explore/69f8ae41000000002202462d",
+      "postId": "69f8ae41000000002202462d",
+      "contentType": "post",
+      "author": {
+        "name": "小紅書公開筆記（作者未可靠解析）",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-05-04",
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "unavailable",
+      "language": "zh-Hans",
+      "title": "大理真實物價參考（大理旅遊必看）",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "URL 由公開二次來源的原始連結解析；2026-09-09 直接頁面回傳 404，因此保留追溯紀錄但不把內容當可即時存取證據。"
+      },
+      "unavailableAt": "2026-09-09T16:50:00+08:00"
+    },
+    "xhs_20260909_0002": {
+      "sourceId": "xhs_20260909_0002",
+      "platform": "xiaohongshu",
+      "url": "https://www.xiaohongshu.com/explore/6a212595000000002202815d",
+      "canonicalUrl": "https://www.xiaohongshu.com/explore/6a212595000000002202815d",
+      "postId": "6a212595000000002202815d",
+      "contentType": "post",
+      "author": {
+        "name": "小紅書公開筆記（作者未可靠解析）",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "unavailable",
+      "language": "zh-Hans",
+      "title": "去大理買東西就看這張價格表",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "URL 由公開二次來源的原始連結解析；2026-09-09 直接頁面回傳 404，因此保留追溯紀錄但不把內容當可即時存取證據。"
+      },
+      "unavailableAt": "2026-09-09T16:50:00+08:00"
+    },
+    "web_20260909_0002": {
+      "sourceId": "web_20260909_0002",
+      "platform": "web",
+      "url": "https://www.sina.cn/gc/article/nimmayt2830335.html",
+      "canonicalUrl": "https://www.sina.cn/gc/article/nimmayt2830335.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "新浪新聞",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-08-06",
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "麗江特色美食：臘排骨、雞豆涼粉、野生菌等",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": null
+      }
+    },
+    "web_20260909_0003": {
+      "sourceId": "web_20260909_0003",
+      "platform": "web",
+      "url": "https://wildgreatwall.com/blog/page/56/",
+      "canonicalUrl": "https://wildgreatwall.com/blog/page/56/",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "Wild Great Wall Adventures",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "Lijiang food Instagram embed: cured pork ribs, chickpea jelly, Naxi barbecue",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "公開頁面嵌入 @wildgreatwall Instagram 內容；作為 Instagram 貼文的可讀備援來源。"
+      }
+    },
+    "ig_20260909_0001": {
+      "sourceId": "ig_20260909_0001",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/p/DcfDwcWDOTj/",
+      "canonicalUrl": "https://www.instagram.com/p/DcfDwcWDOTj/",
+      "postId": "DcfDwcWDOTj",
+      "contentType": "post",
+      "author": {
+        "name": "Wild Great Wall Adventures",
+        "handle": "@wildgreatwall",
+        "profileUrl": "https://www.instagram.com/wildgreatwall/"
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "active",
+      "language": "en",
+      "title": "Lijiang local food: rice noodles, home-style Yunnan dishes and seasonal mushrooms",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "精確 Instagram URL 由公開嵌入解析；直接抓取受到 Instagram 節流，但公開嵌入仍可讀，因此保留 active 並以 web_20260909_0003 作可讀佐證。"
+      }
+    },
+    "web_20260909_0004": {
+      "sourceId": "web_20260909_0004",
+      "platform": "web",
+      "url": "https://wildgreatwall.com/blog/page/12/",
+      "canonicalUrl": "https://wildgreatwall.com/blog/page/12/",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "Wild Great Wall Adventures",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "Lijiang Dongba script and meaningful souvenir Instagram embed",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "公開頁面嵌入 @wildgreatwall Instagram 內容，建議理解東巴文字意義後再選購東巴紙文創。"
+      }
+    },
+    "ig_20260909_0002": {
+      "sourceId": "ig_20260909_0002",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/p/Dc99TAQEc5b/",
+      "canonicalUrl": "https://www.instagram.com/p/Dc99TAQEc5b/",
+      "postId": "Dc99TAQEc5b",
+      "contentType": "post",
+      "author": {
+        "name": "Wild Great Wall Adventures",
+        "handle": "@wildgreatwall",
+        "profileUrl": "https://www.instagram.com/wildgreatwall/"
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "active",
+      "language": "en",
+      "title": "Lijiang meaningful souvenirs: Dongba paper and local craft",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "精確 Instagram URL 由公開嵌入解析；直接抓取受到 Instagram 節流，但公開嵌入仍可讀，因此以 web_20260909_0004 作可讀佐證。"
+      }
+    },
+    "official_20260909_0001": {
+      "sourceId": "official_20260909_0001",
+      "platform": "official",
+      "url": "https://www.ihchina.cn/project_details/14304.html",
+      "canonicalUrl": "https://www.ihchina.cn/project_details/14304.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "中國非物質文化遺產網·中國非物質文化遺產數字博物館",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "白族扎染技藝",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": null
+      }
+    },
+    "web_20260909_0005": {
+      "sourceId": "web_20260909_0005",
+      "platform": "web",
+      "url": "https://epaper.chinadaily.com.cn/a/202608/05/WS6a727a31a31067b52dde6f2a.html",
+      "canonicalUrl": "https://epaper.chinadaily.com.cn/a/202608/05/WS6a727a31a31067b52dde6f2a.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "China Daily",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-08-05",
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "Tourists choose souvenirs that ensure memories do not fade — Dongba paper",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": null
+      }
+    },
+    "web_20260909_0006": {
+      "sourceId": "web_20260909_0006",
+      "platform": "web",
+      "url": "https://k.sina.com.cn/article_7879922979_1d5ae152301901obiu.html",
+      "canonicalUrl": "https://k.sina.com.cn/article_7879922979_1d5ae152301901obiu.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "新浪文旅指南",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-03-05",
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "昆明／雲南特產選購清單：鮮花餅、普洱、小粒咖啡",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": null
+      }
+    },
+    "web_20260909_0007": {
+      "sourceId": "web_20260909_0007",
+      "platform": "web",
+      "url": "https://www.kunming.cn/news/c/2026-01-30/14014735.shtml",
+      "canonicalUrl": "https://www.kunming.cn/news/c/2026-01-30/14014735.shtml",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "昆明信息港",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-01-30",
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "昆明小鍋米線地方飲食介紹",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": null
+      }
+    },
+    "web_20260909_0008": {
+      "sourceId": "web_20260909_0008",
+      "platform": "web",
+      "url": "https://gs.ctrip.com/html5/you/foods/shangri-la106/454871.html",
+      "canonicalUrl": "https://gs.ctrip.com/html5/you/foods/shangri-la106/454871.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程美食",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "銀同牦牛肉火鍋：牦牛火鍋、酥油茶、青稞餅、牦牛酸奶",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": null
+      }
+    },
+    "web_20260909_0009": {
+      "sourceId": "web_20260909_0009",
+      "platform": "web",
+      "url": "https://www.sina.cn/gc/article/nipsezp5980230.html",
+      "canonicalUrl": "https://www.sina.cn/gc/article/nipsezp5980230.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "新浪新聞",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-08-26",
+      "retrievedAt": "2026-09-09T16:50:00+08:00",
+      "lastSeenAt": "2026-09-09T16:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "香格里拉美食攻略：牦牛肉火鍋、酥油茶、青稞餅",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "旅遊",
+        "必吃必買"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": null
       }
     }
   }

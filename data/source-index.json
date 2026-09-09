@@ -1,8 +1,17 @@
 {
-  "checkedAt": "2026-09-08T15:00:00+08:00",
-  "batchId": "nearby20_plus_hotel_night_20260908",
+  "generated": true,
+  "generatedFrom": [
+    "data/trip-data.json",
+    "data/social-sources.json"
+  ],
+  "checkedAt": "2026-09-09T16:50:00+08:00",
+  "batchIds": [
+    "nearby20_20260908",
+    "hotel_night_nearby20_20260908"
+  ],
   "customItemCount": 31,
-  "sourceCount": 42,
+  "sourceCount": 56,
+  "referencedSourceCount": 56,
   "defaultCustomIds": [
     "custom-xizhou-yan",
     "custom-xizhou-woxiang",
@@ -36,7 +45,50 @@
     "night-kmg-old",
     "night-nanping"
   ],
+  "unreferencedSourceIds": [],
+  "missingSourceIds": [],
   "sourceUsage": {
+    "ig_20260909_0001": [
+      "mushroom-lj"
+    ],
+    "ig_20260909_0002": [
+      "dongba-paper"
+    ],
+    "official_20260908_0001": [
+      "custom-baiji-temple"
+    ],
+    "official_20260908_0002": [
+      "custom-diqing-museum"
+    ],
+    "official_20260908_0003": [
+      "custom-kunming-jiangwu"
+    ],
+    "official_20260908_0004": [
+      "custom-kunming-zhuanxin"
+    ],
+    "official_20260908_0005": [
+      "night-shuhe",
+      "night-shuhe-square"
+    ],
+    "official_20260908_0006": [
+      "night-shuhe",
+      "night-shuhe-square"
+    ],
+    "official_20260908_0007": [
+      "night-lijiang",
+      "night-sifang",
+      "night-zhongyi"
+    ],
+    "official_20260908_0008": [
+      "night-jinma",
+      "night-nanqiang"
+    ],
+    "official_20260908_0009": [
+      "night-nanqiang"
+    ],
+    "official_20260909_0001": [
+      "bai-tiedye-buy"
+    ],
     "web_20260908_0001": [
       "custom-xizhou-yan"
     ],
@@ -77,14 +129,8 @@
     "web_20260908_0013": [
       "custom-heilongtan"
     ],
-    "official_20260908_0001": [
-      "custom-baiji-temple"
-    ],
     "web_20260908_0014": [
       "custom-baiji-temple"
-    ],
-    "official_20260908_0002": [
-      "custom-diqing-museum"
     ],
     "web_20260908_0015": [
       "custom-diqing-museum"
@@ -98,14 +144,8 @@
     "web_20260908_0018": [
       "custom-kunming-qianwang"
     ],
-    "official_20260908_0003": [
-      "custom-kunming-jiangwu"
-    ],
     "web_20260908_0019": [
       "custom-kunming-jiangwu"
-    ],
-    "official_20260908_0004": [
-      "custom-kunming-zhuanxin"
     ],
     "web_20260908_0020": [
       "custom-kunming-zhuanxin"
@@ -115,8 +155,8 @@
     ],
     "web_20260908_0022": [
       "night-dali",
-      "night-renmin",
       "night-foreigner",
+      "night-renmin",
       "night-sanyue"
     ],
     "web_20260908_0023": [
@@ -131,15 +171,7 @@
       "night-renmin"
     ],
     "web_20260908_0026": [
-      "night-shuhe",
-      "night-shuhe-square",
-      "night-lijiang"
-    ],
-    "official_20260908_0005": [
-      "night-shuhe",
-      "night-shuhe-square"
-    ],
-    "official_20260908_0006": [
+      "night-lijiang",
       "night-shuhe",
       "night-shuhe-square"
     ],
@@ -152,35 +184,77 @@
       "night-moon"
     ],
     "web_20260908_0029": [
-      "night-zhongyi",
       "night-lijiang",
-      "night-sifang"
-    ],
-    "official_20260908_0007": [
-      "night-zhongyi",
-      "night-lijiang",
-      "night-sifang"
+      "night-sifang",
+      "night-zhongyi"
     ],
     "web_20260908_0030": [
       "night-lijiang",
       "night-sifang"
     ],
     "web_20260908_0031": [
-      "night-plaza",
-      "night-nanqiang",
+      "night-jinma",
       "night-kmg-old",
       "night-nanping",
-      "night-jinma"
-    ],
-    "official_20260908_0008": [
       "night-nanqiang",
-      "night-jinma"
-    ],
-    "official_20260908_0009": [
-      "night-nanqiang"
+      "night-plaza"
     ],
     "web_20260908_0032": [
       "hotel-kmg-airport"
+    ],
+    "web_20260908_0033": [
+      "foreigner",
+      "night-foreigner"
+    ],
+    "web_20260909_0001": [
+      "baba",
+      "bai-tiedye-buy",
+      "dali-sour-fish",
+      "rushan"
+    ],
+    "web_20260909_0002": [
+      "jidou",
+      "lijiang-rib-hotpot",
+      "ljbaba"
+    ],
+    "web_20260909_0003": [
+      "jidou",
+      "lijiang-rib-hotpot",
+      "ljbaba",
+      "mushroom-lj"
+    ],
+    "web_20260909_0004": [
+      "dongba-paper"
+    ],
+    "web_20260909_0005": [
+      "dongba-paper"
+    ],
+    "web_20260909_0006": [
+      "coffee",
+      "flower",
+      "mushroom-kmg",
+      "puer"
+    ],
+    "web_20260909_0007": [
+      "noodle",
+      "smallpot-noodle"
+    ],
+    "web_20260909_0008": [
+      "buttertea",
+      "yak",
+      "yak-yogurt"
+    ],
+    "web_20260909_0009": [
+      "buttertea",
+      "yak",
+      "yak-yogurt"
+    ],
+    "xhs_20260909_0001": [
+      "baba",
+      "rushan"
+    ],
+    "xhs_20260909_0002": [
+      "bai-tiedye-buy"
     ]
   }
 }

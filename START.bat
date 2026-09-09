@@ -83,15 +83,15 @@ function Send-Response {
         [string]$ContentType,
         [byte[]]$Body,
         [long]$ContentLength = -1,
-        [bool]$SendBody = $true
+        [bool]$SendBody = $true,
+        [string]$CacheControl = 'no-cache'
     )
 
     if ($ContentLength -lt 0) { $ContentLength = $Body.Length }
     $header = "HTTP/1.1 $StatusCode $Reason`r`n" +
               "Content-Type: $ContentType`r`n" +
               "Content-Length: $ContentLength`r`n" +
-              "Cache-Control: no-cache, no-store, must-revalidate`r`n" +
-              "Pragma: no-cache`r`n" +
+              "Cache-Control: $CacheControl`r`n" +
               "Connection: close`r`n`r`n"
 
     $headerBytes = [System.Text.Encoding]::ASCII.GetBytes($header)
@@ -182,7 +182,8 @@ try {
             $fileBytes = [System.IO.File]::ReadAllBytes($fullPath)
             $mime = Get-MimeType $fullPath
             $sendBody = ($method -eq 'GET')
-            Send-Response $stream 200 'OK' $mime $fileBytes $fileBytes.LongLength $sendBody
+            $cacheControl = if ($mime.StartsWith('image/')) { 'public, max-age=31536000, immutable' } else { 'no-cache' }
+            Send-Response $stream 200 'OK' $mime $fileBytes $fileBytes.LongLength $sendBody $cacheControl
         }
         catch {
             if ($stream) {

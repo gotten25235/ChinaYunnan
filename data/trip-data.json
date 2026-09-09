@@ -12,7 +12,7 @@
     "麗江",
     "昆明"
   ],
-  "heroImage": "images/blue-moon-valley.jpg",
+  "heroImage": "images/blue-moon-valley.webp",
   "imageCredit": {
     "title": "Blue Moon Valley",
     "author": "Ma Martin",
@@ -137,7 +137,7 @@
       "addressVerified": false,
       "duration": "依團體安排",
       "rating": null,
-      "photoId": null,
+      "photoId": "xizhou-carriage",
       "mapPlaceId": "xizhou",
       "photoMatch": "reference_only",
       "photoReferenceId": "dali-village-reference"
@@ -156,7 +156,7 @@
       "addressVerified": false,
       "duration": "依團體安排",
       "rating": null,
-      "photoId": null,
+      "photoId": "dali-courtyard",
       "coordinateSource": "https://mapcarta.com/N5407250690",
       "photoMatch": "reference_only",
       "photoReferenceId": "dali-village-reference"
@@ -175,7 +175,7 @@
       "addressVerified": false,
       "duration": "依團體安排",
       "rating": null,
-      "photoId": null,
+      "photoId": "youfeng-yard",
       "mapPlaceId": "fengyang",
       "photoMatch": "reference_only",
       "photoReferenceId": "dali-village-reference"
@@ -240,7 +240,7 @@
       "addressVerified": false,
       "duration": "依團體安排",
       "rating": null,
-      "photoId": null,
+      "photoId": "idealbang",
       "photoMatch": "reference_only",
       "photoReferenceId": "shuanglang-open"
     },
@@ -540,7 +540,7 @@
       "addressVerified": false,
       "duration": "依團體安排",
       "rating": null,
-      "photoId": null,
+      "photoId": "butter-tea",
       "photoMatch": "reference_only",
       "photoReferenceId": "tibetan-home-reference"
     },
@@ -647,7 +647,7 @@
       "addressVerified": false,
       "duration": "依團體安排",
       "rating": null,
-      "photoId": null,
+      "photoId": "yunnan-impression",
       "photoMatch": "reference_only",
       "photoReferenceId": "kunming-city-reference"
     },
@@ -684,7 +684,7 @@
       "duration": "依團體安排",
       "rating": null,
       "coordinateSource": "https://mapcarta.com/W1030290278",
-      "photoId": null,
+      "photoId": "kunming-skyline",
       "photoMatch": "reference_only",
       "photoReferenceId": "kunming-city-reference"
     },
@@ -702,7 +702,7 @@
       "addressVerified": false,
       "duration": "依團體安排",
       "rating": null,
-      "photoId": null,
+      "photoId": "kunming-skyline",
       "photoMatch": "reference_only",
       "photoReferenceId": "kunming-city-reference"
     },
@@ -912,7 +912,7 @@
       "coordinateNote": "TODO：座標待核實",
       "transport": "人民路位於大理古城夜生活核心；從住宿先進古城再步行串遊。",
       "distanceNote": "住宿附近：位於大理古城內",
-      "photoId": null,
+      "photoId": "old-town-night",
       "marketKind": "古城小吃街／小店",
       "sourceLabel": "大理旅遊集團 · 大理古城",
       "source": "https://www.dalitravel.cn/content/read/233.html",
@@ -1019,7 +1019,7 @@
       "coordinateNote": "TODO：座標待核實",
       "transport": "不列入飯店步行夜遊推薦：尚未確認當晚飯店與實際步行路線。",
       "distanceNote": "距飯店待確認",
-      "photoId": null,
+      "photoId": "old-town-night",
       "photoMatch": "reference_only",
       "photoReferenceId": "dali-old-town-open"
     },
@@ -1386,7 +1386,7 @@
       "time": "18:00–21:00",
       "transport": "從昆明中心假日酒店步行前往，官方介紹約 2 分鐘；依實際出入口可能不同。",
       "distanceNote": "住宿旁：約 230 米",
-      "photoId": null,
+      "photoId": "kunming-skyline",
       "walkEvidence": "IHG 飯店官方：恒隆廣場距酒店步行 2 分鐘。",
       "source": "https://hotels.ctrip.com/hotels/1251700.html",
       "sourceLabel": "攜程酒店 · 昆明中心假日酒店",
@@ -1433,7 +1433,7 @@
       "coordinateNote": "TODO：座標待核實",
       "transport": "住宿位於東風廣場商圈，前往南強街巷屬市中心短程；官方2026資料確認有夜間小吃、非遺與演藝。",
       "distanceNote": "住宿附近：約 1.2 公里",
-      "photoId": null,
+      "photoId": "kunming-skyline",
       "marketKind": "夜市型餐飲街區",
       "sourceLabel": "雲南商務廳 · 2026 夜經濟",
       "source": "https://swt.yn.gov.cn/swxx/202605/t20260522_3218104.html",
@@ -1612,7 +1612,7 @@
       "duration": "30–60 分鐘",
       "rating": 4,
       "coordinateSource": "https://mapcarta.com/W1030290278",
-      "photoId": null,
+      "photoId": "kunming-skyline",
       "photoMatch": "reference_only",
       "photoReferenceId": "kunming-city-reference"
     },
@@ -1749,7 +1749,9 @@
       },
       "researchCheckedAt": "2026-09-08T14:00:00+08:00",
       "customResearch": true,
-      "confidence": "medium"
+      "confidence": "medium",
+      "photoId": "xizhou-ricefield",
+      "photoMatch": "representative"
     },
     "custom-dali-art-factory": {
       "id": "custom-dali-art-factory",
@@ -1766,7 +1768,7 @@
       "duration": "45–90 分鐘",
       "openingHours": "08:00~22:00",
       "rating": 4,
-      "photoId": null,
+      "photoId": "dali-courtyard",
       "days": [
         2
       ],
@@ -1870,7 +1872,7 @@
       "rating": 4,
       "taste": "茶／咖啡／甜點",
       "meal": "下午茶",
-      "photoId": null,
+      "photoId": "shaxi-sideng",
       "days": [
         3
       ],
@@ -1924,7 +1926,7 @@
       "rating": 5,
       "taste": "雲南手沖／拿鐵",
       "meal": "咖啡休息",
-      "photoId": null,
+      "photoId": "shaxi-sideng",
       "days": [
         3
       ],
@@ -2264,7 +2266,7 @@
       "addressVerified": true,
       "duration": "45–90 分鐘",
       "rating": 4,
-      "photoId": null,
+      "photoId": "city-canal-street",
       "days": [
         8
       ],
@@ -2396,7 +2398,9 @@
         ]
       },
       "researchCheckedAt": "2026-09-08T14:00:00+08:00",
-      "customResearch": true
+      "customResearch": true,
+      "photoId": "smallpot-noodle",
+      "photoMatch": "representative"
     },
     "custom-kunming-cuihu": {
       "id": "custom-kunming-cuihu",
@@ -2473,7 +2477,7 @@
       "taxiEstimate": "步行約 10–15 分鐘",
       "taxiEstimateBasis": "酒店位於束河古鎮旁；廣場位於古鎮內。",
       "hotelRef": "hotel-aderman",
-      "photoId": null,
+      "photoId": "old-town-night",
       "sourceRefs": [
         "web_20260908_0026",
         "official_20260908_0005",
@@ -2522,7 +2526,12 @@
       "lng": null,
       "coordinateNote": "TODO：尚未指定餐廳／座標",
       "photoId": "xizhou-baba",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "priority": "必吃",
+      "sourceRefs": [
+        "web_20260909_0001",
+        "xhs_20260909_0001"
+      ]
     },
     {
       "id": "rushan",
@@ -2543,7 +2552,12 @@
       "coordinateSource": "https://mapcarta.com/W767449039",
       "coordinateNote": "推薦尋味區：大理古城（非餐廳位置）",
       "photoId": "rushan",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "priority": "必吃",
+      "sourceRefs": [
+        "web_20260909_0001",
+        "xhs_20260909_0001"
+      ]
     },
     {
       "id": "ersi",
@@ -2627,7 +2641,12 @@
       "coordinateSource": "https://whc.unesco.org/en/list/811/maps/",
       "coordinateNote": "推薦尋味區：麗江古城／大研古城（非餐廳位置）",
       "photoId": "chickpea-jelly",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "priority": "必吃",
+      "sourceRefs": [
+        "web_20260909_0002",
+        "web_20260909_0003"
+      ]
     },
     {
       "id": "naxi",
@@ -2670,7 +2689,12 @@
       "coordinateSource": "https://whc.unesco.org/en/list/811/maps/",
       "coordinateNote": "推薦尋味區：麗江古城／大研古城（非餐廳位置）",
       "photoId": "lijiang-baba",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "priority": "必吃",
+      "sourceRefs": [
+        "web_20260909_0002",
+        "web_20260909_0003"
+      ]
     },
     {
       "id": "mushroom-lj",
@@ -2690,7 +2714,11 @@
       "lng": null,
       "coordinateNote": "TODO：尚未指定餐廳／座標",
       "photoId": "wild-mushrooms",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "sourceRefs": [
+        "ig_20260909_0001",
+        "web_20260909_0003"
+      ]
     },
     {
       "id": "yak",
@@ -2712,7 +2740,12 @@
       "coordinateNote": "推薦尋味區：獨克宗古城（非餐廳位置）",
       "photoId": "yak-meat",
       "photoMatch": "reference_only",
-      "photoReferenceId": "yak-meat"
+      "photoReferenceId": "yak-meat",
+      "priority": "必吃",
+      "sourceRefs": [
+        "web_20260909_0008",
+        "web_20260909_0009"
+      ]
     },
     {
       "id": "buttertea",
@@ -2734,7 +2767,12 @@
       "coordinateNote": "推薦尋味區：獨克宗古城（非餐廳位置）",
       "photoId": "butter-tea",
       "photoMatch": "representative",
-      "photoReferenceId": "butter-tea"
+      "photoReferenceId": "butter-tea",
+      "priority": "必吃",
+      "sourceRefs": [
+        "web_20260909_0008",
+        "web_20260909_0009"
+      ]
     },
     {
       "id": "barley",
@@ -2797,7 +2835,11 @@
       "lng": null,
       "coordinateNote": "TODO：尚未指定餐廳／座標",
       "photoId": "crossing-bridge-noodles",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "priority": "必吃",
+      "sourceRefs": [
+        "web_20260909_0007"
+      ]
     },
     {
       "id": "steamchicken",
@@ -2857,7 +2899,11 @@
       "lng": null,
       "coordinateNote": "TODO：尚未指定餐廳／座標",
       "photoId": "wild-mushrooms",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "priority": "必吃",
+      "sourceRefs": [
+        "web_20260909_0006"
+      ]
     },
     {
       "id": "flower-food",
@@ -2878,6 +2924,104 @@
       "coordinateNote": "TODO：尚未指定餐廳／座標",
       "photoId": "flower-cake",
       "photoMatch": "verified"
+    },
+    {
+      "id": "dali-sour-fish",
+      "name": "白族酸辣魚",
+      "city": "大理",
+      "taste": "酸／辣／鮮",
+      "meal": "正餐",
+      "description": "酸木瓜與辣椒帶出酸辣鮮味；適合多人分食，魚種與辣度依店家當日供應。",
+      "emoji": "🐟",
+      "type": "food",
+      "pdfScheduled": false,
+      "priority": "必吃",
+      "rating": 5,
+      "duration": "正餐約 60–90 分鐘",
+      "address": "雲南省 大理 大理古城／洱海周邊 白族酸辣魚",
+      "addressVerified": false,
+      "lat": null,
+      "lng": null,
+      "coordinateNote": "料理推薦，未指定餐廳／座標",
+      "photoId": "dali-sour-fish",
+      "photoMatch": "reference_only",
+      "sourceRefs": [
+        "web_20260909_0001"
+      ]
+    },
+    {
+      "id": "lijiang-rib-hotpot",
+      "name": "麗江臘排骨火鍋",
+      "city": "麗江",
+      "taste": "鹹香／醇厚",
+      "meal": "正餐",
+      "description": "納西風味的高原臘排骨火鍋，是近期旅遊／社群攻略反覆出現的麗江代表性硬菜；先試湯再加蘸水。",
+      "emoji": "🍲",
+      "type": "food",
+      "pdfScheduled": false,
+      "priority": "必吃",
+      "rating": 5,
+      "duration": "正餐約 60–90 分鐘",
+      "address": "雲南省 麗江市 古城區 臘排骨火鍋",
+      "addressVerified": false,
+      "lat": null,
+      "lng": null,
+      "coordinateNote": "料理推薦，未指定餐廳／座標；象山市場與古城周邊常見",
+      "photoId": "lijiang-rib-hotpot",
+      "photoMatch": "reference_only",
+      "sourceRefs": [
+        "web_20260909_0002",
+        "web_20260909_0003"
+      ]
+    },
+    {
+      "id": "yak-yogurt",
+      "name": "牦牛酸奶",
+      "city": "香格里拉",
+      "taste": "酸／奶香",
+      "meal": "小吃",
+      "description": "高原乳香明顯、酸度通常比一般甜味優格直接；可先買小份試口味。",
+      "emoji": "🥛",
+      "type": "food",
+      "pdfScheduled": false,
+      "priority": "必吃",
+      "rating": 5,
+      "duration": "小吃約 10–20 分鐘",
+      "address": "雲南省 迪慶州 香格里拉市 獨克宗古城 牦牛酸奶",
+      "addressVerified": false,
+      "lat": null,
+      "lng": null,
+      "coordinateNote": "料理推薦，未指定餐廳／座標；獨克宗古城周邊可留意",
+      "photoId": "yak-yogurt",
+      "photoMatch": "reference_only",
+      "sourceRefs": [
+        "web_20260909_0008",
+        "web_20260909_0009"
+      ]
+    },
+    {
+      "id": "smallpot-noodle",
+      "name": "昆明小鍋米線",
+      "city": "昆明",
+      "taste": "鹹鮮／辣可調",
+      "meal": "正餐",
+      "description": "一人一小鍋現煮，是更接近日常昆明口味的米線選擇；可和過橋米線各吃一次比較。",
+      "emoji": "🍜",
+      "type": "food",
+      "pdfScheduled": false,
+      "priority": "必吃",
+      "rating": 5,
+      "duration": "正餐約 30–45 分鐘",
+      "address": "雲南省 昆明市 小鍋米線",
+      "addressVerified": false,
+      "lat": null,
+      "lng": null,
+      "coordinateNote": "料理推薦，未指定餐廳／座標",
+      "photoId": "smallpot-noodle",
+      "photoMatch": "reference_only",
+      "sourceRefs": [
+        "web_20260909_0007"
+      ]
     }
   ],
   "shopping": [
@@ -2885,7 +3029,7 @@
       "id": "flower",
       "name": "鮮花餅",
       "emoji": "🌸",
-      "group": "可以買",
+      "group": "必買",
       "description": "選標示清楚的包裝，確認內餡成分與保存期限。",
       "city": "雲南",
       "type": "shopping",
@@ -2898,13 +3042,17 @@
       "address": "雲南省 昆明市 鮮花餅",
       "addressVerified": false,
       "photoId": "flower-cake",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "priority": "必買",
+      "sourceRefs": [
+        "web_20260909_0006"
+      ]
     },
     {
       "id": "puer",
       "name": "普洱茶",
       "emoji": "🍵",
-      "group": "可以買",
+      "group": "必買",
       "description": "先試飲，依口味與預算選擇。",
       "city": "雲南",
       "type": "shopping",
@@ -2917,13 +3065,17 @@
       "address": "雲南省 昆明市 普洱茶",
       "addressVerified": false,
       "photoId": "puer-tea",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "priority": "必買",
+      "sourceRefs": [
+        "web_20260909_0006"
+      ]
     },
     {
       "id": "coffee",
       "name": "雲南咖啡",
       "emoji": "☕",
-      "group": "可以買",
+      "group": "必買",
       "description": "選擇喜歡的烘焙度，留意烘焙日期。",
       "city": "雲南",
       "type": "shopping",
@@ -2936,7 +3088,11 @@
       "address": "雲南省 昆明市 雲南咖啡",
       "addressVerified": false,
       "photoId": "yunnan-coffee",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "priority": "必買",
+      "sourceRefs": [
+        "web_20260909_0006"
+      ]
     },
     {
       "id": "tea",
@@ -3076,6 +3232,57 @@
       "photoId": "rushan",
       "photoMatch": "representative",
       "photoReferenceId": "rushan"
+    },
+    {
+      "id": "bai-tiedye-buy",
+      "name": "白族扎染",
+      "emoji": "🧵",
+      "group": "必買",
+      "priority": "必買",
+      "description": "大理最有地域辨識度的手工藝之一。優先選能說明染製方式、圖案與產地的作品；手作紋理不必追求每件完全一致。",
+      "city": "大理",
+      "type": "shopping",
+      "pdfScheduled": false,
+      "rating": 5,
+      "duration": "選購／體驗約 30–90 分鐘",
+      "lat": null,
+      "lng": null,
+      "coordinateNote": "商品／工坊類型，未指定單一店址；喜洲、周城與沙溪沿線可留意",
+      "address": "雲南省 大理州 白族扎染／周城扎染",
+      "addressVerified": false,
+      "photoId": "bai-tiedye",
+      "photoMatch": "verified",
+      "sourceRefs": [
+        "official_20260909_0001",
+        "web_20260909_0001",
+        "xhs_20260909_0002"
+      ]
+    },
+    {
+      "id": "dongba-paper",
+      "name": "東巴紙／東巴文字文創",
+      "emoji": "📜",
+      "group": "必買",
+      "priority": "必買",
+      "description": "比一般紀念品更有麗江辨識度；可選東巴紙筆記本、明信片或帶有東巴文字祝福的手作品，購買前先理解符號含意。",
+      "city": "麗江",
+      "type": "shopping",
+      "pdfScheduled": false,
+      "rating": 5,
+      "duration": "選購約 20–45 分鐘",
+      "lat": null,
+      "lng": null,
+      "coordinateNote": "文創類型，未指定單一店址；麗江古城與束河古鎮可留意",
+      "address": "雲南省 麗江市 麗江古城／束河古鎮 東巴紙文創",
+      "addressVerified": false,
+      "photoId": "dongba-glyphs-web",
+      "photoMatch": "representative",
+      "photoReferenceId": "dongba-glyphs-web",
+      "sourceRefs": [
+        "web_20260909_0005",
+        "ig_20260909_0002",
+        "web_20260909_0004"
+      ]
     }
   ],
   "flights": [
@@ -3219,12 +3426,14 @@
         "rushan",
         "ersi",
         "erkuai",
-        "bai"
+        "bai",
+        "dali-sour-fish"
       ],
       "shopping": [
         "flower",
         "craft",
-        "jewelry"
+        "jewelry",
+        "bai-tiedye-buy"
       ],
       "meals": [
         "酒店內用",
@@ -3270,11 +3479,13 @@
         "jidou",
         "naxi",
         "ljbaba",
-        "mushroom-lj"
+        "mushroom-lj",
+        "lijiang-rib-hotpot"
       ],
       "shopping": [
         "craft",
-        "jewelry"
+        "jewelry",
+        "dongba-paper"
       ],
       "meals": [
         "酒店內用",
@@ -3318,7 +3529,8 @@
         "jidou",
         "naxi",
         "ljbaba",
-        "mushroom-lj"
+        "mushroom-lj",
+        "lijiang-rib-hotpot"
       ],
       "shopping": [],
       "meals": [
@@ -3360,7 +3572,8 @@
         "yak",
         "buttertea",
         "barley",
-        "tibetan"
+        "tibetan",
+        "yak-yogurt"
       ],
       "shopping": [
         "craft",
@@ -3410,7 +3623,8 @@
       ],
       "shopping": [
         "craft",
-        "tea"
+        "tea",
+        "dongba-paper"
       ],
       "meals": [
         "酒店內用",
@@ -3455,7 +3669,8 @@
         "steamchicken",
         "roast-erkuai",
         "mushroom-kmg",
-        "flower-food"
+        "flower-food",
+        "smallpot-noodle"
       ],
       "shopping": [
         "flower",
@@ -3504,7 +3719,8 @@
       "foods": [
         "noodle",
         "roast-erkuai",
-        "flower-food"
+        "flower-food",
+        "smallpot-noodle"
       ],
       "shopping": [
         "flower",
@@ -3559,7 +3775,7 @@
   "customsUrl": "https://www.aphia.gov.tw/ws.php?id=10726",
   "photos": {
     "butter-tea": {
-      "src": "images/butter-tea.jpg",
+      "src": "images/butter-tea.webp",
       "alt": "酥油茶實物參考，攝於印度拉達克；非雲南店家",
       "caption": "酥油茶實物參考，攝於印度拉達克；非雲南店家",
       "author": "Laura Blankenship",
@@ -3571,7 +3787,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "crossing-bridge-noodles": {
-      "src": "images/crossing-bridge-noodles.jpg",
+      "src": "images/crossing-bridge-noodles.webp",
       "alt": "蒙自過橋米線與配料實拍",
       "caption": "蒙自過橋米線與配料實拍",
       "author": "N509FZ",
@@ -3583,7 +3799,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "xizhou-baba": {
-      "src": "images/xizhou-baba.jpg",
+      "src": "images/xizhou-baba.webp",
       "alt": "喜洲粑粑實拍（肉餡款）",
       "caption": "喜洲粑粑實拍（肉餡款）",
       "author": "Mx. Granger",
@@ -3595,7 +3811,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "lijiang-baba": {
-      "src": "images/lijiang-baba.jpg",
+      "src": "images/lijiang-baba.webp",
       "alt": "麗江粑粑實拍（蔥蛋款）",
       "caption": "麗江粑粑實拍（蔥蛋款）",
       "author": "Alpha",
@@ -3607,7 +3823,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "chickpea-jelly": {
-      "src": "images/chickpea-jelly.jpg",
+      "src": "images/chickpea-jelly.webp",
       "alt": "麗江雞豆涼粉實拍",
       "caption": "麗江雞豆涼粉實拍",
       "author": "Kent Wang",
@@ -3619,7 +3835,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "flower-cake": {
-      "src": "images/flower-cake.jpg",
+      "src": "images/flower-cake.webp",
       "alt": "玫瑰鮮花餅實拍",
       "caption": "玫瑰鮮花餅實拍",
       "author": "Hyuki",
@@ -3631,7 +3847,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "rushan": {
-      "src": "images/rushan.jpg",
+      "src": "images/rushan.webp",
       "alt": "大理街頭烤乳扇製作場景",
       "caption": "大理街頭烤乳扇製作場景",
       "author": "tak.wing",
@@ -3643,7 +3859,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "ersi": {
-      "src": "images/ersi.jpg",
+      "src": "images/ersi.webp",
       "alt": "巍山耙肉餌絲實拍",
       "caption": "巍山耙肉餌絲實拍",
       "author": "瑞丽江的河水",
@@ -3655,7 +3871,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "erkuai": {
-      "src": "images/erkuai.jpg",
+      "src": "images/erkuai.webp",
       "alt": "昆明燒餌塊製作場景",
       "caption": "昆明燒餌塊製作場景",
       "author": "瑞丽江的河水",
@@ -3667,7 +3883,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "steam-pot-chicken": {
-      "src": "images/steam-pot-chicken.jpg",
+      "src": "images/steam-pot-chicken.webp",
       "alt": "昆明汽鍋雞實拍",
       "caption": "昆明汽鍋雞實拍",
       "author": "tak.wing",
@@ -3679,7 +3895,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "barley-cake": {
-      "src": "images/barley-cake.jpg",
+      "src": "images/barley-cake.webp",
       "alt": "青稞餅實物參考，攝於九寨溝；非雲南店家",
       "caption": "青稞餅實物參考，攝於九寨溝；非雲南店家",
       "author": "EditQ",
@@ -3691,7 +3907,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "bai-cuisine": {
-      "src": "images/bai-cuisine.jpg",
+      "src": "images/bai-cuisine.webp",
       "alt": "白族料理示例：大理餐廳的水性楊花",
       "caption": "白族料理示例：大理餐廳的水性楊花",
       "author": "Mx. Granger",
@@ -3703,7 +3919,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "tibetan-cuisine": {
-      "src": "images/tibetan-cuisine.jpg",
+      "src": "images/tibetan-cuisine.webp",
       "alt": "藏式料理示例：酥油煎奶渣",
       "caption": "藏式料理示例：酥油煎奶渣",
       "author": "Alpha",
@@ -3715,7 +3931,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "wild-mushrooms": {
-      "src": "images/wild-mushrooms.jpg",
+      "src": "images/wild-mushrooms.webp",
       "alt": "野生菌火鍋實拍；非指定餐廳",
       "caption": "野生菌火鍋實拍；非指定餐廳",
       "author": "Hyuki",
@@ -3727,7 +3943,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "xizhou-yan-courtyard": {
-      "src": "images/xizhou-yan-courtyard.jpg",
+      "src": "images/xizhou-yan-courtyard.webp",
       "alt": "喜洲嚴子珍故居第三進 · 現代實景",
       "caption": "喜洲嚴子珍故居第三進 · 現代實景",
       "author": "猫猫的日记本",
@@ -3739,7 +3955,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "shaxi-sideng": {
-      "src": "images/shaxi-sideng.jpg",
+      "src": "images/shaxi-sideng.webp",
       "alt": "沙溪寺登街魁閣 · 現代實景",
       "caption": "沙溪寺登街魁閣 · 現代實景",
       "author": "Xin",
@@ -3751,7 +3967,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "lijiang-old-town": {
-      "src": "images/lijiang-old-town.jpg",
+      "src": "images/lijiang-old-town.webp",
       "alt": "麗江古城屋頂 · 現代實景",
       "caption": "麗江古城屋頂 · 現代實景",
       "author": "CEphoto, Uwe Aranas",
@@ -3763,7 +3979,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "songzanlin": {
-      "src": "images/songzanlin.jpg",
+      "src": "images/songzanlin.webp",
       "alt": "香格里拉松贊林寺 · 現代實景",
       "caption": "香格里拉松贊林寺 · 現代實景",
       "author": "Mulligan Stu",
@@ -3785,7 +4001,7 @@
       "changes": "Resized to maximum 1200 pixels and JPEG compressed; no content edits.",
       "width": 1200,
       "height": 900,
-      "src": "images/puer-tea.jpg",
+      "src": "images/puer-tea.webp",
       "source": "https://commons.wikimedia.org/wiki/File:Pu-erh_tea.JPG",
       "alt": "普洱茶實物例圖；非指定店家商品。"
     },
@@ -3800,7 +4016,7 @@
       "changes": "Resized to maximum 1200 pixels and JPEG compressed; no content edits.",
       "width": 1199,
       "height": 1200,
-      "src": "images/yunnan-coffee.jpg",
+      "src": "images/yunnan-coffee.webp",
       "source": "https://commons.wikimedia.org/wiki/File:Django_coffee_from_Yunnan%2C_China.jpg",
       "alt": "雲南產 Django 咖啡包裝例圖；非行程店家商品。"
     },
@@ -3815,7 +4031,7 @@
       "changes": "Resized to maximum 1200 pixels and JPEG compressed; no content edits.",
       "width": 1200,
       "height": 800,
-      "src": "images/xuanwei-ham.jpg",
+      "src": "images/xuanwei-ham.webp",
       "source": "https://commons.wikimedia.org/wiki/File:%2824473506755%29Xuanwei_ham.jpg",
       "alt": "麗江古城市場的宣威火腿，2015 年實拍；肉類食品例圖。"
     },
@@ -3830,7 +4046,7 @@
       "changes": "Resized and JPEG compressed; no content edits.",
       "width": 960,
       "height": 640,
-      "src": "images/bai-tiedye.jpg",
+      "src": "images/bai-tiedye.webp",
       "source": "https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E7%90%86%E5%96%9C%E6%B4%B2%E6%89%8E%E6%9F%93.jpg",
       "alt": "大理喜洲嚴家大院的白族扎染製作過程；文創工藝參考。"
     },
@@ -3845,7 +4061,7 @@
       "changes": "Resized and JPEG compressed; no content edits.",
       "width": 960,
       "height": 1121,
-      "src": "images/silver-craft.jpg",
+      "src": "images/silver-craft.webp",
       "source": "https://commons.wikimedia.org/wiki/File:%E9%93%B6%E5%99%A8-%E5%A4%A7%E7%90%86%E7%A5%A5%E4%BA%91_1.jpg",
       "alt": "大理祥云銀器例圖；款式與材質以店家實物標示為準。"
     },
@@ -3860,16 +4076,16 @@
       "changes": "Resized and JPEG compressed; no content edits.",
       "width": 960,
       "height": 720,
-      "src": "images/yak-meat.jpg",
+      "src": "images/yak-meat.webp",
       "source": "https://commons.wikimedia.org/wiki/File:Dried_Meat_Yak_store%2C_Square_Street_2.JPG",
       "alt": "麗江古城四方街店鋪販售的犛牛肉，2008 年實拍。"
     },
     "blue-moon-photo": {
-      "src": "images/blue-moon-valley.jpg",
+      "src": "images/blue-moon-valley.webp",
       "alt": "藍月谷實景",
       "caption": "藍月谷實景；非指定拍攝機位",
-      "width": 1200,
-      "height": 800,
+      "width": 1920,
+      "height": 1200,
       "source": "https://commons.wikimedia.org/wiki/File:玉龙雪山_蓝月谷_Blue_Moon_Valley_-_panoramio.jpg",
       "author": "Ma Martin",
       "license": "CC BY-SA 3.0",
@@ -4021,7 +4237,7 @@
       "changes": "使用 Wikimedia Commons 原圖；網站版面以 CSS 裁切顯示。"
     },
     "dali-village-reference": {
-      "src": "images/xizhou-yan-courtyard.jpg",
+      "src": "images/xizhou-yan-courtyard.webp",
       "alt": "大理白族院落情境參考圖；非鳳陽邑或有風小院指定建築",
       "caption": "大理白族院落情境參考圖；非鳳陽邑或有風小院指定建築",
       "author": "猫猫的日记本",
@@ -4033,7 +4249,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。 此卡作為情境參考圖，非指定地點／店家的實景。"
     },
     "shaxi-reference": {
-      "src": "images/shaxi-sideng.jpg",
+      "src": "images/shaxi-sideng.webp",
       "alt": "沙溪古鎮情境參考圖；非玉津橋指定機位",
       "caption": "沙溪古鎮情境參考圖；非玉津橋指定機位",
       "author": "Xin",
@@ -4055,12 +4271,12 @@
       "changes": "Resized to maximum 1200 pixels and JPEG compressed; no content edits. 此卡作為情境參考圖，非指定地點／店家的實景。",
       "width": 1200,
       "height": 800,
-      "src": "images/xuanwei-ham.jpg",
+      "src": "images/xuanwei-ham.webp",
       "source": "https://commons.wikimedia.org/wiki/File:%2824473506755%29Xuanwei_ham.jpg",
       "alt": "麗江古城市場飲食情境參考圖；非忠義市場指定攤位或納西烤肉實物"
     },
     "tibetan-home-reference": {
-      "src": "images/tibetan-cuisine.jpg",
+      "src": "images/tibetan-cuisine.webp",
       "alt": "藏式生活與飲食情境參考圖；非本行程家訪地點實景",
       "caption": "藏式生活與飲食情境參考圖；非本行程家訪地點實景",
       "author": "Alpha",
@@ -4096,7 +4312,7 @@
       "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。"
     },
     "lijiang-city-reference": {
-      "src": "images/lijiang-old-town.jpg",
+      "src": "images/lijiang-old-town.webp",
       "alt": "麗江古城情境參考圖；非指定飯店實景",
       "caption": "麗江古城情境參考圖；非指定飯店實景",
       "author": "CEphoto, Uwe Aranas",
@@ -4132,7 +4348,7 @@
       "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。"
     },
     "dali-history-reference": {
-      "src": "images/xizhou-yan-courtyard.jpg",
+      "src": "images/xizhou-yan-courtyard.webp",
       "alt": "喜洲白族院落情境參考圖；非故事所述戰時校舍實景",
       "caption": "喜洲白族院落情境參考圖；非故事所述戰時校舍實景",
       "author": "猫猫的日记本",
@@ -4156,7 +4372,7 @@
       "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。"
     },
     "three-tea-reference": {
-      "src": "images/bai-cuisine.jpg",
+      "src": "images/bai-cuisine.webp",
       "alt": "白族飲食文化情境參考圖；非三道茶完整茶席實物",
       "caption": "白族飲食文化情境參考圖；非三道茶完整茶席實物",
       "author": "Mx. Granger",
@@ -4168,7 +4384,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。 此卡作為情境參考圖，非指定地點／店家的實景。"
     },
     "dongba-reference": {
-      "src": "images/lijiang-old-town.jpg",
+      "src": "images/lijiang-old-town.webp",
       "alt": "麗江納西文化情境參考圖；非東巴文字文物特寫",
       "caption": "麗江納西文化情境參考圖；非東巴文字文物特寫",
       "author": "CEphoto, Uwe Aranas",
@@ -4180,7 +4396,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。 此卡作為情境參考圖，非指定地點／店家的實景。"
     },
     "guozhuang-reference": {
-      "src": "images/tibetan-cuisine.jpg",
+      "src": "images/tibetan-cuisine.webp",
       "alt": "藏地生活文化情境參考圖；非鍋莊舞演出現場",
       "caption": "藏地生活文化情境參考圖；非鍋莊舞演出現場",
       "author": "Alpha",
@@ -4456,7 +4672,7 @@
       "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
     },
     "hotel-kmg-airport-photo": {
-      "src": "images/hotels/kunming-airport-liyi.png",
+      "src": "images/hotels/kunming-airport-liyi.webp",
       "alt": "昆明機場麗怡酒店（同電話 17787129009 之機場酒店）外觀參考",
       "caption": "昆明機場麗怡酒店外觀；酒店身分以手冊電話 17787129009 交叉核對。",
       "author": "Booking.com 酒店頁面圖片",
@@ -4468,7 +4684,7 @@
       "licenseUrl": "https://www.booking.com/hotel/cn/li-yi-jiu-dian-kun-ming-chang-shui-guo-ji-ji-chang-dian.en-gb.html"
     },
     "hotel-dali-photo": {
-      "src": "images/hotels/dali-hilton-garden.png",
+      "src": "images/hotels/dali-hilton-garden.webp",
       "alt": "大理古城希爾頓花園酒店外觀",
       "caption": "大理古城希爾頓花園酒店外觀。",
       "author": "攜程酒店頁面圖片",
@@ -4480,7 +4696,7 @@
       "licenseUrl": "https://hotels.ctrip.com/hotels/123840697.html"
     },
     "hotel-aderman-photo": {
-      "src": "images/hotels/lijiang-aderman-garden-villa.png",
+      "src": "images/hotels/lijiang-aderman-garden-villa.webp",
       "alt": "麗江阿德縵花園別墅酒店（束河古鎮店）園林別墅外觀",
       "caption": "麗江阿德縵花園別墅酒店（束河古鎮店）園林別墅外觀。",
       "author": "攜程酒店頁面圖片",
@@ -4492,7 +4708,7 @@
       "licenseUrl": "https://hotels.ctrip.com/hotels/130927799.html"
     },
     "hotel-shangri-photo": {
-      "src": "images/hotels/shangri-la-lano.png",
+      "src": "images/hotels/shangri-la-lano.webp",
       "alt": "香格里拉蘭歐國際酒店（松贊林景區店）外觀",
       "caption": "香格里拉蘭歐國際酒店（松贊林景區店）外觀。",
       "author": "Trip.com 酒店頁面圖片",
@@ -4504,7 +4720,7 @@
       "licenseUrl": "https://tw.trip.com/hotels/shangri-la-hotel-detail-120456279/shangri-la-lanou-international-hotel/photo.html"
     },
     "hotel-mushroom-photo": {
-      "src": "images/hotels/lijiang-mushroom-south-building.png",
+      "src": "images/hotels/lijiang-mushroom-south-building.webp",
       "alt": "麗江古城滇菌王 JP 希麗酒店外觀，電話與手冊麗江滇菌王南樓一致",
       "caption": "麗江古城滇菌王 JP 希麗酒店外觀；電話 0888-5120666 與手冊「麗江滇菌王南樓」一致。",
       "author": "攜程酒店頁面圖片",
@@ -4516,7 +4732,7 @@
       "licenseUrl": "https://hotels.ctrip.com/hotels/450890.html"
     },
     "hotel-holiday-photo": {
-      "src": "images/hotels/kunming-holiday-inn-centre.png",
+      "src": "images/hotels/kunming-holiday-inn-centre.webp",
       "alt": "昆明中心假日酒店入口外觀",
       "caption": "昆明中心假日酒店入口外觀。",
       "author": "酒店介紹頁面圖片",
@@ -4528,8 +4744,7 @@
       "licenseUrl": "https://www.kinnso.ai/en/explore/stays/holiday_inn_kunming_city_centre"
     },
     "airline-cathay-pacific": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Cathay_Pacific_Airbus_A350_%2835328009086%29.jpg/1280px-Cathay_Pacific_Airbus_A350_%2835328009086%29.jpg",
-      "fallbackSrc": "images/airlines/cathay-pacific-a350-wide.jpg",
+      "src": "images/airlines/cathay-pacific-a350-wide.webp",
       "alt": "國泰航空 Airbus A350 寬幅代表照片；非本次航班實際機型確認",
       "caption": "國泰航空 Airbus A350 寬幅代表照片；僅代表航空公司，非 CX461／CX421／CX402／CX408 實際執飛機型確認。",
       "author": "Transport Pixels",
@@ -4537,12 +4752,11 @@
       "license": "CC BY 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
       "width": 1280,
-      "height": 781,
-      "changes": "優先使用 Wikimedia Commons 寬幅 1280px 圖；離線或遠端載入失敗時改用專案內寬版 fallback。"
+      "height": 720,
+      "changes": "網站使用本地 WebP 圖片；原始來源、作者與授權資訊維持不變。"
     },
     "airline-china-eastern": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/China_Eastern_Airlines_Boeing_787-9_Dreamliner_B-206k.jpg/1280px-China_Eastern_Airlines_Boeing_787-9_Dreamliner_B-206k.jpg",
-      "fallbackSrc": "images/airlines/china-eastern-787-wide.jpg",
+      "src": "images/airlines/china-eastern-787-wide.webp",
       "alt": "中國東方航空 Boeing 787-9 寬幅代表照片；非本次航班實際機型確認",
       "caption": "中國東方航空 Boeing 787-9 寬幅代表照片；僅代表航空公司，非 MU734／MU733／MU9658／MU9657 實際執飛機型確認。",
       "author": "Md Shaifuzzaman Ayon",
@@ -4551,11 +4765,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 1280,
       "height": 720,
-      "changes": "優先使用 Wikimedia Commons 16:9 寬幅 1280px 圖；離線或遠端載入失敗時改用專案內寬版 fallback。"
+      "changes": "網站使用本地 WebP 圖片；原始來源、作者與授權資訊維持不變。"
     },
     "flight-outbound-illustration": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Cathay_Pacific_Airbus_A350_%2835328009086%29.jpg/1280px-Cathay_Pacific_Airbus_A350_%2835328009086%29.jpg",
-      "fallbackSrc": "images/airlines/cathay-pacific-a350-wide.jpg",
+      "src": "images/airlines/cathay-pacific-a350-wide.webp",
       "alt": "去程航班示意圖，使用國泰航空寬幅代表飛機照片",
       "caption": "去程航班示意圖：使用國泰航空寬幅代表飛機照片；不表示實際執飛機型。",
       "author": "Transport Pixels",
@@ -4563,12 +4776,11 @@
       "license": "CC BY 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
       "width": 1280,
-      "height": 781,
-      "changes": "優先使用 Wikimedia Commons 寬幅 1280px 圖；離線或遠端載入失敗時改用專案內寬版 fallback。"
+      "height": 720,
+      "changes": "網站使用本地 WebP 圖片；原始來源、作者與授權資訊維持不變。"
     },
     "flight-inbound-illustration": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/China_Eastern_Airlines_Boeing_787-9_Dreamliner_B-206k.jpg/1280px-China_Eastern_Airlines_Boeing_787-9_Dreamliner_B-206k.jpg",
-      "fallbackSrc": "images/airlines/china-eastern-787-wide.jpg",
+      "src": "images/airlines/china-eastern-787-wide.webp",
       "alt": "回程航班示意圖，使用中國東方航空寬幅代表飛機照片",
       "caption": "回程航班示意圖：使用中國東方航空寬幅代表飛機照片；不表示實際執飛機型。",
       "author": "Md Shaifuzzaman Ayon",
@@ -4577,7 +4789,163 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 1280,
       "height": 720,
-      "changes": "優先使用 Wikimedia Commons 16:9 寬幅 1280px 圖；離線或遠端載入失敗時改用專案內寬版 fallback。"
+      "changes": "網站使用本地 WebP 圖片；原始來源、作者與授權資訊維持不變。"
+    },
+    "dali-sour-fish": {
+      "src": "images/dali-sour-fish.webp",
+      "alt": "白族酸辣魚實拍示意",
+      "caption": "白族酸辣魚實拍示意",
+      "author": "Public web image result",
+      "source": "Public web image search result captured via web.run on 2026-09-09",
+      "license": "來源未標示",
+      "licenseUrl": "",
+      "width": 512,
+      "height": 512,
+      "changes": "將公開網頁搜尋結果保存為本地 WebP，供行程視覺參考。"
+    },
+    "lijiang-rib-hotpot": {
+      "src": "images/lijiang-rib-hotpot.webp",
+      "alt": "麗江臘排骨火鍋實拍示意",
+      "caption": "麗江臘排骨火鍋實拍示意",
+      "author": "Public web image result",
+      "source": "Public web image search result captured via web.run on 2026-09-09",
+      "license": "來源未標示",
+      "licenseUrl": "",
+      "width": 512,
+      "height": 512,
+      "changes": "將公開網頁搜尋結果保存為本地 WebP，供行程視覺參考。"
+    },
+    "yak-yogurt": {
+      "src": "images/yak-yogurt.webp",
+      "alt": "牦牛酸奶實拍示意",
+      "caption": "牦牛酸奶實拍示意",
+      "author": "Public web image result",
+      "source": "Public web image search result captured via web.run on 2026-09-09",
+      "license": "來源未標示",
+      "licenseUrl": "",
+      "width": 512,
+      "height": 512,
+      "changes": "將公開網頁搜尋結果保存為本地 WebP，供行程視覺參考。"
+    },
+    "smallpot-noodle": {
+      "src": "images/smallpot-noodle.webp",
+      "alt": "雲南米線配料與湯頭示意，供小鍋米線版面參考",
+      "caption": "雲南米線配料示意，供小鍋米線版面參考",
+      "author": "Public web image result",
+      "source": "Public web image search result captured via web.run on 2026-09-09",
+      "license": "來源未標示",
+      "licenseUrl": "",
+      "width": 512,
+      "height": 512,
+      "changes": "將公開網頁搜尋結果保存為本地 WebP；因未取得穩定小鍋米線圖，先作相近米線視覺示意。"
+    },
+    "xizhou-carriage": {
+      "src": "images/xizhou-carriage.webp",
+      "alt": "喜洲稻田小馬車與田野場景示意",
+      "caption": "喜洲稻田小馬車與田野場景示意",
+      "author": "Public web image result",
+      "source": "Public web image search result captured via web.run on 2026-09-09",
+      "license": "來源未標示",
+      "licenseUrl": "",
+      "width": 512,
+      "height": 512,
+      "changes": "將公開網頁搜尋結果保存為本地 WebP，供行程視覺參考。"
+    },
+    "idealbang": {
+      "src": "images/idealbang.webp",
+      "alt": "理想邦／小聖托里尼景觀，節錄自使用者提供手冊",
+      "caption": "理想邦／小聖托里尼景觀",
+      "author": "旅行手冊內頁圖片",
+      "source": "手冊定案版.pdf",
+      "license": "使用者提供內容",
+      "licenseUrl": "",
+      "width": 295,
+      "height": 203,
+      "changes": "自使用者提供 PDF 擷取並轉為本地 WebP。"
+    },
+    "youfeng-yard": {
+      "src": "images/youfeng-yard.webp",
+      "alt": "有風小院／古鎮院落風貌，節錄自使用者提供手冊",
+      "caption": "古鎮院落風貌，可作有風小院外觀參考",
+      "author": "旅行手冊內頁圖片",
+      "source": "手冊定案版.pdf",
+      "license": "使用者提供內容",
+      "licenseUrl": "",
+      "width": 454,
+      "height": 368,
+      "changes": "自使用者提供 PDF 擷取並轉為本地 WebP。"
+    },
+    "dali-courtyard": {
+      "src": "images/dali-courtyard.webp",
+      "alt": "大理古鎮院落／老街風貌，節錄自使用者提供手冊",
+      "caption": "大理古鎮院落／老街風貌",
+      "author": "旅行手冊內頁圖片",
+      "source": "手冊定案版.pdf",
+      "license": "使用者提供內容",
+      "licenseUrl": "",
+      "width": 445,
+      "height": 370,
+      "changes": "自使用者提供 PDF 擷取並轉為本地 WebP。"
+    },
+    "yunnan-impression": {
+      "src": "images/yunnan-impression.webp",
+      "alt": "舞台演出畫面，供雲南映象秀或歌舞表演視覺參考",
+      "caption": "歌舞演出畫面，供雲南映象秀視覺參考",
+      "author": "旅行手冊內頁圖片",
+      "source": "手冊定案版.pdf",
+      "license": "使用者提供內容",
+      "licenseUrl": "",
+      "width": 380,
+      "height": 253,
+      "changes": "自使用者提供 PDF 擷取並轉為本地 WebP。"
+    },
+    "kunming-skyline": {
+      "src": "images/kunming-skyline.webp",
+      "alt": "昆明城市天際線，供恒隆廣場／金格中心／南強街周邊城市意象參考",
+      "caption": "昆明城市天際線",
+      "author": "旅行手冊內頁圖片",
+      "source": "手冊定案版.pdf",
+      "license": "使用者提供內容",
+      "licenseUrl": "",
+      "width": 732,
+      "height": 544,
+      "changes": "自使用者提供 PDF 擷取並轉為本地 WebP。"
+    },
+    "old-town-night": {
+      "src": "images/old-town-night.webp",
+      "alt": "古城夜景，供人民路／古城夜遊／束河夜間氛圍參考",
+      "caption": "古城夜景氛圍",
+      "author": "旅行手冊內頁圖片",
+      "source": "手冊定案版.pdf",
+      "license": "使用者提供內容",
+      "licenseUrl": "",
+      "width": 413,
+      "height": 268,
+      "changes": "自使用者提供 PDF 擷取並轉為本地 WebP。"
+    },
+    "xizhou-ricefield": {
+      "src": "images/xizhou-ricefield.webp",
+      "alt": "雲南田野與村落景觀，供喜洲稻田／拍照點／稻田咖啡氛圍參考",
+      "caption": "稻田與村落景觀，供喜洲相關行程參考",
+      "author": "旅行手冊內頁圖片",
+      "source": "手冊定案版.pdf",
+      "license": "使用者提供內容",
+      "licenseUrl": "",
+      "width": 486,
+      "height": 336,
+      "changes": "自使用者提供 PDF 擷取並轉為本地 WebP。"
+    },
+    "city-canal-street": {
+      "src": "images/city-canal-street.webp",
+      "alt": "城市街區與水道景觀，供昆明老街／錢王街等城市漫遊視覺參考",
+      "caption": "城市街區漫遊景觀",
+      "author": "旅行手冊內頁圖片",
+      "source": "手冊定案版.pdf",
+      "license": "使用者提供內容",
+      "licenseUrl": "",
+      "width": 397,
+      "height": 263,
+      "changes": "自使用者提供 PDF 擷取並轉為本地 WebP。"
     }
   },
   "culture": [
@@ -4638,7 +5006,7 @@
       "sourceLabel": "華中師範大學 · 前身之華中大學",
       "source": "https://120th.ccnu.edu.cn/info/1005/1057.htm",
       "republic": true,
-      "photoId": null,
+      "photoId": "dali-courtyard",
       "photoMatch": "reference_only",
       "photoReferenceId": "dali-history-reference"
     },
@@ -4698,7 +5066,7 @@
       "sourceLabel": "Google Books · Lost Horizon 書目",
       "source": "https://books.google.com/books/about/Lost_Horizon.html?id=eyNBAQAAIAAJ",
       "republic": true,
-      "photoId": null,
+      "photoId": "songzanlin",
       "photoMatch": "reference_only",
       "photoReferenceId": "shangri-story-reference"
     },
@@ -4760,7 +5128,7 @@
       "sourceLabel": "中國非物質文化遺產數位博物館 · 迪慶鍋莊舞",
       "source": "https://www.ihchina.cn/project_details/12932/",
       "republic": false,
-      "photoId": null,
+      "photoId": "yunnan-impression",
       "photoMatch": "reference_only",
       "photoReferenceId": "guozhuang-reference"
     },
@@ -4801,6 +5169,82 @@
       "republic": false,
       "photoId": "crossing-bridge-noodles",
       "photoMatch": "verified"
+    },
+    {
+      "id": "erhai-black-dragon",
+      "city": "大理",
+      "kind": "鄉野奇談",
+      "period": "白族民間傳說 · 非史實",
+      "days": [
+        2,
+        3
+      ],
+      "title": "洱海月下，金鏈鎮著黑妖龍？",
+      "intro": "大理官方整理的民間故事裡，洱海深處曾有一條掀浪翻船的黑妖龍。",
+      "body": "故事說，黑妖龍攪亂洱海、危害漁船，觀音以金鏈將它鎮在海底，金盆化作水下的金月亮。後來有人因貪念拉起金鏈，驚動妖龍、掀起巨浪。這是地方口述傳說，不是對洱海水下世界的科學描述，也不應當成真實靈異事件。",
+      "look": "Day 2–3 看洱海或夜晚水面時再讀最有氣氛；把它當成「洱海月」的地方故事，而不是去尋找或打擾任何水域。",
+      "sourceLabel": "大理白族自治州人民政府 · 大理四景的傳說",
+      "source": "https://www.dali.gov.cn/dlzrmzf/c101715/pc/content/1968886801664937984/content_1968886801664937984.html",
+      "republic": false,
+      "photoId": "shuanglang-open",
+      "photoMatch": "representative",
+      "photoReferenceId": "shuanglang-open"
+    },
+    {
+      "id": "tiger-leap-legend",
+      "city": "香格里拉／麗江",
+      "kind": "鄉野奇談",
+      "period": "地名傳說 · 非史實",
+      "days": [
+        5
+      ],
+      "title": "虎跳峽為什麼叫「虎跳」？",
+      "intro": "傳說峽谷最窄處，老虎曾借江心巨石一躍跨過金沙江。",
+      "body": "雲南省民政資料記載，虎跳峽名稱和一則民間傳說相連：老虎利用江中的巨石，在兩岸之間蹦跳而過。巨石與峽谷的險峻是真實地景；「老虎一躍過江」則是解釋地名的傳說，不是可驗證的動物行為紀錄。",
+      "look": "Day 5 看虎跳石與激流時讀；現場以景區安全線為界，不靠近江面、不模仿任何冒險行為。",
+      "sourceLabel": "雲南省民政廳 · 地名風采（虎跳峽）",
+      "source": "https://ynmz.yn.gov.cn/cms/dimingfengcai/11924.html",
+      "republic": false,
+      "photoId": "tiger-gorge-open",
+      "photoMatch": "verified"
+    },
+    {
+      "id": "yulong-third-kingdom",
+      "city": "麗江",
+      "kind": "鄉野奇談",
+      "period": "納西族信仰與傳說 · 非靈異事實",
+      "days": [
+        4
+      ],
+      "title": "雲杉坪後面，傳說通往「玉龍第三國」",
+      "intro": "雲杉坪在納西傳說中，被描述成通往雪山靈境「玉龍第三國」的地方。",
+      "body": "納西東巴文化中的「玉龍第三國」是一個與玉龍雪山、自然神聖空間和悲劇愛情傳統相連的想像世界。學術資料也指出，它曾和歷史上的殉情信仰交織。今天閱讀這段傳說，適合把它理解為特定歷史社會背景下的文化與文學，不浪漫化現實中的自我傷害，也不把傳說當成可以實證的靈界入口。",
+      "look": "Day 4 搭雲杉坪纜車後，在草甸與雪山同框時閱讀即可；尊重地方文化，不以獵奇方式追問或模仿悲劇傳說。",
+      "sourceLabel": "中央民族大學 · 略論玉龍雪山的神聖空間信仰",
+      "source": "https://cnwec.muc.edu.cn/info/1008/4798.htm",
+      "republic": false,
+      "photoId": "spruce-web",
+      "photoMatch": "verified"
+    },
+    {
+      "id": "black-dragon-taboo",
+      "city": "麗江",
+      "kind": "鄉野奇談",
+      "period": "納西民間禁忌 · 歷史文化記錄",
+      "days": [
+        3,
+        6,
+        7
+      ],
+      "title": "黑龍潭的魚，從前為什麼不能吃？",
+      "intro": "納西民間曾把黑龍潭視為龍王居所，潭中魚也被看成龍王的「水族」。",
+      "body": "雲南省社會科學院文章記錄，麗江古城和壩區過去有不吃黑龍潭無鱗魚的禁忌，因為民間相信黑龍潭是龍王居所，魚屬於龍王水族。這是一項歷史民俗與信仰資料，不表示今天存在可證實的龍王或靈異現象。",
+      "look": "若自由時間經過黑龍潭，可把它當成理解納西水源信仰的一條線索；不餵食、不捕捉野生動物，現場規定優先。",
+      "sourceLabel": "雲南省社會科學院 · 略論納西族飲食習俗的文化意蘊",
+      "source": "https://www.sky.yn.gov.cn/xsyj/zgsd/0981427782649988185",
+      "republic": false,
+      "photoId": "black-dragon-pool-web",
+      "photoMatch": "verified"
     }
   ],
   "mapAreas": {
@@ -4833,7 +5277,7 @@
       "lng": 100.19205,
       "coordinateSource": "https://mapcarta.com/N5407250690",
       "coordinateNote": "鳳陽邑村落參考點，非小院入口",
-      "photoId": null,
+      "photoId": "dali-courtyard",
       "photoMatch": "reference_only",
       "photoReferenceId": "dali-village-reference"
     },
@@ -4848,7 +5292,7 @@
       "description": "有風行程順遊拍照點。拍白牆、屋簷與田野層次；本卡不把所有喜洲建築都當作劇中取景。",
       "shot": "屋簷作上框、人物留在下方三分之一；田邊只站公共道路，勿踩作物。",
       "bestTime": "依團體到訪時間；稻田色澤依當年生長與收割，不保證金黃。",
-      "photoId": null,
+      "photoId": "xizhou-ricefield",
       "source": "https://www.yndaily.com/html/2025/yunxinwen_0312/133260.html",
       "city": "大理",
       "type": "photo",
