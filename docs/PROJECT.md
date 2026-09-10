@@ -12,11 +12,15 @@
 ├── README.md
 ├── START.bat
 ├── sw.js
+├── manifest.webmanifest
+├── offline-manifest.json          # generated
+├── icons/
 ├── css/style.css
 ├── js/
 │   ├── network.js
 │   ├── core.js
 │   ├── weather.js
+│   ├── offline.js
 │   ├── reader.js
 │   ├── journey.js
 │   ├── map.js
@@ -32,6 +36,7 @@
 │   ├── release.py
 │   ├── generate_source_index.py
 │   ├── generate_photo_sources.py
+│   ├── generate_offline_manifest.py
 │   ├── validate_project.py
 │   ├── media_audit.py
 │   └── optimize_media.py
@@ -63,10 +68,11 @@
 | --- | --- |
 | `network.js` | 國際版／大陸版 profile（預設國際版）、Leaflet runtime loader、OSM／高德底圖選擇、WGS84 ↔ GCJ-02 顯示座標轉換；同時提供 QWeather Grid 所需的 WGS84→GCJ-02 converter |
 | `core.js` | Photo System、Travel Utils、Favorites Store、Navigation Service、Date Rail、Horizontal Scroller；Photo System 對兩種 network profile 使用同一張正確主體圖，負責本地／遠端圖、錯誤 placeholder 與示意／背景 badge，不做跨地點 fallback，不持有 Domain 畫面 state |
-| `weather.js` | 高德天氣 → QWeather Grid → Open-Meteo provider chain、API credential local settings、欄位優先合併、旅程日 weather point、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots |
+| `weather.js` | 高德天氣 → QWeather Grid → Open-Meteo provider chain、API credential local settings、欄位優先合併、旅程日 weather point、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots、各 weather point 的高德／QWeather／Open-Meteo 公開地點預報連結 |
+| `offline.js` | PWA 離線準備 UI、Service Worker message bridge、Cache 完整性檢查、具名缺失清單、只重試失敗照片、online/offline 狀態、主畫面安裝提示、收藏／偏好匯出匯入；不保存天氣 API Key |
 | `reader.js` | Content Reader、stack、return state、Reader swipe |
 | `journey.js` | Day 01–08、Day 展開、時刻表、PNG export、航班／住宿 Journey UI |
-| `map.js` | Leaflet、Map filters、Map Rail、Map Detail、定位、自定義地點、長按 |
+| `map.js` | Leaflet、Map filters、Map Rail、Map Detail、定位、自定義地點、長按；Leaflet／道路 tile 不可用時提供無底圖離線地標簡圖與純座標 Nearby 計算 |
 | `library.js` | Content/Story Card、Night/Food/Shopping/Favorites/Photo/Culture state/render |
 | `app.js` | JSON bootstrap、`VIEW_REGISTRY`、App Shell、shared day coordinator、單一 action router |
 
@@ -76,6 +82,7 @@
 - Network：network profile。
 - Core：Favorites IDs、navigation provider。
 - Weather：provider credentials（localStorage）、forecast cache、refresh state。
+- Offline：離線準備狀態、安裝提示與 user-data backup bridge；實體資源由 Service Worker Cache Storage 擁有。
 - Journey：展開 Day、返回位置、Timetable preview。
 - Map：map instance、markers、filters、selected place、custom map、geolocation。
 - Library：night/food/culture/photo filters。
@@ -86,7 +93,7 @@
 
 `app.js > VIEW_REGISTRY` 是主 View 的唯一登記處，合法 View、導覽順序與主頁 swipe 順序都由它推導。非地圖 View 在啟動時建立穩定 DOM；圖片仍由 Photo System 使用原生 lazy loading 控制下載。Map 是唯一延後初始化的 View，必須先切成可見狀態，再於下一個 layout frame 建立或更新 Leaflet。
 
-中央 `document click` 只保留一個，順序為：Weather → Journey → Reader → Map → Library → App shared actions。局部 gesture controller 只處理自己的 boundary，不再建立第二套 document-level router。
+中央 `document click` 只保留一個，順序為：Offline → Weather → Journey → Reader → Map → Library → App shared actions。局部 gesture controller 只處理自己的 boundary，不再建立第二套 document-level router。
 
 ## 5. Card / Rail / Reader
 
@@ -118,7 +125,7 @@ Reader 關閉後要回原本 window scroll、橫向 Rail scroll 與 focus。Cont
 - 已本地化 WebP 優先；遠端精準圖在兩種模式都嘗試同一個來源，載入失敗時才顯示無圖。絕不使用同城市／附近景點／同類照片 fallback。
 - 具名主體使用 `exact` / `verified`；交通／無固定場地活動可用 `illustrative`、料理可用 `representative`、文化故事可用 `context`，所有非主體實拍都必須在 UI 標示「示意圖」或「背景圖」。`reference_only` 不能作為 UI 主圖。
 - 使用者提供的定案手冊若有明確對應景點照片，可裁切成本地 WebP；頁碼與對應記錄放在 `docs/sources/HANDBOOK_IMAGE_CROPS.md`。
-- Service Worker 的 Image Cache 使用 Cache First，減少已看過圖片的重複流量。
+- Service Worker 的 Image Cache 使用 Cache First，減少已看過圖片的重複流量；「離線準備」會主動抓齊 `offline-manifest.json` 列出的全部遠端主圖片，不必逐張滑過。
 - OpenStreetMap / 高德 tiles 都不進長效 Image Cache。
 - 圖片內容真正換圖時，優先改檔名／URL，避免舊 cache 命中。
 
@@ -145,6 +152,7 @@ Reader 關閉後要回原本 window scroll、橫向 Rail scroll 與 focus。Cont
 - CSS / JS query：`?v=v1`
 - App Cache：`yunnan-app-v1`
 - Image Cache：`yunnan-images-v1`
+- Offline Meta Cache：`yunnan-offline-v1`
 - Favorites storage：`yunnan-2026-favorites-v1`
 - Map provider storage：`yunnan-2026-map-provider-v1`
 - Network profile storage：`yunnan-2026-network-profile-v1`
@@ -153,23 +161,27 @@ Reader 關閉後要回原本 window scroll、橫向 Rail scroll 與 focus。Cont
 
 Cache 契約：
 
-- App Cache 保存 HTML / CSS / JS / JSON。新的 Service Worker install 會把現行 `APP_SHELL` 寫入同一個 `yunnan-app-v1`；不使用 revision cache name。
-- Image Cache 固定使用 `yunnan-images-v1` 並採 Cache First。圖片內容真正更換時改檔名／URL，讓資源 identity 自然更新；不使用 image cache 版本升級。
+- App Cache 保存 HTML / CSS / JS / JSON / PWA manifest。新的 Service Worker install 會把現行 `CORE_SHELL` 寫入同一個 `yunnan-app-v1`；不使用 revision cache name。
+- Image Cache 固定使用 `yunnan-images-v1` 並採 Cache First。使用者按「下載離線資料」時，Service Worker 依 `offline-manifest.json` 將全部遠端精準主圖片預先寫入此 Cache；圖片內容真正更換時改檔名／URL，讓資源 identity 自然更新。
+- Offline Meta Cache 固定使用 `yunnan-offline-v1`，只記錄最近一次完整性檢查結果；使用者看得到的準備時間另存在 `yunnan-offline-prep-state-v1`。
 - Weather cache 使用 `yunnan-weather-cache-v1`；provider 設定使用 `yunnan-weather-provider-config-v1`。同設定、同 weather point 1 小時內不重抓。Provider 欄位依固定優先序合併：高德既有欄位最高、QWeather Grid 補缺、Open-Meteo 再補缺。離線時保留最後一次成功資料，不寫回 `trip-data.json`。
 - Network profile 切換後由 App reload 一次，讓 Photo System、Leaflet source 與底圖座標系在同一 bootstrap 契約下重建；Weather provider chain 不再依賴 profile，兩個模式都使用高德 → QWeather Grid → Open-Meteo。
 - activate 只保留目前兩個 V1 cache；其他同專案 cache 直接清理，不搬移、不轉換資料。
 - `v1` 只代表目前正式契約；release tool 不建立遞增版本鏈。
+- 地圖瓦片永不納入完整離線包；無網路時 `map.js` 依正式 WGS84 座標產生離線簡圖。這避免把 OSM／高德大量 tile 塞進 Cache 或 ZIP。
 
 Generated files：
 
 - `data/source-index.json` ← `trip-data.json + social-sources.json`
 - `docs/sources/PHOTO_SOURCES.md` ← `trip-data.json > photos`
+- `offline-manifest.json` ← 目前 runtime 本地資源 + `trip-data.json > photos` 的遠端主圖片診斷紀錄（id / label / url / source）
 
 常用命令：
 
 ```bash
 python tools/generate_source_index.py
 python tools/generate_photo_sources.py
+python tools/generate_offline_manifest.py
 python tools/media_audit.py
 python tools/optimize_media.py
 python tools/validate_project.py
@@ -177,7 +189,7 @@ python tools/release.py
 python tools/release.py --zip
 ```
 
-`release.py` 只做四件事：套用固定 `v1` 識別、重建 generated files、執行 validator、依需要產 ZIP。它不接受版本號，也不維護版本演進。
+`release.py` 套用固定 `v1` 識別、重建 Source / Photo / Offline 三種 generated files、執行 validator、依需要產 ZIP。它不接受版本號，也不維護版本演進。
 
 ## 9. 最低驗證
 
@@ -212,4 +224,5 @@ python tools/release.py --zip
 | 地址／座標查不到 | 用城市中心或猜測座標填滿欄位 | 保持待定位；只有核實後才寫正式座標 |
 | 新功能不知道放哪 | 把 renderer/state 塞進 `app.js`、建立第二套全域 handler | 先決定 Domain Owner；App 只做 bootstrap、協調與 router |
 | 天氣功能造成手機重複流量 | 每次切 Day／Map 都重新呼叫 API、把預報寫入正式旅程資料 | `weather.js` 單一 owner；固定旅程 weather point、每點 1 小時 cache、離線沿用最後成功資料；Journey／Map 只放 presentation slot |
+| 以為「開過一次」就一定離線完整 | 只靠 lazy image / stale cache、沒有完成檢查 | `offline.js` 明確觸發 `PREPARE_OFFLINE`；Service Worker 逐項預抓並以 `CHECK_OFFLINE` 驗證本地資源與遠端主圖片，全部命中才顯示完成；缺失時回傳具名項目並可只重試失敗照片 |
 | UI 看起來相似就全部共用 | 萬用 CardFactory 加大量 variant/options | 維持四套 Card；共用 service / 語意，不強迫共用所有 markup |

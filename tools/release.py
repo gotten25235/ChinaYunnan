@@ -31,10 +31,10 @@ def read_identification() -> str:
 
 def sync_identification(version: str) -> None:
     html = INDEX.read_text(encoding="utf-8")
-    pattern = re.compile(r'((?:css/style\.css|js/(?:network|core|weather|reader|journey|map|library|app)\.js)\?v=)[^"\']+')
+    pattern = re.compile(r'((?:css/style\.css|js/(?:network|core|weather|offline|reader|journey|map|library|app)\.js)\?v=)[^"\']+')
     html, count = pattern.subn(lambda m: m.group(1) + version, html)
-    if count != 9:
-        raise SystemExit(f"Expected 9 identified local CSS/JS references in index.html, found {count}")
+    if count != 10:
+        raise SystemExit(f"Expected 10 identified local CSS/JS references in index.html, found {count}")
     INDEX.write_text(html, encoding="utf-8", newline="\n")
 
     sw = SW.read_text(encoding="utf-8")
@@ -74,6 +74,7 @@ def main() -> int:
     sync_identification(version)
     run_tool("generate_source_index.py")
     run_tool("generate_photo_sources.py")
+    run_tool("generate_offline_manifest.py")
     run_tool("validate_project.py")
 
     if args.zip is not None:

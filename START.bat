@@ -58,6 +58,7 @@ function Get-MimeType([string]$Path) {
         '.css'  { 'text/css; charset=utf-8'; break }
         '.js'   { 'application/javascript; charset=utf-8'; break }
         '.json' { 'application/json; charset=utf-8'; break }
+        '.webmanifest' { 'application/manifest+json; charset=utf-8'; break }
         '.txt'  { 'text/plain; charset=utf-8'; break }
         '.md'   { 'text/markdown; charset=utf-8'; break }
         '.svg'  { 'image/svg+xml'; break }
@@ -107,6 +108,7 @@ Write-Host "Website folder: $root"
 Write-Host "Local address:  $url"
 Write-Host 'Opening browser...'
 Write-Host ''
+Write-Host 'PWA / Service Worker works on this localhost address.'
 Write-Host 'Keep this window open. Press Ctrl+C to stop.'
 Write-Host ''
 

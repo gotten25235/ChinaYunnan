@@ -1,0 +1,483 @@
+{
+  "schemaVersion": "v1",
+  "localAssets": [
+    "./",
+    "./index.html",
+    "./manifest.webmanifest",
+    "./offline-manifest.json",
+    "./css/style.css?v=v1",
+    "./js/network.js?v=v1",
+    "./js/core.js?v=v1",
+    "./js/weather.js?v=v1",
+    "./js/offline.js?v=v1",
+    "./js/reader.js?v=v1",
+    "./js/journey.js?v=v1",
+    "./js/map.js?v=v1",
+    "./js/library.js?v=v1",
+    "./js/app.js?v=v1",
+    "./data/social-sources.json",
+    "./data/source-index.json",
+    "./data/trip-data.json",
+    "./images/airlines/cathay-pacific-a350-wide.webp",
+    "./images/airlines/china-eastern-787-wide.webp",
+    "./images/bai-cuisine.webp",
+    "./images/bai-tiedye.webp",
+    "./images/barley-cake.webp",
+    "./images/blue-moon-valley.webp",
+    "./images/butter-tea.webp",
+    "./images/chickpea-jelly.webp",
+    "./images/crossing-bridge-noodles.webp",
+    "./images/dali-sour-fish.webp",
+    "./images/erkuai.webp",
+    "./images/ersi.webp",
+    "./images/flower-cake.webp",
+    "./images/handbook/dali-old-town-handbook.webp",
+    "./images/handbook/dukezong-handbook.webp",
+    "./images/handbook/first-bend-handbook.webp",
+    "./images/handbook/ganhaizi-handbook.webp",
+    "./images/handbook/guishan-handbook.webp",
+    "./images/handbook/idealbang-handbook.webp",
+    "./images/handbook/impression-lijiang-handbook.webp",
+    "./images/handbook/pudacuo-handbook.webp",
+    "./images/handbook/shuhe-handbook.webp",
+    "./images/handbook/spruce-handbook.webp",
+    "./images/handbook/tiger-gorge-handbook.webp",
+    "./images/handbook/xizhou-handbook.webp",
+    "./images/handbook/yujin-handbook.webp",
+    "./images/handbook/yulong-handbook.webp",
+    "./images/handbook/yunnan-impression-handbook.webp",
+    "./images/hotels/dali-hilton-garden.webp",
+    "./images/hotels/kunming-airport-liyi.webp",
+    "./images/hotels/kunming-holiday-inn-centre.webp",
+    "./images/hotels/lijiang-aderman-garden-villa.webp",
+    "./images/hotels/lijiang-mushroom-south-building.webp",
+    "./images/hotels/shangri-la-lano.webp",
+    "./images/lijiang-baba.webp",
+    "./images/lijiang-old-town.webp",
+    "./images/lijiang-rib-hotpot.webp",
+    "./images/puer-tea.webp",
+    "./images/rushan.webp",
+    "./images/shaxi-sideng.webp",
+    "./images/silver-craft.webp",
+    "./images/songzanlin.webp",
+    "./images/steam-pot-chicken.webp",
+    "./images/tibetan-cuisine.webp",
+    "./images/wild-mushrooms.webp",
+    "./images/xizhou-baba.webp",
+    "./images/xizhou-carriage.webp",
+    "./images/xizhou-yan-courtyard.webp",
+    "./images/xuanwei-ham.webp",
+    "./images/yak-meat.webp",
+    "./images/yak-yogurt.webp",
+    "./images/yunnan-coffee.webp",
+    "./icons/icon-192.png",
+    "./icons/icon-512.png",
+    "./icons/icon-maskable-512.png"
+  ],
+  "remotePhotos": [
+    {
+      "id": "shuanglang-open",
+      "ids": [
+        "shuanglang-open"
+      ],
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Shuanglang%2C_Dali%2C_Yunnan%2C_China_02.jpg/1280px-Shuanglang%2C_Dali%2C_Yunnan%2C_China_02.jpg",
+      "label": "大理雙廊與洱海景觀實拍",
+      "source": "https://commons.wikimedia.org/wiki/File:Shuanglang,_Dali,_Yunnan,_China_02.jpg"
+    },
+    {
+      "id": "kunming-jinma-open",
+      "ids": [
+        "kunming-jinma-open",
+        "kunming-city-reference",
+        "kunming-history-reference"
+      ],
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Kunming_Jinma_Biji_Fang_20250813_183853.jpg/1280px-Kunming_Jinma_Biji_Fang_20250813_183853.jpg",
+      "label": "昆明金馬碧雞坊實拍",
+      "source": "https://commons.wikimedia.org/wiki/File:Kunming_Jinma_Biji_Fang_20250813_183853.jpg"
+    },
+    {
+      "id": "kunming-nanping-open",
+      "ids": [
+        "kunming-nanping-open"
+      ],
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/%E6%98%86%E6%98%8E%E5%B8%82%E5%8D%97%E5%B1%8F%E8%A1%97_-_2025-05-16_01.jpg/1280px-%E6%98%86%E6%98%8E%E5%B8%82%E5%8D%97%E5%B1%8F%E8%A1%97_-_2025-05-16_01.jpg",
+      "label": "昆明南屏街街景實拍",
+      "source": "https://commons.wikimedia.org/wiki/File:%E6%98%86%E6%98%8E%E5%B8%82%E5%8D%97%E5%B1%8F%E8%A1%97_-_2025-05-16_01.jpg"
+    },
+    {
+      "id": "kunming-railway-open",
+      "ids": [
+        "kunming-railway-open"
+      ],
+      "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Kunming_Railway_Station.jpg",
+      "label": "昆明火車站實拍",
+      "source": "https://commons.wikimedia.org/wiki/File:Kunming_Railway_Station.jpg"
+    },
+    {
+      "id": "dali-city-reference",
+      "ids": [
+        "dali-city-reference"
+      ],
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/1_dali_old_town_yunnan_2012.jpg/960px-1_dali_old_town_yunnan_2012.jpg",
+      "label": "大理古城情境參考圖；非指定飯店或三月街機位",
+      "source": "https://commons.wikimedia.org/wiki/File:1_dali_old_town_yunnan_2012.jpg"
+    },
+    {
+      "id": "shangri-story-reference",
+      "ids": [
+        "shangri-story-reference"
+      ],
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/20260225_Skyline_of_Dukezong_Ancient_Town_Shangri-La_12.jpg/1280px-20260225_Skyline_of_Dukezong_Ancient_Town_Shangri-La_12.jpg",
+      "label": "香格里拉城市情境參考圖；非小說場景或歷史照片",
+      "source": "https://commons.wikimedia.org/wiki/File:20260225_Skyline_of_Dukezong_Ancient_Town_Shangri-La_12.jpg"
+    },
+    {
+      "id": "lijiang-sifang-web",
+      "ids": [
+        "lijiang-sifang-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E4%B8%BD%E6%B1%9F%E5%9B%9B%E6%96%B9%E8%A1%97.JPG?width=1280",
+      "label": "麗江古城四方街實景",
+      "source": "https://commons.wikimedia.org/wiki/File:%E4%B8%BD%E6%B1%9F%E5%9B%9B%E6%96%B9%E8%A1%97.JPG"
+    },
+    {
+      "id": "dukezong-sifang-web",
+      "ids": [
+        "dukezong-sifang-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E7%8B%AC%E5%85%8B%E5%AE%97%E5%8F%A4%E5%9F%8E%20-%20%E5%9B%9B%E6%96%B9%E8%A1%97%E5%B9%BF%E5%9C%BA%20-%202025-05-08.jpg?width=1280",
+      "label": "香格里拉獨克宗古城四方街廣場實景",
+      "source": "https://commons.wikimedia.org/wiki/File:%E7%8B%AC%E5%85%8B%E5%AE%97%E5%8F%A4%E5%9F%8E_-_%E5%9B%9B%E6%96%B9%E8%A1%97%E5%B9%BF%E5%9C%BA_-_2025-05-08.jpg"
+    },
+    {
+      "id": "zhongyi-market-web",
+      "ids": [
+        "zhongyi-market-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Zhongyi%20Market%20%2848366765802%29.jpg?width=1280",
+      "label": "麗江忠義市場實景",
+      "source": "https://commons.wikimedia.org/wiki/File:Zhongyi_Market_(48366765802).jpg"
+    },
+    {
+      "id": "dali-sanyue-web",
+      "ids": [
+        "dali-sanyue-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E5%A4%A7%E7%90%86%E4%B8%89%E6%9C%88%E8%A1%97.jpg?width=1280",
+      "label": "大理三月街實景",
+      "source": "https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E7%90%86%E4%B8%89%E6%9C%88%E8%A1%97.jpg"
+    },
+    {
+      "id": "kunming-old-street-web",
+      "ids": [
+        "kunming-old-street-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E6%98%86%E6%98%8E%E8%80%81%E8%A1%97-%E6%96%87%E5%BA%99%E7%9B%B4%E8%A1%97.jpg?width=1280",
+      "label": "昆明老街文廟直街實景",
+      "source": "https://commons.wikimedia.org/wiki/File:%E6%98%86%E6%98%8E%E8%80%81%E8%A1%97-%E6%96%87%E5%BA%99%E7%9B%B4%E8%A1%97.jpg"
+    },
+    {
+      "id": "three-pagodas-reflection-web",
+      "ids": [
+        "three-pagodas-reflection-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The%20Reflection%20of%20the%20Three%20Pagodas%20in%20the%20Lake.jpg?width=1280",
+      "label": "大理三塔倒影實景",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Reflection_of_the_Three_Pagodas_in_the_Lake.jpg"
+    },
+    {
+      "id": "baisha-old-town-web",
+      "ids": [
+        "baisha-old-town-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Baisha%20Old%20Town%20%2820572649363%29.jpg?width=1280",
+      "label": "麗江白沙古鎮實景",
+      "source": "https://commons.wikimedia.org/wiki/File:Baisha_Old_Town_(20572649363).jpg"
+    },
+    {
+      "id": "black-dragon-pool-web",
+      "ids": [
+        "black-dragon-pool-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Black%20Dragon%20Pool.jpg?width=1280",
+      "label": "麗江黑龍潭實景",
+      "source": "https://commons.wikimedia.org/wiki/File:Black_Dragon_Pool.jpg"
+    },
+    {
+      "id": "baiji-temple-web",
+      "ids": [
+        "baiji-temple-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E7%99%BE%E9%B8%A1%E5%AF%BA%20-%20%E5%85%AD%E8%A7%92%E4%BA%AD%20-%202025-05-09.jpg?width=1280",
+      "label": "香格里拉百雞寺六角亭實景",
+      "source": "https://commons.wikimedia.org/wiki/File:%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E7%99%BE%E9%B8%A1%E5%AF%BA_-_%E5%85%AD%E8%A7%92%E4%BA%AD_-_2025-05-09.jpg"
+    },
+    {
+      "id": "diqing-museum-web",
+      "ids": [
+        "diqing-museum-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E8%BF%AA%E5%BA%86%E5%B7%9E%E5%8D%9A%E7%89%A9%E9%A6%86%20-%202025-05-08%2001.jpg?width=1280",
+      "label": "迪慶藏族自治州博物館實景",
+      "source": "https://commons.wikimedia.org/wiki/File:%E8%BF%AA%E5%BA%86%E5%B7%9E%E5%8D%9A%E7%89%A9%E9%A6%86_-_2025-05-08_01.jpg"
+    },
+    {
+      "id": "napa-lake-web",
+      "ids": [
+        "napa-lake-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Napa%20Lake.jpg?width=1280",
+      "label": "香格里拉納帕海實景",
+      "source": "https://commons.wikimedia.org/wiki/File:Napa_Lake.jpg"
+    },
+    {
+      "id": "yunnan-military-academy-web",
+      "ids": [
+        "yunnan-military-academy-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/2025-02-05%20Yunnan%20Military%20Academy%20%E9%9B%B2%E5%8D%97%E9%99%B8%E8%BB%8D%E8%AC%9B%E6%AD%A6%E5%A0%82%2002.jpg?width=1280",
+      "label": "雲南陸軍講武堂實景",
+      "source": "https://commons.wikimedia.org/wiki/File:2025-02-05_Yunnan_Military_Academy_%E9%9B%B2%E5%8D%97%E9%99%B8%E8%BB%8D%E8%AC%9B%E6%AD%A6%E5%A0%82_02.jpg"
+    },
+    {
+      "id": "green-lake-park-web",
+      "ids": [
+        "green-lake-park-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/GreenLakePark.jpg?width=1280",
+      "label": "昆明翠湖公園實景",
+      "source": "https://commons.wikimedia.org/wiki/File:GreenLakePark.jpg"
+    },
+    {
+      "id": "three-course-tea-web",
+      "ids": [
+        "three-course-tea-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Three-Course%20Tea.jpg?width=1280",
+      "label": "大理白族三道茶茶席",
+      "source": "https://commons.wikimedia.org/wiki/File:Three-Course_Tea.jpg"
+    },
+    {
+      "id": "dongba-glyphs-web",
+      "ids": [
+        "dongba-glyphs-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dongba%20pictographic%20glyphs%20-%20Lijiang.jpg?width=1280",
+      "label": "麗江東巴象形文字",
+      "source": "https://commons.wikimedia.org/wiki/File:Dongba_pictographic_glyphs_-_Lijiang.jpg"
+    },
+    {
+      "id": "joseph-rock-web",
+      "ids": [
+        "joseph-rock-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rock%20in%20Yunnan.png?width=1280",
+      "label": "約瑟夫・洛克在雲南的歷史影像",
+      "source": "https://commons.wikimedia.org/wiki/File:Rock_in_Yunnan.png"
+    },
+    {
+      "id": "cai-e-web",
+      "ids": [
+        "cai-e-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E8%94%A1%E9%8D%94.jpg?width=1280",
+      "label": "蔡鍔歷史照片",
+      "source": "https://commons.wikimedia.org/wiki/File:%E8%94%A1%E9%8D%94.jpg"
+    },
+    {
+      "id": "swau-monument-web",
+      "ids": [
+        "swau-monument-web"
+      ],
+      "url": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The%20Monument%20of%20National%20Southwest%20Associated%20University%2001.jpg?width=1280",
+      "label": "昆明國立西南聯合大學紀念碑",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Monument_of_National_Southwest_Associated_University_01.jpg"
+    },
+    {
+      "id": "fengyang-exact-web",
+      "ids": [
+        "fengyang-exact-web"
+      ],
+      "url": "https://images.vocus.cc/3e1b8ac6-888c-4923-9e72-851fedb6c54c.jpeg",
+      "label": "鳳陽邑茶馬古道實景",
+      "source": "https://vocus.cc/article/6573e143fd89780001101439"
+    },
+    {
+      "id": "youfeng-yard-exact-web",
+      "ids": [
+        "youfeng-yard-exact-web"
+      ],
+      "url": "https://ak-d.tripcdn.com/images/0202112000br16kgz9529_R_960_660_R5_D.jpg",
+      "label": "鳳陽邑有風小院外觀實景",
+      "source": "https://hk.trip.com/hotels/dali-hotel-detail-110625699/you-feng-xiao-yuan/"
+    },
+    {
+      "id": "dali-art-factory-exact-web",
+      "ids": [
+        "dali-art-factory-exact-web"
+      ],
+      "url": "https://dimg04.c-ctrip.com/images/0104t1200093u6toy6148_W_640_10000.jpg?proc=autoorient",
+      "label": "大理床單廠藝術區入口實景",
+      "source": "https://you.ctrip.com/sight/dalicity1445616/1712829.html"
+    },
+    {
+      "id": "zhuanxin-market-exact-web",
+      "ids": [
+        "zhuanxin-market-exact-web"
+      ],
+      "url": "https://assets.st-note.com/production/uploads/images/228072970/picture_pc_3547a9711c4e1acb9a679e8e3522d272.png?fit=bounds&height=2000&quality=85&width=2000",
+      "label": "昆明大觀篆新農貿市場入口實景",
+      "source": "https://note.com/nice_crab4159/n/ncb9fac9947fc"
+    },
+    {
+      "id": "qianwang-street-exact-web",
+      "ids": [
+        "qianwang-street-exact-web"
+      ],
+      "url": "https://www.newamazing.com.tw/eWeb_newamazing/IMGDB/000128/000169/00011137.JPG",
+      "label": "昆明老街錢王街實景",
+      "source": "https://www.newamazing.com.tw/EW/GO/MGroupDetail.asp?prodCd=KMG082404MU"
+    },
+    {
+      "id": "kunming-hanglung-exact-web",
+      "ids": [
+        "kunming-hanglung-exact-web"
+      ],
+      "url": "https://imagepphcloud.thepaper.cn/pph/image/130/504/486.jpg",
+      "label": "昆明恒隆廣場實景",
+      "source": "https://www.thepaper.cn/newsDetail_forward_12574753"
+    },
+    {
+      "id": "kunming-jinge-verified-web",
+      "ids": [
+        "kunming-jinge-verified-web"
+      ],
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/%E6%98%86%E6%98%8E%E6%81%92%E9%9A%86%E5%B9%BF%E5%9C%BA_-_%E8%88%AA%E6%8B%8D_-_2025-05-16_02.jpg/1280px-%E6%98%86%E6%98%8E%E6%81%92%E9%9A%86%E5%B9%BF%E5%9C%BA_-_%E8%88%AA%E6%8B%8D_-_2025-05-16_02.jpg",
+      "label": "昆明金格中心周邊商業體實景",
+      "source": "https://www.gingkoyn.com/%E9%87%91%E6%A0%BC%E4%B8%AD%E5%BF%83%E5%BA%97/"
+    },
+    {
+      "id": "dali-renmin-road-exact-web",
+      "ids": [
+        "dali-renmin-road-exact-web"
+      ],
+      "url": "https://dimg04.c-ctrip.com/images/100a11000000qd31k3AD4_R_1000_500.jpg_.webp?proc=namelogo%2Fd_5",
+      "label": "大理古城人民路實景",
+      "source": "https://www.wingontravel.com/discovery/scenic-renmin-road-13853728"
+    },
+    {
+      "id": "kunming-nanqiang-exact-web",
+      "ids": [
+        "kunming-nanqiang-exact-web"
+      ],
+      "url": "https://www.kunming.cn/en/upload/resources/image/2025/11/26/2006174.png",
+      "label": "昆明南強街巷實景",
+      "source": "https://www.kunming.cn/en/c/2025-11-26/13997758.shtml"
+    },
+    {
+      "id": "xizhou-woxiang-exact-web",
+      "ids": [
+        "xizhou-woxiang-exact-web"
+      ],
+      "url": "https://ak-d.tripcdn.com/images/1mi6g12000re9czqc395E_W_200_0_R5_Q50.jpg?proc=source%2Ftrip",
+      "label": "喜洲我想咖啡稻田店實景",
+      "source": "https://www.trip.com/moments/detail/dali-city-1445616-143266327/"
+    },
+    {
+      "id": "shaxi-chichaqu-exact-web",
+      "ids": [
+        "shaxi-chichaqu-exact-web"
+      ],
+      "url": "https://tr-osdcp.qunarzz.com/tr-osd-tr-mapi/img/995bec2326e3f8e094363821ffa2d112.jpg_r_720x480x95_d8635a6c.jpg",
+      "label": "沙溪吃茶去店面實景",
+      "source": "https://touch.travel.qunar.com/comment/6060601"
+    },
+    {
+      "id": "shaxi-corvus-exact-web",
+      "ids": [
+        "shaxi-corvus-exact-web"
+      ],
+      "url": "https://ak-d.tripcdn.com/images/0101y120008r38tgs3B11_D_454_358_R5_Q70.jpg?proc=autoorient",
+      "label": "沙溪渡鴉咖啡烘焙實景",
+      "source": "https://sg.trip.com/restaurant/china/jianchuan/detail/sha-xi-du-ya-ga-fei-26462711/"
+    },
+    {
+      "id": "shuhe-tingyin-exact-web",
+      "ids": [
+        "shuhe-tingyin-exact-web"
+      ],
+      "url": "https://youimg1.c-ctrip.com/target/100f160000010mlfl55D3.jpg",
+      "label": "束河四方聽音廣場實景",
+      "source": "https://touch.travel.qunar.com/comment/10159982375"
+    },
+    {
+      "id": "naxi-grilled-meat-exact-web",
+      "ids": [
+        "naxi-grilled-meat-exact-web"
+      ],
+      "url": "https://p2.cri.cn/M00/6B/BB/rBABDGO85KeADhfJAAAAAAAAAAA561.800x510.jpg",
+      "label": "納西烤肉實物照",
+      "source": "https://news.cri.cn/n/20230110/5c784b39-c488-e1b9-ff97-6a0cb619e202.html"
+    },
+    {
+      "id": "yak-hotpot-exact-web",
+      "ids": [
+        "yak-hotpot-exact-web"
+      ],
+      "url": "https://ak-d.tripcdn.com/images/1mi1c12000hb9qib0D91D_R_600_400_R5_Q90.jpg?proc=source%2Ftrip",
+      "label": "香格里拉犛牛火鍋實物照",
+      "source": "https://hk.trip.com/moments/detail/shangri-la-106-127450443/"
+    },
+    {
+      "id": "smallpot-noodle-exact-web",
+      "ids": [
+        "smallpot-noodle-exact-web"
+      ],
+      "url": "https://www.kunming.cn/en/upload/resources/image/2025/03/24/1839207.jpg?r=1742806639118",
+      "label": "昆明小鍋米線實物照",
+      "source": "https://m.kunming.cn/en/c/2025-03-24/13925728.shtml"
+    },
+    {
+      "id": "shangri-home-visit-web",
+      "ids": [
+        "shangri-home-visit-web"
+      ],
+      "url": "https://static.wixstatic.com/media/cd5fa6_86a2d9de0cc3431f9641256db5d36943~mv2.jpg/v1/fill/w_640%2Ch_418%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/cd5fa6_86a2d9de0cc3431f9641256db5d36943~mv2.jpg",
+      "label": "香格里拉藏式家訪情境實景",
+      "source": "https://www.thehiddenvalleyresort.com/local-home-visit"
+    },
+    {
+      "id": "huazhong-migration-museum-web",
+      "ids": [
+        "huazhong-migration-museum-web"
+      ],
+      "url": "https://inews.gtimg.com/om_bt/OwvgjzGhq52RaKsnRaJd8LeghRB10FHMZrF0oZm9NApsoAA/641",
+      "label": "喜洲華中大學西遷紀念館實景",
+      "source": "https://news.qq.com/rain/a/20250815A0422100"
+    },
+    {
+      "id": "lost-horizon-book-web",
+      "ids": [
+        "lost-horizon-book-web"
+      ],
+      "url": "https://www.christies.com/img/LotImages/2022/NYR/2022_NYR_21003_0187_000%28lost_horizon_james_hilton_1933015819%29.jpg?mode=max",
+      "label": "James Hilton《Lost Horizon》1933 年版本書影",
+      "source": "https://onlineonly.christies.com/s/fine-printed-books-manuscripts/lost-horizon-187/171016"
+    },
+    {
+      "id": "guozhuang-shangri-web",
+      "ids": [
+        "guozhuang-shangri-web"
+      ],
+      "url": "https://res.klook.com/images/fl_lossy.progressive%2Cq_65/c_fill%2Cw_1295%2Ch_754/w_80%2Cx_15%2Cy_15%2Cg_south_west%2Cl_Klook_water_br_trans_yhcmh3/activities/carncs93ctplee57yqtz/BanquetducheftribalZayadeShangri-La.jpg",
+      "label": "香格里拉藏族宴席與鍋莊歌舞情境",
+      "source": "https://www.klook.com/fr/activity/158909-zhaya-tusi-feast-in-shangri-la/"
+    }
+  ],
+  "optionalRuntime": [
+    "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",
+    "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",
+    "https://unpkg.com.cn/leaflet@1.9.4/dist/leaflet.css",
+    "https://unpkg.com.cn/leaflet@1.9.4/dist/leaflet.js"
+  ]
+}

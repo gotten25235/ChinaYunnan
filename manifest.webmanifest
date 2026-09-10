@@ -1,0 +1,18 @@
+{
+  "id": "./",
+  "name": "雲南慢時光 · 8 日雲南旅程",
+  "short_name": "雲南慢時光",
+  "description": "雲南八日隨身旅遊助手：每日行程、地圖、天氣、美食、收藏與離線旅程資料。",
+  "lang": "zh-Hant",
+  "start_url": "./?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f3ea",
+  "theme_color": "#183e36",
+  "orientation": "any",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
