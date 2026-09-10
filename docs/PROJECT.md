@@ -76,7 +76,7 @@
 | `journey.js` | Day 01–08、Day 展開、時刻表、PNG export、航班／住宿 Journey UI |
 | `map.js` | Leaflet、Map filters、Map Rail、Map Detail、定位、自定義地點、長按；Leaflet／道路 tile 不可用時提供無底圖離線地標簡圖與純座標 Nearby 計算 |
 | `library.js` | Content/Story Card、Night/Food/Shopping/Favorites/Photo/Culture state/render |
-| `app.js` | JSON bootstrap、`VIEW_REGISTRY`、App Shell、shared day coordinator、單一 action router、全版面 Main Tab swipe（手機觸控；電腦版觸控／滑鼠拖曳／precision touchpad 水平手勢；橫向 Rail／Map／表單優先） |
+| `app.js` | JSON bootstrap、`VIEW_REGISTRY`、App Shell、shared day coordinator、單一 action router、全版面 Main Tab swipe（手機觸控；電腦版觸控／滑鼠拖曳／precision touchpad 水平手勢；內容區空白背景也可起手；橫向 Rail／Map／表單優先） |
 
 主要 state 只由各自 Owner 寫入：
 

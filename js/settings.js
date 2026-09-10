@@ -36,7 +36,7 @@
       return true;
     }
     function settingsHtml(){
-      return `<article class="layout-mode-card utility-card utility-card--settings"><div><span class="eyebrow">INTERFACE LAYOUT</span><h3>介面版面</h3><p class="small">手機版為預設：手機使用觸控與窄版排版，電腦仍會依螢幕寬度正常顯示。選「電腦版」時，手機也會固定使用寬版桌面配置；電腦版同樣支援左右滑動／滑鼠拖曳／觸控板切換主要 Tab。線上、離線與 PWA 都共用同一設定。</p></div><label>版面<select data-ui-layout-select aria-label="介面版面"><option value="mobile">手機版（預設）</option><option value="desktop">電腦版</option></select></label></article>`;
+      return `<article class="layout-mode-card utility-card utility-card--settings"><div><span class="eyebrow">INTERFACE LAYOUT</span><h3>介面版面</h3><p class="small">手機版為預設：手機使用觸控與窄版排版，電腦仍會依螢幕寬度正常顯示。選「電腦版」時，手機會以完整桌面寬度自動縮放到螢幕內，保留桌面版比例；同時仍可左右滑動切換主要 Tab。線上、離線與 PWA 都共用同一設定。</p></div><label>版面<select data-ui-layout-select aria-label="介面版面"><option value="mobile">手機版（預設）</option><option value="desktop">電腦版</option></select></label></article>`;
     }
     function handleChange(target){
       const select=target?.closest?.('[data-ui-layout-select]');

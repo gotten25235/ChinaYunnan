@@ -9,7 +9,13 @@
       let mode='mobile';
       try{const saved=localStorage.getItem(key);if(saved==='desktop'||saved==='mobile')mode=saved;}catch{}
       document.documentElement.dataset.uiLayout=mode;
-      if(mode==='desktop')document.getElementById('app-viewport')?.setAttribute('content','width=1280, initial-scale=1');
+      const viewport=document.getElementById('app-viewport');
+      if(mode==='desktop'){
+        // Numeric viewport width without initial-scale lets mobile browsers shrink the
+        // 1280px desktop canvas to the physical screen width, preserving the full
+        // desktop-page proportion instead of cropping it at 1:1 scale.
+        viewport?.setAttribute('content','width=1280, viewport-fit=cover, user-scalable=yes');
+      }
     })();
   </script>
   <meta name="theme-color" content="#183e36">
