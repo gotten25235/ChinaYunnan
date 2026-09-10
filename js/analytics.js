@@ -1,7 +1,8 @@
-/* Anonymous analytics owner: optional Umami loader + a small event queue. No UI and no identity collection. */
+/* Anonymous analytics owner: optional Umami loader + persistent anonymous browser ID + small event queue. */
 (() => {
   'use strict';
   const CONFIG_URL='data/analytics-config.json';
+  const DEFAULT_VISITOR_STORAGE_KEY='yunnan-anonymous-visitor-v1';
   const isLocal=()=>location.protocol==='file:'||['localhost','127.0.0.1','::1'].includes(location.hostname);
   const cleanString=value=>String(value??'').trim().slice(0,500);
   const cleanData=input=>{
@@ -17,7 +18,7 @@
   };
 
   function create({items={}}={}){
-    let config=null,started=false,ready=false,loading=null;
+    let config=null,started=false,ready=false,loading=null,visitorIdentity=null;
     const queue=[];
 
     async function readConfig(){
@@ -30,6 +31,46 @@
     }
     function validWebsiteId(value){return /^[0-9a-f]{8}-[0-9a-f-]{27,}$/i.test(String(value||''));}
     function trackerReady(){return typeof window.umami?.track==='function';}
+    function identifyReady(){return typeof window.umami?.identify==='function';}
+    function visitorIdEnabled(){return config?.anonymousVisitorId?.enabled!==false;}
+    function visitorStorageKey(){return cleanString(config?.anonymousVisitorId?.storageKey||DEFAULT_VISITOR_STORAGE_KEY)||DEFAULT_VISITOR_STORAGE_KEY;}
+    function validVisitorId(value){return /^V-[A-F0-9]{4}(?:-[A-F0-9]{4}){4}$/i.test(String(value||''));}
+    function newVisitorId(){
+      const bytes=new Uint8Array(10);
+      if(globalThis.crypto?.getRandomValues)crypto.getRandomValues(bytes);
+      else for(let i=0;i<bytes.length;i++)bytes[i]=Math.floor(Math.random()*256);
+      const hex=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('').toUpperCase();
+      return `V-${hex.slice(0,4)}-${hex.slice(4,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}`;
+    }
+    function loadOrCreateVisitorId(){
+      if(!visitorIdEnabled())return null;
+      const key=visitorStorageKey();
+      for(const storage of [window.localStorage,window.sessionStorage]){
+        try{
+          const existing=storage.getItem(key);
+          if(validVisitorId(existing))return {id:existing,isNew:false,persistence:storage===window.localStorage?'local':'session'};
+          const id=newVisitorId();
+          storage.setItem(key,id);
+          return {id,isNew:true,persistence:storage===window.localStorage?'local':'session'};
+        }catch{}
+      }
+      return {id:newVisitorId(),isNew:true,persistence:'memory'};
+    }
+    function identifyVisitor(){
+      if(!visitorIdentity||!identifyReady())return false;
+      try{
+        window.umami.identify(visitorIdentity.id);
+        return true;
+      }catch{return false;}
+    }
+    function sendInitialPageview(){
+      if(!trackerReady())return false;
+      try{window.umami.track();return true;}catch{return false;}
+    }
+    function sendVisitorCreated(){
+      if(!visitorIdentity?.isNew||!trackerReady())return false;
+      try{window.umami.track('anonymous_visitor_created',{persistence:visitorIdentity.persistence});return true;}catch{return false;}
+    }
     function flush(){
       if(!trackerReady())return;
       ready=true;
@@ -37,16 +78,31 @@
     }
     function injectTracker(){
       if(loading||!config?.enabled||!validWebsiteId(config.websiteId)||isLocal())return loading;
+      visitorIdentity=loadOrCreateVisitorId();
       loading=new Promise(resolve=>{
         const script=document.createElement('script');
         script.src=cleanString(config.scriptUrl||'https://cloud.umami.is/script.js');
         script.defer=true;
         script.async=true;
         script.setAttribute('data-website-id',cleanString(config.websiteId));
+        if(visitorIdentity)script.setAttribute('data-auto-pageview','false');
         if(config.privacy?.excludeSearch!==false)script.setAttribute('data-exclude-search','true');
         if(config.privacy?.excludeHash!==false)script.setAttribute('data-exclude-hash','true');
         if(config.privacy?.respectDoNotTrack!==false)script.setAttribute('data-do-not-track','true');
-        script.addEventListener('load',()=>{let tries=0;const timer=setInterval(()=>{tries++;if(trackerReady()||tries>=20){clearInterval(timer);flush();resolve(trackerReady());}},100);},{once:true});
+        script.addEventListener('load',()=>{
+          let tries=0;
+          const timer=setInterval(()=>{
+            tries++;
+            if((trackerReady()&&(!visitorIdentity||identifyReady()))||tries>=30){
+              clearInterval(timer);
+              if(trackerReady()){
+                if(visitorIdentity){identifyVisitor();sendInitialPageview();sendVisitorCreated();}
+                flush();
+              }
+              resolve(trackerReady());
+            }
+          },100);
+        },{once:true});
         script.addEventListener('error',()=>resolve(false),{once:true});
         document.head.append(script);
       });
@@ -88,7 +144,7 @@
       else if(button.hasAttribute('data-offline-prepare'))track('offline_prepare');
       else if(button.hasAttribute('data-timetable-download'))track('timetable_download');
     }
-    function status(){return {configured:Boolean(config?.enabled&&validWebsiteId(config?.websiteId)),ready};}
+    function status(){return {configured:Boolean(config?.enabled&&validWebsiteId(config?.websiteId)),ready,visitorId:visitorIdentity?.id||null,visitorPersistence:visitorIdentity?.persistence||null};}
     return {start,track,trackItem,trackStory,trackNavigation,trackControl,status};
   }
 

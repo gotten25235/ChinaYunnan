@@ -15,5 +15,10 @@
     "salt": "RQ12jSuztiL+6z84L4bFeQ==",
     "iv": "JtfO/D8xdNHI0utG",
     "ciphertext": "dVX0wcJE+joZmT2Qkfpi9CwLtJpzPqw7z8iH1gWqVgZGIb63YkeZ8HfS94DyW0n86b8sG3WgGyKv2R6q0g=="
+  },
+  "anonymousVisitorId": {
+    "enabled": true,
+    "storageKey": "yunnan-anonymous-visitor-v1",
+    "format": "V-XXXX-XXXX-XXXX-XXXX-XXXX"
   }
 }

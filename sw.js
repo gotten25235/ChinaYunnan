@@ -7,7 +7,7 @@
   - CHECK_OFFLINE 回傳核心、本地照片、遠端照片的實際缺失清單；未選取照片時不影響完成判定。
 */
 const VERSION = 'v1';
-const CACHE_REVISION = '20260910-mushroom-meme-01';
+const CACHE_REVISION = '20260910-auto-anonymous-visitor-id-01';
 const APP_CACHE = `yunnan-app-${VERSION}-${CACHE_REVISION}`;
 const IMAGE_CACHE = `yunnan-images-${VERSION}`;
 const OFFLINE_META_CACHE = `yunnan-offline-${VERSION}`;

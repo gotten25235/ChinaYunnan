@@ -24,10 +24,10 @@
   <div id="app" class="shell hidden">
     <header class="top"><div class="brand"><span class="mark">雲</span><div><span class="eyebrow">OWNER ONLY</span><strong>雲南慢時光 · Insights</strong></div></div><span class="pill">不出現在一般網站導覽</span></header>
     <main>
-      <div class="hero"><div><span class="eyebrow">PRIVATE ANALYTICS</span><h1>旅程網站觀看統計</h1><p>匿名觀看、來源、裝置與站內互動。這個管理頁本身不載入追蹤碼。</p></div><div class="actions"><a class="button secondary" href="./index.html">回旅程網站</a><a id="open-dashboard" class="button primary hidden" target="_blank" rel="noopener noreferrer">開啟完整統計 ↗</a></div></div>
-      <div class="privacy"><span><b>匿名</b>不記姓名</span><span><b>無 Cookie</b>不做跨站追蹤</span><span><b>不記輸入內容</b>表單／備註不送出</span><span><b>不記精確定位</b>只用統計服務的概略地區</span></div>
+      <div class="hero"><div><span class="eyebrow">PRIVATE ANALYTICS</span><h1>旅程網站觀看統計</h1><p>以匿名瀏覽器代碼串連多次造訪，再看來源、裝置與站內互動。這個管理頁本身不載入追蹤碼。</p></div><div class="actions"><a class="button secondary" href="./index.html">回旅程網站</a><a id="open-dashboard" class="button primary hidden" target="_blank" rel="noopener noreferrer">開啟完整統計 ↗</a></div></div>
+      <div class="privacy"><span><b>匿名代碼</b>每個瀏覽器自動一組 V-ID</span><span><b>無 Cookie</b>不做跨站追蹤</span><span><b>不記輸入內容</b>表單／備註不送出</span><span><b>不記精確定位</b>只用統計服務的概略地區</span></div>
 
-      <section id="dashboard" class="dashboard">
+      <section id="dashboard" class="dashboard"><article class="card" style="margin-bottom:16px"><span class="eyebrow">DISTINCT ID</span><h3>怎麼看「同一個匿名訪客」</h3><p>網站第一次在某個瀏覽器開啟時，會在該瀏覽器本機產生一組 <code>V-XXXX-XXXX-XXXX-XXXX-XXXX</code>，並交給 Umami Distinct ID。到 Umami 的 <b>Sessions</b> 可查看該匿名 ID 的各次 Session 與活動時間線；換瀏覽器、清除網站資料或無痕模式可能產生新的 ID。</p></article>
         <div class="frame-shell"><iframe id="stats-frame" title="雲南慢時光網站統計" loading="eager" referrerpolicy="no-referrer"></iframe></div>
         <p class="status" style="margin-top:10px">若瀏覽器阻擋內嵌頁面，請使用右上角「開啟完整統計」。</p>
       </section>
@@ -37,7 +37,7 @@
           <article class="card"><span class="eyebrow">ONE-TIME SETUP</span><h2>第一次只要綁定一次</h2><ol class="steps"><li>到 Umami Cloud 建立網站，Hostname 填你的 GitHub Pages 網域。</li><li>複製該網站的 <b>Website ID</b>。</li><li>在網站設定建立 <b>Share URL</b>，只開你想看的 Overview / Events / Sessions 等頁面。</li><li>把兩個值貼到右邊，產生新的 <code>analytics-config.json</code>。</li><li>把它覆蓋 GitHub 裡的 <code>data/analytics-config.json</code>。完成後，之後照常只更新 GitHub。</li></ol><div class="actions" style="margin-top:14px"><a class="button secondary" href="https://cloud.umami.is/" target="_blank" rel="noopener noreferrer">開啟 Umami Cloud ↗</a><a class="button secondary" href="https://docs.umami.is/docs/enable-share-url" target="_blank" rel="noopener noreferrer">Share URL 說明 ↗</a></div></article>
           <article class="card"><span class="eyebrow">BIND ANALYTICS</span><h2>貼上兩個值</h2><div class="field"><label for="website-id">Website ID</label><input id="website-id" autocomplete="off" spellcheck="false" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"><small>這個 ID 會放在公開網站追蹤碼裡，本來就不是密碼。</small></div><div class="field" style="margin-top:14px"><label for="share-url">Share URL</label><input id="share-url" type="url" autocomplete="off" spellcheck="false" placeholder="https://.../share/..."><small>Share URL 會先用你這個秘密網址中的金鑰加密，再寫入設定檔；公開 repo 不會直接看到明文連結。</small></div><div class="actions" style="margin-top:16px"><button id="make-config" class="primary" type="button">產生設定檔</button></div><p id="setup-status" class="status" style="margin-top:10px"></p></article>
         </div>
-        <article id="output" class="card output"><span class="eyebrow">GENERATED CONFIG</span><h3>新的 data/analytics-config.json</h3><p>下載後覆蓋 GitHub 中同名檔案。它只包含公開 Website ID 與加密後的 Share URL。</p><textarea id="config-output" readonly></textarea><div class="actions"><button id="download-config" class="primary" type="button">下載 analytics-config.json</button><button id="copy-config" class="secondary" type="button">複製 JSON</button></div></article>
+        <article id="output" class="card output"><span class="eyebrow">GENERATED CONFIG</span><h3>新的 data/analytics-config.json</h3><p>下載後覆蓋 GitHub 中同名檔案。它包含公開 Website ID、加密後的 Share URL，以及匿名瀏覽器 ID 設定；不包含任何旅客姓名。</p><textarea id="config-output" readonly></textarea><div class="actions"><button id="download-config" class="primary" type="button">下載 analytics-config.json</button><button id="copy-config" class="secondary" type="button">複製 JSON</button></div></article>
         <article class="card note"><h3>關於「只有我知道的連結」</h3><p>這頁沒有任何主網站入口，而且必須帶正確的網址片段才會解鎖；秘密片段不會送到 GitHub Pages 伺服器。若你的 GitHub repo 是公開的，別人仍可能看到 <code>owner-insights.html</code> 這個檔名，但看不到秘密片段，也無法從設定檔直接取得加密後的 Share URL。真正需要帳號級權限時，仍以 Umami 私人登入為準。</p></article>
       </section>
     </main>
@@ -88,7 +88,7 @@
     status.textContent='正在加密 Share URL…';
     try{
       const ownerDashboard=await encryptShareUrl(share);
-      generatedConfig={schemaVersion:'v1',provider:'umami',enabled:true,scriptUrl:'https://cloud.umami.is/script.js',websiteId:id,privacy:{excludeSearch:true,excludeHash:true,respectDoNotTrack:true},ownerDashboard};
+      generatedConfig={schemaVersion:'v1',provider:'umami',enabled:true,scriptUrl:'https://cloud.umami.is/script.js',websiteId:id,privacy:{excludeSearch:true,excludeHash:true,respectDoNotTrack:true},ownerDashboard,anonymousVisitorId:{enabled:true,storageKey:'yunnan-anonymous-visitor-v1',format:'V-XXXX-XXXX-XXXX-XXXX-XXXX'}};
       const text=JSON.stringify(generatedConfig,null,2)+'\n';
       $('#config-output').value=text;$('#output').classList.add('visible');status.textContent='完成。下載後覆蓋 data/analytics-config.json。';$('#output').scrollIntoView({behavior:'smooth',block:'start'});
     }catch(error){console.error(error);status.textContent='瀏覽器無法產生加密設定。請改用最新版 Safari / Chrome / Edge。';}

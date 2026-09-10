@@ -80,7 +80,7 @@
 | --- | --- |
 | `network.js` | 國際版／大陸版 profile（預設國際版）、Leaflet runtime loader、OSM／高德底圖選擇、WGS84 ↔ GCJ-02 顯示座標轉換；同時提供 QWeather Grid 所需的 WGS84→GCJ-02 converter |
 | `core.js` | Photo System、Travel Utils、Favorites Store、Navigation Service、Date Rail、Horizontal Scroller；Photo System 對兩種 network profile 使用同一張正確主體圖，負責本地／遠端圖、錯誤 placeholder 與示意／背景 badge，不做跨地點 fallback，不持有 Domain 畫面 state |
-| `analytics.js` | 可選 Umami tracker loader 與匿名事件 queue；只讀 `data/analytics-config.json`，不持有旅程 Domain state、不呼叫 `identify()`、不記表單內容／精確定位；設定未啟用或本機開發時完全不載入外部 tracker |
+| `analytics.js` | 可選 Umami tracker loader、匿名事件 queue 與 persistent anonymous browser ID；只讀 `data/analytics-config.json`，不持有旅程 Domain state；以隨機 V-ID 呼叫 `identify()`，但不記姓名、表單內容／精確定位；設定未啟用或本機開發時完全不載入外部 tracker |
 | `weather.js` | 高德天氣 → QWeather Grid → Open-Meteo provider chain、API credential local settings、欄位優先合併、旅程日 weather point、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots、各 weather point 的高德／QWeather／Open-Meteo 公開地點預報連結 |
 | `offline.js` | PWA 選擇式離線準備 UI（核心固定、旅行照片／天氣可選且預設全選）、Service Worker message bridge、Cache 完整性檢查、具名缺失清單、只重試失敗照片、online/offline 狀態、主畫面安裝提示、收藏／偏好匯出匯入；不保存天氣 API Key |
 | `settings.js` | Settings View 的介面版面 preference owner；`mobile` 為預設，`desktop` 會在手機上固定桌面 viewport，偏好使用 `yunnan-2026-ui-layout-v1`。文件名稱固定區分「電腦版／手機版／手機電腦版」；初始 shell 以 `data-runtime-layout="mobile-desktop"` 標記手機選桌面模式，供專用 Reader 高度等 CSS 使用 |
@@ -95,7 +95,7 @@
 - App：`currentView`。
 - Network：network profile。
 - Core：Favorites IDs、navigation provider。
-- Analytics：外部 tracker 的 optional runtime 狀態與暫存事件 queue；正式開關／Website ID 來自 `analytics-config.json`，Owner Share URL 只保存加密密文。
+- Analytics：外部 tracker 的 optional runtime 狀態、暫存事件 queue，以及瀏覽器本機 `yunnan-anonymous-visitor-v1` 的隨機 V-ID；正式開關／Website ID 來自 `analytics-config.json`，Owner Share URL 只保存加密密文。
 - Weather：provider credentials（localStorage）、forecast cache、refresh state。
 - Offline：離線內容選取狀態、準備狀態、安裝提示與 user-data backup bridge；核心固定必選，旅行照片／天氣預設勾選且可取消；實體資源由 Service Worker Cache Storage 擁有。
 - Settings：介面版面狀態；預設 mobile，與網路、導航、天氣、離線控制一起集中顯示在獨立 Settings View。
@@ -150,13 +150,13 @@ Reader 關閉後要回原本 window scroll、橫向 Rail scroll 與 focus。Cont
 
 ## 7. Anonymous Analytics / Owner Insights
 
-`analytics.js` 只在 HTTPS 線上環境且 `data/analytics-config.json` 有合法 Umami Website ID、`enabled:true` 時才動態載入 `https://cloud.umami.is/script.js`。本機 `file://`、localhost / 127.0.0.1 不送統計。Tracker 設定固定排除 query/hash，尊重 Do Not Track；本站不使用 `umami.identify()`。
+`analytics.js` 只在 HTTPS 線上環境且 `data/analytics-config.json` 有合法 Umami Website ID、`enabled:true` 時才動態載入 `https://cloud.umami.is/script.js`。本機 `file://`、localhost / 127.0.0.1 不送統計。Tracker 設定固定排除 query/hash，尊重 Do Not Track。首次進站時產生 80-bit 隨機 V-ID 並優先存入 localStorage（不可用時退回 sessionStorage / memory），再呼叫 `umami.identify(V-ID)`；Tracker 關閉 auto pageview，先 identify、再手動送出首個 pageview，確保第一筆瀏覽也能連到 Distinct ID。
 
-主 App 只送低敏感度互動事件：`tab_view`、`item_open`、`story_open`、`navigation_open`、`favorite_click`、`map_geolocate`、`nearby_open`、`weather_refresh`、`offline_prepare`、`timetable_download`。事件可含 entity ID／顯示名稱與操作類型，但不可加入姓名、電話、Email、備註內容、API Key、GPS 經緯度或其他個人資料。
+主 App 只送低敏感度互動事件：`tab_view`、`item_open`、`story_open`、`navigation_open`、`favorite_click`、`map_geolocate`、`nearby_open`、`weather_refresh`、`offline_prepare`、`timetable_download`；另在新 V-ID 第一次建立時送一次 `anonymous_visitor_created`。事件可含 entity ID／顯示名稱與操作類型，但不可加入姓名、電話、Email、備註內容、API Key、GPS 經緯度或其他個人資料。
 
 `owner-insights.html` 不出現在任何主導覽／footer / README 快速入口，且本身使用 `noindex,nofollow`；網址 fragment 內的秘密 token 只在瀏覽器端做 SHA-256 驗證，不送到 GitHub Pages。Umami Share URL 不可明文寫進 repo；Owner 頁的 setup flow 使用 PBKDF2-SHA256 + AES-GCM 將 Share URL 加密後再產生 `analytics-config.json`。這是 unlisted secret-link gate，不取代 Umami 帳號級權限。
 
-`analytics-config.json` 不納入離線核心完整性判定。Service Worker 對它採 network-only，離線或抓取失敗時等同 analytics disabled，絕不能影響旅程 App。
+`analytics-config.json` 不納入離線核心完整性判定。Service Worker 對它採 network-only，離線或抓取失敗時等同 analytics disabled，絕不能影響旅程 App。Distinct ID 是「瀏覽器身分」而不是保證的一人一 ID：換瀏覽器、清除網站資料、無痕模式可能產生新 V-ID；多人共用同一瀏覽器則可能共用 V-ID。
 
 ## 8. CSS
 
