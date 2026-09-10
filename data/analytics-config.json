@@ -1,9 +1,9 @@
 {
   "schemaVersion": "v1",
   "provider": "umami",
-  "enabled": false,
+  "enabled": true,
   "scriptUrl": "https://cloud.umami.is/script.js",
-  "websiteId": "",
+  "websiteId": "6db4f522-7745-4fa4-9a91-eb7ee7214b2f",
   "privacy": {
     "excludeSearch": true,
     "excludeHash": true,
@@ -12,8 +12,8 @@
   "ownerDashboard": {
     "algorithm": "AES-GCM+PBKDF2-SHA256",
     "iterations": 180000,
-    "salt": "",
-    "iv": "",
-    "ciphertext": ""
+    "salt": "RQ12jSuztiL+6z84L4bFeQ==",
+    "iv": "JtfO/D8xdNHI0utG",
+    "ciphertext": "dVX0wcJE+joZmT2Qkfpi9CwLtJpzPqw7z8iH1gWqVgZGIb63YkeZ8HfS94DyW0n86b8sG3WgGyKv2R6q0g=="
   }
 }
