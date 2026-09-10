@@ -1,0 +1,12 @@
+﻿Yunnan V1 remote photo localization failures
+
+The project data was NOT switched to local paths because at least one image failed.
+Successful images already downloaded into images/remote are kept and will be reused on the next run.
+
+IDs: fengyang-exact-web
+URL: https://images.vocus.cc/3e1b8ac6-888c-4923-9e72-851fedb6c54c.jpeg
+Reason: direct failed: RuntimeError: Pillow could not decode/convert payload: module 'PIL.Image' has no attribute 'Resampling' | wsrv failed: HTTPError: HTTP Error 400: Bad Request
+
+IDs: lost-horizon-book-web
+URL: https://www.christies.com/img/LotImages/2022/NYR/2022_NYR_21003_0187_000%28lost_horizon_james_hilton_1933015819%29.jpg?mode=max
+Reason: direct failed: RuntimeError: Pillow could not decode/convert payload: module 'PIL.Image' has no attribute 'Resampling' | wsrv failed: HTTPError: HTTP Error 404: Not Found

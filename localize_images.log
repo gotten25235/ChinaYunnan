@@ -1,0 +1,157 @@
+﻿Remote photo records: 46
+Unique remote images: 44
+Download strategy: direct source -> local Pillow conversion -> wsrv.nl fallback
+
+[1/44] shuanglang-open -> images/remote/shuanglang-open.webp
+  existing valid WebP; reuse
+
+[2/44] kunming-jinma-open, kunming-city-reference, kunming-history-reference -> images/remote/kunming-jinma-open.webp
+  existing valid WebP; reuse
+
+[3/44] kunming-nanping-open -> images/remote/kunming-nanping-open.webp
+  existing valid WebP; reuse
+
+[4/44] kunming-railway-open -> images/remote/kunming-railway-open.webp
+  existing valid WebP; reuse
+
+[5/44] dali-city-reference -> images/remote/dali-city-reference.webp
+  existing valid WebP; reuse
+
+[6/44] shangri-story-reference -> images/remote/shangri-story-reference.webp
+  existing valid WebP; reuse
+
+[7/44] lijiang-sifang-web -> images/remote/lijiang-sifang-web.webp
+  existing valid WebP; reuse
+
+[8/44] dukezong-sifang-web -> images/remote/dukezong-sifang-web.webp
+  existing valid WebP; reuse
+
+[9/44] zhongyi-market-web -> images/remote/zhongyi-market-web.webp
+  existing valid WebP; reuse
+
+[10/44] dali-sanyue-web -> images/remote/dali-sanyue-web.webp
+  existing valid WebP; reuse
+
+[11/44] kunming-old-street-web -> images/remote/kunming-old-street-web.webp
+  existing valid WebP; reuse
+
+[12/44] three-pagodas-reflection-web -> images/remote/three-pagodas-reflection-web.webp
+  existing valid WebP; reuse
+
+[13/44] baisha-old-town-web -> images/remote/baisha-old-town-web.webp
+  existing valid WebP; reuse
+
+[14/44] black-dragon-pool-web -> images/remote/black-dragon-pool-web.webp
+  existing valid WebP; reuse
+
+[15/44] baiji-temple-web -> images/remote/baiji-temple-web.webp
+  existing valid WebP; reuse
+
+[16/44] diqing-museum-web -> images/remote/diqing-museum-web.webp
+  existing valid WebP; reuse
+
+[17/44] napa-lake-web -> images/remote/napa-lake-web.webp
+  existing valid WebP; reuse
+
+[18/44] yunnan-military-academy-web -> images/remote/yunnan-military-academy-web.webp
+  existing valid WebP; reuse
+
+[19/44] green-lake-park-web -> images/remote/green-lake-park-web.webp
+  existing valid WebP; reuse
+
+[20/44] three-course-tea-web -> images/remote/three-course-tea-web.webp
+  existing valid WebP; reuse
+
+[21/44] dongba-glyphs-web -> images/remote/dongba-glyphs-web.webp
+  existing valid WebP; reuse
+
+[22/44] joseph-rock-web -> images/remote/joseph-rock-web.webp
+  existing valid WebP; reuse
+
+[23/44] cai-e-web -> images/remote/cai-e-web.webp
+  existing valid WebP; reuse
+
+[24/44] swau-monument-web -> images/remote/swau-monument-web.webp
+  existing valid WebP; reuse
+
+[25/44] fengyang-exact-web -> images/remote/fengyang-exact-web.webp
+  direct: https://images.vocus.cc/3e1b8ac6-888c-4923-9e72-851fedb6c54c.jpeg
+    direct failed: RuntimeError: Pillow could not decode/convert payload: module 'PIL.Image' has no attribute 'Resampling'
+  fallback: wsrv.nl
+    retry 1/2: HTTPError: HTTP Error 400: Bad Request
+    retry 2/2: HTTPError: HTTP Error 400: Bad Request
+    wsrv failed: HTTPError: HTTP Error 400: Bad Request
+  FAILED: direct failed: RuntimeError: Pillow could not decode/convert payload: module 'PIL.Image' has no attribute 'Resampling' | wsrv failed: HTTPError: HTTP Error 400: Bad Request
+
+[26/44] youfeng-yard-exact-web -> images/remote/youfeng-yard-exact-web.webp
+  existing valid WebP; reuse
+
+[27/44] dali-art-factory-exact-web -> images/remote/dali-art-factory-exact-web.webp
+  existing valid WebP; reuse
+
+[28/44] zhuanxin-market-exact-web -> images/remote/zhuanxin-market-exact-web.webp
+  existing valid WebP; reuse
+
+[29/44] qianwang-street-exact-web -> images/remote/qianwang-street-exact-web.webp
+  existing valid WebP; reuse
+
+[30/44] kunming-hanglung-exact-web -> images/remote/kunming-hanglung-exact-web.webp
+  existing valid WebP; reuse
+
+[31/44] kunming-jinge-verified-web -> images/remote/kunming-jinge-verified-web.webp
+  existing valid WebP; reuse
+
+[32/44] dali-renmin-road-exact-web -> images/remote/dali-renmin-road-exact-web.webp
+  existing valid WebP; reuse
+
+[33/44] kunming-nanqiang-exact-web -> images/remote/kunming-nanqiang-exact-web.webp
+  existing valid WebP; reuse
+
+[34/44] xizhou-woxiang-exact-web -> images/remote/xizhou-woxiang-exact-web.webp
+  existing valid WebP; reuse
+
+[35/44] shaxi-chichaqu-exact-web -> images/remote/shaxi-chichaqu-exact-web.webp
+  existing valid WebP; reuse
+
+[36/44] shaxi-corvus-exact-web -> images/remote/shaxi-corvus-exact-web.webp
+  existing valid WebP; reuse
+
+[37/44] shuhe-tingyin-exact-web -> images/remote/shuhe-tingyin-exact-web.webp
+  existing valid WebP; reuse
+
+[38/44] naxi-grilled-meat-exact-web -> images/remote/naxi-grilled-meat-exact-web.webp
+  existing valid WebP; reuse
+
+[39/44] yak-hotpot-exact-web -> images/remote/yak-hotpot-exact-web.webp
+  existing valid WebP; reuse
+
+[40/44] smallpot-noodle-exact-web -> images/remote/smallpot-noodle-exact-web.webp
+  existing valid WebP; reuse
+
+[41/44] shangri-home-visit-web -> images/remote/shangri-home-visit-web.webp
+  existing valid WebP; reuse
+
+[42/44] huazhong-migration-museum-web -> images/remote/huazhong-migration-museum-web.webp
+  existing valid WebP; reuse
+
+[43/44] lost-horizon-book-web -> images/remote/lost-horizon-book-web.webp
+  direct: https://www.christies.com/img/LotImages/2022/NYR/2022_NYR_21003_0187_000%28lost_horizon_james_hilton_1933015819%29.jpg?mode=max
+    direct failed: RuntimeError: Pillow could not decode/convert payload: module 'PIL.Image' has no attribute 'Resampling'
+  fallback: wsrv.nl
+    retry 1/2: HTTPError: HTTP Error 404: Not Found
+    retry 2/2: HTTPError: HTTP Error 404: Not Found
+    wsrv failed: HTTPError: HTTP Error 404: Not Found
+  FAILED: direct failed: RuntimeError: Pillow could not decode/convert payload: module 'PIL.Image' has no attribute 'Resampling' | wsrv failed: HTTPError: HTTP Error 404: Not Found
+
+[44/44] guozhuang-shangri-web -> images/remote/guozhuang-shangri-web.webp
+  existing valid WebP; reuse
+
+Download summary:
+  reused: 42
+  direct: 0
+  wsrv:   0
+  failed: 2
+
+Not finalized: 2 unique remote image(s) still failed.
+Failure report: D:\_Project\html\ChinaYunnan\localize_failures.txt
+Successful downloads were kept in images/remote; run LOCALIZE_IMAGES.bat again to resume.

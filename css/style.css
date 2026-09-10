@@ -2280,6 +2280,10 @@ html[data-runtime-layout="mobile-desktop"] .content-reader-dialog{
   height:min(94dvh,1320px)!important;
   max-height:min(94dvh,1320px)!important;
 }
+html[data-runtime-layout="mobile-desktop"] .content-reader-footer > button:first-child{
+  justify-self:start;
+  width:auto;
+}
 html[data-runtime-layout="mobile-desktop"] .map-detail-dialog{
   max-height:min(94dvh,1320px)!important;
 }

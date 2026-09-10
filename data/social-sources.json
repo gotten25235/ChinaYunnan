@@ -1758,6 +1758,102 @@
         "parserVersion": "v1",
         "notes": null
       }
+    },
+    "user_20260910_0001": {
+      "url": null,
+      "canonicalUrl": null,
+      "postId": null,
+      "contentType": "user-provided-screenshot",
+      "author": {
+        "name": "使用者提供截圖",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-10T15:37:00+08:00",
+      "lastSeenAt": "2026-09-10T15:37:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "伴手禮",
+        "使用者提供"
+      ],
+      "sourceId": "user_20260910_0001",
+      "platform": "xiaohongshu-screenshot",
+      "title": "小紅書截圖：離開雲南前一定要買的伴手禮 No.1–12",
+      "localFile": "docs/sources/reference/souvenir-xhs-01.jpg",
+      "collection": {
+        "method": "user-uploaded-screenshot",
+        "collector": "ChatGPT project edit",
+        "parserVersion": "v1",
+        "notes": "使用者提供的公開頁面截圖；保留品項名稱與畫面作為本次內容整理依據。"
+      }
+    },
+    "user_20260910_0002": {
+      "url": null,
+      "canonicalUrl": null,
+      "postId": null,
+      "contentType": "user-provided-screenshot",
+      "author": {
+        "name": "使用者提供截圖",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-10T15:37:00+08:00",
+      "lastSeenAt": "2026-09-10T15:37:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "伴手禮",
+        "使用者提供"
+      ],
+      "sourceId": "user_20260910_0002",
+      "platform": "xiaohongshu-screenshot",
+      "title": "小紅書截圖：離開雲南前一定要買的伴手禮 No.13–24",
+      "localFile": "docs/sources/reference/souvenir-xhs-02.jpg",
+      "collection": {
+        "method": "user-uploaded-screenshot",
+        "collector": "ChatGPT project edit",
+        "parserVersion": "v1",
+        "notes": "使用者提供的公開頁面截圖；No.6 與 No.18 顯示同名香蕈菌，本專案合併為一張商品卡。"
+      }
+    },
+    "user_20260910_0003": {
+      "url": null,
+      "canonicalUrl": null,
+      "postId": null,
+      "contentType": "user-provided-screenshot",
+      "author": {
+        "name": "使用者提供截圖",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-10T15:37:00+08:00",
+      "lastSeenAt": "2026-09-10T15:37:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "excerpt": null,
+      "tags": [
+        "雲南",
+        "伴手禮",
+        "使用者提供"
+      ],
+      "sourceId": "user_20260910_0003",
+      "platform": "xiaohongshu-ai-summary-screenshot",
+      "title": "問一問截圖：雲南伴手禮推薦 Top 10",
+      "localFile": "docs/sources/reference/souvenir-ai-top10.jpg",
+      "collection": {
+        "method": "user-uploaded-screenshot",
+        "collector": "ChatGPT project edit",
+        "parserVersion": "v1",
+        "notes": "使用者提供截圖；畫面顯示 AI 總結之排名與人推薦百分比，僅照圖記錄，不外推為官方統計。"
+      }
     }
   }
 }

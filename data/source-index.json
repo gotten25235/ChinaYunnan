@@ -10,8 +10,8 @@
     "hotel_night_nearby20_20260908"
   ],
   "customItemCount": 32,
-  "sourceCount": 56,
-  "referencedSourceCount": 56,
+  "sourceCount": 59,
+  "referencedSourceCount": 59,
   "defaultCustomIds": [
     "custom-xizhou-yan",
     "custom-xizhou-woxiang",
@@ -89,6 +89,46 @@
     ],
     "official_20260909_0001": [
       "bai-tiedye-buy"
+    ],
+    "user_20260910_0001": [
+      "boletus-buy",
+      "crossing-bridge-noodle-gift",
+      "flower",
+      "fruit-wine",
+      "mohong-rose",
+      "mushroom-sauce",
+      "puer",
+      "rose-crisp",
+      "spicy-sausage",
+      "tamarind",
+      "xiangxun-mushroom",
+      "xuanwei-ham-buy"
+    ],
+    "user_20260910_0002": [
+      "barley-crisp",
+      "green-preserved-plum",
+      "milk-strip",
+      "mushroom-ganba",
+      "potato-shreds",
+      "rose-cake",
+      "sweet-sausage",
+      "tamarind-cake",
+      "wild-mushroom-beer",
+      "xiangxun-mushroom",
+      "yuntui-cracker",
+      "yuntui-small-cake"
+    ],
+    "user_20260910_0003": [
+      "bean-pod-doll",
+      "coffee",
+      "elephant-pendant",
+      "flower",
+      "jiama-craft",
+      "mushroom-dry-goods",
+      "mushroom-sauce",
+      "puer",
+      "tamarind-cake",
+      "tile-cat"
     ],
     "web_20260908_0001": [
       "custom-xizhou-yan"

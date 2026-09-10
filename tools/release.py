@@ -33,8 +33,8 @@ def sync_identification(version: str) -> None:
     html = INDEX.read_text(encoding="utf-8")
     pattern = re.compile(r'((?:css/style\.css|js/(?:network|core|weather|offline|settings|reader|journey|map|library|app)\.js)\?v=)[^"\']+')
     html, count = pattern.subn(lambda m: m.group(1) + version, html)
-    if count != 10:
-        raise SystemExit(f"Expected 10 identified local CSS/JS references in index.html, found {count}")
+    if count != 11:
+        raise SystemExit(f"Expected 11 identified local CSS/JS references in index.html (1 CSS + 10 JS), found {count}")
     INDEX.write_text(html, encoding="utf-8", newline="\n")
 
     sw = SW.read_text(encoding="utf-8")
