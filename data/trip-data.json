@@ -743,7 +743,13 @@
       },
       "photoMatch": "exact",
       "hotelGrade": "準五星",
-      "hotelGradeBasis": "2026年度海外員工旅遊手冊"
+      "hotelGradeBasis": "2026年度海外員工旅遊手冊",
+      "amapPoiId": "B0JGA5BN7V",
+      "amapPoiName": "澜颐酒店(昆明长水国际机场店)",
+      "amapLat": 25.076817,
+      "amapLng": 102.950275,
+      "amapUrl": "https://www.amap.com/place/B0JGA5BN7V",
+      "amapNote": "高德目前以「澜颐酒店(昆明长水国际机场店)」收錄；電話 17787129009、地址與手冊住宿相符。導航使用高德 POI ID 與高德座標，網站顯示仍保留手冊名稱。"
     },
     "hotel-dali": {
       "id": "hotel-dali",

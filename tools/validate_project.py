@@ -351,6 +351,7 @@ def validate_generated_photo_sources() -> None:
 
 def validate_release_and_views() -> None:
     config = read_json("tools/release.json")
+    trip = read_json("data/trip-data.json")
     version = config.get("version") if isinstance(config, dict) else None
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     sw = (ROOT / "sw.js").read_text(encoding="utf-8")
@@ -395,16 +396,32 @@ def validate_release_and_views() -> None:
         nav_contract_errors.append("Core navigation service must accept networkProfile for AMap GCJ-02 destinations")
     if "createNavigationService({tripData,items,esc,networkProfile})" not in app:
         nav_contract_errors.append("app.js must pass networkProfile into the navigation service")
-    if "https://amap.com/dir?" not in core or "to[lnglat]" not in core or "wgs84ToGcj02" not in core:
-        nav_contract_errors.append("AMap navigation must use supported amap.com /dir links with GCJ-02 destination coordinates")
-    if "https://amap.com/search?" not in core or "[p?.city,p?.name]" not in core:
-        nav_contract_errors.append("AMap no-coordinate fallback must search by city + place name")
-    if "https://uri.amap.com/search" in core or "p.address||`${p.city||''} ${p.name||''}`" in core:
-        nav_contract_errors.append("AMap navigation must not regress to uri.amap.com full-address keyword search")
+    required_amap_markers = (
+        "'androidamap':'iosamap'",
+        "://navi?",
+        "https://uri.amap.com/navigation?",
+        "sourceApplication:'ChinaYunnan'",
+        "poiname:destName",
+        "lat:gLat.toFixed(6)",
+        "lon:gLng.toFixed(6)",
+        "dev:'0'",
+        "wgs84ToGcj02",
+    )
+    if any(marker not in core for marker in required_amap_markers):
+        nav_contract_errors.append("AMap navigation must use official Android/iOS app schemes with coordinate payload and URI API web fallback")
+    if "https://amap.com/dir?" in core or "to[lnglat]" in core:
+        nav_contract_errors.append("AMap navigation must not use amap.com /dir internal web parameters because the app may open without carrying the destination")
+    if "https://uri.amap.com/search?" not in core or "keyword:amapSearchKeyword(p)" not in core:
+        nav_contract_errors.append("AMap no-coordinate fallback must use official URI search by city + place name")
+    hotel = trip.get("places", {}).get("hotel-kmg-airport", {}) if isinstance(trip.get("places"), dict) else {}
+    if hotel.get("amapPoiId") != "B0JGA5BN7V" or hotel.get("amapPoiName") != "澜颐酒店(昆明长水国际机场店)":
+        nav_contract_errors.append("Kunming airport hotel must retain the verified AMap POI ID/name used for direct navigation")
+    if (hotel.get("amapLat"), hotel.get("amapLng")) != (25.076817, 102.950275):
+        nav_contract_errors.append("Kunming airport hotel must retain its verified AMap GCJ-02 coordinates")
     for message in nav_contract_errors:
         error(message)
     if not nav_contract_errors:
-        passed("AMap navigation uses app-associated amap.com URLs and coordinate-first destination targeting")
+        passed("AMap navigation uses official app deep links with destination payload; Kunming airport hotel is pinned by verified AMap POI ID")
 
     release_markers = ("tools/release.json", "index.html local CSS/JS", "sw.js VERSION", "sw.js APP_CACHE", "sw.js IMAGE_CACHE", "sw.js OFFLINE_META_CACHE", "APP_SHELL", "storage")
     if not any(any(marker in e for marker in release_markers) for e in errors):

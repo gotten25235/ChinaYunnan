@@ -97,34 +97,44 @@
     const cleanText=value=>String(value||'').replace(/\s+/g,' ').trim();
     const finiteCoords=p=>p?.lat!==null&&p?.lat!==undefined&&p?.lat!==''&&p?.lng!==null&&p?.lng!==undefined&&p?.lng!==''&&Number.isFinite(Number(p.lat))&&Number.isFinite(Number(p.lng));
     const amapPoiId=p=>{
+      const explicit=cleanText(p?.amapPoiId);
+      if(explicit&&/^[A-Z0-9]+$/i.test(explicit))return explicit.toUpperCase();
       const urls=[p?.source,p?.amapUrl,p?.url].filter(Boolean).map(String);
       for(const raw of urls){const match=raw.match(/(?:https?:\/\/)?(?:www\.|ditu\.)?amap\.com\/place\/([A-Z0-9]+)/i);if(match)return match[1].toUpperCase();}
       return '';
     };
-    const amapDestinationName=p=>cleanText(p?.name||p?.address||'目的地').slice(0,40);
-    const amapSearchKeyword=p=>cleanText([p?.city,p?.name].filter(Boolean).join(' ')||p?.address||'雲南');
+    const amapDestinationName=p=>cleanText(p?.amapPoiName||p?.name||p?.address||'目的地').slice(0,40);
+    const amapSearchKeyword=p=>cleanText([p?.city,p?.amapPoiName||p?.name].filter(Boolean).join(' ')||p?.address||'雲南');
+    const amapCoords=p=>{
+      if(Number.isFinite(Number(p?.amapLat))&&Number.isFinite(Number(p?.amapLng)))return [Number(p.amapLat),Number(p.amapLng)];
+      if(!finiteCoords(p))return null;
+      const lat=Number(p.lat),lng=Number(p.lng),converted=networkProfile?.wgs84ToGcj02?.(lat,lng)||[lat,lng];
+      return [Number(converted[0]),Number(converted[1])];
+    };
+    const amapPlatform=()=>{const ua=String(globalThis.navigator?.userAgent||'');if(/Android/i.test(ua))return 'android';if(/iPhone|iPad|iPod/i.test(ua))return 'ios';return 'web';};
     const amapLinkFor=p=>{
-      const poiId=amapPoiId(p),destName=amapDestinationName(p);
-      if(finiteCoords(p)){
-        const lat=Number(p.lat),lng=Number(p.lng),converted=networkProfile?.wgs84ToGcj02?.(lat,lng)||[lat,lng],gLat=Number(converted[0]),gLng=Number(converted[1]);
-        const params=new URLSearchParams();
-        if(poiId)params.set('to[id]',`${poiId}-to`);
-        params.set('to[name]',destName);
-        params.set('to[lnglat]',`${gLng.toFixed(6)},${gLat.toFixed(6)}`);
-        params.set('type','car');
-        params.set('policy','0');
-        return 'https://amap.com/dir?'+params.toString();
+      const poiId=amapPoiId(p),destName=amapDestinationName(p),coords=amapCoords(p);
+      if(coords){
+        const [gLat,gLng]=coords,platform=amapPlatform();
+        if(platform==='android'||platform==='ios'){
+          const params=new URLSearchParams({sourceApplication:'ChinaYunnan',poiname:destName,lat:gLat.toFixed(6),lon:gLng.toFixed(6),dev:'0',style:'0'});
+          if(poiId)params.set('poiid',poiId);
+          return `${platform==='android'?'androidamap':'iosamap'}://navi?${params.toString()}`;
+        }
+        const params=new URLSearchParams({from:'',to:`${gLng.toFixed(6)},${gLat.toFixed(6)},${destName}`,mode:'car',policy:'0',src:'ChinaYunnan',callnative:'1'});
+        return 'https://uri.amap.com/navigation?'+params.toString();
       }
-      if(poiId)return `https://amap.com/place/${encodeURIComponent(poiId)}`;
-      const params=new URLSearchParams({query:amapSearchKeyword(p)});
-      return 'https://amap.com/search?'+params.toString();
+      if(poiId)return `https://uri.amap.com/marker?poiid=${encodeURIComponent(poiId)}&src=ChinaYunnan&callnative=1`;
+      const params=new URLSearchParams({keyword:amapSearchKeyword(p),city:cleanText(p?.city||''),view:'map',src:'ChinaYunnan',callnative:'1'});
+      return 'https://uri.amap.com/search?'+params.toString();
     };
     const linkFor=(p,value=provider)=>{
       if(value==='google'){const keyword=cleanText(p?.address||[p?.city,p?.name].filter(Boolean).join(' '));return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(keyword);}
       return amapLinkFor(p);
     };
-    const attrs=p=>`href="${esc(linkFor(p))}" data-nav-id="${esc(p.id)}" data-nav-provider="${esc(provider)}" target="_blank" rel="noopener noreferrer"`;
-    const sync=()=>{document.querySelectorAll('[data-map-provider-select]').forEach(select=>{select.value=provider;});document.querySelectorAll('[data-nav-id]').forEach(link=>{const p=items[link.dataset.navId];if(!p)return;link.href=linkFor(p);link.dataset.navProvider=provider;const label=link.querySelector('[data-nav-label]');if(label)label.textContent=name(provider)+'導航';link.title=`使用${name(provider)}開啟`;});};
+    const httpTarget=url=>/^https?:/i.test(url)?' target="_blank" rel="noopener noreferrer"':'';
+    const attrs=p=>{const href=linkFor(p);return `href="${esc(href)}" data-nav-id="${esc(p.id)}" data-nav-provider="${esc(provider)}"${httpTarget(href)}`;};
+    const sync=()=>{document.querySelectorAll('[data-map-provider-select]').forEach(select=>{select.value=provider;});document.querySelectorAll('[data-nav-id]').forEach(link=>{const p=items[link.dataset.navId];if(!p)return;const href=linkFor(p);link.href=href;link.dataset.navProvider=provider;if(/^https?:/i.test(href)){link.target='_blank';link.rel='noopener noreferrer';}else{link.removeAttribute('target');link.removeAttribute('rel');}const label=link.querySelector('[data-nav-label]');if(label)label.textContent=name(provider)+'導航';link.title=`使用${name(provider)}開啟`;});};
     const set=(value)=>{if(value!=='amap'&&value!=='google')return false;provider=value;try{localStorage.setItem(storageKey,provider);storageAvailable=true;}catch{storageAvailable=false;}sync();return true;};
     return {get:()=>provider,name,linkFor,attrs,sync,set,isStorageAvailable:()=>storageAvailable};
   }
