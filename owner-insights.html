@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#183e36">
+  <title>雲南慢時光 · Owner Insights</title>
+  <style>
+    :root{color-scheme:light;--ink:#20342e;--muted:#74817a;--green:#183e36;--paper:#f5f4ee;--card:#fff;--line:#dfe5df;--gold:#a6782b;--warn:#845a23}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:var(--paper)}
+    body{padding:0 18px 38px}.shell{max-width:1180px;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:24px 0 18px;border-bottom:1px solid var(--line)}
+    .brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:42px;border-radius:13px;background:var(--green);display:grid;place-items:center;color:#fff;font-family:serif;font-size:24px}.eyebrow{display:block;font-size:11px;letter-spacing:.15em;color:var(--muted);margin-bottom:4px}.brand strong{font-size:18px}.pill{padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:12px;color:var(--muted)}
+    main{padding-top:30px}.hero{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:20px}.hero h1{margin:0 0 8px;font-family:"Noto Serif TC","PMingLiU",serif;font-size:clamp(30px,5vw,50px);font-weight:600;letter-spacing:.02em}.hero p{margin:0;color:var(--muted);line-height:1.7}.actions{display:flex;gap:10px;flex-wrap:wrap}
+    button,a.button{border:0;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 15px;border-radius:12px;font:inherit;font-weight:700;cursor:pointer}.primary{background:var(--green);color:#fff}.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)!important}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 3px 16px #16392f08}.card h2,.card h3{margin:0 0 8px}.card p{color:var(--muted);line-height:1.7;margin:0 0 14px}.note{background:#fbf4e8;border-color:#ead8b8;color:var(--warn)}.note p{color:inherit}.setup{display:grid;gap:16px}.field{display:grid;gap:7px}.field label{font-size:13px;font-weight:700}.field input{width:100%;min-height:46px;border:1px solid #ccd6cf;border-radius:11px;padding:10px 12px;font:inherit;background:#fff;color:var(--ink)}.field small{color:var(--muted);line-height:1.5}.steps{margin:0;padding-left:20px;line-height:1.9;color:var(--muted)}code{background:#eef1ed;border-radius:6px;padding:2px 5px;font-size:.9em}.output{display:none}.output.visible{display:block}.output textarea{width:100%;min-height:280px;border:1px solid var(--line);border-radius:12px;padding:12px;font:12px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;resize:vertical}.dashboard{display:none}.dashboard.visible{display:block}.frame-shell{height:min(78vh,900px);min-height:620px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}.frame-shell iframe{width:100%;height:100%;border:0;background:#fff}.privacy{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.privacy span{background:#fff;border:1px solid var(--line);border-radius:13px;padding:12px;text-align:center;font-size:12px;color:var(--muted)}.privacy b{display:block;color:var(--ink);font-size:15px;margin-bottom:3px}.lock{display:grid;place-items:center;min-height:78vh;text-align:center}.lock-card{max-width:500px}.lock-icon{font-size:42px;margin-bottom:14px}.hidden{display:none!important}.status{font-size:12px;color:var(--muted)}
+    @media(max-width:760px){body{padding-inline:12px}.top{padding-top:18px}.pill{display:none}.hero{display:block}.hero .actions{margin-top:16px}.grid{grid-template-columns:1fr}.privacy{grid-template-columns:1fr 1fr}.frame-shell{height:74vh;min-height:520px}.card{padding:16px}}
+  </style>
+</head>
+<body>
+  <div id="locked" class="lock">
+    <div class="lock-card"><div class="lock-icon">◌</div><h1>找不到這個頁面</h1><p class="status">網址不完整，或此頁面已失效。</p></div>
+  </div>
+  <div id="app" class="shell hidden">
+    <header class="top"><div class="brand"><span class="mark">雲</span><div><span class="eyebrow">OWNER ONLY</span><strong>雲南慢時光 · Insights</strong></div></div><span class="pill">不出現在一般網站導覽</span></header>
+    <main>
+      <div class="hero"><div><span class="eyebrow">PRIVATE ANALYTICS</span><h1>旅程網站觀看統計</h1><p>匿名觀看、來源、裝置與站內互動。這個管理頁本身不載入追蹤碼。</p></div><div class="actions"><a class="button secondary" href="./index.html">回旅程網站</a><a id="open-dashboard" class="button primary hidden" target="_blank" rel="noopener noreferrer">開啟完整統計 ↗</a></div></div>
+      <div class="privacy"><span><b>匿名</b>不記姓名</span><span><b>無 Cookie</b>不做跨站追蹤</span><span><b>不記輸入內容</b>表單／備註不送出</span><span><b>不記精確定位</b>只用統計服務的概略地區</span></div>
+
+      <section id="dashboard" class="dashboard">
+        <div class="frame-shell"><iframe id="stats-frame" title="雲南慢時光網站統計" loading="eager" referrerpolicy="no-referrer"></iframe></div>
+        <p class="status" style="margin-top:10px">若瀏覽器阻擋內嵌頁面，請使用右上角「開啟完整統計」。</p>
+      </section>
+
+      <section id="setup" class="setup hidden">
+        <div class="grid">
+          <article class="card"><span class="eyebrow">ONE-TIME SETUP</span><h2>第一次只要綁定一次</h2><ol class="steps"><li>到 Umami Cloud 建立網站，Hostname 填你的 GitHub Pages 網域。</li><li>複製該網站的 <b>Website ID</b>。</li><li>在網站設定建立 <b>Share URL</b>，只開你想看的 Overview / Events / Sessions 等頁面。</li><li>把兩個值貼到右邊，產生新的 <code>analytics-config.json</code>。</li><li>把它覆蓋 GitHub 裡的 <code>data/analytics-config.json</code>。完成後，之後照常只更新 GitHub。</li></ol><div class="actions" style="margin-top:14px"><a class="button secondary" href="https://cloud.umami.is/" target="_blank" rel="noopener noreferrer">開啟 Umami Cloud ↗</a><a class="button secondary" href="https://docs.umami.is/docs/enable-share-url" target="_blank" rel="noopener noreferrer">Share URL 說明 ↗</a></div></article>
+          <article class="card"><span class="eyebrow">BIND ANALYTICS</span><h2>貼上兩個值</h2><div class="field"><label for="website-id">Website ID</label><input id="website-id" autocomplete="off" spellcheck="false" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"><small>這個 ID 會放在公開網站追蹤碼裡，本來就不是密碼。</small></div><div class="field" style="margin-top:14px"><label for="share-url">Share URL</label><input id="share-url" type="url" autocomplete="off" spellcheck="false" placeholder="https://.../share/..."><small>Share URL 會先用你這個秘密網址中的金鑰加密，再寫入設定檔；公開 repo 不會直接看到明文連結。</small></div><div class="actions" style="margin-top:16px"><button id="make-config" class="primary" type="button">產生設定檔</button></div><p id="setup-status" class="status" style="margin-top:10px"></p></article>
+        </div>
+        <article id="output" class="card output"><span class="eyebrow">GENERATED CONFIG</span><h3>新的 data/analytics-config.json</h3><p>下載後覆蓋 GitHub 中同名檔案。它只包含公開 Website ID 與加密後的 Share URL。</p><textarea id="config-output" readonly></textarea><div class="actions"><button id="download-config" class="primary" type="button">下載 analytics-config.json</button><button id="copy-config" class="secondary" type="button">複製 JSON</button></div></article>
+        <article class="card note"><h3>關於「只有我知道的連結」</h3><p>這頁沒有任何主網站入口，而且必須帶正確的網址片段才會解鎖；秘密片段不會送到 GitHub Pages 伺服器。若你的 GitHub repo 是公開的，別人仍可能看到 <code>owner-insights.html</code> 這個檔名，但看不到秘密片段，也無法從設定檔直接取得加密後的 Share URL。真正需要帳號級權限時，仍以 Umami 私人登入為準。</p></article>
+      </section>
+    </main>
+  </div>
+<script>
+(() => {
+  'use strict';
+  const EXPECTED_TOKEN_HASH='191b8170384ed51670c5897dbabc5ec75ae46518906861530378cddd8f8e18b6';
+  const CONFIG_URL='data/analytics-config.json';
+  const $=s=>document.querySelector(s);
+  const enc=new TextEncoder(),dec=new TextDecoder();
+  const b64=bytes=>btoa(String.fromCharCode(...new Uint8Array(bytes)));
+  const unb64=text=>Uint8Array.from(atob(text),c=>c.charCodeAt(0));
+  const hex=bytes=>Array.from(new Uint8Array(bytes),b=>b.toString(16).padStart(2,'0')).join('');
+  const token=decodeURIComponent(location.hash.slice(1));
+  let generatedConfig=null;
+
+  async function tokenValid(){if(!token)return false;return hex(await crypto.subtle.digest('SHA-256',enc.encode(token)))===EXPECTED_TOKEN_HASH;}
+  async function deriveKey(salt,iterations){const base=await crypto.subtle.importKey('raw',enc.encode(token),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);}
+  async function encryptShareUrl(url,iterations=180000){const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12)),key=await deriveKey(salt,iterations),cipher=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(url));return {algorithm:'AES-GCM+PBKDF2-SHA256',iterations,salt:b64(salt),iv:b64(iv),ciphertext:b64(cipher)};}
+  async function decryptShareUrl(box){const salt=unb64(box.salt),iv=unb64(box.iv),key=await deriveKey(salt,Number(box.iterations)||180000),plain=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,unb64(box.ciphertext));return dec.decode(plain);}
+  function validId(value){return /^[0-9a-f]{8}-[0-9a-f-]{27,}$/i.test(value);}
+  function validShare(value){try{const u=new URL(value);return u.protocol==='https:'&&/\/share\//.test(u.pathname);}catch{return false;}}
+  async function loadConfig(){try{const r=await fetch(CONFIG_URL,{cache:'no-store'});return r.ok?await r.json():null;}catch{return null;}}
+  function showSetup(){ $('#dashboard').classList.remove('visible');$('#setup').classList.remove('hidden'); }
+  async function showDashboard(config){
+    try{
+      const share=await decryptShareUrl(config.ownerDashboard||{});
+      if(!validShare(share))throw new Error('invalid share url');
+      $('#stats-frame').src=share;
+      $('#open-dashboard').href=share;
+      $('#open-dashboard').classList.remove('hidden');
+      $('#dashboard').classList.add('visible');
+      $('#setup').classList.add('hidden');
+    }catch{showSetup();$('#setup-status').textContent='已偵測到設定，但無法用目前秘密網址解密 Share URL。請重新產生設定檔。';}
+  }
+  async function init(){
+    if(!(await tokenValid()))return;
+    $('#locked').classList.add('hidden');$('#app').classList.remove('hidden');
+    const config=await loadConfig();
+    const box=config?.ownerDashboard||{};
+    if(config?.enabled&&validId(String(config.websiteId||''))&&box.salt&&box.iv&&box.ciphertext)await showDashboard(config);else showSetup();
+  }
+  $('#make-config').addEventListener('click',async()=>{
+    const id=$('#website-id').value.trim(),share=$('#share-url').value.trim(),status=$('#setup-status');
+    if(!validId(id)){status.textContent='Website ID 格式看起來不正確。';return;}
+    if(!validShare(share)){status.textContent='Share URL 格式看起來不正確，請貼 Umami 產生的 https://.../share/... 連結。';return;}
+    status.textContent='正在加密 Share URL…';
+    try{
+      const ownerDashboard=await encryptShareUrl(share);
+      generatedConfig={schemaVersion:'v1',provider:'umami',enabled:true,scriptUrl:'https://cloud.umami.is/script.js',websiteId:id,privacy:{excludeSearch:true,excludeHash:true,respectDoNotTrack:true},ownerDashboard};
+      const text=JSON.stringify(generatedConfig,null,2)+'\n';
+      $('#config-output').value=text;$('#output').classList.add('visible');status.textContent='完成。下載後覆蓋 data/analytics-config.json。';$('#output').scrollIntoView({behavior:'smooth',block:'start'});
+    }catch(error){console.error(error);status.textContent='瀏覽器無法產生加密設定。請改用最新版 Safari / Chrome / Edge。';}
+  });
+  $('#download-config').addEventListener('click',()=>{if(!generatedConfig)return;const blob=new Blob([JSON.stringify(generatedConfig,null,2)+'\n'],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='analytics-config.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+  $('#copy-config').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('#config-output').value);$('#setup-status').textContent='已複製 JSON。';}catch{$('#config-output').select();document.execCommand('copy');}});
+  init();
+})();
+</script>
+</body>
+</html>

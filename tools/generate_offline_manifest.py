@@ -18,9 +18,11 @@ def core_assets() -> list[str]:
         "./offline-manifest.json",
         f"./css/style.css?v={VERSION}",
     ]
-    for name in ("network", "core", "weather", "offline", "settings", "reader", "journey", "map", "library", "app"):
+    for name in ("network", "core", "analytics", "weather", "offline", "settings", "reader", "journey", "map", "library", "app"):
         assets.append(f"./js/{name}.js?v={VERSION}")
     for path in sorted((ROOT / "data").glob("*.json")):
+        if path.name == "analytics-config.json":
+            continue
         assets.append("./" + path.relative_to(ROOT).as_posix())
     for path in sorted((ROOT / "icons").rglob("*")) if (ROOT / "icons").exists() else []:
         if path.is_file():

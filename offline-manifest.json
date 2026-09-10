@@ -8,6 +8,7 @@
     "./css/style.css?v=v1",
     "./js/network.js?v=v1",
     "./js/core.js?v=v1",
+    "./js/analytics.js?v=v1",
     "./js/weather.js?v=v1",
     "./js/offline.js?v=v1",
     "./js/settings.js?v=v1",

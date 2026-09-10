@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "v1",
+  "provider": "umami",
+  "enabled": false,
+  "scriptUrl": "https://cloud.umami.is/script.js",
+  "websiteId": "",
+  "privacy": {
+    "excludeSearch": true,
+    "excludeHash": true,
+    "respectDoNotTrack": true
+  },
+  "ownerDashboard": {
+    "algorithm": "AES-GCM+PBKDF2-SHA256",
+    "iterations": 180000,
+    "salt": "",
+    "iv": "",
+    "ciphertext": ""
+  }
+}

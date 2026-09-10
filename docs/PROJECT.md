@@ -12,6 +12,7 @@
 ├── README.md
 ├── START.bat
 ├── sw.js
+├── owner-insights.html           # unlinked owner-only analytics entry
 ├── manifest.webmanifest
 ├── offline-manifest.json          # generated
 ├── icons/
@@ -19,6 +20,7 @@
 ├── js/
 │   ├── network.js
 │   ├── core.js
+│   ├── analytics.js
 │   ├── weather.js
 │   ├── offline.js
 │   ├── settings.js
@@ -29,6 +31,7 @@
 │   └── app.js
 ├── data/
 │   ├── trip-data.json
+│   ├── analytics-config.json      # optional, not trip content
 │   ├── social-sources.json
 │   └── source-index.json          # generated
 ├── images/
@@ -53,6 +56,7 @@
 ## 2. 資料契約
 
 - `trip-data.json`：旅程、Day、地點、美食、購物、照片 metadata 等正式資料。
+- `analytics-config.json`：純技術性、可選的匿名統計設定，不屬於旅程正式資料；預設 `enabled:false`。
 - `days[*]` 只引用 ID，不複製完整 entity。
 - `pdfScheduled: true` 表示原始旅行手冊已安排的內容；Day itinerary 與住宿必須維持此契約。
 - 地址或座標無法核實時保持不確定，不用城市中心或猜測座標補洞。
@@ -61,6 +65,7 @@
 - `source-index.json` 是由正式資料與來源紀錄推導的索引，不可手改。
 - `trip-data.json > photos` 是圖片 metadata 與授權資訊的唯一來源；`PHOTO_SOURCES.md` 由工具生成。
 - `foods[*].priority` 只在需要優先排序時使用 `必吃`；`shopping[*].priority` 使用 `必買`，且必買商品的 `group` 也必須是 `必買`。Priority 是本次旅程的內容排序，不改寫 `pdfScheduled`。
+- 所有 `foods[*]` 與可食用／可飲用的 `shopping[*]` 使用 `foodReview`：`verdict`、`aroma`、`flavor`、`texture`、`bestWay`、`caution`、`forWhom`，以及 `scores`（香氣／口感／味道層次／地方特色／回購度，各 1–5）。購物品項另以 `edible: true` 標示。評鑑屬典型風味整理，不宣稱特定店家或品牌實測。
 - `culture[*].kind: "鄉野奇談"` 只收錄有可追溯地方傳說／民俗／信仰來源的故事；文字必須明確區分傳說與史實，不把靈異說法寫成已證實事件。
 
 ### 版面名稱約定
@@ -75,6 +80,7 @@
 | --- | --- |
 | `network.js` | 國際版／大陸版 profile（預設國際版）、Leaflet runtime loader、OSM／高德底圖選擇、WGS84 ↔ GCJ-02 顯示座標轉換；同時提供 QWeather Grid 所需的 WGS84→GCJ-02 converter |
 | `core.js` | Photo System、Travel Utils、Favorites Store、Navigation Service、Date Rail、Horizontal Scroller；Photo System 對兩種 network profile 使用同一張正確主體圖，負責本地／遠端圖、錯誤 placeholder 與示意／背景 badge，不做跨地點 fallback，不持有 Domain 畫面 state |
+| `analytics.js` | 可選 Umami tracker loader 與匿名事件 queue；只讀 `data/analytics-config.json`，不持有旅程 Domain state、不呼叫 `identify()`、不記表單內容／精確定位；設定未啟用或本機開發時完全不載入外部 tracker |
 | `weather.js` | 高德天氣 → QWeather Grid → Open-Meteo provider chain、API credential local settings、欄位優先合併、旅程日 weather point、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots、各 weather point 的高德／QWeather／Open-Meteo 公開地點預報連結 |
 | `offline.js` | PWA 選擇式離線準備 UI（核心固定、旅行照片／天氣可選且預設全選）、Service Worker message bridge、Cache 完整性檢查、具名缺失清單、只重試失敗照片、online/offline 狀態、主畫面安裝提示、收藏／偏好匯出匯入；不保存天氣 API Key |
 | `settings.js` | Settings View 的介面版面 preference owner；`mobile` 為預設，`desktop` 會在手機上固定桌面 viewport，偏好使用 `yunnan-2026-ui-layout-v1`。文件名稱固定區分「電腦版／手機版／手機電腦版」；初始 shell 以 `data-runtime-layout="mobile-desktop"` 標記手機選桌面模式，供專用 Reader 高度等 CSS 使用 |
@@ -89,6 +95,7 @@
 - App：`currentView`。
 - Network：network profile。
 - Core：Favorites IDs、navigation provider。
+- Analytics：外部 tracker 的 optional runtime 狀態與暫存事件 queue；正式開關／Website ID 來自 `analytics-config.json`，Owner Share URL 只保存加密密文。
 - Weather：provider credentials（localStorage）、forecast cache、refresh state。
 - Offline：離線內容選取狀態、準備狀態、安裝提示與 user-data backup bridge；核心固定必選，旅行照片／天氣預設勾選且可取消；實體資源由 Service Worker Cache Storage 擁有。
 - Settings：介面版面狀態；預設 mobile，與網路、導航、天氣、離線控制一起集中顯示在獨立 Settings View。
@@ -141,13 +148,23 @@ Reader 關閉後要回原本 window scroll、橫向 Rail scroll 與 focus。Cont
 
 圖片授權與來源以 `trip-data.json > photos` 為準；`python tools/generate_photo_sources.py` 產生可讀的 attribution ledger。
 
-## 7. CSS
+## 7. Anonymous Analytics / Owner Insights
+
+`analytics.js` 只在 HTTPS 線上環境且 `data/analytics-config.json` 有合法 Umami Website ID、`enabled:true` 時才動態載入 `https://cloud.umami.is/script.js`。本機 `file://`、localhost / 127.0.0.1 不送統計。Tracker 設定固定排除 query/hash，尊重 Do Not Track；本站不使用 `umami.identify()`。
+
+主 App 只送低敏感度互動事件：`tab_view`、`item_open`、`story_open`、`navigation_open`、`favorite_click`、`map_geolocate`、`nearby_open`、`weather_refresh`、`offline_prepare`、`timetable_download`。事件可含 entity ID／顯示名稱與操作類型，但不可加入姓名、電話、Email、備註內容、API Key、GPS 經緯度或其他個人資料。
+
+`owner-insights.html` 不出現在任何主導覽／footer / README 快速入口，且本身使用 `noindex,nofollow`；網址 fragment 內的秘密 token 只在瀏覽器端做 SHA-256 驗證，不送到 GitHub Pages。Umami Share URL 不可明文寫進 repo；Owner 頁的 setup flow 使用 PBKDF2-SHA256 + AES-GCM 將 Share URL 加密後再產生 `analytics-config.json`。這是 unlisted secret-link gate，不取代 Umami 帳號級權限。
+
+`analytics-config.json` 不納入離線核心完整性判定。Service Worker 對它採 network-only，離線或抓取失敗時等同 analytics disabled，絕不能影響旅程 App。
+
+## 8. CSS
 
 `css/style.css` 維持單檔，以 Domain / Card / Rail Ownership 區塊維護。現有 cascade 與手機 gesture 關聯很深，不做無目的的大規模排序或拆檔。
 
 修改 `touch-action`、`scroll-snap`、`overflow-x` 前先確認 Rail owner。新規則放回所屬區塊，不使用日期式 patch 區塊累積 override。
 
-## 8. V1 Identification / Cache / Generated Data / Release
+## 9. V1 Identification / Cache / Generated Data / Release
 
 `tools/release.json` 只保存固定識別：
 
@@ -201,7 +218,7 @@ python tools/release.py --zip
 
 `release.py` 套用固定 `v1` 識別、重建 Source / Photo / Offline 三種 generated files、執行 validator、依需要產 ZIP。它不接受版本號，也不維護版本演進。
 
-## 9. 最低驗證
+## 10. 最低驗證
 
 每次正式修改至少執行：
 
@@ -211,7 +228,7 @@ python tools/release.py --zip
 4. ZIP 必須通過完整性測試。
 5. Gesture 相關修改只有在真的拿實機測過時，才能宣稱已完成特定手機實測。
 
-## 10. 已知難題與最佳處理方式
+## 11. 已知難題與最佳處理方式
 
 這一章保留的是 V1 的工程決策，不是修改歷史。遇到同類問題時，以「最佳處理」為預設方案。
 

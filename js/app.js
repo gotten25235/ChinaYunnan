@@ -7,11 +7,13 @@
   catch(error){console.error('Unable to load trip data:',error);document.body.insertAdjacentHTML('afterbegin','<div class="data-load-error"><strong>行程資料載入失敗。</strong> 請用 HTTP/HTTPS 開啟；Windows 本機版請直接執行 <code>START.bat</code>，不要雙擊 index.html。</div>');return;}
 
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  if(!window.YunnanNetworkSystem||!window.YunnanCore||!window.YunnanWeatherSystem||!window.YunnanOfflineSystem||!window.YunnanSettingsSystem||!window.YunnanReaderSystem||!window.YunnanJourneySystem||!window.YunnanMapSystem||!window.YunnanLibrarySystem)throw new Error('UI module bootstrap failed');
+  if(!window.YunnanNetworkSystem||!window.YunnanCore||!window.YunnanAnalyticsSystem||!window.YunnanWeatherSystem||!window.YunnanOfflineSystem||!window.YunnanSettingsSystem||!window.YunnanReaderSystem||!window.YunnanJourneySystem||!window.YunnanMapSystem||!window.YunnanLibrarySystem)throw new Error('UI module bootstrap failed');
   const networkProfile=YunnanNetworkSystem.create();
   const leafletReady=networkProfile.loadLeaflet();
 
   const items={...tripData.places,...Object.fromEntries([...tripData.foods,...tripData.shopping,...tripData.photoSpots].map(p=>[p.id,p]))};
+  const analyticsSystem=YunnanAnalyticsSystem.create({items});
+  analyticsSystem.start();
   const photoSystem=YunnanCore.createPhotoSystem({photos:tripData.photos,esc,networkProfile});photoSystem.installErrorHandler();
   const travelUtils=YunnanCore.createTravelUtils({tripData,items,esc});
   const favoritesStore=YunnanCore.createFavoritesStore({items});
@@ -22,7 +24,7 @@
   const dateRail=YunnanCore.createDateRailController({tripData,esc,$,todayDay});
   const readerInteraction=YunnanReaderSystem.createInteraction({$});
   const renderedViews=new Set();
-  let currentView='itinerary',toastTimer,mapSystem,librarySystem,readerSystem,journeySystem,weatherSystem,offlineSystem,settingsSystem;
+  let currentView='itinerary',lastTrackedView=null,toastTimer,mapSystem,librarySystem,readerSystem,journeySystem,weatherSystem,offlineSystem,settingsSystem;
 
   const markRendered=name=>renderedViews.add(name);
   const toast=message=>{const el=$('#toast');if(!el)return;el.textContent=message;el.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),3000);};
@@ -96,6 +98,7 @@
   function showView(name,scroll=true,fitMap=null){
     if(!VIEW_REGISTRY[name])name='itinerary';
     const previous=currentView,changing=previous!==name;currentView=name;
+    if(lastTrackedView!==name){analyticsSystem.track('tab_view',{tab:name});lastTrackedView=name;}
     document.querySelectorAll('.view').forEach(el=>{const active=el.id===`view-${name}`;if(el.hidden)el.hidden=false;el.classList.toggle('is-active',active);el.setAttribute('aria-hidden',String(!active));try{el.inert=!active;}catch{}});
     document.querySelectorAll('[data-view]').forEach(b=>{const active=b.dataset.view===name;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current');});
     VIEW_REGISTRY[name].onShow?.({fitMap});
@@ -108,10 +111,13 @@
 
   // Single app-level action router. Each domain gets first refusal for the data-* actions it owns.
   document.addEventListener('click',event=>{
+    const navLink=event.target.closest('[data-nav-id]');
+    if(navLink)analyticsSystem.trackNavigation(navLink.dataset.navId,navLink.dataset.navProvider||'');
     const cultureCard=event.target.closest('[data-culture-story]');
-    if(cultureCard&&!event.target.closest('a,button,input,select,textarea,label')){readerSystem.openStory(cultureCard.dataset.cultureStory,{opener:cultureCard});return;}
+    if(cultureCard&&!event.target.closest('a,button,input,select,textarea,label')){analyticsSystem.trackStory(cultureCard.dataset.cultureStory);readerSystem.openStory(cultureCard.dataset.cultureStory,{opener:cultureCard});return;}
     const b=event.target.closest('button');
-    if(!b){const card=event.target.closest('[data-item]');if(card&&!event.target.closest('a,input,select,textarea'))readerSystem.openItem(card.dataset.item,{day:card.dataset.readerDay,kind:card.dataset.readerKind||'',opener:card});return;}
+    if(!b){const card=event.target.closest('[data-item]');if(card&&!event.target.closest('a,input,select,textarea')){analyticsSystem.trackItem(card.dataset.item,{kind:card.dataset.readerKind||''});readerSystem.openItem(card.dataset.item,{day:card.dataset.readerDay,kind:card.dataset.readerKind||'',opener:card});}return;}
+    analyticsSystem.trackControl(b);
     if(offlineSystem.handleAction(b))return;
     if(weatherSystem.handleAction(b))return;
     if(journeySystem.handleAction(b))return;
@@ -123,7 +129,7 @@
     if(b.dataset.view){showView(b.dataset.view);return;}
     if(b.hasAttribute('data-reload')){location.reload();return;}
   });
-  document.addEventListener('keydown',event=>{if(!['Enter',' '].includes(event.key))return;const card=event.target.closest?.('[data-culture-story]');if(!card||event.target.closest('a,button,input,select,textarea,label'))return;event.preventDefault();readerSystem.openStory(card.dataset.cultureStory,{opener:card});});
+  document.addEventListener('keydown',event=>{if(!['Enter',' '].includes(event.key))return;const card=event.target.closest?.('[data-culture-story]');if(!card||event.target.closest('a,button,input,select,textarea,label'))return;event.preventDefault();analyticsSystem.trackStory(card.dataset.cultureStory);readerSystem.openStory(card.dataset.cultureStory,{opener:card});});
   document.addEventListener('change',event=>{
     if(offlineSystem.handleChange(event.target))return;
     if(settingsSystem.handleChange(event.target))return;

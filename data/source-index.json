@@ -10,8 +10,8 @@
     "hotel_night_nearby20_20260908"
   ],
   "customItemCount": 32,
-  "sourceCount": 59,
-  "referencedSourceCount": 59,
+  "sourceCount": 60,
+  "referencedSourceCount": 60,
   "defaultCustomIds": [
     "custom-xizhou-yan",
     "custom-xizhou-woxiang",
@@ -49,6 +49,10 @@
   "unreferencedSourceIds": [],
   "missingSourceIds": [],
   "sourceUsage": {
+    "fb_20260910_0001": [
+      "mushroom-kmg",
+      "mushroom-lj"
+    ],
     "ig_20260909_0001": [
       "mushroom-lj"
     ],

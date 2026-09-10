@@ -99,11 +99,37 @@ def validate_json_and_ids(trip: dict, social: dict) -> dict[str, dict]:
             error(f"shopping {obj.get('id')!r} priority must be '必買' when present")
         if obj.get("priority") == "必買" and obj.get("group") != "必買":
             error(f"shopping {obj.get('id')!r} with priority='必買' must also use group='必買'")
+    review_fields = ("verdict", "aroma", "flavor", "texture", "bestWay", "caution", "forWhom")
+    score_fields = ("aroma", "texture", "layers", "local", "rebuy")
+    def validate_food_review(owner: str, obj: dict) -> None:
+        review = obj.get("foodReview")
+        if not isinstance(review, dict):
+            error(f"{owner} must provide foodReview")
+            return
+        for field in review_fields:
+            if not isinstance(review.get(field), str) or not review[field].strip():
+                error(f"{owner}.foodReview.{field} must be non-empty text")
+        scores = review.get("scores")
+        if not isinstance(scores, dict):
+            error(f"{owner}.foodReview.scores must be an object")
+            return
+        for field in score_fields:
+            value = scores.get(field)
+            if not isinstance(value, int) or isinstance(value, bool) or not 1 <= value <= 5:
+                error(f"{owner}.foodReview.scores.{field} must be an integer from 1 to 5")
+        if not isinstance(obj.get("reviewBasis"), str) or not obj["reviewBasis"].strip():
+            error(f"{owner}.reviewBasis must explain the review basis")
+    for index, obj in enumerate(trip.get("foods", [])):
+        if isinstance(obj, dict):
+            validate_food_review(f"foods[{index}]", obj)
+    for index, obj in enumerate(trip.get("shopping", [])):
+        if isinstance(obj, dict) and obj.get("edible") is True:
+            validate_food_review(f"shopping[{index}]", obj)
     for story in trip.get("culture", []):
         if story.get("kind") == "鄉野奇談" and not story.get("source"):
             error(f"culture story {story.get('id')!r} kind='鄉野奇談' requires a source URL")
     if len(errors) == priority_errors_before:
-        passed("food/shopping priority and folklore source contracts are valid")
+        passed("food/shopping priority, taste-review and folklore source contracts are valid")
 
     photos = trip.get("photos") if isinstance(trip.get("photos"), dict) else {}
     days = trip.get("days") if isinstance(trip.get("days"), list) else []
@@ -335,8 +361,8 @@ def validate_release_and_views() -> None:
     if config != {"version": "v1"}:
         error('tools/release.json must contain only {"version": "v1"}')
 
-    versions = re.findall(r'(?:css/style\.css|js/(?:network|core|weather|offline|settings|reader|journey|map|library|app)\.js)\?v=([^"\']+)', html)
-    if len(versions) != 11 or any(v != "v1" for v in versions):
+    versions = re.findall(r'(?:css/style\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|app)\.js)\?v=([^"\']+)', html)
+    if len(versions) != 12 or any(v != "v1" for v in versions):
         error("index.html local CSS/JS identification must be ?v=v1")
 
     sw_version = re.search(r"const VERSION = '([^']+)';", sw)
@@ -349,7 +375,7 @@ def validate_release_and_views() -> None:
     if "const OFFLINE_META_CACHE = `yunnan-offline-${VERSION}`;" not in sw:
         error("sw.js OFFLINE_META_CACHE must use fixed V1 identification")
 
-    expected_shell = ["index.html", "manifest.webmanifest", "offline-manifest.json", "css/style.css", "js/network.js", "js/core.js", "js/weather.js", "js/offline.js", "js/settings.js", "js/reader.js", "js/journey.js", "js/map.js", "js/library.js", "js/app.js", "data/trip-data.json", "data/social-sources.json", "data/source-index.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png"]
+    expected_shell = ["index.html", "manifest.webmanifest", "offline-manifest.json", "css/style.css", "js/network.js", "js/core.js", "js/analytics.js", "js/weather.js", "js/offline.js", "js/settings.js", "js/reader.js", "js/journey.js", "js/map.js", "js/library.js", "js/app.js", "data/trip-data.json", "data/social-sources.json", "data/source-index.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png"]
     for rel in expected_shell:
         if not (ROOT / rel).is_file():
             error(f"APP_SHELL file missing: {rel}")

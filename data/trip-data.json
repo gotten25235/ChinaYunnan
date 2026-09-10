@@ -2509,7 +2509,7 @@
       "city": "大理",
       "taste": "甜／鹹",
       "meal": "小吃",
-      "description": "喜洲的招牌碳水，外層烤得酥香，甜口、鹹口各有擁護者。第一次不用糾結，兩種各分一塊最省事。",
+      "description": "外皮一掰會掉酥屑，裡面卻還軟韌；真正迷人的是炭火、麥香和油酥香一起衝上來。甜口常見玫瑰紅糖，鹹口則是蔥肉鹹香，兩派都很有理由。",
       "emoji": "🥮",
       "type": "food",
       "pdfScheduled": false,
@@ -2526,7 +2526,24 @@
       "sourceRefs": [
         "web_20260909_0001",
         "xhs_20260909_0001"
-      ]
+      ],
+      "foodReview": {
+        "verdict": "到了喜洲就吃",
+        "aroma": "剛出爐時麥香、油酥香最明顯，甜口再疊玫瑰或紅糖香。",
+        "flavor": "甜口花香甜潤；鹹口蔥肉鹹香，尾韻都有烤餅焦香。",
+        "texture": "外層酥脆掉屑，內層柔軟帶韌，層次比一般燒餅豐富。",
+        "bestWay": "買現烤，出爐 5–10 分鐘內吃；第一次兩種口味各分一塊。",
+        "caution": "冷掉後酥脆度會明顯下降，而且油酥感偏重，別一口氣吃太多。",
+        "forWhom": "愛燒餅、酥皮、紅糖玫瑰或鹹香麵點的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 5,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "rushan",
@@ -2534,7 +2551,7 @@
       "city": "大理",
       "taste": "甜／奶香",
       "meal": "小吃",
-      "description": "把牛奶做成可以捲、可以烤的白族小吃，奶香非常直接。最適合當地趁熱吃，冷掉後魅力會打折。",
+      "description": "這不是起司，也不是牛奶糖，而是把牛奶拉成一張薄薄的乳製品。烤過會有奶香和焦香，炸過則更脆；味道比想像中直接，喜歡奶味的人通常很快上癮。",
       "emoji": "🍦",
       "type": "food",
       "pdfScheduled": false,
@@ -2552,7 +2569,24 @@
       "sourceRefs": [
         "web_20260909_0001",
         "xhs_20260909_0001"
-      ]
+      ],
+      "foodReview": {
+        "verdict": "大理值得試一次",
+        "aroma": "主調是乳香，烤或炸後會多一層焦糖般的烘烤香。",
+        "flavor": "奶味微酸微鹹，搭蜂蜜、玫瑰醬或糖後更像甜點。",
+        "texture": "新鮮版偏韌、帶嚼勁；烤炸版邊緣酥脆，中間仍有乳片韌性。",
+        "bestWay": "現烤現吃最有趣；甜口可配蜂蜜或玫瑰醬。",
+        "caution": "不愛濃奶味或乳製品酸香的人，接受度可能兩極。",
+        "forWhom": "起司、奶皮、乳製甜點愛好者。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 3,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "ersi",
@@ -2560,7 +2594,7 @@
       "city": "大理",
       "taste": "鹹／辣可調",
       "meal": "正餐",
-      "description": "看起來像麵，其實是米做的。湯吃、炒吃都成立，口感比一般米線更厚實；怕辣就先把辣度說清楚。",
+      "description": "餌絲的重點不是彈牙，而是「軟滑又有米感」。比一般米線更厚、更能抓住湯汁，入口柔軟但不至於爛，吃起來很像米做的寬麵。",
       "emoji": "🍜",
       "type": "food",
       "pdfScheduled": false,
@@ -2573,7 +2607,24 @@
       "coordinateSource": "https://mapcarta.com/W767449039",
       "coordinateNote": "推薦尋味區：大理古城（非餐廳位置）",
       "photoId": "ersi",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "foodReview": {
+        "verdict": "早餐很可以",
+        "aroma": "米香溫和，真正的香氣多來自肉湯、醬料與配料。",
+        "flavor": "本體清淡，能把高湯、肉末、酸菜、辣椒的味道完整接住。",
+        "texture": "滑、軟、略黏，厚度帶來比米線更扎實的咀嚼感。",
+        "bestWay": "早上吃湯餌絲，先喝原湯再加辣椒與醋。",
+        "caution": "如果只愛非常彈牙的麵條，可能會覺得它偏軟。",
+        "forWhom": "喜歡湯粉、米製主食、清爽早餐的人。",
+        "scores": {
+          "aroma": 3,
+          "texture": 4,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "erkuai",
@@ -2581,7 +2632,7 @@
       "city": "大理",
       "taste": "鹹／甜",
       "meal": "小吃",
-      "description": "雲南人很會把米換一種形狀繼續吃，餌塊就是代表。烤得微焦後抹醬，鹹甜都能走，適合邊逛邊吃。",
+      "description": "把米做成可以烤、炒、煎的「雲南年糕」，就是餌塊。烤過有淡淡焦香，咬下去不是脆，而是緊實、黏韌、越嚼越有米甜。",
       "emoji": "🍘",
       "type": "food",
       "pdfScheduled": false,
@@ -2594,7 +2645,24 @@
       "coordinateSource": "https://mapcarta.com/W767449039",
       "coordinateNote": "推薦尋味區：大理古城（非餐廳位置）",
       "photoId": "erkuai",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "foodReview": {
+        "verdict": "路過看到就吃",
+        "aroma": "炭烤款有米香與煙火焦香，醬料常帶腐乳、花生或辣椒氣息。",
+        "flavor": "餌塊本體淡雅，風味幾乎由醬料、油條、醃菜或火腿決定。",
+        "texture": "緊實、糯韌、微黏牙；烤邊可能略乾脆。",
+        "bestWay": "早餐吃燒餌塊最對味，趁熱讓醬和餌塊一起咬。",
+        "caution": "糯米類口感不對胃口的人，可能覺得太黏太扎實。",
+        "forWhom": "年糕、米食、重醬早餐派。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "bai",
@@ -2602,7 +2670,7 @@
       "city": "大理",
       "taste": "鹹／酸辣",
       "meal": "正餐",
-      "description": "白族料理適合一桌人一起開吃，酸、辣、鹹鮮輪流上場。人多最好點幾種不同做法，別整桌都選同一種辣度。",
+      "description": "白族菜不是單一味型，常見的是酸、辣、鮮一起出現，再配上乳扇、魚、肉和野菜。好吃的關鍵不是「重」，而是酸味把油香和鮮味拉亮。",
       "emoji": "🥢",
       "type": "food",
       "pdfScheduled": false,
@@ -2615,7 +2683,24 @@
       "coordinateSource": "https://mapcarta.com/W767449039",
       "coordinateNote": "推薦尋味區：大理古城（非餐廳位置）",
       "photoId": "bai-cuisine",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "foodReview": {
+        "verdict": "值得安排一餐",
+        "aroma": "香料、酸味來源與鍋氣依菜色變化，整桌通常香氣很活。",
+        "flavor": "常見酸辣鮮明，鹹味不弱，但不是每道都辛辣。",
+        "texture": "一桌會同時有脆、嫩、酥、滑等多種口感，整體比單吃一道有趣。",
+        "bestWay": "多人點一桌合菜最好，一次試魚、乳製品、蔬菜與麵點。",
+        "caution": "「白族料理」範圍很廣，餐廳差異比單一道小吃更大。",
+        "forWhom": "喜歡酸辣、合菜、一次吃多種地方菜的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "jidou",
@@ -2623,7 +2708,7 @@
       "city": "麗江",
       "taste": "鹹／辣可調",
       "meal": "小吃",
-      "description": "麗江逛到嘴饞時，雞豆涼粉是一張很靈活的牌：滑嫩、清爽，醬汁一加又立刻變重口。怕辣就請店家分開放。",
+      "description": "看起來像普通涼粉，入口卻比綠豆涼粉更有豆香和一點粉糯感。真正把它叫醒的是辣椒、醋、蒜和香菜，酸辣一拌，瞬間從樸素變開胃。",
       "emoji": "🥣",
       "type": "food",
       "pdfScheduled": false,
@@ -2641,7 +2726,24 @@
       "sourceRefs": [
         "web_20260909_0002",
         "web_20260909_0003"
-      ]
+      ],
+      "foodReview": {
+        "verdict": "麗江小吃必試",
+        "aroma": "本體豆香低調，蒜、辣椒油、香菜與醋的香氣更突出。",
+        "flavor": "酸、辣、鹹是主軸，底下有淡淡豆香與微澀感。",
+        "texture": "柔軟滑嫩、略帶粉糯，不是 Q 彈型涼粉。",
+        "bestWay": "當開胃小吃分著吃，醬汁拌勻後再入口。",
+        "caution": "怕生蒜、香菜或酸辣的人，會覺得調味太直接。",
+        "forWhom": "喜歡涼拌、酸辣小菜的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "naxi",
@@ -2649,7 +2751,7 @@
       "city": "麗江",
       "taste": "鹹",
       "meal": "正餐",
-      "description": "烤香、鹹香、很下飯，是納西風味裡存在感很高的一類肉菜。搭一盤蔬菜一起分食，比單攻肉盤舒服。",
+      "description": "最迷人的不是「肉很多」，而是肥瘦、焦邊和香料一起工作。烤得好的外層微焦，脂肪被逼出香氣，裡面仍有肉汁；配辣椒面吃很容易失手加點。",
       "emoji": "🍖",
       "type": "food",
       "pdfScheduled": false,
@@ -2662,7 +2764,24 @@
       "coordinateSource": "https://whc.unesco.org/en/list/811/maps/",
       "coordinateNote": "推薦尋味區：麗江古城／大研古城（非餐廳位置）",
       "photoMatch": "representative",
-      "photoId": "naxi-grilled-meat-exact-web"
+      "photoId": "naxi-grilled-meat-exact-web",
+      "foodReview": {
+        "verdict": "肉食派值得吃",
+        "aroma": "炭火、油脂與香料香氣強，常帶明顯焦香。",
+        "flavor": "鹹香為主，辣椒與孜然類調味會把肉香推得更高。",
+        "texture": "外層焦脆，內裡嫩韌；肥肉部位油潤。",
+        "bestWay": "剛烤好就吃，配清爽蔬菜或啤酒最解膩。",
+        "caution": "店家火候差異很大，烤過頭會乾硬，肥肉比例高也可能膩。",
+        "forWhom": "愛燒烤、重口味、肉香的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 5,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "ljbaba",
@@ -2670,7 +2789,7 @@
       "city": "麗江",
       "taste": "甜／鹹",
       "meal": "小吃",
-      "description": "跟喜洲粑粑同名不同個性，麗江粑粑也有甜鹹兩派。看到現做熱的再下手，當下午點心比買冷掉的版本值得。",
+      "description": "比喜洲粑粑更像「日常型」麵餅：外面烤得香，裡面有韌性，甜鹹都能做。它未必第一口就震撼，但很適合當走古城時的補血碳水。",
       "emoji": "🥮",
       "type": "food",
       "pdfScheduled": false,
@@ -2688,7 +2807,24 @@
       "sourceRefs": [
         "web_20260909_0002",
         "web_20260909_0003"
-      ]
+      ],
+      "foodReview": {
+        "verdict": "古城路過就吃",
+        "aroma": "麥香、油香和煎烤焦香是主角。",
+        "flavor": "甜口柔和，鹹口更耐吃；整體比喜洲破酥粑粑樸實。",
+        "texture": "外緣略酥，中間偏軟韌，厚實有飽足感。",
+        "bestWay": "買小份趁熱吃，搭茶比搭甜飲舒服。",
+        "caution": "冷掉容易變韌，若同日已吃很多麵餅可不用硬集郵。",
+        "forWhom": "喜歡傳統麵點、想吃在地日常感的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 3,
+          "local": 5,
+          "rebuy": 3
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "mushroom-lj",
@@ -2696,7 +2832,7 @@
       "city": "麗江",
       "taste": "鹹／鮮",
       "meal": "正餐",
-      "description": "雲南野生菌最迷人的地方是「鮮」，最不能開玩笑的地方也是菌。只在正規餐廳吃、照店家時間煮熟，別自行採、別搶著半熟試味道。",
+      "description": "在雲南吃菌子，最危險的不一定是菌，是你那雙等不及的筷子。你貼的影片玩的是「菌子火鍋還沒煮好，店家先不給餐具，結果還是防不住自己人」這個梗；笑歸笑，真正迷人的是一鍋裡不同菌種輪流冒出堅果、木質、奶油、土壤與肉香，湯越煮越鮮，像天然高湯一路加碼。",
       "emoji": "🍄",
       "type": "food",
       "pdfScheduled": false,
@@ -2711,8 +2847,26 @@
       "photoMatch": "verified",
       "sourceRefs": [
         "ig_20260909_0001",
-        "web_20260909_0003"
-      ]
+        "web_20260909_0003",
+        "fb_20260910_0001"
+      ],
+      "foodReview": {
+        "verdict": "菌季值得專程吃，但筷子請等計時器",
+        "aroma": "菌香從清甜到濃郁土壤、堅果香都有，混合料理層次特別強。",
+        "flavor": "核心是鮮甜與旨味，調味通常不必太重就有存在感。",
+        "texture": "依菌種可脆、嫩、滑、韌，拼在一起最有趣。",
+        "bestWay": "鍋一上桌先忍住。照店家要求煮足時間、確認可以吃再開動；第一輪先喝原味湯，再決定要不要加重口蘸料。",
+        "caution": "影片的「先不給餐具」是很好笑的菌子梗，但各店做法不一。真正不能開玩笑的是熟度：野生菌一定依店家指示徹底煮熟，不要偷撈、不要搶跑。笑點可以偷跑，筷子不行。",
+        "forWhom": "菇類愛好者、喜歡鮮味與食材差異的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 5,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "yak",
@@ -2720,7 +2874,7 @@
       "city": "香格里拉",
       "taste": "鹹",
       "meal": "正餐",
-      "description": "高原上來一鍋犛牛火鍋，天氣一冷特別合理。先吃原湯原味，再決定要不要加重蘸水；肉製品就留在當地享用最省事。",
+      "description": "犛牛肉不是入口即化型，而是肉味乾淨、纖維緊實、越嚼越香。放進熱湯裡短涮最舒服，煮太久就會從「有嚼勁」跨線成「健身」。",
       "emoji": "🍲",
       "type": "food",
       "pdfScheduled": false,
@@ -2738,7 +2892,24 @@
         "web_20260909_0008",
         "web_20260909_0009"
       ],
-      "photoId": "yak-hotpot-exact-web"
+      "photoId": "yak-hotpot-exact-web",
+      "foodReview": {
+        "verdict": "香格里拉值得安排",
+        "aroma": "肉香直接，清湯型還會有牛骨與高原香料的暖香。",
+        "flavor": "鹹鮮、牛肉味明顯，蘸料可再加辣香。",
+        "texture": "緊實有彈性，瘦肉感較強；火候正確時不柴。",
+        "bestWay": "薄片剛變色就吃，配青稞餅或酸奶把整套藏區味道補齊。",
+        "caution": "煮久容易乾柴；不喜歡瘦肉纖維感的人可能偏好肥牛。",
+        "forWhom": "牛肉控、火鍋控、想吃高原代表味的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "buttertea",
@@ -2746,7 +2917,7 @@
       "city": "香格里拉",
       "taste": "鹹／奶香",
       "meal": "飲品",
-      "description": "第一口可能會讓習慣甜奶茶的人愣一下：它走的是鹹、奶香、油潤路線。先小口喝，不用勉強自己立刻愛上。",
+      "description": "第一口常讓人愣一下：它不是奶茶，是「鹹的、油潤的茶湯」。茶的微苦、酥油的奶脂香和鹽味黏在一起，喝懂之後會覺得很暖；喝不懂也很正常。",
       "emoji": "🍵",
       "type": "food",
       "pdfScheduled": false,
@@ -2765,7 +2936,24 @@
       "sourceRefs": [
         "web_20260909_0008",
         "web_20260909_0009"
-      ]
+      ],
+      "foodReview": {
+        "verdict": "很地方，至少喝一杯",
+        "aroma": "酥油奶香明顯，下面壓著茶葉的熟香或微澀。",
+        "flavor": "鹹、微苦、油潤，部分店家會做得較柔和。",
+        "texture": "口感比一般茶厚，帶乳脂的滑與黏。",
+        "bestWay": "先小杯熱飲，搭青稞餅或乾食比單喝更順。",
+        "caution": "接受度非常兩極；怕奶腥、怕鹹飲的人先少量。",
+        "forWhom": "想體驗藏區日常、喜歡鹹奶茶或濃乳香的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 3,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 3
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "barley",
@@ -2773,7 +2961,7 @@
       "city": "香格里拉",
       "taste": "微甜／穀香",
       "meal": "小吃",
-      "description": "青稞的穀香做成餅後很適合配茶。單吃不一定驚天動地，但和酥油茶放在一起，整個高原點心組合就成立了。",
+      "description": "它的好吃不是華麗，而是烤穀物的香。外層微酥、裡面偏乾鬆或帶點韌，咀嚼後會有淡淡麥甜；配酥油茶或酸奶，完整度會突然上升。",
       "emoji": "🫓",
       "type": "food",
       "pdfScheduled": false,
@@ -2787,7 +2975,24 @@
       "coordinateNote": "推薦尋味區：獨克宗古城（非餐廳位置）",
       "photoId": "barley-cake",
       "photoMatch": "representative",
-      "photoReferenceId": "barley-cake"
+      "photoReferenceId": "barley-cake",
+      "foodReview": {
+        "verdict": "配飲品比單吃強",
+        "aroma": "烘烤穀香、麥香明顯，部分版本帶酥油香。",
+        "flavor": "微甜或微鹹，味道通常樸實，不會搶戲。",
+        "texture": "外層微酥，內裡偏鬆乾或略韌，視店家做法差異大。",
+        "bestWay": "配酥油茶或牦牛酸奶，別把它當單獨甜點評。",
+        "caution": "單吃可能覺得乾；想要濕潤甜點的人不一定愛。",
+        "forWhom": "喜歡雜糧、麥香、低甜點心的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 3,
+          "layers": 3,
+          "local": 5,
+          "rebuy": 3
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "tibetan",
@@ -2795,7 +3000,7 @@
       "city": "香格里拉",
       "taste": "鹹",
       "meal": "正餐",
-      "description": "藏式料理不需要一次把所有陌生菜名都點齊。高海拔胃口可能變小，挑幾樣代表菜慢慢吃，比硬撐「全制霸」舒服。",
+      "description": "藏式餐桌常把肉、奶、青稞放在很前面，味道厚、熱量也不客氣。它不是精巧派，而是吃完會覺得「高原真的需要這種能量」的扎實派。",
       "emoji": "🥢",
       "type": "food",
       "pdfScheduled": false,
@@ -2808,7 +3013,24 @@
       "coordinateSource": "https://mapcarta.com/W763318050",
       "coordinateNote": "推薦尋味區：獨克宗古城（非餐廳位置）",
       "photoId": "tibetan-cuisine",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "foodReview": {
+        "verdict": "值得用一餐認識",
+        "aroma": "肉香、酥油、奶香、烤穀物香常同桌出現。",
+        "flavor": "鹹鮮和乳脂感偏強，部分料理會有酸奶或香料平衡。",
+        "texture": "肉類緊實、餅類乾香、乳製品濃滑，口感跨度很大。",
+        "bestWay": "多人點餐，讓火鍋、青稞餅、酸奶、酥油茶一起上桌。",
+        "caution": "乳脂與肉類比例高，連續吃容易膩；不必每道都點大份。",
+        "forWhom": "肉食派、乳製品愛好者、想完整體驗藏區飲食的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "noodle",
@@ -2816,7 +3038,7 @@
       "city": "昆明",
       "taste": "鹹／鮮",
       "meal": "正餐",
-      "description": "到昆明至少該給過橋米線一次主角待遇。熱湯上桌時溫度真的高，先照店家順序下料，再吃，不要急著拿臉去測蒸氣。",
+      "description": "它的核心不是「很多小碟子」，而是滾燙高湯把薄肉、配菜和米線依序燙熟。好的一碗先有清鮮湯香，米線滑順帶米甜，配料再一層層把湯變得更厚。",
       "emoji": "🍜",
       "type": "food",
       "pdfScheduled": false,
@@ -2832,7 +3054,24 @@
       "priority": "必吃",
       "sourceRefs": [
         "web_20260909_0007"
-      ]
+      ],
+      "foodReview": {
+        "verdict": "昆明第一次必吃",
+        "aroma": "雞湯或骨湯香氣清而長，表面油脂會把香氣封住。",
+        "flavor": "鮮、鹹、回甜，配料越多層次越豐富，但不一定越重口。",
+        "texture": "米線滑順柔韌，配薄肉、脆菜與酥料形成對比。",
+        "bestWay": "照店家順序下料，先喝一口原湯再加辣椒；小心湯表面看不冒煙其實很燙。",
+        "caution": "豪華版配料多但不一定更好吃；重點仍是湯和米線。",
+        "forWhom": "第一次到昆明、喜歡湯粉與儀式感的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "steamchicken",
@@ -2840,7 +3079,7 @@
       "city": "昆明",
       "taste": "鹹／鮮",
       "meal": "正餐",
-      "description": "汽鍋雞的厲害不是重口，而是把雞湯的鮮味慢慢蒸出來。Day 7 團餐本來就有安排，先吃官方行程版，再決定要不要另外追名店。",
+      "description": "看起來清淡，實際上是把雞肉鮮味慢慢蒸進湯裡。沒有火鍋那種霸氣，而是清、甜、濃縮，喝到後面會發現它比外表更有深度。",
       "emoji": "🍲",
       "type": "food",
       "pdfScheduled": false,
@@ -2852,7 +3091,24 @@
       "lng": null,
       "coordinateNote": "料理／品項推薦，未指定單一餐廳，不設固定地標",
       "photoId": "steam-pot-chicken",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "foodReview": {
+        "verdict": "清湯派很值得",
+        "aroma": "雞香乾淨，若加三七、菌菇等配料會多草本或菌香。",
+        "flavor": "以鮮甜、微鹹為主，調味克制，重點是原湯。",
+        "texture": "雞肉柔嫩，湯體清澈但有厚度，不油膩。",
+        "bestWay": "先喝原湯，不要急著加辣；趁熱喝最能感受香氣。",
+        "caution": "重辣重鹹派可能覺得太溫柔；店家若蒸製不足會顯平淡。",
+        "forWhom": "愛雞湯、清鮮料理、想在重口味行程中換氣的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "roast-erkuai",
@@ -2860,7 +3116,7 @@
       "city": "昆明",
       "taste": "甜／鹹",
       "meal": "小吃",
-      "description": "燒餌塊是很標準的昆明街頭早餐／小吃感：米香、焦香、醬香一起來。醬料差很多，先問甜鹹辣，選自己會吃完的版本。",
+      "description": "這是昆明早餐裡很有存在感的一口：餌塊烤到表面微焦，裡面仍黏韌，再刷腐乳、甜醬或辣醬，夾油條後直接變成「脆＋糯＋濃醬」三重口感。",
       "emoji": "🍘",
       "type": "food",
       "pdfScheduled": false,
@@ -2872,7 +3128,24 @@
       "lng": null,
       "coordinateNote": "料理／品項推薦，未指定單一餐廳，不設固定地標",
       "photoId": "erkuai",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "foodReview": {
+        "verdict": "早餐看到就買",
+        "aroma": "炭烤焦香配腐乳、辣椒或花生醬香，香氣很街頭。",
+        "flavor": "鹹甜辣可並存，醬料是靈魂，本體提供淡淡米甜。",
+        "texture": "餌塊糯韌，油條酥脆，搭在一起對比很強。",
+        "bestWay": "現烤現包，第一口別放太久；怕辣先說微辣。",
+        "caution": "很有飽足感，醬也可能偏鹹，別在正餐前吃太大份。",
+        "forWhom": "早餐派、糯米派、喜歡甜鹹辣混搭的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 5,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "mushroom-kmg",
@@ -2880,7 +3153,7 @@
       "city": "昆明",
       "taste": "鹹／鮮",
       "meal": "正餐",
-      "description": "如果想把「來雲南吃菌」這件事做對，重點不是點最多，而是熟透。選正規餐廳、聽店家指引，安全吃完一鍋比挑戰陌生野菌更值得。",
+      "description": "昆明吃菌子有一個很有名的網路梗：鍋還沒熟，餐具先扣著，免得有人手比計時器快；偏偏你貼的影片裡，連這招都「防不住自己人」。梗很好笑，菌本身更精彩——有的脆、有的滑、有的厚得像肉，香氣從清甜一路走到堅果、木質與土壤感，同桌比較比只追最貴品種更有意思。",
       "emoji": "🍄",
       "type": "food",
       "pdfScheduled": false,
@@ -2895,8 +3168,26 @@
       "photoMatch": "verified",
       "priority": "必吃",
       "sourceRefs": [
-        "web_20260909_0006"
-      ]
+        "web_20260909_0006",
+        "fb_20260910_0001"
+      ],
+      "foodReview": {
+        "verdict": "值得專程吃；唯一不值得的是偷跑",
+        "aroma": "新鮮菌常有明顯森林、堅果、奶油或木質香。",
+        "flavor": "鮮味強、甜味細，很多時候少調味就已經很完整。",
+        "texture": "脆、嫩、滑、韌因菌種而異，口感跨度非常大。",
+        "bestWay": "選可信任店家，讓店員處理與計時；一次點 2–4 種比較香氣與口感，等明確告知可以吃再動筷。",
+        "caution": "「不先給餐具」只能當網路梗看，不能當所有店家的固定規則。野生菌的核心守則只有一個：來源可靠、徹底加熱、聽店家指示；不要因為聞起來太香就先夾一口。",
+        "forWhom": "愛菇類、鮮味、食材比較型吃法的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 5,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "flower-food",
@@ -2904,7 +3195,7 @@
       "city": "昆明",
       "taste": "甜",
       "meal": "小吃",
-      "description": "玫瑰香氣塞進酥皮裡，就是雲南最容易讓人一吃就記住的甜點。現烤通常最香，買伴手禮前先吃一顆再選品牌。",
+      "description": "好的鮮花餅咬開不是一團死甜果醬，而是能吃到濕潤玫瑰餡，外皮薄酥、內餡帶花瓣感。花香應該清甜，不是香水味；新鮮度比豪華禮盒重要。",
       "emoji": "🌸",
       "type": "food",
       "pdfScheduled": false,
@@ -2916,7 +3207,24 @@
       "lng": null,
       "coordinateNote": "料理／品項推薦，未指定單一餐廳，不設固定地標",
       "photoId": "flower-cake",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "foodReview": {
+        "verdict": "雲南甜點代表作",
+        "aroma": "玫瑰花香是主角，新鮮版本會帶奶油與烘烤麵香。",
+        "flavor": "中偏甜，好的版本有花香回甘，不只剩糖。",
+        "texture": "外皮酥鬆、內餡濕潤微黏，能感覺到花瓣纖維最好。",
+        "bestWay": "現烤先吃一顆，配普洱或無糖茶；要送人再買盒裝。",
+        "caution": "放久外皮會回潮；太便宜又香得刺鼻的版本常只剩糖香。",
+        "forWhom": "甜點派、花香派、想吃最具雲南辨識度點心的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "dali-sour-fish",
@@ -2924,7 +3232,7 @@
       "city": "大理",
       "taste": "酸／辣／鮮",
       "meal": "正餐",
-      "description": "酸木瓜、辣椒和魚一起下鍋，味道不是小清新，是很有存在感的酸辣鮮。適合多人分食，魚種與辣度交給當天店家最準。",
+      "description": "它不是「酸菜魚的雲南版」那麼簡單。酸味先把魚肉的鮮甜拉出來，辣味再往後跟，湯汁明亮開胃；做得好會讓你明明很飽還想拿湯拌飯。",
       "emoji": "🐟",
       "type": "food",
       "pdfScheduled": false,
@@ -2940,7 +3248,24 @@
       "sourceRefs": [
         "web_20260909_0001"
       ],
-      "photoId": "dali-sour-fish"
+      "photoId": "dali-sour-fish",
+      "foodReview": {
+        "verdict": "大理值得安排一餐",
+        "aroma": "酸香、辣椒香和魚鮮味很突出，熱湯上桌香氣最完整。",
+        "flavor": "酸、辣、鮮三線並進，酸度通常比甜味更搶戲。",
+        "texture": "魚肉嫩，湯汁清亮或略濃，配料常增加脆嫩口感。",
+        "bestWay": "趁熱吃魚，最後用湯汁拌飯；怕辣可先問辣度。",
+        "caution": "魚刺、酸度與辣度依店家差很多，不愛酸的人可能覺得太刺激。",
+        "forWhom": "酸辣控、魚湯控、需要開胃菜的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "lijiang-rib-hotpot",
@@ -2948,7 +3273,7 @@
       "city": "麗江",
       "taste": "鹹香／醇厚",
       "meal": "正餐",
-      "description": "臘排骨一煮，鹹香和醇厚感整鍋撲上來，是麗江很有代表性的硬菜。先喝原湯再碰蘸水，才不會第一口就把味道全部蓋掉。",
+      "description": "臘排骨先帶著醃臘的鹹香和煙燻感進湯，越煮湯越有肉味。骨邊肉有嚼勁、油脂不算輕，配蔬菜一起煮才會從「很香」變成「能一直吃」。",
       "emoji": "🍲",
       "type": "food",
       "pdfScheduled": false,
@@ -2965,7 +3290,24 @@
         "web_20260909_0002",
         "web_20260909_0003"
       ],
-      "photoId": "lijiang-rib-hotpot"
+      "photoId": "lijiang-rib-hotpot",
+      "foodReview": {
+        "verdict": "麗江肉食派必吃",
+        "aroma": "醃臘、煙燻與肉湯香氣濃，煮久後湯頭更厚。",
+        "flavor": "鹹鮮明顯，帶發酵熟成感，蔬菜能把鹹度拉回來。",
+        "texture": "排骨肉緊實帶嚼勁，骨邊與脂肪部位較柔潤。",
+        "bestWay": "先吃肉香，再大量下蔬菜與豆製品平衡；配飯也很強。",
+        "caution": "有些店口味偏鹹，對加工肉味或煙燻味敏感者先小份。",
+        "forWhom": "臘味、排骨、重鹹火鍋愛好者。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "yak-yogurt",
@@ -2973,7 +3315,7 @@
       "city": "香格里拉",
       "taste": "酸／奶香",
       "meal": "小吃",
-      "description": "牦牛酸奶不是甜點型優格，酸度和乳香都更直球。先買小份試口味，喜歡再加料；高原上胃口不舒服時別硬吃大杯。",
+      "description": "比一般甜優格更厚、更酸，第一口常是「欸，真的酸」，接著才出現濃奶香。加一點糖或蜂蜜後會順很多，但保留那股高原酸香才是它的個性。",
       "emoji": "🥛",
       "type": "food",
       "pdfScheduled": false,
@@ -2990,7 +3332,24 @@
         "web_20260909_0008",
         "web_20260909_0009"
       ],
-      "photoId": "yak-yogurt"
+      "photoId": "yak-yogurt",
+      "foodReview": {
+        "verdict": "香格里拉一定試小碗",
+        "aroma": "發酵乳香濃，帶自然酸香。",
+        "flavor": "酸度明顯，甜味通常靠後加糖、蜂蜜或果乾調整。",
+        "texture": "濃稠、綿密，有些版本接近凝乳，舀起來很有重量。",
+        "bestWay": "先吃原味一口，再自己加糖；冰涼吃最清爽。",
+        "caution": "怕酸的人不要一開始點無糖大份；乳製品保存條件也要注意。",
+        "forWhom": "酸奶控、乳製品愛好者、想配青稞餅的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 5,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     },
     {
       "id": "smallpot-noodle",
@@ -2998,7 +3357,7 @@
       "city": "昆明",
       "taste": "鹹鮮／辣可調",
       "meal": "正餐",
-      "description": "過橋米線像名菜，小鍋米線更像昆明人的日常。每人一小鍋現煮，鹹鮮、辣度可調；兩種米線各吃一次，差異會比看介紹有趣。",
+      "description": "過橋米線是儀式感，小鍋米線是生活感。一人一小鍋現煮，肉末、韭菜、醃菜和辣椒把湯煮得又香又辣，米線吸到湯汁後每一口都比看起來更有攻擊力。",
       "emoji": "🍜",
       "type": "food",
       "pdfScheduled": false,
@@ -3014,7 +3373,24 @@
       "sourceRefs": [
         "web_20260909_0007"
       ],
-      "photoId": "smallpot-noodle-exact-web"
+      "photoId": "smallpot-noodle-exact-web",
+      "foodReview": {
+        "verdict": "昆明早餐／宵夜強項",
+        "aroma": "肉末、韭菜、酸醃菜與辣椒油香氣直接，鍋氣感很強。",
+        "flavor": "鹹鮮、酸辣、微甜交錯，通常比過橋米線更重口。",
+        "texture": "米線滑軟帶韌，肉末與醃菜增加碎脆口感。",
+        "bestWay": "趁滾燙吃，先吃原味幾口再補辣；早餐吃特別有在地感。",
+        "caution": "辣度、鹹度依店家差很大，腸胃敏感不要空腹挑最辣。",
+        "forWhom": "重口湯粉派、早餐派、想吃昆明日常味的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
     }
   ],
   "shopping": [
@@ -3023,7 +3399,7 @@
       "name": "鮮花餅",
       "emoji": "🌸",
       "group": "必買",
-      "description": "雲南伴手禮的安全牌，也是最容易現場試吃比較的那一種。別只看盒子漂亮，先吃內餡、看保存期限，再決定要扛幾盒。",
+      "description": "把「雲南玫瑰」裝進最容易送人的形式。盒裝版本真正要比的是花餡的新鮮感、酥皮是否乾鬆，以及甜味有沒有壓過花香。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3045,7 +3421,25 @@
       "socialRank": 1,
       "recommendationShare": 48,
       "marketKind": "食品伴手禮",
-      "sourceNo": 1
+      "sourceNo": 1,
+      "edible": true,
+      "foodReview": {
+        "verdict": "值得買，但先試吃",
+        "aroma": "玫瑰花香與烘烤麵香。",
+        "flavor": "中偏甜，好的版本花香清楚、尾韻不膩。",
+        "texture": "外皮酥鬆，內餡濕潤微黏並帶花瓣纖維。",
+        "bestWay": "先試現烤，再買製造日期近、單包密封的盒裝。",
+        "caution": "放久容易回潮；太甜或人工香氣重的版本送人也未必討喜。",
+        "forWhom": "花香甜點派、需要安全牌伴手禮的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "bean-pod-doll",
@@ -3078,7 +3472,7 @@
       "name": "普洱茶",
       "emoji": "🍵",
       "group": "必買",
-      "description": "普洱最怕一上來就被年份、山頭、故事講暈。先試飲、先問自己喜不喜歡，再談預算；喝得順口比買得像內行重要。",
+      "description": "普洱不能用一種味道概括：熟普偏醇厚、木質與陳香；生普更清亮，可能帶花果香、苦澀和回甘。買之前一定先喝，因為「名氣」不能替你的舌頭決定。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3100,14 +3494,32 @@
       "socialRank": 3,
       "recommendationShare": 11,
       "marketKind": "茶飲",
-      "sourceNo": 2
+      "sourceNo": 2,
+      "edible": true,
+      "foodReview": {
+        "verdict": "會喝茶再買",
+        "aroma": "熟普常見木質、陳香、棗香；生普可有花果、草木與清香。",
+        "flavor": "熟普醇順偏甜；生普常先苦澀後回甘，差異很大。",
+        "texture": "茶湯本身無「咀嚼感」，重點是厚薄、滑順與收斂感。",
+        "bestWay": "現場至少試兩泡，問清楚生熟、年份、產區與沖泡方式。",
+        "caution": "不要被山頭、年份故事逼著升級預算；不喜歡就不買。",
+        "forWhom": "平常會泡茶、願意慢慢喝完的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "tamarind-cake",
       "name": "酸角糕",
       "emoji": "🍬",
       "group": "必買",
-      "description": "酸酸甜甜、包裝方便，酸角糕是很適合辦公室分食的雲南零嘴。你的清單列 No.13，問一問也排第 4；買前看成分與保存期限即可。",
+      "description": "酸角糕是把酸角的尖酸磨成比較討喜的酸甜軟糖感。入口先酸、很快轉甜，果香不複雜但非常涮嘴，屬於辦公室一放就會一直消失的零食。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3128,7 +3540,25 @@
       "priority": "必買",
       "sourceNo": 13,
       "socialRank": 4,
-      "recommendationShare": 9
+      "recommendationShare": 9,
+      "edible": true,
+      "foodReview": {
+        "verdict": "分食型伴手禮很強",
+        "aroma": "酸角果香帶微微發酵般的熟果氣息。",
+        "flavor": "酸甜直接，甜味通常比新鮮酸角更高。",
+        "texture": "軟韌、Q 黏，接近果糕或果膠糖。",
+        "bestWay": "選獨立小包裝，冰一下吃會更俐落。",
+        "caution": "糖度不低，怕甜的人一次一小塊就夠。",
+        "forWhom": "酸甜零食派、辦公室分食。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 3,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "tile-cat",
@@ -3161,7 +3591,7 @@
       "name": "雲南小粒咖啡",
       "emoji": "☕",
       "group": "必買",
-      "description": "雲南不只茶，也很會種咖啡。小粒咖啡適合買給平常真的會沖的人；先看烘焙日期與焙度，不要只被「雲南限定」四個字收服。",
+      "description": "雲南咖啡不是只有「苦」。選對焙度可以喝到堅果、可可、焦糖，也可能有柑橘或熟果酸。真正值得買的不是「雲南限定」字樣，而是新鮮烘焙和你喜歡的風味。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3181,7 +3611,25 @@
       ],
       "socialRank": 6,
       "recommendationShare": 8,
-      "marketKind": "咖啡"
+      "marketKind": "咖啡",
+      "edible": true,
+      "foodReview": {
+        "verdict": "咖啡喝得完再買",
+        "aroma": "依焙度可從花果、柑橘到堅果、可可、焦糖。",
+        "flavor": "淺焙酸甜較明亮，中深焙苦甜與堅果感更穩。",
+        "texture": "重點是口腔厚度與乾淨度；中焙通常最容易接受。",
+        "bestWay": "看烘焙日期，能試喝就先試；買豆比買預磨更耐放。",
+        "caution": "不要把產地當品質保證，陳豆或過深焙一樣會只剩苦。",
+        "forWhom": "咖啡日常飲用者、想帶回真正會消耗掉的伴手禮。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "jiama-craft",
@@ -3214,7 +3662,7 @@
       "name": "菌菇乾貨",
       "emoji": "🍄",
       "group": "必買",
-      "description": "把雲南的「菌子宇宙」裝進行李箱，乾貨是最直觀的一種。問一問榜第 8；品種、產地、乾燥與密封都要看清楚，返臺前再確認官方規定。",
+      "description": "乾菌一打開袋子就應該有清楚菌香，泡發後香氣回來，口感從脆韌到肉感依品種不同。它不是開袋即食零嘴，而是把雲南鮮味帶回廚房的原料。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3233,7 +3681,25 @@
       ],
       "priority": "必買",
       "socialRank": 8,
-      "recommendationShare": 7
+      "recommendationShare": 7,
+      "edible": true,
+      "foodReview": {
+        "verdict": "會煮飯的人值得買",
+        "aroma": "乾燥後菌香集中，泡發與加熱會重新放大木質、堅果或土壤香。",
+        "flavor": "本身旨味強，燉湯或炒菜能自然增鮮。",
+        "texture": "泡發後多為脆韌或柔嫩，品種差異大。",
+        "bestWay": "選品種、產地與標示清楚的密封包，回家充分泡發並煮熟。",
+        "caution": "返臺前要確認檢疫／入境規定；來源不明的散裝不建議。",
+        "forWhom": "會下廚、愛煮湯與菇類的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "elephant-pendant",
@@ -3266,7 +3732,7 @@
       "name": "菌菇醬",
       "emoji": "🍄",
       "group": "必買",
-      "description": "想把雲南菌香帶回日常，菌菇醬比扛一大袋乾貨更懶人。你的清單 No.5、問一問榜第 10；買前看配料、密封與保存期限。",
+      "description": "這是菌子世界最懶人的入口：開罐就有油香、菌鮮和鹹辣味，拌飯、拌麵都很有殺傷力。好吃版本吃得到菌粒，不只是辣油和味精。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3287,14 +3753,32 @@
       "priority": "必買",
       "sourceNo": 5,
       "socialRank": 10,
-      "recommendationShare": 6
+      "recommendationShare": 6,
+      "edible": true,
+      "foodReview": {
+        "verdict": "重口味派很容易回購",
+        "aroma": "油脂、辣椒、蒜與菌香疊在一起。",
+        "flavor": "鹹、鮮、辣為主，有些帶微甜。",
+        "texture": "醬體油潤，好的版本有明顯菌粒與嚼感。",
+        "bestWay": "先試小罐；回家拌白飯、麵或青菜最實用。",
+        "caution": "鈉和油通常不低；別只看「野生菌」字樣，要看配料排序。",
+        "forWhom": "辣醬控、懶人料理、重口味派。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "mohong-rose",
       "name": "墨紅玫瑰",
       "emoji": "🌹",
       "group": "必買",
-      "description": "不是只有玫瑰餅，墨紅玫瑰也常被做成沖泡型商品。你的清單列 No.3；喜歡花香再買，並以現場實際品名、成分與保存方式為準。",
+      "description": "墨紅玫瑰做成沖泡飲時走的是高辨識花香：熱水一沖就很「玫瑰」。泡得剛好是清香微甜，泡太濃則容易往香水感和微澀走。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3312,14 +3796,32 @@
         "user_20260910_0001"
       ],
       "priority": "必買",
-      "sourceNo": 3
+      "sourceNo": 3,
+      "edible": true,
+      "foodReview": {
+        "verdict": "花香派可以買",
+        "aroma": "玫瑰香高、甜潤，熱泡比冷泡更奔放。",
+        "flavor": "本身不會很甜，更多是花香與淡淡植物甘味。",
+        "texture": "茶湯輕薄，花瓣本身不追求口感。",
+        "bestWay": "少量花瓣短泡，配蜂蜜或普洱都可以。",
+        "caution": "不愛花香的人會直接覺得像香氛；不要泡太濃。",
+        "forWhom": "花草茶、玫瑰香愛好者。",
+        "scores": {
+          "aroma": 5,
+          "texture": 2,
+          "layers": 3,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "boletus-buy",
       "name": "牛肝菌",
       "emoji": "🍄",
       "group": "必買",
-      "description": "牛肝菌三個字很誘人，但商品型態差很多：乾貨、調味、即食品都可能出現。你的清單 No.4；先看品種與包裝，再確認返臺規定，不要只看菌子長得霸氣。",
+      "description": "牛肝菌的魅力是「菇裡有肉感」：香氣偏堅果、土壤和奶油，咬感比一般香菇厚。做成乾貨或調味品後更集中，但一定要看清楚實際品種與加工方式。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3337,14 +3839,32 @@
         "user_20260910_0001"
       ],
       "priority": "必買",
-      "sourceNo": 4
+      "sourceNo": 4,
+      "edible": true,
+      "foodReview": {
+        "verdict": "菌菇控值得買",
+        "aroma": "堅果、木質、土壤與濃菌香明顯。",
+        "flavor": "旨味高，常有淡淡甜與脂香感。",
+        "texture": "厚實、肉感、帶彈性；乾貨泡發後仍有存在感。",
+        "bestWay": "選標示清楚商品，充分加熱；乾貨適合燉雞或炒飯。",
+        "caution": "商品型態差異非常大，且返臺前需確認規定。",
+        "forWhom": "菇類愛好者、會下廚的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 5,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "xiangxun-mushroom",
       "name": "香蕈菌",
       "emoji": "🍄",
       "group": "必買",
-      "description": "你的兩頁清單 No.6 和 No.18 都出現「香蕈菌」，只是包裝不同。這類商品最值得比的是實際配料、重量與口味，不用因為換了包裝就當成兩種神物。",
+      "description": "這個榜單名稱本身比較像商品名／類別名，不同包裝可能完全不同。常見即食菌類走鮮鹹、香辣路線，菌體會有纖維韌脆感；這張卡重點是先看配料，不把包裝名當成單一品種。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3366,14 +3886,32 @@
       "sourceNo": [
         6,
         18
-      ]
+      ],
+      "edible": true,
+      "foodReview": {
+        "verdict": "先試吃再決定",
+        "aroma": "通常以菌香、辣椒與香辛料為主。",
+        "flavor": "常見鮮鹹、微辣到香辣，甜度依品牌不同。",
+        "texture": "菌體多為韌脆或略有嚼勁，醬汁型則更油潤。",
+        "bestWay": "同名商品先比配料與辣度，選小包裝試口味。",
+        "caution": "兩張榜單出現同名不同包裝，不能假設內容物完全相同。",
+        "forWhom": "菌菇零食、香辣派。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 3,
+          "local": 4,
+          "rebuy": 3
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "tamarind",
       "name": "酸角",
       "emoji": "🫘",
       "group": "必買",
-      "description": "酸角本身就是「先皺眉、再伸手拿第二顆」的酸甜系零食。清單列 No.7；買之前確認是果乾、蜜餞還是其他加工型態，口感差很多。",
+      "description": "酸角的個性比酸角糕兇很多：酸味先撞上來，再慢慢浮出熟果甜香。果肉帶纖維和黏性，邊吃邊皺眉很正常，但酸味控通常會越吃越順。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3391,14 +3929,32 @@
         "user_20260910_0001"
       ],
       "priority": "必買",
-      "sourceNo": 7
+      "sourceNo": 7,
+      "edible": true,
+      "foodReview": {
+        "verdict": "酸味控會愛",
+        "aroma": "熟果、微焦糖與酸果香。",
+        "flavor": "酸度高，後段才有自然甜；蜜餞版會更甜。",
+        "texture": "果肉黏、纖維感明顯；加工版可能變軟Q。",
+        "bestWay": "第一次先買小包，配茶或飯後吃。",
+        "caution": "怕酸、牙齒敏感的人不要硬挑原味最酸款。",
+        "forWhom": "酸味控、蜜餞果乾派。",
+        "scores": {
+          "aroma": 4,
+          "texture": 3,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "rose-crisp",
       "name": "玫瑰酥",
       "emoji": "🌹",
       "group": "必買",
-      "description": "玫瑰酥把花香和酥皮綁在一起，適合喜歡甜點又不想再買一盒標準鮮花餅的人。清單 No.11；挑小包裝更方便分送。",
+      "description": "玫瑰酥比鮮花餅更像「酥點」：第一感受是層層碎酥，接著才是玫瑰甜香。喜歡酥皮的人可能比愛花餡的人更欣賞它。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3416,14 +3972,32 @@
         "user_20260910_0001"
       ],
       "priority": "必買",
-      "sourceNo": 11
+      "sourceNo": 11,
+      "edible": true,
+      "foodReview": {
+        "verdict": "酥皮派可選",
+        "aroma": "奶油／油酥烘烤香加玫瑰香。",
+        "flavor": "甜香明確，花味通常比鮮花餅更乾、更集中。",
+        "texture": "酥、鬆、易掉屑，餡料相對乾爽。",
+        "bestWay": "配無糖茶，選小包裝保持酥脆。",
+        "caution": "甜度和油酥感都不低，碎屑也很有存在感。",
+        "forWhom": "酥餅、花香甜點派。",
+        "scores": {
+          "aroma": 5,
+          "texture": 5,
+          "layers": 4,
+          "local": 4,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "crossing-bridge-noodle-gift",
       "name": "過橋米線",
       "emoji": "🍜",
       "group": "必買",
-      "description": "把昆明名菜壓縮成行李箱版本，就是包裝過橋米線。清單 No.12；它的樂趣是回家再煮一次，不是追求和店裡那碗一模一樣。先看調味包成分與保存期限。",
+      "description": "包裝過橋米線的定位很清楚：不是複製餐廳那碗，而是把「米線＋湯包＋配料包」帶回家解饞。米線滑韌，湯味通常比店裡更濃、更鹹。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3441,14 +4015,32 @@
         "user_20260910_0001"
       ],
       "priority": "必買",
-      "sourceNo": 12
+      "sourceNo": 12,
+      "edible": true,
+      "foodReview": {
+        "verdict": "有趣，但別期待等同現煮",
+        "aroma": "湯包香氣強，常見雞湯、辣油或香辛料味。",
+        "flavor": "鹹鮮為主，調味比現煮版更集中。",
+        "texture": "乾燥／半乾米線煮好後滑韌，配料包口感較簡化。",
+        "bestWay": "照說明煮但水可以先多留一點，太鹹再稀釋。",
+        "caution": "鈉含量與調味包成分要看；不要拿它和店裡現煮版硬比。",
+        "forWhom": "想回家延續旅行味、愛方便麵／米線的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 3,
+          "local": 4,
+          "rebuy": 3
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "rose-cake",
       "name": "玫瑰糕",
       "emoji": "🌹",
       "group": "必買",
-      "description": "玫瑰糕比酥皮類更偏甜香小點心，適合「想買花味，但不想再買餅」的人。清單 No.14；先看配料與保存期限，再決定要不要囤。",
+      "description": "玫瑰糕走的是比較軟、比較甜的花香點心路線，不靠酥皮搶戲。入口先是糖與玫瑰香，口感常偏綿密或Q軟，配茶比單吃更舒服。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3466,14 +4058,32 @@
         "user_20260910_0002"
       ],
       "priority": "必買",
-      "sourceNo": 14
+      "sourceNo": 14,
+      "edible": true,
+      "foodReview": {
+        "verdict": "花香甜點備選",
+        "aroma": "玫瑰香明顯，甜香柔和。",
+        "flavor": "甜度中高，花味是核心。",
+        "texture": "依製法可綿密、軟Q或略黏，不像酥餅會掉屑。",
+        "bestWay": "切小塊配普洱或無糖茶。",
+        "caution": "不愛甜或香氣濃的花點心，容易覺得膩。",
+        "forWhom": "花香、軟糕點愛好者。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 3,
+          "local": 4,
+          "rebuy": 3
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "green-preserved-plum",
       "name": "青話梅",
       "emoji": "🍈",
       "group": "必買",
-      "description": "青話梅是典型會默默被吃光的辦公室零嘴：酸、甜、鹹可能一起來。清單 No.15；糖鹽含量和調味差很多，試吃比看包裝可靠。",
+      "description": "這類零食厲害在酸、甜、鹹同時出現，第一顆醒腦，第二顆開始停不下來。好的話梅果肉還保有咬感，不會只剩死鹹和糖精味。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3491,14 +4101,32 @@
         "user_20260910_0002"
       ],
       "priority": "必買",
-      "sourceNo": 15
+      "sourceNo": 15,
+      "edible": true,
+      "foodReview": {
+        "verdict": "辦公室零嘴很強",
+        "aroma": "梅子酸香、鹽漬與甘草類香氣常交錯。",
+        "flavor": "酸甜鹹三味並進，尾韻可能回甘。",
+        "texture": "果肉韌、略黏，好的版本仍有纖維感。",
+        "bestWay": "先試甜鹹比例，買小包分食最剛好。",
+        "caution": "鈉和糖都可能偏高，口乾時會越吃越渴。",
+        "forWhom": "酸梅、蜜餞、追劇零食派。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 4,
+          "local": 4,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "mushroom-ganba",
       "name": "菌乾巴",
       "emoji": "🍄",
       "group": "必買",
-      "description": "名字很雲南、味道通常也很有個性，菌乾巴適合愛重口菌香的人。清單 No.17；先確認到底用了什麼菌、怎麼加工與保存，返臺規定也要另外核對。",
+      "description": "如果把菌菇做成「素肉乾」概念，菌乾巴大概就在這個區間：菌香濃、調味重、越嚼越有旨味。它不是清雅型，是配飲料、配飯都很有存在感的重口零食。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3516,14 +4144,32 @@
         "user_20260910_0002"
       ],
       "priority": "必買",
-      "sourceNo": 17
+      "sourceNo": 17,
+      "edible": true,
+      "foodReview": {
+        "verdict": "重菌香派再買",
+        "aroma": "濃菌香、辣椒與油香通常很突出。",
+        "flavor": "鮮鹹、香辣，可能帶輕微甜味。",
+        "texture": "乾韌、有嚼勁，類似肉乾但纖維感更植物性。",
+        "bestWay": "先試小包，喜歡再買；配白飯或啤酒都比空口大量吃順。",
+        "caution": "鹹度、辣度與油量常偏高，商品配方差異大。",
+        "forWhom": "菌菇零食、重口味、辣味派。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "milk-strip",
       "name": "牛乳條",
       "emoji": "🥛",
       "group": "必買",
-      "description": "牛乳條就是把奶香變成可以邊走邊咬的零食。清單 No.21；乳製品最需要看的不是可愛包裝，而是成分、保存條件與有效期限。",
+      "description": "牛乳條不是鮮奶甜點，而是把奶味壓縮成能帶走的零食。入口奶香直接，質地多半乾爽帶韌，越嚼乳甜越明顯。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3541,14 +4187,32 @@
         "user_20260910_0002"
       ],
       "priority": "必買",
-      "sourceNo": 21
+      "sourceNo": 21,
+      "edible": true,
+      "foodReview": {
+        "verdict": "奶味控可買",
+        "aroma": "乳香明顯，可能帶淡淡奶粉或奶酪香。",
+        "flavor": "微甜到中甜，部分版本帶淡鹹。",
+        "texture": "偏乾、帶韌或略酥，依品牌配方不同。",
+        "bestWay": "先試口感再買，選獨立包裝；開封後注意防潮。",
+        "caution": "不愛奶粉感或乳味的人可能覺得單調。",
+        "forWhom": "奶製零食、兒童分食、甜口派。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 3,
+          "local": 4,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "barley-crisp",
       "name": "青稞酥",
       "emoji": "🌾",
       "group": "必買",
-      "description": "青稞酥的賣點是穀香和酥脆，拿來配茶或咖啡都很順。清單 No.22；想送人就挑獨立包裝，自己吃則先選小盒試口味。",
+      "description": "青稞酥的魅力是烤穀物香和鬆脆感，不是濃烈香精味。咬下去乾爽酥碎，後面有淡淡穀甜，配茶或咖啡非常順。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3566,14 +4230,32 @@
         "user_20260910_0002"
       ],
       "priority": "必買",
-      "sourceNo": 22
+      "sourceNo": 22,
+      "edible": true,
+      "foodReview": {
+        "verdict": "低調耐吃型",
+        "aroma": "烘烤穀物、麥香、奶油／油酥香。",
+        "flavor": "甜度通常中低到中等，穀香比糖更重要。",
+        "texture": "酥、鬆、乾爽，容易掉小屑。",
+        "bestWay": "配茶、咖啡或酸奶；自己吃選小袋避免受潮。",
+        "caution": "偏乾，不適合想吃濕潤甜點的人。",
+        "forWhom": "不嗜甜、喜歡餅乾穀香的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 3,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "potato-shreds",
       "name": "土豆絲",
       "emoji": "🥔",
       "group": "必買",
-      "description": "雲南版「打開就很危險」的零食之一：土豆絲走香辣脆口路線，很容易一路吃到袋底。清單 No.24；先確認辣度，不然回飯店才發現自己買了地獄級。",
+      "description": "就是那種「只吃兩口」最後會整包見底的東西。細土豆絲炸得脆，鹽、辣椒和香料黏在表面，每一口都很吵，但很適合旅行晚上回飯店開袋。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3591,7 +4273,25 @@
         "user_20260910_0002"
       ],
       "priority": "必買",
-      "sourceNo": 24
+      "sourceNo": 24,
+      "edible": true,
+      "foodReview": {
+        "verdict": "涮嘴，但先看辣度",
+        "aroma": "炸物香、辣椒粉與香辛料氣息直接。",
+        "flavor": "鹹辣為主，部分版本帶麻、酸或孜然。",
+        "texture": "細脆、乾爽，好的版本不會油到軟。",
+        "bestWay": "配冰飲或分著吃；先看辣度標示。",
+        "caution": "高油高鹽，辣版很容易越吃越渴。",
+        "forWhom": "洋芋片、香辣脆零食派。",
+        "scores": {
+          "aroma": 5,
+          "texture": 5,
+          "layers": 3,
+          "local": 4,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "bai-tiedye-buy",
@@ -3649,7 +4349,7 @@
       "name": "果酒",
       "emoji": "🍷",
       "group": "可以買",
-      "description": "果酒是「想把旅行味道帶回去」的成人版選項，清單 No.8。先試口味再買；酒類額度、托運與防破損都要一起算進購物決策。",
+      "description": "果酒最常見的吸引力是果香先到、酒感後到，甜度通常比葡萄乾型酒更親切。好喝版本酸甜平衡，差的版本會只剩糖水加酒精感。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3666,14 +4366,32 @@
       "sourceRefs": [
         "user_20260910_0001"
       ],
-      "sourceNo": 8
+      "sourceNo": 8,
+      "edible": true,
+      "foodReview": {
+        "verdict": "先試喝，喜歡才帶",
+        "aroma": "果香通常高，依原料可能是梅、玫瑰、莓果或其他雲南水果。",
+        "flavor": "多為甜酸型，酒精感從輕到明顯不等。",
+        "texture": "酒體通常輕到中等，入口順滑。",
+        "bestWay": "冰飲，小杯試甜度與酒精感；買前確認酒類額度與托運。",
+        "caution": "甜酒容易不知不覺喝快；玻璃瓶也增加行李負擔。",
+        "forWhom": "甜酒、果香酒、想帶成人版伴手禮的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 3,
+          "layers": 4,
+          "local": 4,
+          "rebuy": 3
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "wild-mushroom-beer",
       "name": "野生菌精釀啤酒",
       "emoji": "🍺",
       "group": "可以買",
-      "description": "把雲南最有名的菌子玩成精釀啤酒，光名字就很有話題。清單 No.20；喜歡再買，並注意酒類額度、托運和玻璃瓶防破損。",
+      "description": "這種酒的趣味大於「一定超好喝」：麥芽與啤酒花之外再塞進菌香或概念，可能出現土壤、堅果、鹹鮮感。遇到做得好的會很有記憶點，做不好則只剩話題。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3690,14 +4408,32 @@
       "sourceRefs": [
         "user_20260910_0002"
       ],
-      "sourceNo": 20
+      "sourceNo": 20,
+      "edible": true,
+      "foodReview": {
+        "verdict": "話題型，先喝再買",
+        "aroma": "麥芽、啤酒花為主，部分版本會有土壤、堅果或菌香。",
+        "flavor": "苦度與鮮味依酒款差很大，不宜只看「野生菌」三字猜味道。",
+        "texture": "氣泡感與酒體取決於精釀風格。",
+        "bestWay": "現場先喝一杯，真的喜歡再買瓶裝。",
+        "caution": "風味高度品牌化；酒類額度、托運與玻璃瓶都要考慮。",
+        "forWhom": "精釀玩家、喜歡怪味實驗的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 3,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 2
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "tea",
       "name": "茶葉",
       "emoji": "🌿",
       "group": "可以買",
-      "description": "茶葉不是看到「高山、古樹、老班章」就自動升級。先聞、先喝、先問價格，再選自己真的會泡完的量；密封包裝和標示要留著。",
+      "description": "雲南茶從普洱到滇紅差異大到不能一把抓。滇紅可能是蜜香、甜潤；普洱則從清香苦甜到熟醇木質都有。唯一可靠的選法就是：喝過再買。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3710,7 +4446,25 @@
       "addressVerified": false,
       "photoId": "puer-tea",
       "photoMatch": "representative",
-      "photoReferenceId": "puer-tea"
+      "photoReferenceId": "puer-tea",
+      "edible": true,
+      "foodReview": {
+        "verdict": "先喝再買",
+        "aroma": "可從蜜香、花果香到木質、陳香，取決於茶類與製程。",
+        "flavor": "甜、澀、苦、回甘差異極大，沒有「雲南茶統一味」。",
+        "texture": "茶湯重點在厚薄、滑順、收斂與回甘。",
+        "bestWay": "少量多試，問茶類、產區、年份與沖泡方式。",
+        "caution": "別被包裝或故事牽著走；不懂茶時買小量比追高價安全。",
+        "forWhom": "平常喝茶、願意慢慢泡的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 3,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "craft",
@@ -3757,7 +4511,7 @@
       "name": "雲南特色零食",
       "emoji": "🍬",
       "group": "可以買",
-      "description": "特色零食適合最後補空位，但不要把「當地有賣」理解成「一定能入境」。挑包裝清楚、成分看得懂、自己真的愛吃的，行李箱才不會變食品倉庫。",
+      "description": "這是一個「類別」，不是單一味道。真正值得買的是你現場試吃後還想再拿一口的那包，而不是只因為包裝寫雲南。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3770,14 +4524,32 @@
       "addressVerified": false,
       "photoId": "flower-cake",
       "photoMatch": "representative",
-      "photoReferenceId": "flower-cake"
+      "photoReferenceId": "flower-cake",
+      "edible": true,
+      "foodReview": {
+        "verdict": "試吃決定，不盲買",
+        "aroma": "依品項從花香、菌香到辣椒、奶香都有。",
+        "flavor": "甜酸鹹辣跨度很大，不適合硬給單一味型。",
+        "texture": "可酥、脆、Q、韌、軟；以實際商品為準。",
+        "bestWay": "優先買包裝完整、成分清楚、自己試吃喜歡的。",
+        "caution": "「地方限定」不等於好吃，也不等於一定可入境。",
+        "forWhom": "想補行李空位、喜歡小包分食的人。",
+        "scores": {
+          "aroma": 3,
+          "texture": 3,
+          "layers": 3,
+          "local": 3,
+          "rebuy": 3
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "xuanwei-ham-buy",
       "name": "宣威火腿",
       "emoji": "🍖",
       "group": "建議當地吃",
-      "description": "宣威火腿名氣很大，也最適合把胃留在雲南處理。清單 No.9；肉類與含肉加工品返臺涉及檢疫限制，建議現場吃過癮，不要拿行李箱試規定。",
+      "description": "真正的宣威火腿不是單純「很鹹的肉」。薄切加熱後會有熟成肉香、堅果般脂香和明顯旨味，肥肉部位甚至帶甜；但它的鹹度確實需要主食或蔬菜接住。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3794,14 +4566,32 @@
       "sourceRefs": [
         "user_20260910_0001"
       ],
-      "sourceNo": 9
+      "sourceNo": 9,
+      "edible": true,
+      "foodReview": {
+        "verdict": "當地吃最值得",
+        "aroma": "醃臘、熟成、肉脂與淡淡堅果香。",
+        "flavor": "鹹鮮濃，脂肪帶甘甜，熟成感明顯。",
+        "texture": "瘦肉緊實，肥肉柔潤；薄切比厚咬更舒服。",
+        "bestWay": "當地用在汽鍋、炒菜或薄片蒸食，配飯最好。",
+        "caution": "肉類返臺涉及檢疫限制；鹹度也高，不適合當零食狂吃。",
+        "forWhom": "火腿、臘味、熟成肉愛好者。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "spicy-sausage",
       "name": "麻辣腸",
       "emoji": "🌶️",
       "group": "建議當地吃",
-      "description": "麻辣腸就是那種聞起來很香、很適合下飯的肉類伴手禮誘惑。清單 No.10；返臺涉及肉品檢疫，最省事的玩法是在當地吃掉。",
+      "description": "聞起來是香料和油脂先贏，咬下去甜鹹肉香再接上，最後才是麻辣。好的腸不是只有辣，而是脂肪、瘦肉和香料比例夠平衡。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3818,14 +4608,32 @@
       "sourceRefs": [
         "user_20260910_0001"
       ],
-      "sourceNo": 10
+      "sourceNo": 10,
+      "edible": true,
+      "foodReview": {
+        "verdict": "當地吃，配飯強",
+        "aroma": "花椒、辣椒、香辛料與肉脂香濃。",
+        "flavor": "鹹、辣、麻，常帶一點甜味平衡。",
+        "texture": "腸衣有咬感，內餡油潤、肉粒感明顯。",
+        "bestWay": "蒸或煎熱後切片配飯，不要冷冷整條啃。",
+        "caution": "油脂和鹽分高；肉類返臺涉及檢疫限制。",
+        "forWhom": "麻辣、香腸、重口味派。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 4,
+          "local": 4,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "yuntui-cracker",
       "name": "雲腿餅乾",
       "emoji": "🥠",
       "group": "建議當地吃",
-      "description": "「餅乾」兩個字很無害，但雲腿口味可能真的含火腿成分。清單 No.16；買前先看配料，若含肉就按肉品檢疫規定處理，別被名稱騙過。",
+      "description": "名字叫餅乾，但如果真的加了雲腿，吃起來會是甜鹹交錯：酥皮先甜香，後面跑出火腿的鹹鮮。這種組合不是人人都愛，愛的人會覺得很有雲南味。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3842,14 +4650,32 @@
       "sourceRefs": [
         "user_20260910_0002"
       ],
-      "sourceNo": 16
+      "sourceNo": 16,
+      "edible": true,
+      "foodReview": {
+        "verdict": "先看配料、先試吃",
+        "aroma": "烘烤麵香加火腿醃臘香。",
+        "flavor": "甜鹹並存，火腿旨味會在後段出現。",
+        "texture": "酥脆或鬆酥，若有肉粒會增加嚼感。",
+        "bestWay": "趁新鮮配茶吃；確認是否真的含肉。",
+        "caution": "若含肉就按肉品檢疫規定處理，建議當地吃完。",
+        "forWhom": "鹹甜派、火腿點心愛好者。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 4,
+          "local": 5,
+          "rebuy": 3
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "yuntui-small-cake",
       "name": "雲腿小餅",
       "emoji": "🥮",
       "group": "建議當地吃",
-      "description": "雲腿小餅把甜鹹酥皮和火腿內餡放在一起，是很雲南的味覺組合。清單 No.19；若實際含雲腿／火腿，建議當地吃完，不要直接當一般糕點帶回臺灣。",
+      "description": "這是「甜點裡塞火腿」最直球的雲南吃法。外皮鬆酥微甜，內餡有雲腿的鹹鮮和脂香，咬幾口後甜鹹會慢慢融在一起。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3866,14 +4692,32 @@
       "sourceRefs": [
         "user_20260910_0002"
       ],
-      "sourceNo": 19
+      "sourceNo": 19,
+      "edible": true,
+      "foodReview": {
+        "verdict": "很雲南，吃一顆值得",
+        "aroma": "烘烤酥皮、火腿熟成與油脂香。",
+        "flavor": "甜鹹對撞，鹹鮮比一般糕餅更突出。",
+        "texture": "外皮鬆酥，內餡略濕潤並有肉粒嚼感。",
+        "bestWay": "溫熱吃香氣更完整，配無糖茶解膩。",
+        "caution": "接受度兩極；若含火腿，返臺按肉品檢疫規定處理。",
+        "forWhom": "喜歡月餅、火腿甜點、鹹甜組合的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 5,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "sweet-sausage",
       "name": "甜腸",
       "emoji": "🌭",
       "group": "建議當地吃",
-      "description": "甜腸走的是帶甜味的肉香，喜不喜歡很看個人口味。清單 No.23；屬肉類加工品時返臺有檢疫限制，現場吃最沒有後續問題。",
+      "description": "甜腸不是甜到像糖果，而是把糖香揉進肉脂和鹹味裡。蒸熱後油脂融開，甜香會更明顯，適合切薄片配飯，單吃容易膩。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3890,14 +4734,32 @@
       "sourceRefs": [
         "user_20260910_0002"
       ],
-      "sourceNo": 23
+      "sourceNo": 23,
+      "edible": true,
+      "foodReview": {
+        "verdict": "當地吃比較舒服",
+        "aroma": "肉脂、醃製香和淡淡糖香。",
+        "flavor": "甜鹹為主，辣度低，肉味溫和。",
+        "texture": "腸衣有彈性，內餡油潤、肉粒扎實。",
+        "bestWay": "蒸熱切片配飯或配蔬菜。",
+        "caution": "偏甜肉味不是人人愛；肉類返臺涉及檢疫限制。",
+        "forWhom": "廣式臘腸、甜鹹肉品愛好者。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 3,
+          "local": 4,
+          "rebuy": 3
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "local-yak",
       "name": "犛牛肉",
       "emoji": "🍖",
       "group": "建議當地吃",
-      "description": "犛牛肉很有高原旅行感，但「有地方特色」不等於「適合帶回國」。把它留在當地餐桌上享用，反而最輕鬆。",
+      "description": "犛牛肉的特色不是油花，而是瘦肉感和嚼勁。肉味乾淨、纖維緊，做得好越嚼越香；做成乾肉或煮太久則很容易乾柴。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3909,14 +4771,32 @@
       "address": "雲南省 昆明市 犛牛肉",
       "addressVerified": false,
       "photoId": "yak-meat",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "edible": true,
+      "foodReview": {
+        "verdict": "高原代表味，當地吃",
+        "aroma": "牛肉香乾淨，部分料理帶煙燻或香料氣息。",
+        "flavor": "鹹鮮、肉味直，脂甜感通常比肥牛低。",
+        "texture": "緊實、有嚼勁、瘦肉纖維明顯。",
+        "bestWay": "鮮肉短涮或薄切；乾肉少量慢嚼。",
+        "caution": "火候過頭容易柴；肉類返臺涉及檢疫限制。",
+        "forWhom": "瘦肉派、牛肉控、想吃高原風味的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 3,
+          "local": 5,
+          "rebuy": 4
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "local-meat",
       "name": "肉類食品",
       "emoji": "🥩",
       "group": "建議當地吃",
-      "description": "肉乾、香腸、含肉內餡點心看起來都很像普通伴手禮，但返臺規定不是看外表。想買就先查檢疫，否則直接在當地吃掉最乾脆。",
+      "description": "這張不是單一商品，從肉乾、香腸到含肉糕餅口感完全不同。共通點只有一個：香氣通常重、鹹鮮明顯，而且返臺規定比「好不好吃」更優先。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3929,14 +4809,32 @@
       "addressVerified": false,
       "photoId": "xuanwei-ham",
       "photoMatch": "representative",
-      "photoReferenceId": "xuanwei-ham"
+      "photoReferenceId": "xuanwei-ham",
+      "edible": true,
+      "foodReview": {
+        "verdict": "當地吃，不把檢疫變成行程",
+        "aroma": "依品項可有煙燻、醃臘、香料與肉脂香。",
+        "flavor": "通常鹹鮮較高，甜辣依品項不同。",
+        "texture": "從乾韌肉乾到油潤香腸都有，無法用單一口感概括。",
+        "bestWay": "在當地現吃最省事，真的要買先查官方檢疫規定。",
+        "caution": "含肉加工品返臺可能受限制，不要只看真空包裝就判斷可帶。",
+        "forWhom": "肉食派，但以當地享用為優先。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 3,
+          "local": 3,
+          "rebuy": 2
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     },
     {
       "id": "local-dairy",
       "name": "現做乳製品",
       "emoji": "🥛",
       "group": "建議當地吃",
-      "description": "現做乳製品最好吃的時刻通常就是「現在」。先看保存條件與當天行程，能現吃就別硬讓它跟你坐一整天車。",
+      "description": "現做乳製品最好吃的就是「新鮮」：奶香乾淨、酸甜活，口感可能從滑嫩酸奶到韌乳扇都有。離開冷藏鏈後，風味和安全性都會快速打折。",
       "city": "雲南",
       "type": "shopping",
       "pdfScheduled": false,
@@ -3949,7 +4847,25 @@
       "addressVerified": false,
       "photoId": "rushan",
       "photoMatch": "representative",
-      "photoReferenceId": "rushan"
+      "photoReferenceId": "rushan",
+      "edible": true,
+      "foodReview": {
+        "verdict": "現場吃勝過帶走",
+        "aroma": "新鮮奶香、發酵酸香或烤乳香依品項不同。",
+        "flavor": "可酸、甜、鹹，最重要是新鮮感而非重調味。",
+        "texture": "從綿密、滑嫩到韌脆都有，依製品而異。",
+        "bestWay": "看到現做就小份現吃，依店家建議保存。",
+        "caution": "保存條件最重要；長途攜帶前要確認冷藏與入境規定。",
+        "forWhom": "乳製品愛好者、願意現吃的人。",
+        "scores": {
+          "aroma": 4,
+          "texture": 4,
+          "layers": 3,
+          "local": 4,
+          "rebuy": 3
+        }
+      },
+      "reviewBasis": "依典型商品型態、既有來源與公開風味描述整理；不同品牌／批次可能明顯不同，現場試吃優先。"
     }
   ],
   "flights": [
@@ -5814,326 +6730,326 @@
     "souvenir-mohong-rose": {
       "src": "images/souvenir-mohong-rose-20260910.webp",
       "alt": "墨紅玫瑰伴手禮參考圖",
-      "caption": "墨紅玫瑰；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
-      "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "caption": "墨紅玫瑰；改用較清楚的代表圖。",
+      "author": "web.run image search result",
+      "source": "web.run image search: 云南 墨红玫瑰 特产 产品",
+      "license": "網路公開圖片／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 540,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-01.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "改用較清楚的網路代表圖，並重製為統一卡面。"
     },
     "souvenir-boletus": {
       "src": "images/souvenir-boletus-20260910.webp",
       "alt": "牛肝菌伴手禮參考圖",
-      "caption": "牛肝菌；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "牛肝菌；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 544,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-01.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-mushroom-sauce": {
       "src": "images/souvenir-mushroom-sauce-20260910.webp",
       "alt": "菌菇醬伴手禮參考圖",
-      "caption": "菌菇醬；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "菌菇醬；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 548,
-      "height": 696,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-01.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-xiangxun-mushroom": {
       "src": "images/souvenir-xiangxun-mushroom-20260910.webp",
       "alt": "香蕈菌伴手禮參考圖",
-      "caption": "香蕈菌；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "香蕈菌；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 548,
-      "height": 696,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-01.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-tamarind": {
       "src": "images/souvenir-tamarind-20260910.webp",
       "alt": "酸角伴手禮參考圖",
-      "caption": "酸角；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "酸角；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 540,
-      "height": 696,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-01.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-fruit-wine": {
       "src": "images/souvenir-fruit-wine-20260910.webp",
       "alt": "果酒伴手禮參考圖",
-      "caption": "果酒；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "果酒；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 544,
-      "height": 696,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-01.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-xuanwei-ham": {
       "src": "images/souvenir-xuanwei-ham-20260910.webp",
       "alt": "宣威火腿伴手禮參考圖",
-      "caption": "宣威火腿；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "宣威火腿；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 548,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-01.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-spicy-sausage": {
       "src": "images/souvenir-spicy-sausage-20260910.webp",
       "alt": "麻辣腸伴手禮參考圖",
-      "caption": "麻辣腸；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "麻辣腸；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 548,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-01.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-rose-crisp": {
       "src": "images/souvenir-rose-crisp-20260910.webp",
       "alt": "玫瑰酥伴手禮參考圖",
-      "caption": "玫瑰酥；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "玫瑰酥；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 540,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-01.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-crossing-bridge-noodle": {
       "src": "images/souvenir-crossing-bridge-noodle-20260910.webp",
       "alt": "過橋米線伴手禮參考圖",
-      "caption": "過橋米線；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "過橋米線；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 544,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-01.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-tamarind-cake": {
       "src": "images/souvenir-tamarind-cake-20260910.webp",
       "alt": "酸角糕伴手禮參考圖",
-      "caption": "酸角糕；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "酸角糕；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 548,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-02.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-rose-cake": {
       "src": "images/souvenir-rose-cake-20260910.webp",
       "alt": "玫瑰糕伴手禮參考圖",
-      "caption": "玫瑰糕；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "玫瑰糕；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 548,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-02.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-green-preserved-plum": {
       "src": "images/souvenir-green-preserved-plum-20260910.webp",
       "alt": "青話梅伴手禮參考圖",
-      "caption": "青話梅；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "青話梅；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 540,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-02.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-yuntui-cracker": {
       "src": "images/souvenir-yuntui-cracker-20260910.webp",
       "alt": "雲腿餅乾伴手禮參考圖",
-      "caption": "雲腿餅乾；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "雲腿餅乾；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 544,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-02.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-mushroom-ganba": {
       "src": "images/souvenir-mushroom-ganba-20260910.webp",
       "alt": "菌乾巴伴手禮參考圖",
-      "caption": "菌乾巴；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "菌乾巴；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 548,
-      "height": 696,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-02.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-yuntui-small-cake": {
       "src": "images/souvenir-yuntui-small-cake-20260910.webp",
       "alt": "雲腿小餅伴手禮參考圖",
-      "caption": "雲腿小餅；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "雲腿小餅；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 540,
-      "height": 696,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-02.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-wild-mushroom-beer": {
       "src": "images/souvenir-wild-mushroom-beer-20260910.webp",
       "alt": "野生菌精釀啤酒伴手禮參考圖",
-      "caption": "野生菌精釀啤酒；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "野生菌精釀啤酒；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 544,
-      "height": 696,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-02.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-milk-strip": {
       "src": "images/souvenir-milk-strip-20260910.webp",
       "alt": "牛乳條伴手禮參考圖",
-      "caption": "牛乳條；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "牛乳條；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 548,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-02.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-barley-crisp": {
       "src": "images/souvenir-barley-crisp-20260910.webp",
       "alt": "青稞酥伴手禮參考圖",
-      "caption": "青稞酥；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "青稞酥；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 548,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-02.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-sweet-sausage": {
       "src": "images/souvenir-sweet-sausage-20260910.webp",
       "alt": "甜腸伴手禮參考圖",
-      "caption": "甜腸；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "甜腸；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 540,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-02.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-potato-shreds": {
       "src": "images/souvenir-potato-shreds-20260910.webp",
       "alt": "土豆絲伴手禮參考圖",
-      "caption": "土豆絲；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "土豆絲；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 544,
-      "height": 704,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-02.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-bean-pod-doll": {
       "src": "images/souvenir-bean-pod-doll-20260910.webp",
       "alt": "豆莢娃娃伴手禮參考圖",
-      "caption": "豆莢娃娃；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "豆莢娃娃；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 366,
-      "height": 366,
-      "changes": "裁自 docs/sources/reference/souvenir-ai-top10.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-tile-cat": {
       "src": "images/souvenir-tile-cat-20260910.webp",
       "alt": "瓦貓擺件伴手禮參考圖",
-      "caption": "瓦貓擺件；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
-      "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "caption": "瓦貓擺件；改用較清楚的代表圖。",
+      "author": "web.run image search result",
+      "source": "web.run image search: 云南 瓦猫 摆件",
+      "license": "網路公開圖片／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 366,
-      "height": 366,
-      "changes": "裁自 docs/sources/reference/souvenir-ai-top10.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "改用較清楚的網路代表圖，並重製為統一卡面。"
     },
     "souvenir-jiama-craft": {
       "src": "images/souvenir-jiama-craft-20260910.webp",
       "alt": "甲馬文創伴手禮參考圖",
-      "caption": "甲馬文創；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "甲馬文創；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 366,
-      "height": 366,
-      "changes": "裁自 docs/sources/reference/souvenir-ai-top10.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-mushroom-dry-goods": {
       "src": "images/souvenir-mushroom-dry-goods-20260910.webp",
       "alt": "菌菇乾貨伴手禮參考圖",
-      "caption": "菌菇乾貨；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "菌菇乾貨；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 366,
-      "height": 366,
-      "changes": "裁自 docs/sources/reference/souvenir-ai-top10.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-elephant-pendant": {
       "src": "images/souvenir-elephant-pendant-20260910.webp",
       "alt": "小象掛件伴手禮參考圖",
-      "caption": "小象掛件；裁自使用者提供的伴手禮清單截圖。",
-      "author": "使用者提供截圖",
+      "caption": "小象掛件；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 366,
-      "height": 366,
-      "changes": "裁自 docs/sources/reference/souvenir-ai-top10.jpg，放大並轉為 WebP；僅供本次私人旅程參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     },
     "souvenir-xiangxun-mushroom-alt": {
       "src": "images/souvenir-xiangxun-mushroom-alt-20260910.webp",
       "alt": "香蕈菌另一款包裝參考圖",
-      "caption": "香蕈菌另一款包裝；對應使用者截圖 No.18。",
-      "author": "使用者提供截圖",
+      "caption": "香蕈菌另一款包裝；以原始榜單截圖重製為較清楚的統一卡面。",
+      "author": "ChatGPT project edit",
       "source": null,
-      "license": "使用者提供／本次私人旅程參考",
+      "license": "使用者提供截圖重製／本次私人旅程參考",
       "licenseUrl": null,
-      "width": 548,
-      "height": 696,
-      "changes": "裁自 docs/sources/reference/souvenir-xhs-02.jpg，放大並轉為 WebP；與 No.6 同名，保留為另一款包裝參考。"
+      "width": 900,
+      "height": 1125,
+      "changes": "不再直接使用放大裁切圖；改為以原始截圖重製統一卡面，提升閱讀與觀感。"
     }
   },
   "culture": [

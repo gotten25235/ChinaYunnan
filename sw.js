@@ -7,7 +7,7 @@
   - CHECK_OFFLINE 回傳核心、本地照片、遠端照片的實際缺失清單；未選取照片時不影響完成判定。
 */
 const VERSION = 'v1';
-const CACHE_REVISION = '20260910-copy-rewrite-01';
+const CACHE_REVISION = '20260910-mushroom-meme-01';
 const APP_CACHE = `yunnan-app-${VERSION}-${CACHE_REVISION}`;
 const IMAGE_CACHE = `yunnan-images-${VERSION}`;
 const OFFLINE_META_CACHE = `yunnan-offline-${VERSION}`;
@@ -21,6 +21,7 @@ const CORE_SHELL = [
   `./css/style.css?v=${VERSION}`,
   `./js/network.js?v=${VERSION}`,
   `./js/core.js?v=${VERSION}`,
+  `./js/analytics.js?v=${VERSION}`,
   `./js/weather.js?v=${VERSION}`,
   `./js/offline.js?v=${VERSION}`,
   `./js/settings.js?v=${VERSION}`,
@@ -115,6 +116,10 @@ self.addEventListener('fetch', event => {
   if (isPhotoRequest(request, url)) { event.respondWith(cacheFirstImage(request)); return; }
 
   const sameOrigin = url.origin === self.location.origin;
+  if (sameOrigin && /\/data\/analytics-config\.json$/i.test(url.pathname)) {
+    event.respondWith(fetch(request, {cache:'no-store'}).catch(() => new Response('{\"enabled\":false}', {headers:{'Content-Type':'application/json'}})));
+    return;
+  }
   const appLike = request.mode === 'navigate' || request.destination === 'document' || request.destination === 'script' || request.destination === 'style' ||
     (sameOrigin && (/\/data\/[^/]+\.json$/i.test(url.pathname) || /\.(?:webmanifest|json)$/i.test(url.pathname)));
   if (appLike) event.respondWith(appStaleWhileRevalidate(request));

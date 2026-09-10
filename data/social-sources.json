@@ -1854,6 +1854,39 @@
         "parserVersion": "v1",
         "notes": "使用者提供截圖；畫面顯示 AI 總結之排名與人推薦百分比，僅照圖記錄，不外推為官方統計。"
       }
+    },
+    "fb_20260910_0001": {
+      "sourceId": "fb_20260910_0001",
+      "platform": "facebook",
+      "url": "https://www.facebook.com/100085543585249/videos/%E5%8E%9F%E4%BE%86%E5%9C%A8%E9%9B%B2%E5%8D%97%E5%90%83%E8%8F%8C%E5%AD%90%E7%81%AB%E9%8D%8B%E5%BA%97%E6%98%AF%E4%B8%8D%E6%9C%83%E5%85%88%E7%B5%A6%E9%A4%90%E5%85%B7%E5%8F%AF%E6%83%9C%E9%98%B2%E4%B8%8D%E4%BD%8F%E8%87%AA%E5%B7%B1%E4%BA%BA-%E8%90%AC%E8%90%AC%E6%B2%92%E6%83%B3%E5%88%B0/1098052104983849/",
+      "canonicalUrl": "https://www.facebook.com/100085543585249/videos/%E5%8E%9F%E4%BE%86%E5%9C%A8%E9%9B%B2%E5%8D%97%E5%90%83%E8%8F%8C%E5%AD%90%E7%81%AB%E9%8D%8B%E5%BA%97%E6%98%AF%E4%B8%8D%E6%9C%83%E5%85%88%E7%B5%A6%E9%A4%90%E5%85%B7%E5%8F%AF%E6%83%9C%E9%98%B2%E4%B8%8D%E4%BD%8F%E8%87%AA%E5%B7%B1%E4%BA%BA-%E8%90%AC%E8%90%AC%E6%B2%92%E6%83%B3%E5%88%B0/1098052104983849/",
+      "postId": "1098052104983849",
+      "contentType": "social-video",
+      "author": {
+        "name": "Facebook 公開影片",
+        "handle": null,
+        "profileUrl": "https://www.facebook.com/100085543585249/"
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-10T20:44:00+08:00",
+      "lastSeenAt": "2026-09-10T20:44:00+08:00",
+      "status": "active",
+      "language": "zh-Hant",
+      "title": "原來在雲南吃菌子火鍋店是不會先給餐具，可惜防不住自己人",
+      "excerpt": "使用者指定作為菌子火鍋介紹的幽默梗來源；Facebook 頁面本次無法直接讀取影片內容，因此只依使用者提供連結與網址標題記錄，不把影片情節外推成所有店家的固定做法。",
+      "tags": [
+        "雲南",
+        "野生菌",
+        "菌子火鍋",
+        "美食梗",
+        "使用者指定"
+      ],
+      "collection": {
+        "method": "user-provided-public-url",
+        "collector": "ChatGPT project edit",
+        "parserVersion": "v1",
+        "notes": "僅用於文案梗與來源追溯；不作餐廳普遍規則或食品安全事實的唯一證據。"
+      }
     }
   }
 }
