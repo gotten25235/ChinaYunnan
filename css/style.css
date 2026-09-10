@@ -2016,12 +2016,11 @@ button,a,select,summary{touch-action:manipulation}
 .content-reader-scroll,.map-detail-shell{touch-action:pan-y pinch-zoom;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
 .content-reader-scroll img,.map-detail-shell img{-webkit-user-drag:none;user-select:none}
 
-/* APP SHELL — MAIN VIEW SWIPE — mobile tabs follow the finger.
+/* APP SHELL — MAIN VIEW SWIPE — all layouts follow touch, mouse drag, or precision touchpad gestures.
    The sticky top tabs and bottom nav stay fixed; only a visual clone of the main content
    moves during the gesture. Native horizontal components keep priority and never start
    this pager. */
-@media(max-width:600px){
-  .main-tab-swipe-layer{
+.main-tab-swipe-layer{
     position:fixed;
     left:0;
     right:0;
@@ -2065,11 +2064,10 @@ button,a,select,summary{touch-action:manipulation}
   .main-tab-swipe-layer footer,
   .main-tab-swipe-layer footer *{pointer-events:none!important}
   html.main-tab-swipe-active,
-  html.main-tab-swipe-active body{
-    overscroll-behavior:none;
-    -webkit-user-select:none;
-    user-select:none;
-  }
+html.main-tab-swipe-active body{
+  overscroll-behavior:none;
+  -webkit-user-select:none;
+  user-select:none;
 }
 
 /* JOURNEY — FLIGHT REMINDER — text-only flight rows */
@@ -2260,3 +2258,17 @@ button,a,select,summary{touch-action:manipulation}
 .offline-missing-tools{margin-top:14px;border-top:1px solid #dfe6e1;padding-top:10px}.offline-missing-tools>summary{cursor:pointer;font-size:.78rem;font-weight:700}.offline-missing-tools>p{margin:8px 0}.offline-missing-list{display:grid;gap:8px}.offline-missing-item{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:10px 11px;border:1px solid #e0e4df;border-radius:10px;background:#fff}.offline-missing-item>div{display:grid;gap:2px;min-width:0}.offline-missing-item b{font-size:.68rem;color:#8a5b21}.offline-missing-item span{font-size:.76rem;font-weight:700;color:var(--ink)}.offline-missing-item small{display:block;max-width:760px;overflow-wrap:anywhere;color:var(--muted);font-size:.64rem;line-height:1.45}.offline-missing-item a{flex:none;font-size:.7rem;text-decoration:none;white-space:nowrap}
 @media(max-width:600px){.offline-missing-item{display:grid;grid-template-columns:1fr}.offline-missing-item a{justify-self:start}.offline-ready-actions [data-offline-retry-missing]{width:100%;min-height:44px}}
 @media(prefers-color-scheme:dark){.offline-missing-tools{border-color:#3d4a44}.offline-missing-item{background:#23322e;border-color:#405149}.offline-missing-item b{color:#e0bd83}}
+
+/* Selective offline download: core is mandatory; travel photos and weather are optional and default selected. */
+.offline-select-panel{margin:14px 0 16px;padding:14px;border:1px solid #dbe4de;border-radius:14px;background:#fbfcf9}.offline-select-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:10px}.offline-select-head>div:first-child{display:grid;gap:2px}.offline-select-head strong{font-size:.84rem}.offline-select-head small{color:var(--muted);font-size:.66rem}.offline-select-actions{display:flex;gap:7px;flex-wrap:wrap}.offline-select-actions .action{min-height:34px;padding:6px 10px;font-size:.72rem}.offline-select-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.offline-select-item{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border:1px solid #dce4de;border-radius:11px;background:#fff;cursor:pointer;min-width:0}.offline-select-item:hover{background:#f7faf6}.offline-select-item input{width:18px;height:18px;flex:none;margin:1px 0 0;accent-color:var(--green)}.offline-select-item>span{display:grid;gap:3px;min-width:0}.offline-select-item strong{font-size:.76rem;line-height:1.35}.offline-select-item strong em{font-style:normal;font-size:.6rem;padding:2px 5px;border-radius:999px;background:#e8eee9;color:#557066;margin-left:3px}.offline-select-item small{font-size:.64rem;line-height:1.45;color:var(--muted)}.offline-select-item.is-required{cursor:default;background:#f5f7f3}.offline-select-item.is-required input{opacity:.7}.offline-check-grid--selective{grid-template-columns:repeat(3,minmax(0,1fr))}.offline-check-grid--selective>span{display:flex;align-items:flex-start;gap:4px;line-height:1.35}.offline-check-grid--selective>span>span{min-width:0}
+@media(max-width:760px){.offline-select-grid{grid-template-columns:1fr}.offline-select-head{align-items:flex-start}.offline-check-grid--selective{grid-template-columns:1fr}.offline-select-item{min-height:58px}}
+@media(max-width:520px){.offline-select-head{display:grid;grid-template-columns:1fr}.offline-select-actions{display:grid;grid-template-columns:1fr 1fr}.offline-select-actions .action{width:100%}}
+@media(prefers-color-scheme:dark){.offline-select-panel{background:#21302b;border-color:#405149}.offline-select-item{background:#26352f;border-color:#405149}.offline-select-item:hover{background:#2b3b34}.offline-select-item.is-required{background:#242f2b}.offline-select-item strong em{background:#34453e;color:#c6d8cf}}
+
+/* Settings view + explicit UI layout ownership */
+#settings-content{display:grid;gap:0}
+.layout-mode-card{display:flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid var(--line);border-radius:16px;background:#fff;padding:18px 20px;margin:0 0 12px}
+.layout-mode-card h3{margin-bottom:4px}.layout-mode-card p{margin:0}.layout-mode-card label{display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:.82rem}.layout-mode-card select{min-width:170px}
+html[data-ui-layout="desktop"] body{min-width:1180px}
+@media(max-width:600px){.layout-mode-card{align-items:flex-start;flex-direction:column;gap:10px;padding:15px 16px}.layout-mode-card label{width:100%;justify-content:space-between}.layout-mode-card select{min-width:0;width:170px;max-width:58vw}}
+@media(prefers-color-scheme:dark){.layout-mode-card{background:#1e2b28}.layout-mode-card select{background:#22312e;color:var(--ink);border-color:var(--line)}}

@@ -335,21 +335,21 @@ def validate_release_and_views() -> None:
     if config != {"version": "v1"}:
         error('tools/release.json must contain only {"version": "v1"}')
 
-    versions = re.findall(r'(?:css/style\.css|js/(?:network|core|weather|offline|reader|journey|map|library|app)\.js)\?v=([^"\']+)', html)
-    if len(versions) != 10 or any(v != "v1" for v in versions):
+    versions = re.findall(r'(?:css/style\.css|js/(?:network|core|weather|offline|settings|reader|journey|map|library|app)\.js)\?v=([^"\']+)', html)
+    if len(versions) != 11 or any(v != "v1" for v in versions):
         error("index.html local CSS/JS identification must be ?v=v1")
 
     sw_version = re.search(r"const VERSION = '([^']+)';", sw)
     if not sw_version or sw_version.group(1) != "v1":
         error("sw.js VERSION must equal 'v1'")
-    if "const APP_CACHE = `yunnan-app-${VERSION}`;" not in sw:
-        error("sw.js APP_CACHE must use fixed V1 identification")
+    if "const CACHE_REVISION = '" not in sw or "const APP_CACHE = `yunnan-app-${VERSION}-${CACHE_REVISION}`;" not in sw:
+        error("sw.js APP_CACHE must combine fixed V1 identification with an internal cache revision")
     if "const IMAGE_CACHE = `yunnan-images-${VERSION}`;" not in sw:
         error("sw.js IMAGE_CACHE must use fixed V1 identification")
     if "const OFFLINE_META_CACHE = `yunnan-offline-${VERSION}`;" not in sw:
         error("sw.js OFFLINE_META_CACHE must use fixed V1 identification")
 
-    expected_shell = ["index.html", "manifest.webmanifest", "offline-manifest.json", "css/style.css", "js/network.js", "js/core.js", "js/weather.js", "js/offline.js", "js/reader.js", "js/journey.js", "js/map.js", "js/library.js", "js/app.js", "data/trip-data.json", "data/social-sources.json", "data/source-index.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png"]
+    expected_shell = ["index.html", "manifest.webmanifest", "offline-manifest.json", "css/style.css", "js/network.js", "js/core.js", "js/weather.js", "js/offline.js", "js/settings.js", "js/reader.js", "js/journey.js", "js/map.js", "js/library.js", "js/app.js", "data/trip-data.json", "data/social-sources.json", "data/source-index.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png"]
     for rel in expected_shell:
         if not (ROOT / rel).is_file():
             error(f"APP_SHELL file missing: {rel}")
@@ -358,6 +358,7 @@ def validate_release_and_views() -> None:
         (core, "yunnan-2026-favorites-v1", "Favorites storage"),
         (core, "yunnan-2026-map-provider-v1", "Map provider storage"),
         (map_js, "yunnan-2026-custom-map-v1", "Custom map storage"),
+        ((ROOT / "js" / "settings.js").read_text(encoding="utf-8"), "yunnan-2026-ui-layout-v1", "UI layout storage"),
     )
     for source, key, label in storage_contracts:
         if key not in source:
@@ -414,6 +415,8 @@ def validate_offline_pwa(trip: dict) -> None:
         error("index.html must link manifest.webmanifest")
     if 'js/offline.js?v=v1' not in html:
         error("index.html must load js/offline.js?v=v1")
+    if 'js/settings.js?v=v1' not in html:
+        error("index.html must load js/settings.js?v=v1")
     if 'id="connection-badge"' not in html:
         error("index.html must expose the connectivity badge")
     for key in ("name", "short_name", "start_url", "scope", "display", "icons"):
@@ -431,28 +434,35 @@ def validate_offline_pwa(trip: dict) -> None:
     if actual != expected:
         error("offline-manifest.json is stale; run python tools/generate_offline_manifest.py")
     else:
-        passed("offline-manifest.json matches current runtime assets and remote photos")
+        passed("offline-manifest.json matches core assets, travel-photo assets and remote photos")
 
     if offline_manifest.get("schemaVersion") != "v1":
         error("offline-manifest schemaVersion must equal v1")
-    local_assets = offline_manifest.get("localAssets") if isinstance(offline_manifest.get("localAssets"), list) else []
+    core_assets = offline_manifest.get("coreAssets") if isinstance(offline_manifest.get("coreAssets"), list) else []
+    photo_assets = offline_manifest.get("photoAssets") if isinstance(offline_manifest.get("photoAssets"), list) else []
     remote_photos = offline_manifest.get("remotePhotos") if isinstance(offline_manifest.get("remotePhotos"), list) else []
-    for asset in local_assets:
-        if not isinstance(asset, str):
-            error("offline-manifest localAssets entries must be strings")
-            continue
-        if asset == "./":
-            continue
-        rel = asset[2:] if asset.startswith("./") else asset
-        rel = rel.split("?", 1)[0]
-        if not (ROOT / rel).is_file():
-            error(f"offline local asset missing: {asset}")
+    for group_name, assets in (("coreAssets", core_assets), ("photoAssets", photo_assets)):
+        for asset in assets:
+            if not isinstance(asset, str):
+                error(f"offline-manifest {group_name} entries must be strings")
+                continue
+            if asset == "./":
+                continue
+            rel = asset[2:] if asset.startswith("./") else asset
+            rel = rel.split("?", 1)[0]
+            if not (ROOT / rel).is_file():
+                error(f"offline {group_name} asset missing: {asset}")
     photo_urls = []
+    local_photo_paths = []
     for photo in (trip.get("photos") or {}).values():
         if isinstance(photo, dict):
             src = photo.get("src")
             if isinstance(src, str) and src.startswith(("http://", "https://")):
                 photo_urls.append(src)
+            elif isinstance(src, str) and src:
+                local_photo_paths.append("./" + src.lstrip("./"))
+    if set(photo_assets) != set(local_photo_paths):
+        error("offline-manifest photoAssets must cover every local primary photo exactly")
     manifest_urls=[]
     for record in remote_photos:
         if not isinstance(record, dict):
@@ -471,16 +481,16 @@ def validate_offline_pwa(trip: dict) -> None:
     forbidden_remote_tags = re.findall(r'<(?:script|link)\b[^>]+(?:src|href)=["\']https?://', html, re.I)
     if forbidden_remote_tags:
         error("index.html required scripts/styles must be local for offline PWA")
-    for marker in ("PREPARE_OFFLINE", "RETRY_OFFLINE_PHOTOS", "CHECK_OFFLINE", "OFFLINE_PROGRESS", "remoteMissingItems", "offline-manifest.json"):
+    for marker in ("PREPARE_OFFLINE", "RETRY_OFFLINE_PHOTOS", "CHECK_OFFLINE", "OFFLINE_PROGRESS", "photoLocalMissingItems", "remoteMissingItems", "includePhotos", "offline-manifest.json"):
         if marker not in sw:
             error(f"sw.js offline preparation contract missing {marker}")
-    for marker in ("data-offline-prepare", "data-offline-retry-missing", "data-offline-missing-list", "data-offline-check", "yunnan-offline-prep-state-v1"):
+    for marker in ("data-offline-prepare", "data-offline-select-photos", "data-offline-select-weather", "data-offline-select-all", "data-offline-select-none", "data-offline-retry-missing", "data-offline-missing-list", "data-offline-check", "yunnan-offline-prep-state-v1"):
         if marker not in offline_js:
             error(f"offline.js UI/state contract missing {marker}")
     if "renderOfflineMap" not in map_js or "offline-map-marker" not in map_js:
         error("map.js must keep a no-tile offline schematic map fallback")
     if len(errors) == before:
-        passed("PWA install shell, explicit offline download, photo cache verification and schematic offline map contracts are valid")
+        passed("PWA install shell, selective offline download, travel-photo separation and schematic offline map contracts are valid")
 
 
 def validate_js_syntax() -> None:

@@ -21,6 +21,7 @@
 │   ├── core.js
 │   ├── weather.js
 │   ├── offline.js
+│   ├── settings.js
 │   ├── reader.js
 │   ├── journey.js
 │   ├── map.js
@@ -69,12 +70,13 @@
 | `network.js` | 國際版／大陸版 profile（預設國際版）、Leaflet runtime loader、OSM／高德底圖選擇、WGS84 ↔ GCJ-02 顯示座標轉換；同時提供 QWeather Grid 所需的 WGS84→GCJ-02 converter |
 | `core.js` | Photo System、Travel Utils、Favorites Store、Navigation Service、Date Rail、Horizontal Scroller；Photo System 對兩種 network profile 使用同一張正確主體圖，負責本地／遠端圖、錯誤 placeholder 與示意／背景 badge，不做跨地點 fallback，不持有 Domain 畫面 state |
 | `weather.js` | 高德天氣 → QWeather Grid → Open-Meteo provider chain、API credential local settings、欄位優先合併、旅程日 weather point、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots、各 weather point 的高德／QWeather／Open-Meteo 公開地點預報連結 |
-| `offline.js` | PWA 離線準備 UI、Service Worker message bridge、Cache 完整性檢查、具名缺失清單、只重試失敗照片、online/offline 狀態、主畫面安裝提示、收藏／偏好匯出匯入；不保存天氣 API Key |
+| `offline.js` | PWA 選擇式離線準備 UI（核心固定、旅行照片／天氣可選且預設全選）、Service Worker message bridge、Cache 完整性檢查、具名缺失清單、只重試失敗照片、online/offline 狀態、主畫面安裝提示、收藏／偏好匯出匯入；不保存天氣 API Key |
+| `settings.js` | Settings View 的介面版面 preference owner；`mobile` 為預設，`desktop` 會在手機上固定桌面 viewport，偏好使用 `yunnan-2026-ui-layout-v1` |
 | `reader.js` | Content Reader、stack、return state、Reader swipe |
 | `journey.js` | Day 01–08、Day 展開、時刻表、PNG export、航班／住宿 Journey UI |
 | `map.js` | Leaflet、Map filters、Map Rail、Map Detail、定位、自定義地點、長按；Leaflet／道路 tile 不可用時提供無底圖離線地標簡圖與純座標 Nearby 計算 |
 | `library.js` | Content/Story Card、Night/Food/Shopping/Favorites/Photo/Culture state/render |
-| `app.js` | JSON bootstrap、`VIEW_REGISTRY`、App Shell、shared day coordinator、單一 action router |
+| `app.js` | JSON bootstrap、`VIEW_REGISTRY`、App Shell、shared day coordinator、單一 action router、全版面 Main Tab swipe（手機觸控；電腦版觸控／滑鼠拖曳／precision touchpad 水平手勢；橫向 Rail／Map／表單優先） |
 
 主要 state 只由各自 Owner 寫入：
 
@@ -82,7 +84,8 @@
 - Network：network profile。
 - Core：Favorites IDs、navigation provider。
 - Weather：provider credentials（localStorage）、forecast cache、refresh state。
-- Offline：離線準備狀態、安裝提示與 user-data backup bridge；實體資源由 Service Worker Cache Storage 擁有。
+- Offline：離線內容選取狀態、準備狀態、安裝提示與 user-data backup bridge；核心固定必選，旅行照片／天氣預設勾選且可取消；實體資源由 Service Worker Cache Storage 擁有。
+- Settings：介面版面狀態；預設 mobile，與網路、導航、天氣、離線控制一起集中顯示在獨立 Settings View。
 - Journey：展開 Day、返回位置、Timetable preview。
 - Map：map instance、markers、filters、selected place、custom map、geolocation。
 - Library：night/food/culture/photo filters。
@@ -125,7 +128,8 @@ Reader 關閉後要回原本 window scroll、橫向 Rail scroll 與 focus。Cont
 - 已本地化 WebP 優先；遠端精準圖在兩種模式都嘗試同一個來源，載入失敗時才顯示無圖。絕不使用同城市／附近景點／同類照片 fallback。
 - 具名主體使用 `exact` / `verified`；交通／無固定場地活動可用 `illustrative`、料理可用 `representative`、文化故事可用 `context`，所有非主體實拍都必須在 UI 標示「示意圖」或「背景圖」。`reference_only` 不能作為 UI 主圖。
 - 使用者提供的定案手冊若有明確對應景點照片，可裁切成本地 WebP；頁碼與對應記錄放在 `docs/sources/HANDBOOK_IMAGE_CROPS.md`。
-- Service Worker 的 Image Cache 使用 Cache First，減少已看過圖片的重複流量；「離線準備」會主動抓齊 `offline-manifest.json` 列出的全部遠端主圖片，不必逐張滑過。
+- Service Worker 的 App Shell cache 使用固定產品 `VERSION=v1` + 內部 `CACHE_REVISION`；改版時建立新 App Cache 並刪除舊 App Cache，但保留 V1 Image Cache，避免因產品版本固定而離線讀到舊 CSS／HTML。
+- Service Worker 的 Image Cache 使用 Cache First，減少已看過圖片的重複流量；使用者勾選「旅行照片」後，「離線準備」會把 `offline-manifest.json` 的本地照片與遠端主圖片一併寫入 Image Cache，不必逐張滑過。照片未勾選時不參與完成判定。
 - OpenStreetMap / 高德 tiles 都不進長效 Image Cache。
 - 圖片內容真正換圖時，優先改檔名／URL，避免舊 cache 命中。
 
@@ -162,7 +166,7 @@ Reader 關閉後要回原本 window scroll、橫向 Rail scroll 與 focus。Cont
 Cache 契約：
 
 - App Cache 保存 HTML / CSS / JS / JSON / PWA manifest。新的 Service Worker install 會把現行 `CORE_SHELL` 寫入同一個 `yunnan-app-v1`；不使用 revision cache name。
-- Image Cache 固定使用 `yunnan-images-v1` 並採 Cache First。使用者按「下載離線資料」時，Service Worker 依 `offline-manifest.json` 將全部遠端精準主圖片預先寫入此 Cache；圖片內容真正更換時改檔名／URL，讓資源 identity 自然更新。
+- Image Cache 固定使用 `yunnan-images-v1` 並採 Cache First。本地與遠端旅行照片都屬此 Cache；使用者只有勾選「旅行照片」時才主動預抓。這讓照片可以與網頁核心分開下載／清除，且未勾選照片不影響目前選取內容的完成狀態。圖片內容真正更換時改檔名／URL，讓資源 identity 自然更新。
 - Offline Meta Cache 固定使用 `yunnan-offline-v1`，只記錄最近一次完整性檢查結果；使用者看得到的準備時間另存在 `yunnan-offline-prep-state-v1`。
 - Weather cache 使用 `yunnan-weather-cache-v1`；provider 設定使用 `yunnan-weather-provider-config-v1`。同設定、同 weather point 1 小時內不重抓。Provider 欄位依固定優先序合併：高德既有欄位最高、QWeather Grid 補缺、Open-Meteo 再補缺。離線時保留最後一次成功資料，不寫回 `trip-data.json`。
 - Network profile 切換後由 App reload 一次，讓 Photo System、Leaflet source 與底圖座標系在同一 bootstrap 契約下重建；Weather provider chain 不再依賴 profile，兩個模式都使用高德 → QWeather Grid → Open-Meteo。
@@ -174,7 +178,7 @@ Generated files：
 
 - `data/source-index.json` ← `trip-data.json + social-sources.json`
 - `docs/sources/PHOTO_SOURCES.md` ← `trip-data.json > photos`
-- `offline-manifest.json` ← 目前 runtime 本地資源 + `trip-data.json > photos` 的遠端主圖片診斷紀錄（id / label / url / source）
+- `offline-manifest.json` ← 分組後的 `coreAssets` + `photoAssets` + `trip-data.json > photos` 遠端主圖片診斷紀錄（id / label / url / source）；供選擇式離線下載使用
 
 常用命令：
 
@@ -224,5 +228,5 @@ python tools/release.py --zip
 | 地址／座標查不到 | 用城市中心或猜測座標填滿欄位 | 保持待定位；只有核實後才寫正式座標 |
 | 新功能不知道放哪 | 把 renderer/state 塞進 `app.js`、建立第二套全域 handler | 先決定 Domain Owner；App 只做 bootstrap、協調與 router |
 | 天氣功能造成手機重複流量 | 每次切 Day／Map 都重新呼叫 API、把預報寫入正式旅程資料 | `weather.js` 單一 owner；固定旅程 weather point、每點 1 小時 cache、離線沿用最後成功資料；Journey／Map 只放 presentation slot |
-| 以為「開過一次」就一定離線完整 | 只靠 lazy image / stale cache、沒有完成檢查 | `offline.js` 明確觸發 `PREPARE_OFFLINE`；Service Worker 逐項預抓並以 `CHECK_OFFLINE` 驗證本地資源與遠端主圖片，全部命中才顯示完成；缺失時回傳具名項目並可只重試失敗照片 |
+| 以為「開過一次」就一定離線完整 | 只靠 lazy image / stale cache、沒有完成檢查 | `offline.js` 明確觸發選擇式 `PREPARE_OFFLINE`；核心固定驗證，照片只在使用者勾選時納入完成判定，天氣依 localStorage cache 判定；缺失時回傳具名項目並可只重試失敗照片 |
 | UI 看起來相似就全部共用 | 萬用 CardFactory 加大量 variant/options | 維持四套 Card；共用 service / 語意，不強迫共用所有 markup |

@@ -31,7 +31,7 @@ def read_identification() -> str:
 
 def sync_identification(version: str) -> None:
     html = INDEX.read_text(encoding="utf-8")
-    pattern = re.compile(r'((?:css/style\.css|js/(?:network|core|weather|offline|reader|journey|map|library|app)\.js)\?v=)[^"\']+')
+    pattern = re.compile(r'((?:css/style\.css|js/(?:network|core|weather|offline|settings|reader|journey|map|library|app)\.js)\?v=)[^"\']+')
     html, count = pattern.subn(lambda m: m.group(1) + version, html)
     if count != 10:
         raise SystemExit(f"Expected 10 identified local CSS/JS references in index.html, found {count}")

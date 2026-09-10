@@ -1,13 +1,14 @@
 /*
   雲南慢時光 Service Worker
-  - VERSION 是固定 V1 識別，不是遞增版本號。
-  - 核心 App Shell 在 install 預先快取；使用者可在「離線準備」明確下載全部本地資源與遠端精準照片。
-  - 圖片 Cache First；OSM / 高德地圖瓦片不長效快取，離線時由網站自己的簡圖 fallback 顯示地標。
-  - 天氣使用 weather.js 的 localStorage 最後成功資料；Service Worker 不偽造即時資料。
-  - 離線檢查會回傳實際缺失項目；遠端照片可只重試失敗項目，不再只顯示 115/116。
+  - VERSION 是固定 V1 識別；CACHE_REVISION 只負責讓新版 HTML/CSS/JS 建立新 App Shell。
+  - 核心 App Shell 在 install 預先快取；「離線準備」可選擇是否另外下載旅行照片。
+  - 本地與遠端旅行照片統一放進 Image Cache，方便獨立下載／清除；OSM / 高德 tile 不長效快取。
+  - 天氣由 weather.js 使用 localStorage 保存最後成功資料；Service Worker 不偽造即時天氣。
+  - CHECK_OFFLINE 回傳核心、本地照片、遠端照片的實際缺失清單；未選取照片時不影響完成判定。
 */
 const VERSION = 'v1';
-const APP_CACHE = `yunnan-app-${VERSION}`;
+const CACHE_REVISION = '20260910-desktop-tab-swipe-01';
+const APP_CACHE = `yunnan-app-${VERSION}-${CACHE_REVISION}`;
 const IMAGE_CACHE = `yunnan-images-${VERSION}`;
 const OFFLINE_META_CACHE = `yunnan-offline-${VERSION}`;
 const PROJECT_CACHE_PREFIX = 'yunnan-';
@@ -22,6 +23,7 @@ const CORE_SHELL = [
   `./js/core.js?v=${VERSION}`,
   `./js/weather.js?v=${VERSION}`,
   `./js/offline.js?v=${VERSION}`,
+  `./js/settings.js?v=${VERSION}`,
   `./js/reader.js?v=${VERSION}`,
   `./js/journey.js?v=${VERSION}`,
   `./js/map.js?v=${VERSION}`,
@@ -38,7 +40,12 @@ const CORE_SHELL = [
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(APP_CACHE);
-    await cache.addAll(CORE_SHELL);
+    for (const asset of CORE_SHELL) {
+      const request = new Request(asset, {cache:'reload'});
+      const response = await fetch(request);
+      if (!canStore(response)) throw new Error(`Core asset unavailable: ${asset}`);
+      await cache.put(asset, response.clone());
+    }
     await self.skipWaiting();
   })());
 });
@@ -74,9 +81,13 @@ async function cacheFirstImage(request) {
   const cache = await caches.open(IMAGE_CACHE);
   const cached = await cache.match(request);
   if (cached) return cached;
-  const response = await fetch(request);
-  if (canStore(response)) eventlessPut(cache, request, response.clone());
-  return response;
+  try {
+    const response = await fetch(request);
+    if (canStore(response)) eventlessPut(cache, request, response.clone());
+    return response;
+  } catch (error) {
+    return new Response('', {status:503,statusText:'Image unavailable offline'});
+  }
 }
 
 async function appStaleWhileRevalidate(request) {
@@ -123,10 +134,17 @@ function remotePhotoRecords(manifest) {
     : {id:String(value?.id||`remote-${index+1}`),ids:Array.isArray(value?.ids)?value.ids:[],url:String(value?.url||''),label:String(value?.label||value?.id||value?.url||`遠端照片 ${index+1}`),source:String(value?.source||'')}
   ).filter(record=>/^https?:\/\//i.test(record.url));
 }
-async function cacheLocalAsset(asset) {
+async function cacheCoreAsset(asset) {
   const cache = await caches.open(APP_CACHE);
-  const cached = await cache.match(asset);
-  if (cached) return true;
+  if (await cache.match(asset)) return true;
+  const response = await fetch(asset, {cache:'reload'});
+  if (!canStore(response)) return false;
+  await cache.put(asset, response.clone());
+  return true;
+}
+async function cacheLocalPhoto(asset) {
+  const cache = await caches.open(IMAGE_CACHE);
+  if (await cache.match(asset)) return true;
   const response = await fetch(asset, {cache:'reload'});
   if (!canStore(response)) return false;
   await cache.put(asset, response.clone());
@@ -174,17 +192,22 @@ async function cacheOptionalRuntime(url) {
 async function hasIn(cacheName,key) { const cache=await caches.open(cacheName); return Boolean(await cache.match(key)); }
 
 async function checkOffline(manifest) {
-  const localAssets = Array.isArray(manifest.localAssets) ? manifest.localAssets : [];
+  const coreAssets = Array.isArray(manifest.coreAssets) ? manifest.coreAssets : [];
+  const photoAssets = Array.isArray(manifest.photoAssets) ? manifest.photoAssets : [];
   const remotePhotos = remotePhotoRecords(manifest);
   const optionalRuntime = Array.isArray(manifest.optionalRuntime) ? manifest.optionalRuntime : [];
-  const localMissingItems=[],remoteMissingItems=[];
+  const coreMissingItems=[],photoLocalMissingItems=[],remoteMissingItems=[];
   let optionalCached=0;
-  for (const asset of localAssets) if (!(await hasIn(APP_CACHE,asset))) localMissingItems.push({asset,label:asset});
+  for (const asset of coreAssets) if (!(await hasIn(APP_CACHE,asset))) coreMissingItems.push({asset,label:asset});
+  for (const asset of photoAssets) if (!(await hasIn(IMAGE_CACHE,asset))) photoLocalMissingItems.push({asset,label:asset});
   for (const record of remotePhotos) if (!(await hasIn(IMAGE_CACHE,record.url))) remoteMissingItems.push(record);
   for (const url of optionalRuntime) if (await hasIn(APP_CACHE,url)) optionalCached++;
   return {
-    localTotal:localAssets.length,localMissing:localMissingItems.length,localMissingItems,
+    coreTotal:coreAssets.length,coreMissing:coreMissingItems.length,coreMissingItems,
+    photoLocalTotal:photoAssets.length,photoLocalMissing:photoLocalMissingItems.length,photoLocalMissingItems,
     remoteTotal:remotePhotos.length,remoteMissing:remoteMissingItems.length,remoteMissingItems,
+    photoTotal:photoAssets.length+remotePhotos.length,
+    photoMissing:photoLocalMissingItems.length+remoteMissingItems.length,
     optionalTotal:optionalRuntime.length,optionalCached
   };
 }
@@ -208,46 +231,51 @@ async function storeOfflineResult(result){
   await meta.put('./offline-prep-result.json',new Response(JSON.stringify({...result,checkedAt:Date.now()}),{headers:{'Content-Type':'application/json'}}));
 }
 
-async function prepareRemoteRecords(records,port,{labelPrefix='正在下載旅程照片…'}={}){
-  let done=0,total=records.length;
-  const progress=(label)=>port?.postMessage({type:'OFFLINE_PROGRESS',done,total,label});
-  for(const record of records){
-    progress(`${labelPrefix} ${record.label}`);
-    await cacheRemotePhoto(record,{attempts:3});
-    done++;progress(`${labelPrefix} ${record.label}`);
-  }
-}
-async function prepareOffline(port) {
+async function prepareOffline(port,{includePhotos=true}={}) {
   const manifest = await readOfflineManifest();
-  const localAssets = Array.isArray(manifest.localAssets) ? manifest.localAssets : [];
+  const coreAssets = Array.isArray(manifest.coreAssets) ? manifest.coreAssets : [];
+  const photoAssets = Array.isArray(manifest.photoAssets) ? manifest.photoAssets : [];
   const remotePhotos = remotePhotoRecords(manifest);
   const optionalRuntime = Array.isArray(manifest.optionalRuntime) ? manifest.optionalRuntime : [];
-  const requiredTotal = localAssets.length + remotePhotos.length;
+  const total = coreAssets.length + (includePhotos ? photoAssets.length + remotePhotos.length : 0);
   let done=0;
-  const progress=(label)=>port?.postMessage({type:'OFFLINE_PROGRESS',done,total:requiredTotal,label});
-  progress('正在準備網頁核心與本地資料…');
-  for (const asset of localAssets) {
-    try { await cacheLocalAsset(asset); } catch (error) { console.warn('Offline local asset failed',asset,error); }
-    done++; progress('正在準備網頁核心與本地資料…');
+  const progress=(label)=>port?.postMessage({type:'OFFLINE_PROGRESS',done,total,label});
+  progress('正在準備網頁核心與其他資料…');
+  for (const asset of coreAssets) {
+    try { await cacheCoreAsset(asset); } catch (error) { console.warn('Offline core asset failed',asset,error); }
+    done++; progress('正在準備網頁核心與其他資料…');
   }
-  for (const record of remotePhotos) {
-    progress(`正在下載旅程照片… ${record.label}`);
-    await cacheRemotePhoto(record,{attempts:3});
-    done++; progress(`正在下載旅程照片… ${record.label}`);
+  if(includePhotos){
+    for (const asset of photoAssets) {
+      progress(`正在下載旅行照片… ${asset.split('/').pop()||asset}`);
+      try { await cacheLocalPhoto(asset); } catch (error) { console.warn('Offline local photo failed',asset,error); }
+      done++; progress(`正在下載旅行照片… ${asset.split('/').pop()||asset}`);
+    }
+    for (const record of remotePhotos) {
+      progress(`正在下載旅行照片… ${record.label}`);
+      await cacheRemotePhoto(record,{attempts:3});
+      done++; progress(`正在下載旅行照片… ${record.label}`);
+    }
   }
   for (const url of optionalRuntime) await cacheOptionalRuntime(url);
   const result = await checkOffline(manifest);
   await storeOfflineResult(result);
   return result;
 }
-async function retryMissingRemotePhotos(port){
+async function retryMissingPhotos(port){
   const manifest=await readOfflineManifest();
   const before=await checkOffline(manifest);
-  const records=before.remoteMissingItems||[];
-  let done=0,total=records.length;
+  const localRecords=before.photoLocalMissingItems||[];
+  const remoteRecords=before.remoteMissingItems||[];
+  let done=0,total=localRecords.length+remoteRecords.length;
   const progress=(label)=>port?.postMessage({type:'OFFLINE_PROGRESS',done,total,label});
-  if(!records.length)return before;
-  for(const record of records){
+  if(!total)return before;
+  for(const item of localRecords){
+    progress(`重試照片：${item.asset}`);
+    try{await cacheLocalPhoto(item.asset);}catch(error){console.warn('Retry local photo failed',item.asset,error);}
+    done++;progress(`重試照片：${item.asset}`);
+  }
+  for(const record of remoteRecords){
     progress(`重試照片：${record.label}`);
     await cacheRemotePhoto(record,{attempts:4});
     done++;progress(`重試照片：${record.label}`);
@@ -263,8 +291,8 @@ self.addEventListener('message', event => {
     try {
       const manifest=await readOfflineManifest();
       let result;
-      if(msg.type==='PREPARE_OFFLINE')result=await prepareOffline(port);
-      else if(msg.type==='RETRY_OFFLINE_PHOTOS')result=await retryMissingRemotePhotos(port);
+      if(msg.type==='PREPARE_OFFLINE')result=await prepareOffline(port,{includePhotos:msg.includePhotos!==false});
+      else if(msg.type==='RETRY_OFFLINE_PHOTOS')result=await retryMissingPhotos(port);
       else if(msg.type==='CLEAR_OFFLINE_PHOTOS')result=await clearOfflinePhotos(manifest);
       else if(msg.type==='CLEAR_OFFLINE_DOWNLOADS')result=await clearOfflineDownloads(manifest);
       else result=await checkOffline(manifest);
