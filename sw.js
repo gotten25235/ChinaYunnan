@@ -1,13 +1,13 @@
 /*
   雲南慢時光 Service Worker
-  - VERSION 是固定 V1 識別；CACHE_REVISION 只負責讓新版 HTML/CSS/JS 建立新 App Shell。
+  - VERSION 是固定 V1 識別；CACHE_REVISION 負責讓新版 App Shell、圖片與離線狀態建立新快取。
   - 核心 App Shell 在 install 預先快取；「離線準備」可選擇是否另外下載旅行照片。
   - 本地與遠端旅行照片統一放進 Image Cache，方便獨立下載／清除；OSM / 高德 tile 不長效快取。
   - 天氣由 weather.js 使用 localStorage 保存最後成功資料；Service Worker 不偽造即時天氣。
   - CHECK_OFFLINE 回傳核心、本地照片、遠端照片的實際缺失清單；未選取照片時不影響完成判定。
 */
 const VERSION = 'v1';
-const CACHE_REVISION = '20260910-auto-anonymous-visitor-id-01';
+const CACHE_REVISION = '20260911-shopping-reference-filter-04';
 const APP_CACHE = `yunnan-app-${VERSION}-${CACHE_REVISION}`;
 const IMAGE_CACHE = `yunnan-images-${VERSION}`;
 const OFFLINE_META_CACHE = `yunnan-offline-${VERSION}`;

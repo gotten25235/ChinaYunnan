@@ -44,7 +44,6 @@
     "./images/lijiang-old-town.webp",
     "./images/songzanlin.webp",
     "./images/puer-tea.webp",
-    "./images/yunnan-coffee.webp",
     "./images/xuanwei-ham.webp",
     "./images/bai-tiedye.webp",
     "./images/silver-craft.webp",
@@ -76,36 +75,18 @@
     "./images/xizhou-carriage.webp",
     "./images/dali-sour-fish.webp",
     "./images/lijiang-rib-hotpot.webp",
-    "./images/yak-yogurt.webp",
-    "./images/souvenir-mohong-rose-20260910.webp",
-    "./images/souvenir-boletus-20260910.webp",
-    "./images/souvenir-mushroom-sauce-20260910.webp",
-    "./images/souvenir-xiangxun-mushroom-20260910.webp",
-    "./images/souvenir-tamarind-20260910.webp",
-    "./images/souvenir-fruit-wine-20260910.webp",
-    "./images/souvenir-xuanwei-ham-20260910.webp",
-    "./images/souvenir-spicy-sausage-20260910.webp",
-    "./images/souvenir-rose-crisp-20260910.webp",
-    "./images/souvenir-crossing-bridge-noodle-20260910.webp",
-    "./images/souvenir-tamarind-cake-20260910.webp",
-    "./images/souvenir-rose-cake-20260910.webp",
-    "./images/souvenir-green-preserved-plum-20260910.webp",
-    "./images/souvenir-yuntui-cracker-20260910.webp",
-    "./images/souvenir-mushroom-ganba-20260910.webp",
-    "./images/souvenir-yuntui-small-cake-20260910.webp",
-    "./images/souvenir-wild-mushroom-beer-20260910.webp",
-    "./images/souvenir-milk-strip-20260910.webp",
-    "./images/souvenir-barley-crisp-20260910.webp",
-    "./images/souvenir-sweet-sausage-20260910.webp",
-    "./images/souvenir-potato-shreds-20260910.webp",
-    "./images/souvenir-bean-pod-doll-20260910.webp",
-    "./images/souvenir-tile-cat-20260910.webp",
-    "./images/souvenir-jiama-craft-20260910.webp",
-    "./images/souvenir-mushroom-dry-goods-20260910.webp",
-    "./images/souvenir-elephant-pendant-20260910.webp",
-    "./images/souvenir-xiangxun-mushroom-alt-20260910.webp"
+    "./images/yak-yogurt.webp"
   ],
   "remotePhotos": [
+    {
+      "id": "yunnan-coffee",
+      "ids": [
+        "yunnan-coffee"
+      ],
+      "url": "https://img01.yzcdn.cn/upload_files/2023/06/15/FrpBSGzdHGmesR_eRxqtH-lmQNIM.jpg%21middle.jpg",
+      "label": "雲南小粒咖啡伴手禮實物／實景參考",
+      "source": "https://detail.youzan.com/show/goods?alias=3exz0401mbbyz&from_source=gbox_seo"
+    },
     {
       "id": "shuanglang-open",
       "ids": [
@@ -503,6 +484,241 @@
       "url": "https://res.klook.com/images/fl_lossy.progressive%2Cq_65/c_fill%2Cw_1295%2Ch_754/w_80%2Cx_15%2Cy_15%2Cg_south_west%2Cl_Klook_water_br_trans_yhcmh3/activities/carncs93ctplee57yqtz/BanquetducheftribalZayadeShangri-La.jpg",
       "label": "香格里拉藏族宴席與鍋莊歌舞情境",
       "source": "https://www.klook.com/fr/activity/158909-zhaya-tusi-feast-in-shangri-la/"
+    },
+    {
+      "id": "souvenir-mohong-rose",
+      "ids": [
+        "souvenir-mohong-rose"
+      ],
+      "url": "https://img01.yzcdn.cn/upload_files/2025/05/07/FmCAyS6Izo5-Ol9B8JAiT9scA4Pl.jpg%21middle.jpg",
+      "label": "墨紅玫瑰伴手禮實物／實景參考",
+      "source": "https://detail.youzan.com/show/goods?alias=1y7nlr74f97ympl&from_source=gbox_seo"
+    },
+    {
+      "id": "souvenir-boletus",
+      "ids": [
+        "souvenir-boletus"
+      ],
+      "url": "https://img06.weeecdn.com/item/image/827/553/5DDAB857EBF97F29.jpeg",
+      "label": "牛肝菌伴手禮實物／實景參考",
+      "source": "https://www.sayweee.com/zh/product/Yunnan-Gourmet-Instant-Porcini/2950586"
+    },
+    {
+      "id": "souvenir-mushroom-sauce",
+      "ids": [
+        "souvenir-mushroom-sauce"
+      ],
+      "url": "https://cdn.yamibuy.net/item/c485e02612a9fbf71541550ebee7ee3e_756x756.webp",
+      "label": "菌菇醬伴手禮實物／實景參考",
+      "source": "https://www.yami.com/zh/p/black-truffle-paste-68g/1148019631"
+    },
+    {
+      "id": "souvenir-xiangxun-mushroom",
+      "ids": [
+        "souvenir-xiangxun-mushroom",
+        "souvenir-xiangxun-mushroom-alt"
+      ],
+      "url": "https://chuxiong.yunnan.cn/pic/003/079/161/00307916150_039ebf80.jpg",
+      "label": "香蕈菌伴手禮實物／實景參考",
+      "source": "https://chuxiong.yunnan.cn/system/2026/05/15/034009226.shtml"
+    },
+    {
+      "id": "souvenir-tamarind",
+      "ids": [
+        "souvenir-tamarind"
+      ],
+      "url": "https://img06.weeecdn.com/item/image/326/899/1E9196692CA2CB41.jpeg%21c1440x0_q81.auto",
+      "label": "酸角伴手禮實物／實景參考",
+      "source": "https://www.sayweee.com/zh/product/Yunnan-Wild-Tamarind-from/2841648"
+    },
+    {
+      "id": "souvenir-fruit-wine",
+      "ids": [
+        "souvenir-fruit-wine"
+      ],
+      "url": "https://www.kunming.cn/news/upload/resources/image/2026/04/30/2090390_2048x2048.jpeg",
+      "label": "果酒伴手禮實物／實景參考",
+      "source": "https://www.kunming.cn/news/c/2026-04-30/14037471.shtml"
+    },
+    {
+      "id": "souvenir-xuanwei-ham",
+      "ids": [
+        "souvenir-xuanwei-ham"
+      ],
+      "url": "https://liangliangmama.com/cdn/shop/products/htk-3_1024x1024.jpg?v=1664359496",
+      "label": "宣威火腿伴手禮實物／實景參考",
+      "source": "https://liangliangmama.com/products/xz-htr300g"
+    },
+    {
+      "id": "souvenir-spicy-sausage",
+      "ids": [
+        "souvenir-spicy-sausage"
+      ],
+      "url": "https://img.alicdn.com/bao/uploaded/i2/2329242190/O1CN01kponnW1S34VngKklB_%21%212329242190.jpg_500x500q90",
+      "label": "麻辣腸伴手禮實物／實景參考",
+      "source": "https://tao.hooos.com/goods_557942366673.html"
+    },
+    {
+      "id": "souvenir-rose-crisp",
+      "ids": [
+        "souvenir-rose-crisp"
+      ],
+      "url": "https://static.foodtalks.cn/company/product/image/e9180f0584a9f385b01b71615776f6cdce78.jpg",
+      "label": "玫瑰酥伴手禮實物／實景參考",
+      "source": "https://www.foodtalks.cn/product/12712"
+    },
+    {
+      "id": "souvenir-crossing-bridge-noodle",
+      "ids": [
+        "souvenir-crossing-bridge-noodle"
+      ],
+      "url": "https://imgs.sialchina.cn/exhibitor/image/20250821/936645ab8087fbfe3fab44de9b8b06e068a683ca60852.png",
+      "label": "過橋米線伴手禮實物／實景參考",
+      "source": "https://www.sialchina.cn/productlistsz/37240.html"
+    },
+    {
+      "id": "souvenir-tamarind-cake",
+      "ids": [
+        "souvenir-tamarind-cake"
+      ],
+      "url": "https://imgs.sialchina.cn/exhibitor/image/20260821/9c81169b2714e75ed7a3646de56758f06a87df2b8b00d.jpg",
+      "label": "酸角糕伴手禮實物／實景參考",
+      "source": "https://www.sialchina.cn/productlistsz/48156.html"
+    },
+    {
+      "id": "souvenir-rose-cake",
+      "ids": [
+        "souvenir-rose-cake"
+      ],
+      "url": "https://dragon-goods.com/cdn/shop/files/O1CN01NzwtW51PSJLAy93kz__2213433371839-0-cib.jpg?v=1737232584&width=1080",
+      "label": "玫瑰糕伴手禮實物／實景參考",
+      "source": "https://dragon-goods.com/zh/products/rose-flower-pastry-gift-box-300g-classic-yunnan-specialty"
+    },
+    {
+      "id": "souvenir-green-preserved-plum",
+      "ids": [
+        "souvenir-green-preserved-plum"
+      ],
+      "url": "https://cdn.yamibuy.net/item/e2e4adf15a29203e3eb5a10b45ca4421_756x756.webp",
+      "label": "青話梅伴手禮實物／實景參考",
+      "source": "https://www.yami.com/zh/p/preserved-plum-2-12-oz/1019104181"
+    },
+    {
+      "id": "souvenir-yuntui-cracker",
+      "ids": [
+        "souvenir-yuntui-cracker"
+      ],
+      "url": "https://img01.yzcdn.cn/upload_files/2026/03/07/Fo47d4EsaaVWG2S932L2yOksCuk-.jpg%21middle.jpg",
+      "label": "雲腿餅乾伴手禮實物／實景參考",
+      "source": "https://detail.youzan.com/show/goods?alias=1yhipntir39rsjw&from_source=gbox_seo"
+    },
+    {
+      "id": "souvenir-mushroom-ganba",
+      "ids": [
+        "souvenir-mushroom-ganba"
+      ],
+      "url": "https://img08.weeecdn.net/item/image/211/158/305CE09E41B75A3E.jpeg%21c984x0_q80_t1.auto",
+      "label": "菌乾巴伴手禮實物／實景參考",
+      "source": "https://www.weee.com/ja/product/Oil-Braised-Ganba-Mushroom-Ganbajun-/2954840"
+    },
+    {
+      "id": "souvenir-yuntui-small-cake",
+      "ids": [
+        "souvenir-yuntui-small-cake"
+      ],
+      "url": "https://img08.weeecdn.net/item/image/348/764/2ED2959F7D9B0F6D.jpeg%21c750x0_q80_t1.auto",
+      "label": "雲腿小餅伴手禮實物／實景參考",
+      "source": "https://www.sayweee.com/en/product/Classic-Cloud-Leg-Cake-Yunnan-Specialty-Ham-Pastry/2206299"
+    },
+    {
+      "id": "souvenir-wild-mushroom-beer",
+      "ids": [
+        "souvenir-wild-mushroom-beer"
+      ],
+      "url": "https://gengtu.net/i/download/memes/93/4c/03/bf/934c03bfe78210479b93fd8ab4d7678c.jpeg",
+      "label": "野生菌精釀啤酒伴手禮實物／實景參考",
+      "source": "https://gengtu.net/memes/mohuan-yunnan-jian-shou-qing-craft-beer/"
+    },
+    {
+      "id": "souvenir-milk-strip",
+      "ids": [
+        "souvenir-milk-strip"
+      ],
+      "url": "https://img.alicdn.com/bao/uploaded/i3/1752724571/O1CN012ldcNC1jdZOFGrkYe_%21%211752724571.jpg_500x500q90",
+      "label": "牛乳條伴手禮實物／實景參考",
+      "source": "https://tao.hooos.com/goods_Wq4gYG5vhot20pVDxDPCaaehQta-5Bmqq9UWKVvJbNdUoD.html"
+    },
+    {
+      "id": "souvenir-barley-crisp",
+      "ids": [
+        "souvenir-barley-crisp"
+      ],
+      "url": "https://down-tw.img.susercontent.com/file/tw-11134201-7rbkc-m7xx3sr2b7ll94",
+      "label": "青稞酥伴手禮實物／實景參考",
+      "source": "https://shopee.tw/search?keyword=%E9%9B%B2%E5%8D%97%20%E9%9D%92%E7%A8%9E%E9%85%A5"
+    },
+    {
+      "id": "souvenir-sweet-sausage",
+      "ids": [
+        "souvenir-sweet-sausage"
+      ],
+      "url": "https://img01.yzcdn.cn/upload_files/2025/12/18/FqazihbgzEl5de6EquWAVQyg58ij.jpg%21middle.jpg",
+      "label": "甜腸伴手禮實物／實景參考",
+      "source": "https://detail.youzan.com/show/goods?alias=367t3mk2o6rq33c&from_source=gbox_seo"
+    },
+    {
+      "id": "souvenir-potato-shreds",
+      "ids": [
+        "souvenir-potato-shreds"
+      ],
+      "url": "https://img06.weeecdn.com/description/image/187/177/5413DEE8561C370B.jpeg",
+      "label": "土豆絲伴手禮實物／實景參考",
+      "source": "https://www.weee.com/zh/product/Yunnan-Spicy-Potato-Strips/2927056"
+    },
+    {
+      "id": "souvenir-bean-pod-doll",
+      "ids": [
+        "souvenir-bean-pod-doll"
+      ],
+      "url": "https://www.kunming.cn/news/upload/resources/image/2026/03/09/2061626_2048x2048.jpeg",
+      "label": "豆莢娃娃伴手禮實物／實景參考",
+      "source": "https://www.kunming.cn/news/c/2026-03-09/14023946.shtml"
+    },
+    {
+      "id": "souvenir-tile-cat",
+      "ids": [
+        "souvenir-tile-cat"
+      ],
+      "url": "https://www.kunming.cn/news/upload/resources/image/2026/05/20/2101948.jpg",
+      "label": "瓦貓擺件伴手禮實物／實景參考",
+      "source": "https://www.kunming.cn/news/c/2026-05-20/14042713.shtml"
+    },
+    {
+      "id": "souvenir-jiama-craft",
+      "ids": [
+        "souvenir-jiama-craft"
+      ],
+      "url": "https://www.kunming.cn/news/upload/resources/image/2026/05/20/2101949.jpg",
+      "label": "甲馬文創伴手禮實物／實景參考",
+      "source": "https://www.kunming.cn/news/c/2026-05-20/14042713.shtml"
+    },
+    {
+      "id": "souvenir-mushroom-dry-goods",
+      "ids": [
+        "souvenir-mushroom-dry-goods"
+      ],
+      "url": "https://www.91zjdl.com/file/upload/202410/28/175526181.jpg.thumb.jpg",
+      "label": "菌菇乾貨伴手禮實物／實景參考",
+      "source": "https://www.91zjdl.com/mall/show.php?itemid=721"
+    },
+    {
+      "id": "souvenir-elephant-pendant",
+      "ids": [
+        "souvenir-elephant-pendant"
+      ],
+      "url": "https://society.yunnan.cn/pic/003/061/367/00306136744_4ea34f60.jpg",
+      "label": "小象掛件伴手禮實物／實景參考",
+      "source": "https://society.yunnan.cn/system/2024/04/16/033014166.shtml"
     }
   ],
   "optionalRuntime": [

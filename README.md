@@ -106,14 +106,6 @@ Leaflet 地圖程式會依模式優先從國際 / 中國 CDN 載入，成功後�
 「設定」仍只需要選 **手機版（預設） / 電腦版**；「手機電腦版」不是第三個設定選項，而是手機選到電腦版時的實際執行狀態。三種狀態都支援主 Tab 左右切換。 主 Tab 的手勢權限依實際版面判定：只有當 Rail 當下真的有水平 overflow 時才優先攔截左右手勢；手機電腦版中已轉成多欄 Grid 的區塊，其空白區仍可左右切 Tab。手機電腦版的 Detail Reader／地點完整內容彈窗會使用較高的專用面板，讓縮小後的桌面介面在手機上保留更多垂直閱讀空間。版面偏好寫入瀏覽器 localStorage，線上與離線共用。產品版本仍固定為 V1；Service Worker 另外使用內部 Cache Revision 更新 App Shell，避免離線時讀到舊版 CSS／HTML。
 
 
-## 匿名觀看統計（可選）
-
-網站整合 Umami 匿名統計；是否啟用由 `data/analytics-config.json` 控制。啟用後可統計 pageviews、referrer、browser / OS / device、概略國家／地區，以及本站自訂的 Tab、內容開啟、導航、收藏、附近搜尋、天氣更新、離線準備等事件。每個瀏覽器第一次進站時會在本機自動產生一組隨機 `V-XXXX-XXXX-XXXX-XXXX-XXXX`，再用 `umami.identify()` 作為 Distinct ID，讓同一瀏覽器跨多次 Session 的活動可以串起來；不要求旅客登入或輸入代碼，也不送出姓名、表單內容或精確 GPS 定位。
-
-Owner 統計頁與一般旅程介面完全分離，主網站沒有任何入口；管理頁本身也不載入追蹤碼。匿名 V-ID 只存在訪客瀏覽器與 Umami，不會建立姓名對照表。Share URL 會以 Owner 秘密網址中的金鑰加密後才存入設定檔。若尚未綁定，Owner 頁會提供一次性的設定檔產生器；完成後只需用產生的檔案覆蓋 GitHub 的 `data/analytics-config.json`。
-
-若 GitHub repository 是公開的，任何人仍可能從 repo 檔案清單發現存在 Owner HTML；因此這是「不公開入口 + 秘密網址」而不是 GitHub 帳號權限控制。需要真正帳號級私密權限時，應保留 Umami 私人登入，不建立公開 Share URL。
-
 ## 出發提醒
 
 「內容來源與查核」預設為**閉合**，需要時點一下標題即可展開；再次點擊即可收合。

@@ -2296,3 +2296,17 @@ html[data-runtime-layout="mobile-desktop"] .map-detail-dialog{
 html[data-runtime-layout="mobile-desktop"] .map-detail-shell{
   max-height:min(94dvh,1320px)!important;
 }
+
+/* Shopping multi-select filter: mirrors the explore-map filter chips. */
+
+/* Shopping filter is mounted statically so it is visible as soon as the tab renders. */
+
+/* Shopping filters — same lightweight chip treatment as the food view; no enclosing card/frame. */
+.shopping-filter-inline{margin:0 0 8px;padding:0}
+.shopping-filter-inline-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 8px}
+.shopping-filter-inline-head h3{margin:0;font-size:1.05rem}
+.shopping-filter-inline-head .small{white-space:nowrap}
+.shopping-filter-inline .shopping-filters{margin:0 0 4px;padding:3px 0}
+.shopping-filter-inline+.subheading{margin-top:18px}
+.shopping-source-note a{font-weight:650;white-space:nowrap}
+@media(max-width:600px){.shopping-filter-inline-head{align-items:flex-start;flex-direction:column;gap:2px}.shopping-filter-inline-head .small{white-space:normal}.shopping-filter-inline .shopping-filters{margin-right:-4px}}
