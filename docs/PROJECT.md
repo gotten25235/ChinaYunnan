@@ -63,6 +63,12 @@
 - `foods[*].priority` 只在需要優先排序時使用 `必吃`；`shopping[*].priority` 使用 `必買`，且必買商品的 `group` 也必須是 `必買`。Priority 是本次旅程的內容排序，不改寫 `pdfScheduled`。
 - `culture[*].kind: "鄉野奇談"` 只收錄有可追溯地方傳說／民俗／信仰來源的故事；文字必須明確區分傳說與史實，不把靈異說法寫成已證實事件。
 
+### 版面名稱約定
+
+- **電腦版**：桌機／筆電上的正常寬版。
+- **手機版**：手機上的 responsive 版，為預設。
+- **手機電腦版**：手機選擇「電腦版」後，以固定桌面 viewport 自動縮放至手機寬度；不是第三個可選 preference。
+
 ## 3. Module / State Ownership
 
 | Module | Ownership |
@@ -71,12 +77,12 @@
 | `core.js` | Photo System、Travel Utils、Favorites Store、Navigation Service、Date Rail、Horizontal Scroller；Photo System 對兩種 network profile 使用同一張正確主體圖，負責本地／遠端圖、錯誤 placeholder 與示意／背景 badge，不做跨地點 fallback，不持有 Domain 畫面 state |
 | `weather.js` | 高德天氣 → QWeather Grid → Open-Meteo provider chain、API credential local settings、欄位優先合併、旅程日 weather point、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots、各 weather point 的高德／QWeather／Open-Meteo 公開地點預報連結 |
 | `offline.js` | PWA 選擇式離線準備 UI（核心固定、旅行照片／天氣可選且預設全選）、Service Worker message bridge、Cache 完整性檢查、具名缺失清單、只重試失敗照片、online/offline 狀態、主畫面安裝提示、收藏／偏好匯出匯入；不保存天氣 API Key |
-| `settings.js` | Settings View 的介面版面 preference owner；`mobile` 為預設，`desktop` 會在手機上固定桌面 viewport，偏好使用 `yunnan-2026-ui-layout-v1` |
+| `settings.js` | Settings View 的介面版面 preference owner；`mobile` 為預設，`desktop` 會在手機上固定桌面 viewport，偏好使用 `yunnan-2026-ui-layout-v1`。文件名稱固定區分「電腦版／手機版／手機電腦版」；初始 shell 以 `data-runtime-layout="mobile-desktop"` 標記手機選桌面模式，供專用 Reader 高度等 CSS 使用 |
 | `reader.js` | Content Reader、stack、return state、Reader swipe |
 | `journey.js` | Day 01–08、Day 展開、時刻表、PNG export、航班／住宿 Journey UI |
 | `map.js` | Leaflet、Map filters、Map Rail、Map Detail、定位、自定義地點、長按；Leaflet／道路 tile 不可用時提供無底圖離線地標簡圖與純座標 Nearby 計算 |
 | `library.js` | Content/Story Card、Night/Food/Shopping/Favorites/Photo/Culture state/render |
-| `app.js` | JSON bootstrap、`VIEW_REGISTRY`、App Shell、shared day coordinator、單一 action router、全版面 Main Tab swipe（手機觸控；電腦版觸控／滑鼠拖曳／precision touchpad 水平手勢；內容區空白背景也可起手；橫向 Rail／Map／表單優先） |
+| `app.js` | JSON bootstrap、`VIEW_REGISTRY`、App Shell、shared day coordinator、單一 action router、全版面 Main Tab swipe（手機觸控；電腦版觸控／滑鼠拖曳／precision touchpad 水平手勢；空白與一般卡片內容區可起手；真正有水平 overflow 的 Rail／Map／表單／按鈕優先；桌面 Grid 即使保留 `.rail` class 也不阻擋主 Tab swipe） |
 
 主要 state 只由各自 Owner 寫入：
 
@@ -115,7 +121,7 @@ Rail 規則：
 - `.rail--free`：自由停留；Explore Map 使用。
 - `.rail--mouse-drag`：桌面左鍵抓取。
 - Touch / Pen 一律使用瀏覽器 Native Scroll。
-- Main View swipe 只由 App pager 擁有；Rail、Card、Map、Timetable、Button/Form、Dialog 都是 blocked start。
+- Main View swipe 只由 App pager 擁有；一般卡片內容可作為 swipe 起點。Rail／Timetable 只有在當下 `scrollWidth > clientWidth`、確實能水平捲動時才擁有手勢；響應式 Rail 轉為桌面 Grid 後，容器空白區交回 App pager。Map、Button/Link/Form、Dialog 仍固定 blocked。
 
 Reader 關閉後要回原本 window scroll、橫向 Rail scroll 與 focus。Content Reader 使用內部 stack，不疊多層 modal。
 
@@ -211,7 +217,7 @@ python tools/release.py --zip
 
 | 問題 | 不採用的方式 | V1 最佳處理 |
 | --- | --- | --- |
-| 手機橫向卡片與主分頁 swipe 衝突 | JS Touch Drag、Pointer Capture、用 `preventDefault()` 接管一般滑動 | Touch/Pen 用 Native Scroll；主 swipe 只由 App pager 處理，Rail 起點直接 blocked |
+| 手機橫向卡片與主分頁 swipe 衝突 | JS Touch Drag、Pointer Capture、用 `preventDefault()` 接管一般滑動 | Touch/Pen 用 Native Scroll；主 swipe 只由 App pager 處理，只有實際存在水平 overflow 的 Rail 起點 blocked，桌面 Grid 不因 `.rail` class 形成死區 |
 | Map 卡片需要短按、長按又要能左右滑 | 用 `scrollLeft` 判定 swipe、放手強制 snap | Rail 自由滑動；長按只觀察時間與位移，超過位移門檻就取消 |
 | CSS 手機修正容易互相破壞 | 日期式 patch、同 selector 在檔尾不斷 override、任意拆 CSS | 維持單一 CSS；按 Ownership 放規則，小範圍調整 cascade 並做 regression |
 | 主 View 增加後出現多份清單 | whitelist、`VIEW_ORDER`、初始化 render 各自手寫 | 全部由 `VIEW_REGISTRY` 推導 |

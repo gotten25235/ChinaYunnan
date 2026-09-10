@@ -9,6 +9,17 @@
       let mode='mobile';
       try{const saved=localStorage.getItem(key);if(saved==='desktop'||saved==='mobile')mode=saved;}catch{}
       document.documentElement.dataset.uiLayout=mode;
+      // Keep physical-device detection separate from the chosen layout.  This lets CSS
+      // distinguish a real desktop from "手機電腦版" after the viewport is widened.
+      const coarse=window.matchMedia?.('(pointer: coarse)')?.matches||navigator.maxTouchPoints>0;
+      const deviceWidth=Math.min(
+        Number.isFinite(window.innerWidth)?window.innerWidth:9999,
+        Number.isFinite(screen?.width)?screen.width:9999,
+        Number.isFinite(window.visualViewport?.width)?window.visualViewport.width:9999
+      );
+      const phone=coarse&&deviceWidth<=760;
+      document.documentElement.dataset.deviceForm=phone?'phone':'desktop';
+      document.documentElement.dataset.runtimeLayout=phone?(mode==='desktop'?'mobile-desktop':'mobile'):'desktop';
       const viewport=document.getElementById('app-viewport');
       if(mode==='desktop'){
         // Numeric viewport width without initial-scale lets mobile browsers shrink the

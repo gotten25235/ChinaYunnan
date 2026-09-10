@@ -2272,3 +2272,17 @@ html.main-tab-swipe-active body{
 html[data-ui-layout="desktop"] body{min-width:1180px}
 @media(max-width:600px){.layout-mode-card{align-items:flex-start;flex-direction:column;gap:10px;padding:15px 16px}.layout-mode-card label{width:100%;justify-content:space-between}.layout-mode-card select{min-width:0;width:170px;max-width:58vw}}
 @media(prefers-color-scheme:dark){.layout-mode-card{background:#1e2b28}.layout-mode-card select{background:#22312e;color:var(--ink);border-color:var(--line)}}
+
+
+/* Runtime layout: 手機電腦版 keeps the full desktop canvas, but gives modal readers
+   a taller viewport so the scaled desktop dialog uses more of the physical phone screen. */
+html[data-runtime-layout="mobile-desktop"] .content-reader-dialog{
+  height:min(94dvh,1320px)!important;
+  max-height:min(94dvh,1320px)!important;
+}
+html[data-runtime-layout="mobile-desktop"] .map-detail-dialog{
+  max-height:min(94dvh,1320px)!important;
+}
+html[data-runtime-layout="mobile-desktop"] .map-detail-shell{
+  max-height:min(94dvh,1320px)!important;
+}
