@@ -390,6 +390,22 @@ def validate_release_and_views() -> None:
         if key not in source:
             error(f"{label} must use the V1 key {key!r}")
 
+    nav_contract_errors = []
+    if "createNavigationService({tripData,items,esc,networkProfile" not in core:
+        nav_contract_errors.append("Core navigation service must accept networkProfile for AMap GCJ-02 destinations")
+    if "createNavigationService({tripData,items,esc,networkProfile})" not in app:
+        nav_contract_errors.append("app.js must pass networkProfile into the navigation service")
+    if "https://amap.com/dir?" not in core or "to[lnglat]" not in core or "wgs84ToGcj02" not in core:
+        nav_contract_errors.append("AMap navigation must use supported amap.com /dir links with GCJ-02 destination coordinates")
+    if "https://amap.com/search?" not in core or "[p?.city,p?.name]" not in core:
+        nav_contract_errors.append("AMap no-coordinate fallback must search by city + place name")
+    if "https://uri.amap.com/search" in core or "p.address||`${p.city||''} ${p.name||''}`" in core:
+        nav_contract_errors.append("AMap navigation must not regress to uri.amap.com full-address keyword search")
+    for message in nav_contract_errors:
+        error(message)
+    if not nav_contract_errors:
+        passed("AMap navigation uses app-associated amap.com URLs and coordinate-first destination targeting")
+
     release_markers = ("tools/release.json", "index.html local CSS/JS", "sw.js VERSION", "sw.js APP_CACHE", "sw.js IMAGE_CACHE", "sw.js OFFLINE_META_CACHE", "APP_SHELL", "storage")
     if not any(any(marker in e for marker in release_markers) for e in errors):
         passed("V1 identification, cache names, asset queries, and browser storage are synchronized")

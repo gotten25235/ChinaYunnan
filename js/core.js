@@ -90,11 +90,39 @@
     return {has:id=>ids.has(id),values:()=>[...ids],size:()=>ids.size,toggle(id){if(!items[id])return {changed:false,saved:false,storageAvailable};if(ids.has(id))ids.delete(id);else ids.add(id);persist();return {changed:true,saved:ids.has(id),storageAvailable};},isStorageAvailable:()=>storageAvailable};
   }
 
-  function createNavigationService({tripData,items,esc,storageKey='yunnan-2026-map-provider-v1'}){
+  function createNavigationService({tripData,items,esc,networkProfile=null,storageKey='yunnan-2026-map-provider-v1'}){
     let provider=tripData.navigation?.defaultProvider==='google'?'google':'amap',storageAvailable=true;
     try{const saved=localStorage.getItem(storageKey);if(saved==='amap'||saved==='google')provider=saved;}catch{storageAvailable=false;}
     const name=value=>value==='google'?'Google 地圖':'高德地圖';
-    const linkFor=(p,value=provider)=>{const keyword=String(p.address||`${p.city||''} ${p.name||''}`).trim();if(value==='google')return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(keyword);const params=new URLSearchParams({keyword,view:'map',src:'yunnan-slow-trip',callnative:'1'});if(p.city)params.set('city',p.city);return 'https://uri.amap.com/search?'+params.toString();};
+    const cleanText=value=>String(value||'').replace(/\s+/g,' ').trim();
+    const finiteCoords=p=>p?.lat!==null&&p?.lat!==undefined&&p?.lat!==''&&p?.lng!==null&&p?.lng!==undefined&&p?.lng!==''&&Number.isFinite(Number(p.lat))&&Number.isFinite(Number(p.lng));
+    const amapPoiId=p=>{
+      const urls=[p?.source,p?.amapUrl,p?.url].filter(Boolean).map(String);
+      for(const raw of urls){const match=raw.match(/(?:https?:\/\/)?(?:www\.|ditu\.)?amap\.com\/place\/([A-Z0-9]+)/i);if(match)return match[1].toUpperCase();}
+      return '';
+    };
+    const amapDestinationName=p=>cleanText(p?.name||p?.address||'目的地').slice(0,40);
+    const amapSearchKeyword=p=>cleanText([p?.city,p?.name].filter(Boolean).join(' ')||p?.address||'雲南');
+    const amapLinkFor=p=>{
+      const poiId=amapPoiId(p),destName=amapDestinationName(p);
+      if(finiteCoords(p)){
+        const lat=Number(p.lat),lng=Number(p.lng),converted=networkProfile?.wgs84ToGcj02?.(lat,lng)||[lat,lng],gLat=Number(converted[0]),gLng=Number(converted[1]);
+        const params=new URLSearchParams();
+        if(poiId)params.set('to[id]',`${poiId}-to`);
+        params.set('to[name]',destName);
+        params.set('to[lnglat]',`${gLng.toFixed(6)},${gLat.toFixed(6)}`);
+        params.set('type','car');
+        params.set('policy','0');
+        return 'https://amap.com/dir?'+params.toString();
+      }
+      if(poiId)return `https://amap.com/place/${encodeURIComponent(poiId)}`;
+      const params=new URLSearchParams({query:amapSearchKeyword(p)});
+      return 'https://amap.com/search?'+params.toString();
+    };
+    const linkFor=(p,value=provider)=>{
+      if(value==='google'){const keyword=cleanText(p?.address||[p?.city,p?.name].filter(Boolean).join(' '));return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(keyword);}
+      return amapLinkFor(p);
+    };
     const attrs=p=>`href="${esc(linkFor(p))}" data-nav-id="${esc(p.id)}" data-nav-provider="${esc(provider)}" target="_blank" rel="noopener noreferrer"`;
     const sync=()=>{document.querySelectorAll('[data-map-provider-select]').forEach(select=>{select.value=provider;});document.querySelectorAll('[data-nav-id]').forEach(link=>{const p=items[link.dataset.navId];if(!p)return;link.href=linkFor(p);link.dataset.navProvider=provider;const label=link.querySelector('[data-nav-label]');if(label)label.textContent=name(provider)+'導航';link.title=`使用${name(provider)}開啟`;});};
     const set=(value)=>{if(value!=='amap'&&value!=='google')return false;provider=value;try{localStorage.setItem(storageKey,provider);storageAvailable=true;}catch{storageAvailable=false;}sync();return true;};

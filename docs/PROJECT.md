@@ -94,7 +94,7 @@
 
 - App：`currentView`。
 - Network：network profile。
-- Core：Favorites IDs、navigation provider。
+- Core：Favorites IDs、navigation provider；高德導航一律產生 Android 可關聯的 `amap.com` URL，有座標時將正式 WGS84 座標轉為 GCJ-02 後放進 `/dir` 目的地，無座標才退回「城市 + 地點名稱」搜尋。
 - Analytics：外部 tracker 的 optional runtime 狀態、暫存事件 queue，以及瀏覽器本機 `yunnan-anonymous-visitor-v1` 的隨機 V-ID；正式開關／Website ID 來自 `analytics-config.json`，Owner Share URL 只保存加密密文。
 - Weather：provider credentials（localStorage）、forecast cache、refresh state。
 - Offline：離線內容選取狀態、準備狀態、安裝提示與 user-data backup bridge；核心固定必選，旅行照片／天氣預設勾選且可取消；實體資源由 Service Worker Cache Storage 擁有。

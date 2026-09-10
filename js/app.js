@@ -17,7 +17,7 @@
   const photoSystem=YunnanCore.createPhotoSystem({photos:tripData.photos,esc,networkProfile});photoSystem.installErrorHandler();
   const travelUtils=YunnanCore.createTravelUtils({tripData,items,esc});
   const favoritesStore=YunnanCore.createFavoritesStore({items});
-  const navigation=YunnanCore.createNavigationService({tripData,items,esc});
+  const navigation=YunnanCore.createNavigationService({tripData,items,esc,networkProfile});
   if(networkProfile.isMainland()&&navigation.get()==='google')navigation.set('amap');
   const dateInZone=date=>new Intl.DateTimeFormat('en-CA',{timeZone:tripData.timezone,year:'numeric',month:'2-digit',day:'2-digit'}).format(date);
   const todayDay=tripData.days.find(d=>d.date===dateInZone(new Date()));
