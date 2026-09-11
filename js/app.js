@@ -52,7 +52,7 @@
   offlineSystem=YunnanOfflineSystem.create({toast,weatherSystem,showView});
   mapSystem=YunnanMapSystem.create({$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,readerInteraction,dateRail,bindHorizontalScroller:YunnanCore.bindHorizontalScroller,toast,showView,setSharedDay,toggleFavorite,markRendered,weatherSystem,networkProfile});
   librarySystem=YunnanLibrarySystem.create({$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,dateRail,markRendered,setSharedDay,getJourney:()=>journeySystem,getReader:()=>readerSystem,showView});
-  readerSystem=YunnanReaderSystem.create({$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,interaction:readerInteraction,getLibrary:()=>librarySystem,getMap:()=>mapSystem,toggleFavorite,toast});
+  readerSystem=YunnanReaderSystem.create({$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,interaction:readerInteraction,getLibrary:()=>librarySystem,getMap:()=>mapSystem,toggleFavorite,toast,onItemOpen:(id,meta)=>analyticsSystem.trackItem(id,meta)});
   journeySystem=YunnanJourneySystem.create({$,$$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,bindHorizontalScroller:YunnanCore.bindHorizontalScroller,toast,getLibrary:()=>librarySystem,markRendered,weatherSystem});
 
   // Populate mirrored hidden selects before date-rail controllers build their cards.
@@ -116,7 +116,7 @@
     const cultureCard=event.target.closest('[data-culture-story]');
     if(cultureCard&&!event.target.closest('a,button,input,select,textarea,label')){analyticsSystem.trackStory(cultureCard.dataset.cultureStory);readerSystem.openStory(cultureCard.dataset.cultureStory,{opener:cultureCard});return;}
     const b=event.target.closest('button');
-    if(!b){const card=event.target.closest('[data-item]');if(card&&!event.target.closest('a,input,select,textarea')){analyticsSystem.trackItem(card.dataset.item,{kind:card.dataset.readerKind||''});readerSystem.openItem(card.dataset.item,{day:card.dataset.readerDay,kind:card.dataset.readerKind||'',opener:card});}return;}
+    if(!b){const card=event.target.closest('[data-item]');if(card&&!event.target.closest('a,input,select,textarea')){readerSystem.openItem(card.dataset.item,{day:card.dataset.readerDay,kind:card.dataset.readerKind||'',opener:card});}return;}
     analyticsSystem.trackControl(b);
     if(offlineSystem.handleAction(b))return;
     if(weatherSystem.handleAction(b))return;
