@@ -34,6 +34,8 @@ def core_assets() -> list[str]:
         "./manifest.webmanifest",
         "./offline-manifest.json",
         f"./css/style.css?v={VERSION}",
+        f"./css/banner.css?v={VERSION}",
+        f"./js/banner.js?v={VERSION}",
     ]
     for name in ("network", "core", "analytics", "weather", "offline", "settings", "reader", "journey", "map", "library", "app"):
         assets.append(f"./js/{name}.js?v={VERSION}")

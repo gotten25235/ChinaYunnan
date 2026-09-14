@@ -74,7 +74,7 @@
       "symbol": "▣"
     },
     "photo": {
-      "name": "拍照・有風",
+      "name": "旅拍指南",
       "color": "#c27342",
       "symbol": "◎"
     }
@@ -7388,7 +7388,7 @@
       "city": "大理",
       "type": "photo",
       "pdfScheduled": false,
-      "rating": 4,
+      "rating": 5,
       "duration": "建議 10–20 分鐘，配合集合",
       "address": "雲南省 大理 鳳陽邑茶馬古道",
       "lat": 25.64172,
@@ -7396,7 +7396,37 @@
       "coordinateSource": "https://mapcarta.com/N5407250690",
       "coordinateNote": "鳳陽邑村落參考點，非小院入口",
       "photoMatch": "exact",
-      "photoId": "youfeng-yard-exact-web"
+      "photoId": "youfeng-yard-exact-web",
+      "priority": "必拍",
+      "poseTips": [
+        {
+          "title": "謝之遙・靠牆不看鏡頭",
+          "pose": "身體離牆一個手掌、肩膀放鬆，手插口袋或垂放，眼睛看巷子深處。",
+          "camera": "攝影者退到巷道另一側，用牆面當引導線。",
+          "lens": "1× / 2×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/shipin/7328558222930102282"
+        },
+        {
+          "title": "小院門口・自然走過",
+          "pose": "不要停在門正中央；從院門側邊慢慢走過，連拍 5–10 張挑步伐最自然的一張。",
+          "camera": "平視，人放畫面下方三分之一，保留土牆與院門。",
+          "lens": "1×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/shipin/7328558222930102282"
+        }
+      ],
+      "sourceRefs": [
+        "douyin_20260915_0004"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "douyin_20260915_0004"
+        ],
+        "shot": [
+          "douyin_20260915_0004"
+        ]
+      }
     },
     {
       "id": "photo-xizhou",
@@ -7404,24 +7434,65 @@
       "days": [
         2
       ],
-      "name": "喜洲・白族院落與田邊",
-      "drama": false,
-      "description": "喜洲最會拍的不是單一建築，而是白牆、屋簷和田野一起出現的層次。這張卡只提供構圖靈感，不把整座古鎮都說成劇中取景。",
-      "shot": "屋簷可以當天然上框，人物放下方三分之一；田邊只站公共道路，為了一張照片踩進作物一點都不浪漫。",
-      "bestTime": "跟團到訪時間就是你的最佳時間。稻田顏色看當年生長與收割，綠色也很好看，不必執著金黃。",
+      "name": "喜洲・轉角樓、稻田與有風大樹",
+      "drama": true,
+      "description": "Day 2 在喜洲把「白族建築＋秋季稻田＋蒼山」拍進同一天。社群常見路線會把轉角樓、田野／小火車與《去有風的地方》相關大樹一起串拍；9 月以當年稻田實況為準。",
+      "shot": "轉角樓拍完整建築、田邊拍人物走動、有風大樹拍「人小景大」。只站公共道路與田埂，不踩作物。",
+      "bestTime": "跟團停留時直接拍；若陽光太硬，人物改側身或背光，別為等光線拖過集合時間。",
       "source": "https://www.yndaily.com/html/2025/yunxinwen_0312/133260.html",
       "city": "大理",
       "type": "photo",
       "pdfScheduled": false,
-      "rating": 4,
+      "rating": 5,
       "duration": "建議 10–20 分鐘，配合集合",
       "address": "雲南省 大理 喜洲古鎮",
       "lat": 25.85306,
       "lng": 100.12944,
       "coordinateSource": "https://en.wikipedia.org/wiki/Xizhou,_Dali",
       "coordinateNote": "喜洲鎮參考點，非轉角樓或稻田機位",
-      "photoMatch": "context",
-      "photoId": "xizhou-yan-courtyard"
+      "photoMatch": "verified",
+      "photoId": "xizhou-web",
+      "priority": "必拍",
+      "poseTips": [
+        {
+          "title": "田埂回頭・走動抓拍",
+          "pose": "沿田埂慢走，身體背對鏡頭約 45°，走兩三步再回頭；手可以放身後或輕提帽沿。",
+          "camera": "攝影者不要追著跑，固定機位連拍，讓蒼山與田野留大面積。",
+          "lens": "1× / 2×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/shipin/7639204382550296586"
+        },
+        {
+          "title": "轉角樓・人離建築遠一點",
+          "pose": "人站道路安全側，不貼著牆；側身看樓或自然走過，讓整棟轉角被看見。",
+          "camera": "攝影者退到斜對角，手機保持垂直，避免建築歪斜。",
+          "lens": "1×",
+          "platform": "小紅書線索／二次索引",
+          "url": "https://post.smzdm.com/p/a5r7n283/"
+        },
+        {
+          "title": "有風大樹・謝之遙感",
+          "pose": "站著看遠方或坐著休息，不看鏡頭；人物只佔畫面小部分。",
+          "camera": "把樹冠和田野都留下，人放下方 1/3。",
+          "lens": "1×",
+          "platform": "小紅書線索／二次索引",
+          "url": "https://post.smzdm.com/p/a5r7n283/"
+        }
+      ],
+      "sourceRefs": [
+        "douyin_20260915_0001",
+        "web_20260915_0001"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "douyin_20260915_0001",
+          "web_20260915_0001"
+        ],
+        "shot": [
+          "douyin_20260915_0001",
+          "web_20260915_0001"
+        ]
+      }
     },
     {
       "id": "photo-sideng",
@@ -7439,14 +7510,47 @@
       "city": "大理",
       "type": "photo",
       "pdfScheduled": false,
-      "rating": 4,
+      "rating": 5,
       "duration": "建議 10–20 分鐘，配合集合",
       "address": "雲南省 大理 寺登街",
       "lat": 26.31161,
       "lng": 99.85107,
       "coordinateNote": "以玉津橋／寺登街核心步行區作拍照參考定位",
       "mapPlaceId": "yujin",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "priority": "必拍",
+      "poseTips": [
+        {
+          "title": "古戲台・人在街上走",
+          "pose": "不要正面站中間比 YA；從四方街側邊慢走，眼睛看戲台或店家。",
+          "camera": "從興教寺一側或廣場邊緣拍，戲台完整入鏡。",
+          "lens": "1× / 2×",
+          "platform": "抖音",
+          "url": "https://jingxuan.douyin.com/m/video/7628619417974292443"
+        },
+        {
+          "title": "寺登街・謝之遙式自然站",
+          "pose": "手插口袋、肩膀放鬆、微側身，視線看街尾；也可停在門廊旁但不要堵門。",
+          "camera": "利用屋簷與石板路做框景與引導線。",
+          "lens": "2×",
+          "platform": "抖音",
+          "url": "https://jingxuan.douyin.com/m/video/7611469203669403497"
+        }
+      ],
+      "sourceRefs": [
+        "douyin_20260915_0002",
+        "douyin_20260915_0003"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "douyin_20260915_0002",
+          "douyin_20260915_0003"
+        ],
+        "shot": [
+          "douyin_20260915_0002",
+          "douyin_20260915_0003"
+        ]
+      }
     },
     {
       "id": "photo-yujin",
@@ -7463,7 +7567,7 @@
       "city": "大理",
       "type": "photo",
       "pdfScheduled": false,
-      "rating": 4,
+      "rating": 5,
       "duration": "建議 10–20 分鐘，配合集合",
       "address": "雲南省 大理 玉津橋",
       "lat": 26.31161,
@@ -7472,7 +7576,40 @@
       "coordinateNote": "玉津橋附近歷史照片拍攝座標，非保證可用機位",
       "photoId": "yujin-web",
       "photoMatch": "verified",
-      "photoReferenceId": "shaxi-reference"
+      "photoReferenceId": "shaxi-reference",
+      "priority": "必拍",
+      "poseTips": [
+        {
+          "title": "許紅豆・拖行李走橋",
+          "pose": "如果行程方便帶行李才做；否則空手慢走也可以。從橋上往古鎮方向走，不看鏡頭。",
+          "camera": "攝影者待在橋頭或河岸安全公共位置，以較低角度把橋、人、遠山疊起來。",
+          "lens": "1× / 2×",
+          "platform": "抖音",
+          "url": "https://jingxuan.douyin.com/m/video/7611469203669403497"
+        },
+        {
+          "title": "謝之遙・橋上側身看河",
+          "pose": "站在不妨礙通行的一側，手自然垂放或插口袋，側身看河面。",
+          "camera": "人放橋面 1/3 處，橋拱與水面一起留。",
+          "lens": "2×",
+          "platform": "抖音",
+          "url": "https://jingxuan.douyin.com/m/video/7628619417974292443"
+        }
+      ],
+      "sourceRefs": [
+        "douyin_20260915_0002",
+        "douyin_20260915_0003"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "douyin_20260915_0002",
+          "douyin_20260915_0003"
+        ],
+        "shot": [
+          "douyin_20260915_0002",
+          "douyin_20260915_0003"
+        ]
+      }
     },
     {
       "id": "photo-blue",
@@ -7489,14 +7626,47 @@
       "city": "麗江",
       "type": "photo",
       "pdfScheduled": false,
-      "rating": 4,
+      "rating": 5,
       "duration": "建議 10–20 分鐘，配合集合",
       "address": "雲南省 麗江 藍月谷",
       "lat": 27.12939,
       "lng": 100.24192,
       "coordinateSource": "https://mapcarta.com/W1000077392",
       "coordinateNote": "已查證的地區參考點（非入口）",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "priority": "必拍",
+      "poseTips": [
+        {
+          "title": "欄杆側身・看雪山",
+          "pose": "身體側 45°，一手自然扶欄或放口袋，不要兩手緊抓；眼睛看雪山／湖面。",
+          "camera": "人物放側邊，讓藍色水面成前景、雪山留上方。",
+          "lens": "1×",
+          "platform": "抖音",
+          "url": "https://jingxuan.douyin.com/m/video/7598474662066748793"
+        },
+        {
+          "title": "走棧道・回頭一秒",
+          "pose": "沿開放棧道走，攝影者先站定；走過鏡頭後再回頭，連拍。",
+          "camera": "稍微降曝光保住白雲與雪峰；不要跨欄杆。",
+          "lens": "1× / 2×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/video/7637315779297398035"
+        }
+      ],
+      "sourceRefs": [
+        "douyin_20260915_0007",
+        "douyin_20260915_0008"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "douyin_20260915_0007",
+          "douyin_20260915_0008"
+        ],
+        "shot": [
+          "douyin_20260915_0007",
+          "douyin_20260915_0008"
+        ]
+      }
     },
     {
       "id": "photo-lijiang",
@@ -7520,7 +7690,473 @@
       "lng": 100.233333,
       "coordinateSource": "https://whc.unesco.org/en/list/811/maps/",
       "coordinateNote": "已查證的地區參考點（非入口）",
-      "photoMatch": "verified"
+      "photoMatch": "verified",
+      "poseTips": [
+        {
+          "title": "水巷慢走",
+          "pose": "沿水巷自然走，偶爾回頭；手拿飲料或小包比刻意擺手更自然。",
+          "camera": "直幅，利用水巷當引導線，等人群出現空隙再按快門。",
+          "lens": "1× / 2×",
+          "platform": "大眾點評",
+          "url": "https://www.dianping.com/shop/21925329/photos"
+        },
+        {
+          "title": "屋簷下靠邊站",
+          "pose": "人靠街側而不是門正中，肩膀放鬆，視線看側邊店家。",
+          "camera": "2× 壓縮屋瓦層次；注意不要進私人空間。",
+          "lens": "2×",
+          "platform": "大眾點評",
+          "url": "https://www.dianping.com/shop/21925329/photos"
+        }
+      ],
+      "sourceRefs": [
+        "dianping_20260915_0003"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "dianping_20260915_0003"
+        ],
+        "shot": [
+          "dianping_20260915_0003"
+        ]
+      }
+    },
+    {
+      "id": "photo-ideal",
+      "place": "ideal",
+      "days": [
+        3
+      ],
+      "name": "理想邦・白色階梯與洱海框景",
+      "drama": false,
+      "description": "理想邦適合把白牆、拱門、階梯當成前景，後面留洱海與蒼山。社群常見漂亮機位有些屬酒店或消費區；這張卡只採一般遊客可達區域，不為照片闖入限制空間。",
+      "shot": "先找「白色建築框住洱海」的角度，再讓人物走進框裡；不要只貼牆拍大頭。",
+      "bestTime": "團體抵達時拍即可；若正逆光就改拍剪影或側身，不值得排長隊等單一網紅階梯。",
+      "city": "大理",
+      "type": "photo",
+      "pdfScheduled": true,
+      "rating": 4,
+      "duration": "建議 10–20 分鐘，配合集合",
+      "lat": 25.701349,
+      "lng": 100.268828,
+      "coordinateNote": "WGS84；理想邦度假小鎮參考定位",
+      "address": "雲南省大理白族自治州大理市海東鎮理想邦度假小鎮",
+      "addressVerified": true,
+      "photoId": "idealbang-handbook",
+      "photoMatch": "verified",
+      "poseTips": [
+        {
+          "title": "階梯走動・不看鏡頭",
+          "pose": "沿階梯慢走，手自然垂放；走到轉折處再回頭一次。",
+          "camera": "攝影者站低一階，讓階梯線條往人物延伸。",
+          "lens": "1×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/shipin/7333880045604636724"
+        },
+        {
+          "title": "白拱門框景",
+          "pose": "人站拱門邊緣，不要完全堵住海景；肩膀放鬆、視線看洱海。",
+          "camera": "把拱門當天然相框，曝光優先保住天空。",
+          "lens": "1×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/shipin/7333880045604636724"
+        }
+      ],
+      "sourceRefs": [
+        "douyin_20260915_0005"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "douyin_20260915_0005"
+        ],
+        "shot": [
+          "douyin_20260915_0005"
+        ]
+      }
+    },
+    {
+      "id": "photo-spruce",
+      "place": "spruce",
+      "days": [
+        4
+      ],
+      "name": "雲杉坪・雪山草甸與杉林",
+      "drama": false,
+      "description": "雲杉坪最值得拍兩種完全不同的畫面：雪山＋草甸的大景，以及杉林裡的電影感。雪山被雲遮住時就直接轉拍森林，不用把團體時間耗在等山露臉。",
+      "shot": "雪山有露臉就人小景大；看不到雪峰則把杉樹當垂直線條，人物在棧道上慢走。只留在開放步道與草甸邊界。",
+      "bestTime": "有山先拍山；雲厚就拍杉林。高海拔先顧呼吸與步伐，再顧 Pose。",
+      "city": "麗江",
+      "type": "photo",
+      "pdfScheduled": true,
+      "rating": 5,
+      "duration": "建議 10–20 分鐘，配合集合",
+      "priority": "必拍",
+      "lat": 27.133244,
+      "lng": 100.234064,
+      "coordinateNote": "WGS84；雲杉坪景區參考定位",
+      "address": "雲南省麗江市玉龍納西族自治縣玉龍雪山景區雲杉坪",
+      "addressVerified": true,
+      "photoId": "spruce-web",
+      "photoMatch": "verified",
+      "poseTips": [
+        {
+          "title": "草甸側身看山",
+          "pose": "人站開放步道／草甸邊，身體側 45°、下巴微抬，看雪山不看鏡頭。",
+          "camera": "攝影者拉遠，人物只佔 1/5～1/4，保留完整雪峰與草甸。",
+          "lens": "1× / 2×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/video/7564445014941240635"
+        },
+        {
+          "title": "杉林慢走・電影感",
+          "pose": "沿棧道慢走、手插口袋或自然擺臂；不要停下來硬擺。",
+          "camera": "用高杉做垂直框景，曝光以人物臉部不過暗為準。",
+          "lens": "2×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/video/7564445014941240635"
+        }
+      ],
+      "sourceRefs": [
+        "douyin_20260915_0006",
+        "douyin_20260915_0007"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "douyin_20260915_0006",
+          "douyin_20260915_0007"
+        ],
+        "shot": [
+          "douyin_20260915_0006",
+          "douyin_20260915_0007"
+        ]
+      }
+    },
+    {
+      "id": "photo-ganhaizi",
+      "place": "ganhaizi",
+      "days": [
+        4
+      ],
+      "name": "甘海子・雪山腳下大景",
+      "drama": false,
+      "description": "甘海子的價值是「尺度」：人只要站進雪山與草甸中就夠。比起複雜 Pose，更重要的是保留地平線、雪山和天空。",
+      "shot": "人物放畫面下方，站著看山或慢慢走；不要用超廣角把山縮得太小。",
+      "bestTime": "若團體有短暫停留就拍，不為等日照金山另改行程。",
+      "city": "麗江",
+      "type": "photo",
+      "pdfScheduled": true,
+      "rating": 4,
+      "duration": "建議 10–20 分鐘，配合集合",
+      "lat": 27.094223,
+      "lng": 100.256678,
+      "coordinateNote": "WGS84；甘海子景區參考定位",
+      "address": "雲南省麗江市玉龍納西族自治縣玉龍雪山景區甘海子",
+      "addressVerified": true,
+      "photoId": "ganhaizi-web",
+      "photoMatch": "verified",
+      "poseTips": [
+        {
+          "title": "背影看雪山",
+          "pose": "背對或側背鏡頭，手放口袋，站定看山。",
+          "camera": "攝影者降低一點機位，讓人物落在畫面下方、雪山佔上半部。",
+          "lens": "1×",
+          "platform": "抖音",
+          "url": "https://jingxuan.douyin.com/m/video/7598474662066748793"
+        },
+        {
+          "title": "草甸走路抓拍",
+          "pose": "橫向走 3–5 步，視線看前方，不用回頭。",
+          "camera": "連拍，2× 稍微壓縮人物與雪山距離。",
+          "lens": "2×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/video/7637315779297398035"
+        }
+      ],
+      "sourceRefs": [
+        "douyin_20260915_0007",
+        "douyin_20260915_0008"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "douyin_20260915_0007",
+          "douyin_20260915_0008"
+        ],
+        "shot": [
+          "douyin_20260915_0007",
+          "douyin_20260915_0008"
+        ]
+      }
+    },
+    {
+      "id": "photo-tiger",
+      "place": "tiger",
+      "days": [
+        5
+      ],
+      "name": "虎跳峽・人小峽谷大",
+      "drama": false,
+      "description": "虎跳峽必拍的不是危險懸崖 Pose，而是把人縮小、把峽谷放大的尺度對比。你們走一般景區動線，完全不需要追網路上的徒步懸崖機位。",
+      "shot": "人在安全觀景區靠內側站，人物放下方 1/4，金沙江與兩側峭壁盡量完整收進去。",
+      "bestTime": "水量、霧氣與開放狀況看當天；安全欄杆與現場管制優先於畫面。",
+      "city": "香格里拉",
+      "type": "photo",
+      "pdfScheduled": true,
+      "rating": 5,
+      "duration": "建議 10–20 分鐘，配合集合",
+      "priority": "必拍",
+      "lat": 27.1926,
+      "lng": 100.113975,
+      "coordinateNote": "WGS84；香格里拉側虎跳峽景區參考定位",
+      "address": "雲南省迪慶藏族自治州香格里拉市虎跳峽景區",
+      "addressVerified": true,
+      "photoId": "tiger-gorge-open",
+      "photoMatch": "verified",
+      "poseTips": [
+        {
+          "title": "扶欄側身・看峽谷",
+          "pose": "站在安全欄杆內側，一手輕扶、身體側 45°，眼睛看江面。",
+          "camera": "0.5× 或 1× 收進兩側峭壁；人不要佔畫面太大。",
+          "lens": "0.5× / 1×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/video/7490488001194233107"
+        },
+        {
+          "title": "背影・人小景大",
+          "pose": "背對鏡頭站穩，不舉手也不爬石頭；讓姿勢越簡單越好。",
+          "camera": "攝影者退後，把人物放下方中央，強調峽谷高度。",
+          "lens": "1×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/video/7490488001194233107"
+        }
+      ],
+      "sourceRefs": [
+        "douyin_20260915_0009"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "douyin_20260915_0009"
+        ],
+        "shot": [
+          "douyin_20260915_0009"
+        ]
+      }
+    },
+    {
+      "id": "photo-songzanlin",
+      "place": "songzanlin",
+      "days": [
+        5
+      ],
+      "name": "松贊林寺・層疊金頂",
+      "drama": false,
+      "description": "松贊林寺最好看的不是貼著牆拍，而是拉開距離看寺院沿山層層堆疊。社群有很強的晨霧長焦機位，但你是團體白天行程，不為了那張照片脫團。",
+      "shot": "在景區可達平台找能看見多層屋頂與金頂的位置；寺內看到禁止拍攝就收手機，宗教場所規則優先。",
+      "bestTime": "白天既定停留就拍。晨霧與日出屬特殊條件，不列入必等。",
+      "city": "香格里拉",
+      "type": "photo",
+      "pdfScheduled": true,
+      "rating": 4,
+      "duration": "建議 10–20 分鐘，配合集合",
+      "lat": 27.863489,
+      "lng": 99.704425,
+      "coordinateNote": "WGS84；噶丹松贊林寺參考定位",
+      "address": "雲南省迪慶藏族自治州香格里拉市噶丹松贊林寺",
+      "addressVerified": true,
+      "photoId": "songzanlin",
+      "photoMatch": "verified",
+      "poseTips": [
+        {
+          "title": "平台遠眺・人靠側邊",
+          "pose": "人物靠觀景平台一側，側身看寺院，手自然放身前或口袋。",
+          "camera": "用 2× / 3× 壓縮寺院層次；不要只拍單一屋頂。",
+          "lens": "2× / 3×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/shipin/7308225177497487412"
+        },
+        {
+          "title": "階梯停一秒",
+          "pose": "走寺院外部開放階梯時停在轉折處，回頭或側身，不影響通行。",
+          "camera": "平視或微低機位，把金頂與天空留在人物後方。",
+          "lens": "1× / 2×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/shipin/7308225177497487412"
+        }
+      ],
+      "sourceRefs": [
+        "douyin_20260915_0010"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "douyin_20260915_0010"
+        ],
+        "shot": [
+          "douyin_20260915_0010"
+        ]
+      }
+    },
+    {
+      "id": "photo-dukezong",
+      "place": "guishan",
+      "days": [
+        5
+      ],
+      "name": "獨克宗・龜山大轉經筒",
+      "drama": false,
+      "description": "這趟香格里拉最有辨識度的人像之一。白天可以拍巨大尺度，若當晚真的有自由時間再補亮燈夜景；不要為拍照影響團體集合。",
+      "shot": "低角度讓轉經筒看起來更巨大；另一張直接跟著大家順時針走，用動作抓拍，不要在動線正中央站定。",
+      "bestTime": "白天照行程；若晚餐後可安全步行且有自由時間，夜景再補一次。",
+      "city": "香格里拉",
+      "type": "photo",
+      "pdfScheduled": true,
+      "rating": 5,
+      "duration": "建議 10–20 分鐘，配合集合",
+      "priority": "必拍",
+      "lat": 27.814486,
+      "lng": 99.705307,
+      "coordinateNote": "WGS84；獨克宗古城龜山公園參考定位",
+      "address": "雲南省迪慶藏族自治州香格里拉市獨克宗古城龜山公園",
+      "addressVerified": true,
+      "photoId": "guishan-handbook",
+      "photoMatch": "verified",
+      "poseTips": [
+        {
+          "title": "低角度・人物放底部",
+          "pose": "人物站轉經筒前但離鏡頭遠一點，身體側身或看上方，不必比手勢。",
+          "camera": "攝影者蹲低用廣角，人物放畫面底部，整支轉經筒向上延伸。",
+          "lens": "0.5× / 1×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/shipin/7350937894229428276"
+        },
+        {
+          "title": "跟著轉・走動抓拍",
+          "pose": "依現場習俗與動線順時針跟著人群走，手自然扶轉經筒；不要停住擋路。",
+          "camera": "從後斜方連拍，抓手部與步伐。",
+          "lens": "1×",
+          "platform": "大眾點評／抖音",
+          "url": "https://www.dianping.com/shop/3273157/photos/album"
+        }
+      ],
+      "sourceRefs": [
+        "douyin_20260915_0011",
+        "dianping_20260915_0001"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "douyin_20260915_0011",
+          "dianping_20260915_0001"
+        ],
+        "shot": [
+          "douyin_20260915_0011",
+          "dianping_20260915_0001"
+        ]
+      }
+    },
+    {
+      "id": "photo-pudacuo",
+      "place": "pudacuo",
+      "days": [
+        6
+      ],
+      "name": "普達措・湖、草地與森林",
+      "drama": false,
+      "description": "普達措不用追單一網紅牆，真正好拍的是人走進湖、草甸與森林的層次。高原環境下 Pose 越簡單越自然，也比較不耗體力。",
+      "shot": "走棧道、靠安全欄邊看湖、站在林間光影裡即可；不要離開開放步道追野生動物或踩濕地。",
+      "bestTime": "依團體停留與天候拍。陰天森林反而有柔和電影感，不必只等藍天。",
+      "city": "香格里拉",
+      "type": "photo",
+      "pdfScheduled": true,
+      "rating": 4,
+      "duration": "建議 10–20 分鐘，配合集合",
+      "lat": 27.859889,
+      "lng": 99.950801,
+      "coordinateNote": "WGS84；普達措國家公園參考定位",
+      "address": "雲南省迪慶藏族自治州香格里拉市普達措國家公園",
+      "addressVerified": true,
+      "photoId": "pudacuo-open",
+      "photoMatch": "verified",
+      "poseTips": [
+        {
+          "title": "棧道慢走・回頭",
+          "pose": "沿開放棧道走，走過攝影者視線後回頭一秒；手自然擺動。",
+          "camera": "2× 讓林木與人物更集中，避免拍進太多遊客。",
+          "lens": "2×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/shipin/7643258814623451182"
+        },
+        {
+          "title": "湖邊側身・看遠方",
+          "pose": "在安全觀景區側身站，雙手放鬆，視線看湖或山。",
+          "camera": "1× 保留湖面與草地；人放側邊三分之一。",
+          "lens": "1×",
+          "platform": "抖音",
+          "url": "https://www.douyin.com/shipin/7643258814623451182"
+        }
+      ],
+      "sourceRefs": [
+        "douyin_20260915_0012"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "douyin_20260915_0012"
+        ],
+        "shot": [
+          "douyin_20260915_0012"
+        ]
+      }
+    },
+    {
+      "id": "photo-shuhe",
+      "place": "shuhe",
+      "days": [
+        6
+      ],
+      "name": "束河古鎮・青石路與水巷",
+      "drama": false,
+      "description": "束河比大研古城安靜，最適合不擺 Pose 的「散步感」。別追單一招牌，讓青石路、流水、木屋和人物一起進畫面。",
+      "shot": "沿街慢走、回頭、靠橋欄看水即可；遇到漂亮門框可以站側邊，不堵店家與住戶出入口。",
+      "bestTime": "Day 6 既定停留就拍；若人多就用 2× 壓縮取小景，不需要等整條街清空。",
+      "city": "麗江",
+      "type": "photo",
+      "pdfScheduled": true,
+      "rating": 4,
+      "duration": "建議 10–20 分鐘，配合集合",
+      "lat": 26.925,
+      "lng": 100.202778,
+      "coordinateNote": "已查證的地區參考點（非入口）",
+      "address": "雲南省 麗江 束河古鎮",
+      "addressVerified": false,
+      "photoId": "shuhe-open",
+      "photoMatch": "verified",
+      "coordinateSource": "https://whc.unesco.org/en/list/811/maps/",
+      "poseTips": [
+        {
+          "title": "青石路慢走",
+          "pose": "手插口袋或自然擺臂，沿街走，不看鏡頭。",
+          "camera": "攝影者先站定，2× 抓半身到全身，保留路面縱深。",
+          "lens": "2×",
+          "platform": "大眾點評",
+          "url": "https://www.dianping.com/shop/5253400/photos/album"
+        },
+        {
+          "title": "橋邊看水",
+          "pose": "身體側 45°、手輕扶欄，視線落在水面。",
+          "camera": "1× 把橋、流水與木屋一起收進去。",
+          "lens": "1×",
+          "platform": "大眾點評",
+          "url": "https://www.dianping.com/shop/5253400/photos/album"
+        }
+      ],
+      "sourceRefs": [
+        "dianping_20260915_0002"
+      ],
+      "fieldSources": {
+        "poseTips": [
+          "dianping_20260915_0002"
+        ],
+        "shot": [
+          "dianping_20260915_0002"
+        ]
+      }
     }
   ],
   "walkNotes": {

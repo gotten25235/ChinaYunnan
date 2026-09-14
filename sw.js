@@ -6,7 +6,7 @@
   - 天氣由 weather.js 使用 localStorage 保存最後成功資料；Service Worker 不偽造即時天氣。
   - CHECK_OFFLINE 回傳核心、本地照片、遠端照片的實際缺失清單；未選取照片時不影響完成判定。
 */
-const RELEASE_VERSION = '1.1.2';
+const RELEASE_VERSION = '1.5.2';
 const STORAGE_SCHEMA = 'v1';
 const APP_CACHE = `yunnan-app-${RELEASE_VERSION}`;
 const IMAGE_CACHE = `yunnan-images-${STORAGE_SCHEMA}`;
@@ -20,6 +20,7 @@ const CORE_SHELL = [
   './manifest.webmanifest',
   './offline-manifest.json',
   `./css/style.css?v=${RELEASE_VERSION}`,
+  `./css/banner.css?v=${RELEASE_VERSION}`,
   `./js/network.js?v=${RELEASE_VERSION}`,
   `./js/core.js?v=${RELEASE_VERSION}`,
   `./js/analytics.js?v=${RELEASE_VERSION}`,
@@ -30,6 +31,7 @@ const CORE_SHELL = [
   `./js/journey.js?v=${RELEASE_VERSION}`,
   `./js/map.js?v=${RELEASE_VERSION}`,
   `./js/library.js?v=${RELEASE_VERSION}`,
+  `./js/banner.js?v=${RELEASE_VERSION}`,
   `./js/app.js?v=${RELEASE_VERSION}`,
   './data/trip-data.json',
   './data/social-sources.json',

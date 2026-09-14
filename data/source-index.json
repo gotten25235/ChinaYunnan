@@ -4,14 +4,14 @@
     "data/trip-data.json",
     "data/social-sources.json"
   ],
-  "checkedAt": "2026-09-09T16:50:00+08:00",
+  "checkedAt": "2026-09-15T03:30:00+08:00",
   "batchIds": [
     "nearby20_20260908",
     "hotel_night_nearby20_20260908"
   ],
   "customItemCount": 32,
-  "sourceCount": 60,
-  "referencedSourceCount": 60,
+  "sourceCount": 76,
+  "referencedSourceCount": 76,
   "defaultCustomIds": [
     "custom-xizhou-yan",
     "custom-xizhou-woxiang",
@@ -49,6 +49,56 @@
   "unreferencedSourceIds": [],
   "missingSourceIds": [],
   "sourceUsage": {
+    "dianping_20260915_0001": [
+      "photo-dukezong"
+    ],
+    "dianping_20260915_0002": [
+      "photo-shuhe"
+    ],
+    "dianping_20260915_0003": [
+      "photo-lijiang"
+    ],
+    "douyin_20260915_0001": [
+      "photo-xizhou"
+    ],
+    "douyin_20260915_0002": [
+      "photo-sideng",
+      "photo-yujin"
+    ],
+    "douyin_20260915_0003": [
+      "photo-sideng",
+      "photo-yujin"
+    ],
+    "douyin_20260915_0004": [
+      "photo-fengyang"
+    ],
+    "douyin_20260915_0005": [
+      "photo-ideal"
+    ],
+    "douyin_20260915_0006": [
+      "photo-spruce"
+    ],
+    "douyin_20260915_0007": [
+      "photo-blue",
+      "photo-ganhaizi",
+      "photo-spruce"
+    ],
+    "douyin_20260915_0008": [
+      "photo-blue",
+      "photo-ganhaizi"
+    ],
+    "douyin_20260915_0009": [
+      "photo-tiger"
+    ],
+    "douyin_20260915_0010": [
+      "photo-songzanlin"
+    ],
+    "douyin_20260915_0011": [
+      "photo-dukezong"
+    ],
+    "douyin_20260915_0012": [
+      "photo-pudacuo"
+    ],
     "fb_20260910_0001": [
       "mushroom-kmg"
     ],
@@ -292,6 +342,9 @@
       "buttertea",
       "yak",
       "yak-yogurt"
+    ],
+    "web_20260915_0001": [
+      "photo-xizhou"
     ],
     "xhs_20260909_0001": [
       "baba",

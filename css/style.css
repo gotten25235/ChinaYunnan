@@ -2309,4 +2309,39 @@ html[data-runtime-layout="mobile-desktop"] .map-detail-shell{
 .shopping-filter-inline .shopping-filters{margin:0 0 4px;padding:3px 0}
 .shopping-filter-inline+.subheading{margin-top:18px}
 .shopping-source-note a{font-weight:650;white-space:nowrap}
+.card-click-hint{display:flex;align-items:center;gap:6px;margin:-2px 0 12px;color:var(--muted);font-size:.72rem;line-height:1.45}
+.card-click-hint::before{content:'↗';display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;flex:0 0 17px;border:1px solid #d7e0d8;border-radius:50%;background:#f7faf5;color:var(--green);font-size:.62rem;font-weight:800}
+.itinerary-slide-card[role=button]{cursor:pointer}
+#view-map .map-strip-tabs+.card-click-hint{margin-top:8px}
+.day-culture .card-click-hint{margin:0 0 10px}
 @media(max-width:600px){.shopping-filter-inline-head{align-items:flex-start;flex-direction:column;gap:2px}.shopping-filter-inline-head .small{white-space:normal}.shopping-filter-inline .shopping-filters{margin-right:-4px}}
+
+/* PHOTO DATE / POSE — mirrors Night date navigation and keeps social media as references, not bundled assets. */
+#view-photos .photo-date-control{margin-bottom:14px}
+#view-photos .chips{margin-bottom:16px}
+#view-photos .photo-day-group{margin:0 0 30px}
+#view-photos .photo-day-group-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:0 0 12px}
+#view-photos .photo-day-group-head h3{margin:4px 0 0}
+.photo-pose-panel{margin:18px 0 4px;padding:16px;border:1px solid var(--line);border-radius:15px;background:#fafbf8}
+.photo-pose-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:12px}
+.photo-pose-head h3{margin:3px 0 0;font-size:1rem}.photo-pose-head>span{color:var(--muted);font-size:.72rem;white-space:nowrap}
+.photo-pose-list{display:grid;gap:10px}.photo-pose-tip{display:grid;grid-template-columns:34px minmax(0,1fr);gap:10px;padding:12px;border:1px solid #e1e7df;border-radius:12px;background:#fff}
+.photo-pose-index{display:flex;align-items:flex-start;justify-content:center;padding-top:2px;color:#8c6e34;font-family:Georgia,serif;font-size:.86rem}
+.photo-pose-tip h4{margin:0 0 5px;font-size:.92rem}.photo-pose-tip p{margin:0 0 9px;color:var(--muted);font-size:.82rem;line-height:1.55}
+.photo-pose-tip dl{display:grid;gap:5px;margin:0 0 8px}.photo-pose-tip dl>div{display:grid;grid-template-columns:58px minmax(0,1fr);gap:8px;font-size:.75rem;line-height:1.45}.photo-pose-tip dt{color:var(--muted)}.photo-pose-tip dd{margin:0}.photo-pose-tip a{font-size:.76rem;font-weight:700;color:var(--green)}
+.photo-pose-note{margin:10px 0 0!important;color:var(--muted);font-size:.7rem!important;line-height:1.5}
+@media(max-width:600px){
+  #view-photos .photo-date-control{position:relative;top:auto;margin:0 0 13px;padding:5px 0 8px}
+  #view-photos .map-date-head span{display:none}
+  #view-photos .map-date-row{grid-template-columns:38px minmax(0,1fr) 38px;gap:6px}
+  #view-photos .map-date-nav{width:38px;height:48px;border-radius:11px;font-size:16px}
+  #view-photos .map-date-rail{gap:7px;padding:2px 1px 4px}
+  #view-photos .map-date-card{flex:0 0 92px;min-height:72px;padding:7px 8px;border-radius:12px}
+  #view-photos .map-date-card strong{font-size:12px;gap:4px}
+  #view-photos .map-date-card strong i{font-size:10px}
+  #view-photos .map-date-card b{margin-top:3px;font-size:10px}
+  #view-photos .map-date-card small{margin-top:2px;font-size:10px}
+  #view-photos .photo-day-group-head{align-items:center}
+  #view-photos .photo-day-group-head .action{min-height:38px;padding:7px 10px;font-size:.74rem;white-space:nowrap}
+  .photo-pose-panel{padding:13px}.photo-pose-tip{grid-template-columns:28px minmax(0,1fr);padding:10px}.photo-pose-tip dl>div{grid-template-columns:50px minmax(0,1fr)}
+}

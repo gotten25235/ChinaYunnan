@@ -31,12 +31,13 @@
   const markRendered=name=>renderedViews.add(name);
   const toast=message=>{const el=$('#toast');if(!el)return;el.textContent=message;el.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),3000);};
 
-  function setSharedDay(value,{source='app',fitMap=true,center=true,behavior='smooth',renderMap=true,renderNight=true}={}){
+  function setSharedDay(value,{source='app',fitMap=true,center=true,behavior='smooth',renderMap=true,renderNight=true,renderPhotos=true}={}){
     value=String(value);const allowed=['all',...tripData.days.map(d=>String(d.day))];if(!allowed.includes(value))return false;
-    mapSystem?.setDayState(value);librarySystem?.setNightDayState(value);
+    mapSystem?.setDayState(value);librarySystem?.setNightDayState(value);librarySystem?.setPhotoDayState(value);
     if(renderNight&&librarySystem&&(source==='library'||renderedViews.has('night')))librarySystem.renderNight();
+    if(renderPhotos&&librarySystem&&(source==='library'||renderedViews.has('photos')))librarySystem.renderPhotos();
     if(renderMap&&mapSystem&&(source==='map'||currentView==='map'))mapSystem.render(fitMap);
-    if(center)requestAnimationFrame(()=>{mapSystem?.syncDate(true,behavior);librarySystem?.syncNightDate(true,behavior);});
+    if(center)requestAnimationFrame(()=>{mapSystem?.syncDate(true,behavior);librarySystem?.syncNightDate(true,behavior);librarySystem?.syncPhotoDate(true,behavior);});
     return true;
   }
 
@@ -59,8 +60,9 @@
 
   // Populate mirrored hidden selects before date-rail controllers build their cards.
   $('#night-day')?.insertAdjacentHTML('beforeend',tripData.days.map(d=>`<option value="${d.day}">Day ${d.day} · ${d.date.slice(5)} · ${esc(d.city)}</option>`).join(''));
+  $('#photo-day')?.insertAdjacentHTML('beforeend',tripData.days.map(d=>`<option value="${d.day}">Day ${d.day} · ${d.date.slice(5)} · ${esc(d.city)}</option>`).join(''));
   $('#map-day')?.insertAdjacentHTML('beforeend',tripData.days.map(d=>`<option value="${d.day}">Day ${d.day} · ${esc(d.city)}</option>`).join(''));
-  mapSystem.init();librarySystem.init();setSharedDay('all',{renderMap:false,renderNight:false,center:false});
+  mapSystem.init();librarySystem.init();setSharedDay('all',{renderMap:false,renderNight:false,renderPhotos:false,center:false});
   leafletReady.then(ok=>{if(ok&&currentView==='map')mapSystem.render(false);});
 
   function renderTips(){
@@ -196,8 +198,7 @@
   // Build stable non-map DOM before gesture binding. Image elements remain lazy-loaded; Leaflet is created only after the Map view is visible.
 
   // Static shell content.
-  $('#header-date').textContent=tripData.dateLabel+' · 8 DAYS';$('#hero-date').textContent=tripData.dateLabel;$('.hero').style.backgroundImage=`url("${tripData.heroImage}")`;
-  $('#journey-strip').innerHTML=tripData.route.map(c=>`<span class="route-stop">${esc(c)}</span>`).join('');
+  $('#header-date').textContent=tripData.dateLabel+' · 8 DAYS';const bannerDate=$('.yn-banner .yn-date');if(bannerDate)bannerDate.textContent=tripData.dateLabel;
   const credit=tripData.imageCredit;$('#credits').innerHTML=`照片：<a href="${esc(credit.url)}" target="_blank" rel="noopener noreferrer">${esc(credit.title)} · ${esc(credit.author)}</a> / <a href="${esc(credit.licenseUrl)}" target="_blank" rel="noopener noreferrer">${esc(credit.license)}</a><br>行程依手冊整理 · 資料查核 ${esc(tripData.checkedAt)}`;
   $('#credits').insertAdjacentHTML('beforeend','<br><button class="credit-link" data-view="culture">實拍照片與故事來源 →</button>');
   if(todayDay){$('#today').hidden=false;$('#today').innerHTML=`<span class="eyebrow">TODAY</span><h3>Day ${todayDay.day} · ${esc(todayDay.city)}</h3><p>今天：${todayDay.itinerary.map(id=>esc(items[id].name)).join(' → ')}<br>今晚：${todayDay.nightRecommendations.length?esc(items[todayDay.nightRecommendations[0]].name):'休息／返程'}</p><button class="primary" data-night-day="${todayDay.day}">查看今晚安排</button>`;}

@@ -2,7 +2,9 @@
 
 根目錄 `README.md` 只說明網站使用方式。本文件是**唯一的人工作程規格主文件**，集中描述架構、資料契約、Public / Audit、來源追溯、圖片本地化、版本、Cache、驗證與已知工程決策。
 
-文件維護原則：除 generated ledger 或必要證據清單外，不再為單一主題新增 MD；新的工程規則優先合併進本文件，避免規格分散與互相矛盾。
+文件維護原則：除 generated ledger、必要證據清單，以及使用者明確指定獨立維護的動態橫幅文件 `docs/YUNNAN_BANNER.md` 外，不再為單一主題新增 MD；新的工程規則優先合併進本文件，避免規格分散與互相矛盾。
+
+動態橫幅的行為、動畫安全、暫停狀態與整合邊界以 `docs/YUNNAN_BANNER.md` 為專屬規格；若與本文件的一般規則衝突，仍以本文件的版本、Cache、Public / Audit 與資料契約為上位規則。
 
 ## 1. 專案結構
 
@@ -10,6 +12,9 @@
 /
 ├── index.html
 ├── README.md                       # 使用者說明
+├── css/banner.css                  # 動態雲霧橫幅樣式（yn- 命名空間）
+├── js/banner.js                    # 動態雲霧橫幅互動／WebGL
+├── images/blue-moon-valley.webp    # 橫幅與既有藍月谷共用同一授權照片
 ├── START.bat
 ├── LOCALIZE_IMAGES_ANACONDA_SSL_FIX.bat
 ├── sw.js
@@ -47,7 +52,8 @@
 │   ├── media_audit.py
 │   └── optimize_media.py
 └── docs/
-    ├── PROJECT.md                  # 唯一人工維護的工程主文件
+    ├── PROJECT.md                  # 人工維護的工程主文件
+    ├── YUNNAN_BANNER.md            # 使用者指定獨立維護的動態橫幅規格
     └── sources/
         ├── PHOTO_SOURCES.md        # generated 圖片來源帳本
         └── HANDBOOK_IMAGE_CROPS.md # 手冊裁圖證據清單
@@ -102,6 +108,17 @@
 - 同一結論出現衝突時不靜默合併；正式內容採較可靠來源，必要時保留差異說明。
 - 來源狀態建議使用 `active`、`unavailable`、`deleted`、`private`。失效時保留原 `sourceId`、URL、retrieved metadata 與最後已知狀態；替代來源建立新 ID，不把舊 ID 指向新 URL。
 - 不保存或散佈不必要的整篇受著作權保護內容，只保留追溯所需 metadata、短摘要與必要 notes。
+
+### 拍照／Pose 社群研究來源
+
+「旅拍指南」的機位與 Pose 研究固定優先搜尋 **小紅書、抖音、大眾點評**；必要時再以一般網頁、官方景區或其他公開社群補強。這三個平台的角色如下：
+
+- **小紅書**：找近期打卡機位、人物 Pose、季節實拍與「同款」路線。若搜尋引擎只能取得二次索引、無法穩定核對原貼 URL，依來源契約只保存二次來源，不建立假的 `xiaohongshu` Source Record。
+- **抖音**：找近期現場影片、走動 Pose、拍攝機位與人流／天候下的真實畫面；採用時保存可公開核對的原影片 URL。
+- **大眾點評**：看一般遊客會員相冊與景點實拍，補足「不是專業旅拍也能拍到什麼」的視角；會員圖片只作研究，不視為可重用授權。
+- **Threads**：可搜尋，但不是固定必須來源；若沒有足以改變建議的有效內容，不為湊平台而建立紀錄。
+
+拍照資料可以把社群結論整理成 `poseTips`（Pose、攝影者位置、鏡頭／倍率、原參考 URL），並以 `sourceRefs` / `fieldSources` 追溯。**網站 Public 介面只顯示本站已有合法／可部署的景點圖與 Pose 文字整理；社群原圖／影片以外連方式查看，不下載進 ZIP、不截圖重包、不宣稱取得授權。**
 
 ### 圖片與媒體來源界線
 
@@ -177,6 +194,8 @@ Audit 在不改變正式資料的前提下額外顯示：
 Rail 規則：`.rail--snap` 用於需要停靠；`.rail--free` 自由停留；`.rail--mouse-drag` 提供桌面左鍵抓取。Touch / Pen 一律用 Native Scroll。Main View swipe 只由 App pager 擁有；只有當 Rail／Timetable 當下真的 `scrollWidth > clientWidth` 時才攔截水平手勢，桌面 Grid 不因保留 `.rail` class 形成死區。Map、Button/Link/Form、Dialog 固定 blocked。
 
 Reader 關閉後回原本 window scroll、Rail scroll 與 focus。Content Reader 使用內部 stack，不疊多層 modal。
+
+可點擊的 Content / Story / Map / Journey summary 圖卡區必須在區塊前提供一致的小字操作提示（例如「點一下圖卡，看更多內容」）；純展示卡不顯示，避免誤導。Journey Day Carousel 的整張摘要卡可點擊／鍵盤 Enter 或 Space 展開當天內容，卡片內既有按鈕仍可獨立操作。拍照頁只有目前日期（或全部八天）真的含 `drama:true` 卡片時才顯示《去有風的地方》篩選；不提供「必拍」篩選，優先機位以資料中的 `priority` 排序在前，但 Public 圖卡不另外顯示「必拍」標籤。
 
 ## 8. Photo / Mobile Traffic / 本地化
 

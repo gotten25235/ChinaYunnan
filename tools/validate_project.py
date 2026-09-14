@@ -384,8 +384,8 @@ def validate_release_and_views() -> None:
     if not html_version or html_version.group(1) != version:
         error("index.html data-app-version must equal tools/release.json version")
 
-    versions = re.findall(r'(?:css/style\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|app)\.js)\?v=([^"\']+)', html)
-    if len(versions) != 12 or any(v != version for v in versions):
+    versions = re.findall(r'(?:css/(?:style|banner)\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|banner|app)\.js)\?v=([^"\']+)', html)
+    if len(versions) != 14 or any(v != version for v in versions):
         error(f"index.html local CSS/JS identification must be ?v={version}")
 
     sw_version = re.search(r"const RELEASE_VERSION = '([^']+)';", sw)
@@ -400,7 +400,7 @@ def validate_release_and_views() -> None:
     if "const OFFLINE_META_CACHE = `yunnan-offline-${STORAGE_SCHEMA}`;" not in sw:
         error("sw.js OFFLINE_META_CACHE must use the stable storage schema")
 
-    expected_shell = ["index.html", "manifest.webmanifest", "offline-manifest.json", "css/style.css", "js/network.js", "js/core.js", "js/analytics.js", "js/weather.js", "js/offline.js", "js/settings.js", "js/reader.js", "js/journey.js", "js/map.js", "js/library.js", "js/app.js", "data/trip-data.json", "data/social-sources.json", "data/source-index.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png"]
+    expected_shell = ["index.html", "manifest.webmanifest", "offline-manifest.json", "css/style.css", "css/banner.css", "js/network.js", "js/core.js", "js/analytics.js", "js/weather.js", "js/offline.js", "js/settings.js", "js/reader.js", "js/journey.js", "js/map.js", "js/library.js", "js/banner.js", "js/app.js", "data/trip-data.json", "data/social-sources.json", "data/source-index.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png"]
     for rel in expected_shell:
         if not (ROOT / rel).is_file():
             error(f"APP_SHELL file missing: {rel}")

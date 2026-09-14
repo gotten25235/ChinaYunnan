@@ -61,10 +61,10 @@ def sync_identification(version: str) -> None:
     html, attr_count = re.subn(r'(<html\b[^>]*\bdata-app-version=")[^"]+("[^>]*>)', rf'\g<1>{version}\g<2>', html, count=1)
     if attr_count != 1:
         raise SystemExit("Unable to find data-app-version in index.html")
-    pattern = re.compile(r'((?:css/style\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|app)\.js)\?v=)[^"\']+')
+    pattern = re.compile(r'((?:css/(?:style|banner)\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|banner|app)\.js)\?v=)[^"\']+')
     html, count = pattern.subn(lambda m: m.group(1) + version, html)
-    if count != 12:
-        raise SystemExit(f"Expected 12 versioned local CSS/JS references in index.html, found {count}")
+    if count != 14:
+        raise SystemExit(f"Expected 14 versioned local CSS/JS references in index.html, found {count}")
     with INDEX.open("w", encoding="utf-8", newline="\n") as fh:
         fh.write(html)
 

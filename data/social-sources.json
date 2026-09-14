@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": "v1",
-    "checkedAt": "2026-09-09T16:50:00+08:00",
+    "checkedAt": "2026-09-15T03:30:00+08:00",
     "retentionPolicy": "Source Record 不因貼文刪除、轉私人、登入限制或失效而刪除；只更新 status / lastSeenAt / unavailableAt。",
     "note": "現行來源庫同時保存官方、一般網頁與可驗證的社群來源；無法直接存取的原始貼文保留 status 與可讀二次來源，不建立假社群來源。"
   },
@@ -1886,6 +1886,532 @@
         "collector": "ChatGPT project edit",
         "parserVersion": "v1",
         "notes": "僅用於文案梗與來源追溯；不作餐廳普遍規則或食品安全事實的唯一證據。"
+      }
+    },
+    "douyin_20260915_0001": {
+      "sourceId": "douyin_20260915_0001",
+      "platform": "douyin",
+      "url": "https://www.douyin.com/shipin/7639204382550296586",
+      "canonicalUrl": "https://www.douyin.com/shipin/7639204382550296586",
+      "postId": "7639204382550296586",
+      "contentType": "video",
+      "author": {
+        "name": "抖音公開內容",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-05-13",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "喜洲田野拍照：田埂、走動抓拍與服裝建議",
+      "excerpt": "公開內容提到喜洲田野可在田埂拍攝，使用走動抓拍、草帽等方式；並提醒不要踩進作物。",
+      "tags": [
+        "雲南",
+        "喜洲",
+        "拍照",
+        "Pose",
+        "稻田"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "只保存可追溯 metadata 與短摘要；不下載或部署貼文圖片。"
+      }
+    },
+    "douyin_20260915_0002": {
+      "sourceId": "douyin_20260915_0002",
+      "platform": "douyin",
+      "url": "https://jingxuan.douyin.com/m/video/7628619417974292443",
+      "canonicalUrl": "https://jingxuan.douyin.com/m/video/7628619417974292443",
+      "postId": "7628619417974292443",
+      "contentType": "video",
+      "author": {
+        "name": "66禾77",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-04-15",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "沙溪古鎮寺登街、古戲台、東寨門與玉津橋拍照點",
+      "excerpt": "公開內容把玉津橋列為人氣拍照點，並串聯寺登街、古戲台、東寨門等沙溪核心機位。",
+      "tags": [
+        "雲南",
+        "沙溪",
+        "玉津橋",
+        "寺登街",
+        "拍照"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "只保存可追溯 metadata 與短摘要；不下載或部署貼文圖片。"
+      }
+    },
+    "douyin_20260915_0003": {
+      "sourceId": "douyin_20260915_0003",
+      "platform": "douyin",
+      "url": "https://jingxuan.douyin.com/m/video/7611469203669403497",
+      "canonicalUrl": "https://jingxuan.douyin.com/m/video/7611469203669403497",
+      "postId": "7611469203669403497",
+      "contentType": "video",
+      "author": {
+        "name": "泡泡旅行記",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-02-27",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "沙溪《去有風的地方》九個打卡點與拍照機位",
+      "excerpt": "公開攻略列出玉津橋、東寨門、古戲台、寺登街與多個劇中同款機位，適合作為構圖與動線研究。",
+      "tags": [
+        "雲南",
+        "沙溪",
+        "去有風的地方",
+        "拍照",
+        "機位"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "只保存可追溯 metadata 與短摘要；不下載或部署貼文圖片。"
+      }
+    },
+    "douyin_20260915_0004": {
+      "sourceId": "douyin_20260915_0004",
+      "platform": "douyin",
+      "url": "https://www.douyin.com/shipin/7328558222930102282",
+      "canonicalUrl": "https://www.douyin.com/shipin/7328558222930102282",
+      "postId": "7328558222930102282",
+      "contentType": "video",
+      "author": {
+        "name": "抖音公開內容",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-04-26",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "有風小院與鳳陽邑取景地位置整理",
+      "excerpt": "公開內容區分鳳陽邑有風小院與沙溪有風小館，適合支撐取景地辨識。",
+      "tags": [
+        "雲南",
+        "鳳陽邑",
+        "有風小院",
+        "去有風的地方"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "只保存可追溯 metadata 與短摘要；不下載或部署貼文圖片。"
+      }
+    },
+    "douyin_20260915_0005": {
+      "sourceId": "douyin_20260915_0005",
+      "platform": "douyin",
+      "url": "https://www.douyin.com/shipin/7333880045604636724",
+      "canonicalUrl": "https://www.douyin.com/shipin/7333880045604636724",
+      "postId": "7333880045604636724",
+      "contentType": "video",
+      "author": {
+        "name": "抖音公開內容",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2024-02-10",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "理想邦遊客區域與拍攝光線提醒",
+      "excerpt": "公開內容提到理想邦面向洱海、部分酒店區域非住客不可進入，早上逆光較明顯；作為旅客可達機位與光線限制參考。",
+      "tags": [
+        "雲南",
+        "大理",
+        "理想邦",
+        "拍照"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "公開內容較舊，僅用於拍攝限制與構圖研究；現場規則仍以當日公告為準。"
+      }
+    },
+    "douyin_20260915_0006": {
+      "sourceId": "douyin_20260915_0006",
+      "platform": "douyin",
+      "url": "https://www.douyin.com/video/7564445014941240635",
+      "canonicalUrl": "https://www.douyin.com/video/7564445014941240635",
+      "postId": "7564445014941240635",
+      "contentType": "video",
+      "author": {
+        "name": "抖音公開內容",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2025-10-23",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "雲杉坪雪山草甸與杉林兩大拍攝機位",
+      "excerpt": "公開攝影攻略把雪山草甸與杉林列為雲杉坪兩種核心構圖，並提醒未開放區域不要進入。",
+      "tags": [
+        "雲南",
+        "麗江",
+        "雲杉坪",
+        "拍照",
+        "機位"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "只保存可追溯 metadata 與短摘要；不下載或部署貼文圖片。"
+      }
+    },
+    "douyin_20260915_0007": {
+      "sourceId": "douyin_20260915_0007",
+      "platform": "douyin",
+      "url": "https://jingxuan.douyin.com/m/video/7598474662066748793",
+      "canonicalUrl": "https://jingxuan.douyin.com/m/video/7598474662066748793",
+      "postId": "7598474662066748793",
+      "contentType": "video",
+      "author": {
+        "name": "糖吉訶德",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-01-23",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "玉龍雪山：甘海子、雲杉坪、藍月谷拍照動線",
+      "excerpt": "公開旅拍內容以甘海子、雲杉坪與藍月谷串成同日拍攝動線，作為當日順路機位參考。",
+      "tags": [
+        "雲南",
+        "玉龍雪山",
+        "甘海子",
+        "雲杉坪",
+        "藍月谷",
+        "拍照"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "只保存可追溯 metadata 與短摘要；不下載或部署貼文圖片。"
+      }
+    },
+    "douyin_20260915_0008": {
+      "sourceId": "douyin_20260915_0008",
+      "platform": "douyin",
+      "url": "https://www.douyin.com/video/7637315779297398035",
+      "canonicalUrl": "https://www.douyin.com/video/7637315779297398035",
+      "postId": "7637315779297398035",
+      "contentType": "video",
+      "author": {
+        "name": "抖音公開內容",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-05-11",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "玉龍雪山近期拍照機位：甘海子與藍月谷玉液湖",
+      "excerpt": "公開內容列出甘海子與藍月谷玉液湖等拍照位置，並建議藍月谷在光線較好的時段拍攝。",
+      "tags": [
+        "雲南",
+        "玉龍雪山",
+        "甘海子",
+        "藍月谷",
+        "拍照"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "屬單日實況型內容，日期性資訊不作長期官方事實；本專案僅採用機位線索。"
+      }
+    },
+    "douyin_20260915_0009": {
+      "sourceId": "douyin_20260915_0009",
+      "platform": "douyin",
+      "url": "https://www.douyin.com/video/7490488001194233107",
+      "canonicalUrl": "https://www.douyin.com/video/7490488001194233107",
+      "postId": "7490488001194233107",
+      "contentType": "video",
+      "author": {
+        "name": "抖音公開內容",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2025-04-07",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "虎跳峽旅拍與熱門機位經驗",
+      "excerpt": "公開旅拍內容顯示虎跳峽常以人物對比峽谷尺度取景；本專案不採用需離開一般遊覽安全區的危險機位。",
+      "tags": [
+        "雲南",
+        "虎跳峽",
+        "拍照",
+        "旅拍"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "只採安全的一般遊覽區構圖概念，不鼓勵攀爬或前往危險網紅機位。"
+      }
+    },
+    "douyin_20260915_0010": {
+      "sourceId": "douyin_20260915_0010",
+      "platform": "douyin",
+      "url": "https://www.douyin.com/shipin/7308225177497487412",
+      "canonicalUrl": "https://www.douyin.com/shipin/7308225177497487412",
+      "postId": "7308225177497487412",
+      "contentType": "video",
+      "author": {
+        "name": "陳兒",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2023-12-03",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "松贊林寺外部長焦與晨霧拍攝機位",
+      "excerpt": "公開攝影內容示範以外部較遠位置長焦拍寺院層疊與晨霧；團體行程不為此機位脫團，僅作構圖概念。",
+      "tags": [
+        "雲南",
+        "香格里拉",
+        "松贊林寺",
+        "拍照",
+        "長焦"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "此特殊晨霧機位不納入必走動線，只用來說明「拉遠、層疊」構圖；寺內拍攝遵守現場規定。"
+      }
+    },
+    "douyin_20260915_0011": {
+      "sourceId": "douyin_20260915_0011",
+      "platform": "douyin",
+      "url": "https://www.douyin.com/shipin/7350937894229428276",
+      "canonicalUrl": "https://www.douyin.com/shipin/7350937894229428276",
+      "postId": "7350937894229428276",
+      "contentType": "video",
+      "author": {
+        "name": "冷漠塵逍",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-03-12",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "獨克宗、龜山公園與巨大轉經筒夜景拍照",
+      "excerpt": "公開行程內容提到龜山公園巨大轉經筒夜景很出片，並描述古城紅牆與月光廣場等可拍元素。",
+      "tags": [
+        "雲南",
+        "香格里拉",
+        "獨克宗",
+        "龜山公園",
+        "轉經筒",
+        "拍照"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "只保存可追溯 metadata 與短摘要；不下載或部署貼文圖片。"
+      }
+    },
+    "douyin_20260915_0012": {
+      "sourceId": "douyin_20260915_0012",
+      "platform": "douyin",
+      "url": "https://www.douyin.com/shipin/7643258814623451182",
+      "canonicalUrl": "https://www.douyin.com/shipin/7643258814623451182",
+      "postId": "7643258814623451182",
+      "contentType": "video",
+      "author": {
+        "name": "哈囉飯曾香",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-05-24",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "香格里拉旅拍：普達措與藏式服裝人像",
+      "excerpt": "公開旅拍內容把普達措的湖、草地與森林作為人像背景，提供姿勢與服裝風格研究線索。",
+      "tags": [
+        "雲南",
+        "香格里拉",
+        "普達措",
+        "拍照",
+        "旅拍"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "只保存可追溯 metadata 與短摘要；不下載或部署貼文圖片。"
+      }
+    },
+    "dianping_20260915_0001": {
+      "sourceId": "dianping_20260915_0001",
+      "platform": "dianping",
+      "url": "https://www.dianping.com/shop/3273157/photos/album",
+      "canonicalUrl": "https://www.dianping.com/shop/3273157/photos/album",
+      "postId": null,
+      "contentType": "photo-album",
+      "author": {
+        "name": "大眾點評 / 獨克宗古城會員相冊",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "獨克宗古城會員實拍相冊",
+      "excerpt": "大眾點評可公開索引的獨克宗古城會員相冊，用於核對一般遊客實拍視角；圖片本身不下載、不部署。",
+      "tags": [
+        "雲南",
+        "香格里拉",
+        "獨克宗",
+        "大眾點評",
+        "實拍"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "會員照片僅作視角研究，不視為可重用授權。"
+      }
+    },
+    "web_20260915_0001": {
+      "sourceId": "web_20260915_0001",
+      "platform": "web",
+      "url": "https://post.smzdm.com/p/a5r7n283/",
+      "canonicalUrl": "https://post.smzdm.com/p/a5r7n283/",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "什麼值得買",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-06-01",
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "喜洲拍照機位二次整理：轉角樓、田野與有風大樹",
+      "excerpt": "二次整理頁索引到小紅書等公開貼文，整理喜洲轉角樓、麥田／稻田、小火車與有風大樹等拍照點。",
+      "tags": [
+        "雲南",
+        "喜洲",
+        "拍照",
+        "小紅書線索",
+        "二次來源"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "可驗證原始小紅書貼文 URL 未穩定取得，因此不建立假的 xhs_* Source Record；只保存此二次來源。"
+      }
+    },
+    "dianping_20260915_0002": {
+      "sourceId": "dianping_20260915_0002",
+      "platform": "dianping",
+      "url": "https://www.dianping.com/shop/5253400/photos/album",
+      "canonicalUrl": "https://www.dianping.com/shop/5253400/photos/album",
+      "postId": null,
+      "contentType": "photo-album",
+      "author": {
+        "name": "大眾點評 / 束河古鎮-茶馬古道博物館會員相冊",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "束河古鎮會員實拍相冊",
+      "excerpt": "大眾點評可公開索引的束河古鎮相關會員相冊，用於核對一般遊客視角與街巷構圖；圖片不下載、不部署。",
+      "tags": [
+        "雲南",
+        "麗江",
+        "束河",
+        "大眾點評",
+        "實拍"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "會員照片只作視角研究，不視為可重用授權。"
+      }
+    },
+    "dianping_20260915_0003": {
+      "sourceId": "dianping_20260915_0003",
+      "platform": "dianping",
+      "url": "https://www.dianping.com/shop/21925329/photos",
+      "canonicalUrl": "https://www.dianping.com/shop/21925329/photos",
+      "postId": null,
+      "contentType": "photo-album",
+      "author": {
+        "name": "大眾點評 / 麗江古城會員相冊",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-15T03:30:00+08:00",
+      "lastSeenAt": "2026-09-15T03:30:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "麗江古城會員實拍相冊",
+      "excerpt": "大眾點評可公開索引的麗江古城會員相冊，用於核對遊客水巷、街巷與屋瓦視角；圖片不下載、不部署。",
+      "tags": [
+        "雲南",
+        "麗江古城",
+        "大眾點評",
+        "實拍"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "會員照片只作視角研究，不視為可重用授權。"
       }
     }
   }
