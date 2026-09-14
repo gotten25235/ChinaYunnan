@@ -3928,7 +3928,7 @@
       "addressVerified": false,
       "address": "雲南省 酸角",
       "photoId": "souvenir-tamarind",
-      "photoMatch": "verified",
+      "photoMatch": "illustrative",
       "marketKind": "食品伴手禮",
       "sourceRefs": [
         "user_20260910_0001"
@@ -4408,7 +4408,7 @@
       "addressVerified": false,
       "address": "雲南省 野生菌精釀啤酒",
       "photoId": "souvenir-wild-mushroom-beer",
-      "photoMatch": "verified",
+      "photoMatch": "illustrative",
       "marketKind": "酒類",
       "sourceRefs": [
         "user_20260910_0002"
@@ -5600,10 +5600,10 @@
       "license": "來源頁未標示再利用授權／本次私人旅程參考",
       "licenseUrl": null,
       "caption": "雲南小粒咖啡商品包裝代表圖；非本團指定品牌。",
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。",
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。",
       "width": 520,
       "height": 520,
-      "src": "https://img01.yzcdn.cn/upload_files/2023/06/15/FrpBSGzdHGmesR_eRxqtH-lmQNIM.jpg%21middle.jpg",
+      "src": "images/remote/yunnan-coffee.webp",
       "source": "https://detail.youzan.com/show/goods?alias=3exz0401mbbyz&from_source=gbox_seo",
       "alt": "雲南小粒咖啡伴手禮實物／實景參考"
     },
@@ -5695,7 +5695,7 @@
       "capturePage": 8
     },
     "shuanglang-open": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Shuanglang%2C_Dali%2C_Yunnan%2C_China_02.jpg/1280px-Shuanglang%2C_Dali%2C_Yunnan%2C_China_02.jpg",
+      "src": "images/remote/shuanglang-open.webp",
       "alt": "大理雙廊與洱海景觀實拍",
       "caption": "大理雙廊與洱海景觀實拍",
       "author": "Zhangmoon618",
@@ -5704,7 +5704,7 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
       "width": 1280,
       "height": 853,
-      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "yulong-open": {
       "src": "images/handbook/yulong-handbook.webp",
@@ -5812,7 +5812,7 @@
       "capturePage": 15
     },
     "kunming-jinma-open": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Kunming_Jinma_Biji_Fang_20250813_183853.jpg/1280px-Kunming_Jinma_Biji_Fang_20250813_183853.jpg",
+      "src": "images/remote/kunming-jinma-open.webp",
       "alt": "昆明金馬碧雞坊實拍",
       "caption": "昆明金馬碧雞坊實拍",
       "author": "Zhangzhugang",
@@ -5821,10 +5821,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 1280,
       "height": 853,
-      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "kunming-nanping-open": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/%E6%98%86%E6%98%8E%E5%B8%82%E5%8D%97%E5%B1%8F%E8%A1%97_-_2025-05-16_01.jpg/1280px-%E6%98%86%E6%98%8E%E5%B8%82%E5%8D%97%E5%B1%8F%E8%A1%97_-_2025-05-16_01.jpg",
+      "src": "images/remote/kunming-nanping-open.webp",
       "alt": "昆明南屏街街景實拍",
       "caption": "昆明南屏街街景實拍",
       "author": "瑞麗江的河水",
@@ -5833,10 +5833,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 1280,
       "height": 853,
-      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "kunming-railway-open": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Kunming_Railway_Station.jpg",
+      "src": "images/remote/kunming-railway-open.webp",
       "alt": "昆明火車站實拍",
       "caption": "昆明火車站實拍",
       "author": "40fifw0",
@@ -5845,7 +5845,7 @@
       "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
       "width": 1024,
       "height": 768,
-      "changes": "使用 Wikimedia Commons 原圖；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons 原圖；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "dali-village-reference": {
       "src": "images/xizhou-yan-courtyard.webp",
@@ -5899,7 +5899,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。 此卡作為情境參考圖，非指定地點／店家的實景。"
     },
     "kunming-city-reference": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Kunming_Jinma_Biji_Fang_20250813_183853.jpg/1280px-Kunming_Jinma_Biji_Fang_20250813_183853.jpg",
+      "src": "images/remote/kunming-jinma-open.webp",
       "alt": "昆明市區情境參考圖；非機場、飯店、商場或演出場館實景",
       "caption": "昆明市區情境參考圖；非機場、飯店、商場或演出場館實景",
       "author": "Zhangzhugang",
@@ -5908,10 +5908,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 1280,
       "height": 853,
-      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。"
+      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "dali-city-reference": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/1_dali_old_town_yunnan_2012.jpg/960px-1_dali_old_town_yunnan_2012.jpg",
+      "src": "images/remote/dali-city-reference.webp",
       "alt": "大理古城情境參考圖；非指定飯店或三月街機位",
       "caption": "大理古城情境參考圖；非指定飯店或三月街機位",
       "author": "chensiyuan",
@@ -5920,7 +5920,7 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 960,
       "height": 640,
-      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。"
+      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "lijiang-city-reference": {
       "src": "images/lijiang-old-town.webp",
@@ -5935,7 +5935,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。 此卡作為情境參考圖，非指定地點／店家的實景。"
     },
     "kunming-history-reference": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Kunming_Jinma_Biji_Fang_20250813_183853.jpg/1280px-Kunming_Jinma_Biji_Fang_20250813_183853.jpg",
+      "src": "images/remote/kunming-jinma-open.webp",
       "alt": "昆明城市歷史情境參考圖；非故事所述事件現場的歷史照片",
       "caption": "昆明城市歷史情境參考圖；非故事所述事件現場的歷史照片",
       "author": "Zhangzhugang",
@@ -5944,7 +5944,7 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 1280,
       "height": 853,
-      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。"
+      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "dali-history-reference": {
       "src": "images/xizhou-yan-courtyard.webp",
@@ -5959,7 +5959,7 @@
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。 此卡作為情境參考圖，非指定地點／店家的實景。"
     },
     "shangri-story-reference": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/20260225_Skyline_of_Dukezong_Ancient_Town_Shangri-La_12.jpg/1280px-20260225_Skyline_of_Dukezong_Ancient_Town_Shangri-La_12.jpg",
+      "src": "images/remote/shangri-story-reference.webp",
       "alt": "香格里拉城市情境參考圖；非小說場景或歷史照片",
       "caption": "香格里拉城市情境參考圖；非小說場景或歷史照片",
       "author": "祝魚貴",
@@ -5968,7 +5968,7 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 1280,
       "height": 853,
-      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。"
+      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "three-tea-reference": {
       "src": "images/bai-cuisine.webp",
@@ -6067,7 +6067,7 @@
       "capturePage": 12
     },
     "lijiang-sifang-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E4%B8%BD%E6%B1%9F%E5%9B%9B%E6%96%B9%E8%A1%97.JPG?width=1280",
+      "src": "images/remote/lijiang-sifang-web.webp",
       "alt": "麗江古城四方街實景",
       "caption": "麗江古城四方街實景",
       "author": "Gisling",
@@ -6076,10 +6076,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
       "width": 2000,
       "height": 1500,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "dukezong-sifang-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E7%8B%AC%E5%85%8B%E5%AE%97%E5%8F%A4%E5%9F%8E%20-%20%E5%9B%9B%E6%96%B9%E8%A1%97%E5%B9%BF%E5%9C%BA%20-%202025-05-08.jpg?width=1280",
+      "src": "images/remote/dukezong-sifang-web.webp",
       "alt": "香格里拉獨克宗古城四方街廣場實景",
       "caption": "獨克宗古城四方街廣場實景；鍋莊舞是否舉行以現場活動為準",
       "author": "瑞丽江的河水",
@@ -6088,10 +6088,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 5328,
       "height": 4000,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "zhongyi-market-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Zhongyi%20Market%20%2848366765802%29.jpg?width=1280",
+      "src": "images/remote/zhongyi-market-web.webp",
       "alt": "麗江忠義市場實景",
       "caption": "麗江忠義市場實景",
       "author": "David Stanley",
@@ -6100,10 +6100,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
       "width": 1024,
       "height": 768,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "dali-sanyue-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E5%A4%A7%E7%90%86%E4%B8%89%E6%9C%88%E8%A1%97.jpg?width=1280",
+      "src": "images/remote/dali-sanyue-web.webp",
       "alt": "大理三月街實景",
       "caption": "大理三月街實景",
       "author": "ZhaoScorpio",
@@ -6112,10 +6112,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
       "width": 5616,
       "height": 3744,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "kunming-old-street-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E6%98%86%E6%98%8E%E8%80%81%E8%A1%97-%E6%96%87%E5%BA%99%E7%9B%B4%E8%A1%97.jpg?width=1280",
+      "src": "images/remote/kunming-old-street-web.webp",
       "alt": "昆明老街文廟直街實景",
       "caption": "昆明老街・文廟直街實景",
       "author": "瑞丽江的河水",
@@ -6124,10 +6124,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 4000,
       "height": 3008,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "three-pagodas-reflection-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The%20Reflection%20of%20the%20Three%20Pagodas%20in%20the%20Lake.jpg?width=1280",
+      "src": "images/remote/three-pagodas-reflection-web.webp",
       "alt": "大理三塔倒影實景",
       "caption": "三塔倒影湖面實景",
       "author": "Chiu Ho-yang",
@@ -6136,10 +6136,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
       "width": 4896,
       "height": 2752,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "baisha-old-town-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Baisha%20Old%20Town%20%2820572649363%29.jpg?width=1280",
+      "src": "images/remote/baisha-old-town-web.webp",
       "alt": "麗江白沙古鎮實景",
       "caption": "白沙古鎮實景",
       "author": "Luca Casartelli",
@@ -6148,10 +6148,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
       "width": 2048,
       "height": 1356,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "black-dragon-pool-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Black%20Dragon%20Pool.jpg?width=1280",
+      "src": "images/remote/black-dragon-pool-web.webp",
       "alt": "麗江黑龍潭實景",
       "caption": "麗江黑龍潭實景",
       "author": "Chris from Canada",
@@ -6160,10 +6160,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
       "width": 1600,
       "height": 1200,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "baiji-temple-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E7%99%BE%E9%B8%A1%E5%AF%BA%20-%20%E5%85%AD%E8%A7%92%E4%BA%AD%20-%202025-05-09.jpg?width=1280",
+      "src": "images/remote/baiji-temple-web.webp",
       "alt": "香格里拉百雞寺六角亭實景",
       "caption": "百雞寺六角亭實景",
       "author": "瑞丽江的河水",
@@ -6172,10 +6172,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 5328,
       "height": 4000,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "diqing-museum-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E8%BF%AA%E5%BA%86%E5%B7%9E%E5%8D%9A%E7%89%A9%E9%A6%86%20-%202025-05-08%2001.jpg?width=1280",
+      "src": "images/remote/diqing-museum-web.webp",
       "alt": "迪慶藏族自治州博物館實景",
       "caption": "迪慶州博物館實景",
       "author": "瑞丽江的河水",
@@ -6184,10 +6184,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 5328,
       "height": 4000,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "napa-lake-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Napa%20Lake.jpg?width=1280",
+      "src": "images/remote/napa-lake-web.webp",
       "alt": "香格里拉納帕海實景",
       "caption": "納帕海實景；觀景方向依當日道路與季節水位調整",
       "author": "Zhongguotravel",
@@ -6196,10 +6196,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
       "width": 2880,
       "height": 2160,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "yunnan-military-academy-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/2025-02-05%20Yunnan%20Military%20Academy%20%E9%9B%B2%E5%8D%97%E9%99%B8%E8%BB%8D%E8%AC%9B%E6%AD%A6%E5%A0%82%2002.jpg?width=1280",
+      "src": "images/remote/yunnan-military-academy-web.webp",
       "alt": "雲南陸軍講武堂實景",
       "caption": "雲南陸軍講武堂實景",
       "author": "源義信",
@@ -6208,10 +6208,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
       "width": 4096,
       "height": 3072,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "green-lake-park-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/GreenLakePark.jpg?width=1280",
+      "src": "images/remote/green-lake-park-web.webp",
       "alt": "昆明翠湖公園實景",
       "caption": "昆明翠湖公園實景",
       "author": "Chinatravelsavvy",
@@ -6220,10 +6220,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
       "width": 2592,
       "height": 1944,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "three-course-tea-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Three-Course%20Tea.jpg?width=1280",
+      "src": "images/remote/three-course-tea-web.webp",
       "alt": "大理白族三道茶茶席",
       "caption": "白族傳統三道茶茶席實景",
       "author": "Mcx8202229",
@@ -6232,10 +6232,10 @@
       "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
       "width": 900,
       "height": 675,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "dongba-glyphs-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dongba%20pictographic%20glyphs%20-%20Lijiang.jpg?width=1280",
+      "src": "images/remote/dongba-glyphs-web.webp",
       "alt": "麗江東巴象形文字",
       "caption": "麗江東巴象形文字實景",
       "author": "6-A04-W96-K38-S41-V38",
@@ -6244,10 +6244,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 3730,
       "height": 2073,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "joseph-rock-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rock%20in%20Yunnan.png?width=1280",
+      "src": "images/remote/joseph-rock-web.webp",
       "alt": "約瑟夫・洛克在雲南的歷史影像",
       "caption": "約瑟夫・洛克在雲南的歷史影像",
       "author": "Fotobaby",
@@ -6256,10 +6256,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 844,
       "height": 1125,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "cai-e-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E8%94%A1%E9%8D%94.jpg?width=1280",
+      "src": "images/remote/cai-e-web.webp",
       "alt": "蔡鍔歷史照片",
       "caption": "《雲南首義擁護共和始末記》相關蔡鍔歷史影像",
       "author": "庾恩暘",
@@ -6268,10 +6268,10 @@
       "licenseUrl": "",
       "width": 633,
       "height": 1004,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "swau-monument-web": {
-      "src": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The%20Monument%20of%20National%20Southwest%20Associated%20University%2001.jpg?width=1280",
+      "src": "images/remote/swau-monument-web.webp",
       "alt": "昆明國立西南聯合大學紀念碑",
       "caption": "位於今雲南師範大學校園內的西南聯大紀念碑",
       "author": "Zhangmoon618",
@@ -6280,7 +6280,7 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
       "width": 3456,
       "height": 5184,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。"
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "hotel-kmg-airport-photo": {
       "src": "images/hotels/kunming-airport-liyi.webp",
@@ -6493,7 +6493,7 @@
       "changes": "將公開網頁搜尋結果保存為本地 WebP，供行程視覺參考。"
     },
     "fengyang-exact-web": {
-      "src": "https://images.vocus.cc/3e1b8ac6-888c-4923-9e72-851fedb6c54c.jpeg",
+      "src": "images/remote/fengyang-exact-web.webp",
       "alt": "鳳陽邑茶馬古道實景",
       "caption": "鳳陽邑茶馬古道實景，可見村口／古道環境。",
       "author": "方格子／原文作者",
@@ -6502,10 +6502,10 @@
       "licenseUrl": "https://vocus.cc/article/6573e143fd89780001101439",
       "width": 1200,
       "height": 900,
-      "changes": "使用能直接對應鳳陽邑茶馬古道主體的來源圖；不做其他村落替代。"
+      "changes": "使用能直接對應鳳陽邑茶馬古道主體的來源圖；不做其他村落替代。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "youfeng-yard-exact-web": {
-      "src": "https://ak-d.tripcdn.com/images/0202112000br16kgz9529_R_960_660_R5_D.jpg",
+      "src": "images/remote/youfeng-yard-exact-web.webp",
       "alt": "鳳陽邑有風小院外觀實景",
       "caption": "《去有風的地方》相關有風小院外觀實景。",
       "author": "Trip.com 住宿圖片",
@@ -6514,10 +6514,10 @@
       "licenseUrl": "https://hk.trip.com/hotels/dali-hotel-detail-110625699/you-feng-xiao-yuan/",
       "width": 960,
       "height": 660,
-      "changes": "使用來源頁直接對應有風小院外觀的圖片。"
+      "changes": "使用來源頁直接對應有風小院外觀的圖片。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "dali-art-factory-exact-web": {
-      "src": "https://dimg04.c-ctrip.com/images/0104t1200093u6toy6148_W_640_10000.jpg?proc=autoorient",
+      "src": "images/remote/dali-art-factory-exact-web.webp",
       "alt": "大理床單廠藝術區入口實景",
       "caption": "大理床單廠藝術區實景，畫面可見 DALI ART FACTORY 標識。",
       "author": "攜程用戶圖片",
@@ -6526,10 +6526,10 @@
       "licenseUrl": "https://you.ctrip.com/sight/dalicity1445616/1712829.html",
       "width": 640,
       "height": 480,
-      "changes": "使用景點頁直接對應大理床單廠藝術區的圖片。"
+      "changes": "使用景點頁直接對應大理床單廠藝術區的圖片。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "zhuanxin-market-exact-web": {
-      "src": "https://assets.st-note.com/production/uploads/images/228072970/picture_pc_3547a9711c4e1acb9a679e8e3522d272.png?fit=bounds&height=2000&quality=85&width=2000",
+      "src": "images/remote/zhuanxin-market-exact-web.webp",
       "alt": "昆明大觀篆新農貿市場入口實景",
       "caption": "昆明大觀篆新農貿市場入口實景，可直接辨識「篆新農貿市場」招牌。",
       "author": "艶姿ナミダ娘 / note",
@@ -6538,10 +6538,10 @@
       "licenseUrl": "https://note.com/nice_crab4159/n/ncb9fac9947fc",
       "width": 2000,
       "height": 2000,
-      "changes": "改用可直接辨識「篆新農貿市場」入口招牌的實景來源，避開原人民網圖片主機在部分網路環境下載逾時的問題。"
+      "changes": "改用可直接辨識「篆新農貿市場」入口招牌的實景來源，避開原人民網圖片主機在部分網路環境下載逾時的問題。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "qianwang-street-exact-web": {
-      "src": "https://www.newamazing.com.tw/eWeb_newamazing/IMGDB/000128/000169/00011137.JPG",
+      "src": "images/remote/qianwang-street-exact-web.webp",
       "alt": "昆明老街錢王街實景",
       "caption": "昆明老街・錢王街實景，畫面可見「錢王街」標識。",
       "author": "旅遊網站資料圖片",
@@ -6550,10 +6550,10 @@
       "licenseUrl": "https://www.newamazing.com.tw/EW/GO/MGroupDetail.asp?prodCd=KMG082404MU",
       "width": 640,
       "height": 480,
-      "changes": "使用能直接辨識錢王街的來源圖片。"
+      "changes": "使用能直接辨識錢王街的來源圖片。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "kunming-hanglung-exact-web": {
-      "src": "https://imagepphcloud.thepaper.cn/pph/image/130/504/486.jpg",
+      "src": "images/remote/kunming-hanglung-exact-web.webp",
       "alt": "昆明恒隆廣場實景",
       "caption": "昆明恒隆廣場實景。",
       "author": "澎湃新聞資料圖片",
@@ -6562,10 +6562,10 @@
       "licenseUrl": "https://www.thepaper.cn/newsDetail_forward_12574753",
       "width": 1200,
       "height": 800,
-      "changes": "同一張精確地標圖供恒隆廣場的白天／夜遊／購物卡共用。"
+      "changes": "同一張精確地標圖供恒隆廣場的白天／夜遊／購物卡共用。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "kunming-jinge-verified-web": {
-      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/%E6%98%86%E6%98%8E%E6%81%92%E9%9A%86%E5%B9%BF%E5%9C%BA_-_%E8%88%AA%E6%8B%8D_-_2025-05-16_02.jpg/1280px-%E6%98%86%E6%98%8E%E6%81%92%E9%9A%86%E5%B9%BF%E5%9C%BA_-_%E8%88%AA%E6%8B%8D_-_2025-05-16_02.jpg",
+      "src": "images/remote/kunming-jinge-verified-web.webp",
       "alt": "昆明金格中心周邊商業體實景",
       "caption": "金格百貨中心店所在東風東路／北京路商圈實景；畫面可辨識 Gingko 商業體。",
       "author": "瑞麗江的河水",
@@ -6574,10 +6574,10 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 1280,
       "height": 853,
-      "changes": "以官方金格中心店資料核對店址；影像僅在能辨識金格／Gingko 主體時使用，不拿其他分店替代。"
+      "changes": "以官方金格中心店資料核對店址；影像僅在能辨識金格／Gingko 主體時使用，不拿其他分店替代。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "dali-renmin-road-exact-web": {
-      "src": "https://dimg04.c-ctrip.com/images/100a11000000qd31k3AD4_R_1000_500.jpg_.webp?proc=namelogo%2Fd_5",
+      "src": "images/remote/dali-renmin-road-exact-web.webp",
       "alt": "大理古城人民路實景",
       "caption": "大理古城人民路街景實拍。",
       "author": "永安旅遊／來源圖片",
@@ -6586,10 +6586,10 @@
       "licenseUrl": "https://www.wingontravel.com/discovery/scenic-renmin-road-13853728",
       "width": 1000,
       "height": 500,
-      "changes": "使用直接對應大理人民路的來源圖片。"
+      "changes": "使用直接對應大理人民路的來源圖片。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "kunming-nanqiang-exact-web": {
-      "src": "https://www.kunming.cn/en/upload/resources/image/2025/11/26/2006174.png",
+      "src": "images/remote/kunming-nanqiang-exact-web.webp",
       "alt": "昆明南強街巷實景",
       "caption": "昆明南強街巷實景，可見入口／街區標識。",
       "author": "昆明信息港",
@@ -6598,10 +6598,10 @@
       "licenseUrl": "https://www.kunming.cn/en/c/2025-11-26/13997758.shtml",
       "width": 1200,
       "height": 800,
-      "changes": "使用昆明本地媒體直接對應南強街巷的圖片。"
+      "changes": "使用昆明本地媒體直接對應南強街巷的圖片。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "xizhou-woxiang-exact-web": {
-      "src": "https://ak-d.tripcdn.com/images/1mi6g12000re9czqc395E_W_200_0_R5_Q50.jpg?proc=source%2Ftrip",
+      "src": "images/remote/xizhou-woxiang-exact-web.webp",
       "alt": "喜洲我想咖啡稻田店實景",
       "caption": "喜洲「我想咖啡」稻田店情境實景。",
       "author": "Trip.com 用戶圖片",
@@ -6610,10 +6610,10 @@
       "licenseUrl": "https://www.trip.com/moments/detail/dali-city-1445616-143266327/",
       "width": 200,
       "height": 200,
-      "changes": "使用明確標註 I Want Coffee／我想咖啡喜洲稻田店的來源頁圖片。"
+      "changes": "使用明確標註 I Want Coffee／我想咖啡喜洲稻田店的來源頁圖片。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "shaxi-chichaqu-exact-web": {
-      "src": "https://tr-osdcp.qunarzz.com/tr-osd-tr-mapi/img/995bec2326e3f8e094363821ffa2d112.jpg_r_720x480x95_d8635a6c.jpg",
+      "src": "images/remote/shaxi-chichaqu-exact-web.webp",
       "alt": "沙溪吃茶去店面實景",
       "caption": "沙溪「吃茶去」店面實景，畫面可見店名。",
       "author": "去哪兒用戶圖片",
@@ -6622,10 +6622,10 @@
       "licenseUrl": "https://touch.travel.qunar.com/comment/6060601",
       "width": 720,
       "height": 480,
-      "changes": "使用能直接辨識「吃茶去」店名的來源圖片。"
+      "changes": "使用能直接辨識「吃茶去」店名的來源圖片。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "shaxi-corvus-exact-web": {
-      "src": "https://ak-d.tripcdn.com/images/0101y120008r38tgs3B11_D_454_358_R5_Q70.jpg?proc=autoorient",
+      "src": "images/remote/shaxi-corvus-exact-web.webp",
       "alt": "沙溪渡鴉咖啡烘焙實景",
       "caption": "沙溪渡鴉咖啡烘焙店內／店面實景。",
       "author": "Trip.com 餐廳圖片",
@@ -6634,10 +6634,10 @@
       "licenseUrl": "https://sg.trip.com/restaurant/china/jianchuan/detail/sha-xi-du-ya-ga-fei-26462711/",
       "width": 454,
       "height": 358,
-      "changes": "使用渡鴉咖啡烘焙餐廳頁的直接對應圖片。"
+      "changes": "使用渡鴉咖啡烘焙餐廳頁的直接對應圖片。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "shuhe-tingyin-exact-web": {
-      "src": "https://youimg1.c-ctrip.com/target/100f160000010mlfl55D3.jpg",
+      "src": "images/remote/shuhe-tingyin-exact-web.webp",
       "alt": "束河四方聽音廣場實景",
       "caption": "束河・四方聽音廣場實景，可見「四方聽音」標識。",
       "author": "去哪兒／攜程來源圖片",
@@ -6646,10 +6646,10 @@
       "licenseUrl": "https://touch.travel.qunar.com/comment/10159982375",
       "width": 1200,
       "height": 800,
-      "changes": "使用能直接辨識四方聽音廣場的來源圖片。"
+      "changes": "使用能直接辨識四方聽音廣場的來源圖片。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "naxi-grilled-meat-exact-web": {
-      "src": "https://p2.cri.cn/M00/6B/BB/rBABDGO85KeADhfJAAAAAAAAAAA561.800x510.jpg",
+      "src": "images/remote/naxi-grilled-meat-exact-web.webp",
       "alt": "納西烤肉實物照",
       "caption": "納西烤肉實物示意。",
       "author": "國際在線／來源圖片",
@@ -6658,10 +6658,10 @@
       "licenseUrl": "https://news.cri.cn/n/20230110/5c784b39-c488-e1b9-ff97-6a0cb619e202.html",
       "width": 800,
       "height": 510,
-      "changes": "來源頁圖片直接標示為納西烤肉；僅作料理示意，不代表本團餐廳。"
+      "changes": "來源頁圖片直接標示為納西烤肉；僅作料理示意，不代表本團餐廳。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "yak-hotpot-exact-web": {
-      "src": "https://ak-d.tripcdn.com/images/1mi1c12000hb9qib0D91D_R_600_400_R5_Q90.jpg?proc=source%2Ftrip",
+      "src": "images/remote/yak-hotpot-exact-web.webp",
       "alt": "香格里拉犛牛火鍋實物照",
       "caption": "香格里拉犛牛火鍋料理示意。",
       "author": "Trip.com 用戶圖片",
@@ -6670,10 +6670,10 @@
       "licenseUrl": "https://hk.trip.com/moments/detail/shangri-la-106-127450443/",
       "width": 600,
       "height": 400,
-      "changes": "使用直接對應犛牛火鍋的來源圖片；不代表本團指定餐廳。"
+      "changes": "使用直接對應犛牛火鍋的來源圖片；不代表本團指定餐廳。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "smallpot-noodle-exact-web": {
-      "src": "https://www.kunming.cn/en/upload/resources/image/2025/03/24/1839207.jpg?r=1742806639118",
+      "src": "images/remote/smallpot-noodle-exact-web.webp",
       "alt": "昆明小鍋米線實物照",
       "caption": "昆明小鍋米線料理示意。",
       "author": "昆明信息港",
@@ -6682,10 +6682,10 @@
       "licenseUrl": "https://m.kunming.cn/en/c/2025-03-24/13925728.shtml",
       "width": 1200,
       "height": 800,
-      "changes": "使用直接對應昆明小鍋米線的來源圖片；不代表本團指定餐廳。"
+      "changes": "使用直接對應昆明小鍋米線的來源圖片；不代表本團指定餐廳。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "shangri-home-visit-web": {
-      "src": "https://static.wixstatic.com/media/cd5fa6_86a2d9de0cc3431f9641256db5d36943~mv2.jpg/v1/fill/w_640%2Ch_418%2Cal_c%2Cq_80%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/cd5fa6_86a2d9de0cc3431f9641256db5d36943~mv2.jpg",
+      "src": "images/remote/shangri-home-visit-web.webp",
       "alt": "香格里拉藏式家訪情境實景",
       "caption": "香格里拉藏式家訪情境實拍；非本團指定住家。",
       "author": "The Hidden Valley Resort",
@@ -6694,10 +6694,10 @@
       "licenseUrl": "https://www.thehiddenvalleyresort.com/local-home-visit",
       "width": 640,
       "height": 418,
-      "changes": "只作「藏民家訪」活動情境示意，明確不冒充本團指定住家。"
+      "changes": "只作「藏民家訪」活動情境示意，明確不冒充本團指定住家。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "huazhong-migration-museum-web": {
-      "src": "https://inews.gtimg.com/om_bt/OwvgjzGhq52RaKsnRaJd8LeghRB10FHMZrF0oZm9NApsoAA/641",
+      "src": "images/remote/huazhong-migration-museum-web.webp",
       "alt": "喜洲華中大學西遷紀念館實景",
       "caption": "大理喜洲華中大學西遷紀念館相關實景。",
       "author": "騰訊新聞／雲南新聞廣播",
@@ -6706,10 +6706,10 @@
       "licenseUrl": "https://news.qq.com/rain/a/20250815A0422100",
       "width": 641,
       "height": 853,
-      "changes": "使用直接對應喜洲華中大學西遷紀念主題的來源圖片。"
+      "changes": "使用直接對應喜洲華中大學西遷紀念主題的來源圖片。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "lost-horizon-book-web": {
-      "src": "https://www.christies.com/img/LotImages/2022/NYR/2022_NYR_21003_0187_000%28lost_horizon_james_hilton_1933015819%29.jpg?mode=max",
+      "src": "images/remote/lost-horizon-book-web.webp",
       "alt": "James Hilton《Lost Horizon》1933 年版本書影",
       "caption": "《Lost Horizon》（失落的地平線）1933 年版本書影。",
       "author": "Christie’s",
@@ -6718,10 +6718,10 @@
       "licenseUrl": "https://onlineonly.christies.com/s/fine-printed-books-manuscripts/lost-horizon-187/171016",
       "width": 1000,
       "height": 1000,
-      "changes": "使用作品本身的精確書影，作為「香格里拉」小說淵源故事圖。"
+      "changes": "使用作品本身的精確書影，作為「香格里拉」小說淵源故事圖。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "guozhuang-shangri-web": {
-      "src": "https://res.klook.com/images/fl_lossy.progressive%2Cq_65/c_fill%2Cw_1295%2Ch_754/w_80%2Cx_15%2Cy_15%2Cg_south_west%2Cl_Klook_water_br_trans_yhcmh3/activities/carncs93ctplee57yqtz/BanquetducheftribalZayadeShangri-La.jpg",
+      "src": "images/remote/guozhuang-shangri-web.webp",
       "alt": "香格里拉藏族宴席與鍋莊歌舞情境",
       "caption": "香格里拉藏族宴席／鍋莊歌舞情境；非本團固定演出場地。",
       "author": "Klook 活動圖片",
@@ -6730,10 +6730,10 @@
       "licenseUrl": "https://www.klook.com/fr/activity/158909-zhaya-tusi-feast-in-shangri-la/",
       "width": 1295,
       "height": 754,
-      "changes": "用於鍋莊文化故事背景，明確標示為情境而非本團場地。"
+      "changes": "用於鍋莊文化故事背景，明確標示為情境而非本團場地。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-mohong-rose": {
-      "src": "https://img01.yzcdn.cn/upload_files/2025/05/07/FmCAyS6Izo5-Ol9B8JAiT9scA4Pl.jpg%21middle.jpg",
+      "src": "images/remote/souvenir-mohong-rose.webp",
       "alt": "墨紅玫瑰伴手禮實物／實景參考",
       "caption": "雲南墨紅玫瑰乾花商品實物圖；非本團指定品牌。",
       "author": "有贊商品頁",
@@ -6742,10 +6742,10 @@
       "licenseUrl": null,
       "width": 520,
       "height": 520,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-boletus": {
-      "src": "https://img06.weeecdn.com/item/image/827/553/5DDAB857EBF97F29.jpeg",
+      "src": "images/remote/souvenir-boletus.webp",
       "alt": "牛肝菌伴手禮實物／實景參考",
       "caption": "雲南牛肝菌商品實物圖；非本團指定品牌。",
       "author": "Weee! 商品頁",
@@ -6754,10 +6754,10 @@
       "licenseUrl": null,
       "width": 800,
       "height": 800,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-mushroom-sauce": {
-      "src": "https://cdn.yamibuy.net/item/c485e02612a9fbf71541550ebee7ee3e_756x756.webp",
+      "src": "images/remote/souvenir-mushroom-sauce.webp",
       "alt": "菌菇醬伴手禮實物／實景參考",
       "caption": "菌菇醬類商品實物圖；以現場品牌與配料標示為準。",
       "author": "亞米商品頁",
@@ -6766,10 +6766,10 @@
       "licenseUrl": null,
       "width": 756,
       "height": 756,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-xiangxun-mushroom": {
-      "src": "https://chuxiong.yunnan.cn/pic/003/079/161/00307916150_039ebf80.jpg",
+      "src": "images/remote/souvenir-xiangxun-mushroom.webp",
       "alt": "香蕈菌伴手禮實物／實景參考",
       "caption": "楚雄雙柏野生香蕈實景，作為香蕈菌類別代表。",
       "author": "雲南網楚雄頻道",
@@ -6778,22 +6778,28 @@
       "licenseUrl": null,
       "width": 1000,
       "height": 792,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-tamarind": {
-      "src": "https://img06.weeecdn.com/item/image/326/899/1E9196692CA2CB41.jpeg%21c1440x0_q81.auto",
-      "alt": "酸角伴手禮實物／實景參考",
-      "caption": "雲南野酸角商品實物圖；非本團指定品牌。",
-      "author": "Weee! 商品頁",
-      "source": "https://www.sayweee.com/zh/product/Yunnan-Wild-Tamarind-from/2841648",
-      "license": "來源頁未標示再利用授權／本次私人旅程參考",
-      "licenseUrl": null,
-      "width": 1000,
-      "height": 1000,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "src": "images/remote/souvenir-tamarind.webp",
+      "alt": "酸角（羅望子）果莢實物參考",
+      "caption": "Wikimedia Commons 的 Tamarindus indica（酸角／羅望子）果莢實物照片。",
+      "author": "Valenzuela400 / Wikimedia Commons",
+      "source": "https://commons.wikimedia.org/wiki/File:Tamarindus_indica_18.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "width": 1280,
+      "height": 775,
+      "changes": "2026-09-15：撤換會阻擋第三方熱連結的惠農網端點，改用 Wikimedia Commons 可公開查核的酸角實物照片；src 仍固定為本地 WebP，remoteSrc 僅作同主體網路備援與 BAT 本地化來源。",
+      "publicCaption": "酸角（羅望子）果莢實物參考",
+      "publicAuthor": "Valenzuela400 / Wikimedia Commons",
+      "publicSource": "https://commons.wikimedia.org/wiki/File:Tamarindus_indica_18.jpg",
+      "publicLicense": "CC BY-SA 4.0",
+      "publicLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "remoteSrc": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Tamarindus_indica_18.jpg/1280px-Tamarindus_indica_18.jpg"
     },
     "souvenir-fruit-wine": {
-      "src": "https://www.kunming.cn/news/upload/resources/image/2026/04/30/2090390_2048x2048.jpeg",
+      "src": "images/remote/souvenir-fruit-wine.webp",
       "alt": "果酒伴手禮實物／實景參考",
       "caption": "雲南陽宗海櫻桃果酒實景，作為果酒類別代表。",
       "author": "昆明日報供圖／昆明信息港",
@@ -6802,10 +6808,10 @@
       "licenseUrl": null,
       "width": 1000,
       "height": 1000,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-xuanwei-ham": {
-      "src": "https://liangliangmama.com/cdn/shop/products/htk-3_1024x1024.jpg?v=1664359496",
+      "src": "images/remote/souvenir-xuanwei-ham.webp",
       "alt": "宣威火腿伴手禮實物／實景參考",
       "caption": "宣字宣威火腿塊商品實物圖；非本團指定購買通路。",
       "author": "宣威火腿集團商品圖／亮亮媽商品頁",
@@ -6814,10 +6820,10 @@
       "licenseUrl": null,
       "width": 600,
       "height": 600,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-spicy-sausage": {
-      "src": "https://img.alicdn.com/bao/uploaded/i2/2329242190/O1CN01kponnW1S34VngKklB_%21%212329242190.jpg_500x500q90",
+      "src": "images/remote/souvenir-spicy-sausage.webp",
       "alt": "麻辣腸伴手禮實物／實景參考",
       "caption": "雲南臘腸實物圖，作為麻辣腸類別代表；口味以現場標示為準。",
       "author": "淘系商品頁",
@@ -6826,10 +6832,10 @@
       "licenseUrl": null,
       "width": 500,
       "height": 500,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-rose-crisp": {
-      "src": "https://static.foodtalks.cn/company/product/image/e9180f0584a9f385b01b71615776f6cdce78.jpg",
+      "src": "images/remote/souvenir-rose-crisp.webp",
       "alt": "玫瑰酥伴手禮實物／實景參考",
       "caption": "雲南玫瑰餅商品實物圖，作為玫瑰酥類別代表。",
       "author": "FoodTalks 商品資料頁",
@@ -6838,10 +6844,10 @@
       "licenseUrl": null,
       "width": 800,
       "height": 800,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-crossing-bridge-noodle": {
-      "src": "https://imgs.sialchina.cn/exhibitor/image/20250821/936645ab8087fbfe3fab44de9b8b06e068a683ca60852.png",
+      "src": "images/remote/souvenir-crossing-bridge-noodle.webp",
       "alt": "過橋米線伴手禮實物／實景參考",
       "caption": "雲南方便過橋米線商品包裝圖。",
       "author": "雲南雲品鮮食品有限公司／SIAL China",
@@ -6850,10 +6856,10 @@
       "licenseUrl": null,
       "width": 1000,
       "height": 1000,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-tamarind-cake": {
-      "src": "https://imgs.sialchina.cn/exhibitor/image/20260821/9c81169b2714e75ed7a3646de56758f06a87df2b8b00d.jpg",
+      "src": "images/remote/souvenir-tamarind-cake.webp",
       "alt": "酸角糕伴手禮實物／實景參考",
       "caption": "雲南貓哆哩酸角糕商品圖。",
       "author": "雲南貓哆哩集團食品有限責任公司／SIAL China",
@@ -6862,10 +6868,10 @@
       "licenseUrl": null,
       "width": 1000,
       "height": 1000,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-rose-cake": {
-      "src": "https://dragon-goods.com/cdn/shop/files/O1CN01NzwtW51PSJLAy93kz__2213433371839-0-cib.jpg?v=1737232584&width=1080",
+      "src": "images/remote/souvenir-rose-cake.webp",
       "alt": "玫瑰糕伴手禮實物／實景參考",
       "caption": "雲南玫瑰花糕／玫瑰糕點實物代表圖；非本團指定品牌。",
       "author": "Dragon Goods 商品頁",
@@ -6874,10 +6880,10 @@
       "licenseUrl": null,
       "width": 800,
       "height": 800,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-green-preserved-plum": {
-      "src": "https://cdn.yamibuy.net/item/e2e4adf15a29203e3eb5a10b45ca4421_756x756.webp",
+      "src": "images/remote/souvenir-green-preserved-plum.webp",
       "alt": "青話梅伴手禮實物／實景參考",
       "caption": "話梅商品實物圖，作為青話梅類別代表；以現場口味標示為準。",
       "author": "亞米商品頁",
@@ -6886,10 +6892,10 @@
       "licenseUrl": null,
       "width": 756,
       "height": 756,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-yuntui-cracker": {
-      "src": "https://img01.yzcdn.cn/upload_files/2026/03/07/Fo47d4EsaaVWG2S932L2yOksCuk-.jpg%21middle.jpg",
+      "src": "images/remote/souvenir-yuntui-cracker.webp",
       "alt": "雲腿餅乾伴手禮實物／實景參考",
       "caption": "雲腿風味蘇打餅乾商品實物圖；非本團指定品牌。",
       "author": "潘祥記／有贊商品頁",
@@ -6898,10 +6904,10 @@
       "licenseUrl": null,
       "width": 520,
       "height": 520,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-mushroom-ganba": {
-      "src": "https://img08.weeecdn.net/item/image/211/158/305CE09E41B75A3E.jpeg%21c984x0_q80_t1.auto",
+      "src": "images/remote/souvenir-mushroom-ganba.webp",
       "alt": "菌乾巴伴手禮實物／實景參考",
       "caption": "油燜乾巴菌商品實物圖，作為菌乾巴類別代表。",
       "author": "Weee! 商品頁",
@@ -6910,10 +6916,10 @@
       "licenseUrl": null,
       "width": 984,
       "height": 984,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-yuntui-small-cake": {
-      "src": "https://img08.weeecdn.net/item/image/348/764/2ED2959F7D9B0F6D.jpeg%21c750x0_q80_t1.auto",
+      "src": "images/remote/souvenir-yuntui-small-cake.webp",
       "alt": "雲腿小餅伴手禮實物／實景參考",
       "caption": "雲南雲腿小餅商品實物圖；非本團指定品牌。",
       "author": "Weee! 商品頁",
@@ -6922,22 +6928,28 @@
       "licenseUrl": null,
       "width": 750,
       "height": 750,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-wild-mushroom-beer": {
-      "src": "https://gengtu.net/i/download/memes/93/4c/03/bf/934c03bfe78210479b93fd8ab4d7678c.jpeg",
-      "alt": "野生菌精釀啤酒伴手禮實物／實景參考",
-      "caption": "雲南見手青精釀啤酒禮盒商品圖，作為野生菌精釀啤酒代表。",
-      "author": "闹江湖品牌官方／梗圖網收錄",
-      "source": "https://gengtu.net/memes/mohuan-yunnan-jian-shou-qing-craft-beer/",
-      "license": "來源頁未標示再利用授權／本次私人旅程參考",
-      "licenseUrl": null,
-      "width": 1200,
-      "height": 800,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "src": "images/remote/souvenir-wild-mushroom-beer.webp",
+      "alt": "雲南見手青菌子精釀啤酒實物參考",
+      "caption": "FoodTalks 報導中的雲南見手青菌子精釀啤酒實物照片。",
+      "author": "FoodTalks 圖片",
+      "source": "https://www.foodtalks.cn/en/news/58650",
+      "license": "來源頁面照片；未標示可重用授權／本次私人旅程參考",
+      "licenseUrl": "https://www.foodtalks.cn/en/news/58650",
+      "width": 512,
+      "height": 512,
+      "changes": "2026-09-15：撤換會阻擋第三方熱連結的惠農網端點，改用 FoodTalks 報導中的雲南見手青菌子精釀啤酒實物照片；src 仍固定為本地 WebP，remoteSrc 僅作同商品網路備援與 BAT 本地化來源。",
+      "publicCaption": "雲南見手青菌子精釀啤酒實物參考",
+      "publicAuthor": "FoodTalks 圖片",
+      "publicSource": "https://www.foodtalks.cn/en/news/58650",
+      "publicLicense": "來源頁面照片；未標示可重用授權",
+      "publicLicenseUrl": "https://www.foodtalks.cn/en/news/58650",
+      "remoteSrc": "https://static.foodtalks.cn/image/post/12c10dfb268cfa8af9fb818c1382037d.jpg"
     },
     "souvenir-milk-strip": {
-      "src": "https://img.alicdn.com/bao/uploaded/i3/1752724571/O1CN012ldcNC1jdZOFGrkYe_%21%211752724571.jpg_500x500q90",
+      "src": "images/remote/souvenir-milk-strip.webp",
       "alt": "牛乳條伴手禮實物／實景參考",
       "caption": "奶酪／奶條類商品實物圖，作為牛乳條類別代表；非指定品牌。",
       "author": "淘系商品頁",
@@ -6946,10 +6958,10 @@
       "licenseUrl": null,
       "width": 500,
       "height": 500,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-barley-crisp": {
-      "src": "https://down-tw.img.susercontent.com/file/tw-11134201-7rbkc-m7xx3sr2b7ll94",
+      "src": "images/remote/souvenir-barley-crisp.webp",
       "alt": "青稞酥伴手禮實物／實景參考",
       "caption": "雲南青稞酥商品實物圖；非本團指定品牌。",
       "author": "蝦皮商品圖片",
@@ -6958,10 +6970,10 @@
       "licenseUrl": null,
       "width": 800,
       "height": 800,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-sweet-sausage": {
-      "src": "https://img01.yzcdn.cn/upload_files/2025/12/18/FqazihbgzEl5de6EquWAVQyg58ij.jpg%21middle.jpg",
+      "src": "images/remote/souvenir-sweet-sausage.webp",
       "alt": "甜腸伴手禮實物／實景參考",
       "caption": "雲南小甜腸商品實物圖；非本團指定品牌。",
       "author": "德和／有贊商品頁",
@@ -6970,10 +6982,10 @@
       "licenseUrl": null,
       "width": 520,
       "height": 520,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-potato-shreds": {
-      "src": "https://img06.weeecdn.com/description/image/187/177/5413DEE8561C370B.jpeg",
+      "src": "images/remote/souvenir-potato-shreds.webp",
       "alt": "土豆絲伴手禮實物／實景參考",
       "caption": "雲南香辣土豆絲實物圖；非本團指定品牌。",
       "author": "Weee! 商品頁",
@@ -6982,10 +6994,10 @@
       "licenseUrl": null,
       "width": 800,
       "height": 800,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-bean-pod-doll": {
-      "src": "https://www.kunming.cn/news/upload/resources/image/2026/03/09/2061626_2048x2048.jpeg",
+      "src": "images/remote/souvenir-bean-pod-doll.webp",
       "alt": "豆莢娃娃伴手禮實物／實景參考",
       "caption": "雲南豆莢娃娃材料包與成品實物圖。",
       "author": "開屏新聞／昆明信息港（受訪者供圖）",
@@ -6994,10 +7006,11 @@
       "licenseUrl": null,
       "width": 1000,
       "height": 1000,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。",
+      "publicCaption": "豆莢娃娃材料包與成品示意；可看到正反面與 DIY 配件，實際款式依現場為準。"
     },
     "souvenir-tile-cat": {
-      "src": "https://www.kunming.cn/news/upload/resources/image/2026/05/20/2101948.jpg",
+      "src": "images/remote/souvenir-tile-cat.webp",
       "alt": "瓦貓擺件伴手禮實物／實景參考",
       "caption": "昆明販售的瓦貓文創擺件實景。",
       "author": "昆明日報 記者劉凱達",
@@ -7006,10 +7019,10 @@
       "licenseUrl": null,
       "width": 1000,
       "height": 667,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-jiama-craft": {
-      "src": "https://www.kunming.cn/news/upload/resources/image/2026/05/20/2101949.jpg",
+      "src": "images/remote/souvenir-jiama-craft.webp",
       "alt": "甲馬文創伴手禮實物／實景參考",
       "caption": "甲馬雕版拓印實景，作為甲馬文創類別代表圖。",
       "author": "昆明日報 記者劉凱達",
@@ -7018,10 +7031,10 @@
       "licenseUrl": null,
       "width": 1000,
       "height": 667,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-mushroom-dry-goods": {
-      "src": "https://www.91zjdl.com/file/upload/202410/28/175526181.jpg.thumb.jpg",
+      "src": "images/remote/souvenir-mushroom-dry-goods.webp",
       "alt": "菌菇乾貨伴手禮實物／實景參考",
       "caption": "雲南牛肝菌乾片商品圖，作為菌菇乾貨類別代表。",
       "author": "走進大理網商品頁",
@@ -7030,10 +7043,10 @@
       "licenseUrl": null,
       "width": 360,
       "height": 360,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-elephant-pendant": {
-      "src": "https://society.yunnan.cn/pic/003/061/367/00306136744_4ea34f60.jpg",
+      "src": "images/remote/souvenir-elephant-pendant.webp",
       "alt": "小象掛件伴手禮實物／實景參考",
       "caption": "大理巍山布藝動物掛件實景，前景為小象掛件。",
       "author": "雲南網",
@@ -7042,10 +7055,10 @@
       "licenseUrl": null,
       "width": 600,
       "height": 400,
-      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。"
+      "changes": "改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-xiangxun-mushroom-alt": {
-      "src": "https://chuxiong.yunnan.cn/pic/003/079/161/00307916150_039ebf80.jpg",
+      "src": "images/remote/souvenir-xiangxun-mushroom.webp",
       "alt": "香蕈菌另一款來源參考",
       "caption": "楚雄雙柏野生香蕈實景；備用來源記錄。",
       "author": "雲南網楚雄頻道",
@@ -7054,7 +7067,7 @@
       "licenseUrl": null,
       "width": 1000,
       "height": 792,
-      "changes": "改用重新搜尋取得的新公開來源實景圖；不使用 reference screenshot 裁切或生成插畫。"
+      "changes": "改用重新搜尋取得的新公開來源實景圖；不使用 reference screenshot 裁切或生成插畫。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     }
   },
   "culture": [
@@ -7593,5 +7606,5 @@
     ],
     "note": "導航預設使用高德地圖；使用者可在網站切換 Google 地圖，偏好儲存在瀏覽器 localStorage。高德導航改用 Android「支援的網址」可直接關聯的 amap.com：有座標時以目的地名稱 + GCJ-02 座標開啟 /dir，不再把完整郵寄地址當搜尋關鍵字；無座標時才退回城市 + 地點名稱搜尋。"
   },
-  "shoppingSourceNote": "已納入使用者提供的「離開雲南前一定要買的伴手禮」No.1–24 與「問一問」Top 10。截圖中 No.6 與 No.18 顯示同名「香蕈菌」，本版合併為一張卡並保留兩款包裝參考。Top 10 百分比依使用者提供截圖原樣記錄，僅代表該截圖的整理結果。"
+  "shoppingSourceNote": "必買清單綜合「離開雲南前一定要買的伴手禮」No.1–24 與「問一問」Top 10 整理；其中 No.6 與 No.18 同名「香蕈菌」合併為一張卡。推薦百分比僅保留原榜單數值，不代表官方統計。"
 }

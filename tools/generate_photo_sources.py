@@ -55,19 +55,23 @@ def generated_text() -> str:
         if isinstance(photo, dict) and isinstance(photo.get("src"), str)
         and not photo["src"].startswith(("http://", "https://"))
     )
-    remote_records = len(photos) - local_records
+    remote_fallback_records = sum(
+        1 for photo in photos.values()
+        if isinstance(photo, dict) and isinstance(photo.get("remoteSrc"), str)
+        and photo["remoteSrc"].startswith(("http://", "https://"))
+    )
 
     lines = [
         "# 圖片來源與授權",
         "",
         "此檔由 `data/trip-data.json > photos` 自動生成，不可手改。網站顯示用圖片、作者、來源、授權與修改註記均以 photo metadata 為準。",
         "",
-        f"目前共有 **{len(photos)}** 個 photo records、**{len(groups)}** 組來源；其中 **{local_records}** 個 records 使用本地圖片、**{remote_records}** 個保留遠端原圖。",
+        f"目前共有 **{len(photos)}** 個 photo records、**{len(groups)}** 組來源；**{local_records}** 個 records 的 `src` 全部固定為本地路徑，其中 **{remote_fallback_records}** 個另保留 `remoteSrc` 作同一張圖片的網路備援。",
         "",
-        "規則：具名地點／飯店／景點／店家以 `exact` / `verified` 主體圖為原則；交通／未指定單一場地活動可用 `illustrative`、料理可用 `representative`、文化故事可用 `context`，介面必須標示「示意圖」或「背景圖」。`reference_only` 不作 UI 主圖。兩種連網模式都嘗試 photo registry 的同一張正確來源圖；遠端失敗只顯示無圖，絕不拿其他地點補位。手冊截圖以頁碼與裁切註記追溯。",
+        "讀圖契約固定為 `src 本地 WebP → remoteSrc（若有）→ 無此圖`。`LOCALIZE_IMAGES_ANACONDA_SSL_FIX.bat` 只負責把 `remoteSrc` 下載／轉碼到 `src` 指定位置，不會把 metadata 在本地／網路模式之間切換，也不使用其他地點或自製示意圖當備援。具名地點／飯店／景點／店家仍以 `exact` / `verified` 主體圖為原則；交通／未指定單一場地活動可用 `illustrative`、料理可用 `representative`、文化故事可用 `context`，介面必須標示「示意圖」或「背景圖」。`reference_only` 不作 UI 主圖。",
         "",
-        "| Photo IDs | 說明 | 作者／提供者 | 授權 | 原始來源 | 網站圖片 | 修改／使用註記 |",
-        "| --- | --- | --- | --- | --- | --- | --- |",
+        "| Photo IDs | 說明 | 作者／提供者 | 授權 | 原始來源 | 本地 `src` | 網路 `remoteSrc` | 修改／使用註記 |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
 
     for (source, author, license_name, license_url), rows in groups.items():
@@ -75,6 +79,7 @@ def generated_text() -> str:
         first = rows[0][1]
         descriptions: list[str] = []
         site_images: list[str] = []
+        remote_images: list[str] = []
         notes: list[str] = []
         for _, photo in rows:
             description = clean(photo.get("caption") or photo.get("alt"))
@@ -83,6 +88,9 @@ def generated_text() -> str:
             src = clean(photo.get("src"))
             if src != "—" and src not in site_images:
                 site_images.append(src)
+            remote_src = clean(photo.get("remoteSrc"))
+            if remote_src != "—" and remote_src not in remote_images:
+                remote_images.append(remote_src)
             note = clean(photo.get("changes"))
             if note != "—" and note not in notes:
                 notes.append(note)
@@ -95,6 +103,7 @@ def generated_text() -> str:
             license_text = f"[{license_text}]({cell(license_url)})"
         source_text = f"[來源]({cell(source)})" if source != "—" else "—"
         images_text = code_list(site_images)
+        remote_text = "<br>".join(f"[網路圖]({cell(url)})" for url in remote_images) if remote_images else "—"
         note_text = "；".join(notes) if notes else "—"
 
         lines.append(
@@ -105,6 +114,7 @@ def generated_text() -> str:
                 license_text,
                 source_text,
                 images_text,
+                remote_text,
                 cell(note_text),
             ]) + " |"
         )
@@ -139,7 +149,8 @@ def main() -> int:
         print(f"OK {OUTPUT_PATH.relative_to(ROOT)}")
         return 0
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(text, encoding="utf-8", newline="\n")
+    with OUTPUT_PATH.open("w", encoding="utf-8", newline="\n") as fh:
+        fh.write(text)
     print(f"Generated {OUTPUT_PATH.relative_to(ROOT)}")
     return 0
 

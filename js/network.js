@@ -4,8 +4,8 @@
 
   function create({toast}={}){
     const STORAGE_KEY='yunnan-2026-network-profile-v1';
-    const DEFAULT_RESET_KEY='yunnan-2026-network-profile-default-intl-20260910';
-    const DEFAULT_MODE='international';
+    const DEFAULT_RESET_KEY='yunnan-2026-network-profile-default-mainland-20260914';
+    const DEFAULT_MODE='mainland';
     const MODES=new Set(['international','mainland']);
     let mode=DEFAULT_MODE,storageAvailable=true,leafletPromise=null;
     try{

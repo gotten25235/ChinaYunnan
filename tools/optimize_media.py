@@ -79,7 +79,8 @@ def replace_text_paths(replacements: dict[str, str]) -> None:
         for old, new in replacements.items():
             updated = updated.replace(old, new)
         if updated != text:
-            path.write_text(updated, encoding="utf-8", newline="\n")
+            with path.open("w", encoding="utf-8", newline="\n") as fh:
+                fh.write(updated)
 
 
 def main() -> int:

@@ -14,6 +14,7 @@
       'yunnan-2026-network-profile-v1',
       'yunnan-2026-ui-layout-v1',
       'yunnan-2026-network-profile-default-intl-20260910',
+      'yunnan-2026-network-profile-default-mainland-20260914',
       'yunnan-2026-custom-map-v1',
       'yunnan-2026-custom-map-snow-migration-v1'
     ];

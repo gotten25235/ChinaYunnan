@@ -1,35 +1,36 @@
 /*
   雲南慢時光 Service Worker
-  - VERSION 是固定 V1 識別；CACHE_REVISION 負責讓新版 App Shell、圖片與離線狀態建立新快取。
+  - RELEASE_VERSION 是對外軟體版本（驕傲.預設.羞恥）；STORAGE_SCHEMA 維持 v1，避免一般升版清空使用者資料與圖片快取。
   - 核心 App Shell 在 install 預先快取；「離線準備」可選擇是否另外下載旅行照片。
   - 本地與遠端旅行照片統一放進 Image Cache，方便獨立下載／清除；OSM / 高德 tile 不長效快取。
   - 天氣由 weather.js 使用 localStorage 保存最後成功資料；Service Worker 不偽造即時天氣。
   - CHECK_OFFLINE 回傳核心、本地照片、遠端照片的實際缺失清單；未選取照片時不影響完成判定。
 */
-const VERSION = 'v1';
-const CACHE_REVISION = '20260911-umami-item-open-07';
-const APP_CACHE = `yunnan-app-${VERSION}-${CACHE_REVISION}`;
-const IMAGE_CACHE = `yunnan-images-${VERSION}`;
-const OFFLINE_META_CACHE = `yunnan-offline-${VERSION}`;
+const RELEASE_VERSION = '1.1.2';
+const STORAGE_SCHEMA = 'v1';
+const APP_CACHE = `yunnan-app-${RELEASE_VERSION}`;
+const IMAGE_CACHE = `yunnan-images-${STORAGE_SCHEMA}`;
+const OFFLINE_META_CACHE = `yunnan-offline-${STORAGE_SCHEMA}`;
 const PROJECT_CACHE_PREFIX = 'yunnan-';
+const INVALIDATED_IMAGE_ASSETS = ['./images/remote/souvenir-tamarind.webp','./images/remote/souvenir-wild-mushroom-beer.webp'];
 
 const CORE_SHELL = [
   './',
   './index.html',
   './manifest.webmanifest',
   './offline-manifest.json',
-  `./css/style.css?v=${VERSION}`,
-  `./js/network.js?v=${VERSION}`,
-  `./js/core.js?v=${VERSION}`,
-  `./js/analytics.js?v=${VERSION}`,
-  `./js/weather.js?v=${VERSION}`,
-  `./js/offline.js?v=${VERSION}`,
-  `./js/settings.js?v=${VERSION}`,
-  `./js/reader.js?v=${VERSION}`,
-  `./js/journey.js?v=${VERSION}`,
-  `./js/map.js?v=${VERSION}`,
-  `./js/library.js?v=${VERSION}`,
-  `./js/app.js?v=${VERSION}`,
+  `./css/style.css?v=${RELEASE_VERSION}`,
+  `./js/network.js?v=${RELEASE_VERSION}`,
+  `./js/core.js?v=${RELEASE_VERSION}`,
+  `./js/analytics.js?v=${RELEASE_VERSION}`,
+  `./js/weather.js?v=${RELEASE_VERSION}`,
+  `./js/offline.js?v=${RELEASE_VERSION}`,
+  `./js/settings.js?v=${RELEASE_VERSION}`,
+  `./js/reader.js?v=${RELEASE_VERSION}`,
+  `./js/journey.js?v=${RELEASE_VERSION}`,
+  `./js/map.js?v=${RELEASE_VERSION}`,
+  `./js/library.js?v=${RELEASE_VERSION}`,
+  `./js/app.js?v=${RELEASE_VERSION}`,
   './data/trip-data.json',
   './data/social-sources.json',
   './data/source-index.json',
@@ -59,6 +60,8 @@ self.addEventListener('activate', event => {
       if (name.startsWith(PROJECT_CACHE_PREFIX) && !keep.has(name)) return caches.delete(name);
       return Promise.resolve(false);
     }));
+    const imageCache = await caches.open(IMAGE_CACHE);
+    await Promise.all(INVALIDATED_IMAGE_ASSETS.map(asset => imageCache.delete(new URL(asset, self.location.href).href)));
     await self.clients.claim();
   })());
 });

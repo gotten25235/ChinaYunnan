@@ -1,12 +1,29 @@
 #!/usr/bin/env python3
-"""Generate the selective offline-preparation manifest for the static PWA."""
+"""Generate the selective offline-preparation manifest for the static PWA.
+
+Photo rule: prefer a local photo.src when that file exists. If the local file is not
+present yet and photo.remoteSrc exists, prepare the exact remote fallback instead.
+Never require both copies for the same photo record.
+"""
 from __future__ import annotations
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "offline-manifest.json"
-VERSION = "v1"
+CONFIG = ROOT / "tools" / "release.json"
+
+
+def release_version() -> str:
+    config = json.loads(CONFIG.read_text(encoding="utf-8"))
+    version = str(config.get("version") or "") if isinstance(config, dict) else ""
+    if not re.fullmatch(r"\d+\.\d+\.\d+", version):
+        raise SystemExit("tools/release.json version must be N.N.N")
+    return version
+
+
+VERSION = release_version()
 
 
 def core_assets() -> list[str]:
@@ -30,8 +47,12 @@ def core_assets() -> list[str]:
     return list(dict.fromkeys(assets))
 
 
+def is_remote(value: object) -> bool:
+    return isinstance(value, str) and value.startswith(("http://", "https://"))
+
+
 def photo_records() -> tuple[list[str], list[dict]]:
-    """Return local travel-photo assets and unique remote travel-photo records."""
+    """Return one offline-preparation source per photo: local first, exact remote fallback second."""
     trip = json.loads((ROOT / "data" / "trip-data.json").read_text(encoding="utf-8"))
     local: list[str] = []
     by_url: dict[str, dict] = {}
@@ -41,24 +62,41 @@ def photo_records() -> tuple[list[str], list[dict]]:
         src = photo.get("src")
         if not isinstance(src, str) or not src:
             continue
-        if src.startswith(("http://", "https://")):
+
+        # src is a local-first contract. Include it only when the packaged file exists.
+        if not is_remote(src):
+            normalized = "./" + src.lstrip("./")
+            if (ROOT / src).is_file():
+                if normalized not in local:
+                    local.append(normalized)
+                continue
+
+        # If the local file is intentionally not packaged yet, prepare the same-subject remoteSrc.
+        remote = photo.get("remoteSrc")
+        if is_remote(remote):
+            remote = str(remote)
             label = photo.get("alt") or photo.get("caption") or photo_id
-            record = by_url.get(src)
+            record = by_url.get(remote)
             if record is None:
                 record = {
                     "id": photo_id,
                     "ids": [photo_id],
-                    "url": src,
+                    "url": remote,
                     "label": str(label),
                     "source": str(photo.get("source") or ""),
+                    "localSrc": str(src),
                 }
-                by_url[src] = record
+                by_url[remote] = record
             elif photo_id not in record["ids"]:
                 record["ids"].append(photo_id)
             continue
-        normalized = "./" + src.lstrip("./")
-        if normalized not in local:
-            local.append(normalized)
+
+        # Keep an actually-missing local asset visible to the offline checker when no remote fallback exists.
+        if not is_remote(src):
+            normalized = "./" + src.lstrip("./")
+            if normalized not in local:
+                local.append(normalized)
+
     return local, list(by_url.values())
 
 
@@ -83,13 +121,14 @@ def generated_text() -> str:
 
 
 def main() -> int:
-    OUT.write_text(generated_text(), encoding="utf-8", newline="\n")
+    with OUT.open("w", encoding="utf-8", newline="\n") as fh:
+        fh.write(generated_text())
     data = generated()
     print(
         f"Generated {OUT.relative_to(ROOT)}: "
         f"{len(data['coreAssets'])} core assets, "
-        f"{len(data['photoAssets'])} local photos, "
-        f"{len(data['remotePhotos'])} unique remote photos"
+        f"{len(data['photoAssets'])} packaged local photos, "
+        f"{len(data['remotePhotos'])} remote fallbacks used only where local src is absent"
     )
     return 0
 

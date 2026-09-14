@@ -109,7 +109,8 @@ def main() -> int:
             return 1
         print("PASS  source-index.json is generated and current")
         return 0
-    INDEX_PATH.write_text(expected, encoding="utf-8", newline="\n")
+    with INDEX_PATH.open("w", encoding="utf-8", newline="\n") as fh:
+        fh.write(expected)
     print(f"Generated {INDEX_PATH.relative_to(ROOT)}")
     return 0
 

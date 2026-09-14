@@ -5,12 +5,57 @@
   function createPhotoSystem({photos, esc, networkProfile=null}){
     const get=id=>{const base=id&&photos[id]?photos[id]:null;return base||null;};
     const badgeFor=item=>{const match=item?.photoMatch||'';if(match==='representative'||match==='illustrative')return '示意圖';if(match==='context')return '背景圖';return '';};
+    const normalizeMetaMode=mode=>mode==='public'||mode==='audit'?mode:'';
+    const pageMetaMode=()=>{try{return new URLSearchParams(location.search).get('photoMeta')==='audit'?'audit':'public';}catch{return 'public';}};
+    const publicCaption=photo=>String(photo?.publicCaption||photo?.alt||'').trim();
+    const publicAuthor=photo=>{
+      const explicit=String(photo?.publicAuthor||'').trim();if(explicit)return explicit;
+      const raw=String(photo?.author||'').trim();
+      if(!raw)return '';
+      if(/使用者提供|小紅書截圖|私人旅程/.test(raw))return '';
+      const handbook=raw.match(/2026年度海外員工旅遊手冊\s*(p\.?\s*\d+)?/i);
+      if(handbook)return `行程手冊${handbook[1]?` ${handbook[1].replace(/\s+/g,'')}`:''}`;
+      return raw;
+    };
+    const publicLicense=photo=>{
+      const explicit=String(photo?.publicLicense||'').trim();if(explicit)return explicit;
+      let raw=String(photo?.license||'').trim();
+      if(!raw)return '';
+      raw=raw.replace(/／本次私人旅程參考/g,'').replace(/使用者提供截圖\/?/g,'').trim();
+      if(/內部手冊截圖/.test(raw))return '行程手冊';
+      return raw;
+    };
+    const publicSource=photo=>String(photo?.publicSource||photo?.source||'').trim();
+    const publicLicenseUrl=photo=>String(photo?.publicLicenseUrl||photo?.licenseUrl||publicSource(photo)||'').trim();
+    const publicHref=value=>/^https?:\/\//i.test(String(value||'').trim())?String(value).trim():'';
+    const link=(url,label)=>url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`:esc(label);
+    const metadata=(photo,mode='public')=>{
+      const meta=normalizeMetaMode(mode);if(!photo||!meta)return '';
+      if(meta==='audit'){
+        const source=photo.source?link(photo.source,photo.author||'來源'):esc(photo.author||'');
+        const license=photo.licenseUrl?link(photo.licenseUrl,photo.license||'授權'):esc(photo.license||'');
+        return `${esc(photo.caption||photo.alt||'')}${source?` · ${source}`:''}${license?` / ${license}`:''}${photo.changes?` · ${esc(photo.changes)}`:''}`;
+      }
+      const label=publicCaption(photo);
+      const author=publicAuthor(photo);
+      const licenseLabel=publicLicense(photo);
+      const sourceUrl=publicHref(publicSource(photo));
+      const licenseUrl=publicHref(publicLicenseUrl(photo));
+      const source=author?link(sourceUrl,author):'';
+      const license=licenseLabel?link(licenseUrl,licenseLabel):'';
+      const rights=source&&license?`${source} / ${license}`:(source||license);
+      return [label?esc(label):'',rights].filter(Boolean).join(' · ');
+    };
+    const caption=(photo,mode='')=>{const meta=normalizeMetaMode(mode);if(!meta)return '';const text=metadata(photo,meta);return text?`<figcaption>${text}</figcaption>`:'';};
+    const inlineMeta=(photo,mode='',className='photo-credit')=>{const meta=normalizeMetaMode(mode);if(!meta)return '';const text=metadata(photo,meta);return text?`<span class="${esc(className)}">${text}</span>`:'';};
     const img=(photo,{alt=null,loading='lazy',className='',draggable=false}={})=>{
       if(!photo)return '';
       const klass=className?` class="${esc(className)}"`:'';
       const drag=draggable===false?' draggable="false"':'';
       const fetchPriority=loading==='eager'?'high':'low';
-      return `<img data-photo-managed="1" src="${esc(photo.src)}"${klass} alt="${esc(alt===null?photo.alt:alt)}" loading="${esc(loading)}" fetchpriority="${fetchPriority}" decoding="async"${drag} width="${photo.width}" height="${photo.height}">`;
+      const remoteSrc=String(photo.remoteSrc||'').trim();
+      const remote=remoteSrc&&remoteSrc!==String(photo.src||'').trim()?` data-photo-remote="${esc(remoteSrc)}"`:'';
+      return `<img data-photo-managed="1" src="${esc(photo.src)}"${remote}${klass} alt="${esc(alt===null?photo.alt:alt)}" loading="${esc(loading)}" fetchpriority="${fetchPriority}" decoding="async"${drag} width="${photo.width}" height="${photo.height}">`;
     };
     const thumbnail=(place,className='item-thumbnail')=>{
       if(!place)return '';
@@ -19,42 +64,40 @@
       if(!photo)return `<span class="${classes} item-thumbnail-empty" aria-label="無此圖"><span class="photo-missing-label">無此圖</span></span>`;
       return `<span class="${classes}">${img(photo,{alt:''})}${badgeFor(place)?`<span class="photo-type-badge">${esc(badgeFor(place))}</span>`:''}</span>`;
     };
-    const figure=(id,className='card-photo')=>{
+    const figure=(id,className='card-photo',metaMode=pageMetaMode())=>{
       const photo=get(id);
       if(!photo)return `<figure class="${className} photo-missing"><div class="photo-missing-box"><span>無此圖</span></div><figcaption>無此圖</figcaption></figure>`;
-      const source=photo.source?`<a href="${esc(photo.source)}" target="_blank" rel="noopener noreferrer">${esc(photo.author||'來源')}</a>`:esc(photo.author||'');
-      const license=photo.licenseUrl?`<a href="${esc(photo.licenseUrl)}" target="_blank" rel="noopener noreferrer">${esc(photo.license||'授權')}</a>`:esc(photo.license||'');
-      return `<figure class="${className}">${img(photo)}<figcaption>${esc(photo.caption)}${source?` · ${source}`:''}${license?` / ${license}`:''}${photo.changes?` · ${esc(photo.changes)}`:''}</figcaption></figure>`;
+      return `<figure class="${className}">${img(photo)}${caption(photo,metaMode)}</figure>`;
     };
     const cardFigure=(id,className='card-photo',badge='')=>{
       const photo=get(id);
       if(!photo)return `<figure class="${className} card-photo-visual photo-missing"><div class="photo-missing-box"><span>無此圖</span></div></figure>`;
       return `<figure class="${className} card-photo-visual">${img(photo)}${badge?`<span class="photo-type-badge">${esc(badge)}</span>`:''}</figure>`;
     };
-    const readerFigure=(id,className='content-reader-photo',badge='')=>{
+    const readerFigure=(id,className='content-reader-photo',badge='',metaMode=pageMetaMode())=>{
       const photo=get(id);
       if(!photo)return `<figure class="${className} photo-missing"><div class="content-reader-media-frame photo-missing-box"><span>無此圖</span></div><figcaption>無此圖</figcaption></figure>`;
-      const source=photo.source?`<a href="${esc(photo.source)}" target="_blank" rel="noopener noreferrer">${esc(photo.author||'來源')}</a>`:esc(photo.author||'');
-      const license=photo.licenseUrl?`<a href="${esc(photo.licenseUrl)}" target="_blank" rel="noopener noreferrer">${esc(photo.license||'授權')}</a>`:esc(photo.license||'');
-      return `<figure class="${className}"><div class="content-reader-media-frame">${img(photo,{loading:'eager'})}${badge?`<span class="photo-type-badge">${esc(badge)}</span>`:''}</div><figcaption>${esc(photo.caption)}${source?` · ${source}`:''}${license?` / ${license}`:''}${photo.changes?` · ${esc(photo.changes)}`:''}</figcaption></figure>`;
+      return `<figure class="${className}"><div class="content-reader-media-frame">${img(photo,{loading:'eager'})}${badge?`<span class="photo-type-badge">${esc(badge)}</span>`:''}</div>${caption(photo,metaMode)}</figure>`;
     };
-    const mapCard=(id,badge='')=>{const photo=get(id);return photo?`<div class="map-card-photo">${img(photo)}${badge?`<span class="photo-type-badge">${esc(badge)}</span>`:''}<span class="map-card-photo-credit">Photo · ${esc(photo.author)}</span></div>`:`<div class="map-card-photo map-card-photo-empty"><span class="photo-missing-label">無此圖</span></div>`;};
+    const mapCard=(id,badge='',metaMode='')=>{const photo=get(id);return photo?`<div class="map-card-photo">${img(photo)}${badge?`<span class="photo-type-badge">${esc(badge)}</span>`:''}${inlineMeta(photo,metaMode,'map-card-photo-credit')}</div>`:`<div class="map-card-photo map-card-photo-empty"><span class="photo-missing-label">無此圖</span></div>`;};
     const mapStrip=(id,badge='')=>{const photo=get(id);return photo?`<span class="map-strip-photo">${img(photo)}${badge?`<span class="photo-type-badge">${esc(badge)}</span>`:''}</span>`:`<span class="map-strip-photo map-strip-photo-empty"><span class="photo-missing-label">無此圖</span></span>`;};
-    const mapDetail=(id,badge='')=>{const photo=get(id);return photo?`<div class="map-detail-photo">${img(photo,{loading:'eager'})}${badge?`<span class="photo-type-badge">${esc(badge)}</span>`:''}<span class="map-detail-photo-credit">Photo · ${esc(photo.author)}</span></div>`:`<div class="map-detail-photo map-strip-photo-empty"><span class="photo-missing-label">無此圖</span></div>`;};
-    const storyThumb=(id,badge='')=>{const photo=get(id);return photo?`<span class="day-story-photo">${img(photo)}${badge?`<span class="photo-type-badge">${esc(badge)}</span>`:''}<small>Photo · ${esc(photo.author)}</small></span>`:`<span class="day-story-photo day-story-photo-empty"><span class="photo-missing-label">無此圖</span></span>`;};
+    const mapDetail=(id,badge='',metaMode='')=>{const photo=get(id);return photo?`<div class="map-detail-photo">${img(photo,{loading:'eager'})}${badge?`<span class="photo-type-badge">${esc(badge)}</span>`:''}${inlineMeta(photo,metaMode,'map-detail-photo-credit')}</div>`:`<div class="map-detail-photo map-strip-photo-empty"><span class="photo-missing-label">無此圖</span></div>`;};
+    const storyThumb=(id,badge='',metaMode='')=>{const photo=get(id);return photo?`<span class="day-story-photo">${img(photo)}${badge?`<span class="photo-type-badge">${esc(badge)}</span>`:''}${inlineMeta(photo,metaMode,'photo-credit')}</span>`:`<span class="day-story-photo day-story-photo-empty"><span class="photo-missing-label">無此圖</span></span>`;};
     const itineraryVisual=id=>get(id);
     const installErrorHandler=()=>{
       if(document.documentElement.dataset.photoErrorHandlerReady==='1')return;
       document.documentElement.dataset.photoErrorHandlerReady='1';
       document.addEventListener('error', e=>{
         const image=e.target;if(!(image instanceof HTMLImageElement)||!image.dataset.photoManaged)return;
-        const slot=image.parentElement;if(!slot)return;image.remove();slot.querySelectorAll('.map-card-photo-credit,.map-detail-photo-credit,small').forEach(el=>el.remove());
+        const remoteSrc=String(image.dataset.photoRemote||'').trim();
+        if(remoteSrc&&image.dataset.photoRemoteTried!=='1'){image.dataset.photoRemoteTried='1';image.src=remoteSrc;return;}
+        const slot=image.parentElement;if(!slot)return;image.remove();slot.querySelectorAll('.map-card-photo-credit,.map-detail-photo-credit,.photo-credit,small').forEach(el=>el.remove());
         if(slot.classList.contains('content-reader-media-frame')){slot.classList.add('photo-load-error');if(!slot.querySelector('.photo-missing-label'))slot.insertAdjacentHTML('afterbegin','<span class="photo-missing-label">無此圖</span>');const figureEl=slot.closest('figure');if(figureEl){figureEl.classList.add('photo-missing');const cap=figureEl.querySelector('figcaption');if(cap)cap.textContent='無此圖';}}
         else if(slot.tagName==='FIGURE'){slot.classList.add('photo-missing');if(!slot.querySelector('.photo-missing-box'))slot.insertAdjacentHTML('afterbegin','<div class="photo-missing-box"><span>無此圖</span></div>');const cap=slot.querySelector('figcaption');if(cap)cap.textContent='無此圖';}
         else{slot.classList.add('photo-load-error');if(!slot.querySelector('.photo-missing-label'))slot.insertAdjacentHTML('afterbegin','<span class="photo-missing-label">無此圖</span>');}
       },true);
     };
-    return {get,img,badgeFor,thumbnail,figure,cardFigure,readerFigure,mapCard,mapStrip,mapDetail,storyThumb,itineraryVisual,installErrorHandler};
+    return {get,img,badgeFor,metadata,thumbnail,figure,cardFigure,readerFigure,mapCard,mapStrip,mapDetail,storyThumb,itineraryVisual,installErrorHandler};
   }
 
   function createTravelUtils({tripData,items,esc=v=>String(v??'')}){

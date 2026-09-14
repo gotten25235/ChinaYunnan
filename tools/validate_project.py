@@ -242,7 +242,7 @@ def validate_json_and_ids(trip: dict, social: dict) -> dict[str, dict]:
 
 def validate_media(trip: dict) -> None:
     photos = trip.get("photos") if isinstance(trip.get("photos"), dict) else {}
-    local_count = remote_count = 0
+    local_count = remote_fallback_count = pending_local_count = 0
     local_bytes = 0
     for photo_id, photo in photos.items():
         if not isinstance(photo, dict):
@@ -250,24 +250,42 @@ def validate_media(trip: dict) -> None:
             continue
         if "mainlandFallbackPhotoId" in photo:
             error(f"photos.{photo_id}: unrelated Mainland fallback fields are forbidden by strict photo policy")
+        if "fallbackSrc" in photo:
+            error(f"photos.{photo_id}: fallbackSrc is obsolete; use remoteSrc for the same-subject network fallback")
+
         src = photo.get("src")
         if not isinstance(src, str) or not src:
             error(f"photos.{photo_id}.src is missing")
             continue
+        if src.startswith(("http://", "https://")):
+            error(f"photos.{photo_id}.src must be a local WebP path; network images belong in remoteSrc")
+            continue
+
         width, height = photo.get("width"), photo.get("height")
         if not isinstance(width, int) or not isinstance(height, int) or width <= 0 or height <= 0:
             error(f"photos.{photo_id}: width/height must be positive integers")
-        if src.startswith(("http://", "https://")):
-            remote_count += 1
+
+        path = ROOT / src
+        local_count += 1
+        if path.suffix.lower() != ".webp":
+            error(f"photos.{photo_id}: local primary image must be WebP: {src}")
+
+        remote = photo.get("remoteSrc")
+        has_remote = isinstance(remote, str) and remote.startswith(("http://", "https://"))
+        if remote is not None and not has_remote:
+            error(f"photos.{photo_id}.remoteSrc must be an http(s) URL when present")
+        if has_remote:
+            remote_fallback_count += 1
+            if remote == src:
+                error(f"photos.{photo_id}: remoteSrc must not equal local src")
+
+        if path.is_file():
+            local_bytes += path.stat().st_size
+        elif has_remote:
+            pending_local_count += 1
         else:
-            local_count += 1
-            path = ROOT / src
-            if not path.is_file():
-                error(f"photos.{photo_id}: local image missing: {src}")
-            else:
-                local_bytes += path.stat().st_size
-            if path.suffix.lower() != ".webp":
-                error(f"photos.{photo_id}: local primary image must be WebP: {src}")
+            error(f"photos.{photo_id}: local image missing and no remoteSrc fallback exists: {src}")
+
     hero = trip.get("heroImage")
     if isinstance(hero, str) and not hero.startswith(("http://", "https://")):
         path = ROOT / hero
@@ -279,9 +297,9 @@ def validate_media(trip: dict) -> None:
     if non_webp_files:
         error("images/ must not contain JPEG/PNG primary assets: " + ", ".join(non_webp_files[:8]))
     else:
-        passed(f"local image payload is WebP-only ({local_count} photo records, {local_bytes/1024/1024:.2f} MiB unique-record sum)")
-    if remote_count:
-        passed(f"{remote_count} remote exact/verified/context sources remain; both network profiles attempt the same subject image and never substitute another place")
+        passed(f"photo src contract is local WebP-only ({local_count} records, {local_bytes/1024/1024:.2f} MiB packaged)")
+    if remote_fallback_count:
+        passed(f"{remote_fallback_count} photo records declare same-subject remoteSrc fallback; {pending_local_count} currently rely on it until BAT localization")
 
     # Strict semantic matching: exact subjects stay exact; only broad activities/transit may use labeled context/illustration.
     strict_before = len(errors)
@@ -359,22 +377,28 @@ def validate_release_and_views() -> None:
     core = (ROOT / "js" / "core.js").read_text(encoding="utf-8")
     map_js = (ROOT / "js" / "map.js").read_text(encoding="utf-8")
 
-    if config != {"version": "v1"}:
-        error('tools/release.json must contain only {"version": "v1"}')
+    if not isinstance(config, dict) or set(config) != {"version"} or not isinstance(version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", version):
+        error('tools/release.json must contain only {"version": "N.N.N"}')
+
+    html_version = re.search(r'<html\b[^>]*\bdata-app-version="([^"]+)"', html)
+    if not html_version or html_version.group(1) != version:
+        error("index.html data-app-version must equal tools/release.json version")
 
     versions = re.findall(r'(?:css/style\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|app)\.js)\?v=([^"\']+)', html)
-    if len(versions) != 12 or any(v != "v1" for v in versions):
-        error("index.html local CSS/JS identification must be ?v=v1")
+    if len(versions) != 12 or any(v != version for v in versions):
+        error(f"index.html local CSS/JS identification must be ?v={version}")
 
-    sw_version = re.search(r"const VERSION = '([^']+)';", sw)
-    if not sw_version or sw_version.group(1) != "v1":
-        error("sw.js VERSION must equal 'v1'")
-    if "const CACHE_REVISION = '" not in sw or "const APP_CACHE = `yunnan-app-${VERSION}-${CACHE_REVISION}`;" not in sw:
-        error("sw.js APP_CACHE must combine fixed V1 identification with an internal cache revision")
-    if "const IMAGE_CACHE = `yunnan-images-${VERSION}`;" not in sw:
-        error("sw.js IMAGE_CACHE must use fixed V1 identification")
-    if "const OFFLINE_META_CACHE = `yunnan-offline-${VERSION}`;" not in sw:
-        error("sw.js OFFLINE_META_CACHE must use fixed V1 identification")
+    sw_version = re.search(r"const RELEASE_VERSION = '([^']+)';", sw)
+    if not sw_version or sw_version.group(1) != version:
+        error("sw.js RELEASE_VERSION must equal tools/release.json version")
+    if "const STORAGE_SCHEMA = 'v1';" not in sw:
+        error("sw.js STORAGE_SCHEMA must remain v1 until a real storage/schema migration")
+    if "const APP_CACHE = `yunnan-app-${RELEASE_VERSION}`;" not in sw:
+        error("sw.js APP_CACHE must use the public release version")
+    if "const IMAGE_CACHE = `yunnan-images-${STORAGE_SCHEMA}`;" not in sw:
+        error("sw.js IMAGE_CACHE must use the stable storage schema")
+    if "const OFFLINE_META_CACHE = `yunnan-offline-${STORAGE_SCHEMA}`;" not in sw:
+        error("sw.js OFFLINE_META_CACHE must use the stable storage schema")
 
     expected_shell = ["index.html", "manifest.webmanifest", "offline-manifest.json", "css/style.css", "js/network.js", "js/core.js", "js/analytics.js", "js/weather.js", "js/offline.js", "js/settings.js", "js/reader.js", "js/journey.js", "js/map.js", "js/library.js", "js/app.js", "data/trip-data.json", "data/social-sources.json", "data/source-index.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png"]
     for rel in expected_shell:
@@ -423,9 +447,9 @@ def validate_release_and_views() -> None:
     if not nav_contract_errors:
         passed("AMap navigation uses official app deep links with destination payload; Kunming airport hotel is pinned by verified AMap POI ID")
 
-    release_markers = ("tools/release.json", "index.html local CSS/JS", "sw.js VERSION", "sw.js APP_CACHE", "sw.js IMAGE_CACHE", "sw.js OFFLINE_META_CACHE", "APP_SHELL", "storage")
+    release_markers = ("tools/release.json", "index.html data-app-version", "index.html local CSS/JS", "sw.js RELEASE_VERSION", "sw.js APP_CACHE", "sw.js IMAGE_CACHE", "sw.js OFFLINE_META_CACHE", "APP_SHELL", "storage")
     if not any(any(marker in e for marker in release_markers) for e in errors):
-        passed("V1 identification, cache names, asset queries, and browser storage are synchronized")
+        passed("release version, stable schema caches, asset queries, and browser storage are synchronized")
 
     start = app.find("const VIEW_REGISTRY=Object.freeze({")
     end = app.find("  const VIEW_ORDER=Object.freeze(Object.keys(VIEW_REGISTRY));", start)
@@ -462,6 +486,8 @@ def validate_release_and_views() -> None:
 
 
 def validate_offline_pwa(trip: dict) -> None:
+    config = read_json("tools/release.json")
+    version = config.get("version") if isinstance(config, dict) else None
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     sw = (ROOT / "sw.js").read_text(encoding="utf-8")
     offline_js = (ROOT / "js" / "offline.js").read_text(encoding="utf-8") if (ROOT / "js" / "offline.js").exists() else ""
@@ -472,10 +498,10 @@ def validate_offline_pwa(trip: dict) -> None:
     before = len(errors)
     if '<link rel="manifest" href="manifest.webmanifest">' not in html:
         error("index.html must link manifest.webmanifest")
-    if 'js/offline.js?v=v1' not in html:
-        error("index.html must load js/offline.js?v=v1")
-    if 'js/settings.js?v=v1' not in html:
-        error("index.html must load js/settings.js?v=v1")
+    if f'js/offline.js?v={version}' not in html:
+        error(f"index.html must load js/offline.js?v={version}")
+    if f'js/settings.js?v={version}' not in html:
+        error(f"index.html must load js/settings.js?v={version}")
     if 'id="connection-badge"' not in html:
         error("index.html must expose the connectivity badge")
     for key in ("name", "short_name", "start_url", "scope", "display", "icons"):
@@ -511,17 +537,22 @@ def validate_offline_pwa(trip: dict) -> None:
             rel = rel.split("?", 1)[0]
             if not (ROOT / rel).is_file():
                 error(f"offline {group_name} asset missing: {asset}")
-    photo_urls = []
-    local_photo_paths = []
+    expected_local_photo_paths = []
+    expected_remote_urls = []
     for photo in (trip.get("photos") or {}).values():
-        if isinstance(photo, dict):
-            src = photo.get("src")
-            if isinstance(src, str) and src.startswith(("http://", "https://")):
-                photo_urls.append(src)
-            elif isinstance(src, str) and src:
-                local_photo_paths.append("./" + src.lstrip("./"))
-    if set(photo_assets) != set(local_photo_paths):
-        error("offline-manifest photoAssets must cover every local primary photo exactly")
+        if not isinstance(photo, dict):
+            continue
+        src = photo.get("src")
+        remote = photo.get("remoteSrc")
+        if isinstance(src, str) and src and not src.startswith(("http://", "https://")):
+            if (ROOT / src).is_file():
+                expected_local_photo_paths.append("./" + src.lstrip("./"))
+            elif isinstance(remote, str) and remote.startswith(("http://", "https://")):
+                expected_remote_urls.append(remote)
+            else:
+                expected_local_photo_paths.append("./" + src.lstrip("./"))
+    if set(photo_assets) != set(expected_local_photo_paths):
+        error("offline-manifest photoAssets must include exactly the currently packaged local primary photos")
     manifest_urls=[]
     for record in remote_photos:
         if not isinstance(record, dict):
@@ -534,8 +565,8 @@ def validate_offline_pwa(trip: dict) -> None:
             manifest_urls.append(url)
         if not record.get("id") or not record.get("label"):
             error("offline-manifest remote photo record must include id and label")
-    if set(manifest_urls) != set(photo_urls):
-        error("offline-manifest remotePhotos must cover every remote primary photo exactly")
+    if set(manifest_urls) != set(expected_remote_urls):
+        error("offline-manifest remotePhotos must include exactly the remoteSrc fallbacks whose local src is currently absent")
 
     forbidden_remote_tags = re.findall(r'<(?:script|link)\b[^>]+(?:src|href)=["\']https?://', html, re.I)
     if forbidden_remote_tags:
