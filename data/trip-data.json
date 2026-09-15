@@ -906,14 +906,14 @@
     },
     "night-renmin": {
       "id": "night-renmin",
-      "name": "人民路",
+      "name": "人民路・聽歌散步",
       "city": "大理",
       "type": "night",
       "pdfScheduled": false,
-      "description": "人民路適合「邊走邊決定要不要停」。小店、小吃和街頭氣氛都比追一個固定攤位更有意思；它是夜間街區，不是保證天天開滿的制式夜市。",
+      "description": "人民路最適合邊走邊聽。下午起常有賣唱歌手、獨立音樂人與小攤陸續出現；晚上不用追固定店家，遇到喜歡的聲音就停一下。街頭演出不是固定節目，當晚以現場為準。",
       "rating": 5,
       "crowd": 4,
-      "suitable": "小店 / 咖啡 / 拍照",
+      "suitable": "民謠 / 街頭音樂 / 小店 / 散步",
       "time": "19:00–21:30",
       "duration": "45–90 分鐘",
       "address": "雲南省 大理 人民路",
@@ -923,28 +923,31 @@
       "coordinateNote": "WGS84；大理古城人民路參考定位",
       "transport": "人民路位於大理古城夜生活核心；從住宿先進古城再步行串遊。",
       "distanceNote": "住宿附近：位於大理古城內",
-      "marketKind": "古城小吃街／小店",
-      "sourceLabel": "大理旅遊集團 · 大理古城",
-      "source": "https://www.dalitravel.cn/content/read/233.html",
+      "marketKind": "古城街頭音樂／夜間散步",
+      "sourceLabel": "攜程攻略 · 人民路",
+      "source": "https://you.ctrip.com/sight/dalicity1445616/1478241.html",
       "days": [
         2
       ],
       "customResearch": true,
-      "researchCheckedAt": "2026-09-08T14:00:00+08:00",
+      "researchCheckedAt": "2026-09-16T00:50:00+08:00",
       "nightPriority": "high",
       "hotelRef": "hotel-dali",
       "sourceRefs": [
         "web_20260908_0022",
         "web_20260908_0023",
-        "web_20260908_0025"
+        "web_20260908_0025",
+        "web_20260916_0002"
       ],
       "fieldSources": {
         "hotelProximity": [
           "web_20260908_0022"
         ],
         "description": [
-          "web_20260908_0023",
-          "web_20260908_0025"
+          "web_20260916_0002"
+        ],
+        "time": [
+          "web_20260916_0002"
         ]
       },
       "taxiEstimate": "通常 5–15 分鐘內",
@@ -953,7 +956,60 @@
       "hotelDistanceByDay": {
         "2": "約 0.7 km 至古城蒼山門；人民路在古城內，再步行進入"
       },
-      "photoId": "dali-renmin-road-exact-web"
+      "photoId": "dali-renmin-road-exact-web",
+      "xhsQuery": "大理古城 人民路 听歌 民谣 街头音乐"
+    },
+    "night-nanzhao": {
+      "id": "night-nanzhao",
+      "name": "南詔十二時辰",
+      "city": "大理",
+      "type": "night",
+      "pdfScheduled": false,
+      "description": "大理古城復興路上的古風夜遊點，夜間燈籠、街景與表演氣氛比白天更有感。適合當古城散步中的一站，不用為了它單獨拉很長動線；演出與現場活動以當晚為準。",
+      "rating": 4,
+      "crowd": 4,
+      "suitable": "古風夜景 / 歌舞 / 拍照 / 小吃",
+      "time": "夜間較有氣氛；公開景點頁目前標示 09:00–23:00",
+      "duration": "20–45 分鐘",
+      "address": "雲南省大理白族自治州大理市復興路88號 南詔十二時辰",
+      "addressVerified": true,
+      "lat": 25.6928,
+      "lng": 100.1654,
+      "coordinateNote": "公開旅遊資料參考座標；導航時優先以店名／地址再次確認。",
+      "transport": "位於大理古城復興路，可與人民路、洋人街一起步行串遊。",
+      "distanceNote": "大理古城內；從住宿先進古城再步行串遊",
+      "marketKind": "古風夜遊／沉浸式街區",
+      "sourceLabel": "攜程攻略 · 南詔十二時辰",
+      "source": "https://gs.ctrip.com/html5/you/sight/dalicity1445616/150419819.html",
+      "days": [
+        2
+      ],
+      "customResearch": true,
+      "researchCheckedAt": "2026-09-16T00:50:00+08:00",
+      "nightPriority": "high",
+      "hotelRef": "hotel-dali",
+      "taxiEstimate": "通常 5–15 分鐘內；進古城後步行較適合",
+      "taxiEstimateBasis": "位於大理古城復興路，與古城夜遊點同區；非即時路況。",
+      "photoId": "dali-old-town-open",
+      "photoMatch": "context",
+      "sourceRefs": [
+        "web_20260916_0001"
+      ],
+      "fieldSources": {
+        "address": [
+          "web_20260916_0001"
+        ],
+        "description": [
+          "web_20260916_0001"
+        ],
+        "time": [
+          "web_20260916_0001"
+        ],
+        "coordinates": [
+          "web_20260916_0001"
+        ]
+      },
+      "xhsQuery": "大理 南诏十二时辰 夜景 演出 实况"
     },
     "night-foreigner": {
       "id": "night-foreigner",
@@ -1249,15 +1305,15 @@
     },
     "night-moon": {
       "id": "night-moon",
-      "name": "獨克宗四方街・鍋莊舞",
+      "name": "獨克宗・鍋莊打跳",
       "city": "香格里拉",
       "type": "night",
       "pdfScheduled": false,
-      "description": "如果只選一個香格里拉夜間活動，我會先看四方街有沒有鍋莊。近期政務報導提到傍晚常有居民、商戶與遊客一起跳，遇上就是比逛店更有記憶點的夜晚。",
+      "description": "先看獨克宗四方街當晚有沒有大家一起跳鍋莊：官方古城資料指出，每逢傍晚這裡是居民與遊客自發健身娛樂、載歌載舞的重要場地。這種廣場鍋莊不等於「一定有篝火」；若想要篝火打跳，香格里拉另有土司宴／藏家歌舞等付費體驗會安排篝火晚會。先問導遊，避免和 Day 6 藏民家訪內容重複。",
       "rating": 4,
       "crowd": 3,
-      "suitable": "鍋莊舞 / 民俗 / 參與式夜遊",
-      "time": "傍晚起，約 19:00 後較有氣氛",
+      "suitable": "鍋莊 / 打跳 / 民俗 / 參與式夜遊",
+      "time": "傍晚起；四方街活動與篝火場次均以當晚現場／業者為準",
       "duration": "30–60 分鐘",
       "address": "雲南省迪慶藏族自治州香格里拉市 獨克宗古城四方街",
       "addressVerified": false,
@@ -1271,34 +1327,39 @@
         5
       ],
       "customResearch": true,
-      "researchCheckedAt": "2026-09-08T14:00:00+08:00",
+      "researchCheckedAt": "2026-09-16T00:50:00+08:00",
       "nightPriority": "high",
       "hotelRef": "hotel-shangri",
       "sourceRefs": [
         "web_20260908_0027",
-        "web_20260908_0028"
+        "web_20260908_0028",
+        "web_20260916_0005",
+        "web_20260916_0006"
       ],
       "fieldSources": {
         "hotelProximity": [
           "web_20260908_0027"
         ],
         "description": [
-          "web_20260908_0028"
+          "web_20260916_0005",
+          "web_20260916_0006"
         ],
         "time": [
-          "web_20260908_0028"
+          "web_20260916_0005",
+          "web_20260916_0006"
         ]
       },
       "taxiEstimate": "約 5–10 分鐘",
       "taxiEstimateBasis": "酒店頁面：獨克宗古城約5分鐘車程。",
-      "marketKind": "夜間民俗／鍋莊舞",
-      "sourceLabel": "澎湃號政務 · 獨克宗常態鍋莊",
-      "source": "https://www.thepaper.cn/newsDetail_forward_33595329",
+      "marketKind": "夜間民俗／鍋莊打跳",
+      "sourceLabel": "獨克宗古城官方＋攜程康贊土司",
+      "source": "https://dkzgc.cn/",
       "photoMatch": "verified",
       "photoReferenceId": "dukezong-open",
       "hotelDistanceByDay": {
         "5": "約 3.3 km 至獨克宗古城，再步行至四方街"
-      }
+      },
+      "xhsQuery": "香格里拉 独克宗 锅庄 打跳 今晚"
     },
     "night-guishan": {
       "id": "night-guishan",
@@ -1758,6 +1819,53 @@
       "confidence": "medium",
       "photoMatch": "verified",
       "photoId": "xizhou-woxiang-exact-web"
+    },
+    "custom-dali-marshal": {
+      "id": "custom-dali-marshal",
+      "name": "總統兵馬大元帥府（杜文秀帥府）",
+      "city": "大理",
+      "description": "大理古城復興路上的歷史建築，現址與大理市博物館相連。1856 年杜文秀起義軍進入大理後，將原提督府改為元帥府；現場適合補一段古城不只有商店與夜景的歷史脈絡。",
+      "type": "itinerary",
+      "pdfScheduled": false,
+      "lat": 25.689564,
+      "lng": 100.162294,
+      "coordinateNote": "高德地圖「大理古城-總統兵馬大元帥府」座標。",
+      "address": "雲南省大理白族自治州大理市復興路111號 大理古城-總統兵馬大元帥府",
+      "addressVerified": true,
+      "duration": "20–45 分鐘",
+      "rating": 4,
+      "days": [
+        2
+      ],
+      "taxiAnchorId": "dali-old",
+      "taxiEstimate": "古城內步行即可",
+      "straightLineKm": 0.4,
+      "taxiEstimateBasis": "位於大理古城復興路；與古城核心同區，實際以步行為主。",
+      "source": "https://www.amap.com/place/B036800H2Q",
+      "sourceLabel": "高德地圖＋大理旅遊集散中心",
+      "sourceRefs": [
+        "web_20260916_0003",
+        "web_20260916_0004"
+      ],
+      "fieldSources": {
+        "address": [
+          "web_20260916_0003"
+        ],
+        "coordinates": [
+          "web_20260916_0003"
+        ],
+        "description": [
+          "web_20260916_0004"
+        ],
+        "summary": [
+          "web_20260916_0004"
+        ]
+      },
+      "researchCheckedAt": "2026-09-16T00:50:00+08:00",
+      "customResearch": true,
+      "photoMatch": "context",
+      "photoId": "dali-history-reference",
+      "xhsQuery": "大理 总统兵马大元帅府 杜文秀 攻略"
     },
     "custom-dali-art-factory": {
       "id": "custom-dali-art-factory",
@@ -2506,6 +2614,60 @@
         "4": "約 0.28–0.42 km"
       },
       "photoId": "shuhe-tingyin-exact-web"
+    },
+    "custom-dali-north-market": {
+      "id": "custom-dali-north-market",
+      "name": "大理古城・北門菜市場",
+      "city": "大理",
+      "description": "想看大理不是為遊客搭好的那一面，就早一點來北門菜市場。蔬果、鮮花、早餐攤和本地採買混在一起，早市的煙火氣比古城主街直接很多；玉米汁、稀豆粉、破酥粑粑都可以順路找。",
+      "type": "food",
+      "pdfScheduled": false,
+      "lat": 25.697187,
+      "lng": 100.157211,
+      "coordinateSource": "https://www.amap.com/place/B0368007OE",
+      "coordinateNote": "高德地圖「大理古城集貿市場」座標；北門菜市場常以此名稱導航。",
+      "address": "雲南省大理白族自治州大理市平等路5號 大理古城集貿市場",
+      "addressVerified": true,
+      "duration": "45–90 分鐘",
+      "openingHours": "早市約 07:00~11:00 最有感；全天營業狀況以現場為準",
+      "rating": 5,
+      "taste": "早市／市場小吃／鮮花蔬果",
+      "meal": "早餐",
+      "photoId": "dali-north-market-context",
+      "photoMatch": "context",
+      "days": [
+        2
+      ],
+      "taxiAnchorId": "dali-old",
+      "taxiEstimate": "古城內約 5–10 分鐘；步行也可串逛",
+      "straightLineKm": 0.57,
+      "taxiEstimateBasis": "以大理古城參考點與高德市場座標估算直線約 0.57 km；非即時路況。",
+      "source": "https://www.amap.com/place/B0368007OE",
+      "sourceLabel": "高德地圖／公開旅遊攻略",
+      "sourceRefs": [
+        "web_20260916_0007",
+        "web_20260916_0008"
+      ],
+      "fieldSources": {
+        "address": [
+          "web_20260916_0007"
+        ],
+        "coordinates": [
+          "web_20260916_0007"
+        ],
+        "openingHours": [
+          "web_20260916_0008"
+        ],
+        "summary": [
+          "web_20260916_0008"
+        ],
+        "taxiEstimate": [
+          "web_20260916_0007"
+        ]
+      },
+      "researchCheckedAt": "2026-09-16T01:55:00+08:00",
+      "customResearch": true,
+      "confidence": "high"
     }
   },
   "foods": [
@@ -2669,6 +2831,50 @@
         }
       },
       "reviewBasis": "依雲南常見做法、既有來源與公開旅客評價整理；實際味道依店家、季節與製法而異。"
+    },
+    {
+      "id": "dali-corn-juice",
+      "name": "玉米大叔・鮮榨玉米汁",
+      "city": "大理",
+      "taste": "玉米清甜／濃醇",
+      "meal": "早餐／飲品",
+      "description": "北門菜市場的人氣飲品線索。近期公開攻略一致提到現榨玉米汁，原味可選無糖，喝得到明顯玉米香與自然甜味；適合一早逛市場時直接帶一瓶。價格與排隊狀況以現場為準。",
+      "emoji": "🌽",
+      "type": "food",
+      "pdfScheduled": false,
+      "rating": 5,
+      "duration": "購買約 5–15 分鐘；尖峰可能排隊",
+      "address": "雲南省 大理古城 北門菜市場／大理古城集貿市場內 玉米大叔",
+      "addressVerified": false,
+      "lat": 25.697187,
+      "lng": 100.157211,
+      "coordinateSource": "https://www.amap.com/place/B0368007OE",
+      "coordinateNote": "以大理古城集貿市場作定位錨點；攤位位置以當天市場現場為準。",
+      "photoId": "dali-corn-juice",
+      "photoMatch": "illustrative",
+      "priority": "必吃",
+      "sourceRefs": [
+        "web_20260916_0008",
+        "web_20260916_0009",
+        "web_20260916_0010"
+      ],
+      "foodReview": {
+        "verdict": "逛北門菜市場就順手喝",
+        "aroma": "現榨後是直接的熟玉米香，不走香精或奶香路線。",
+        "flavor": "原味無糖仍有玉米本身的自然甜；加糖版更像甜飲。",
+        "texture": "偏濃稠、滑順，喝起來比一般清爽果汁更有飽足感。",
+        "bestWay": "早市時段買無糖版先喝原味；配油條、破酥粑粑或稀豆粉都很順。",
+        "caution": "公開攻略常見價格與排隊資訊會變，攤位也可能因市場狀況調整，現場為準。",
+        "forWhom": "喜歡玉米、熱飲、早餐飲品或不想喝太甜的人。",
+        "scores": {
+          "aroma": 5,
+          "texture": 4,
+          "layers": 3,
+          "local": 5,
+          "rebuy": 5
+        }
+      },
+      "reviewBasis": "依北門菜市場公開旅遊攻略與旅客實況整理；實際甜度、濃度、價格與營業狀況依當天現場為準。"
     },
     {
       "id": "bai",
@@ -5015,7 +5221,8 @@
         "ersi",
         "erkuai",
         "bai",
-        "dali-sour-fish"
+        "dali-sour-fish",
+        "dali-corn-juice"
       ],
       "shopping": [
         "flower",
@@ -5030,6 +5237,8 @@
       ],
       "note": "昆明到大理車程手冊約 4.5 小時，真正好玩的段落從下車才開始。稻田小馬車含電子照片；晚上若還有體力，再挑一小段古城散步。",
       "nearby": [
+        "custom-dali-north-market",
+        "custom-dali-art-factory",
         "night-dali",
         "night-renmin",
         "night-foreigner",
@@ -6783,20 +6992,19 @@
     "souvenir-tamarind": {
       "src": "images/remote/souvenir-tamarind.webp",
       "alt": "酸角（羅望子）果莢實物參考",
-      "caption": "Wikimedia Commons 的 Tamarindus indica（酸角／羅望子）果莢實物照片。",
-      "author": "Valenzuela400 / Wikimedia Commons",
-      "source": "https://commons.wikimedia.org/wiki/File:Tamarindus_indica_18.jpg",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "width": 1280,
-      "height": 775,
-      "changes": "2026-09-15：撤換會阻擋第三方熱連結的惠農網端點，改用 Wikimedia Commons 可公開查核的酸角實物照片；src 仍固定為本地 WebP，remoteSrc 僅作同主體網路備援與 BAT 本地化來源。",
-      "publicCaption": "酸角（羅望子）果莢實物參考",
-      "publicAuthor": "Valenzuela400 / Wikimedia Commons",
-      "publicSource": "https://commons.wikimedia.org/wiki/File:Tamarindus_indica_18.jpg",
-      "publicLicense": "CC BY-SA 4.0",
-      "publicLicenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "remoteSrc": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Tamarindus_indica_18.jpg/1280px-Tamarindus_indica_18.jpg"
+      "caption": "小紅書伴手禮榜單 No.7「酸角」商品實拍裁切。",
+      "author": "使用者提供的小紅書榜單截圖",
+      "source": "docs/sources/reference/souvenir-xhs-01.jpg",
+      "license": "使用者提供來源截圖／私人旅程參考",
+      "licenseUrl": "",
+      "width": 165,
+      "height": 225,
+      "changes": "由專案既有 reference 截圖裁切指定商品，轉為本地 WebP；不再依賴第三方遠端圖片。",
+      "publicCaption": "小紅書伴手禮榜單 No.7「酸角」商品實拍裁切。",
+      "publicAuthor": "使用者提供的小紅書榜單截圖",
+      "publicSource": "docs/sources/reference/souvenir-xhs-01.jpg",
+      "publicLicense": "私人旅程參考",
+      "publicLicenseUrl": ""
     },
     "souvenir-fruit-wine": {
       "src": "images/remote/souvenir-fruit-wine.webp",
@@ -6933,20 +7141,19 @@
     "souvenir-wild-mushroom-beer": {
       "src": "images/remote/souvenir-wild-mushroom-beer.webp",
       "alt": "雲南見手青菌子精釀啤酒實物參考",
-      "caption": "FoodTalks 報導中的雲南見手青菌子精釀啤酒實物照片。",
-      "author": "FoodTalks 圖片",
-      "source": "https://www.foodtalks.cn/en/news/58650",
-      "license": "來源頁面照片；未標示可重用授權／本次私人旅程參考",
-      "licenseUrl": "https://www.foodtalks.cn/en/news/58650",
-      "width": 512,
-      "height": 512,
-      "changes": "2026-09-15：撤換會阻擋第三方熱連結的惠農網端點，改用 FoodTalks 報導中的雲南見手青菌子精釀啤酒實物照片；src 仍固定為本地 WebP，remoteSrc 僅作同商品網路備援與 BAT 本地化來源。",
-      "publicCaption": "雲南見手青菌子精釀啤酒實物參考",
-      "publicAuthor": "FoodTalks 圖片",
-      "publicSource": "https://www.foodtalks.cn/en/news/58650",
-      "publicLicense": "來源頁面照片；未標示可重用授權",
-      "publicLicenseUrl": "https://www.foodtalks.cn/en/news/58650",
-      "remoteSrc": "https://static.foodtalks.cn/image/post/12c10dfb268cfa8af9fb818c1382037d.jpg"
+      "caption": "小紅書伴手禮榜單 No.20「野生菌精釀啤酒」商品實拍裁切。",
+      "author": "使用者提供的小紅書榜單截圖",
+      "source": "docs/sources/reference/souvenir-xhs-02.jpg",
+      "license": "使用者提供來源截圖／私人旅程參考",
+      "licenseUrl": "",
+      "width": 175,
+      "height": 245,
+      "changes": "由專案既有 reference 截圖裁切指定商品，轉為本地 WebP；不再依賴第三方遠端圖片。",
+      "publicCaption": "小紅書伴手禮榜單 No.20「野生菌精釀啤酒」商品實拍裁切。",
+      "publicAuthor": "使用者提供的小紅書榜單截圖",
+      "publicSource": "docs/sources/reference/souvenir-xhs-02.jpg",
+      "publicLicense": "私人旅程參考",
+      "publicLicenseUrl": ""
     },
     "souvenir-milk-strip": {
       "src": "images/remote/souvenir-milk-strip.webp",
@@ -7068,6 +7275,30 @@
       "width": 1000,
       "height": 792,
       "changes": "改用重新搜尋取得的新公開來源實景圖；不使用 reference screenshot 裁切或生成插畫。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
+    },
+    "dali-north-market-context": {
+      "src": "images/remote/dali-city-reference.webp",
+      "alt": "大理古城市井情境參考；非北門菜市場指定攤位實拍",
+      "caption": "大理古城市井情境參考；北門菜市場卡片暫無可穩定本地化的指定攤位照片。",
+      "author": "chensiyuan",
+      "source": "https://commons.wikimedia.org/wiki/File:1_dali_old_town_yunnan_2012.jpg",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "width": 960,
+      "height": 640,
+      "changes": "沿用大理古城公開授權實景作市井情境參考；不宣稱為北門菜市場或玉米大叔指定攤位照片。"
+    },
+    "dali-corn-juice": {
+      "src": "images/remote/dali-corn-juice.webp",
+      "alt": "鮮榨玉米汁示意圖",
+      "caption": "鮮榨玉米汁示意圖；作為玉米大叔飲品內容參考。",
+      "author": "web image result",
+      "source": "https://www.bing.com/images/search?q=%E9%B2%9C%E6%A6%A8%E7%8E%89%E7%B1%B3%E6%B1%81",
+      "license": "Unknown",
+      "licenseUrl": "",
+      "width": 512,
+      "height": 512,
+      "changes": "以公開網頁圖片作飲品示意，已本地化為 WebP 供離線與節省流量使用。"
     }
   },
   "culture": [
@@ -7400,10 +7631,10 @@
       "priority": "必拍",
       "poseTips": [
         {
-          "title": "謝之遙・靠牆不看鏡頭",
-          "pose": "身體離牆一個手掌、肩膀放鬆，手插口袋或垂放，眼睛看巷子深處。",
-          "camera": "攝影者退到巷道另一側，用牆面當引導線。",
-          "lens": "1× / 2×",
+          "title": "古院門口・靠牆留白",
+          "pose": "人站門牆一側，身體微側，不必正對鏡頭；讓老木門、石牆和花草保留大面積。",
+          "camera": "攝影者退到巷道安全側，用 1× 把門牆與環境一起收進畫面。",
+          "lens": "1×",
           "platform": "抖音",
           "url": "https://www.douyin.com/shipin/7328558222930102282",
           "sourceImage": "https://ak-d.tripcdn.com/images/1mi5r12000gej5c15BC75.jpg?proc=source%2Ftrip",
@@ -7413,22 +7644,6 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "鳳陽邑有風小院木門前的旅客人像實拍",
-          "sourceCaptured": "2026-09-15"
-        },
-        {
-          "title": "小院門口・側站留招牌",
-          "pose": "站在院門一側，不擋「有風小院」招牌；身體微側、肩膀放鬆，視線可看鏡頭或看巷子。",
-          "camera": "攝影者退到石板路另一端，用 1× 保留完整木門、石牆與招牌；不要貼太近拍成大頭。",
-          "lens": "1×",
-          "platform": "抖音",
-          "url": "https://www.douyin.com/shipin/7328558222930102282",
-          "sourceImage": "https://ak-d.tripcdn.com/images/1mi3312000gej5c0z348B_Q90.jpg?proc=source%2Ftrip",
-          "sourcePlatform": "Trip.com",
-          "sourceTitle": "Dali Fengyangyi｜Filming location of “Meet Yourself”",
-          "sourceUrl": "https://sg.trip.com/moments/detail/dali-city-1445616-125800550/",
-          "sourceAuthor": "TranquilSeascape",
-          "sourceDate": "2024-10-31",
-          "sourceAlt": "鳳陽邑有風小院木門前旅客側站並保留有風小院招牌的實拍",
           "sourceCaptured": "2026-09-15"
         }
       ],
@@ -7471,12 +7686,12 @@
       "priority": "必拍",
       "poseTips": [
         {
-          "title": "田埂回頭・走動抓拍",
-          "pose": "沿田埂慢走，身體背對鏡頭約 45°，走兩三步再回頭；手可以放身後或輕提帽沿。",
-          "camera": "攝影者不要追著跑，固定機位連拍，讓蒼山與田野留大面積。",
+          "title": "芒草田・撐傘站姿",
+          "pose": "人站在芒草旁，傘稍微往肩後放，身體側一點；人物不要塞滿畫面。",
+          "camera": "攝影者略低角度，讓芒草進前景，背景留天空與遠山。",
           "lens": "1× / 2×",
-          "platform": "抖音",
-          "url": "https://www.douyin.com/shipin/7639204382550296586",
+          "platform": "攜程攻略",
+          "url": "https://you.ctrip.com/travels/2124466/4035789.html",
           "sourceImage": "https://dimg04.c-ctrip.com/images/0103t1200091z661h47E7_W_640_0_Q90.jpg?proc=autoorient",
           "sourcePlatform": "攜程攻略",
           "sourceTitle": "大理喜洲稻田黃了，旅拍正當時（內附精美圖片）",
@@ -7484,15 +7699,15 @@
           "sourceAuthor": "大理無違旅行",
           "sourceDate": "2021-10-10",
           "sourceAlt": "喜洲稻田人物張開手臂的旅拍實拍",
-          "sourceCaptured": "2026-09-15"
+          "sourceCaptured": "2026-09-16"
         },
         {
-          "title": "轉角樓・人離建築遠一點",
-          "pose": "人站道路安全側，不貼著牆；側身看樓或自然走過，讓整棟轉角被看見。",
-          "camera": "攝影者退到斜對角，手機保持垂直，避免建築歪斜。",
-          "lens": "1×",
-          "platform": "小紅書線索／二次索引",
-          "url": "https://post.smzdm.com/p/a5r7n283/",
+          "title": "芒草近景・側身抬手",
+          "pose": "側身站在芒草旁，一手自然抬到肩頸附近，視線看側邊，不用直盯鏡頭。",
+          "camera": "2× 取半身或七分身，保留芒草與藍天，背景不要太雜。",
+          "lens": "2×",
+          "platform": "攜程攻略",
+          "url": "https://you.ctrip.com/travels/2124466/4035789.html",
           "sourceImage": "https://dimg04.c-ctrip.com/images/0101a1200091z651t07D0_W_640_0_Q90.jpg?proc=autoorient",
           "sourcePlatform": "攜程攻略",
           "sourceTitle": "大理喜洲稻田黃了，旅拍正當時（內附精美圖片）",
@@ -7500,15 +7715,15 @@
           "sourceAuthor": "大理無違旅行",
           "sourceDate": "2021-10-10",
           "sourceAlt": "喜洲稻田人物側身撫過稻草的旅拍實拍",
-          "sourceCaptured": "2026-09-15"
+          "sourceCaptured": "2026-09-16"
         },
         {
-          "title": "有風大樹・謝之遙感",
-          "pose": "站著看遠方或坐著休息，不看鏡頭；人物只佔畫面小部分。",
-          "camera": "把樹冠和田野都留下，人放下方 1/3。",
-          "lens": "1×",
-          "platform": "小紅書線索／二次索引",
-          "url": "https://post.smzdm.com/p/a5r7n283/",
+          "title": "稻田俯身・低角度抓拍",
+          "pose": "在田邊安全位置微微俯身或整理稻穗，視線看向鏡頭或側邊，動作不要太用力。",
+          "camera": "攝影者壓低一點，讓稻穗在前景形成層次，人物放畫面一側。",
+          "lens": "1× / 2×",
+          "platform": "攜程攻略",
+          "url": "https://you.ctrip.com/travels/2124466/4035789.html",
           "sourceImage": "https://dimg04.c-ctrip.com/images/0106r1200091z670wD375_W_640_0_Q90.jpg?proc=autoorient",
           "sourcePlatform": "攜程攻略",
           "sourceTitle": "大理喜洲稻田黃了，旅拍正當時（內附精美圖片）",
@@ -7516,7 +7731,7 @@
           "sourceAuthor": "大理無違旅行",
           "sourceDate": "2021-10-10",
           "sourceAlt": "喜洲稻田人物撐傘全身旅拍實拍",
-          "sourceCaptured": "2026-09-15"
+          "sourceCaptured": "2026-09-16"
         }
       ],
       "sourceRefs": [
@@ -7561,9 +7776,9 @@
       "priority": "必拍",
       "poseTips": [
         {
-          "title": "古戲台・人在街上走",
-          "pose": "不要正面站中間比 YA；從四方街側邊慢走，眼睛看戲台或店家。",
-          "camera": "從興教寺一側或廣場邊緣拍，戲台完整入鏡。",
+          "title": "古戲台街景・人在畫面一側",
+          "pose": "人物沿寺登街自然走，停在畫面側邊即可，不要把古戲台或街屋完全擋住。",
+          "camera": "手機保持垂直，利用街道延伸線帶向古戲台。",
           "lens": "1× / 2×",
           "platform": "抖音",
           "url": "https://jingxuan.douyin.com/m/video/7628619417974292443",
@@ -7574,22 +7789,6 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "沙溪古戲台前穿粉色長裙旅客實拍",
-          "sourceCaptured": "2026-09-15"
-        },
-        {
-          "title": "寺登街・謝之遙式自然站",
-          "pose": "手插口袋、肩膀放鬆、微側身，視線看街尾；也可停在門廊旁但不要堵門。",
-          "camera": "利用屋簷與石板路做框景與引導線。",
-          "lens": "2×",
-          "platform": "抖音",
-          "url": "https://jingxuan.douyin.com/m/video/7611469203669403497",
-          "sourceImage": "https://dimg04.c-ctrip.com/images/0105e1200015vvg12BC2E_W_640_0_Q90.jpg?proc=autoorient",
-          "sourcePlatform": "攜程攻略",
-          "sourceTitle": "沙溪古鎮的慢時光",
-          "sourceUrl": "https://gs.ctrip.com/html5/you/travels/2215/3954104.html",
-          "sourceAuthor": "",
-          "sourceDate": "",
-          "sourceAlt": "沙溪寺登街古建築旁旅客休息實拍",
           "sourceCaptured": "2026-09-15"
         }
       ],
@@ -7636,12 +7835,12 @@
       "priority": "必拍",
       "poseTips": [
         {
-          "title": "河岸背影・人小橋大",
-          "pose": "站在河岸安全公共位置，背對鏡頭看玉津橋；人物不用大，讓石橋、河面與遠山一起出現。",
-          "camera": "攝影者退後或略低機位，把人放左／右下三分之一，橋拱完整保留。",
+          "title": "玉津橋全景・人小橋大",
+          "pose": "人物放在橋頭或河岸邊緣，比例小一點，讓石橋與倒影成為主角。",
+          "camera": "攝影者在河岸安全位置稍退後，低一點拍出完整橋拱與水面。",
           "lens": "1× / 2×",
           "platform": "抖音",
-          "url": "https://jingxuan.douyin.com/m/video/7611469203669403497",
+          "url": "https://jingxuan.douyin.com/m/video/7628619417974292443",
           "sourceImage": "https://ak-d.tripcdn.com/images/1mi04224x9443yq4g4D5D_Q90.jpg?proc=source%2Ftrip",
           "sourcePlatform": "Trip.com",
           "sourceTitle": "Shaxi’s Ancient Stone Bridge “Yujin Bridge”",
@@ -7649,22 +7848,6 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "玉津橋河岸背影人物與完整石橋實拍",
-          "sourceCaptured": "2026-09-15"
-        },
-        {
-          "title": "樹下坐看玉津橋",
-          "pose": "找橋旁公共休息位置坐下或靠樹停留，側背鏡頭看橋；不要坐上橋欄。",
-          "camera": "利用樹幹做前景框景，讓玉津橋落在另一側。",
-          "lens": "1×",
-          "platform": "抖音",
-          "url": "https://jingxuan.douyin.com/m/video/7628619417974292443",
-          "sourceImage": "https://d37rmf1ynyg9aw.cloudfront.net/fit-in/1280x1280/data/v4/resources/images/bb108ce4-3910-4279-bf98-766ccf2ea5eb.jpg",
-          "sourcePlatform": "SmartGuide",
-          "sourceTitle": "Self-guided tour of Shaxi｜Yujin Bridge",
-          "sourceUrl": "https://www.smart-guide.org/destinations/en/shaxi/?place=Yujin+Bridge&tour=The+best+of+Shaxi+Old+Town",
-          "sourceAuthor": "",
-          "sourceDate": "",
-          "sourceAlt": "玉津橋旁大樹下坐著看橋的旅客實拍",
           "sourceCaptured": "2026-09-15"
         }
       ],
@@ -7709,12 +7892,12 @@
       "priority": "必拍",
       "poseTips": [
         {
-          "title": "欄杆側身・看雪山",
-          "pose": "身體側 45°，一手自然扶欄或放口袋，不要兩手緊抓；眼睛看雪山／湖面。",
-          "camera": "人物放側邊，讓藍色水面成前景、雪山留上方。",
-          "lens": "1×",
+          "title": "雪山與湖面・人物靠側邊",
+          "pose": "人物站畫面一側看向湖面或雪山，避免把水色與山體遮住。",
+          "camera": "橫幅優先，1× 留大景；人太小時再切 2×。",
+          "lens": "1× / 2×",
           "platform": "抖音",
-          "url": "https://jingxuan.douyin.com/m/video/7598474662066748793",
+          "url": "https://www.douyin.com/video/7637315779297398035",
           "sourceImage": "https://ak-d.tripcdn.com/images/1mi6n224x90hj2m6jB20A.jpg?proc=source%2Ftrip",
           "sourcePlatform": "Trip.com",
           "sourceTitle": "Blue Moon Valley｜旅客拍照參考",
@@ -7722,22 +7905,6 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "藍月谷木欄杆旁側身人物與雪山湖水實拍",
-          "sourceCaptured": "2026-09-15"
-        },
-        {
-          "title": "走棧道・回頭一秒",
-          "pose": "沿開放棧道走，攝影者先站定；走過鏡頭後再回頭，連拍。",
-          "camera": "稍微降曝光保住白雲與雪峰；不要跨欄杆。",
-          "lens": "1× / 2×",
-          "platform": "抖音",
-          "url": "https://www.douyin.com/video/7637315779297398035",
-          "sourceImage": "https://ak-d.tripcdn.com/images/1mi4m12000sov6xo8C929_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-          "sourcePlatform": "Trip.com",
-          "sourceTitle": "Jade Dragon Snow Mountain｜Lijiang 5A Scenic Area",
-          "sourceUrl": "https://www.trip.com/moments/detail/yulong-1446279-146366039/",
-          "sourceAuthor": "",
-          "sourceDate": "",
-          "sourceAlt": "藍月谷湖邊白衣旅客扶帽人像實拍",
           "sourceCaptured": "2026-09-15"
         }
       ],
@@ -7781,12 +7948,12 @@
       "photoMatch": "verified",
       "poseTips": [
         {
-          "title": "水巷慢走",
-          "pose": "沿水巷自然走，偶爾回頭；手拿飲料或小包比刻意擺手更自然。",
-          "camera": "直幅，利用水巷當引導線，等人群出現空隙再按快門。",
+          "title": "四方街・廣場邊緣抓拍",
+          "pose": "人物站廣場邊緣或屋簷側，不必站正中央；自然走動或看向古城街景。",
+          "camera": "攝影者退到廣場外圈，用石板路和屋簷把視線帶向人物。",
           "lens": "1× / 2×",
-          "platform": "大眾點評",
-          "url": "https://www.dianping.com/shop/21925329/photos",
+          "platform": "公開來源",
+          "url": "https://commons.wikimedia.org/wiki/File:%E4%B8%BD%E6%B1%9F%E5%9B%9B%E6%96%B9%E8%A1%97.JPG",
           "sourceImage": "https://dimg04.c-ctrip.com/images/0104n1200086t0l1z1554_W_640_0_Q90.jpg?proc=autoorient",
           "sourcePlatform": "攜程攻略",
           "sourceTitle": "麗江，任時光蹉跎，發呆的美好歸宿",
@@ -7794,15 +7961,15 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "麗江古城巷道手拿相機回頭的旅客實拍",
-          "sourceCaptured": "2026-09-15"
+          "sourceCaptured": "2026-09-16"
         },
         {
-          "title": "屋簷下靠邊站",
-          "pose": "人靠街側而不是門正中，肩膀放鬆，視線看側邊店家。",
-          "camera": "2× 壓縮屋瓦層次；注意不要進私人空間。",
-          "lens": "2×",
-          "platform": "大眾點評",
-          "url": "https://www.dianping.com/shop/21925329/photos",
+          "title": "屋瓦層次・人物放角落",
+          "pose": "找能看到大片屋瓦的公開位置，人物放在畫面角落或下方，讓古城屋頂成為主角。",
+          "camera": "用 1× 拍大景；人物若太小再切 2×，但不要裁掉屋瓦層次。",
+          "lens": "1× / 2×",
+          "platform": "公開來源",
+          "url": "https://commons.wikimedia.org/wiki/File:Lijiang_Yunnan_Old-town-01.jpg",
           "sourceImage": "https://ak-d.tripcdn.com/images/1mi3a224x98k04lak79F0.jpg?proc=source%2Ftrip",
           "sourcePlatform": "Trip.com",
           "sourceTitle": "Stroll through the ancient city of Lijiang",
@@ -7810,7 +7977,7 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "麗江古城水巷旁紅衣人物實拍",
-          "sourceCaptured": "2026-09-15"
+          "sourceCaptured": "2026-09-16"
         }
       ],
       "sourceRefs": [
@@ -7850,9 +8017,9 @@
       "photoMatch": "verified",
       "poseTips": [
         {
-          "title": "階梯走動・不看鏡頭",
-          "pose": "沿階梯慢走，手自然垂放；走到轉折處再回頭一次。",
-          "camera": "攝影者站低一階，讓階梯線條往人物延伸。",
+          "title": "白色建築・人小景大",
+          "pose": "人物站在白色階梯或欄杆旁，身體微側，讓藍白建築和洱海框景完整保留。",
+          "camera": "以建築幾何線條當構圖主體，人物放在下方或側邊三分之一。",
           "lens": "1×",
           "platform": "抖音",
           "url": "https://www.douyin.com/shipin/7333880045604636724",
@@ -7863,22 +8030,6 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "理想邦白色建築階梯上的背影旅客實拍",
-          "sourceCaptured": "2026-09-15"
-        },
-        {
-          "title": "階梯停步・側身抬頭",
-          "pose": "走到階梯轉折處停一下，身體側 45°、一手自然垂放，視線往上或看側邊，不必看鏡頭。",
-          "camera": "攝影者站低一至兩階，用階梯與白牆做引導線；人物放畫面下方偏側。",
-          "lens": "1× / 2×",
-          "platform": "抖音",
-          "url": "https://www.douyin.com/shipin/7333880045604636724",
-          "sourceImage": "https://ak-d.tripcdn.com/images/1mi2d12000fj6x3045A74_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-          "sourcePlatform": "Trip.com",
-          "sourceTitle": "大理理想邦攻略。",
-          "sourceUrl": "https://tw.trip.com/moments/detail/dali-1445616-124428550/",
-          "sourceAuthor": "AvaKensington12",
-          "sourceDate": "2024-09-13",
-          "sourceAlt": "理想邦白色階梯上旅客側身停步抬頭的實拍",
           "sourceCaptured": "2026-09-15"
         }
       ],
@@ -7920,9 +8071,9 @@
       "photoMatch": "verified",
       "poseTips": [
         {
-          "title": "草甸側身看山",
-          "pose": "人站開放步道／草甸邊，身體側 45°、下巴微抬，看雪山不看鏡頭。",
-          "camera": "攝影者拉遠，人物只佔 1/5～1/4，保留完整雪峰與草甸。",
+          "title": "草甸大景・人物放下方",
+          "pose": "人物站草甸邊緣看向雪山，不用看鏡頭，比例小一點更有電影感。",
+          "camera": "橫幅保留草甸、杉林和雪山三層；人放下方三分之一。",
           "lens": "1× / 2×",
           "platform": "抖音",
           "url": "https://www.douyin.com/video/7564445014941240635",
@@ -7933,22 +8084,6 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "雲杉坪木欄旁人物與雪山背景實拍",
-          "sourceCaptured": "2026-09-15"
-        },
-        {
-          "title": "杉林慢走・電影感",
-          "pose": "沿棧道慢走、手插口袋或自然擺臂；不要停下來硬擺。",
-          "camera": "用高杉做垂直框景，曝光以人物臉部不過暗為準。",
-          "lens": "2×",
-          "platform": "抖音",
-          "url": "https://www.douyin.com/video/7564445014941240635",
-          "sourceImage": "https://dimg04.c-ctrip.com/images/0104l120008p30q9r5A8E_W_640_0_Q90.jpg?proc=autoorient",
-          "sourcePlatform": "攜程攻略",
-          "sourceTitle": "在玉龍雪山腳下過幾天悠哉慢生活",
-          "sourceUrl": "https://you.ctrip.com/travels/lijiang32/4013144.html",
-          "sourceAuthor": "",
-          "sourceDate": "",
-          "sourceAlt": "雲杉坪草甸人物轉身動態旅拍實拍",
           "sourceCaptured": "2026-09-15"
         }
       ],
@@ -7993,8 +8128,8 @@
       "poseTips": [
         {
           "title": "地標石＋雪山大景",
-          "pose": "靠近「甘海子 3100」地標石但不要遮住字，身體側一點，視線看山或鏡頭。",
-          "camera": "保持地標石、人物與雪山三層關係，人物不要放太大。",
+          "pose": "人物靠地標石側邊站，不要正中擋字；側身看山或自然走過。",
+          "camera": "稍退後把地標石、草地與雪山一起收進畫面。",
           "lens": "1×",
           "platform": "抖音",
           "url": "https://jingxuan.douyin.com/m/video/7598474662066748793",
@@ -8005,22 +8140,6 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "甘海子3100石碑旁旅客與雪山實拍",
-          "sourceCaptured": "2026-09-15"
-        },
-        {
-          "title": "木欄旁側身・微微前傾",
-          "pose": "站在木欄旁，手臂輕靠或身體微微前傾，腳留在地面；不要爬上欄杆。",
-          "camera": "攝影者退開用 1× 或 2×，把人物、木欄與遠山做出前中後景層次。",
-          "lens": "1× / 2×",
-          "platform": "抖音",
-          "url": "https://www.douyin.com/video/7637315779297398035",
-          "sourceImage": "https://img.pconline.com.cn/images/upload/upc/tx/photoblog/1505/31/c8/7734711_1433053476920.jpg",
-          "sourcePlatform": "太平洋電腦網攝影部落",
-          "sourceTitle": "玉龍雪山甘海子寫真第一輯",
-          "sourceUrl": "https://dp.pconline.com.cn/dphoto/list_3528114.html",
-          "sourceAuthor": "麗江聆聽視覺攝影機構",
-          "sourceDate": "2013",
-          "sourceAlt": "麗江甘海子木欄旁人物側身前傾的旅拍實拍",
           "sourceCaptured": "2026-09-15"
         }
       ],
@@ -8065,10 +8184,10 @@
       "photoMatch": "verified",
       "poseTips": [
         {
-          "title": "扶欄側身・看峽谷",
-          "pose": "站在安全欄杆內側，一手輕扶、身體側 45°，眼睛看江面。",
-          "camera": "0.5× 或 1× 收進兩側峭壁；人不要佔畫面太大。",
-          "lens": "0.5× / 1×",
+          "title": "峽谷大景・人物放角落",
+          "pose": "人物靠安全護欄或觀景區邊緣站，面向峽谷，比例小一點。",
+          "camera": "以峽谷 V 字和江流做主構圖，人物只作尺度參考。",
+          "lens": "1× / 2×",
           "platform": "抖音",
           "url": "https://www.douyin.com/video/7490488001194233107",
           "sourceImage": "https://images.squarespace-cdn.com/content/v1/62f1cb15a2cb083186ccd6d1/47e67160-5ca7-46ce-90a7-fddb48409770/9B1B2342-540D-4652-B4D1-FC569811EEF7-2209-000000DAB2284851.jpg?format=1500w",
@@ -8078,22 +8197,6 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "虎跳峽安全觀景處人物與峽谷大景實拍",
-          "sourceCaptured": "2026-09-15"
-        },
-        {
-          "title": "觀景台側站・留出峽谷",
-          "pose": "站在安全欄杆內側，人物靠畫面左或右側；手自然放下或輕扶欄杆，把峽谷留給背景。",
-          "camera": "攝影者在同一觀景平台稍退後，用廣角把人物、欄杆、峭壁與金沙江一起收進去。",
-          "lens": "0.5× / 1×",
-          "platform": "抖音",
-          "url": "https://www.douyin.com/video/7490488001194233107",
-          "sourceImage": "https://m.yunnan.cn/pic/003/076/127/00307612755_39679444.jpg",
-          "sourcePlatform": "雲南網・麗江發布",
-          "sourceTitle": "雲南麗江虎跳峽景區「重裝升級」引客來",
-          "sourceUrl": "https://m.yunnan.cn/system/2025/12/25/033800061.shtml",
-          "sourceAuthor": "記者 吳星",
-          "sourceDate": "2025-12-25",
-          "sourceAlt": "虎跳峽安全觀景台遊客與峽谷同框的實拍",
           "sourceCaptured": "2026-09-15"
         }
       ],
@@ -8134,9 +8237,9 @@
       "photoMatch": "verified",
       "poseTips": [
         {
-          "title": "轉經筒前・側身留金頂",
-          "pose": "站在開放區域的轉經筒旁或外部平台，身體側身，把寺院金頂留在後方。",
-          "camera": "1× 收環境、2× 壓縮層次；寺殿內若有禁拍標示就不要拍。",
+          "title": "寺院全景・人物放底部",
+          "pose": "人物站在安全公開區域，比例小一點，讓金頂與層疊建築完整出現。",
+          "camera": "橫幅或直幅皆可；重點是保留寺院層次，不要只拍半身。",
           "lens": "1× / 2×",
           "platform": "抖音",
           "url": "https://www.douyin.com/shipin/7308225177497487412",
@@ -8147,22 +8250,6 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "松贊林寺前藏裝人物與轉經筒實拍",
-          "sourceCaptured": "2026-09-15"
-        },
-        {
-          "title": "石階停一秒・回頭",
-          "pose": "走外部開放石階時停一下，側身或回頭，不影響通行。",
-          "camera": "微低角度，讓階梯線條帶向人物與寺院。",
-          "lens": "1× / 2×",
-          "platform": "抖音",
-          "url": "https://www.douyin.com/shipin/7308225177497487412",
-          "sourceImage": "https://newbbs-fd.zol-img.com.cn/t_s1200x5000/g7/M00/0E/04/ChMkLGMJkjOIaY0lAAMIieP-gQwAAG4lQLHKiYAAwih018.jpg",
-          "sourcePlatform": "中關村在線攝影論壇",
-          "sourceTitle": "香格里拉松贊林寺——藏服寫真4",
-          "sourceUrl": "https://bbs.zol.com.cn/dcbbs/d24_33323.html",
-          "sourceAuthor": "",
-          "sourceDate": "",
-          "sourceAlt": "松贊林寺石階人物藏服寫真實拍",
           "sourceCaptured": "2026-09-15"
         }
       ],
@@ -8204,10 +8291,10 @@
       "photoMatch": "verified",
       "poseTips": [
         {
-          "title": "低角度・人物放底部",
-          "pose": "人物站轉經筒前但離鏡頭遠一點，身體側身或看上方，不必比手勢。",
-          "camera": "攝影者蹲低用廣角，人物放畫面底部，整支轉經筒向上延伸。",
-          "lens": "0.5× / 1×",
+          "title": "低角度拍轉經筒・人物放底部",
+          "pose": "人物站在轉經筒側邊，身體稍微側轉，避免站正中央擋住主體。",
+          "camera": "低角度往上拍，把轉經筒高度拉出來；人物放下方三分之一。",
+          "lens": "1×",
           "platform": "抖音",
           "url": "https://www.douyin.com/shipin/7350937894229428276",
           "sourceImage": "https://ak-d.tripcdn.com/images/1mi3o12000pn3cy0iB6B4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
@@ -8217,22 +8304,6 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "獨克宗大轉經筒前藍色藏裝人物實拍",
-          "sourceCaptured": "2026-09-15"
-        },
-        {
-          "title": "夜間轉經筒・人物靠側邊",
-          "pose": "亮燈後站在轉經筒前方但靠畫面側邊，身體微側或抬頭看金色筒身。",
-          "camera": "低角度或平視皆可，避免人物正中間把轉經筒遮住。",
-          "lens": "0.5× / 1×",
-          "platform": "大眾點評／抖音",
-          "url": "https://www.dianping.com/shop/3273157/photos/album",
-          "sourceImage": "https://ak-d.tripcdn.com/images/1mi0v224x91grhqe20939.jpg?proc=source%2Ftrip",
-          "sourcePlatform": "Trip.com",
-          "sourceTitle": "Dukezong Ancient City｜旅客實拍",
-          "sourceUrl": "https://kr.trip.com/moments/dukezong-ancient-city-2036847/",
-          "sourceAuthor": "",
-          "sourceDate": "",
-          "sourceAlt": "獨克宗夜間亮燈轉經筒與傳統服飾人物實拍",
           "sourceCaptured": "2026-09-15"
         }
       ],
@@ -8276,10 +8347,10 @@
       "photoMatch": "verified",
       "poseTips": [
         {
-          "title": "棧道慢走・回頭",
-          "pose": "沿開放棧道走，走過攝影者視線後回頭一秒；手自然擺動。",
-          "camera": "2× 讓林木與人物更集中，避免拍進太多遊客。",
-          "lens": "2×",
+          "title": "湖岸大景・人物放側邊",
+          "pose": "人物站棧道或湖岸安全側，背對或側身看湖，不必看鏡頭。",
+          "camera": "用湖面和森林做大背景，人物只佔小部分。",
+          "lens": "1× / 2×",
           "platform": "抖音",
           "url": "https://www.douyin.com/shipin/7643258814623451182",
           "sourceImage": "https://static.wixstatic.com/media/d5e5c4_f9a9867b037448d38ac3a94d2ebc1401~mv2.jpg/v1/fill/w_568%2Ch_758%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/d5e5c4_f9a9867b037448d38ac3a94d2ebc1401~mv2.jpg",
@@ -8289,22 +8360,6 @@
           "sourceAuthor": "",
           "sourceDate": "",
           "sourceAlt": "普達措木棧道回頭人物實拍",
-          "sourceCaptured": "2026-09-15"
-        },
-        {
-          "title": "湖邊棧道坐姿",
-          "pose": "在允許停留的木棧道／觀景區坐下或稍微側坐，雙手自然放腿上，看湖面。",
-          "camera": "讓棧道做前景，人物放一側，湖面與森林留大面積。",
-          "lens": "1× / 2×",
-          "platform": "抖音",
-          "url": "https://www.douyin.com/shipin/7643258814623451182",
-          "sourceImage": "https://ak-d.tripcdn.com/images/1mi47224x97u6nu2wD1B4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-          "sourcePlatform": "Trip.com",
-          "sourceTitle": "Shangri-La’s Hidden Paradise: A Guide to Pudacuo & Napa Lake",
-          "sourceUrl": "https://www.trip.com/moments/detail/shangri-la-106-140266681",
-          "sourceAuthor": "",
-          "sourceDate": "",
-          "sourceAlt": "普達措湖邊木棧道坐姿旅客實拍",
           "sourceCaptured": "2026-09-15"
         }
       ],
@@ -8347,9 +8402,9 @@
       "poseTips": [
         {
           "title": "青石路慢走",
-          "pose": "手插口袋或自然擺臂，沿街走，不看鏡頭。",
-          "camera": "攝影者先站定，2× 抓半身到全身，保留路面縱深。",
-          "lens": "2×",
+          "pose": "沿青石路自然慢走，偶爾回頭或看向水邊店家，手不用刻意擺。",
+          "camera": "攝影者固定位置連拍，利用石板路和水巷做引導線。",
+          "lens": "1× / 2×",
           "platform": "大眾點評",
           "url": "https://www.dianping.com/shop/5253400/photos/album",
           "sourceImage": "https://dimg04.c-ctrip.com/images/1mf3m12000ehj1jk43860_W_640_0_Q90.jpg?proc=autoorient",
@@ -8359,22 +8414,6 @@
           "sourceAuthor": "",
           "sourceDate": "2024-06-15",
           "sourceAlt": "束河古鎮青石路背包旅客走路實拍",
-          "sourceCaptured": "2026-09-15"
-        },
-        {
-          "title": "水邊低頭看水",
-          "pose": "在安全水岸或低矮石欄旁微微俯身看水，手自然靠近膝蓋或欄杆。",
-          "camera": "1× 把水道、石牆、木屋一起收進去；不要跨越護欄。",
-          "lens": "1×",
-          "platform": "大眾點評",
-          "url": "https://www.dianping.com/shop/5253400/photos/album",
-          "sourceImage": "https://dimg04.c-ctrip.com/images/1mf1q12000ehj1swa7B5B_W_640_0_Q90.jpg?proc=autoorient",
-          "sourcePlatform": "攜程攻略",
-          "sourceTitle": "束河古鎮｜成為麗江我最喜歡的地方",
-          "sourceUrl": "https://you.ctrip.com/travels/lijiang32/4137872.html",
-          "sourceAuthor": "",
-          "sourceDate": "2024-06-15",
-          "sourceAlt": "束河古鎮水邊人物俯身看水實拍",
           "sourceCaptured": "2026-09-15"
         }
       ],
@@ -8404,6 +8443,8 @@
     "custom-xizhou-yan",
     "custom-xizhou-woxiang",
     "custom-dali-art-factory",
+    "custom-dali-north-market",
+    "custom-dali-marshal",
     "custom-three-pagodas-reflection",
     "custom-shaxi-chichaqu",
     "custom-shaxi-corvus",
@@ -8419,6 +8460,7 @@
     "custom-kunming-cuihu",
     "night-dali",
     "night-renmin",
+    "night-nanzhao",
     "night-foreigner",
     "night-sanyue",
     "night-shuhe",

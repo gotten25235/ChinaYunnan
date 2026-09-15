@@ -127,6 +127,7 @@
     "./images/remote/souvenir-boletus.webp",
     "./images/remote/souvenir-mushroom-sauce.webp",
     "./images/remote/souvenir-xiangxun-mushroom.webp",
+    "./images/remote/souvenir-tamarind.webp",
     "./images/remote/souvenir-fruit-wine.webp",
     "./images/remote/souvenir-xuanwei-ham.webp",
     "./images/remote/souvenir-spicy-sausage.webp",
@@ -138,6 +139,7 @@
     "./images/remote/souvenir-yuntui-cracker.webp",
     "./images/remote/souvenir-mushroom-ganba.webp",
     "./images/remote/souvenir-yuntui-small-cake.webp",
+    "./images/remote/souvenir-wild-mushroom-beer.webp",
     "./images/remote/souvenir-milk-strip.webp",
     "./images/remote/souvenir-barley-crisp.webp",
     "./images/remote/souvenir-sweet-sausage.webp",
@@ -146,30 +148,10 @@
     "./images/remote/souvenir-tile-cat.webp",
     "./images/remote/souvenir-jiama-craft.webp",
     "./images/remote/souvenir-mushroom-dry-goods.webp",
-    "./images/remote/souvenir-elephant-pendant.webp"
+    "./images/remote/souvenir-elephant-pendant.webp",
+    "./images/remote/dali-corn-juice.webp"
   ],
-  "remotePhotos": [
-    {
-      "id": "souvenir-tamarind",
-      "ids": [
-        "souvenir-tamarind"
-      ],
-      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Tamarindus_indica_18.jpg/1280px-Tamarindus_indica_18.jpg",
-      "label": "酸角（羅望子）果莢實物參考",
-      "source": "https://commons.wikimedia.org/wiki/File:Tamarindus_indica_18.jpg",
-      "localSrc": "images/remote/souvenir-tamarind.webp"
-    },
-    {
-      "id": "souvenir-wild-mushroom-beer",
-      "ids": [
-        "souvenir-wild-mushroom-beer"
-      ],
-      "url": "https://static.foodtalks.cn/image/post/12c10dfb268cfa8af9fb818c1382037d.jpg",
-      "label": "雲南見手青菌子精釀啤酒實物參考",
-      "source": "https://www.foodtalks.cn/en/news/58650",
-      "localSrc": "images/remote/souvenir-wild-mushroom-beer.webp"
-    }
-  ],
+  "remotePhotos": [],
   "optionalRuntime": [
     "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",
     "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",

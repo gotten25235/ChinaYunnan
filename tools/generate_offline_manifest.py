@@ -99,8 +99,20 @@ def photo_records() -> tuple[list[str], list[dict]]:
             if normalized not in local:
                 local.append(normalized)
 
-    # Pose reference visuals are third-party runtime images. The service worker
-    # cache-first image handler can retain successful loads, but they are not packaged assets.
+    # Pose reference visuals may be packaged locally when a stable copy is needed.
+    # Keep those local WebP files in selective offline preparation; remote pose visuals
+    # still rely on the runtime image cache after their first successful network load.
+    for spot in trip.get("photoSpots", []):
+        if not isinstance(spot, dict):
+            continue
+        for tip in spot.get("poseTips", []):
+            if not isinstance(tip, dict):
+                continue
+            source_image = tip.get("sourceImage")
+            if isinstance(source_image, str) and not is_remote(source_image):
+                normalized = "./" + source_image.lstrip("./")
+                if (ROOT / source_image).is_file() and normalized not in local:
+                    local.append(normalized)
 
     return local, list(by_url.values())
 

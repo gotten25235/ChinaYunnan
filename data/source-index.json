@@ -4,18 +4,20 @@
     "data/trip-data.json",
     "data/social-sources.json"
   ],
-  "checkedAt": "2026-09-15T03:30:00+08:00",
+  "checkedAt": "2026-09-16T01:55:00+08:00",
   "batchIds": [
     "nearby20_20260908",
     "hotel_night_nearby20_20260908"
   ],
-  "customItemCount": 32,
-  "sourceCount": 76,
-  "referencedSourceCount": 76,
+  "customItemCount": 35,
+  "sourceCount": 86,
+  "referencedSourceCount": 86,
   "defaultCustomIds": [
     "custom-xizhou-yan",
     "custom-xizhou-woxiang",
     "custom-dali-art-factory",
+    "custom-dali-north-market",
+    "custom-dali-marshal",
     "custom-three-pagodas-reflection",
     "custom-shaxi-chichaqu",
     "custom-shaxi-corvus",
@@ -31,6 +33,7 @@
     "custom-kunming-cuihu",
     "night-dali",
     "night-renmin",
+    "night-nanzhao",
     "night-foreigner",
     "night-sanyue",
     "night-shuhe",
@@ -345,6 +348,37 @@
     ],
     "web_20260915_0001": [
       "photo-xizhou"
+    ],
+    "web_20260916_0001": [
+      "night-nanzhao"
+    ],
+    "web_20260916_0002": [
+      "night-renmin"
+    ],
+    "web_20260916_0003": [
+      "custom-dali-marshal"
+    ],
+    "web_20260916_0004": [
+      "custom-dali-marshal"
+    ],
+    "web_20260916_0005": [
+      "night-moon"
+    ],
+    "web_20260916_0006": [
+      "night-moon"
+    ],
+    "web_20260916_0007": [
+      "custom-dali-north-market"
+    ],
+    "web_20260916_0008": [
+      "custom-dali-north-market",
+      "dali-corn-juice"
+    ],
+    "web_20260916_0009": [
+      "dali-corn-juice"
+    ],
+    "web_20260916_0010": [
+      "dali-corn-juice"
     ],
     "xhs_20260909_0001": [
       "baba",

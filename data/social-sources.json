@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": "v1",
-    "checkedAt": "2026-09-15T03:30:00+08:00",
+    "checkedAt": "2026-09-16T01:55:00+08:00",
     "retentionPolicy": "Source Record 不因貼文刪除、轉私人、登入限制或失效而刪除；只更新 status / lastSeenAt / unavailableAt。",
     "note": "現行來源庫同時保存官方、一般網頁與可驗證的社群來源；無法直接存取的原始貼文保留 status 與可讀二次來源，不建立假社群來源。"
   },
@@ -2412,6 +2412,324 @@
         "collector": "ChatGPT web research",
         "parserVersion": "v1",
         "notes": "會員照片只作視角研究，不視為可重用授權。"
+      }
+    },
+    "web_20260916_0001": {
+      "sourceId": "web_20260916_0001",
+      "platform": "web",
+      "url": "https://gs.ctrip.com/html5/you/sight/dalicity1445616/150419819.html",
+      "canonicalUrl": "https://gs.ctrip.com/html5/you/sight/dalicity1445616/150419819.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程攻略 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-16T00:50:00+08:00",
+      "lastSeenAt": "2026-09-16T00:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "南诏十二时辰景点页",
+      "excerpt": "頁面標示南詔十二時辰位於大理市復興路88號，公開營業資訊為 09:00–23:00。",
+      "tags": [
+        "大理",
+        "夜遊",
+        "南詔十二時辰"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "用於地址、營業資訊與夜遊描述。"
+      }
+    },
+    "web_20260916_0002": {
+      "sourceId": "web_20260916_0002",
+      "platform": "web",
+      "url": "https://you.ctrip.com/sight/dalicity1445616/1478241.html",
+      "canonicalUrl": "https://you.ctrip.com/sight/dalicity1445616/1478241.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程攻略 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-16T00:50:00+08:00",
+      "lastSeenAt": "2026-09-16T00:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "大理人民路遊玩攻略",
+      "excerpt": "頁面描述人民路下午起常有賣唱歌手、小攤與獨立音樂人演唱，適合夜間散步聽歌。",
+      "tags": [
+        "大理",
+        "人民路",
+        "街頭音樂",
+        "夜遊"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "用於人民路聽歌與街頭音樂描述。"
+      }
+    },
+    "web_20260916_0003": {
+      "sourceId": "web_20260916_0003",
+      "platform": "web",
+      "url": "https://www.amap.com/place/B036800H2Q",
+      "canonicalUrl": "https://www.amap.com/place/B036800H2Q",
+      "postId": null,
+      "contentType": "map-place",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-16T00:50:00+08:00",
+      "lastSeenAt": "2026-09-16T00:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "大理古城-总统兵马大元帅府",
+      "excerpt": "高德地圖標示地址為大理白族自治州大理市復興路111號，並提供地圖定位。",
+      "tags": [
+        "大理",
+        "杜文秀",
+        "元帥府",
+        "地圖"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "用於地址與座標。"
+      }
+    },
+    "web_20260916_0004": {
+      "sourceId": "web_20260916_0004",
+      "platform": "web",
+      "url": "https://pc.dllyjszx.com/mobile/article/detail/666",
+      "canonicalUrl": "https://pc.dllyjszx.com/mobile/article/detail/666",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "大理旅遊集散中心(集團)有限公司",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2017-07-17",
+      "retrievedAt": "2026-09-16T00:50:00+08:00",
+      "lastSeenAt": "2026-09-16T00:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "总统兵马大元帅府",
+      "excerpt": "介紹杜文秀元帥府位於大理古城，為杜文秀在原清代大理提督府衙基礎上改建的歷史建築。",
+      "tags": [
+        "大理",
+        "杜文秀",
+        "元帥府",
+        "歷史"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "用於歷史背景與景點摘要。"
+      }
+    },
+    "web_20260916_0005": {
+      "sourceId": "web_20260916_0005",
+      "platform": "web",
+      "url": "https://dkzgc.cn/",
+      "canonicalUrl": "https://dkzgc.cn/",
+      "postId": null,
+      "contentType": "official-site",
+      "author": {
+        "name": "獨克宗古城官方網站",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-16T00:50:00+08:00",
+      "lastSeenAt": "2026-09-16T00:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "獨克宗古城・四方街",
+      "excerpt": "官方介紹四方街位於古城中心，每逢傍晚是居民與遊客自發健身娛樂的重要場所，各民族人民載歌載舞。",
+      "tags": [
+        "香格里拉",
+        "獨克宗",
+        "四方街",
+        "鍋莊"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "用於廣場鍋莊／夜間活動性質。"
+      }
+    },
+    "web_20260916_0006": {
+      "sourceId": "web_20260916_0006",
+      "platform": "web",
+      "url": "https://gs.ctrip.com/html5/you/sight/shangri-la106/149603634.html",
+      "canonicalUrl": "https://gs.ctrip.com/html5/you/sight/shangri-la106/149603634.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "攜程攻略 / Ctrip",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-16T00:50:00+08:00",
+      "lastSeenAt": "2026-09-16T00:50:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "香格里拉康赞土司",
+      "excerpt": "頁面介紹藏家歌舞、民族打跳與篝火晚會等付費體驗，室內演出後會到廣場參加篝火晚會。",
+      "tags": [
+        "香格里拉",
+        "篝火",
+        "打跳",
+        "土司宴"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "用於區分獨克宗四方街自發鍋莊與付費篝火晚會體驗。"
+      }
+    },
+    "web_20260916_0007": {
+      "sourceId": "web_20260916_0007",
+      "platform": "web",
+      "url": "https://www.amap.com/place/B0368007OE",
+      "canonicalUrl": "https://www.amap.com/place/B0368007OE",
+      "postId": null,
+      "contentType": "map-place",
+      "author": {
+        "name": "高德地圖 / Amap",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-16T01:55:00+08:00",
+      "lastSeenAt": "2026-09-16T01:55:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "大理古城集貿市場",
+      "excerpt": "高德地圖標示大理古城集貿市場位於平等路5號，座標約 25.697187, 100.157211。",
+      "tags": [
+        "大理",
+        "北門菜市場",
+        "地圖"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "用於地址與座標。"
+      }
+    },
+    "web_20260916_0008": {
+      "sourceId": "web_20260916_0008",
+      "platform": "web",
+      "url": "https://post.smzdm.com/p/adogql9x/",
+      "canonicalUrl": "https://post.smzdm.com/p/adogql9x/",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "什麼值得買",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-16T01:55:00+08:00",
+      "lastSeenAt": "2026-09-16T01:55:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "被大理北門菜市場做局了",
+      "excerpt": "整理北門菜市場早餐與小吃動線，包含稀豆粉、破酥包與玉米大叔玉米汁。",
+      "tags": [
+        "大理",
+        "北門菜市場",
+        "早餐",
+        "玉米汁"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "用於市場逛吃與玉米汁描述。"
+      }
+    },
+    "web_20260916_0009": {
+      "sourceId": "web_20260916_0009",
+      "platform": "web",
+      "url": "https://www.sina.cn/news/detail/5335061052260908.html",
+      "canonicalUrl": "https://www.sina.cn/news/detail/5335061052260908.html",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "新浪新聞 / 公開旅遊內容",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2026-08-23",
+      "retrievedAt": "2026-09-16T01:55:00+08:00",
+      "lastSeenAt": "2026-09-16T01:55:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "大理古城北門菜市場趕早集／玉米大叔",
+      "excerpt": "公開內容描述導航大理古城集貿市場北門後可找到玉米大叔，現榨玉米汁可選有糖或無糖。",
+      "tags": [
+        "大理",
+        "北門菜市場",
+        "玉米大叔",
+        "玉米汁"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "用於玉米汁口味、位置線索與排隊提醒。"
+      }
+    },
+    "web_20260916_0010": {
+      "sourceId": "web_20260916_0010",
+      "platform": "web",
+      "url": "https://travelnews.qunar.com/ugc/dali-north-market-early-snacks",
+      "canonicalUrl": "https://travelnews.qunar.com/ugc/dali-north-market-early-snacks",
+      "postId": null,
+      "contentType": "webpage",
+      "author": {
+        "name": "去哪兒旅行",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": "2025-10-31",
+      "retrievedAt": "2026-09-16T01:55:00+08:00",
+      "lastSeenAt": "2026-09-16T01:55:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "title": "大理北門菜市場早市怎麼逛",
+      "excerpt": "公開攻略將北門菜市場列為早市逛吃地點，並提到玉米大叔玉米汁、破酥粑粑與餌絲等早餐。",
+      "tags": [
+        "大理",
+        "北門菜市場",
+        "早市",
+        "玉米汁"
+      ],
+      "collection": {
+        "method": "public-web-search",
+        "collector": "ChatGPT web research",
+        "parserVersion": "v1",
+        "notes": "用於早市時段與飲品／早餐補充。"
       }
     }
   }

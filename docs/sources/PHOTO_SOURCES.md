@@ -2,7 +2,7 @@
 
 此檔由 `data/trip-data.json > photos` 自動生成，不可手改。網站顯示用圖片、作者、來源、授權與修改註記均以 photo metadata 為準。
 
-目前共有 **136** 個 photo records、**112** 組來源；**136** 個 records 的 `src` 全部固定為本地路徑，其中 **2** 個另保留 `remoteSrc` 作同一張圖片的網路備援。
+目前共有 **138** 個 photo records、**113** 組來源；**138** 個 records 的 `src` 全部固定為本地路徑，其中 **0** 個另保留 `remoteSrc` 作同一張圖片的網路備援。
 
 讀圖契約固定為 `src 本地 WebP → remoteSrc（若有）→ 無此圖`。`LOCALIZE_IMAGES_ANACONDA_SSL_FIX.bat` 只負責把 `remoteSrc` 下載／轉碼到 `src` 指定位置，不會把 metadata 在本地／網路模式之間切換，也不使用其他地點或自製示意圖當備援。具名地點／飯店／景點／店家仍以 `exact` / `verified` 主體圖為原則；交通／未指定單一場地活動可用 `illustrative`、料理可用 `representative`、文化故事可用 `context`，介面必須標示「示意圖」或「背景圖」。`reference_only` 不作 UI 主圖。
 
@@ -43,7 +43,7 @@
 | `kunming-jinma-open`, `kunming-city-reference`, `kunming-history-reference` | 昆明金馬碧雞坊實拍（另有 2 個情境 caption） | Zhangzhugang | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | [來源](https://commons.wikimedia.org/wiki/File:Kunming_Jinma_Biji_Fang_20250813_183853.jpg) | `images/remote/kunming-jinma-open.webp` | — | 使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。；使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `kunming-nanping-open` | 昆明南屏街街景實拍 | 瑞麗江的河水 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | [來源](https://commons.wikimedia.org/wiki/File:%E6%98%86%E6%98%8E%E5%B8%82%E5%8D%97%E5%B1%8F%E8%A1%97_-_2025-05-16_01.jpg) | `images/remote/kunming-nanping-open.webp` | — | 使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `kunming-railway-open` | 昆明火車站實拍 | 40fifw0 | [Public domain](https://creativecommons.org/publicdomain/mark/1.0/) | [來源](https://commons.wikimedia.org/wiki/File:Kunming_Railway_Station.jpg) | `images/remote/kunming-railway-open.webp` | — | 使用 Wikimedia Commons 原圖；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
-| `dali-city-reference` | 大理古城情境參考圖；非指定飯店或三月街機位 | chensiyuan | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | [來源](https://commons.wikimedia.org/wiki/File:1_dali_old_town_yunnan_2012.jpg) | `images/remote/dali-city-reference.webp` | — | 使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
+| `dali-city-reference`, `dali-north-market-context` | 大理古城情境參考圖；非指定飯店或三月街機位（另有 1 個情境 caption） | chensiyuan | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | [來源](https://commons.wikimedia.org/wiki/File:1_dali_old_town_yunnan_2012.jpg) | `images/remote/dali-city-reference.webp` | — | 使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。；沿用大理古城公開授權實景作市井情境參考；不宣稱為北門菜市場或玉米大叔指定攤位照片。 |
 | `shangri-story-reference` | 香格里拉城市情境參考圖；非小說場景或歷史照片 | 祝魚貴 | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | [來源](https://commons.wikimedia.org/wiki/File:20260225_Skyline_of_Dukezong_Ancient_Town_Shangri-La_12.jpg) | `images/remote/shangri-story-reference.webp` | — | 使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `yujin-web`, `idealbang-handbook` | 玉津橋手冊實景截圖（另有 1 個情境 caption） | 2026年度海外員工旅遊手冊 p.9 | 內部手冊截圖 | [來源](docs/sources/HANDBOOK_IMAGE_CROPS.md) | `images/handbook/yujin-handbook.webp`, `images/handbook/idealbang-handbook.webp` | — | 由使用者提供之定案手冊第 9 頁擷取景點照片並裁切為本地 WebP；只用於手冊明確對應之景點。 |
 | `ganhaizi-web` | 甘海子手冊實景截圖 | 2026年度海外員工旅遊手冊 p.12 | 內部手冊截圖 | [來源](docs/sources/HANDBOOK_IMAGE_CROPS.md) | `images/handbook/ganhaizi-handbook.webp` | — | 由使用者提供之定案手冊第 12 頁擷取景點照片並裁切為本地 WebP；只用於手冊明確對應之景點。 |
@@ -99,7 +99,7 @@
 | `souvenir-boletus` | 雲南牛肝菌商品實物圖；非本團指定品牌。 | Weee! 商品頁 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://www.sayweee.com/zh/product/Yunnan-Gourmet-Instant-Porcini/2950586) | `images/remote/souvenir-boletus.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `souvenir-mushroom-sauce` | 菌菇醬類商品實物圖；以現場品牌與配料標示為準。 | 亞米商品頁 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://www.yami.com/zh/p/black-truffle-paste-68g/1148019631) | `images/remote/souvenir-mushroom-sauce.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `souvenir-xiangxun-mushroom`, `souvenir-xiangxun-mushroom-alt` | 楚雄雙柏野生香蕈實景，作為香蕈菌類別代表。（另有 1 個情境 caption） | 雲南網楚雄頻道 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://chuxiong.yunnan.cn/system/2026/05/15/034009226.shtml) | `images/remote/souvenir-xiangxun-mushroom.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。；改用重新搜尋取得的新公開來源實景圖；不使用 reference screenshot 裁切或生成插畫。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
-| `souvenir-tamarind` | Wikimedia Commons 的 Tamarindus indica（酸角／羅望子）果莢實物照片。 | Valenzuela400 / Wikimedia Commons | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) | [來源](https://commons.wikimedia.org/wiki/File:Tamarindus_indica_18.jpg) | `images/remote/souvenir-tamarind.webp` | [網路圖](https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Tamarindus_indica_18.jpg/1280px-Tamarindus_indica_18.jpg) | 2026-09-15：撤換會阻擋第三方熱連結的惠農網端點，改用 Wikimedia Commons 可公開查核的酸角實物照片；src 仍固定為本地 WebP，remoteSrc 僅作同主體網路備援與 BAT 本地化來源。 |
+| `souvenir-tamarind` | 小紅書伴手禮榜單 No.7「酸角」商品實拍裁切。 | 使用者提供的小紅書榜單截圖 | 使用者提供來源截圖／私人旅程參考 | [來源](docs/sources/reference/souvenir-xhs-01.jpg) | `images/remote/souvenir-tamarind.webp` | — | 由專案既有 reference 截圖裁切指定商品，轉為本地 WebP；不再依賴第三方遠端圖片。 |
 | `souvenir-fruit-wine` | 雲南陽宗海櫻桃果酒實景，作為果酒類別代表。 | 昆明日報供圖／昆明信息港 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://www.kunming.cn/news/c/2026-04-30/14037471.shtml) | `images/remote/souvenir-fruit-wine.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `souvenir-xuanwei-ham` | 宣字宣威火腿塊商品實物圖；非本團指定購買通路。 | 宣威火腿集團商品圖／亮亮媽商品頁 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://liangliangmama.com/products/xz-htr300g) | `images/remote/souvenir-xuanwei-ham.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `souvenir-spicy-sausage` | 雲南臘腸實物圖，作為麻辣腸類別代表；口味以現場標示為準。 | 淘系商品頁 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://tao.hooos.com/goods_557942366673.html) | `images/remote/souvenir-spicy-sausage.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
@@ -111,7 +111,7 @@
 | `souvenir-yuntui-cracker` | 雲腿風味蘇打餅乾商品實物圖；非本團指定品牌。 | 潘祥記／有贊商品頁 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://detail.youzan.com/show/goods?alias=1yhipntir39rsjw&from_source=gbox_seo) | `images/remote/souvenir-yuntui-cracker.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `souvenir-mushroom-ganba` | 油燜乾巴菌商品實物圖，作為菌乾巴類別代表。 | Weee! 商品頁 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://www.weee.com/ja/product/Oil-Braised-Ganba-Mushroom-Ganbajun-/2954840) | `images/remote/souvenir-mushroom-ganba.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `souvenir-yuntui-small-cake` | 雲南雲腿小餅商品實物圖；非本團指定品牌。 | Weee! 商品頁 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://www.sayweee.com/en/product/Classic-Cloud-Leg-Cake-Yunnan-Specialty-Ham-Pastry/2206299) | `images/remote/souvenir-yuntui-small-cake.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
-| `souvenir-wild-mushroom-beer` | FoodTalks 報導中的雲南見手青菌子精釀啤酒實物照片。 | FoodTalks 圖片 | [來源頁面照片；未標示可重用授權／本次私人旅程參考](https://www.foodtalks.cn/en/news/58650) | [來源](https://www.foodtalks.cn/en/news/58650) | `images/remote/souvenir-wild-mushroom-beer.webp` | [網路圖](https://static.foodtalks.cn/image/post/12c10dfb268cfa8af9fb818c1382037d.jpg) | 2026-09-15：撤換會阻擋第三方熱連結的惠農網端點，改用 FoodTalks 報導中的雲南見手青菌子精釀啤酒實物照片；src 仍固定為本地 WebP，remoteSrc 僅作同商品網路備援與 BAT 本地化來源。 |
+| `souvenir-wild-mushroom-beer` | 小紅書伴手禮榜單 No.20「野生菌精釀啤酒」商品實拍裁切。 | 使用者提供的小紅書榜單截圖 | 使用者提供來源截圖／私人旅程參考 | [來源](docs/sources/reference/souvenir-xhs-02.jpg) | `images/remote/souvenir-wild-mushroom-beer.webp` | — | 由專案既有 reference 截圖裁切指定商品，轉為本地 WebP；不再依賴第三方遠端圖片。 |
 | `souvenir-milk-strip` | 奶酪／奶條類商品實物圖，作為牛乳條類別代表；非指定品牌。 | 淘系商品頁 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://tao.hooos.com/goods_Wq4gYG5vhot20pVDxDPCaaehQta-5Bmqq9UWKVvJbNdUoD.html) | `images/remote/souvenir-milk-strip.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `souvenir-barley-crisp` | 雲南青稞酥商品實物圖；非本團指定品牌。 | 蝦皮商品圖片 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://shopee.tw/search?keyword=%E9%9B%B2%E5%8D%97%20%E9%9D%92%E7%A8%9E%E9%85%A5) | `images/remote/souvenir-barley-crisp.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `souvenir-sweet-sausage` | 雲南小甜腸商品實物圖；非本團指定品牌。 | 德和／有贊商品頁 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://detail.youzan.com/show/goods?alias=367t3mk2o6rq33c&from_source=gbox_seo) | `images/remote/souvenir-sweet-sausage.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
@@ -120,28 +120,29 @@
 | `souvenir-tile-cat`, `souvenir-jiama-craft` | 昆明販售的瓦貓文創擺件實景。（另有 1 個情境 caption） | 昆明日報 記者劉凱達 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://www.kunming.cn/news/c/2026-05-20/14042713.shtml) | `images/remote/souvenir-tile-cat.webp`, `images/remote/souvenir-jiama-craft.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `souvenir-mushroom-dry-goods` | 雲南牛肝菌乾片商品圖，作為菌菇乾貨類別代表。 | 走進大理網商品頁 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://www.91zjdl.com/mall/show.php?itemid=721) | `images/remote/souvenir-mushroom-dry-goods.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
 | `souvenir-elephant-pendant` | 大理巍山布藝動物掛件實景，前景為小象掛件。 | 雲南網 | 來源頁未標示再利用授權／本次私人旅程參考 | [來源](https://society.yunnan.cn/system/2024/04/16/033014166.shtml) | `images/remote/souvenir-elephant-pendant.webp` | — | 改用重新搜尋取得的新公開來源實物／實景圖；reference screenshot 僅保留作內容依據，不再作前台主圖或裁切素材。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 |
+| `dali-corn-juice` | 鮮榨玉米汁示意圖；作為玉米大叔飲品內容參考。 | web image result | Unknown | [來源](https://www.bing.com/images/search?q=%E9%B2%9C%E6%A6%A8%E7%8E%89%E7%B1%B3%E6%B1%81) | `images/remote/dali-corn-juice.webp` | — | 以公開網頁圖片作飲品示意，已本地化為 WebP 供離線與節省流量使用。 |
 
 ## 旅拍 Pose 來源實拍
 
-旅拍指南的 Pose 卡改為直接顯示可追溯的公開來源實拍，不再使用本地重畫 Pose 圖。小紅書／抖音／大眾點評仍用於機位研究；若原貼連結不穩定，視覺參考可採用能正常載入且可追溯的攜程、Trip.com、旅遊部落格等公開來源。每張參考圖的完整 URL、來源頁、平台、已知作者／日期另列於 `POSE_SCREENSHOT_SOURCES.md`。這些參考圖不納入一般景點主圖授權表，也不宣稱具有可重用授權。
+旅拍指南的 Pose 卡改為直接顯示可追溯的公開來源實拍，不再使用重畫 Pose 圖。小紅書／抖音／大眾點評仍用於機位研究；若原貼連結不穩定，視覺參考可採用能正常載入且可追溯的攜程、Trip.com、旅遊部落格等公開來源。前台 Pose 參考圖直接使用可追溯的第三方公開來源圖片，不再打包 `images/pose-guides/` 本地複本；第一次開啟需要網路，成功載入後由瀏覽器／Service Worker 嘗試快取。來源頁仍完整保留於 `POSE_SCREENSHOT_SOURCES.md`。同一旅拍場景禁止重複使用同一個來源圖片 URL。這些參考圖不納入一般景點主圖授權表，也不宣稱具有可重用授權。
 
-目前共有 **29** 張來源實拍參考，涵蓋 **14** 個旅拍地點。
+目前共有 **17** 張來源實拍參考，涵蓋 **14** 個旅拍地點。
 
 | 旅拍地點 | 視覺來源平台 | 機位研究平台 | 用途 |
 | --- | --- | --- | --- |
 | 鳳陽邑・有風小院外觀 | Trip.com | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
-| 喜洲・轉角樓、稻田與有風大樹 | 攜程攻略 | 抖音、小紅書線索／二次索引 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
-| 沙溪・寺登街與古戲台 | Trip.com、攜程攻略 | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
-| 沙溪・玉津橋 | Trip.com、SmartGuide | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
+| 喜洲・轉角樓、稻田與有風大樹 | 攜程攻略 | 攜程攻略 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
+| 沙溪・寺登街與古戲台 | Trip.com | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
+| 沙溪・玉津橋 | Trip.com | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
 | 藍月谷・水色與雪山 | Trip.com | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
-| 麗江古城・屋瓦與水巷 | 攜程攻略、Trip.com | 大眾點評 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
-| 理想邦・白色階梯與洱海框景 | 攜程攻略、Trip.com | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
-| 雲杉坪・雪山草甸與杉林 | Trip.com、攜程攻略 | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
-| 甘海子・雪山腳下大景 | Trip.com、太平洋電腦網攝影部落 | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
-| 虎跳峽・人小峽谷大 | Feastography、雲南網・麗江發布 | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
-| 松贊林寺・層疊金頂 | Trip.com、中關村在線攝影論壇 | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
-| 獨克宗・龜山大轉經筒 | Trip.com | 抖音、大眾點評／抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
-| 普達措・湖、草地與森林 | Mamakajima、Trip.com | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
+| 麗江古城・屋瓦與水巷 | 攜程攻略、Trip.com | 公開來源 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
+| 理想邦・白色階梯與洱海框景 | 攜程攻略 | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
+| 雲杉坪・雪山草甸與杉林 | Trip.com | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
+| 甘海子・雪山腳下大景 | Trip.com | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
+| 虎跳峽・人小峽谷大 | Feastography | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
+| 松贊林寺・層疊金頂 | Trip.com | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
+| 獨克宗・龜山大轉經筒 | Trip.com | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
+| 普達措・湖、草地與森林 | Mamakajima | 抖音 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
 | 束河古鎮・青石路與水巷 | 攜程攻略 | 大眾點評 | 來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯 |
 
 ## 維護

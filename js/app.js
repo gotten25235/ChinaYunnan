@@ -47,7 +47,14 @@
     toast(result.storageAvailable?(result.saved?'已加入口袋清單':'已取消收藏'):'無法寫入瀏覽器儲存空間；收藏僅保留至本頁關閉');
     return true;
   }
-  async function copyAddress(id){const text=items[id]?.address;if(!text)return;try{if(!navigator.clipboard?.writeText)throw new Error('no clipboard');await navigator.clipboard.writeText(text);toast(items[id].addressVerified?'已複製中文地址':'已複製地點搜尋詞；完整地址待核實');}catch{const el=$('#copy-value');el.value=text;$('#copy-dialog').showModal();el.focus();el.select();}}
+  async function copyPlainText(text){
+    text=String(text||'').trim();if(!text)throw new Error('empty');
+    if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);return true;}
+    const area=document.createElement('textarea');area.value=text;area.setAttribute('readonly','');area.style.cssText='position:fixed;left:-9999px;top:0;opacity:0';document.body.appendChild(area);area.select();
+    try{if(!document.execCommand('copy'))throw new Error('copy failed');return true;}finally{area.remove();}
+  }
+  function openCopyDialog(text){const el=$('#copy-value'),dialog=$('#copy-dialog');if(!el||!dialog)return;el.value=String(text||'');if(!dialog.open){if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','');}requestAnimationFrame(()=>{el.focus();el.select();});}
+  async function copyAddress(id){const text=items[id]?.address;if(!text)return;try{await copyPlainText(text);toast(items[id].addressVerified?'已複製中文地址':'已複製地點搜尋詞；完整地址待核實');}catch{openCopyDialog(text);}}
 
   // Domain modules own their own state and renderers. Cross-domain calls go through public APIs.
   weatherSystem=YunnanWeatherSystem.create({tripData,items,esc,toast,networkProfile});
@@ -55,7 +62,7 @@
   offlineSystem=YunnanOfflineSystem.create({toast,weatherSystem,showView});
   mapSystem=YunnanMapSystem.create({$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,readerInteraction,dateRail,bindHorizontalScroller:YunnanCore.bindHorizontalScroller,toast,showView,setSharedDay,toggleFavorite,markRendered,weatherSystem,networkProfile});
   librarySystem=YunnanLibrarySystem.create({$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,dateRail,markRendered,setSharedDay,getJourney:()=>journeySystem,getReader:()=>readerSystem,showView});
-  readerSystem=YunnanReaderSystem.create({$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,interaction:readerInteraction,getLibrary:()=>librarySystem,getMap:()=>mapSystem,toggleFavorite,toast,onItemOpen:(id,meta)=>analyticsSystem.trackItem(id,meta)});
+  readerSystem=YunnanReaderSystem.create({$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,interaction:readerInteraction,getLibrary:()=>librarySystem,getMap:()=>mapSystem,toggleFavorite,toast,weatherSystem,onItemOpen:(id,meta)=>analyticsSystem.trackItem(id,meta)});
   journeySystem=YunnanJourneySystem.create({$,$$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,bindHorizontalScroller:YunnanCore.bindHorizontalScroller,toast,getLibrary:()=>librarySystem,markRendered,weatherSystem});
 
   // Populate mirrored hidden selects before date-rail controllers build their cards.
@@ -117,6 +124,10 @@
   document.addEventListener('click',event=>{
     const navLink=event.target.closest('[data-nav-id]');
     if(navLink)analyticsSystem.trackNavigation(navLink.dataset.navId,navLink.dataset.navProvider||'');
+    const weatherLiveLink=event.target.closest('[data-weather-live-search]');
+    if(weatherLiveLink)analyticsSystem.track('weather_live_search',{range:weatherLiveLink.dataset.weatherLiveSearch||'',point:weatherLiveLink.dataset.weatherLivePoint||'',date:weatherLiveLink.dataset.weatherLiveDate||'',tripDay:weatherLiveLink.dataset.weatherLiveTripDay||''});
+    const xhsReaderLink=event.target.closest('[data-xhs-open]');
+    if(xhsReaderLink)analyticsSystem.track('xhs_search_open',{id:xhsReaderLink.dataset.xhsItemId||'',type:xhsReaderLink.dataset.xhsItemType||'',mode:xhsReaderLink.dataset.xhsMode||'search'});
     const cultureCard=event.target.closest('[data-culture-story]');
     if(cultureCard&&!event.target.closest('a,button,input,select,textarea,label')){analyticsSystem.trackStory(cultureCard.dataset.cultureStory);readerSystem.openStory(cultureCard.dataset.cultureStory,{opener:cultureCard});return;}
     const b=event.target.closest('button');
@@ -128,6 +139,11 @@
     if(readerSystem.handleAction(b))return;
     if(mapSystem.handleAction(b))return;
     if(librarySystem.handleAction(b))return;
+    if(b.hasAttribute('data-copy-dialog-copy')){
+      const value=$('#copy-value')?.value||'';
+      copyPlainText(value).then(()=>{const original=b.textContent;b.textContent='✓ 已複製';toast('已複製');setTimeout(()=>{if(b.isConnected)b.textContent=original;},1500);}).catch(()=>{const el=$('#copy-value');el?.focus();el?.select();toast('無法自動複製，已選取文字');});
+      return;
+    }
     if(b.dataset.save){toggleFavorite(b.dataset.save);return;}
     if(b.dataset.copy){copyAddress(b.dataset.copy);return;}
     if(b.dataset.view){showView(b.dataset.view);return;}

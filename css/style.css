@@ -2440,3 +2440,34 @@ html[data-theme="dark"] .nav-provider-card select{background:#22312c;color:var(-
 .theme-mode-card{display:flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid var(--line);border-radius:16px;background:#fff;padding:18px 20px;margin:0 0 12px}
 .theme-mode-card h3{margin-bottom:4px}.theme-mode-card p{margin:0}.theme-mode-card label{display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:.82rem}.theme-mode-card select{min-width:170px}
 @media(max-width:600px){.theme-mode-card{align-items:flex-start;flex-direction:column;gap:10px;padding:15px 16px}.theme-mode-card label{width:100%;justify-content:space-between}.theme-mode-card select{min-width:0;width:170px;max-width:58vw}}
+
+/* Xiaohongshu live conditions: calendar date follows current Yunnan date, independent of itinerary date. */
+.weather-live-links{grid-column:1/-1;display:flex;align-items:center;gap:6px 8px;flex-wrap:wrap;margin-top:2px;padding-top:8px;border-top:1px dashed #e3ebe7;font-size:.65rem}
+.weather-live-label{font-weight:800;color:#5e6f67;white-space:nowrap}
+.weather-live-link,.weather-live-fallback{display:inline-flex;align-items:center;min-height:28px;padding:5px 9px;border-radius:999px;text-decoration:none;font:inherit;font-weight:750;line-height:1.2;cursor:pointer}
+.weather-live-link{background:#edf6f2;border:1px solid #c9ded4;color:#2f6759}
+.weather-live-fallback{background:#f6f3ee;border:1px solid #e1d9cc;color:#736552}
+.weather-live-link:hover,.weather-live-fallback:hover{text-decoration:none;filter:brightness(.98)}
+@media(max-width:520px){.weather-live-links{gap:6px;font-size:.62rem}.weather-live-label{width:100%}.weather-live-link,.weather-live-fallback{min-height:30px;padding:6px 9px}}
+html[data-theme="dark"] .weather-live-links{border-color:#33463e}
+html[data-theme="dark"] .weather-live-label{color:#b5c6be}
+html[data-theme="dark"] .weather-live-link{background:#20362e;border-color:#39594c;color:#bfe0d3}
+html[data-theme="dark"] .weather-live-fallback{background:#302d27;border-color:#4d463b;color:#dbcdb4}
+
+
+/* Shared copy / Xiaohongshu handoff dialogs. */
+.text-copy-dialog,.xhs-live-dialog{width:min(480px,calc(100vw - 28px));padding:22px;border:1px solid var(--line);border-radius:18px}
+.text-copy-dialog form,.xhs-live-dialog form{display:grid;gap:12px}
+.text-copy-dialog h2,.xhs-live-dialog h2{margin:0;font-size:1.28rem}
+.text-copy-dialog p,.xhs-live-dialog p{margin:0;line-height:1.6}
+.text-copy-dialog textarea,.xhs-live-dialog textarea{min-height:92px;background:#fff}
+.dialog-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:2px}
+.dialog-actions .primary,.dialog-actions .action{min-height:42px}
+.xhs-live-context{font-weight:800;color:var(--green)}
+.xhs-live-warning{padding:11px 13px;border:1px solid #eadcc5;border-radius:12px;background:#fbf4e9;color:#705b39;font-size:.8rem}
+.xhs-live-warning strong{display:block;margin-bottom:2px;color:#654b24}
+.xhs-live-status{min-height:1.4em;margin:0}
+html[data-theme="dark"] .text-copy-dialog textarea,html[data-theme="dark"] .xhs-live-dialog textarea{background:#1d2925;color:var(--ink);border-color:var(--line)}
+html[data-theme="dark"] .xhs-live-warning{background:#30291f;border-color:#5b4d36;color:#d8c49e}
+html[data-theme="dark"] .xhs-live-warning strong{color:#efd29d}
+@media(max-width:520px){.text-copy-dialog,.xhs-live-dialog{padding:18px}.dialog-actions{display:grid;grid-template-columns:1fr 1fr}.xhs-live-dialog .dialog-actions .primary{grid-column:1/-1}}

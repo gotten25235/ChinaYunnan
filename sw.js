@@ -7,7 +7,7 @@
   - STORAGE_SCHEMA 維持 v1，避免一般升版清空使用者資料與圖片快取。
 */
 const RELEASE_VERSION = '1.6.7';
-const BUILD_ID = '20260915-122300';
+const BUILD_ID = '20260916-024527';
 const STORAGE_SCHEMA = 'v1';
 const APP_CACHE = `yunnan-app-${RELEASE_VERSION}-${BUILD_ID}`;
 const IMAGE_CACHE = `yunnan-images-${STORAGE_SCHEMA}`;
@@ -348,6 +348,7 @@ async function retryMissingPhotos(port){
 
 self.addEventListener('message', event => {
   const msg=event.data||{},port=event.ports?.[0];
+  if(msg.type==='GET_BUILD_INFO'){port?.postMessage({type:'BUILD_INFO',version:RELEASE_VERSION,build:BUILD_ID});return;}
   if(msg.type==='SKIP_WAITING'){event.waitUntil(self.skipWaiting());return;}
   const allowed=['PREPARE_OFFLINE','RETRY_OFFLINE_PHOTOS','CHECK_OFFLINE','CLEAR_OFFLINE_PHOTOS','CLEAR_OFFLINE_DOWNLOADS'];
   if (!port || !allowed.includes(msg.type)) return;

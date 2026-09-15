@@ -27,7 +27,16 @@
     const highAltitudeCities=new Set(['香格里拉']);
     let cache={records:{}};
     let providerConfig={amapKey:'',qweatherHost:'',qweatherKey:''};
-    let storageAvailable=true,refreshPromise=null,timer=null;
+    let storageAvailable=true,refreshPromise=null,timer=null,liveDateTimer=null,liveDateKey='';
+
+    const xhsPlaceTerms=Object.freeze({
+      '昆明':'昆明',
+      '大理':'大理',
+      '麗江':'丽江',
+      '香格里拉':'香格里拉',
+      '玉龍雪山・雲杉坪':'玉龙雪山 云杉坪',
+      '普達措國家公園':'普达措 国家公园'
+    });
 
     const hasCoords=p=>Number.isFinite(Number(p?.lat))&&Number.isFinite(Number(p?.lng));
     const dateLabel=date=>String(date||'').slice(5).replace('-','/');
@@ -39,6 +48,88 @@
     const maxFinite=(...values)=>{const nums=values.map(Number).filter(Number.isFinite);return nums.length?Math.max(...nums):null;};
     const minFinite=(...values)=>{const nums=values.map(Number).filter(Number.isFinite);return nums.length?Math.min(...nums):null;};
     const cleanHost=value=>String(value||'').trim().replace(/^https?:\/\//i,'').replace(/\/.*$/,'');
+    function liveDate(offsetDays=0){
+      const shifted=new Date(Date.now()+Number(offsetDays||0)*86400000),parts={};
+      try{
+        new Intl.DateTimeFormat('en-US',{timeZone:tripData.timezone||'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(shifted).forEach(part=>{if(part.type!=='literal')parts[part.type]=part.value;});
+      }catch{
+        parts.year=String(shifted.getUTCFullYear());parts.month=String(shifted.getUTCMonth()+1).padStart(2,'0');parts.day=String(shifted.getUTCDate()).padStart(2,'0');
+      }
+      const year=Number(parts.year),month=Number(parts.month),day=Number(parts.day),iso=`${String(year).padStart(4,'0')}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+      return {year,month,day,iso,label:`${month}/${day}`,keywordDate:`${month}.${day}`};
+    }
+    function xhsPlaceTerm(point){return xhsPlaceTerms[point?.label]||String(point?.label||'雲南').replace(/麗/g,'丽').replace(/龍/g,'龙').replace(/雲/g,'云').replace(/國/g,'国').replace(/園/g,'园');}
+    function xhsDeepLink(keyword){return `xhsdiscover://search/result?keyword=${encodeURIComponent(keyword)}&target_search=notes&source=deeplink`;}
+    function xhsSearch(point,date){
+      const keyword=`${date.keywordDate} ${xhsPlaceTerm(point)} 实况 穿搭 天气`;
+      return {keyword,deeplink:xhsDeepLink(keyword)};
+    }
+    const liveItemIds=new Set(['snow','spruce','blue-moon','ganhaizi','tiger','songzanlin','pudacuo']);
+    const simplifiedText=value=>String(value||'').replace(/[・／/]/g,' ').replace(/麗/g,'丽').replace(/龍/g,'龙').replace(/雲/g,'云').replace(/國/g,'国').replace(/園/g,'园').replace(/鎮/g,'镇').replace(/風/g,'风').replace(/臺/g,'台').replace(/與/g,'与').replace(/\s+/g,' ').trim();
+    function itemXhsData(item){
+      if(!item?.name)return null;
+      const name=simplifiedText(item.name),city=simplifiedText(item.city||''),mode=liveItemIds.has(item.id)?'live':'search',customQuery=simplifiedText(item.xhsQuery||'');
+      if(mode==='live'){
+        const today=liveDate(0),yesterday=liveDate(-1),keyword=`${today.keywordDate} ${name} 实况 穿搭 天气`,altKeyword=`${yesterday.keywordDate} ${name} 实况 穿搭 天气`;
+        return {mode,keyword,deeplink:xhsDeepLink(keyword),context:`${item.name} · ${today.label} 即時實況`,altKeyword,altDeeplink:xhsDeepLink(altKeyword),altLabel:`資料少？改搜 ${yesterday.label}`};
+      }
+      let keyword=customQuery;
+      if(keyword){}
+      else if(item.type==='photo')keyword=`${city} ${name} 拍照 机位 构图 姿势`;
+      else if(item.type==='food')keyword=`${city} ${name} 推荐 好吃 避雷`;
+      else if(item.type==='shopping')keyword=`${name} 云南 推荐 哪里买`;
+      else if(item.type==='hotel')keyword=`${name} 酒店 实拍 早餐 隔音`;
+      else if(item.type==='night')keyword=`${city} ${name} 夜游 实况 攻略`;
+      else keyword=`${city} ${name} 攻略 实况 避雷`;
+      keyword=keyword.replace(/\s+/g,' ').trim();
+      return {mode,keyword,deeplink:xhsDeepLink(keyword),context:`${item.name} · 小紅書搜尋`};
+    }
+    function liveSearchHtml(point,tripDay){
+      const today=liveDate(0),yesterday=liveDate(-1),todaySearch=xhsSearch(point,today),yesterdaySearch=xhsSearch(point,yesterday),label=esc(point?.label||'此地點'),day=esc(tripDay||'');
+      return `<div class="weather-live-links" aria-label="${label} 小紅書近期實況"><span class="weather-live-label">📕 小紅書實況</span><button type="button" class="weather-live-link" data-weather-live-open data-weather-live-keyword="${esc(todaySearch.keyword)}" data-weather-live-deeplink="${esc(todaySearch.deeplink)}" data-weather-live-search="today" data-weather-live-point="${label}" data-weather-live-date="${today.iso}" data-weather-live-trip-day="${day}">${today.label} 現場穿搭 ↗</button><button type="button" class="weather-live-fallback" data-weather-live-open data-weather-live-keyword="${esc(yesterdaySearch.keyword)}" data-weather-live-deeplink="${esc(yesterdaySearch.deeplink)}" data-weather-live-search="yesterday" data-weather-live-point="${label}" data-weather-live-date="${yesterday.iso}" data-weather-live-trip-day="${day}">資料少？看 ${yesterday.label}</button></div>`;
+    }
+    function copyText(value){
+      const text=String(value||'').trim();if(!text)return Promise.reject(new Error('empty'));
+      if(navigator.clipboard?.writeText)return navigator.clipboard.writeText(text);
+      return new Promise((resolve,reject)=>{const area=document.createElement('textarea');area.value=text;area.setAttribute('readonly','');area.style.cssText='position:fixed;left:-9999px;top:0;opacity:0';document.body.appendChild(area);area.select();try{document.execCommand('copy')?resolve():reject(new Error('copy failed'));}catch(error){reject(error);}finally{area.remove();}});
+    }
+    function openXhs(button){
+      const weatherMode=button?.hasAttribute('data-weather-live-open'),deeplink=String(button?.dataset.xhsDeeplink||button?.dataset.weatherLiveDeeplink||''),keyword=String(button?.dataset.xhsKeyword||button?.dataset.weatherLiveKeyword||'');if(!deeplink||!keyword)return false;
+      const dialog=document.querySelector('#xhs-live-dialog'),field=document.querySelector('#xhs-live-keyword'),context=document.querySelector('[data-xhs-live-context]'),status=document.querySelector('[data-xhs-live-status]'),title=document.querySelector('[data-xhs-dialog-title]'),alternate=document.querySelector('[data-xhs-alternate]');
+      if(!dialog||!field)return false;
+      dialog.dataset.deeplink=deeplink;dialog.dataset.keyword=keyword;dialog.dataset.primaryDeeplink=deeplink;dialog.dataset.primaryKeyword=keyword;dialog.dataset.primaryContext=String(button?.dataset.xhsContext||'');dialog.dataset.showingAlternate='0';
+      dialog.dataset.altDeeplink=String(button?.dataset.xhsAltDeeplink||'');dialog.dataset.altKeyword=String(button?.dataset.xhsAltKeyword||'');dialog.dataset.altLabel=String(button?.dataset.xhsAltLabel||'');
+      field.value=keyword;
+      if(title)title.textContent=weatherMode?'📕 小紅書實況':'📕 小紅書搜尋';
+      if(context){const custom=String(button?.dataset.xhsContext||'').trim(),point=String(button?.dataset.weatherLivePoint||'').trim(),date=String(button?.dataset.weatherLiveDate||'').slice(5).replace('-','/');context.textContent=custom||[point,date?`${date} 實況搜尋`:null].filter(Boolean).join(' · ');}
+      if(alternate){const hasAlt=Boolean(dialog.dataset.altKeyword&&dialog.dataset.altDeeplink);alternate.hidden=!hasAlt;alternate.textContent=dialog.dataset.altLabel||'改搜昨天';}
+      if(status)status.textContent='點「開啟小紅書」後會嘗試喚起 App。';
+      if(!dialog.open){if(typeof dialog.showModal==='function')dialog.showModal();else dialog.setAttribute('open','');}
+      return true;
+    }
+    function alternateXhs(){
+      const dialog=document.querySelector('#xhs-live-dialog'),field=document.querySelector('#xhs-live-keyword'),context=document.querySelector('[data-xhs-live-context]'),status=document.querySelector('[data-xhs-live-status]'),button=document.querySelector('[data-xhs-alternate]');if(!dialog||!field||!button||!dialog.dataset.altKeyword)return false;
+      const alt=dialog.dataset.showingAlternate!=='1';dialog.dataset.showingAlternate=alt?'1':'0';
+      const keyword=alt?dialog.dataset.altKeyword:dialog.dataset.primaryKeyword,deeplink=alt?dialog.dataset.altDeeplink:dialog.dataset.primaryDeeplink;dialog.dataset.keyword=keyword;dialog.dataset.deeplink=deeplink;field.value=keyword;
+      button.textContent=alt?'回到今天':(dialog.dataset.altLabel||'改搜昨天');
+      if(context&&dialog.dataset.primaryContext)context.textContent=alt?`${dialog.dataset.primaryContext} · 昨日備援`:dialog.dataset.primaryContext;
+      if(status)status.textContent=alt?'已切換為昨天的搜尋詞。':'已切回今天的搜尋詞。';
+      return true;
+    }
+    function launchXhs(){
+      const dialog=document.querySelector('#xhs-live-dialog'),deeplink=String(dialog?.dataset.deeplink||'');if(!deeplink)return false;
+      const status=document.querySelector('[data-xhs-live-status]');
+      if(status)status.textContent='正在嘗試開啟小紅書 App…';
+      try{window.location.href=deeplink;}catch{if(status)status.textContent='無法喚起小紅書；請確認已安裝 App，或先複製搜尋詞。';}
+      setTimeout(()=>{if(dialog?.open&&status)status.textContent='若沒有跳到小紅書，可能未安裝 App 或瀏覽器未允許喚起；可先複製搜尋詞。';},1400);
+      return true;
+    }
+    function copyXhs(){
+      const dialog=document.querySelector('#xhs-live-dialog'),keyword=String(dialog?.dataset.keyword||document.querySelector('#xhs-live-keyword')?.value||'');if(!keyword)return false;
+      const status=document.querySelector('[data-xhs-live-status]');
+      copyText(keyword).then(()=>{if(status)status.textContent='✓ 已複製搜尋詞';toast?.('已複製小紅書搜尋詞');}).catch(()=>{const field=document.querySelector('#xhs-live-keyword');field?.focus();field?.select();if(status)status.textContent='無法自動複製，已選取搜尋詞。';});
+      return true;
+    }
 
     try{
       const raw=localStorage.getItem(CACHE_KEY);if(raw){const parsed=JSON.parse(raw);if(parsed&&typeof parsed==='object'&&parsed.records)cache=parsed;}
@@ -124,7 +215,7 @@
     function mapPlaceholder(place,dayValue='all'){return `<div class="map-weather-box" data-weather-map-place="${esc(place.id)}" data-weather-map-day="${esc(dayValue)}" aria-live="polite">⌁ 旅程日天氣載入中</div>`;}
     function noForecastText(date){const hasAny=Object.values(cache.records||{}).some(r=>r?.daily&&Object.keys(r.daily).length);return hasAny?`目前預報範圍尚未涵蓋 ${dateLabel(date)}`:'天氣資料尚未取得；連線後可更新';}
     function summaryHtml(day){const point=mainPointForDay(day),c=compactForecast(point,day.date);if(!point||!c)return `<span class="weather-inline-empty">⌁ ${esc(noForecastText(day.date))}</span>`;return `<span class="weather-inline-icon" aria-hidden="true">${c.info.icon}</span><strong>${c.max}° / ${c.min}°</strong><span>${esc(c.info.label)}</span>${c.rain!==null?`<span>降雨 ${c.rain}%</span>`:''}`;}
-    function weatherRow(point,date,{primary=false}={}){const c=compactForecast(point,date);if(!c)return `<div class="weather-row ${primary?'primary':''}"><div><strong>${esc(point.label)}</strong><small>${esc(noForecastText(date))}</small></div></div>`;const apparentLow=fmt(c.f.apparentMin),wind=fmt(c.f.wind),uv=fmt(c.f.uv),windText=String(c.f.windText||'').trim();return `<div class="weather-row ${primary?'primary':''}"><div class="weather-row-main"><span class="weather-row-icon" aria-hidden="true">${c.info.icon}</span><div><strong>${esc(point.label)}</strong><small>${esc(c.info.label)} · ${esc(dateLabel(date))}</small></div></div><div class="weather-temps"><b>${c.max}°</b><span>/ ${c.min}°</span></div><div class="weather-metrics">${c.rain!==null?`<span>☂ ${c.rain}%</span>`:''}${apparentLow!==null?`<span>體感低 ${apparentLow}°</span>`:''}${wind!==null?`<span>風 ${wind} km/h</span>`:(windText?`<span>${esc(windText)}</span>`:'')}${uv!==null?`<span>UV ${uv}</span>`:''}</div></div>`;}
+    function weatherRow(point,date,{primary=false,tripDay=''}={}){const c=compactForecast(point,date),live=liveSearchHtml(point,tripDay);if(!c)return `<div class="weather-row ${primary?'primary':''}"><div class="weather-row-main"><div><strong>${esc(point.label)}</strong><small>${esc(noForecastText(date))}</small></div></div>${live}</div>`;const apparentLow=fmt(c.f.apparentMin),wind=fmt(c.f.wind),uv=fmt(c.f.uv),windText=String(c.f.windText||'').trim();return `<div class="weather-row ${primary?'primary':''}"><div class="weather-row-main"><span class="weather-row-icon" aria-hidden="true">${c.info.icon}</span><div><strong>${esc(point.label)}</strong><small>${esc(c.info.label)} · ${esc(dateLabel(date))}</small></div></div><div class="weather-temps"><b>${c.max}°</b><span>/ ${c.min}°</span></div><div class="weather-metrics">${c.rain!==null?`<span>☂ ${c.rain}%</span>`:''}${apparentLow!==null?`<span>體感低 ${apparentLow}°</span>`:''}${wind!==null?`<span>風 ${wind} km/h</span>`:(windText?`<span>${esc(windText)}</span>`:'')}${uv!==null?`<span>UV ${uv}</span>`:''}</div>${live}</div>`;}
     const providerLabel=id=>id==='amap'?'高德天氣':id==='qweather-grid'?'QWeather Grid':id==='open-meteo'?'Open-Meteo':id;
     function amapPublicWeatherUrl(point){
       const converted=networkProfile?.wgs84ToGcj02?.(point.lat,point.lng)||[point.lat,point.lng],url=new URL('https://www.amap.com/regeo');
@@ -134,7 +225,7 @@
     function openMeteoPublicWeatherUrl(point){const url=new URL('https://open-meteo.com/en/docs');url.searchParams.set('latitude',Number(point.lat).toFixed(4));url.searchParams.set('longitude',Number(point.lng).toFixed(4));url.searchParams.set('timezone',tripData.timezone||'Asia/Shanghai');url.searchParams.set('forecast_days','16');return url.toString();}
     function publicSourceLinks(point){const label=esc(point.label||'此地點');return `<span class="weather-source-location"><b>${label}</b><span class="weather-source-links"><a href="${esc(amapPublicWeatherUrl(point))}" target="_blank" rel="noopener noreferrer" title="在高德地圖查看 ${label} 天氣">高德 ↗</a><a href="${esc(qweatherPublicWeatherUrl(point))}" target="_blank" rel="noopener noreferrer" title="在 QWeather 查看 ${label} 天氣">QWeather ↗</a><a href="${esc(openMeteoPublicWeatherUrl(point))}" target="_blank" rel="noopener noreferrer" title="在 Open-Meteo 查看 ${label} 座標預報">Open-Meteo ↗</a></span></span>`;}
     function sourceFooter(points){const providers=[...new Set(points.flatMap(p=>pointRecord(p)?.providers||[]))];return `<span>${networkProfile?.name?.(networkProfile.get())||'國際版'} · 優先順序：高德 → QWeather Grid → Open-Meteo${providers.length?` · 本次 ${esc(providers.map(providerLabel).join(' + '))}`:''}</span><span class="weather-source-destinations">${points.map(publicSourceLinks).join('')}</span>`;}
-    function panelHtml(day){const points=pointsForDay(day),main=points[0]||null;if(!main)return '<div class="weather-loading">此日沒有可用的天氣定位點。</div>';const rows=points.map((p,i)=>weatherRow(p,day.date,{primary:i===0})).join(''),alerts=points.flatMap(p=>alertMessages(getForecast(p,day.date),{highAltitude:p.highAltitude})),updateTimes=points.map(pointUpdate).filter(Boolean),last=updateTimes.length?Math.max(...updateTimes):0,alertHtml=alerts.length?`<div class="weather-alerts">${[...new Set(alerts)].map(x=>`<span>${esc(x)}</span>`).join('')}</div>`:'';return `<header class="weather-panel-head"><div><span class="eyebrow">WEATHER · 天氣</span><h3>今日天氣</h3></div><button type="button" class="weather-refresh" data-weather-refresh>↻ 更新</button></header><div class="weather-grid">${rows}</div>${alertHtml}<footer class="weather-source"><span>${last?`最後更新 ${esc(formatUpdate(last))}`:'尚未取得預報'} · 每 1 小時最多更新一次</span>${sourceFooter(points)}</footer>`;}
+    function panelHtml(day){const points=pointsForDay(day),main=points[0]||null;if(!main)return '<div class="weather-loading">此日沒有可用的天氣定位點。</div>';const rows=points.map((p,i)=>weatherRow(p,day.date,{primary:i===0,tripDay:day.day})).join(''),alerts=points.flatMap(p=>alertMessages(getForecast(p,day.date),{highAltitude:p.highAltitude})),updateTimes=points.map(pointUpdate).filter(Boolean),last=updateTimes.length?Math.max(...updateTimes):0,alertHtml=alerts.length?`<div class="weather-alerts">${[...new Set(alerts)].map(x=>`<span>${esc(x)}</span>`).join('')}</div>`:'';return `<header class="weather-panel-head"><div><span class="eyebrow">WEATHER · 天氣</span><h3>今日天氣</h3></div><button type="button" class="weather-refresh" data-weather-refresh>↻ 更新</button></header><div class="weather-grid">${rows}</div>${alertHtml}<footer class="weather-source"><span>${last?`最後更新 ${esc(formatUpdate(last))}`:'尚未取得預報'} · 每 1 小時最多更新一次</span>${sourceFooter(points)}</footer>`;}
 
     function associatedDay(place){const explicit=Array.isArray(place?.days)?place.days[0]:null;if(explicit)return tripData.days.find(d=>d.day===Number(explicit))||null;return tripData.days.find(d=>d.hotel===place?.id||d.itinerary.includes(place?.id)||d.nearby.includes(place?.id)||d.nightRecommendations.includes(place?.id))||tripData.days.find(d=>d.city===place?.city)||null;}
     function distanceSq(a,b){const x=(Number(a.lat)-Number(b.lat))*111,y=(Number(a.lng)-Number(b.lng))*111*Math.cos(Number(a.lat)*Math.PI/180);return x*x+y*y;}
@@ -151,10 +242,10 @@
     function clearCache({notify=true}={}){cache={records:{}};saveCache();hydrate();if(notify)toast?.('已清除天氣快取');return true;}
 
     function hydrate(root=document){const scope=root?.querySelectorAll?root:document,summaries=[];if(scope.matches?.('[data-weather-day-summary]'))summaries.push(scope);scope.querySelectorAll?.('[data-weather-day-summary]').forEach(el=>summaries.push(el));summaries.forEach(el=>{const day=tripData.days.find(d=>d.day===Number(el.dataset.weatherDaySummary));if(day)el.innerHTML=summaryHtml(day);});const panels=[];if(scope.matches?.('[data-weather-day-panel]'))panels.push(scope);scope.querySelectorAll?.('[data-weather-day-panel]').forEach(el=>panels.push(el));panels.forEach(el=>{const day=tripData.days.find(d=>d.day===Number(el.dataset.weatherDayPanel));if(day)el.innerHTML=panelHtml(day);});const mapNodes=[];if(scope.matches?.('[data-weather-map-place]'))mapNodes.push(scope);scope.querySelectorAll?.('[data-weather-map-place]').forEach(el=>mapNodes.push(el));mapNodes.forEach(el=>{const p=items[el.dataset.weatherMapPlace];if(p)el.innerHTML=mapHtml(p,el.dataset.weatherMapDay||'all');});}
-    function handleAction(button){if(button?.hasAttribute('data-weather-settings-save'))return saveSettings(button);if(button?.hasAttribute('data-weather-settings-clear'))return clearSettings(button);if(!button?.hasAttribute('data-weather-refresh'))return false;button.disabled=true;refresh(true).finally(()=>{button.disabled=false;});return true;}
-    function start(){hydrate();refresh(false);timer=setInterval(()=>refresh(false),CACHE_TTL);window.addEventListener('online',()=>refresh(false),{passive:true});}
-    function cleanup(){if(timer)clearInterval(timer);timer=null;}
-    return {daySummaryPlaceholder,dayPanelPlaceholder,mapPlaceholder,hydrate,handleAction,start,refresh,clearCache,cleanup,settingsHtml,isStorageAvailable:()=>storageAvailable};
+    function handleAction(button){if(button?.hasAttribute('data-weather-live-open')||button?.hasAttribute('data-xhs-open'))return openXhs(button);if(button?.hasAttribute('data-weather-live-launch'))return launchXhs();if(button?.hasAttribute('data-weather-live-dialog-copy'))return copyXhs();if(button?.hasAttribute('data-xhs-alternate'))return alternateXhs();if(button?.hasAttribute('data-weather-settings-save'))return saveSettings(button);if(button?.hasAttribute('data-weather-settings-clear'))return clearSettings(button);if(!button?.hasAttribute('data-weather-refresh'))return false;button.disabled=true;refresh(true).finally(()=>{button.disabled=false;});return true;}
+    function start(){hydrate();liveDateKey=liveDate(0).iso;refresh(false);timer=setInterval(()=>refresh(false),CACHE_TTL);liveDateTimer=setInterval(()=>{const next=liveDate(0).iso;if(next!==liveDateKey){liveDateKey=next;hydrate();}},60000);window.addEventListener('online',()=>refresh(false),{passive:true});}
+    function cleanup(){if(timer)clearInterval(timer);if(liveDateTimer)clearInterval(liveDateTimer);timer=null;liveDateTimer=null;}
+    return {daySummaryPlaceholder,dayPanelPlaceholder,mapPlaceholder,hydrate,handleAction,start,refresh,clearCache,cleanup,settingsHtml,itemXhsData,isStorageAvailable:()=>storageAvailable};
   }
 
   window.YunnanWeatherSystem={create};

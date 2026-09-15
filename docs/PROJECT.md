@@ -123,7 +123,7 @@
 
 ### 圖片與媒體來源界線
 
-旅拍參考圖與一般景點主圖分開管理。`trip-data.json > photos` 仍管理網站景點主圖及其授權／來源；`photoSpots > poseTips` 的來源實拍只作旅拍參考，必須在前台與 `POSE_SCREENSHOT_SOURCES.md` 標示來源頁、平台及已知作者／日期。非商用與註明出處不等於自動取得再利用授權，因此文件不宣稱這些來源實拍具有可重用授權；若來源方要求移除，可直接替換或取消該張參考圖，而不影響 Pose 文字。
+旅拍參考圖與一般景點主圖分開管理。`trip-data.json > photos` 仍管理網站景點主圖及其授權／來源；`photoSpots > poseTips` 的來源實拍只作旅拍參考，必須在前台與 `POSE_SCREENSHOT_SOURCES.md` 標示來源頁、平台及已知作者／日期。旅拍來源實拍直接讀取第三方公開圖片，不再建立 `images/pose-guides/*.webp` 本地複本；來源頁仍保留供追溯。圖片第一次開啟需要網路，成功載入後可由 runtime image cache 保存。非商用與註明出處不等於自動取得再利用授權；若來源方要求移除，可直接替換或取消該張參考圖，而不影響 Pose 文字。
 
 `data/source-index.json` 由 `python tools/generate_source_index.py` 生成，不得手改。Validator 會檢查來源 ID、`fieldSources ⊆ sourceRefs`、Source Record key / `sourceId` 與 generated index 同步。
 
@@ -153,6 +153,7 @@ Audit 在不改變正式資料的前提下額外顯示：
 
 - 圖片完整 `caption`、`author/source`、`license/licenseUrl`、`changes`。
 - Settings 的「版本格式：驕傲．預設．羞恥。」說明。
+- 旅拍詳情中的工程提示：「圖片改用可追溯的公開來源實拍，不再使用重畫 Pose 圖；可穩定取得者本地化打包，其餘來源圖首次載入需網路；來源失效仍保留 Pose／機位／鏡頭文字」。
 - 其他明確設計為 audit-only 的查核資訊。
 
 `photoMeta` 只接受 `public` / `audit` 語意；未知值不得創造第三種模式。**Public 是產品介面，Audit 是維護查核介面，不是兩套內容。**
@@ -164,22 +165,35 @@ Audit 在不改變正式資料的前提下額外顯示：
 | `network.js` | 國際版／大陸版 profile（預設大陸版）、Leaflet runtime loader、OSM／高德底圖選擇、WGS84 ↔ GCJ-02 顯示座標轉換；同時提供 QWeather Grid 所需 converter |
 | `core.js` | Photo System、Travel Utils、Favorites Store、Navigation Service、Date Rail、Horizontal Scroller；Photo System 固定執行 `src 本地 WebP → remoteSrc（同一張實物圖）→ 無此圖`，不做跨地點／同類商品／自製示意圖 fallback |
 | `analytics.js` | 可選 Umami tracker loader、匿名事件 queue 與 persistent anonymous browser ID；不記姓名、表單內容／精確定位；未啟用或本機開發時不載入外部 tracker |
-| `weather.js` | 高德 → QWeather Grid → Open-Meteo provider chain、API credential local settings、欄位補缺、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots |
+| `weather.js` | 高德 → QWeather Grid → Open-Meteo provider chain、API credential local settings、欄位補缺、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots；同時集中管理小紅書搜尋詞、Deeplink 與共用確認彈窗：天氣列用目前雲南日期產生今日／昨日實況，Detail Reader 依內容類型產生攻略／美食／購物／旅拍搜尋，即時型景點另提供今日／昨日切換 |
 | `offline.js` | PWA 選擇式離線準備、Service Worker bridge、Cache 完整性檢查、缺失清單、只重試失敗照片、安裝提示、收藏／偏好匯出匯入；不保存天氣 API Key |
 | `settings.js` | Settings View 的顯示主題與介面版面 preference owner；主題支援 `system / light / dark`，版面支援 `mobile / desktop`；使用 `yunnan-2026-color-theme-v1` 與 `yunnan-2026-ui-layout-v1` |
-| `reader.js` | Content Reader、stack、return state、Reader swipe |
+| `reader.js` | Content Reader、stack、return state、Reader swipe；每個 Item Reader 操作列向 Weather/XHS helper 取得對應搜尋資料並顯示 `📕 小紅書` 按鈕 |
 | `journey.js` | Day 01–08、Day 展開、時刻表、PNG export、航班／住宿 Journey UI |
 | `map.js` | Leaflet、Map filters、Map Rail、Map Detail、定位、自定義地點、長按；無底圖時提供離線地標簡圖與純座標 Nearby |
+
+### 探索地圖地標顯示規則
+
+- 探索地圖預設使用「全部」，地圖標記與下方卡片清單必須使用同一組可見資料。
+- 切換「全部／已安排／自定義」時，Leaflet 標記、離線簡圖與下方卡片必須同步重繪；不得只切換卡片清單而讓地圖仍停留在上一組標記。
+- `customMapDefault` 內且符合當日 `days` 的地點，在「全部」與「自定義」中都必須可見。2026-09-16 新增的大理北門菜市場、總統兵馬大元帥府、南詔十二時辰對既有 localStorage 做一次性補種，避免舊裝置因曾開過網站而漏掉新地標。
+- 使用者之後手動移除自定義地點仍以 localStorage 為準；一次性補種不重複執行。
 | `library.js` | Content/Story Card、Night/Food/Shopping/Favorites/Photo/Culture state/render |
 | `app.js` | JSON bootstrap、`VIEW_REGISTRY`、App Shell、shared day coordinator、單一 action router、全版面 Main Tab swipe |
 
 主要 state 只由各自 Owner 寫入：App 擁有 `currentView`；Network 擁有 profile；Core 擁有 Favorites IDs 與 navigation provider；Analytics 擁有 tracker runtime 與匿名 V-ID；Weather 擁有 provider credentials/cache；Offline 擁有離線選取與準備狀態；Settings 擁有顯示主題與介面版面；Journey／Map／Library／Reader 各自持有 Domain state。Map / Night 共用日期由 App 只做協調，不建立第三份 Domain state。
+
+小紅書天氣實況屬 Weather UI：今日／昨日按鈕先開啟站內確認彈窗，彈窗明示「需已安裝小紅書 App；未安裝無法直接使用」，並顯示完整搜尋詞。使用者再按「開啟小紅書」時才以官方 `xhsdiscover://search/result?keyword=...&target_search=notes&source=deeplink` 嘗試喚起 App，避免使用會被風控阻擋的 Web 搜尋頁；同一彈窗保留一鍵「複製搜尋詞」備援。今日／昨日入口點擊事件由 App 的單一 router 送出 `weather_live_search`，payload 僅記錄 `range=today/yesterday`、地點標籤、實況日期與旅程 Day，不讀取小紅書結果或使用者帳號。
+
+Detail Reader 的小紅書入口共用同一彈窗與 Deeplink，不在圖卡表面增加按鈕。每個 Item Reader 都顯示 `📕 小紅書`：`photo` 使用「拍照／機位／構圖／姿勢」、`food` 使用「推薦／好吃／避雷」、`shopping` 使用「推薦／哪裡買」、`hotel` 使用「實拍／早餐／隔音」、`night` 使用「夜遊／實況／攻略」，一般 itinerary 使用「攻略／實況／避雷」。只有一般景點／天氣型卡片（玉龍雪山、雲杉坪、藍月谷、甘海子、虎跳峽、松贊林寺、普達措）視為 `live` 並使用今天／昨天日期；旅拍指南卡片一律維持拍照查詢，不再切成天氣實況搜尋。Reader 入口事件另送 `xhs_search_open`（`id/type/mode`）。
 
 ## 6. View Registry / Action Router
 
 `app.js > VIEW_REGISTRY` 是主 View 的唯一登記處，合法 View、導覽順序與主頁 swipe 順序都由它推導。非地圖 View 在啟動時建立穩定 DOM；圖片仍由 Photo System 使用原生 lazy loading 控制下載。Map 是唯一延後初始化的 View，必須先切成可見狀態，再於下一個 layout frame 建立或更新 Leaflet。
 
 中央 `document click` 只保留一個，順序為：Offline → Weather → Journey → Reader → Map → Library → App shared actions。局部 gesture controller 只處理自己的 boundary，不再建立第二套 document-level router。
+
+App shared actions 同時維護通用文字複製 fallback：若直接 Clipboard API 失敗，開啟「中文地址／搜尋文字」彈窗；彈窗內仍有一鍵「複製」與可手動選取的 textarea，不要求使用者只能長按。
 
 ## 7. Card / Rail / Reader
 
@@ -305,6 +319,7 @@ Cache 契約：
 
 - App Cache：`yunnan-app-<release version>-<build id>`。`build.json` 是日常唯一更新探針；版本＋ build 相同時 App Shell 使用 Cache First，不做 stale-while-revalidate 背景重抓。
 - 新 build 安裝時讀 `asset-manifest.json` 的 SHA-256；未變的 App Shell 從上一個 App Cache 直接複製，只有 hash 改變的核心檔才重新抓取。第一個導入 Build ID 的 legacy migration 會自動重載一次既有頁面。
+- 更新確認採 Worker handshake：Service Worker 回應 `GET_BUILD_INFO`，前台只有在目前 active/controller 回報的 `version + build` 與 `build.json` 目標完全相同時才 reload。若 GitHub Pages 部署暫時不同步，維持現有可用版本並 15 秒後重試；不再用固定 timeout 後無條件 reload，也不會因未成功接管而進入舊版重載循環。
 - Image Cache：`yunnan-images-v1`，Cache First；一般 build 更新不清除、不重抓圖片。
 - Offline Meta Cache：`yunnan-offline-v1`；可見準備時間另存在 `yunnan-offline-prep-state-v1`。
 - Weather cache：`yunnan-weather-cache-v1`；provider 設定：`yunnan-weather-provider-config-v1`。
@@ -377,7 +392,26 @@ python tools/release.py --bump shame --new-build --zip
 | 地址／座標查不到 | 用城市中心或猜測座標填洞 | 保持待定位，核實後才寫正式座標 |
 | 新功能不知道放哪 | renderer/state 塞進 `app.js` 或建第二套全域 handler | 先決定 Domain Owner；App 只做 bootstrap、協調與 router |
 | 天氣重複流量 | 每次切 Day／Map 都重新呼叫 API | `weather.js` 單一 owner；每點 1 小時 cache，離線沿用最後成功資料 |
-| 手機一直停舊版／同版號重抓流量 | 每次載入都 `registration.update()` + stale-while-revalidate | 每次只 network-check `build.json`；version/build 相同零 reload、App Shell Cache First；不同才更新 SW，並用 asset hash 只抓變動核心檔 |
+| 小紅書實況日期過期／誤用行程未來日期 | 把旅程日期寫進搜尋詞，或固定保存幾天前的「最新實況」 | 搜尋日期只取目前雲南日期；今日／昨日入口先顯示搜尋確認彈窗，再由使用者主動喚起小紅書 App；彈窗明示未安裝 App 無法直接使用並提供複製搜尋詞。跨日只重算內容，不觸發天氣 API 或重新發布 Build；絕不產生未來日期搜尋 |
+| 手機一直停舊版／同版號重抓流量 | 每次載入都 `registration.update()` + stale-while-revalidate，或偵測到 build 不同後固定等數秒就盲目 reload | 每次只 network-check `build.json`；version/build 相同零 reload、App Shell Cache First；不同才更新 SW，並用 asset hash 只抓變動核心檔；active Worker 必須回報目標 Build 才 reload，部署尚未同步則稍後重試 |
 | 以為「開過一次」就一定離線完整 | 只靠 lazy image / stale cache | `offline.js` 明確觸發 `PREPARE_OFFLINE`、檢查缺失並可只重試失敗照片 |
 | UI 相似就全部共用 | 萬用 CardFactory + 大量 variant/options | 維持四套 Card；共用 service / 語意，不強迫共用所有 markup |
 | 工程文件越拆越多 | 每個功能再新增一份 MD，規則交叉重複 | 人工規格只放 `PROJECT.md`；使用者說明放 README；sources 只保留 generated/evidence ledger |
+
+
+### 2026-09-16 大理／香格里拉補充
+- Day 2 夜間逍遙新增「南詔十二時辰」；既有「人民路」改為「人民路・聽歌散步」。
+- Day 2 探索地圖新增「總統兵馬大元帥府（杜文秀帥府）」。
+- Day 5「獨克宗四方街・鍋莊舞」改為「獨克宗・鍋莊打跳」，並在詳情說明：四方街自發鍋莊不等於保證有篝火；篝火晚會多見於另行付費的藏家／土司宴類體驗，先向導遊確認是否與 Day 6 藏民家訪重複。
+- 上述卡片可用 `xhsQuery` 覆寫通用小紅書關鍵字，避免機械套用卡片名稱。
+
+- Day 2 大理補充：床單廠藝術區加入「附近」清單；新增北門菜市場（高德「大理古城集貿市場」錨點）與「玉米大叔・鮮榨玉米汁」。北門菜市場／玉米汁主圖目前只使用明確標示的「大理古城市井情境參考」，不冒充指定攤位實拍。
+
+
+### Pose 圖片完整性
+
+- 旅拍指南前台直接讀第三方公開來源圖片；不再讀取或打包 `images/pose-guides/*.webp`。
+- 每張本地 Pose 圖必須對應自己的來源頁，且同一旅拍場景不得使用相同影像內容冒充不同 Pose。
+- Validator 會檢查 WebP 檔案內容 SHA-256；即使檔名不同，只要影像 bytes 相同也會阻擋發版。
+- `images/pose-guides/` 不再作為旅拍圖片來源；發版 ZIP 不應殘留舊的 Pose 本地複本。
+- 來源頁只負責追溯，不代表來源圖片具備可重用授權。

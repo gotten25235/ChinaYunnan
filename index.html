@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant" data-app-version="1.6.7" data-app-build="20260915-122300">
+<html lang="zh-Hant" data-app-version="1.6.7" data-app-build="20260916-024527">
 <head>
   <meta charset="utf-8">
   <meta id="app-viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -107,7 +107,8 @@
   <footer><span>雲南慢時光 · 一路收藏風景</span><div id="credits"></div></footer>
   <nav class="bottom-nav" aria-label="手機導覽"><button data-view="itinerary"><span>⌂</span>行程</button><button data-view="map"><span>◇</span>地圖</button><button data-view="night"><span>☾</span>夜遊</button><button data-view="food"><span>♨</span>美食</button><button data-view="favorites"><span>♡</span>收藏 <b class="fav-count">0</b></button></nav>
   <div id="toast" role="status" aria-live="polite"></div>
-  <dialog id="copy-dialog"><form method="dialog"><h2>中文地址／搜尋文字</h2><p>長按或選取下方文字，貼到地圖 App 搜尋。</p><textarea id="copy-value" readonly aria-label="可複製的地址"></textarea><button class="primary">完成</button></form></dialog>
+  <dialog id="copy-dialog" class="text-copy-dialog"><form method="dialog"><h2>中文地址／搜尋文字</h2><p>可直接複製下方文字，再貼到地圖 App 搜尋。</p><textarea id="copy-value" readonly aria-label="可複製的地址或搜尋文字"></textarea><div class="dialog-actions"><button type="button" class="primary" data-copy-dialog-copy>複製</button><button type="submit" class="action">完成</button></div></form></dialog>
+  <dialog id="xhs-live-dialog" class="xhs-live-dialog" aria-labelledby="xhs-live-dialog-title"><form method="dialog"><span class="eyebrow">XIAOHONGSHU SEARCH</span><h2 id="xhs-live-dialog-title" data-xhs-dialog-title>📕 小紅書搜尋</h2><p class="xhs-live-context" data-xhs-live-context></p><p class="xhs-live-warning"><strong>需已安裝小紅書 App。</strong>未安裝時無法使用「開啟小紅書」；若未成功喚起，可先複製搜尋詞再手動搜尋。</p><textarea id="xhs-live-keyword" readonly aria-label="小紅書搜尋詞"></textarea><p class="small xhs-live-status" data-xhs-live-status aria-live="polite"></p><div class="dialog-actions"><button type="button" class="primary" data-weather-live-launch>開啟小紅書</button><button type="button" class="action" data-weather-live-dialog-copy>複製搜尋詞</button><button type="button" class="action" data-xhs-alternate hidden>資料少？改搜昨天</button><button type="submit" class="action">完成</button></div></form></dialog>
   <dialog id="timetable-preview-dialog" class="timetable-preview-dialog" aria-labelledby="timetable-preview-title"><div class="timetable-preview-shell"><header><div><span class="eyebrow">FULL ITINERARY</span><h2 id="timetable-preview-title">八天完整行程時刻表</h2><p>開啟時會自動縮放顯示完整八天時刻表；下載 PNG 保留完整尺寸。</p></div><button type="button" class="timetable-preview-close" data-timetable-preview-close aria-label="關閉完整時刻表">×</button></header><div class="timetable-preview-canvas"><img id="timetable-preview-image" alt="八天完整行程時刻表預覽"></div><footer><span id="timetable-image-size">產生完整圖片中…</span><div><button type="button" class="action" data-timetable-preview-close>關閉</button><button type="button" class="primary" data-timetable-download>↓ 下載完整 PNG</button></div></footer></div></dialog>
   <script>
     (() => {
@@ -115,9 +116,8 @@
       if(!canUseServiceWorker)return;
       const localVersion=document.documentElement.dataset.appVersion||'';
       const localBuild=document.documentElement.dataset.appBuild||'';
-      const reloadKey='yunnan-build-reload-guard-v1';
       const checkInterval=30000;
-      let checking=null,lastChecked=0;
+      let checking=null,lastChecked=0,retryTimer=null;
 
       const ensureRegistration=async()=>{
         const existing=await navigator.serviceWorker.getRegistration('./');
@@ -125,22 +125,35 @@
         return navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'});
       };
       const remoteBuild=async()=>{
-        const url=`./build.json?check=${Date.now()}`;
-        const response=await fetch(url,{cache:'no-store',headers:{'Cache-Control':'no-cache'}});
+        const response=await fetch(`./build.json?check=${Date.now()}`,{cache:'no-store',headers:{'Cache-Control':'no-cache'}});
         if(!response.ok)throw new Error(`build check HTTP ${response.status}`);
         const data=await response.json();
         if(!data||typeof data.version!=='string'||typeof data.build!=='string')throw new Error('invalid build metadata');
         return data;
       };
-      const readGuard=()=>{try{return JSON.parse(sessionStorage.getItem(reloadKey)||'null');}catch{return null;}};
-      const writeGuard=value=>{try{sessionStorage.setItem(reloadKey,JSON.stringify(value));}catch{}};
-      const clearGuard=()=>{try{sessionStorage.removeItem(reloadKey);}catch{}};
-      const waitForControllerChange=()=>new Promise(resolve=>{
-        let settled=false;
-        const finish=()=>{if(settled)return;settled=true;clearTimeout(timer);navigator.serviceWorker.removeEventListener('controllerchange',finish);resolve();};
-        const timer=setTimeout(finish,6500);
-        navigator.serviceWorker.addEventListener('controllerchange',finish,{once:true});
+      const readWorkerBuild=worker=>new Promise(resolve=>{
+        if(!worker||typeof MessageChannel==='undefined'){resolve(null);return;}
+        const channel=new MessageChannel();let settled=false;
+        const finish=value=>{if(settled)return;settled=true;clearTimeout(timer);try{channel.port1.close();}catch{}resolve(value||null);};
+        const timer=setTimeout(()=>finish(null),1400);
+        channel.port1.onmessage=event=>{const data=event.data;if(data?.type==='BUILD_INFO'&&typeof data.version==='string'&&typeof data.build==='string')finish(data);};
+        try{worker.postMessage({type:'GET_BUILD_INFO'},[channel.port2]);}catch{finish(null);}
       });
+      const matchesTarget=(info,target)=>Boolean(info&&`${info.version}|${info.build}`===target);
+      const waitForTargetController=async(target,registration,{timeout=10000}={})=>{
+        const current=await readWorkerBuild(navigator.serviceWorker.controller||registration.active);
+        if(matchesTarget(current,target))return true;
+        return new Promise(resolve=>{
+          let settled=false,timer=null,poll=null;
+          const finish=value=>{if(settled)return;settled=true;clearTimeout(timer);clearInterval(poll);navigator.serviceWorker.removeEventListener('controllerchange',check);resolve(Boolean(value));};
+          const check=async()=>{const info=await readWorkerBuild(navigator.serviceWorker.controller||registration.active);if(matchesTarget(info,target))finish(true);};
+          navigator.serviceWorker.addEventListener('controllerchange',check);
+          poll=setInterval(check,450);
+          timer=setTimeout(()=>finish(false),timeout);
+          check();
+        });
+      };
+      const scheduleRetry=()=>{if(retryTimer||!navigator.onLine)return;retryTimer=setTimeout(()=>{retryTimer=null;checkBuild({force:true});},15000);};
       const checkBuild=({force=false}={})=>{
         if(checking)return checking;
         if(!navigator.onLine)return Promise.resolve(false);
@@ -149,29 +162,24 @@
         lastChecked=now;
         checking=(async()=>{
           try{
-            const remote=await remoteBuild();
-            const target=`${remote.version}|${remote.build}`;
-            const local=`${localVersion}|${localBuild}`;
-            if(target===local){clearGuard();return false;}
-            const guard=readGuard();
-            if(guard?.target===target&&now-Number(guard.at||0)<15000)return false;
-            writeGuard({target,at:Date.now()});
+            const remote=await remoteBuild(),target=`${remote.version}|${remote.build}`,local=`${localVersion}|${localBuild}`;
+            if(target===local)return false;
             const registration=await ensureRegistration();
-            const controllerChanged=waitForControllerChange();
+            const activeInfo=await readWorkerBuild(navigator.serviceWorker.controller||registration.active);
+            if(matchesTarget(activeInfo,target)){location.reload();return true;}
             await registration.update();
             registration.waiting?.postMessage({type:'SKIP_WAITING'});
-            await controllerChanged;
+            const ready=await waitForTargetController(target,registration);
+            if(!ready){console.warn('New build metadata is visible, but the matching Service Worker is not active yet; retrying without reload.',remote);scheduleRetry();return false;}
             location.reload();
             return true;
-          }catch(error){
-            console.warn('Build check failed; keeping current offline-capable build:',error);
-            return false;
-          }finally{checking=null;}
+          }catch(error){console.warn('Build check failed; keeping current offline-capable build:',error);scheduleRetry();return false;}
+          finally{checking=null;}
         })();
         return checking;
       };
 
-      window.addEventListener('load',()=>{ensureRegistration().then(()=>checkBuild({force:true})).catch(error=>console.warn('Service Worker registration failed:',error));},{once:true});
+      window.addEventListener('load',()=>{ensureRegistration().then(()=>checkBuild({force:true})).catch(error=>{console.warn('Service Worker registration failed:',error);scheduleRetry();});},{once:true});
       window.addEventListener('online',()=>checkBuild({force:true}));
       window.addEventListener('pageshow',event=>{if(event.persisted)checkBuild({force:true});});
       document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkBuild();});

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import hashlib
 import shutil
 import subprocess
 import sys
@@ -303,7 +304,7 @@ def validate_media(trip: dict) -> None:
 
     # Strict semantic matching: exact subjects stay exact; only broad activities/transit may use labeled context/illustration.
     strict_before = len(errors)
-    allowed_generic_places = {"arrival", "carriage", "visit", "tea-diy", "city-free", "return", "night-live"}
+    allowed_generic_places = {"arrival", "carriage", "visit", "tea-diy", "city-free", "return", "night-live", "night-nanzhao", "custom-dali-marshal", "custom-dali-north-market"}
     allowed_matches = {"exact", "verified", "illustrative", "context", "representative"}
     places = trip.get("places") if isinstance(trip.get("places"), dict) else {}
     for item_id, obj in places.items():
@@ -355,8 +356,9 @@ def validate_media(trip: dict) -> None:
                 source_image = tip.get("sourceImage")
                 if isinstance(source_image, str) and source_image:
                     source_images_in_spot.append(source_image)
-                if not isinstance(source_image, str) or not source_image.startswith(("http://", "https://")):
-                    error(f"photoSpots[{index}].poseTips[{tip_index}].sourceImage must be an http(s) source visual")
+                remote_pose = isinstance(source_image, str) and source_image.startswith(("http://", "https://"))
+                if not remote_pose:
+                    error(f"photoSpots[{index}].poseTips[{tip_index}].sourceImage must be a remote http(s) source visual")
                 source_url = tip.get("sourceUrl")
                 if not isinstance(source_url, str) or not source_url.startswith(("http://", "https://")):
                     error(f"photoSpots[{index}].poseTips[{tip_index}].sourceUrl must be an http(s) source page")
@@ -366,7 +368,7 @@ def validate_media(trip: dict) -> None:
                         error(f"photoSpots[{index}].poseTips[{tip_index}].{field} is required for visible provenance")
             duplicate_pose_images = [url for url, count in Counter(source_images_in_spot).items() if count > 1]
             if duplicate_pose_images:
-                error(f"photoSpots[{index}]: each poseTip must use a different sourceImage")
+                error(f"photoSpots[{index}]: each poseTip must use a different remote sourceImage URL")
     if len(errors) == strict_before:
         passed("photo coverage is complete and strict semantics hold: named subjects use exact/verified; broad imagery is explicitly labeled")
 
@@ -602,10 +604,14 @@ def validate_offline_pwa(trip: dict) -> None:
                 expected_remote_urls.append(remote)
             else:
                 expected_local_photo_paths.append("./" + src.lstrip("./"))
-    # Pose source visuals are remote runtime references and are intentionally excluded
-    # from packaged photoAssets; successful loads use the service worker image cache.
+    # Pose reference visuals are remote-only. The release ZIP must not carry stale
+    # images/pose-guides WebP copies, otherwise old mismatched files can reappear.
+    pose_dir = ROOT / "images" / "pose-guides"
+    packaged_pose_files = sorted(str(path.relative_to(ROOT)).replace("\\", "/") for path in pose_dir.glob("*.webp")) if pose_dir.exists() else []
+    if packaged_pose_files:
+        error(f"pose-guide package must be empty in remote-only mode; extra={packaged_pose_files}")
     if set(photo_assets) != set(expected_local_photo_paths):
-        error("offline-manifest photoAssets must include exactly the currently packaged local primary photos")
+        error("offline-manifest photoAssets must include exactly the currently packaged local primary photos and pose guides")
     manifest_urls=[]
     for record in remote_photos:
         if not isinstance(record, dict):
