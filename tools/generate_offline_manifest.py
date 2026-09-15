@@ -99,6 +99,9 @@ def photo_records() -> tuple[list[str], list[dict]]:
             if normalized not in local:
                 local.append(normalized)
 
+    # Pose reference visuals are third-party runtime images. The service worker
+    # cache-first image handler can retain successful loads, but they are not packaged assets.
+
     return local, list(by_url.values())
 
 

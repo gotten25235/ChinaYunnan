@@ -5,7 +5,7 @@ const PAUSE_KEY='yn-banner-animation-paused-v1';
 function readPause(){try{return localStorage.getItem(PAUSE_KEY)==='1';}catch(_){return false;}}
 let paused=readPause(),visible=true,frame=0,last=0,lastPaint=0,t=0,gl=null,program,ut,ur,um,ub,uc,mouse=[-10,-10],burst=[-10,-10],clearRadius=.001,nx=0,ny=0,dragX=0,dragY=0,focusX=0,dragging=false,moved=false,startX=0,startY=0,selected=null,captionTimer,pointerFrame=0,pendingPointer=null,resizeFrame=0,burstStart=0,initialOpeningPending=!paused;
 function writePause(){try{localStorage.setItem(PAUSE_KEY,paused?'1':'0');}catch(_){}}
-const BURST_TOTAL=1500,PAINT_STEP=40;
+const BURST_OPEN=240,BURST_HOLD=3000,BURST_CLOSE=540,BURST_TOTAL=BURST_OPEN+BURST_HOLD+BURST_CLOSE,PAINT_STEP=40;
 try{
  gl=canvas.getContext('webgl',{alpha:true,premultipliedAlpha:false,antialias:false,powerPreference:'low-power'});
  if(gl){
@@ -30,7 +30,7 @@ function resize(){if(!resizeFrame)resizeFrame=requestAnimationFrame(doResize);}
 function shouldDrift(){return !paused&&visible&&!document.hidden;}
 function schedule(){if(!frame&&visible&&!document.hidden&&(shouldDrift()||burstStart))frame=requestAnimationFrame(tick);}
 function tick(now){frame=0;let needsPaint=false;if(shouldDrift()&&now-last>=PAINT_STEP){t+=Math.min((now-last)/1000,.1);last=now;needsPaint=true;}
- if(burstStart){const p=(now-burstStart)/BURST_TOTAL;if(p>=1){burstStart=0;burst=[-10,-10];clearRadius=.001;root.classList.remove('yn-sunshine');needsPaint=true;}else{if(p<.16)clearRadius=.06+1.02*easeOut(p/.16);else if(p<.64)clearRadius=1.08;else clearRadius=.001+1.079*(1-easeIn((p-.64)/.36));if(now-lastPaint>=33){lastPaint=now;needsPaint=true;}}}
+ if(burstStart){const elapsed=now-burstStart;if(elapsed>=BURST_TOTAL){burstStart=0;burst=[-10,-10];clearRadius=.001;root.classList.remove('yn-sunshine');needsPaint=true;}else{if(elapsed<BURST_OPEN)clearRadius=.06+1.02*easeOut(elapsed/BURST_OPEN);else if(elapsed<BURST_OPEN+BURST_HOLD)clearRadius=1.08;else clearRadius=.001+1.079*(1-easeIn((elapsed-BURST_OPEN-BURST_HOLD)/BURST_CLOSE));if(now-lastPaint>=33){lastPaint=now;needsPaint=true;}}}
  if(needsPaint)paint();schedule();}
 function sync(){if(frame)cancelAnimationFrame(frame);frame=0;if(paused){burstStart=0;burst=[-10,-10];clearRadius=.001;mouse=[-10,-10];nx=0;ny=0;dragX=0;dragY=0;dragging=false;pendingPointer=null;root.classList.remove('yn-sunshine','yn-hovering','yn-dragging');paint();}root.classList.toggle('yn-paused',paused||!visible||document.hidden);root.classList.toggle('yn-user-paused',paused);button.textContent=paused?'▶':'Ⅱ';button.title=button.ariaLabel=paused?'播放動畫':'暫停動畫';button.setAttribute('aria-pressed',String(paused));last=performance.now();layers();schedule();}
 button.addEventListener('click',e=>{e.stopPropagation();const wasPaused=paused;paused=!paused;writePause();sync();if(wasPaused&&!paused)playOpening();});

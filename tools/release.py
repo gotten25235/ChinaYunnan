@@ -113,6 +113,7 @@ def main() -> int:
     sync_identification(version)
     run_tool("generate_source_index.py")
     run_tool("generate_photo_sources.py")
+    run_tool("generate_pose_sources.py")
     run_tool("generate_offline_manifest.py")
     run_tool("validate_project.py")
 

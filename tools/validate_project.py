@@ -343,6 +343,30 @@ def validate_media(trip: dict) -> None:
             error(f"photoSpots[{index}]: photo spot requires exact/verified/context")
         if match == "context" and obj.get("id") != "photo-xizhou":
             error(f"photoSpots[{index}]: context is only allowed for the broad Xizhou courtyard/field composition")
+        tips = obj.get("poseTips")
+        if not isinstance(tips, list) or not tips:
+            error(f"photoSpots[{index}]: poseTips must be a non-empty list")
+        else:
+            source_images_in_spot = []
+            for tip_index, tip in enumerate(tips):
+                if not isinstance(tip, dict):
+                    error(f"photoSpots[{index}].poseTips[{tip_index}] must be an object")
+                    continue
+                source_image = tip.get("sourceImage")
+                if isinstance(source_image, str) and source_image:
+                    source_images_in_spot.append(source_image)
+                if not isinstance(source_image, str) or not source_image.startswith(("http://", "https://")):
+                    error(f"photoSpots[{index}].poseTips[{tip_index}].sourceImage must be an http(s) source visual")
+                source_url = tip.get("sourceUrl")
+                if not isinstance(source_url, str) or not source_url.startswith(("http://", "https://")):
+                    error(f"photoSpots[{index}].poseTips[{tip_index}].sourceUrl must be an http(s) source page")
+                for field in ("sourcePlatform", "sourceTitle", "sourceCaptured"):
+                    value = tip.get(field)
+                    if not isinstance(value, str) or not value.strip():
+                        error(f"photoSpots[{index}].poseTips[{tip_index}].{field} is required for visible provenance")
+            duplicate_pose_images = [url for url, count in Counter(source_images_in_spot).items() if count > 1]
+            if duplicate_pose_images:
+                error(f"photoSpots[{index}]: each poseTip must use a different sourceImage")
     if len(errors) == strict_before:
         passed("photo coverage is complete and strict semantics hold: named subjects use exact/verified; broad imagery is explicitly labeled")
 
@@ -365,6 +389,16 @@ def validate_generated_photo_sources() -> None:
         error("docs/sources/PHOTO_SOURCES.md is stale; run python tools/generate_photo_sources.py")
     else:
         passed("PHOTO_SOURCES.md matches trip-data photo metadata")
+
+
+def validate_generated_pose_sources() -> None:
+    path = ROOT / "docs" / "sources" / "POSE_SCREENSHOT_SOURCES.md"
+    script = ROOT / "tools" / "generate_pose_sources.py"
+    result = subprocess.run([sys.executable, str(script), "--check"], cwd=ROOT, capture_output=True, text=True)
+    if result.returncode:
+        error("docs/sources/POSE_SCREENSHOT_SOURCES.md is stale; run python tools/generate_pose_sources.py")
+    else:
+        passed("POSE_SCREENSHOT_SOURCES.md matches photoSpots pose provenance")
 
 
 def validate_release_and_views() -> None:
@@ -410,6 +444,7 @@ def validate_release_and_views() -> None:
         (core, "yunnan-2026-map-provider-v1", "Map provider storage"),
         (map_js, "yunnan-2026-custom-map-v1", "Custom map storage"),
         ((ROOT / "js" / "settings.js").read_text(encoding="utf-8"), "yunnan-2026-ui-layout-v1", "UI layout storage"),
+        ((ROOT / "js" / "settings.js").read_text(encoding="utf-8"), "yunnan-2026-color-theme-v1", "UI theme storage"),
     )
     for source, key, label in storage_contracts:
         if key not in source:
@@ -551,6 +586,8 @@ def validate_offline_pwa(trip: dict) -> None:
                 expected_remote_urls.append(remote)
             else:
                 expected_local_photo_paths.append("./" + src.lstrip("./"))
+    # Pose source visuals are remote runtime references and are intentionally excluded
+    # from packaged photoAssets; successful loads use the service worker image cache.
     if set(photo_assets) != set(expected_local_photo_paths):
         error("offline-manifest photoAssets must include exactly the currently packaged local primary photos")
     manifest_urls=[]
@@ -605,6 +642,7 @@ def main() -> int:
     validate_media(trip)
     validate_generated_index()
     validate_generated_photo_sources()
+    validate_generated_pose_sources()
     validate_release_and_views()
     validate_offline_pwa(trip)
     validate_js_syntax()

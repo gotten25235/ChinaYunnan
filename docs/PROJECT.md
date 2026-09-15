@@ -112,17 +112,18 @@
 ### 拍照／Pose 社群研究來源
 
 「旅拍指南」的機位與 Pose 研究固定優先搜尋 **小紅書、抖音、大眾點評**；必要時再以一般網頁、官方景區或其他公開社群補強。這三個平台的角色如下：
+- 旅拍指南同一場景的不同 Pose 參考圖必須互不重複；若只有一張可用來源圖，就只保留一個 Pose，不以同圖補數量。
 
 - **小紅書**：找近期打卡機位、人物 Pose、季節實拍與「同款」路線。若搜尋引擎只能取得二次索引、無法穩定核對原貼 URL，依來源契約只保存二次來源，不建立假的 `xiaohongshu` Source Record。
 - **抖音**：找近期現場影片、走動 Pose、拍攝機位與人流／天候下的真實畫面；採用時保存可公開核對的原影片 URL。
 - **大眾點評**：看一般遊客會員相冊與景點實拍，補足「不是專業旅拍也能拍到什麼」的視角；會員圖片只作研究，不視為可重用授權。
 - **Threads**：可搜尋，但不是固定必須來源；若沒有足以改變建議的有效內容，不為湊平台而建立紀錄。
 
-拍照資料可以把社群結論整理成 `poseTips`（Pose、攝影者位置、鏡頭／倍率、原參考 URL），並以 `sourceRefs` / `fieldSources` 追溯。**網站 Public 介面只顯示本站已有合法／可部署的景點圖與 Pose 文字整理；社群原圖／影片以外連方式查看，不下載進 ZIP、不截圖重包、不宣稱取得授權。**
+拍照資料把社群結論整理成 `poseTips`（Pose、攝影者位置、鏡頭／倍率、研究 URL），並另外保存 `sourceImage`、`sourcePlatform`、`sourceTitle`、`sourceUrl`、`sourceAuthor`、`sourceDate`、`sourceCaptured`。Public 介面直接顯示可追溯的來源實拍，圖片下方同步顯示來源資訊；小紅書／抖音／大眾點評仍是機位研究來源，若原貼不穩定，視覺參考可改用能穩定讀取且可追溯的攜程、Trip.com、旅遊部落格等公開實拍。來源頁只作追溯，不把外連當成現場操作必要步驟。
 
 ### 圖片與媒體來源界線
 
-社群貼文可作為「這個地方／內容存在」的資料來源，但不代表貼文圖片可直接部署。網頁截圖、訂房平台照片、社群照片都不等於取得可重用授權。網站真正使用的圖片授權與來源由 `trip-data.json > photos` 管理並生成 `PHOTO_SOURCES.md`；沒有可接受圖片時寧可無圖，不用錯誤地點或同城圖片填補。
+旅拍參考圖與一般景點主圖分開管理。`trip-data.json > photos` 仍管理網站景點主圖及其授權／來源；`photoSpots > poseTips` 的來源實拍只作旅拍參考，必須在前台與 `POSE_SCREENSHOT_SOURCES.md` 標示來源頁、平台及已知作者／日期。非商用與註明出處不等於自動取得再利用授權，因此文件不宣稱這些來源實拍具有可重用授權；若來源方要求移除，可直接替換或取消該張參考圖，而不影響 Pose 文字。
 
 `data/source-index.json` 由 `python tools/generate_source_index.py` 生成，不得手改。Validator 會檢查來源 ID、`fieldSources ⊆ sourceRefs`、Source Record key / `sourceId` 與 generated index 同步。
 
@@ -165,14 +166,14 @@ Audit 在不改變正式資料的前提下額外顯示：
 | `analytics.js` | 可選 Umami tracker loader、匿名事件 queue 與 persistent anonymous browser ID；不記姓名、表單內容／精確定位；未啟用或本機開發時不載入外部 tracker |
 | `weather.js` | 高德 → QWeather Grid → Open-Meteo provider chain、API credential local settings、欄位補缺、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots |
 | `offline.js` | PWA 選擇式離線準備、Service Worker bridge、Cache 完整性檢查、缺失清單、只重試失敗照片、安裝提示、收藏／偏好匯出匯入；不保存天氣 API Key |
-| `settings.js` | Settings View 的介面版面 preference owner；`mobile` 預設，`desktop` 在手機上固定桌面 viewport；使用 `yunnan-2026-ui-layout-v1` |
+| `settings.js` | Settings View 的顯示主題與介面版面 preference owner；主題支援 `system / light / dark`，版面支援 `mobile / desktop`；使用 `yunnan-2026-color-theme-v1` 與 `yunnan-2026-ui-layout-v1` |
 | `reader.js` | Content Reader、stack、return state、Reader swipe |
 | `journey.js` | Day 01–08、Day 展開、時刻表、PNG export、航班／住宿 Journey UI |
 | `map.js` | Leaflet、Map filters、Map Rail、Map Detail、定位、自定義地點、長按；無底圖時提供離線地標簡圖與純座標 Nearby |
 | `library.js` | Content/Story Card、Night/Food/Shopping/Favorites/Photo/Culture state/render |
 | `app.js` | JSON bootstrap、`VIEW_REGISTRY`、App Shell、shared day coordinator、單一 action router、全版面 Main Tab swipe |
 
-主要 state 只由各自 Owner 寫入：App 擁有 `currentView`；Network 擁有 profile；Core 擁有 Favorites IDs 與 navigation provider；Analytics 擁有 tracker runtime 與匿名 V-ID；Weather 擁有 provider credentials/cache；Offline 擁有離線選取與準備狀態；Settings 擁有介面版面；Journey／Map／Library／Reader 各自持有 Domain state。Map / Night 共用日期由 App 只做協調，不建立第三份 Domain state。
+主要 state 只由各自 Owner 寫入：App 擁有 `currentView`；Network 擁有 profile；Core 擁有 Favorites IDs 與 navigation provider；Analytics 擁有 tracker runtime 與匿名 V-ID；Weather 擁有 provider credentials/cache；Offline 擁有離線選取與準備狀態；Settings 擁有顯示主題與介面版面；Journey／Map／Library／Reader 各自持有 Domain state。Map / Night 共用日期由 App 只做協調，不建立第三份 Domain state。
 
 ## 6. View Registry / Action Router
 
@@ -195,7 +196,9 @@ Rail 規則：`.rail--snap` 用於需要停靠；`.rail--free` 自由停留；`.
 
 Reader 關閉後回原本 window scroll、Rail scroll 與 focus。Content Reader 使用內部 stack，不疊多層 modal。
 
-可點擊的 Content / Story / Map / Journey summary 圖卡區必須在區塊前提供一致的小字操作提示（例如「點一下圖卡，看更多內容」）；純展示卡不顯示，避免誤導。Journey Day Carousel 的整張摘要卡可點擊／鍵盤 Enter 或 Space 展開當天內容，卡片內既有按鈕仍可獨立操作。拍照頁只有目前日期（或全部八天）真的含 `drama:true` 卡片時才顯示《去有風的地方》篩選；不提供「必拍」篩選，優先機位以資料中的 `priority` 排序在前，但 Public 圖卡不另外顯示「必拍」標籤。
+**當地必吃**的「必吃排序／口感評鑑」說明維持與「風俗與故事」頁首相同的輕量 `.muted` 文字樣式。**夜間逍遙**的綠色 `.note` 摘要固定放在頁面標題正下方、日期切換之前；切換到單日時只更新該摘要文字，不把提示框移回內容區。**旅拍指南**則先顯示輕量 `.muted` 日期／Pose 說明，再緊接綠色 `.note` 來源／排序提示，兩者都位於日期切換之前。
+
+可點擊的 Content / Story / Journey summary 圖卡區必須在圖卡區上方提供一致的小字操作提示（例如「點一下圖卡，看更多內容」）；純展示卡不顯示，避免誤導。提示屬於 Card Group，不屬於整個頁面：固定放在「該組圖卡的群組標題正下方、第一張圖卡正上方」。夜間逍遙放在「城市 · 今晚住宿附近」下方；雲南必買放在每個目前可見的「必買／可以買／建議當地吃」群組標題下方；旅拍指南放在每個「城市 · 當天拍照清單」下方。日期列、分類篩選器與頁首說明文字附近不得放置這句提示；分類篩選不另外顯示「篩選必買」標題。探索地圖的「滑動探索地點」為特殊互動：短按圖卡用於定位與附近提案，長按約半秒後放開才開完整 Reader，因此圖卡前提示固定使用「長壓一下圖卡，看更多內容」，不得寫成一般的「點一下」。Journey Day Carousel 的整張摘要卡可點擊／鍵盤 Enter 或 Space 展開當天內容，卡片內既有按鈕仍可獨立操作。拍照頁只有目前日期（或全部八天）真的含 `drama:true` 卡片時才顯示《去有風的地方》篩選；不提供「必拍」篩選，優先機位以資料中的 `priority` 排序在前，但 Public 圖卡不另外顯示「必拍」標籤。
 
 ## 8. Photo / Mobile Traffic / 本地化
 
@@ -288,11 +291,15 @@ Validator 檢查：所有 `photo.src` 必須是本地 WebP；`remoteSrc` 若存�
 
 修改 `touch-action`、`scroll-snap`、`overflow-x` 前先確認 Rail owner；新規則放回所屬區塊，不使用日期式 patch 區塊累積 override。
 
+設定頁 UI 順序固定為：**連網模式 → 預設導航地圖 → 介面版面 → 顯示主題**，其後再接天氣與離線相關設定。
+
+顯示主題由 `settings.js` 擁有：`system` 為預設並跟隨 `prefers-color-scheme`，`light` / `dark` 可強制固定。解析後的實際主題寫入 `html[data-theme="light|dark"]`；偏好寫入 `data-theme-preference`。既有 dark media rules 在固定主題時由 Settings 同步啟用／停用，避免「固定淺色」仍被作業系統深色規則污染。
+
 ## 11. Release Version / Schema / Cache / Generated Data
 
 `tools/release.json` 保存對外軟體版本，格式為三段十進位整數。三段依專案內部約定分別是 proud / default / shame，且**獨立累加、不做 SemVer 式歸零**。UI 顯示細節依本文件「Public / Audit 顯示模式」執行。
 
-對外 Release Version 與內部 storage/schema 契約分離：HTML `data-app-version`、CSS / JS query、App Cache 使用目前 Release Version；Favorites / Map / Network / UI layout / Weather / Offline / Source parser 等 storage/schema key 維持 `v1`。只有真正做資料格式 migration 時才升 schema，不因一般軟體升版清除收藏、偏好或圖片快取。
+對外 Release Version 與內部 storage/schema 契約分離：HTML `data-app-version`、CSS / JS query、App Cache 使用目前 Release Version；Favorites / Map / Network / UI theme / UI layout / Weather / Offline / Source parser 等 storage/schema key 維持 `v1`。只有真正做資料格式 migration 時才升 schema，不因一般軟體升版清除收藏、偏好或圖片快取。
 
 Cache 契約：
 

@@ -12,13 +12,13 @@ TRIP_PATH = ROOT / "data" / "trip-data.json"
 OUTPUT_PATH = ROOT / "docs" / "sources" / "PHOTO_SOURCES.md"
 
 
-def load_photos() -> dict[str, dict]:
+def load_trip() -> dict:
     with TRIP_PATH.open("r", encoding="utf-8") as fh:
         trip = json.load(fh)
     photos = trip.get("photos")
     if not isinstance(photos, dict):
         raise SystemExit("data/trip-data.json > photos must be an object")
-    return photos
+    return trip
 
 
 def clean(value: object) -> str:
@@ -37,7 +37,8 @@ def code_list(values: list[str]) -> str:
 
 
 def generated_text() -> str:
-    photos = load_photos()
+    trip = load_trip()
+    photos = trip["photos"]
     groups: "OrderedDict[tuple[str, str, str, str], list[tuple[str, dict]]]" = OrderedDict()
     for photo_id, photo in photos.items():
         if not isinstance(photo, dict):
@@ -116,6 +117,45 @@ def generated_text() -> str:
                 images_text,
                 remote_text,
                 cell(note_text),
+            ]) + " |"
+        )
+
+    # Pose references use actual public-source visuals with explicit provenance. They are
+    # separate from the site's primary photo records and do not imply reusable licensing.
+    spots = trip.get("photoSpots") if isinstance(trip.get("photoSpots"), list) else []
+    pose_rows: list[tuple[str, list[dict]]] = []
+    for spot in spots:
+        if not isinstance(spot, dict):
+            continue
+        tips = [tip for tip in spot.get("poseTips", []) if isinstance(tip, dict) and tip.get("sourceImage")]
+        if tips:
+            pose_rows.append((clean(spot.get("name") or spot.get("id")), tips))
+
+    lines += [
+        "",
+        "## 旅拍 Pose 來源實拍",
+        "",
+        "旅拍指南的 Pose 卡改為直接顯示可追溯的公開來源實拍，不再使用本地重畫 Pose 圖。小紅書／抖音／大眾點評仍用於機位研究；若原貼連結不穩定，視覺參考可採用能正常載入且可追溯的攜程、Trip.com、旅遊部落格等公開來源。每張參考圖的完整 URL、來源頁、平台、已知作者／日期另列於 `POSE_SCREENSHOT_SOURCES.md`。這些參考圖不納入一般景點主圖授權表，也不宣稱具有可重用授權。",
+        "",
+        f"目前共有 **{sum(len(tips) for _, tips in pose_rows)}** 張來源實拍參考，涵蓋 **{len(pose_rows)}** 個旅拍地點。",
+        "",
+        "| 旅拍地點 | 視覺來源平台 | 機位研究平台 | 用途 |",
+        "| --- | --- | --- | --- |",
+    ]
+    for place_name, tips in pose_rows:
+        visual_platforms: list[str] = []
+        research_platforms: list[str] = []
+        for tip in tips:
+            for key, target in (("sourcePlatform", visual_platforms), ("platform", research_platforms)):
+                platform = clean(tip.get(key))
+                if platform != "—" and platform not in target:
+                    target.append(platform)
+        lines.append(
+            "| " + " | ".join([
+                cell(place_name),
+                cell("、".join(visual_platforms) if visual_platforms else "—"),
+                cell("、".join(research_platforms) if research_platforms else "—"),
+                "來源實拍＋Pose／攝影位置／鏡頭建議；來源頁供追溯",
             ]) + " |"
         )
 

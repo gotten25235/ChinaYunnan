@@ -1,54 +1,138 @@
-/* Settings domain: UI layout preference and settings-page ownership. */
+/* Settings domain: UI layout + appearance preferences and settings-page ownership. */
 (() => {
   'use strict';
 
   function create({toast}={}){
-    const STORAGE_KEY='yunnan-2026-ui-layout-v1';
-    const VALID=new Set(['mobile','desktop']);
+    const LAYOUT_STORAGE_KEY='yunnan-2026-ui-layout-v1';
+    const THEME_STORAGE_KEY='yunnan-2026-color-theme-v1';
+    const VALID_LAYOUTS=new Set(['mobile','desktop']);
+    const VALID_THEMES=new Set(['system','light','dark']);
+    const darkScheme=window.matchMedia?.('(prefers-color-scheme: dark)');
     let storageAvailable=true;
+    let darkMediaRules=null;
 
-    function read(){
+    function readLayout(){
       try{
-        const value=localStorage.getItem(STORAGE_KEY);
-        if(VALID.has(value))return value;
-        localStorage.setItem(STORAGE_KEY,'mobile');
+        const value=localStorage.getItem(LAYOUT_STORAGE_KEY);
+        if(VALID_LAYOUTS.has(value))return value;
+        localStorage.setItem(LAYOUT_STORAGE_KEY,'mobile');
         return 'mobile';
       }catch{
         storageAvailable=false;
         return 'mobile';
       }
     }
-    let mode=read();
+    function readTheme(){
+      try{
+        const value=localStorage.getItem(THEME_STORAGE_KEY);
+        if(VALID_THEMES.has(value))return value;
+        localStorage.setItem(THEME_STORAGE_KEY,'system');
+        return 'system';
+      }catch{
+        storageAvailable=false;
+        return 'system';
+      }
+    }
 
-    function save(value){
-      try{localStorage.setItem(STORAGE_KEY,value);return true;}
+    let mode=readLayout();
+    let theme=readTheme();
+
+    function save(key,value){
+      try{localStorage.setItem(key,value);return true;}
       catch{storageAvailable=false;return false;}
     }
-    function sync(){
+
+    function collectDarkMediaRules(){
+      if(darkMediaRules)return darkMediaRules;
+      const found=[];
+      const visit=rules=>{
+        if(!rules)return;
+        for(const rule of rules){
+          try{
+            if(rule.media&&/prefers-color-scheme\s*:\s*dark/i.test(rule.media.mediaText||'')){
+              found.push({rule,original:rule.media.mediaText});
+            }
+            if(rule.cssRules)visit(rule.cssRules);
+          }catch{}
+        }
+      };
+      for(const sheet of document.styleSheets){try{visit(sheet.cssRules);}catch{}}
+      darkMediaRules=found;
+      return found;
+    }
+
+    function syncDarkMediaRules(){
+      const target=theme==='dark'?'all':theme==='light'?'not all':null;
+      for(const entry of collectDarkMediaRules()){
+        try{entry.rule.media.mediaText=target||entry.original;}catch{}
+      }
+    }
+
+    function resolvedTheme(){
+      if(theme==='dark'||theme==='light')return theme;
+      return darkScheme?.matches?'dark':'light';
+    }
+
+    function syncTheme(){
+      const resolved=resolvedTheme();
+      const root=document.documentElement;
+      root.dataset.themePreference=theme;
+      root.dataset.theme=resolved;
+      root.style.colorScheme=resolved;
+      syncDarkMediaRules();
+      document.querySelectorAll('[data-color-theme-select]').forEach(select=>{select.value=theme;});
+      const meta=document.querySelector('meta[name="theme-color"]');
+      if(meta)meta.setAttribute('content',resolved==='dark'?'#121916':'#183e36');
+      window.dispatchEvent(new CustomEvent('yunnan:theme-change',{detail:{preference:theme,resolved}}));
+    }
+
+    function syncLayout(){
       document.documentElement.dataset.uiLayout=mode;
       document.querySelectorAll('[data-ui-layout-select]').forEach(select=>{select.value=mode;});
     }
-    function set(value){
-      if(!VALID.has(value)||value===mode){sync();return false;}
-      mode=value;
-      save(mode);
-      sync();
-      return true;
+    function sync(){syncTheme();syncLayout();}
+
+    function setLayout(value){
+      if(!VALID_LAYOUTS.has(value)||value===mode){syncLayout();return false;}
+      mode=value;save(LAYOUT_STORAGE_KEY,mode);syncLayout();return true;
     }
+    function setTheme(value){
+      if(!VALID_THEMES.has(value)||value===theme){syncTheme();return false;}
+      theme=value;save(THEME_STORAGE_KEY,theme);syncTheme();return true;
+    }
+
     function settingsHtml(){
-      return `<article class="layout-mode-card utility-card utility-card--settings"><div><span class="eyebrow">INTERFACE LAYOUT</span><h3>介面版面</h3><p class="small">手機版為預設：手機使用觸控與窄版排版，電腦仍會依螢幕寬度正常顯示。選「電腦版」時，手機會以完整桌面寬度自動縮放到螢幕內，保留桌面版比例；同時仍可左右滑動切換主要 Tab。線上、離線與 PWA 都共用同一設定。</p></div><label>版面<select data-ui-layout-select aria-label="介面版面"><option value="mobile">手機版（預設）</option><option value="desktop">電腦版</option></select></label></article>`;
+      return `<article class="layout-mode-card utility-card utility-card--settings"><div><span class="eyebrow">INTERFACE LAYOUT</span><h3>介面版面</h3><p class="small">手機版為預設：手機使用觸控與窄版排版，電腦仍會依螢幕寬度正常顯示。選「電腦版」時，手機會以完整桌面寬度自動縮放到螢幕內，保留桌面版比例；同時仍可左右滑動切換主要 Tab。線上、離線與 PWA 都共用同一設定。</p></div><label>版面<select data-ui-layout-select aria-label="介面版面"><option value="mobile">手機版（預設）</option><option value="desktop">電腦版</option></select></label></article><article class="theme-mode-card utility-card utility-card--settings"><div><span class="eyebrow">APPEARANCE</span><h3>顯示主題</h3><p class="small">系統預設會跟隨裝置的淺色／深色外觀；也可以固定使用淺色或深色主題。偏好只儲存在此瀏覽器，線上、離線與 PWA 共用。</p></div><label>主題<select data-color-theme-select aria-label="顯示主題"><option value="system">系統預設</option><option value="light">淺色主題</option><option value="dark">深色主題</option></select></label></article>`;
     }
+
     function handleChange(target){
-      const select=target?.closest?.('[data-ui-layout-select]');
-      if(!select)return false;
-      if(set(select.value)){
+      const themeSelect=target?.closest?.('[data-color-theme-select]');
+      if(themeSelect){
+        if(setTheme(themeSelect.value)){
+          const label=theme==='system'?'系統預設':theme==='light'?'淺色主題':'深色主題';
+          toast?.(`主題已切換為${label}`);
+        }
+        return true;
+      }
+      const layoutSelect=target?.closest?.('[data-ui-layout-select]');
+      if(!layoutSelect)return false;
+      if(setLayout(layoutSelect.value)){
         toast?.(`介面已切換為${mode==='desktop'?'電腦版':'手機版'}，正在重新載入…`);
         setTimeout(()=>location.reload(),180);
       }
       return true;
     }
+
+    const onSystemThemeChange=()=>{if(theme==='system')syncTheme();};
+    try{darkScheme?.addEventListener?.('change',onSystemThemeChange);}catch{try{darkScheme?.addListener?.(onSystemThemeChange);}catch{}}
+
     sync();
-    return {settingsHtml,handleChange,sync,get:()=>mode,isStorageAvailable:()=>storageAvailable,storageKey:STORAGE_KEY};
+    return {
+      settingsHtml,handleChange,sync,
+      get:()=>mode,getTheme:()=>theme,getResolvedTheme:()=>resolvedTheme(),
+      isStorageAvailable:()=>storageAvailable,
+      storageKey:LAYOUT_STORAGE_KEY,themeStorageKey:THEME_STORAGE_KEY
+    };
   }
 
   window.YunnanSettingsSystem={create};

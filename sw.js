@@ -6,7 +6,8 @@
   - 天氣由 weather.js 使用 localStorage 保存最後成功資料；Service Worker 不偽造即時天氣。
   - CHECK_OFFLINE 回傳核心、本地照片、遠端照片的實際缺失清單；未選取照片時不影響完成判定。
 */
-const RELEASE_VERSION = '1.5.2';
+const RELEASE_VERSION = '1.6.7';
+// 1.6.7 fixed-version patches: Banner 晴朗維持 3 秒；設定順序調整；當地必吃移除火焰圖示；夜間逍遙／旅拍指南提示位置整理。
 const STORAGE_SCHEMA = 'v1';
 const APP_CACHE = `yunnan-app-${RELEASE_VERSION}`;
 const IMAGE_CACHE = `yunnan-images-${STORAGE_SCHEMA}`;
