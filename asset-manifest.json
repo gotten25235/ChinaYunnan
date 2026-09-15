@@ -1,0 +1,30 @@
+{
+  "version": "1.6.7",
+  "build": "20260915-122300",
+  "assets": {
+    "./": "c6e1c1ffd66edfffca03d37c01d3887651072cfe7f3ce2f20618d9ad5faa17a8",
+    "./index.html": "c6e1c1ffd66edfffca03d37c01d3887651072cfe7f3ce2f20618d9ad5faa17a8",
+    "./manifest.webmanifest": "2308101a9f079d98cbaa080cdd1315a10e27b701a6faa34101bae708a0071029",
+    "./offline-manifest.json": "9e934ff620a96fef7f7437aea400d4d2d9396e8481e27d341c0fb4d132b07652",
+    "./css/style.css?v=1.6.7": "7c2885c1dc44769b5a6011747cde988463d54066e44226946ea13e2f08593c94",
+    "./css/banner.css?v=1.6.7": "70648fa9d6cb717ed80d3ae4d0d0e296747200386d60deefabae192b30eccc27",
+    "./js/banner.js?v=1.6.7": "4f2c004e2f34305f803d3f2093e72b88035c1100eb215d7edce339f5f3aea419",
+    "./js/network.js?v=1.6.7": "0d31d92b4270aade19e43b30c66d4c89bd02bcdf5da74d135cd29c3eb7c1d788",
+    "./js/core.js?v=1.6.7": "7a17d20946b7770199fdaf2fc4321c19683fade92a1deacad162da14a81c2679",
+    "./js/analytics.js?v=1.6.7": "25d7b014df75b8d09e612d7c0b05b33282b7026de5c4adcf5c4496ca96d3f19d",
+    "./js/weather.js?v=1.6.7": "794a00dad34e4e3986db5656235dad8e864bb7e2e6d38cd78f8c7ee1927cf7ee",
+    "./js/offline.js?v=1.6.7": "e585ca6464be0af64f5b2e55b2f07f2e056f372f55dbcbac79974c326828f332",
+    "./js/settings.js?v=1.6.7": "5927b7134c49eb8919f9beca3affb890f852bbdfc3b969f0422fc394369a7cbc",
+    "./js/reader.js?v=1.6.7": "b2b50b2a72a7a4ca6444c9a03ebd5da6b536a789a3f609b8ef61d8a85c0e7b1e",
+    "./js/journey.js?v=1.6.7": "e4bd1b40518fd9d6e1ae04e5378c719b0f63f382ce15165b4a753af4a26e9c53",
+    "./js/map.js?v=1.6.7": "952d8260f8922fb8760d690aedef62d8d768e771ea62d991ee343dcc9bed28f5",
+    "./js/library.js?v=1.6.7": "b6c4616ff5d4c2a8c109ca40586d5242f716d95219f4f149ad12e7f9211e2053",
+    "./js/app.js?v=1.6.7": "6bbad0fa9add897b491256f4755f603fc41ddb04ccb90b59a6a62dc4c0bafe07",
+    "./data/social-sources.json": "e76147a3b723bf7bbcb0a90e5eff9c7198258469351a0c924ffb77bf0afcf440",
+    "./data/source-index.json": "b9e921cec68de63c6f02b0a28fd189578a5abf55325d063e465781dfb1959cd7",
+    "./data/trip-data.json": "7366135c2182e52272307540f34b67e3fb62cadfe8dff3ec5421245272ed1a93",
+    "./icons/icon-192.png": "549d2f516269e69329f14c27a4f0d2b4f2bef70a20a5000fb9d07f69f5e99549",
+    "./icons/icon-512.png": "86cdb2993b3c7df2c03315d7a5e088f1d34c0bc5214e8d7c8d7404dfaba50acd",
+    "./icons/icon-maskable-512.png": "c96b21995a9d1e4d25d1720a7cb5cf1539a7fb9545c9b625e79e49d7355b2867"
+  }
+}

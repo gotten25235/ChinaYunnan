@@ -1,18 +1,21 @@
 /*
   雲南慢時光 Service Worker
-  - RELEASE_VERSION 是對外軟體版本（驕傲.預設.羞恥）；STORAGE_SCHEMA 維持 v1，避免一般升版清空使用者資料與圖片快取。
-  - 核心 App Shell 在 install 預先快取；「離線準備」可選擇是否另外下載旅行照片。
-  - 本地與遠端旅行照片統一放進 Image Cache，方便獨立下載／清除；OSM / 高德 tile 不長效快取。
-  - 天氣由 weather.js 使用 localStorage 保存最後成功資料；Service Worker 不偽造即時天氣。
-  - CHECK_OFFLINE 回傳核心、本地照片、遠端照片的實際缺失清單；未選取照片時不影響完成判定。
+  - RELEASE_VERSION 是對外軟體版本；BUILD_ID 是內部部署版本，可在對外版本固定時獨立更新。
+  - build.json 是唯一的日常更新探針；版本＋ build 相同時，App Shell 採 Cache First，不背景重抓 JS / CSS / JSON。
+  - 新 build 安裝時讀 asset-manifest.json 的 SHA-256：未變的 App Shell 直接從上一版 App Cache 複製，只有變動資源才重新抓取。
+  - 圖片使用穩定的 Image Cache，不因一般 build 更新而重新下載。
+  - STORAGE_SCHEMA 維持 v1，避免一般升版清空使用者資料與圖片快取。
 */
 const RELEASE_VERSION = '1.6.7';
-// 1.6.7 fixed-version patches: Banner 晴朗維持 3 秒；設定順序調整；當地必吃移除火焰圖示；夜間逍遙／旅拍指南提示位置整理。
+const BUILD_ID = '20260915-122300';
 const STORAGE_SCHEMA = 'v1';
-const APP_CACHE = `yunnan-app-${RELEASE_VERSION}`;
+const APP_CACHE = `yunnan-app-${RELEASE_VERSION}-${BUILD_ID}`;
 const IMAGE_CACHE = `yunnan-images-${STORAGE_SCHEMA}`;
 const OFFLINE_META_CACHE = `yunnan-offline-${STORAGE_SCHEMA}`;
 const PROJECT_CACHE_PREFIX = 'yunnan-';
+const APP_CACHE_PREFIX = 'yunnan-app-';
+const BUILD_META_URL = './build.json';
+const ASSET_MANIFEST_URL = './asset-manifest.json';
 const INVALIDATED_IMAGE_ASSETS = ['./images/remote/souvenir-tamarind.webp','./images/remote/souvenir-wild-mushroom-beer.webp'];
 
 const CORE_SHELL = [
@@ -42,23 +45,65 @@ const CORE_SHELL = [
   './icons/icon-maskable-512.png'
 ];
 
-self.addEventListener('install', event => {
-  event.waitUntil((async () => {
-    const cache = await caches.open(APP_CACHE);
-    for (const asset of CORE_SHELL) {
-      const request = new Request(asset, {cache:'reload'});
-      const response = await fetch(request);
-      if (!canStore(response)) throw new Error(`Core asset unavailable: ${asset}`);
-      await cache.put(asset, response.clone());
+function canStore(response) { return !!response && (response.ok || response.type === 'opaque'); }
+function appCacheNames(names){return names.filter(name=>name.startsWith(APP_CACHE_PREFIX)&&name!==APP_CACHE);}
+async function parseCachedAssetManifest(cacheName){
+  try{
+    const cache=await caches.open(cacheName);
+    const response=await cache.match(ASSET_MANIFEST_URL);
+    if(!response?.ok)return null;
+    const data=await response.json();
+    return data&&typeof data==='object'&&data.assets&&typeof data.assets==='object'?data:null;
+  }catch{return null;}
+}
+async function fetchCurrentAssetManifest(){
+  const response=await fetch(`${ASSET_MANIFEST_URL}?b=${encodeURIComponent(BUILD_ID)}`,{cache:'no-store'});
+  if(!response.ok)throw new Error(`Asset manifest unavailable: ${response.status}`);
+  const data=await response.json();
+  if(data?.version!==RELEASE_VERSION||data?.build!==BUILD_ID||!data?.assets)throw new Error('Asset manifest build mismatch');
+  return data;
+}
+async function installAppShell(){
+  const cache=await caches.open(APP_CACHE);
+  const names=await caches.keys();
+  const previousNames=appCacheNames(names).sort().reverse();
+  let previousName=null,previousManifest=null,previousCache=null;
+  for(const name of previousNames){
+    const manifest=await parseCachedAssetManifest(name);
+    if(manifest){previousName=name;previousManifest=manifest;previousCache=await caches.open(name);break;}
+  }
+  const currentManifest=await fetchCurrentAssetManifest();
+  for(const asset of CORE_SHELL){
+    let reused=false;
+    if(previousCache&&previousManifest?.assets?.[asset]&&previousManifest.assets[asset]===currentManifest.assets?.[asset]){
+      const cached=await previousCache.match(asset);
+      if(cached){await cache.put(asset,cached.clone());reused=true;}
     }
-    await self.skipWaiting();
-  })());
+    if(reused)continue;
+    const response=await fetch(new Request(asset,{cache:'no-cache'}));
+    if(!canStore(response))throw new Error(`Core asset unavailable: ${asset}`);
+    await cache.put(asset,response.clone());
+  }
+  await cache.put(ASSET_MANIFEST_URL,new Response(JSON.stringify(currentManifest),{headers:{'Content-Type':'application/json'}}));
+  try{
+    const buildResponse=await fetch(`${BUILD_META_URL}?b=${encodeURIComponent(BUILD_ID)}`,{cache:'no-store'});
+    if(buildResponse.ok)await cache.put(BUILD_META_URL,buildResponse.clone());
+  }catch{}
+  return previousName;
+}
+
+self.addEventListener('install', event => {
+  event.waitUntil((async()=>{await installAppShell();await self.skipWaiting();})());
 });
 
 self.addEventListener('activate', event => {
   event.waitUntil((async () => {
-    const keep = new Set([APP_CACHE, IMAGE_CACHE, OFFLINE_META_CACHE]);
     const names = await caches.keys();
+    // Legacy builds used yunnan-app-<version> without a build suffix. Force one
+    // navigation only for that migration so already-open old pages immediately
+    // receive the new build-aware bootstrap. Future builds reload via build.json.
+    const legacyUpgrade = names.some(name => /^yunnan-app-\d+\.\d+\.\d+$/.test(name) && name !== APP_CACHE);
+    const keep = new Set([APP_CACHE, IMAGE_CACHE, OFFLINE_META_CACHE]);
     await Promise.all(names.map(name => {
       if (name.startsWith(PROJECT_CACHE_PREFIX) && !keep.has(name)) return caches.delete(name);
       return Promise.resolve(false);
@@ -66,10 +111,13 @@ self.addEventListener('activate', event => {
     const imageCache = await caches.open(IMAGE_CACHE);
     await Promise.all(INVALIDATED_IMAGE_ASSETS.map(asset => imageCache.delete(new URL(asset, self.location.href).href)));
     await self.clients.claim();
+    if(legacyUpgrade){
+      const windows=await self.clients.matchAll({type:'window',includeUncontrolled:true});
+      await Promise.all(windows.map(client=>client.navigate(client.url).catch(()=>null)));
+    }
   })());
 });
 
-function canStore(response) { return !!response && (response.ok || response.type === 'opaque'); }
 function isMapTile(url) {
   return url.hostname === 'tile.openstreetmap.org' ||
     url.hostname.endsWith('.tile.openstreetmap.org') ||
@@ -97,21 +145,21 @@ async function cacheFirstImage(request) {
   }
 }
 
-async function appStaleWhileRevalidate(request) {
+async function appCacheFirst(request) {
   const cache = await caches.open(APP_CACHE);
   const cached = await cache.match(request);
-  const networkPromise = fetch(request).then(response => {
+  if (cached) return cached;
+  try {
+    const response = await fetch(request, {cache:'no-cache'});
     if (canStore(response)) eventlessPut(cache, request, response.clone());
     return response;
-  }).catch(() => null);
-  if (cached) { networkPromise.catch(() => {}); return cached; }
-  const network = await networkPromise;
-  if (network) return network;
-  if (request.mode === 'navigate') {
-    const fallback = await cache.match('./index.html') || await cache.match('./');
-    if (fallback) return fallback;
+  } catch (error) {
+    if (request.mode === 'navigate') {
+      const fallback = await cache.match('./index.html') || await cache.match('./');
+      if (fallback) return fallback;
+    }
+    return new Response('Offline', {status:503,statusText:'Offline'});
   }
-  return new Response('Offline', {status:503,statusText:'Offline'});
 }
 
 self.addEventListener('fetch', event => {
@@ -122,13 +170,17 @@ self.addEventListener('fetch', event => {
   if (isPhotoRequest(request, url)) { event.respondWith(cacheFirstImage(request)); return; }
 
   const sameOrigin = url.origin === self.location.origin;
+  if (sameOrigin && /\/build\.json$/i.test(url.pathname)) {
+    event.respondWith(fetch(request,{cache:'no-store'}).catch(()=>new Response('',{status:503,statusText:'Build check unavailable'})));
+    return;
+  }
   if (sameOrigin && /\/data\/analytics-config\.json$/i.test(url.pathname)) {
-    event.respondWith(fetch(request, {cache:'no-store'}).catch(() => new Response('{\"enabled\":false}', {headers:{'Content-Type':'application/json'}})));
+    event.respondWith(fetch(request, {cache:'no-store'}).catch(() => new Response('{"enabled":false}', {headers:{'Content-Type':'application/json'}})));
     return;
   }
   const appLike = request.mode === 'navigate' || request.destination === 'document' || request.destination === 'script' || request.destination === 'style' ||
     (sameOrigin && (/\/data\/[^/]+\.json$/i.test(url.pathname) || /\.(?:webmanifest|json)$/i.test(url.pathname)));
-  if (appLike) event.respondWith(appStaleWhileRevalidate(request));
+  if (appLike) event.respondWith(appCacheFirst(request));
 });
 
 async function readOfflineManifest() {
@@ -296,6 +348,7 @@ async function retryMissingPhotos(port){
 
 self.addEventListener('message', event => {
   const msg=event.data||{},port=event.ports?.[0];
+  if(msg.type==='SKIP_WAITING'){event.waitUntil(self.skipWaiting());return;}
   const allowed=['PREPARE_OFFLINE','RETRY_OFFLINE_PHOTOS','CHECK_OFFLINE','CLEAR_OFFLINE_PHOTOS','CLEAR_OFFLINE_DOWNLOADS'];
   if (!port || !allowed.includes(msg.type)) return;
   event.waitUntil((async()=>{

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant" data-app-version="1.6.7">
+<html lang="zh-Hant" data-app-version="1.6.7" data-app-build="20260915-122300">
 <head>
   <meta charset="utf-8">
   <meta id="app-viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -110,11 +110,72 @@
   <dialog id="copy-dialog"><form method="dialog"><h2>中文地址／搜尋文字</h2><p>長按或選取下方文字，貼到地圖 App 搜尋。</p><textarea id="copy-value" readonly aria-label="可複製的地址"></textarea><button class="primary">完成</button></form></dialog>
   <dialog id="timetable-preview-dialog" class="timetable-preview-dialog" aria-labelledby="timetable-preview-title"><div class="timetable-preview-shell"><header><div><span class="eyebrow">FULL ITINERARY</span><h2 id="timetable-preview-title">八天完整行程時刻表</h2><p>開啟時會自動縮放顯示完整八天時刻表；下載 PNG 保留完整尺寸。</p></div><button type="button" class="timetable-preview-close" data-timetable-preview-close aria-label="關閉完整時刻表">×</button></header><div class="timetable-preview-canvas"><img id="timetable-preview-image" alt="八天完整行程時刻表預覽"></div><footer><span id="timetable-image-size">產生完整圖片中…</span><div><button type="button" class="action" data-timetable-preview-close>關閉</button><button type="button" class="primary" data-timetable-download>↓ 下載完整 PNG</button></div></footer></div></dialog>
   <script>
-    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1')) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js', { scope: './', updateViaCache: 'none' }).then(registration => registration.update().catch(() => {})).catch(error => console.warn('Service Worker registration failed:', error));
-      }, { once: true });
-    }
+    (() => {
+      const canUseServiceWorker='serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1');
+      if(!canUseServiceWorker)return;
+      const localVersion=document.documentElement.dataset.appVersion||'';
+      const localBuild=document.documentElement.dataset.appBuild||'';
+      const reloadKey='yunnan-build-reload-guard-v1';
+      const checkInterval=30000;
+      let checking=null,lastChecked=0;
+
+      const ensureRegistration=async()=>{
+        const existing=await navigator.serviceWorker.getRegistration('./');
+        if(existing)return existing;
+        return navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'});
+      };
+      const remoteBuild=async()=>{
+        const url=`./build.json?check=${Date.now()}`;
+        const response=await fetch(url,{cache:'no-store',headers:{'Cache-Control':'no-cache'}});
+        if(!response.ok)throw new Error(`build check HTTP ${response.status}`);
+        const data=await response.json();
+        if(!data||typeof data.version!=='string'||typeof data.build!=='string')throw new Error('invalid build metadata');
+        return data;
+      };
+      const readGuard=()=>{try{return JSON.parse(sessionStorage.getItem(reloadKey)||'null');}catch{return null;}};
+      const writeGuard=value=>{try{sessionStorage.setItem(reloadKey,JSON.stringify(value));}catch{}};
+      const clearGuard=()=>{try{sessionStorage.removeItem(reloadKey);}catch{}};
+      const waitForControllerChange=()=>new Promise(resolve=>{
+        let settled=false;
+        const finish=()=>{if(settled)return;settled=true;clearTimeout(timer);navigator.serviceWorker.removeEventListener('controllerchange',finish);resolve();};
+        const timer=setTimeout(finish,6500);
+        navigator.serviceWorker.addEventListener('controllerchange',finish,{once:true});
+      });
+      const checkBuild=({force=false}={})=>{
+        if(checking)return checking;
+        if(!navigator.onLine)return Promise.resolve(false);
+        const now=Date.now();
+        if(!force&&now-lastChecked<checkInterval)return Promise.resolve(false);
+        lastChecked=now;
+        checking=(async()=>{
+          try{
+            const remote=await remoteBuild();
+            const target=`${remote.version}|${remote.build}`;
+            const local=`${localVersion}|${localBuild}`;
+            if(target===local){clearGuard();return false;}
+            const guard=readGuard();
+            if(guard?.target===target&&now-Number(guard.at||0)<15000)return false;
+            writeGuard({target,at:Date.now()});
+            const registration=await ensureRegistration();
+            const controllerChanged=waitForControllerChange();
+            await registration.update();
+            registration.waiting?.postMessage({type:'SKIP_WAITING'});
+            await controllerChanged;
+            location.reload();
+            return true;
+          }catch(error){
+            console.warn('Build check failed; keeping current offline-capable build:',error);
+            return false;
+          }finally{checking=null;}
+        })();
+        return checking;
+      };
+
+      window.addEventListener('load',()=>{ensureRegistration().then(()=>checkBuild({force:true})).catch(error=>console.warn('Service Worker registration failed:',error));},{once:true});
+      window.addEventListener('online',()=>checkBuild({force:true}));
+      window.addEventListener('pageshow',event=>{if(event.persisted)checkBuild({force:true});});
+      document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkBuild();});
+    })();
   </script>
   <noscript>請啟用 JavaScript 以查看行程、地圖和收藏。</noscript>
 </body>

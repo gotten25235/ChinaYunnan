@@ -72,6 +72,12 @@
 
 若要把仍依賴網路備援的照片寫成本地 WebP，可執行 `LOCALIZE_IMAGES_ANACONDA_SSL_FIX.bat`。BAT 不切換網站模式，只補齊本地圖片。
 
+## 自動更新與省流量
+
+網站對外版本與內部 Build ID 分開。每次開啟網站、從背景回到前景或重新連上網路時，只會先檢查很小的 `build.json`。**version + build 都相同時不重新整理，也不背景重抓 JS / CSS / JSON 或旅行圖片**。
+
+若偵測到新 build，Service Worker 才更新 App Shell；未變的核心檔會沿用上一個 App Cache，只有內容 hash 改變的檔案重新下載。旅行圖片使用獨立的 `yunnan-images-v1` Cache，普通 build 更新不會整批重抓。離線時跳過版本檢查，繼續使用手機內現有版本。
+
 ## 離線 PWA
 
 「設定 → 離線準備」可分別準備網頁核心、旅行照片與天氣資料，並可清除照片／天氣／全部離線下載。這些清除操作不會刪除收藏、自定義地標、連網模式、導航偏好與天氣 API Key。

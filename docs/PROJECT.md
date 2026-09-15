@@ -299,12 +299,13 @@ Validator 檢查：所有 `photo.src` 必須是本地 WebP；`remoteSrc` 若存�
 
 `tools/release.json` 保存對外軟體版本，格式為三段十進位整數。三段依專案內部約定分別是 proud / default / shame，且**獨立累加、不做 SemVer 式歸零**。UI 顯示細節依本文件「Public / Audit 顯示模式」執行。
 
-對外 Release Version 與內部 storage/schema 契約分離：HTML `data-app-version`、CSS / JS query、App Cache 使用目前 Release Version；Favorites / Map / Network / UI theme / UI layout / Weather / Offline / Source parser 等 storage/schema key 維持 `v1`。只有真正做資料格式 migration 時才升 schema，不因一般軟體升版清除收藏、偏好或圖片快取。
+對外 Release Version、內部 Build ID 與 storage/schema 契約分離：HTML 同時保存 `data-app-version` 與 `data-app-build`；CSS / JS 的 `?v=` 繼續使用對外 Release Version，App Cache 使用 Release Version + Build ID。Build ID 可在對外版本固定時獨立更新；Favorites / Map / Network / UI theme / UI layout / Weather / Offline / Source parser 等 storage/schema key 維持 `v1`。只有真正做資料格式 migration 時才升 schema，不因一般 build 更新清除收藏、偏好或圖片快取。
 
 Cache 契約：
 
-- App Cache：`yunnan-app-<release version>`；新版 release 建立新 App Shell cache 並清理舊版。
-- Image Cache：`yunnan-images-v1`，Cache First。
+- App Cache：`yunnan-app-<release version>-<build id>`。`build.json` 是日常唯一更新探針；版本＋ build 相同時 App Shell 使用 Cache First，不做 stale-while-revalidate 背景重抓。
+- 新 build 安裝時讀 `asset-manifest.json` 的 SHA-256；未變的 App Shell 從上一個 App Cache 直接複製，只有 hash 改變的核心檔才重新抓取。第一個導入 Build ID 的 legacy migration 會自動重載一次既有頁面。
+- Image Cache：`yunnan-images-v1`，Cache First；一般 build 更新不清除、不重抓圖片。
 - Offline Meta Cache：`yunnan-offline-v1`；可見準備時間另存在 `yunnan-offline-prep-state-v1`。
 - Weather cache：`yunnan-weather-cache-v1`；provider 設定：`yunnan-weather-provider-config-v1`。
 - Network profile 切換後 App reload 一次，重建 Photo System、Leaflet source 與底圖座標系。
@@ -315,6 +316,8 @@ Generated files：
 - `data/source-index.json` ← `trip-data.json + social-sources.json`
 - `docs/sources/PHOTO_SOURCES.md` ← `trip-data.json > photos`
 - `offline-manifest.json` ← core assets + 每張照片單一路徑清單；manifest schemaVersion 仍是 `v1`
+- `build.json` ← 對外版本 + Build ID；前台每次開啟／回前景／重新連線時只用這個小檔案判斷是否需要更新
+- `asset-manifest.json` ← App Shell 每個資源的 SHA-256；只有偵測到新 build、Service Worker 安裝時才使用
 
 常用命令：
 
@@ -322,20 +325,24 @@ Generated files：
 python tools/generate_source_index.py
 python tools/generate_photo_sources.py
 python tools/generate_offline_manifest.py
+python tools/generate_build_manifest.py
 python tools/media_audit.py
 python tools/optimize_media.py
 python tools/validate_project.py
 
-# 不升版，只重建／驗證目前版本
+# 不升公開版本，只重建／驗證目前 version + build
 python tools/release.py
 
-# 三種升版
-python tools/release.py --bump proud --zip
-python tools/release.py --bump default --zip
-python tools/release.py --bump shame --zip
+# 發布內容有修改但公開版本維持不變：更新 Build ID
+python tools/release.py --new-build
+
+# 三種升版（正式發布時仍應搭配 --new-build）
+python tools/release.py --bump proud --new-build --zip
+python tools/release.py --bump default --new-build --zip
+python tools/release.py --bump shame --new-build --zip
 ```
 
-`release.py` 依需要累加指定版本段，同步 HTML / Service Worker、重建 Source / Photo / Offline generated files、執行 validator，最後依需要產生 ZIP。
+`release.py` 依需要累加指定版本段或產生新的 Build ID，同步 HTML / Service Worker、重建 Source / Photo / Offline / Build generated files、執行 validator，最後依需要產生 ZIP。公開部署只要內容有變，即使版本號固定，也應使用 `--new-build`。
 
 ## 12. 最低驗證
 
@@ -363,13 +370,14 @@ python tools/release.py --bump shame --zip
 | Nearby 大量 `0.0 km` | 共用參考座標當精確店址、或硬補假座標 | 排除同項／別名；共用原點顯示「同區域」，1 km 內用公尺，其餘用直線公里 |
 | 手機主分頁 swipe 掉幀 | `touchmove` 中 render 目標 View 或初始化 Leaflet | gesture 期間只做位移、clone 既有 DOM 與 commit 判斷 |
 | 手機圖片流量過大 | 重複 render／重抓同圖／保留大型 JPEG/PNG | 穩定 View DOM + lazy loading + Photo System + WebP + Image Cache First |
-| Release Version 與 schema 混在一起 | 升版連 storage key / image cache / schema 一起改 | Release 由 `release.json` 管理；schema `v1` 只有 migration 才升 |
+| Release / Build 與 schema 混在一起 | 每次部署連 storage key / image cache / schema 一起改 | `release.json` 分開保存 public version + build；schema `v1` 只有資料 migration 才升；圖片 cache 不跟 build 走 |
 | Source Index 不同步 | 手改 `source-index.json` | 由正式資料自動生成並由 validator 驗證 |
 | 圖片授權文件不同步 | 同時手改 JSON 與長篇 MD | `trip-data.json > photos` 為 source of truth，MD 自動生成 |
 | 來源失效／被刪除 | 覆寫既有 `sourceId`、偷換 URL、直接刪紀錄 | 保留原 Source Record 與狀態；替代來源建立新 ID |
 | 地址／座標查不到 | 用城市中心或猜測座標填洞 | 保持待定位，核實後才寫正式座標 |
 | 新功能不知道放哪 | renderer/state 塞進 `app.js` 或建第二套全域 handler | 先決定 Domain Owner；App 只做 bootstrap、協調與 router |
 | 天氣重複流量 | 每次切 Day／Map 都重新呼叫 API | `weather.js` 單一 owner；每點 1 小時 cache，離線沿用最後成功資料 |
+| 手機一直停舊版／同版號重抓流量 | 每次載入都 `registration.update()` + stale-while-revalidate | 每次只 network-check `build.json`；version/build 相同零 reload、App Shell Cache First；不同才更新 SW，並用 asset hash 只抓變動核心檔 |
 | 以為「開過一次」就一定離線完整 | 只靠 lazy image / stale cache | `offline.js` 明確觸發 `PREPARE_OFFLINE`、檢查缺失並可只重試失敗照片 |
 | UI 相似就全部共用 | 萬用 CardFactory + 大量 variant/options | 維持四套 Card；共用 service / 語意，不強迫共用所有 markup |
 | 工程文件越拆越多 | 每個功能再新增一份 MD，規則交叉重複 | 人工規格只放 `PROJECT.md`；使用者說明放 README；sources 只保留 generated/evidence ledger |

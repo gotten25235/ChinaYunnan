@@ -401,22 +401,35 @@ def validate_generated_pose_sources() -> None:
         passed("POSE_SCREENSHOT_SOURCES.md matches photoSpots pose provenance")
 
 
+
+def validate_generated_build_manifest() -> None:
+    script = ROOT / "tools" / "generate_build_manifest.py"
+    result = subprocess.run([sys.executable, str(script), "--check"], cwd=ROOT, capture_output=True, text=True)
+    if result.returncode:
+        error("build.json / asset-manifest.json are stale; run python tools/generate_build_manifest.py")
+    else:
+        passed("build.json and asset-manifest.json match current release/build and App Shell hashes")
+
 def validate_release_and_views() -> None:
     config = read_json("tools/release.json")
     trip = read_json("data/trip-data.json")
     version = config.get("version") if isinstance(config, dict) else None
+    build = config.get("build") if isinstance(config, dict) else None
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     sw = (ROOT / "sw.js").read_text(encoding="utf-8")
     app = (ROOT / "js" / "app.js").read_text(encoding="utf-8")
     core = (ROOT / "js" / "core.js").read_text(encoding="utf-8")
     map_js = (ROOT / "js" / "map.js").read_text(encoding="utf-8")
 
-    if not isinstance(config, dict) or set(config) != {"version"} or not isinstance(version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", version):
-        error('tools/release.json must contain only {"version": "N.N.N"}')
+    if not isinstance(config, dict) or set(config) != {"version", "build"} or not isinstance(version, str) or not re.fullmatch(r"\d+\.\d+\.\d+", version) or not isinstance(build, str) or not re.fullmatch(r"\d{8}-\d{6}", build):
+        error('tools/release.json must contain only {"version":"N.N.N","build":"YYYYMMDD-HHMMSS"}')
 
     html_version = re.search(r'<html\b[^>]*\bdata-app-version="([^"]+)"', html)
     if not html_version or html_version.group(1) != version:
         error("index.html data-app-version must equal tools/release.json version")
+    html_build = re.search(r'<html\b[^>]*\bdata-app-build="([^"]+)"', html)
+    if not html_build or html_build.group(1) != build:
+        error("index.html data-app-build must equal tools/release.json build")
 
     versions = re.findall(r'(?:css/(?:style|banner)\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|banner|app)\.js)\?v=([^"\']+)', html)
     if len(versions) != 14 or any(v != version for v in versions):
@@ -425,16 +438,19 @@ def validate_release_and_views() -> None:
     sw_version = re.search(r"const RELEASE_VERSION = '([^']+)';", sw)
     if not sw_version or sw_version.group(1) != version:
         error("sw.js RELEASE_VERSION must equal tools/release.json version")
+    sw_build = re.search(r"const BUILD_ID = '([^']+)';", sw)
+    if not sw_build or sw_build.group(1) != build:
+        error("sw.js BUILD_ID must equal tools/release.json build")
     if "const STORAGE_SCHEMA = 'v1';" not in sw:
         error("sw.js STORAGE_SCHEMA must remain v1 until a real storage/schema migration")
-    if "const APP_CACHE = `yunnan-app-${RELEASE_VERSION}`;" not in sw:
-        error("sw.js APP_CACHE must use the public release version")
+    if "const APP_CACHE = `yunnan-app-${RELEASE_VERSION}-${BUILD_ID}`;" not in sw:
+        error("sw.js APP_CACHE must use public release version + internal build id")
     if "const IMAGE_CACHE = `yunnan-images-${STORAGE_SCHEMA}`;" not in sw:
         error("sw.js IMAGE_CACHE must use the stable storage schema")
     if "const OFFLINE_META_CACHE = `yunnan-offline-${STORAGE_SCHEMA}`;" not in sw:
         error("sw.js OFFLINE_META_CACHE must use the stable storage schema")
 
-    expected_shell = ["index.html", "manifest.webmanifest", "offline-manifest.json", "css/style.css", "css/banner.css", "js/network.js", "js/core.js", "js/analytics.js", "js/weather.js", "js/offline.js", "js/settings.js", "js/reader.js", "js/journey.js", "js/map.js", "js/library.js", "js/banner.js", "js/app.js", "data/trip-data.json", "data/social-sources.json", "data/source-index.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png"]
+    expected_shell = ["index.html", "manifest.webmanifest", "offline-manifest.json", "build.json", "asset-manifest.json", "css/style.css", "css/banner.css", "js/network.js", "js/core.js", "js/analytics.js", "js/weather.js", "js/offline.js", "js/settings.js", "js/reader.js", "js/journey.js", "js/map.js", "js/library.js", "js/banner.js", "js/app.js", "data/trip-data.json", "data/social-sources.json", "data/source-index.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png"]
     for rel in expected_shell:
         if not (ROOT / rel).is_file():
             error(f"APP_SHELL file missing: {rel}")
@@ -482,9 +498,9 @@ def validate_release_and_views() -> None:
     if not nav_contract_errors:
         passed("AMap navigation uses official app deep links with destination payload; Kunming airport hotel is pinned by verified AMap POI ID")
 
-    release_markers = ("tools/release.json", "index.html data-app-version", "index.html local CSS/JS", "sw.js RELEASE_VERSION", "sw.js APP_CACHE", "sw.js IMAGE_CACHE", "sw.js OFFLINE_META_CACHE", "APP_SHELL", "storage")
+    release_markers = ("tools/release.json", "index.html data-app-version", "index.html data-app-build", "index.html local CSS/JS", "sw.js RELEASE_VERSION", "sw.js BUILD_ID", "sw.js APP_CACHE", "sw.js IMAGE_CACHE", "sw.js OFFLINE_META_CACHE", "APP_SHELL", "storage")
     if not any(any(marker in e for marker in release_markers) for e in errors):
-        passed("release version, stable schema caches, asset queries, and browser storage are synchronized")
+        passed("release version/build, stable schema caches, asset queries, and browser storage are synchronized")
 
     start = app.find("const VIEW_REGISTRY=Object.freeze({")
     end = app.find("  const VIEW_ORDER=Object.freeze(Object.keys(VIEW_REGISTRY));", start)
@@ -643,6 +659,7 @@ def main() -> int:
     validate_generated_index()
     validate_generated_photo_sources()
     validate_generated_pose_sources()
+    validate_generated_build_manifest()
     validate_release_and_views()
     validate_offline_pwa(trip)
     validate_js_syntax()
