@@ -730,66 +730,6 @@
       "remote": "https://static.foodtalks.cn/image/post/12c10dfb268cfa8af9fb818c1382037d.jpg",
       "local": "images/shopping/souvenir-wild-mushroom-beer.webp",
       "sha256": "4471d7a869765bfc4d6384ab6781d5ddcea54f2521f3ad1d93d67642ea5c283a"
-    },
-    "pose-lijiang-02": {
-      "remote": "https://ak-d.tripcdn.com/images/1mi3d224x98k08i107603_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "local": "images/pose/lijiang-02.webp",
-      "sha256": "461ed373e8b72f91c40850d4f5e67c569b6e97f3729e5f5ecf6e66aedf0694b4"
-    },
-    "pose-fengyang-02": {
-      "remote": "https://ak-d.tripcdn.com/images/1mi4b12000qj3gtie4307_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "local": "images/pose/fengyang-02.webp",
-      "sha256": "0486da71f4670679bff666a47c9b890392ae3980615939f852f4f2315e9e6a9b"
-    },
-    "pose-sideng-02": {
-      "remote": "https://ak-d.tripcdn.com/images/1mi5a12000rnehl4k614E_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "local": "images/pose/sideng-02.webp",
-      "sha256": "58cd1047f3de4c178e594c15a284190defe7da6a872489cab7a9d235f81d9bed"
-    },
-    "pose-yujin-02": {
-      "remote": "https://ak-d.tripcdn.com/images/1mi62224x9443zx6x9781_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "local": "images/pose/yujin-02.webp",
-      "sha256": "545d46f424a08ea49bada0f03760e09f571644f82dc077b0d4aa1323266206ff"
-    },
-    "pose-blue-02": {
-      "remote": "https://ak-d.tripcdn.com/images/1mi4x12000tqkk414523A_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "local": "images/pose/blue-02.webp",
-      "sha256": "c2ce2aa1c458b34752d8d235ebc69f18a70206f8cdedd93bcb438a792ab2ac84"
-    },
-    "pose-ideal-02": {
-      "remote": "https://ak-d.tripcdn.com/images/1mi3f12000dmljimw5520_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "local": "images/pose/ideal-02.webp",
-      "sha256": "92704fb8546bb47812d035035986bd952a66077f3e18be32a1a055f84591b9c2"
-    },
-    "pose-spruce-02": {
-      "remote": "https://ak-d.tripcdn.com/images/1mi6y12000iqdhnobF6F4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "local": "images/pose/spruce-02.webp",
-      "sha256": "20d026d9755e45e89af0bfcf9a1ee41d308e06d6e78a14b11f22f902a459544f"
-    },
-    "pose-ganhaizi-02": {
-      "remote": "https://ak-d.tripcdn.com/images/1mi6t224x97u43xde1A1B_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "local": "images/pose/ganhaizi-02.webp",
-      "sha256": "bdd48c3582e7d58121ddc77683be8eaf4258619034b5c5197f4eeddc5f57e7ca"
-    },
-    "pose-tiger-02": {
-      "remote": "https://images.squarespace-cdn.com/content/v1/62f1cb15a2cb083186ccd6d1/89bc1905-2512-48b5-a433-e997903154bc/2E6B6B98-CD12-4C2B-A020-3EBF0A5E9829-2209-000000D9F5E35AAB.jpg",
-      "local": "images/pose/tiger-02.webp",
-      "sha256": "a0105a962b06b48476f38f73693fe3badd748a7b4c4e2483cdd666d8d733c037"
-    },
-    "pose-songzanlin-02": {
-      "remote": "https://ak-d.tripcdn.com/images/1mi1t224x8x6y3cbl76B4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "local": "images/pose/songzanlin-02.webp",
-      "sha256": "409e9a3774e2bc7f594bd8782425cb5279ed21ef8e238d008fc8f3feb66ff9ca"
-    },
-    "pose-dukezong-02": {
-      "remote": "https://ak-d.tripcdn.com/images/1mi5n12000pn3ctrs86BA_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "local": "images/pose/dukezong-02.webp",
-      "sha256": "c456f016b31949eefe1ac84e81dabe15306fe93111096241d5c2424b8c60a839"
-    },
-    "pose-shuhe-02": {
-      "remote": "https://dimg04.c-ctrip.com/images/1mf3p12000ehj1cnxA02A_W_640_0_Q90.jpg?proc=autoorient",
-      "local": "images/pose/shuhe-02.webp",
-      "sha256": "0e72e810b3180626bcfd98ed62486ac70574448561d9bbdc62ffa09545131142"
     }
   }
 }

@@ -8648,8 +8648,8 @@
       "author": "NiwNip / Trip.com",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://hk.trip.com/moments/detail/lijiang-32-142727762?locale=en-HK",
-      "width": 640,
-      "height": 853,
+      "width": 0,
+      "height": 0,
       "changes": "同一 Trip.com NiwNip 來源頁改用圖集中的紅衣單人坐姿實拍；目前保留 exact remote fallback，執行 SYNC_IMAGES.bat 本地化後再由同步流程寫入實際尺寸。"
     },
     "pose-ideal-01": {
@@ -8791,8 +8791,8 @@
       "author": "Sophia Parrish31",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://tw.trip.com/moments/detail/dali-1445616-139386297/",
-      "width": 640,
-      "height": 959,
+      "width": 0,
+      "height": 0,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-sideng-02": {
@@ -8804,8 +8804,8 @@
       "author": "FreeSpiritNomad",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://sg.trip.com/moments/detail/jianchuan-2215-142401561/",
-      "width": 640,
-      "height": 426,
+      "width": 0,
+      "height": 0,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-yujin-02": {
@@ -8817,8 +8817,8 @@
       "author": "MilesByFong",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://my.trip.com/moments/detail/jianchuan-2215-134850704?locale=en-MY",
-      "width": 640,
-      "height": 480,
+      "width": 0,
+      "height": 0,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-blue-02": {
@@ -8830,8 +8830,8 @@
       "author": "_TI***kr",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://tw.trip.com/moments/detail/yulong-1446279-151905853/",
-      "width": 640,
-      "height": 948,
+      "width": 0,
+      "height": 0,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-ideal-02": {
@@ -8843,8 +8843,8 @@
       "author": "TranscontinentalWanderlust$11",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://tw.trip.com/moments/detail/dali-1445616-120934549/",
-      "width": 640,
-      "height": 853,
+      "width": 0,
+      "height": 0,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-spruce-02": {
@@ -8856,8 +8856,8 @@
       "author": "Trip.com",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://tw.trip.com/moments/detail/yulong-1446279-129573725/",
-      "width": 640,
-      "height": 960,
+      "width": 0,
+      "height": 0,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-ganhaizi-02": {
@@ -8869,8 +8869,8 @@
       "author": "Mandy Pua",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://my.trip.com/moments/detail/yulong-1446279-140235111?locale=en-MY",
-      "width": 640,
-      "height": 853,
+      "width": 0,
+      "height": 0,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-tiger-02": {
@@ -8882,8 +8882,8 @@
       "author": "Feastography",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://www.feastographyblog.com/blog/tiger-leaping-gorge",
-      "width": 1280,
-      "height": 853,
+      "width": 0,
+      "height": 0,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-songzanlin-02": {
@@ -8895,8 +8895,8 @@
       "author": "Trip.com",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://my.trip.com/moments/detail/shangri-la-106-125732812?locale=en-MY",
-      "width": 640,
-      "height": 640,
+      "width": 0,
+      "height": 0,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-dukezong-02": {
@@ -8908,8 +8908,8 @@
       "author": "Trip.com",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://hk.trip.com/moments/detail/shangri-la-106-137830554/",
-      "width": 640,
-      "height": 960,
+      "width": 0,
+      "height": 0,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-pudacuo-02": {
@@ -8934,8 +8934,8 @@
       "author": "攜程攻略",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://you.ctrip.com/travels/lijiang32/4137872.html",
-      "width": 640,
-      "height": 960,
+      "width": 0,
+      "height": 0,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     }
   },
