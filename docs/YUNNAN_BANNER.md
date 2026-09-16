@@ -44,7 +44,7 @@ yn-banner-animation-paused-v1
 
 ## 圖片與授權
 
-- 橫幅前景與背景共用主專案既有的 `images/blue-moon-valley.webp`，不再把同一張 WebP 以 Base64 內嵌兩次。
+- 橫幅前景與背景共用主專案既有的 `images/places/blue-moon-valley.webp`，不再把同一張 WebP 以 Base64 內嵌兩次。
 - 該圖也是原主網站 Hero 使用的藍月谷照片，因此沿用現有圖片來源與授權紀錄，不新增第二份圖片資產。
 - 圖片來源與授權仍以 `trip-data.json` / generated source ledger 的既有紀錄為準。
 

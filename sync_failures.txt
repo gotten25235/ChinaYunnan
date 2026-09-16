@@ -1,0 +1,49 @@
+﻿Yunnan image sync failures
+
+Rule: imageId -> local -> remote -> no image
+The sync tool never searches for a replacement picture.
+
+ID: pose-fengyang-01
+Remote: https://ak-d.tripcdn.com/images/1mi5r12000gej5c15BC75.jpg?proc=source%2Ftrip
+Local: images/pose/fengyang-01.webp
+Reason: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EE8F8BD0>
+
+ID: pose-sideng-01
+Remote: https://ak-d.tripcdn.com/images/1mi16224x8zs812n12E62.jpg?proc=source%2Ftrip
+Local: images/pose/sideng-01.webp
+Reason: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8A9A90>
+
+ID: pose-yujin-01
+Remote: https://ak-d.tripcdn.com/images/1mi04224x9443yq4g4D5D_Q90.jpg?proc=source%2Ftrip
+Local: images/pose/yujin-01.webp
+Reason: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8A9EA0>
+
+ID: pose-blue-01
+Remote: https://ak-d.tripcdn.com/images/1mi6n224x90hj2m6jB20A.jpg?proc=source%2Ftrip
+Local: images/pose/blue-01.webp
+Reason: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8A92C0>
+
+ID: pose-lijiang-02
+Remote: https://ak-d.tripcdn.com/images/1mi3a224x98k04lak79F0.jpg?proc=source%2Ftrip
+Local: images/pose/lijiang-02.webp
+Reason: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8A9C20>
+
+ID: pose-spruce-01
+Remote: https://ak-d.tripcdn.com/images/1mi6z12000qr7agt0FD1D.webp?proc=source%2Ftrip
+Local: images/pose/spruce-01.webp
+Reason: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8A9D10>
+
+ID: pose-ganhaizi-01
+Remote: https://ak-d.tripcdn.com/images/1mi6a224x97u33mrs3550.jpg?proc=source%2Ftrip
+Local: images/pose/ganhaizi-01.webp
+Reason: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8A9C70>
+
+ID: pose-songzanlin-01
+Remote: https://ak-d.tripcdn.com/images/1mi5y224x8x6z43duBD76.jpg?proc=source%2Ftrip
+Local: images/pose/songzanlin-01.webp
+Reason: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8B56D0>
+
+ID: pose-pudacuo-01
+Remote: https://static.wixstatic.com/media/d5e5c4_f9a9867b037448d38ac3a94d2ebc1401~mv2.jpg/v1/fill/w_568%2Ch_758%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/d5e5c4_f9a9867b037448d38ac3a94d2ebc1401~mv2.jpg
+Local: images/pose/pudacuo-01.webp
+Reason: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8B5450>

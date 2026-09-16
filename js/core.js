@@ -1,15 +1,14 @@
-/* Core services shared by domain modules: photos, preferences, favorites, date rails and utilities. */
+/* Core services shared by domain modules: images, preferences, favorites, date rails and utilities. */
 (() => {
   'use strict';
 
-  function createPhotoSystem({photos, esc, networkProfile=null}){
-    const get=id=>{const base=id&&photos[id]?photos[id]:null;return base||null;};
-    const badgeFor=item=>{const match=item?.photoMatch||'';if(match==='representative'||match==='illustrative')return '示意圖';if(match==='context')return '背景圖';return '';};
-    const normalizeMetaMode=mode=>mode==='public'||mode==='audit'?mode:'';
-    const pageMetaMode=()=>{try{return new URLSearchParams(location.search).get('photoMeta')==='audit'?'audit':'public';}catch{return 'public';}};
-    const publicCaption=photo=>String(photo?.publicCaption||photo?.alt||'').trim();
+  function createImageSystem({images, esc, networkProfile=null, isDev=false}){
+    const get=id=>{const base=id&&images[id]?images[id]:null;return base||null;};
+    const badgeFor=item=>{const match=item?.imageMatch||'';if(match==='representative'||match==='illustrative')return '示意圖';if(match==='context')return '背景圖';return '';};
+    const normalizeMetaMode=mode=>mode==='public'||mode==='dev'?mode:'';
+    const pageMetaMode=()=>isDev?'dev':'public';
+    const publicCaption=photo=>String(photo?.caption||photo?.alt||'').trim();
     const publicAuthor=photo=>{
-      const explicit=String(photo?.publicAuthor||'').trim();if(explicit)return explicit;
       const raw=String(photo?.author||'').trim();
       if(!raw)return '';
       if(/使用者提供|小紅書截圖|私人旅程/.test(raw))return '';
@@ -18,20 +17,19 @@
       return raw;
     };
     const publicLicense=photo=>{
-      const explicit=String(photo?.publicLicense||'').trim();if(explicit)return explicit;
       let raw=String(photo?.license||'').trim();
       if(!raw)return '';
       raw=raw.replace(/／本次私人旅程參考/g,'').replace(/使用者提供截圖\/?/g,'').trim();
       if(/內部手冊截圖/.test(raw))return '行程手冊';
       return raw;
     };
-    const publicSource=photo=>String(photo?.publicSource||photo?.source||'').trim();
-    const publicLicenseUrl=photo=>String(photo?.publicLicenseUrl||photo?.licenseUrl||publicSource(photo)||'').trim();
+    const publicSource=photo=>String(photo?.source||'').trim();
+    const publicLicenseUrl=photo=>String(photo?.licenseUrl||publicSource(photo)||'').trim();
     const publicHref=value=>/^https?:\/\//i.test(String(value||'').trim())?String(value).trim():'';
     const link=(url,label)=>url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>`:esc(label);
     const metadata=(photo,mode='public')=>{
       const meta=normalizeMetaMode(mode);if(!photo||!meta)return '';
-      if(meta==='audit'){
+      if(meta==='dev'){
         const source=photo.source?link(photo.source,photo.author||'來源'):esc(photo.author||'');
         const license=photo.licenseUrl?link(photo.licenseUrl,photo.license||'授權'):esc(photo.license||'');
         return `${esc(photo.caption||photo.alt||'')}${source?` · ${source}`:''}${license?` / ${license}`:''}${photo.changes?` · ${esc(photo.changes)}`:''}`;
@@ -48,19 +46,21 @@
     };
     const caption=(photo,mode='')=>{const meta=normalizeMetaMode(mode);if(!meta)return '';const text=metadata(photo,meta);return text?`<figcaption>${text}</figcaption>`:'';};
     const inlineMeta=(photo,mode='',className='photo-credit')=>{const meta=normalizeMetaMode(mode);if(!meta)return '';const text=metadata(photo,meta);return text?`<span class="${esc(className)}">${text}</span>`:'';};
-    const img=(photo,{alt=null,loading='lazy',className='',draggable=false}={})=>{
-      if(!photo)return '';
+    const img=(image,{alt=null,loading='lazy',className='',draggable=false}={})=>{
+      if(!image)return '';
       const klass=className?` class="${esc(className)}"`:'';
       const drag=draggable===false?' draggable="false"':'';
       const fetchPriority=loading==='eager'?'high':'low';
-      const remoteSrc=String(photo.remoteSrc||'').trim();
-      const remote=remoteSrc&&remoteSrc!==String(photo.src||'').trim()?` data-photo-remote="${esc(remoteSrc)}"`:'';
-      return `<img data-photo-managed="1" src="${esc(photo.src)}"${remote}${klass} alt="${esc(alt===null?photo.alt:alt)}" loading="${esc(loading)}" fetchpriority="${fetchPriority}" decoding="async"${drag} width="${photo.width}" height="${photo.height}">`;
+      const local=String(image.local||'').trim();
+      const remoteUrl=String(image.remote||'').trim();
+      const remote=remoteUrl&&remoteUrl!==local?` data-image-remote="${esc(remoteUrl)}"`:'';
+      const size=Number.isInteger(image.width)&&image.width>0&&Number.isInteger(image.height)&&image.height>0?` width="${image.width}" height="${image.height}"`:'';
+      return `<img data-image-managed="1" src="${esc(local||remoteUrl)}"${remote}${klass} alt="${esc(alt===null?image.alt:alt)}" loading="${esc(loading)}" fetchpriority="${fetchPriority}" decoding="async"${drag}${size}>`;
     };
     const thumbnail=(place,className='item-thumbnail')=>{
       if(!place)return '';
       const classes=[...new Set(['item-thumbnail',...(className||'').split(/\s+/).filter(Boolean)])].join(' ');
-      const photo=get(place.photoId);
+      const photo=get(place.imageId);
       if(!photo)return `<span class="${classes} item-thumbnail-empty" aria-label="無此圖"><span class="photo-missing-label">無此圖</span></span>`;
       return `<span class="${classes}">${img(photo,{alt:''})}${badgeFor(place)?`<span class="photo-type-badge">${esc(badgeFor(place))}</span>`:''}</span>`;
     };
@@ -85,12 +85,12 @@
     const storyThumb=(id,badge='',metaMode='')=>{const photo=get(id);return photo?`<span class="day-story-photo">${img(photo)}${badge?`<span class="photo-type-badge">${esc(badge)}</span>`:''}${inlineMeta(photo,metaMode,'photo-credit')}</span>`:`<span class="day-story-photo day-story-photo-empty"><span class="photo-missing-label">無此圖</span></span>`;};
     const itineraryVisual=id=>get(id);
     const installErrorHandler=()=>{
-      if(document.documentElement.dataset.photoErrorHandlerReady==='1')return;
-      document.documentElement.dataset.photoErrorHandlerReady='1';
+      if(document.documentElement.dataset.imageErrorHandlerReady==='1')return;
+      document.documentElement.dataset.imageErrorHandlerReady='1';
       document.addEventListener('error', e=>{
-        const image=e.target;if(!(image instanceof HTMLImageElement)||!image.dataset.photoManaged)return;
-        const remoteSrc=String(image.dataset.photoRemote||'').trim();
-        if(remoteSrc&&image.dataset.photoRemoteTried!=='1'){image.dataset.photoRemoteTried='1';image.src=remoteSrc;return;}
+        const image=e.target;if(!(image instanceof HTMLImageElement)||!image.dataset.imageManaged)return;
+        const remoteUrl=String(image.dataset.imageRemote||'').trim();
+        if(remoteUrl&&image.dataset.imageRemoteTried!=='1'&&image.src!==remoteUrl){image.dataset.imageRemoteTried='1';image.src=remoteUrl;return;}
         const slot=image.parentElement;if(!slot)return;image.remove();slot.querySelectorAll('.map-card-photo-credit,.map-detail-photo-credit,.photo-credit,small').forEach(el=>el.remove());
         if(slot.classList.contains('content-reader-media-frame')){slot.classList.add('photo-load-error');if(!slot.querySelector('.photo-missing-label'))slot.insertAdjacentHTML('afterbegin','<span class="photo-missing-label">無此圖</span>');const figureEl=slot.closest('figure');if(figureEl){figureEl.classList.add('photo-missing');const cap=figureEl.querySelector('figcaption');if(cap)cap.textContent='無此圖';}}
         else if(slot.tagName==='FIGURE'){slot.classList.add('photo-missing');if(!slot.querySelector('.photo-missing-box'))slot.insertAdjacentHTML('afterbegin','<div class="photo-missing-box"><span>無此圖</span></div>');const cap=slot.querySelector('figcaption');if(cap)cap.textContent='無此圖';}
@@ -197,5 +197,5 @@
     if(!mouseDrag)return;el.addEventListener('pointerdown',event=>{if(event.pointerType==='touch'||event.pointerType==='pen'||(event.button!==undefined&&event.button!==0))return;pointerId=event.pointerId;startX=event.clientX;startY=event.clientY;startLeft=el.scrollLeft;dragging=false;},{passive:true});el.addEventListener('pointermove',event=>{if(pointerId===null||event.pointerId!==pointerId)return;const dx=event.clientX-startX,dy=event.clientY-startY;if(!dragging){if(Math.abs(dx)<8||Math.abs(dx)<=Math.abs(dy)*1.08)return;dragging=true;el.classList.add('is-dragging');try{el.setPointerCapture?.(pointerId);}catch{}}event.preventDefault();el.scrollLeft=startLeft-dx;},{passive:false});el.addEventListener('pointerup',finish,{passive:true});el.addEventListener('pointercancel',finish,{passive:true});el.addEventListener('lostpointercapture',finish,{passive:true});el.addEventListener('click',event=>{if(performance.now()>suppressClickUntil)return;suppressClickUntil=0;event.preventDefault();event.stopPropagation();},true);
   }
 
-  window.YunnanCore={createPhotoSystem,createTravelUtils,createFavoritesStore,createNavigationService,createDateRailController,bindHorizontalScroller};
+  window.YunnanCore={createImageSystem,createTravelUtils,createFavoritesStore,createNavigationService,createDateRailController,bindHorizontalScroller};
 })();

@@ -111,6 +111,10 @@ def make_zip(destination: Path) -> None:
     destination.parent.mkdir(parents=True, exist_ok=True)
     excluded_dirs = {".git", "__pycache__", "dist"}
     with zipfile.ZipFile(destination, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
+        # Preserve canonical image categories even when a category (for example pose)
+        # has not been localized yet. This keeps the extracted project layout deterministic.
+        for directory in ("food", "shopping", "hotels", "places", "pose", "airlines", "handbook"):
+            archive.writestr("images/%s/" % directory, b"")
         for path in sorted(ROOT.rglob("*")):
             if not path.is_file() or any(part in excluded_dirs for part in path.relative_to(ROOT).parts):
                 continue
@@ -144,7 +148,7 @@ def main() -> int:
 
     sync_identification(version, build)
     run_tool("generate_source_index.py")
-    run_tool("generate_photo_sources.py")
+    run_tool("generate_image_sources.py")
     run_tool("generate_pose_sources.py")
     run_tool("generate_offline_manifest.py")
     run_tool("generate_build_manifest.py")

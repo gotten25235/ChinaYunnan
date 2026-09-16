@@ -1,10 +1,10 @@
 # 雲南慢時光 · 專案維護手冊
 
-根目錄 `README.md` 只說明網站使用方式。本文件是**唯一的人工作程規格主文件**，集中描述架構、資料契約、Public / Audit、來源追溯、圖片本地化、版本、Cache、驗證與已知工程決策。
+根目錄 `README.md` 只說明網站使用方式。本文件是**唯一的人工作程規格主文件**，集中描述架構、資料契約、PUBLIC / DEV、來源追溯、圖片本地化、版本、Cache、驗證與已知工程決策。
 
 文件維護原則：除 generated ledger、必要證據清單，以及使用者明確指定獨立維護的動態橫幅文件 `docs/YUNNAN_BANNER.md` 外，不再為單一主題新增 MD；新的工程規則優先合併進本文件，避免規格分散與互相矛盾。
 
-動態橫幅的行為、動畫安全、暫停狀態與整合邊界以 `docs/YUNNAN_BANNER.md` 為專屬規格；若與本文件的一般規則衝突，仍以本文件的版本、Cache、Public / Audit 與資料契約為上位規則。
+動態橫幅的行為、動畫安全、暫停狀態與整合邊界以 `docs/YUNNAN_BANNER.md` 為專屬規格；若與本文件的一般規則衝突，仍以本文件的版本、Cache、PUBLIC / DEV 與資料契約為上位規則。
 
 ## 1. 專案結構
 
@@ -14,9 +14,9 @@
 ├── README.md                       # 使用者說明
 ├── css/banner.css                  # 動態雲霧橫幅樣式（yn- 命名空間）
 ├── js/banner.js                    # 動態雲霧橫幅互動／WebGL
-├── images/blue-moon-valley.webp    # 橫幅與既有藍月谷共用同一授權照片
+├── images/places/blue-moon-valley.webp # 橫幅與藍月谷共用同一 registry 圖片
 ├── START.bat
-├── LOCALIZE_IMAGES_ANACONDA_SSL_FIX.bat
+├── SYNC_IMAGES.bat
 ├── sw.js
 ├── owner-insights.html             # unlinked owner-only analytics entry
 ├── manifest.webmanifest
@@ -41,21 +41,26 @@
 │   ├── social-sources.json
 │   └── source-index.json           # generated
 ├── images/
+│   ├── food/                       # 美食
+│   ├── shopping/                   # 伴手禮／購物
+│   ├── hotels/                     # 飯店
+│   ├── places/                     # 景點／文化／交通／手冊裁圖
+│   └── pose/                       # 旅拍 Pose
 ├── tools/
 │   ├── release.json
 │   ├── release.py
-│   ├── localize_remote_images.py
+│   ├── sync_images.py
 │   ├── generate_source_index.py
-│   ├── generate_photo_sources.py
+│   ├── generate_image_sources.py
 │   ├── generate_offline_manifest.py
 │   ├── validate_project.py
-│   ├── media_audit.py
+│   ├── media_dev.py
 │   └── optimize_media.py
 └── docs/
     ├── PROJECT.md                  # 人工維護的工程主文件
     ├── YUNNAN_BANNER.md            # 使用者指定獨立維護的動態橫幅規格
     └── sources/
-        ├── PHOTO_SOURCES.md        # generated 圖片來源帳本
+        ├── IMAGE_SOURCES.md        # generated 圖片來源帳本
         └── HANDBOOK_IMAGE_CROPS.md # 手冊裁圖證據清單
 ```
 
@@ -71,7 +76,7 @@
 - 收藏、自定義地圖、導航偏好只存在瀏覽器，不寫回正式 JSON。
 - `social-sources.json` 保存來源紀錄；正式 entity 以 `sourceRefs` / `fieldSources` 引用。
 - `source-index.json` 由正式資料與來源紀錄推導，不可手改。
-- `trip-data.json > photos` 是圖片 metadata 與授權資訊的唯一來源；`PHOTO_SOURCES.md` 由工具生成。
+- `trip-data.json > images` 是全站圖片 registry、來源 metadata 與授權資訊的唯一來源；內容 entity 只以 `imageId` 引用。`IMAGE_SOURCES.md` 由工具生成。
 - `foods[*].priority` 只在需要優先排序時使用 `必吃`；`shopping[*].priority` 使用 `必買`，且必買商品的 `group` 也必須是 `必買`。Priority 是本次旅程內容排序，不改寫 `pdfScheduled`。
 - 所有 `foods[*]` 與可食用／可飲用的 `shopping[*]` 使用 `foodReview`：`verdict`、`aroma`、`flavor`、`texture`、`bestWay`、`caution`、`forWhom`，以及 `scores`（香氣／口感／味道層次／地方特色／回購度，各 1–5）。購物品項另以 `edible: true` 標示。評鑑屬典型風味整理，不宣稱特定店家或品牌實測。
 - `culture[*].kind: "鄉野奇談"` 只收錄有可追溯地方傳說／民俗／信仰來源的故事；文字必須明確區分傳說與史實，不把靈異說法寫成已證實事件。
@@ -119,53 +124,55 @@
 - **大眾點評**：看一般遊客會員相冊與景點實拍，補足「不是專業旅拍也能拍到什麼」的視角；會員圖片只作研究，不視為可重用授權。
 - **Threads**：可搜尋，但不是固定必須來源；若沒有足以改變建議的有效內容，不為湊平台而建立紀錄。
 
-拍照資料把社群結論整理成 `poseTips`（Pose、攝影者位置、鏡頭／倍率、研究 URL），並另外保存 `sourceImage`、`sourcePlatform`、`sourceTitle`、`sourceUrl`、`sourceAuthor`、`sourceDate`、`sourceCaptured`。Public 介面直接顯示可追溯的來源實拍，圖片下方同步顯示來源資訊；小紅書／抖音／大眾點評仍是機位研究來源，若原貼不穩定，視覺參考可改用能穩定讀取且可追溯的攜程、Trip.com、旅遊部落格等公開實拍。來源頁只作追溯，不把外連當成現場操作必要步驟。
+拍照資料把社群結論整理成 `poseTips`（Pose、攝影者位置、鏡頭／倍率、研究 URL），每個 Pose 只保存 `imageId` 來引用全站 `images` registry；圖片本身的來源頁、作者、授權、local 與 remote 一律只記在對應 image record。PUBLIC ONLY 顯示可追溯的來源實拍與來源資訊；小紅書／抖音／大眾點評仍可作機位研究來源。圖片讀取與同步不得另外使用 `sourceImage` 特例，也不得在同步時搜尋替代圖。
 
 ### 圖片與媒體來源界線
 
-旅拍參考圖與一般景點主圖分開管理。`trip-data.json > photos` 仍管理網站景點主圖及其授權／來源；`photoSpots > poseTips` 的來源實拍只作旅拍參考，必須在前台與 `POSE_SCREENSHOT_SOURCES.md` 標示來源頁、平台及已知作者／日期。旅拍來源實拍直接讀取第三方公開圖片，不再建立 `images/pose-guides/*.webp` 本地複本；來源頁仍保留供追溯。圖片第一次開啟需要網路，成功載入後可由 runtime image cache 保存。非商用與註明出處不等於自動取得再利用授權；若來源方要求移除，可直接替換或取消該張參考圖，而不影響 Pose 文字。
+所有 managed 圖片都由 `trip-data.json > images` 管理，不再區分「一般圖片 metadata」與「Pose 圖片 metadata」兩套資料。`poseTips` 只描述拍法與研究連結，真正顯示的圖片來源、作者、授權、精確 remote 與 local 都由 `images[imageId]` 提供。第三方圖片的來源標示不代表取得再利用授權；來源失效時可以更換該 image record，但不得用相似圖靜默替代同一 imageId。
 
 `data/source-index.json` 由 `python tools/generate_source_index.py` 生成，不得手改。Validator 會檢查來源 ID、`fieldSources ⊆ sourceRefs`、Source Record key / `sourceId` 與 generated index 同步。
 
 不可退化的來源規則：**來源可失效但追溯鏈不可消失；新來源不覆寫舊 `sourceId`；正式 entity 合併取來源聯集；官方事實與社群經驗分開；圖片來源證據不等於部署授權；generated index 不人工維護。**
 
-## 4. Public / Audit 顯示模式
+## 4. PUBLIC / DEV 顯示模式
 
-本專案只有兩個 metadata 顯示層級，**共用同一份資料、同一套網站與同一套圖片**；差別只在維護資訊是否可見。
+本專案只有兩個顯示層級，**共用同一份資料、同一套網站與同一套圖片**；差別只在開發／維護資訊是否可見。命名採最少規則：網址只使用 `dev=1`，JavaScript 只使用 `isDev`；PUBLIC 為預設，不另外建立 `publicMode` / `publicOnly` / `isPublic` 等重複狀態。
 
-### Public（預設）
+### PUBLIC ONLY（預設）
 
-- 正常網址就是 Public，不需要 query parameter。
+- 正常網址就是 PUBLIC ONLY，不需要 query parameter。
 - Settings 只顯示純版本號，例如 `版本 1.1.2`。
 - **不顯示**「版本格式：驕傲．預設．羞恥。」這類維護規則。
-- 圖片來源區只輸出整理過的旅客可讀 attribution：`publicCaption`、`publicAuthor`、`publicSource`、`publicLicense`、`publicLicenseUrl`；缺值時才按 Photo System 的公開欄位規則回退。
-- Public 不應曝光 `changes`、內部修正紀錄、下載 cache/hash、source parser 等工程資訊。
+- 圖片來源區直接從標準 registry 欄位 `caption`、`author`、`source`、`license`、`licenseUrl` 產生旅客可讀 attribution；不另設 `public*` 圖片欄位。
+- 不曝光 `changes`、內部修正紀錄、下載 cache/hash、source parser 等工程資訊。
+- 天氣卡顯示「本次資料來源」與可閱讀的完整天氣入口；不顯示 API 文件與 provider 工程說明。
 
-### Audit
+### DEV ONLY
 
-以網址 query `?photoMeta=audit` 啟用，例如：
+以網址 query `?dev=1` 啟用，例如：
 
 ```text
-https://example.com/?photoMeta=audit
+https://example.com/?dev=1
 ```
 
-Audit 在不改變正式資料的前提下額外顯示：
+DEV ONLY 在不改變正式資料的前提下額外顯示：
 
 - 圖片完整 `caption`、`author/source`、`license/licenseUrl`、`changes`。
 - Settings 的「版本格式：驕傲．預設．羞恥。」說明。
-- 旅拍詳情中的工程提示：「圖片改用可追溯的公開來源實拍，不再使用重畫 Pose 圖；可穩定取得者本地化打包，其餘來源圖首次載入需網路；來源失效仍保留 Pose／機位／鏡頭文字」。
-- 其他明確設計為 audit-only 的查核資訊。
+- 旅拍詳情中的 Image System / `SYNC_IMAGES.bat` 工程提示。
+- 天氣 provider 欄位優先順序、三家 API 文件與服務能力說明。
+- 其他明確設計為 DEV ONLY 的開發／維護資訊。
 
-`photoMeta` 只接受 `public` / `audit` 語意；未知值不得創造第三種模式。**Public 是產品介面，Audit 是維護查核介面，不是兩套內容。**
+舊的 `photoMeta` 顯示模式已移除，也不做相容層。**PUBLIC ONLY 是產品介面，DEV ONLY 是開發／維護介面，不是兩套內容。**
 
 ## 5. Module / State Ownership
 
 | Module | Ownership |
 | --- | --- |
 | `network.js` | 國際版／大陸版 profile（預設大陸版）、Leaflet runtime loader、OSM／高德底圖選擇、WGS84 ↔ GCJ-02 顯示座標轉換；同時提供 QWeather Grid 所需 converter |
-| `core.js` | Photo System、Travel Utils、Favorites Store、Navigation Service、Date Rail、Horizontal Scroller；Photo System 固定執行 `src 本地 WebP → remoteSrc（同一張實物圖）→ 無此圖`，不做跨地點／同類商品／自製示意圖 fallback |
+| `core.js` | Image System、Travel Utils、Favorites Store、Navigation Service、Date Rail、Horizontal Scroller；Image System 固定執行 `imageId → local 本地 WebP → remote（同一張精確原圖）→ 無此圖`，不做跨地點／同類商品／搜尋替代圖 fallback |
 | `analytics.js` | 可選 Umami tracker loader、匿名事件 queue 與 persistent anonymous browser ID；不記姓名、表單內容／精確定位；未啟用或本機開發時不載入外部 tracker |
-| `weather.js` | 高德 → QWeather Grid → Open-Meteo provider chain、API credential local settings、欄位補缺、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots；同時集中管理小紅書搜尋詞、Deeplink 與共用確認彈窗：天氣列用目前雲南日期產生今日／昨日實況，Detail Reader 依內容類型產生攻略／美食／購物／旅拍搜尋，即時型景點另提供今日／昨日切換 |
+| `weather.js` | 高德 → QWeather Grid → Open-Meteo 欄位優先合併、API credential local settings、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots；可用 provider 並行請求，高順位既有欄位不被低順位覆蓋；另由 Open-Meteo / Copernicus DEM 90 m 維護每個 weather point 的座標海拔，與天氣 provider 優先合併分離。PUBLIC ONLY 顯示本次資料來源、約略海拔與完整天氣入口（高德使用站內實況／短期檢視器，Open-Meteo 使用站內 16 天／24 小時檢視器），DEV ONLY 顯示 API 文件、Elevation API、欄位優先順序、海拔原始值與查詢座標；同時集中管理小紅書搜尋詞、Deeplink 與共用確認彈窗 |
 | `offline.js` | PWA 選擇式離線準備、Service Worker bridge、Cache 完整性檢查、缺失清單、只重試失敗照片、安裝提示、收藏／偏好匯出匯入；不保存天氣 API Key |
 | `settings.js` | Settings View 的顯示主題與介面版面 preference owner；主題支援 `system / light / dark`，版面支援 `mobile / desktop`；使用 `yunnan-2026-color-theme-v1` 與 `yunnan-2026-ui-layout-v1` |
 | `reader.js` | Content Reader、stack、return state、Reader swipe；每個 Item Reader 操作列向 Weather/XHS helper 取得對應搜尋資料並顯示 `📕 小紅書` 按鈕 |
@@ -189,7 +196,7 @@ Detail Reader 的小紅書入口共用同一彈窗與 Deeplink，不在圖卡表
 
 ## 6. View Registry / Action Router
 
-`app.js > VIEW_REGISTRY` 是主 View 的唯一登記處，合法 View、導覽順序與主頁 swipe 順序都由它推導。非地圖 View 在啟動時建立穩定 DOM；圖片仍由 Photo System 使用原生 lazy loading 控制下載。Map 是唯一延後初始化的 View，必須先切成可見狀態，再於下一個 layout frame 建立或更新 Leaflet。
+`app.js > VIEW_REGISTRY` 是主 View 的唯一登記處，合法 View、導覽順序與主頁 swipe 順序都由它推導。非地圖 View 在啟動時建立穩定 DOM；圖片仍由 Image System 使用原生 lazy loading 控制下載。Map 是唯一延後初始化的 View，必須先切成可見狀態，再於下一個 layout frame 建立或更新 Leaflet。
 
 中央 `document click` 只保留一個，順序為：Offline → Weather → Journey → Reader → Map → Library → App shared actions。局部 gesture controller 只處理自己的 boundary，不再建立第二套 document-level router。
 
@@ -212,82 +219,128 @@ Reader 關閉後回原本 window scroll、Rail scroll 與 focus。Content Reader
 
 **當地必吃**的「必吃排序／口感評鑑」說明維持與「風俗與故事」頁首相同的輕量 `.muted` 文字樣式。**夜間逍遙**的綠色 `.note` 摘要固定放在頁面標題正下方、日期切換之前；切換到單日時只更新該摘要文字，不把提示框移回內容區。**旅拍指南**則先顯示輕量 `.muted` 日期／Pose 說明，再緊接綠色 `.note` 來源／排序提示，兩者都位於日期切換之前。
 
-可點擊的 Content / Story / Journey summary 圖卡區必須在圖卡區上方提供一致的小字操作提示（例如「點一下圖卡，看更多內容」）；純展示卡不顯示，避免誤導。提示屬於 Card Group，不屬於整個頁面：固定放在「該組圖卡的群組標題正下方、第一張圖卡正上方」。夜間逍遙放在「城市 · 今晚住宿附近」下方；雲南必買放在每個目前可見的「必買／可以買／建議當地吃」群組標題下方；旅拍指南放在每個「城市 · 當天拍照清單」下方。日期列、分類篩選器與頁首說明文字附近不得放置這句提示；分類篩選不另外顯示「篩選必買」標題。探索地圖的「滑動探索地點」為特殊互動：短按圖卡用於定位與附近提案，長按約半秒後放開才開完整 Reader，因此圖卡前提示固定使用「長壓一下圖卡，看更多內容」，不得寫成一般的「點一下」。Journey Day Carousel 的整張摘要卡可點擊／鍵盤 Enter 或 Space 展開當天內容，卡片內既有按鈕仍可獨立操作。拍照頁只有目前日期（或全部八天）真的含 `drama:true` 卡片時才顯示《去有風的地方》篩選；不提供「必拍」篩選，優先機位以資料中的 `priority` 排序在前，但 Public 圖卡不另外顯示「必拍」標籤。
+可點擊的 Content / Story / Journey summary 圖卡區必須在圖卡區上方提供一致的小字操作提示（例如「點一下圖卡，看更多內容」）；純展示卡不顯示，避免誤導。提示屬於 Card Group，不屬於整個頁面：固定放在「該組圖卡的群組標題正下方、第一張圖卡正上方」。夜間逍遙放在「城市 · 今晚住宿附近」下方；雲南必買放在每個目前可見的「必買／可以買／建議當地吃」群組標題下方；旅拍指南放在每個「城市 · 當天拍照清單」下方。日期列、分類篩選器與頁首說明文字附近不得放置這句提示；分類篩選不另外顯示「篩選必買」標題。探索地圖的「滑動探索地點」為特殊互動：短按圖卡用於定位與附近提案，長按約半秒後放開才開完整 Reader，因此圖卡前提示固定使用「長壓一下圖卡，看更多內容」，不得寫成一般的「點一下」。Journey Day Carousel 的整張摘要卡可點擊／鍵盤 Enter 或 Space 展開當天內容，卡片內既有按鈕仍可獨立操作。拍照頁只有目前日期（或全部八天）真的含 `drama:true` 卡片時才顯示《去有風的地方》篩選；不提供「必拍」篩選，優先機位以資料中的 `priority` 排序在前，但 PUBLIC ONLY 圖卡不另外顯示「必拍」標籤。
 
-## 8. Photo / Mobile Traffic / 本地化
+## 8. Image System / Mobile Traffic / 圖片同步
 
-所有 managed `<img>` 由 `core.js > createPhotoSystem()` 產生，統一負責 lazy/eager、`fetchpriority`、width/height、錯誤降級、placeholder、Reader/card 圖片 contract 與 Public / Audit metadata。
+全站 managed `<img>` 只由 `core.js > createImageSystem()` 管理。景點、飯店、美食、購物、故事、Hero 與旅拍 Pose 都走同一份 registry、同一個錯誤降級流程。
 
-### Photo metadata contract
+### 唯一 Image Registry schema
 
-每筆 `trip-data.json > photos` 的部署欄位固定為：
+正式 registry 位於 `trip-data.json > images`。內容 entity、Day、Hero 與 `poseTips` 只引用 `imageId`；不在其他位置重複保存圖片 URL、來源或授權資料。
+
+每一筆 image record **固定只能有以下 11 個欄位**：
 
 ```json
 {
-  "src": "images/remote/example.webp",
-  "remoteSrc": "https://example.com/the-exact-same-photo.jpg"
+  "images": {
+    "souvenir-tamarind": {
+      "local": "images/shopping/souvenir-tamarind.webp",
+      "remote": "https://example.com/exact-image.jpg",
+      "alt": "酸角果實",
+      "caption": "酸角／羅望子果實實拍",
+      "source": "https://example.com/source-page",
+      "author": "Ivar Leidus",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "width": 1280,
+      "height": 720,
+      "changes": "縮放並轉為 WebP；未修改內容。"
+    }
+  }
 }
 ```
 
-- `src` **永遠是本地 WebP 路徑**，正式資料不允許切成 `https://...`。
-- `remoteSrc` 可選；存在時必須是同一主體、同一用途的網路實物圖。
-- `source` / `licenseUrl` 是來源頁與授權查核用途，不等於圖片下載 URL。
-- `fallbackSrc` 已淘汰，由 validator 禁止。
-- 禁止拿附近景點、同城市、同品牌、同類商品或自製插畫當 runtime fallback。
+欄位責任：
 
-### 瀏覽器讀圖流程
+- `local`：專案內 WebP，且只能位於 `images/food/`、`images/shopping/`、`images/hotels/`、`images/places/`、`images/pose/`、`images/airlines/`、`images/handbook/`。
+- `remote`：**必填**。即使 local 已本地化也永久保留；必須是與 local 同一張圖的精確 HTTP(S) 圖片 URL，用於 runtime fallback 與 `SYNC_IMAGES.bat`。
+- `source`：**必填**的可追溯來源頁；它不是 runtime 圖片 URL，也不得拿來猜 fallback 圖。
+- `author`、`license`、`licenseUrl`：權利與歸屬資訊。來源頁未標示可重用授權時必須如實記錄，不推定授權。
+- `alt`、`caption`：無障礙文字與來源說明。
+- `width`、`height`：local WebP 實際尺寸；local 尚未同步時使用 `0 × 0`，同步成功後由工具自動回寫。
+- `changes`：裁切、縮放、WebP 轉檔或其他處理說明。
 
-前台永遠只有一條流程：
+`images` object 的 key 本身就是 imageId，因此 record 內禁止再放 `id`。舊欄位 `src`、`remoteSrc`、`sourceImage`、`fallbackSrc`、`sourceUrl`、`originalUrl`、`originalSource`、`captureSource`、`capturePage`、`publicCaption` 等全部淘汰，不做舊格式兼容。
+
+### 唯一讀圖流程
 
 ```text
-src 本地 WebP
+imageId
+  ↓
+images[imageId].local
+  ↓ 載入失敗／檔案尚未同步
+images[imageId].remote
   ↓ 載入失敗
-remoteSrc（若有）
-  ↓ 載入失敗／沒有 remoteSrc
 無此圖
 ```
 
-BAT 前後**不切換前台模式**。本地檔存在就直接使用；本地檔缺少才碰 `remoteSrc`。Network Profile 只影響地圖／相關網路服務，不改圖片主體。
+Service Worker 可以快取成功載入的圖片，但 Cache 不能改變圖片身分。程式不得因下載失敗改抓附近景點、同城市、同類商品、來源頁第一張圖、搜尋結果或舊不明檔案。
 
-### BAT 本地化流程
-
-`LOCALIZE_IMAGES_ANACONDA_SSL_FIX.bat` 呼叫 `tools/localize_remote_images.py`：
+### 實體資料夾
 
 ```text
-remoteSrc
-  ↓
-確認 src 是本地 .webp
-  ↓
-驗證 remote-image-cache 的 remoteSrc + localPath + SHA-256
-  ├─ 全部吻合 → 重用本地檔
-  └─ 不吻合／無紀錄 → 原始 URL 下載
-                          ↓ 失敗
-                        wsrv.nl 備援
-                          ↓ 成功
-                        .part 驗證 WebP
-                          ↓
-                        原子覆蓋 src
+images/
+├── food/
+├── shopping/
+├── hotels/
+├── places/
+├── pose/
+├── airlines/
+└── handbook/
 ```
 
-只因同名 WebP 存在**不能**判定下載完成。來源 URL 改變或 SHA-256 不符時重新抓取；新檔必須完整下載、成功解碼／轉碼並驗證後才覆蓋舊檔。下載失敗時不刪除原本有效本地圖，BAT 也不修改 `trip-data.json`。
+`images/airlines/` 專門保留航空公司／航班示意圖；`images/handbook/` 專門保留由旅遊手冊裁出的圖片。兩者保留獨立分類，不併入 `places/`。舊的 `images/library/`、`images/remote/` 不保留；手冊裁圖頁碼證據仍由 `docs/sources/HANDBOOK_IMAGE_CROPS.md` 保存。
 
-若原本已有有效 WebP而更新失敗，保留原圖並記錄 warning；若本地原本就沒有且所有下載方式失敗，寫入 `localize_failures.txt`、保留其他已成功圖片，且**不建立 `*_all_local.zip`**。網站仍可在線嘗試 `remoteSrc`，兩邊都失敗才顯示「無此圖」。
+### `SYNC_IMAGES.bat` 精確同步
+
+`SYNC_IMAGES.bat` 先處理 Windows / Anaconda 常見 SSL、Pillow 與 WebP 環境，再呼叫 `tools/sync_images.py`。因為每一筆 image record 都必須有 `remote`，同步器可以用完全一致的流程處理所有圖片：
+
+```text
+images[*].remote（精確 URL）
+  ↓
+直接下載；不搜尋、不代理換圖、不猜替代來源
+  ↓
+解碼／轉成 WebP，最長邊 1280px、quality 82
+  ↓
+SHA-256 + remote URL + local path 寫入 image-sync-cache
+  ↓
+原子寫入 images[*].local
+  ↓
+回寫 local 的實際 width / height
+```
+
+已打包且 cache 能證明 `remote + local + SHA-256` 一致的檔案只做 VERIFIED，不重抓。若 local 無法證明與目前 remote 一致，而此次遠端同步又失敗，工具會把未驗證 local 移到 `images/_quarantine/`，讓網站退回 exact remote；不得保留可能是錯圖的 local 來假裝成功。
+
+同步後輸出 `sync_images.log`、`sync_failures.txt`（若有）與 `docs/IMAGE_SYNC_REPORT.html`；報告依 `images/` 第一層資料夾分組，每區顯示 record 數與 `SYNCED / VERIFIED / FAILED` 統計，頁首提供分組快速跳轉與總統計。之後依序重建 `IMAGE_SOURCES.md` → `POSE_SCREENSHOT_SOURCES.md` → `offline-manifest.json` → build manifest → validator。只有所有 pending local 都同步完成時才建立 `*_all_local.zip`。 最後一定另外輸出 `sync_summary.txt` 與英文終端統計：`Total`＝本輪 remote-backed image records；`Success`＝本輪新下載並轉檔成功的 `SYNCED`；`Ignored`＝exact remote + local + SHA-256 已驗證一致的 `VERIFIED`，因此不重抓；`Failed`＝個別圖片下載／解碼／轉檔失敗、仍使用 exact remote fallback；`Errors`＝同步流程、generated artifacts、validator 或 ZIP 等工具層級異常。
+
+### 旅拍 Pose
+
+Pose 不再保存 `sourceImage` 或 `sourcePlatform/sourceTitle/sourceUrl/sourceAuthor/sourceDate/sourceAlt/sourceCaptured` 等第二套圖片 metadata。每個 Pose 只保存自己的 `imageId`；其來源頁、作者、授權、local 與 exact remote 全部由 `images[imageId]` 提供。現有 17 個 Pose 的 remote 保留目前已確認正確的精確來源圖，本地化後 remote 也不刪除。
+
+這個設計直接避免先前錯誤：**遠端顯示 A，本地化後卻因搜尋、舊檔或錯誤對應變成 B。** 同一 imageId 永遠只有一個核准的 remote 身分。
+
+### 酸角／野生菌精釀啤酒
+
+舊的小紅書伴手禮榜單裁切圖不再使用。`酸角` 現在引用新的 `souvenir-tamarind` registry record（Wikimedia Commons 可追溯果實實拍）；`野生菌精釀啤酒` 引用新的 `souvenir-wild-mushroom-beer` record（FoodTalks 公開商品／場景圖）。兩者 local 都位於 `images/shopping/`；尚未同步時使用各自 exact remote。
 
 ### 離線 manifest 與 Cache
 
-`generate_offline_manifest.py` 每張照片只選一個離線來源：本地 `src` 存在就放 `photoAssets`；本地不存在且有 `remoteSrc` 才放 `remotePhotos`；兩者都沒有由 validator 報錯。同一張照片不要求同時下載本地與遠端兩份。
+`generate_offline_manifest.py` 對每筆 record：local 實際存在時列入 `imageAssets`；local 不存在時列入 `remoteImages`。因為 `remote` 永遠必填，所以不再存在「local 與 remote 都沒有」的合法狀態。
 
-Service Worker Image Cache 採 Cache First；OpenStreetMap / 高德 tiles 不進長效 Image Cache。圖片內容真正更換時應改檔名／URL，或加入 Service Worker invalidation 清單。
-
-### 圖片語意與證據
-
-具名主體使用 `exact` / `verified`；交通／無固定場地活動可用 `illustrative`，料理可用 `representative`，文化故事可用 `context`，所有非主體實拍都必須在 UI 標示「示意圖」或「背景圖」。`reference_only` 不作 UI 主圖。
-
-使用者提供手冊中可明確對應景點的照片可裁切成本地 WebP；頁碼與裁切記錄在 `docs/sources/HANDBOOK_IMAGE_CROPS.md`。圖片授權與來源以 `trip-data.json > photos` 為準，`generate_photo_sources.py` 生成 `PHOTO_SOURCES.md`。
+「設定 → 離線準備」會依 manifest 準備 Image Cache。一般 build 更新不無條件重抓全部圖片；圖片真正替換時必須更新 registry 的 remote/source/changes，並讓 local 與 cache 重新驗證。
 
 ### 驗證規則
 
-Validator 檢查：所有 `photo.src` 必須是本地 WebP；`remoteSrc` 若存在必須為 HTTP(S)；不允許 `fallbackSrc`；本地檔缺少時至少要有 `remoteSrc`；具名主體仍遵守 exact / verified 語意規則。
+Validator 至少檢查：
+
+- 每一筆 `images[*]` **剛好只有 11 個核准欄位**，缺一或多一都 ERROR。
+- `local` 必須位於七個核准資料夾（`food / shopping / hotels / places / pose / airlines / handbook`）且為 WebP；`remote`、`source`、`licenseUrl` 都必須是 HTTP(S)。
+- local 存在時 `width/height` 必須與實際 WebP 尺寸一致；local 不存在時必須是 `0/0`。
+- 所有內容 entity 只以 `imageId` 指向 registry；`imageUnavailable` 與舊圖片欄位禁止。
+- Pose imageId 必須獨立，local 位於 `images/pose/`，且不同 Pose 不得共用 exact remote。
+- `images/` 不得殘留 `library/`、`remote/` 等舊目錄；`handbook/`、`airlines/` 為正式保留分類。
+- `IMAGE_SOURCES.md` 與 `POSE_SCREENSHOT_SOURCES.md` 必須由目前 registry 重新生成並與資料一致。
 
 ## 9. Anonymous Analytics / Owner Insights
 
@@ -311,7 +364,7 @@ Validator 檢查：所有 `photo.src` 必須是本地 WebP；`remoteSrc` 若存�
 
 ## 11. Release Version / Schema / Cache / Generated Data
 
-`tools/release.json` 保存對外軟體版本，格式為三段十進位整數。三段依專案內部約定分別是 proud / default / shame，且**獨立累加、不做 SemVer 式歸零**。UI 顯示細節依本文件「Public / Audit 顯示模式」執行。
+`tools/release.json` 保存對外軟體版本，格式為三段十進位整數。三段依專案內部約定分別是 proud / default / shame，且**獨立累加、不做 SemVer 式歸零**。UI 顯示細節依本文件「PUBLIC / DEV 顯示模式」執行。
 
 對外 Release Version、內部 Build ID 與 storage/schema 契約分離：HTML 同時保存 `data-app-version` 與 `data-app-build`；CSS / JS 的 `?v=` 繼續使用對外 Release Version，App Cache 使用 Release Version + Build ID。Build ID 可在對外版本固定時獨立更新；Favorites / Map / Network / UI theme / UI layout / Weather / Offline / Source parser 等 storage/schema key 維持 `v1`。只有真正做資料格式 migration 時才升 schema，不因一般 build 更新清除收藏、偏好或圖片快取。
 
@@ -323,13 +376,13 @@ Cache 契約：
 - Image Cache：`yunnan-images-v1`，Cache First；一般 build 更新不清除、不重抓圖片。
 - Offline Meta Cache：`yunnan-offline-v1`；可見準備時間另存在 `yunnan-offline-prep-state-v1`。
 - Weather cache：`yunnan-weather-cache-v1`；provider 設定：`yunnan-weather-provider-config-v1`。
-- Network profile 切換後 App reload 一次，重建 Photo System、Leaflet source 與底圖座標系。
+- Network profile 切換後 App reload 一次，重建 Image System、Leaflet source 與底圖座標系。
 - 地圖 tiles 永不納入完整離線包；無網路時 `map.js` 依正式 WGS84 座標產生離線簡圖。
 
 Generated files：
 
 - `data/source-index.json` ← `trip-data.json + social-sources.json`
-- `docs/sources/PHOTO_SOURCES.md` ← `trip-data.json > photos`
+- `docs/sources/IMAGE_SOURCES.md` ← `trip-data.json > images`
 - `offline-manifest.json` ← core assets + 每張照片單一路徑清單；manifest schemaVersion 仍是 `v1`
 - `build.json` ← 對外版本 + Build ID；前台每次開啟／回前景／重新連線時只用這個小檔案判斷是否需要更新
 - `asset-manifest.json` ← App Shell 每個資源的 SHA-256；只有偵測到新 build、Service Worker 安裝時才使用
@@ -338,10 +391,10 @@ Generated files：
 
 ```bash
 python tools/generate_source_index.py
-python tools/generate_photo_sources.py
+python tools/generate_image_sources.py
 python tools/generate_offline_manifest.py
 python tools/generate_build_manifest.py
-python tools/media_audit.py
+python tools/media_dev.py
 python tools/optimize_media.py
 python tools/validate_project.py
 
@@ -381,13 +434,13 @@ python tools/release.py --bump shame --new-build --zip
 | 主 View 增加後多份清單 | whitelist、`VIEW_ORDER`、初始化 render 各自手寫 | 全部由 `VIEW_REGISTRY` 推導 |
 | Leaflet 首次空白或尺寸錯誤 | 在 inactive View 先建立地圖 | 先顯示 Map View，再用 `requestAnimationFrame` 建立；之後顯示時 `invalidateSize()` |
 | 中國大陸國際服務失效 | 假設 OSM / Wikimedia / Google 一定可達，或把 WGS84 直接畫到高德 | Network Profile：國際版 OSM；大陸版高德 + WGS84→GCJ-02；圖片固定本地→同圖 remote→無圖 |
-| 天氣單一來源失效／精度不足 | 只依賴單一 API 或低優先來源覆蓋高優先來源 | `weather.js` 固定高德 → QWeather Grid → Open-Meteo，以欄位補缺方式合併 |
+| 天氣單一來源失效／精度不足 | 只依賴單一 API 或低優先來源覆蓋高優先來源 | `weather.js` 固定高德 → QWeather Grid → Open-Meteo，以欄位優先＋補缺方式合併；可用 provider 並行請求；海拔獨立固定使用 Open-Meteo / Copernicus DEM 90 m，不和天氣欄位混合 |
 | Nearby 大量 `0.0 km` | 共用參考座標當精確店址、或硬補假座標 | 排除同項／別名；共用原點顯示「同區域」，1 km 內用公尺，其餘用直線公里 |
 | 手機主分頁 swipe 掉幀 | `touchmove` 中 render 目標 View 或初始化 Leaflet | gesture 期間只做位移、clone 既有 DOM 與 commit 判斷 |
-| 手機圖片流量過大 | 重複 render／重抓同圖／保留大型 JPEG/PNG | 穩定 View DOM + lazy loading + Photo System + WebP + Image Cache First |
+| 手機圖片流量過大 | 重複 render／重抓同圖／保留大型 JPEG/PNG | 穩定 View DOM + lazy loading + Image System + WebP + Image Cache First |
 | Release / Build 與 schema 混在一起 | 每次部署連 storage key / image cache / schema 一起改 | `release.json` 分開保存 public version + build；schema `v1` 只有資料 migration 才升；圖片 cache 不跟 build 走 |
 | Source Index 不同步 | 手改 `source-index.json` | 由正式資料自動生成並由 validator 驗證 |
-| 圖片授權文件不同步 | 同時手改 JSON 與長篇 MD | `trip-data.json > photos` 為 source of truth，MD 自動生成 |
+| 圖片授權文件不同步 | 同時手改 JSON 與長篇 MD | `trip-data.json > images` 為 source of truth，MD 自動生成 |
 | 來源失效／被刪除 | 覆寫既有 `sourceId`、偷換 URL、直接刪紀錄 | 保留原 Source Record 與狀態；替代來源建立新 ID |
 | 地址／座標查不到 | 用城市中心或猜測座標填洞 | 保持待定位，核實後才寫正式座標 |
 | 新功能不知道放哪 | renderer/state 塞進 `app.js` 或建第二套全域 handler | 先決定 Domain Owner；App 只做 bootstrap、協調與 router |
@@ -410,8 +463,8 @@ python tools/release.py --bump shame --new-build --zip
 
 ### Pose 圖片完整性
 
-- 旅拍指南前台直接讀第三方公開來源圖片；不再讀取或打包 `images/pose-guides/*.webp`。
-- 每張本地 Pose 圖必須對應自己的來源頁，且同一旅拍場景不得使用相同影像內容冒充不同 Pose。
-- Validator 會檢查 WebP 檔案內容 SHA-256；即使檔名不同，只要影像 bytes 相同也會阻擋發版。
-- `images/pose-guides/` 不再作為旅拍圖片來源；發版 ZIP 不應殘留舊的 Pose 本地複本。
+- 旅拍 Pose 與全站共用同一 Image Registry；`poseTips` 只保存 `imageId` 與拍攝研究資料。
+- 每個 Pose 的 `images[imageId]` 必須保存自己的 `local`、exact `remote`、`source`、作者與授權；本地化後 remote 仍保留。
+- 同一旅拍場景不同 Pose 不得共用 imageId 或 exact remote。
+- `images/pose-guides/`、`sourceImage` 與 pose 專屬來源欄位都屬舊格式，不得復活。
 - 來源頁只負責追溯，不代表來源圖片具備可重用授權。

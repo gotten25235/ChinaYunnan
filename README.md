@@ -62,9 +62,11 @@
 
 ## 天氣
 
-天氣固定採 **高德 → QWeather Grid → Open-Meteo** 的優先順序，來源失敗時自動降級。若未設定高德／QWeather Key，會使用免 Key 的 Open-Meteo。
+天氣固定採 **高德 → QWeather Grid → Open-Meteo** 的欄位優先順序。可用 provider 會並行取得資料；同一天、同一欄位若高順位已有值，就不會被低順位覆蓋，低順位只補空缺。若未設定高德／QWeather Key 或個別來源失敗，仍由其他可用來源補資料。
 
-天氣最多每 1 小時重新抓取一次；按「↻ 更新」可強制更新。離線時使用最後一次成功快取。玉龍雪山／雲杉坪、普達措等高海拔地點有獨立 weather point；出發當天仍應以最新氣象與現場公告為準。
+天氣最多每 1 小時重新抓取一次；按「↻ 更新」可強制更新。離線時使用最後一次成功快取。每個 weather point 另外保存 Open-Meteo / Copernicus DEM 90 m 的座標海拔，PUBLIC ONLY 顯示「海拔：約 N m」；這是查詢座標的地形高度，不代表整座城市或景區所有位置。玉龍雪山／雲杉坪、普達措等高海拔地點有獨立 weather point；出發當天仍應以最新氣象與現場公告為準。
+
+PUBLIC ONLY 會直接顯示「本次資料來源」，並提供「查看完整天氣：高德天氣 / QWeather / Open-Meteo」。高德與 Open-Meteo 都使用站內完整天氣視窗：高德直接使用已設定的 Web Service Key 顯示實況與短期逐日預報；若尚未設定 Key，視窗會提示到天氣 API 設定完成設定。QWeather 仍連到可閱讀的城市天氣頁。Open-Meteo 顯示目前狀況、未來 16 天逐日預報與接下來 24 小時逐時預報。高德與 Open-Meteo 的站內完整天氣視窗都會顯示同一 weather point 的約略海拔；海拔固定由 Open-Meteo Elevation / Copernicus DEM 90 m 提供，不參與高德 → QWeather → Open-Meteo 的天氣欄位優先合併。DEV ONLY 才額外顯示三家 API 文件、Elevation API、provider 欄位優先順序、海拔原始值與查詢座標。
 
 每個天氣定位點旁另提供 **小紅書近期實況**：搜尋日期永遠以目前雲南日期為準，不會因行程日是未來日期而搜尋未來內容。例如 9/15 查看 9/21 玉龍雪山，仍搜尋 `9.15 玉龙雪山 云杉坪 实况 穿搭 天气`。點「今日實況」或「資料少？看昨天」會先開啟站內確認彈窗，顯示實際搜尋詞與「需已安裝小紅書 App」提示；使用者再按「開啟小紅書」時，才以官方 `xhsdiscover://search/result` Deeplink 嘗試喚起 App。不再使用容易被風控攔截的 Web 搜尋網址。彈窗同時提供一鍵「複製搜尋詞」備援；日期跨日後會在前台自動更新，不需要重新發布網站。
 
@@ -74,11 +76,36 @@ Day 2 大理古城補充 `南詔十二時辰`、`總統兵馬大元帥府（杜�
 
 ## 圖片與省流量
 
-網站圖片固定優先使用本地 WebP；本地檔不存在或損壞時，才嘗試同一張實物照片的網路來源；兩者都失敗才顯示「無此圖」。不會以附近景點、同類商品或自製插畫偷偷代替具名主體。
+全站圖片只使用一套 **Image System**，景點、飯店、美食、伴手禮、文化與旅拍 Pose 都是同一條規則：
 
-具名地點、飯店、景點與店家使用 `exact` / `verified` 主體圖；交通、料理、文化背景等可使用明確標示的示意／代表／背景圖。手冊裁圖的頁碼與對應紀錄保存在 `docs/sources/HANDBOOK_IMAGE_CROPS.md`。
+```text
+imageId → local 本地 WebP → remote 同一張精確遠端圖 → 無此圖
+```
 
-若要把仍依賴網路備援的照片寫成本地 WebP，可執行 `LOCALIZE_IMAGES_ANACONDA_SSL_FIX.bat`。BAT 不切換網站模式，只補齊本地圖片。
+正式資料只放在 `trip-data.json > images`。內容卡片、Day、旅拍 Pose 與 Hero 都只保存 `imageId`；圖片路徑、遠端 fallback、來源、作者、授權與轉檔紀錄不在內容 entity 重複保存。
+
+每一筆 Image Registry 固定只有 11 個欄位：`local`、`remote`、`alt`、`caption`、`source`、`author`、`license`、`licenseUrl`、`width`、`height`、`changes`。**即使 local 已經本地化，remote 也必須永久保留。** `remote` 是同一張圖的 runtime fallback／同步目標；`source` 才是用來追溯來源頁與權利資訊的頁面。兩者不可混用。
+
+本地圖片實體依用途分七類：
+
+```text
+images/
+├─ food/
+├─ shopping/
+├─ hotels/
+├─ places/
+├─ pose/
+├─ airlines/
+└─ handbook/
+```
+
+`images/airlines/` 保留航空公司／航班示意圖，`images/handbook/` 保留由旅遊手冊裁出的實景圖；這兩類不混入 `places/`。舊的 `images/library/`、`images/remote/` 不再使用。手冊裁圖的頁碼與裁切證據仍保存在 `docs/sources/HANDBOOK_IMAGE_CROPS.md`。
+
+`SYNC_IMAGES.bat` 只會下載 registry 中指定的 exact `remote`，轉成 WebP 後寫入該筆 `local`；不搜尋、不換圖、不拿來源頁第一張圖、不用舊快取圖冒充。同步後會回寫 local WebP 的實際 `width` / `height`，再重建圖片來源文件、Pose 來源文件、離線 manifest 與 build manifest，最後執行 validator。同步結果可在 `docs/IMAGE_SYNC_REPORT.html` 逐張檢查；報告會依 `images/food/`、`shopping/`、`hotels/`、`places/`、`pose/`、`airlines/`、`handbook/` 分組，每區顯示筆數與 `SYNCED / VERIFIED / FAILED` 統計，頁首另提供資料夾快速跳轉與總統計。 執行結束時固定輸出英文統計：`Total / Success / Ignored / Failed / Errors`，並寫入 `sync_summary.txt`；其中 Success＝本次實際 SYNCED、Ignored＝已由 cache 驗證 local + exact remote + SHA-256 一致而不重抓、Failed＝單張圖片下載／解碼／轉檔失敗、Errors＝同步流程／衍生檔生成／validator／ZIP 等工具層級錯誤。
+
+旅拍 Pose 目前保留 17 個已確認正確的精確遠端圖片網址，仍與全站共用同一套 registry。若 `images/pose/*.webp` 尚未建立，前台直接讀該筆 `remote`；同步成功後優先讀 local，但 `remote` 不刪除。
+
+`酸角`與`野生菌精釀啤酒`已改用新的可追溯圖片來源，不再使用先前的小紅書榜單裁切圖。兩筆新圖分別使用 `souvenir-tamarind` 與 `souvenir-wild-mushroom-beer` imageId，local 固定放在 `images/shopping/`；本地檔尚未同步時直接使用各自 exact remote。
 
 ## 自動更新與省流量
 
@@ -98,7 +125,7 @@ Android Chrome 若支援會提供安裝到主畫面；iPhone / iPad 請使用 Sa
 
 「鄉野奇談」屬地方傳說／民俗閱讀，會與史實或已證實資訊分開標示。
 
-「旅拍指南」的 Pose 與機位會搜尋小紅書、抖音、大眾點評等公開內容做研究；Public 前台直接顯示可追溯的來源實拍與來源頁，再搭配人物姿勢、攝影位置與鏡頭倍率。旅拍來源實拍改回直接讀取第三方公開圖片，不再打包 `images/pose-guides/` 本地複本；第一次開啟需要網路，成功載入後由 runtime image cache 嘗試保存。完整清單見 `docs/sources/POSE_SCREENSHOT_SOURCES.md`。這項工程說明只在 `?photoMeta=audit` 顯示，Public 不顯示。
+「旅拍指南」的 Pose 與機位會搜尋小紅書、抖音、大眾點評等公開內容做研究；PUBLIC ONLY 前台顯示可追溯的來源實拍與來源頁，再搭配人物姿勢、攝影位置與鏡頭倍率。Pose 圖片與全站其他圖片共用同一套 `imageId → local → remote → 無此圖` 流程，不再另設 `sourceImage` 或專屬讀圖邏輯。完整清單見 `docs/sources/POSE_SCREENSHOT_SOURCES.md`。工程細節只在 DEV ONLY 顯示；PUBLIC ONLY 為預設旅客介面。
 
 ## 出發提醒
 
@@ -106,7 +133,7 @@ Android Chrome 若支援會提供安裝到主畫面；iPhone / iPad 請使用 Sa
 
 ## 維護文件
 
-一般使用只需閱讀本 README。開發架構、Public / Audit、圖片本地化、來源契約、版本、Cache 與驗證規則統一放在 `docs/PROJECT.md`；動態雲霧橫幅因包含獨立互動、效能與安全行為，另保留 `docs/YUNNAN_BANNER.md`；圖片來源帳本與手冊裁圖證據則保留在 `docs/sources/`。
+一般使用只需閱讀本 README。開發架構、PUBLIC / DEV、圖片本地化、來源契約、版本、Cache 與驗證規則統一放在 `docs/PROJECT.md`；動態雲霧橫幅因包含獨立互動、效能與安全行為，另保留 `docs/YUNNAN_BANNER.md`；圖片來源帳本與手冊裁圖證據則保留在 `docs/sources/`。
 
 Day 2 大理補充：床單廠藝術區加入附近清單；新增大理古城北門菜市場與「玉米大叔・鮮榨玉米汁」。北門菜市場導航以高德「大理古城集貿市場」為錨點；玉米大叔攤位位置以當天現場為準。
 
@@ -117,4 +144,4 @@ Day 2 大理補充：床單廠藝術區加入附近清單；新增大理古城�
 
 ### 旅拍 Pose 圖片完整性
 
-旅拍指南的參考圖全部隨網站本地打包為 WebP；前台不再直接讀第三方圖片。每個場景的不同 Pose 必須是不同影像內容，發版前會用 SHA-256 檢查重複圖，並拒絕未被資料引用的舊 Pose 圖殘留在 ZIP。來源頁仍保留供追溯。
+旅拍 Pose 與一般圖片完全共用 Image Registry。每個 Pose 只在 `poseTips` 保存 `imageId` 與姿勢／鏡頭／機位研究資料；圖片來源、作者、授權、local、remote 全部只存在 `images[imageId]`。`remote` 本地化後仍保留，validator 會檢查 Pose imageId、`images/pose/*.webp` 路徑與 exact remote 唯一性，避免再發生「遠端是 A、本地下載後變成 B」。

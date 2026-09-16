@@ -3,7 +3,7 @@
   'use strict';
   const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
   const appVersion=document.documentElement.dataset.appVersion||'—';
-  const auditMode=(()=>{try{return new URLSearchParams(location.search).get('photoMeta')==='audit';}catch{return false;}})();
+  const isDev=(()=>{try{return new URLSearchParams(location.search).get('dev')==='1';}catch{return false;}})();
   let tripData;
   try{const response=await fetch('data/trip-data.json');if(!response.ok)throw new Error(`HTTP ${response.status}`);tripData=await response.json();}
   catch(error){console.error('Unable to load trip data:',error);document.body.insertAdjacentHTML('afterbegin','<div class="data-load-error"><strong>行程資料載入失敗。</strong> 請用 HTTP/HTTPS 開啟；Windows 本機版請直接執行 <code>START.bat</code>，不要雙擊 index.html。</div>');return;}
@@ -16,7 +16,7 @@
   const items={...tripData.places,...Object.fromEntries([...tripData.foods,...tripData.shopping,...tripData.photoSpots].map(p=>[p.id,p]))};
   const analyticsSystem=YunnanAnalyticsSystem.create({items});
   analyticsSystem.start();
-  const photoSystem=YunnanCore.createPhotoSystem({photos:tripData.photos,esc,networkProfile});photoSystem.installErrorHandler();
+  const imageSystem=YunnanCore.createImageSystem({images:tripData.images,esc,networkProfile,isDev});imageSystem.installErrorHandler();
   const travelUtils=YunnanCore.createTravelUtils({tripData,items,esc});
   const favoritesStore=YunnanCore.createFavoritesStore({items});
   const navigation=YunnanCore.createNavigationService({tripData,items,esc,networkProfile});
@@ -57,13 +57,13 @@
   async function copyAddress(id){const text=items[id]?.address;if(!text)return;try{await copyPlainText(text);toast(items[id].addressVerified?'已複製中文地址':'已複製地點搜尋詞；完整地址待核實');}catch{openCopyDialog(text);}}
 
   // Domain modules own their own state and renderers. Cross-domain calls go through public APIs.
-  weatherSystem=YunnanWeatherSystem.create({tripData,items,esc,toast,networkProfile});
+  weatherSystem=YunnanWeatherSystem.create({tripData,items,esc,toast,networkProfile,isDev});
   settingsSystem=YunnanSettingsSystem.create({toast});
   offlineSystem=YunnanOfflineSystem.create({toast,weatherSystem,showView});
-  mapSystem=YunnanMapSystem.create({$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,readerInteraction,dateRail,bindHorizontalScroller:YunnanCore.bindHorizontalScroller,toast,showView,setSharedDay,toggleFavorite,markRendered,weatherSystem,networkProfile});
-  librarySystem=YunnanLibrarySystem.create({$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,dateRail,markRendered,setSharedDay,getJourney:()=>journeySystem,getReader:()=>readerSystem,showView});
-  readerSystem=YunnanReaderSystem.create({$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,interaction:readerInteraction,getLibrary:()=>librarySystem,getMap:()=>mapSystem,toggleFavorite,toast,weatherSystem,onItemOpen:(id,meta)=>analyticsSystem.trackItem(id,meta)});
-  journeySystem=YunnanJourneySystem.create({$,$$,tripData,items,esc,photoSystem,travelUtils,favoritesStore,navigation,bindHorizontalScroller:YunnanCore.bindHorizontalScroller,toast,getLibrary:()=>librarySystem,markRendered,weatherSystem});
+  mapSystem=YunnanMapSystem.create({$,tripData,items,esc,imageSystem,travelUtils,favoritesStore,navigation,readerInteraction,dateRail,bindHorizontalScroller:YunnanCore.bindHorizontalScroller,toast,showView,setSharedDay,toggleFavorite,markRendered,weatherSystem,networkProfile});
+  librarySystem=YunnanLibrarySystem.create({$,tripData,items,esc,imageSystem,travelUtils,favoritesStore,navigation,dateRail,markRendered,setSharedDay,getJourney:()=>journeySystem,getReader:()=>readerSystem,showView,isDev});
+  readerSystem=YunnanReaderSystem.create({$,tripData,items,esc,imageSystem,travelUtils,favoritesStore,navigation,interaction:readerInteraction,getLibrary:()=>librarySystem,getMap:()=>mapSystem,toggleFavorite,toast,weatherSystem,isDev,onItemOpen:(id,meta)=>analyticsSystem.trackItem(id,meta)});
+  journeySystem=YunnanJourneySystem.create({$,$$,tripData,items,esc,imageSystem,travelUtils,favoritesStore,navigation,bindHorizontalScroller:YunnanCore.bindHorizontalScroller,toast,getLibrary:()=>librarySystem,markRendered,weatherSystem});
 
   // Populate mirrored hidden selects before date-rail controllers build their cards.
   $('#night-day')?.insertAdjacentHTML('beforeend',tripData.days.map(d=>`<option value="${d.day}">Day ${d.day} · ${d.date.slice(5)} · ${esc(d.city)}</option>`).join(''));
@@ -79,7 +79,7 @@
   }
   function renderSettings(){
     const mainland=networkProfile.isMainland();
-    $('#settings-content').innerHTML=`<article class="network-profile-card utility-card utility-card--settings"><div><span class="eyebrow">NETWORK PROFILE</span><h3>連網模式</h3><p class="small">預設為大陸版。兩個模式都使用已打包的本地旅行圖片；大陸版使用高德底圖與 GCJ-02 座標校正，國際版則使用 OpenStreetMap。天氣兩個模式都採相同優先順序：高德 → QWeather Grid → Open-Meteo。</p></div><label>連網<select data-network-profile-select aria-label="連網模式"><option value="mainland">大陸版（預設）</option><option value="international">國際版</option></select></label></article><article class="nav-provider-card utility-card utility-card--settings"><div><span class="eyebrow">MAP NAVIGATION</span><h3>預設導航地圖</h3><p class="small">所有「導航」按鈕都會使用這個設定。${mainland?'大陸版建議使用高德地圖；Google 在中國大陸通常無法使用。':'預設高德地圖，也可切換 Google。'}偏好只儲存在此瀏覽器。</p></div><label>導航服務<select data-map-provider-select aria-label="預設導航地圖"><option value="amap">高德地圖（預設）</option><option value="google">Google 地圖</option></select></label></article>${settingsSystem.settingsHtml()}${weatherSystem.settingsHtml()}${offlineSystem.settingsHtml()}<article class="release-version-card utility-card utility-card--settings"><div><span class="eyebrow">SOFTWARE VERSION</span><h3>版本 ${esc(appVersion)}</h3>${auditMode?'<p class="small">版本格式：驕傲．預設．羞恥。</p>':''}</div></article>`;
+    $('#settings-content').innerHTML=`<article class="network-profile-card utility-card utility-card--settings"><div><span class="eyebrow">NETWORK PROFILE</span><h3>連網模式</h3><p class="small">預設為大陸版。兩個模式都使用已打包的本地旅行圖片；大陸版使用高德底圖與 GCJ-02 座標校正，國際版則使用 OpenStreetMap。天氣兩個模式都採相同優先順序：高德 → QWeather Grid → Open-Meteo。</p></div><label>連網<select data-network-profile-select aria-label="連網模式"><option value="mainland">大陸版（預設）</option><option value="international">國際版</option></select></label></article><article class="nav-provider-card utility-card utility-card--settings"><div><span class="eyebrow">MAP NAVIGATION</span><h3>預設導航地圖</h3><p class="small">所有「導航」按鈕都會使用這個設定。${mainland?'大陸版建議使用高德地圖；Google 在中國大陸通常無法使用。':'預設高德地圖，也可切換 Google。'}偏好只儲存在此瀏覽器。</p></div><label>導航服務<select data-map-provider-select aria-label="預設導航地圖"><option value="amap">高德地圖（預設）</option><option value="google">Google 地圖</option></select></label></article>${settingsSystem.settingsHtml()}${weatherSystem.settingsHtml()}${offlineSystem.settingsHtml()}<article class="release-version-card utility-card utility-card--settings"><div><span class="eyebrow">SOFTWARE VERSION</span><h3>版本 ${esc(appVersion)}</h3>${isDev?'<p class="small">版本格式：驕傲．預設．羞恥。</p>':''}</div></article>`;
     markRendered('settings');offlineSystem.hydrate();settingsSystem.sync();networkProfile.sync();navigation.sync();
   }
   function openTodayDayIfPresent(){if(!todayDay)return;const dayEl=$('#day-'+todayDay.day);if(dayEl)dayEl.open=true;}
@@ -215,7 +215,7 @@
 
   // Static shell content.
   $('#header-date').textContent=tripData.dateLabel+' · 8 DAYS';const bannerDate=$('.yn-banner .yn-date');if(bannerDate)bannerDate.textContent=tripData.dateLabel;
-  const credit=tripData.imageCredit;$('#credits').innerHTML=`照片：<a href="${esc(credit.url)}" target="_blank" rel="noopener noreferrer">${esc(credit.title)} · ${esc(credit.author)}</a> / <a href="${esc(credit.licenseUrl)}" target="_blank" rel="noopener noreferrer">${esc(credit.license)}</a><br>行程依手冊整理 · 資料查核 ${esc(tripData.checkedAt)}`;
+  const credit=imageSystem.get(tripData.heroImageId);$('#credits').innerHTML=credit?`照片：<a href="${esc(credit.source)}" target="_blank" rel="noopener noreferrer">${esc(credit.caption)} · ${esc(credit.author)}</a> / <a href="${esc(credit.licenseUrl)}" target="_blank" rel="noopener noreferrer">${esc(credit.license)}</a><br>行程依手冊整理 · 資料查核 ${esc(tripData.checkedAt)}`:`行程依手冊整理 · 資料查核 ${esc(tripData.checkedAt)}`;
   if(todayDay){$('#today').hidden=false;$('#today').innerHTML=`<span class="eyebrow">TODAY</span><h3>Day ${todayDay.day} · ${esc(todayDay.city)}</h3><p>今天：${todayDay.itinerary.map(id=>esc(items[id].name)).join(' → ')}<br>今晚：${todayDay.nightRecommendations.length?esc(items[todayDay.nightRecommendations[0]].name):'休息／返程'}</p><button class="primary" data-night-day="${todayDay.day}">查看今晚安排</button>`;}
   bootstrapStaticViews();
   networkProfile.sync();

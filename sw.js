@@ -6,8 +6,8 @@
   - 圖片使用穩定的 Image Cache，不因一般 build 更新而重新下載。
   - STORAGE_SCHEMA 維持 v1，避免一般升版清空使用者資料與圖片快取。
 */
-const RELEASE_VERSION = '1.6.7';
-const BUILD_ID = '20260916-024527';
+const RELEASE_VERSION = '1.6.9';
+const BUILD_ID = '20260916-175143';
 const STORAGE_SCHEMA = 'v1';
 const APP_CACHE = `yunnan-app-${RELEASE_VERSION}-${BUILD_ID}`;
 const IMAGE_CACHE = `yunnan-images-${STORAGE_SCHEMA}`;
@@ -16,7 +16,7 @@ const PROJECT_CACHE_PREFIX = 'yunnan-';
 const APP_CACHE_PREFIX = 'yunnan-app-';
 const BUILD_META_URL = './build.json';
 const ASSET_MANIFEST_URL = './asset-manifest.json';
-const INVALIDATED_IMAGE_ASSETS = ['./images/remote/souvenir-tamarind.webp','./images/remote/souvenir-wild-mushroom-beer.webp'];
+const INVALIDATED_IMAGE_ASSETS = ['./images/remote/souvenir-tamarind.webp','./images/remote/souvenir-wild-mushroom-beer.webp','./images/library/souvenir-tamarind.webp','./images/library/souvenir-wild-mushroom-beer.webp'];
 
 const CORE_SHELL = [
   './',
@@ -190,8 +190,8 @@ async function readOfflineManifest() {
   if (!response || !response.ok) throw new Error('offline-manifest.json unavailable');
   return response.json();
 }
-function remotePhotoRecords(manifest) {
-  const values = Array.isArray(manifest.remotePhotos) ? manifest.remotePhotos : [];
+function remoteImageRecords(manifest) {
+  const values = Array.isArray(manifest.remoteImages) ? manifest.remoteImages : [];
   return values.map((value,index)=>typeof value==='string'
     ? {id:`remote-${index+1}`,ids:[],url:value,label:value,source:''}
     : {id:String(value?.id||`remote-${index+1}`),ids:Array.isArray(value?.ids)?value.ids:[],url:String(value?.url||''),label:String(value?.label||value?.id||value?.url||`遠端照片 ${index+1}`),source:String(value?.source||'')}
@@ -256,20 +256,20 @@ async function hasIn(cacheName,key) { const cache=await caches.open(cacheName); 
 
 async function checkOffline(manifest) {
   const coreAssets = Array.isArray(manifest.coreAssets) ? manifest.coreAssets : [];
-  const photoAssets = Array.isArray(manifest.photoAssets) ? manifest.photoAssets : [];
-  const remotePhotos = remotePhotoRecords(manifest);
+  const imageAssets = Array.isArray(manifest.imageAssets) ? manifest.imageAssets : [];
+  const remoteImages = remoteImageRecords(manifest);
   const optionalRuntime = Array.isArray(manifest.optionalRuntime) ? manifest.optionalRuntime : [];
   const coreMissingItems=[],photoLocalMissingItems=[],remoteMissingItems=[];
   let optionalCached=0;
   for (const asset of coreAssets) if (!(await hasIn(APP_CACHE,asset))) coreMissingItems.push({asset,label:asset});
-  for (const asset of photoAssets) if (!(await hasIn(IMAGE_CACHE,asset))) photoLocalMissingItems.push({asset,label:asset});
-  for (const record of remotePhotos) if (!(await hasIn(IMAGE_CACHE,record.url))) remoteMissingItems.push(record);
+  for (const asset of imageAssets) if (!(await hasIn(IMAGE_CACHE,asset))) photoLocalMissingItems.push({asset,label:asset});
+  for (const record of remoteImages) if (!(await hasIn(IMAGE_CACHE,record.url))) remoteMissingItems.push(record);
   for (const url of optionalRuntime) if (await hasIn(APP_CACHE,url)) optionalCached++;
   return {
     coreTotal:coreAssets.length,coreMissing:coreMissingItems.length,coreMissingItems,
-    photoLocalTotal:photoAssets.length,photoLocalMissing:photoLocalMissingItems.length,photoLocalMissingItems,
-    remoteTotal:remotePhotos.length,remoteMissing:remoteMissingItems.length,remoteMissingItems,
-    photoTotal:photoAssets.length+remotePhotos.length,
+    photoLocalTotal:imageAssets.length,photoLocalMissing:photoLocalMissingItems.length,photoLocalMissingItems,
+    remoteTotal:remoteImages.length,remoteMissing:remoteMissingItems.length,remoteMissingItems,
+    photoTotal:imageAssets.length+remoteImages.length,
     photoMissing:photoLocalMissingItems.length+remoteMissingItems.length,
     optionalTotal:optionalRuntime.length,optionalCached
   };
@@ -297,10 +297,10 @@ async function storeOfflineResult(result){
 async function prepareOffline(port,{includePhotos=true}={}) {
   const manifest = await readOfflineManifest();
   const coreAssets = Array.isArray(manifest.coreAssets) ? manifest.coreAssets : [];
-  const photoAssets = Array.isArray(manifest.photoAssets) ? manifest.photoAssets : [];
-  const remotePhotos = remotePhotoRecords(manifest);
+  const imageAssets = Array.isArray(manifest.imageAssets) ? manifest.imageAssets : [];
+  const remoteImages = remoteImageRecords(manifest);
   const optionalRuntime = Array.isArray(manifest.optionalRuntime) ? manifest.optionalRuntime : [];
-  const total = coreAssets.length + (includePhotos ? photoAssets.length + remotePhotos.length : 0);
+  const total = coreAssets.length + (includePhotos ? imageAssets.length + remoteImages.length : 0);
   let done=0;
   const progress=(label)=>port?.postMessage({type:'OFFLINE_PROGRESS',done,total,label});
   progress('正在準備網頁核心與其他資料…');
@@ -309,12 +309,12 @@ async function prepareOffline(port,{includePhotos=true}={}) {
     done++; progress('正在準備網頁核心與其他資料…');
   }
   if(includePhotos){
-    for (const asset of photoAssets) {
+    for (const asset of imageAssets) {
       progress(`正在下載旅行照片… ${asset.split('/').pop()||asset}`);
       try { await cacheLocalPhoto(asset); } catch (error) { console.warn('Offline local photo failed',asset,error); }
       done++; progress(`正在下載旅行照片… ${asset.split('/').pop()||asset}`);
     }
-    for (const record of remotePhotos) {
+    for (const record of remoteImages) {
       progress(`正在下載旅行照片… ${record.label}`);
       await cacheRemotePhoto(record,{attempts:3});
       done++; progress(`正在下載旅行照片… ${record.label}`);

@@ -1,0 +1,11 @@
+﻿FINAL IMAGE SYNC SUMMARY
+Total   : 155
+Success : 10
+Ignored : 136
+Failed  : 9
+Errors  : 0
+
+Success = downloaded and converted in this run (SYNCED)
+Ignored = local + exact remote + SHA-256 already verified; download skipped (VERIFIED)
+Failed = individual image download/decode/convert failed; exact remote fallback remains active
+Errors = sync pipeline, generated artifacts, validation, or ZIP tool-level errors

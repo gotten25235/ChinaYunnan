@@ -2,9 +2,9 @@
 """Optimize locally stored project images for mobile delivery.
 
 The script is intentionally conservative: it never downloads remote media. It converts
-local JPEG/PNG photo assets referenced by trip-data.json to WebP, updates local path
-references in project text files, and deletes the replaced source files. The runtime
-image contract accepts one primary `src` per photo record.
+local JPEG/PNG image assets referenced by trip-data.json to WebP, updates local path
+references in project text files, and deletes the replaced source files. The unified
+image contract uses `images[*].local` as the packaged local path.
 """
 from __future__ import annotations
 
@@ -92,20 +92,15 @@ def main() -> int:
         parser.error("--quality must be between 1 and 100")
 
     trip = load_trip()
-    photos = trip.get("photos", {})
+    images = trip.get("images", {})
     replacements: dict[str, str] = {}
     sources: dict[Path, str] = {}
     local_values: list[tuple[dict | None, str, str]] = []
-    for photo in photos.values():
-        src = photo.get("src")
-        path = local_path(src)
+    for image in images.values():
+        local = image.get("local")
+        path = local_path(local)
         if path and path.exists():
-            local_values.append((photo, "src", src))
-    hero = trip.get("heroImage")
-    hero_path = local_path(hero)
-    if hero_path and hero_path.exists():
-        local_values.append((None, "heroImage", hero))
-
+            local_values.append((image, "local", local))
     for owner, field, rel in local_values:
         source = local_path(rel)
         if not source or source.suffix.lower() == ".webp":
@@ -114,10 +109,7 @@ def main() -> int:
         new_rel = target.relative_to(ROOT).as_posix()
         sources[source] = new_rel
         replacements[rel] = new_rel
-        if owner is not None:
-            owner[field] = new_rel
-        else:
-            trip[field] = new_rel
+        owner[field] = new_rel
 
     before = sum(path.stat().st_size for path in sources if path.exists())
     if args.dry_run:
@@ -129,10 +121,10 @@ def main() -> int:
     for source, rel in sorted(sources.items(), key=lambda x: x[0].as_posix()):
         target = ROOT / rel
         width, height = convert_image(source, target, args.quality)
-        # Keep metadata dimensions truthful for every photo that points to the optimized file.
-        for photo in photos.values():
-            if photo.get("src") == rel:
-                photo["width"], photo["height"] = width, height
+        # Keep metadata dimensions truthful for every image that points to the optimized file.
+        for image in images.values():
+            if image.get("local") == rel:
+                image["width"], image["height"] = width, height
 
     TRIP_PATH.write_text(json.dumps(trip, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     replace_text_paths(replacements)

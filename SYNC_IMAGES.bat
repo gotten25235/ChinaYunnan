@@ -2,14 +2,14 @@
 setlocal EnableExtensions EnableDelayedExpansion
 cd /d "%~dp0"
 
-title Yunnan V1 - Local-first Image Sync
+title Yunnan V1 - Exact Image Sync
 
 chcp 65001 >nul
 set PYTHONUTF8=1
 set PYTHONIOENCODING=utf-8
 
 echo ============================================================
-echo Yunnan V1 - Sync remoteSrc into local src and build all-local ZIP
+echo Yunnan V1 - Sync exact remote images into local WebP files
 echo ============================================================
 echo.
 
@@ -303,7 +303,7 @@ if errorlevel 1 (
 
 
 rem ============================================================
-rem Start localization
+rem Start image sync
 rem ============================================================
 
 echo.
@@ -312,10 +312,10 @@ echo Environment check passed
 echo ============================================================
 echo.
 echo Full progress will also be saved to:
-echo   localize_images.log
+echo   sync_images.log
 echo.
 
-"%PY_EXE%" %PY_ARGS% tools\localize_remote_images.py
+"%PY_EXE%" %PY_ARGS% tools\sync_images.py
 
 set "RC=%errorlevel%"
 
@@ -328,21 +328,27 @@ if not "%RC%"=="0" (
 
     echo.
     echo ============================================================
-    echo Localization did not finish.
+    echo Image sync did not finish.
     echo Exit code: %RC%
     echo ============================================================
     echo.
-    echo Photo metadata was not switched between local / remote modes.
-    echo src remains local and remoteSrc remains the network fallback.
-    echo Successful photo downloads were kept and will be reused
-    echo the next time this BAT is executed.
+    echo The site still uses one rule: imageId - local - remote - no image.
+    echo Only the exact remote URL declared in data is used.
+    echo No replacement image is searched or substituted.
     echo.
     echo Please open:
     echo.
-    echo   localize_images.log
+    echo   sync_images.log
 
-    if exist "localize_failures.txt" (
-        echo   localize_failures.txt
+    if exist "sync_failures.txt" (
+        echo   sync_failures.txt
+    )
+
+    if exist "sync_summary.txt" (
+        echo.
+        echo ============================================================
+        type "sync_summary.txt"
+        echo ============================================================
     )
 
     echo.
@@ -364,6 +370,14 @@ echo Output ZIP:
 echo.
 for /f "usebackq delims=" %%V in (`"%PY_EXE%" %PY_ARGS% -c "import json; print(json.load(open(r'tools/release.json', encoding='utf-8'))['version'])"`) do set "APP_VERSION=%%V"
 echo   %~dp0..\yunnan_!APP_VERSION!_all_local.zip
+
+if exist "sync_summary.txt" (
+    echo.
+    echo ============================================================
+    type "sync_summary.txt"
+    echo ============================================================
+)
+
 echo.
 pause
 

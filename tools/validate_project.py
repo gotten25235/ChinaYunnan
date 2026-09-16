@@ -15,7 +15,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 from generate_source_index import generated_text as generated_source_index_text  # noqa: E402
-from generate_photo_sources import generated_text as generated_photo_sources_text  # noqa: E402
+from generate_image_sources import generated_text as generated_image_sources_text  # noqa: E402
 from generate_offline_manifest import generated_text as generated_offline_manifest_text  # noqa: E402
 
 errors: list[str] = []
@@ -132,7 +132,7 @@ def validate_json_and_ids(trip: dict, social: dict) -> dict[str, dict]:
     if len(errors) == priority_errors_before:
         passed("food/shopping priority, taste-review and folklore source contracts are valid")
 
-    photos = trip.get("photos") if isinstance(trip.get("photos"), dict) else {}
+    images = trip.get("images") if isinstance(trip.get("images"), dict) else {}
     days = trip.get("days") if isinstance(trip.get("days"), list) else []
     expected_days = list(range(1, len(days) + 1))
     actual_days = [d.get("day") for d in days if isinstance(d, dict)]
@@ -159,9 +159,9 @@ def validate_json_and_ids(trip: dict, social: dict) -> dict[str, dict]:
         hotel = d.get("hotel")
         if hotel is not None and hotel not in items:
             error(f"Day {day_no} hotel references missing item {hotel!r}")
-        photo_id = d.get("photoId")
-        if photo_id and photo_id not in photos:
-            error(f"Day {day_no} photoId references missing photo {photo_id!r}")
+        image_id = d.get("imageId")
+        if image_id and image_id not in images:
+            error(f"Day {day_no} imageId references missing image {image_id!r}")
         for item_id in d.get("itinerary", []):
             if item_id in items and items[item_id].get("pdfScheduled") is not True:
                 error(f"Day {day_no} itinerary item {item_id} must keep pdfScheduled=true")
@@ -171,10 +171,10 @@ def validate_json_and_ids(trip: dict, social: dict) -> dict[str, dict]:
         passed(f"day references and pdfScheduled contracts are valid ({len(days)} days)")
 
     for item_id, obj in items.items():
-        for field in ("photoId", "photoReferenceId"):
+        for field in ("imageId", "imageReferenceId"):
             ref = obj.get(field)
-            if ref and ref not in photos:
-                error(f"{item_id}.{field} references missing photo {ref!r}")
+            if ref and ref not in images:
+                error(f"{item_id}.{field} references missing image {ref!r}")
         for field in ("mapPlaceId", "taxiAnchorId"):
             ref = obj.get(field)
             if ref and ref not in items:
@@ -242,67 +242,96 @@ def validate_json_and_ids(trip: dict, social: dict) -> dict[str, dict]:
 
 
 def validate_media(trip: dict) -> None:
-    photos = trip.get("photos") if isinstance(trip.get("photos"), dict) else {}
-    local_count = remote_fallback_count = pending_local_count = 0
+    images = trip.get("images") if isinstance(trip.get("images"), dict) else {}
+    required_fields = ("local", "remote", "alt", "caption", "source", "author", "license", "licenseUrl", "width", "height", "changes")
+    required_set = set(required_fields)
+    allowed_dirs = {"food", "shopping", "hotels", "places", "pose", "airlines", "handbook"}
+    local_declared = pending_local_count = 0
     local_bytes = 0
-    for photo_id, photo in photos.items():
-        if not isinstance(photo, dict):
-            error(f"photos.{photo_id} is not an object")
+
+    try:
+        from PIL import Image
+    except Exception:
+        Image = None
+        warn("Pillow unavailable; image dimension verification skipped")
+
+    for image_id, image in images.items():
+        if not isinstance(image, dict):
+            error(f"images.{image_id} is not an object")
             continue
-        if "mainlandFallbackPhotoId" in photo:
-            error(f"photos.{photo_id}: unrelated Mainland fallback fields are forbidden by strict photo policy")
-        if "fallbackSrc" in photo:
-            error(f"photos.{photo_id}: fallbackSrc is obsolete; use remoteSrc for the same-subject network fallback")
+        keys = set(image.keys())
+        missing = required_set - keys
+        extra = keys - required_set
+        if missing:
+            error(f"images.{image_id}: missing required fields: " + ", ".join(sorted(missing)))
+        if extra:
+            error(f"images.{image_id}: unsupported fields: " + ", ".join(sorted(extra)))
 
-        src = photo.get("src")
-        if not isinstance(src, str) or not src:
-            error(f"photos.{photo_id}.src is missing")
+        local = image.get("local")
+        remote = image.get("remote")
+        source = image.get("source")
+        license_url = image.get("licenseUrl")
+        if not isinstance(local, str) or not local:
+            error(f"images.{image_id}.local is missing")
             continue
-        if src.startswith(("http://", "https://")):
-            error(f"photos.{photo_id}.src must be a local WebP path; network images belong in remoteSrc")
+        if local.startswith(("http://", "https://")) or not local.endswith(".webp"):
+            error(f"images.{image_id}.local must be a local WebP path")
             continue
+        parts = Path(local).parts
+        if len(parts) < 3 or parts[0] != "images" or parts[1] not in allowed_dirs:
+            error(f"images.{image_id}.local must be under images/food|shopping|hotels|places|pose|airlines|handbook: {local}")
+        if not isinstance(remote, str) or not remote.startswith(("http://", "https://")):
+            error(f"images.{image_id}.remote is required and must be an http(s) image URL")
+        if remote == local:
+            error(f"images.{image_id}: remote must not equal local")
+        if not isinstance(source, str) or not source.startswith(("http://", "https://")):
+            error(f"images.{image_id}.source must be a traceable http(s) source page")
+        if not isinstance(license_url, str) or not license_url.startswith(("http://", "https://")):
+            error(f"images.{image_id}.licenseUrl must be an http(s) URL")
+        for field in ("alt", "caption", "author", "license", "changes"):
+            if not isinstance(image.get(field), str) or not image[field].strip():
+                error(f"images.{image_id}.{field} must be non-empty text")
 
-        width, height = photo.get("width"), photo.get("height")
-        if not isinstance(width, int) or not isinstance(height, int) or width <= 0 or height <= 0:
-            error(f"photos.{photo_id}: width/height must be positive integers")
+        width, height = image.get("width"), image.get("height")
+        if not isinstance(width, int) or isinstance(width, bool) or not isinstance(height, int) or isinstance(height, bool) or width < 0 or height < 0:
+            error(f"images.{image_id}: width/height must be non-negative integers")
+            width = height = -1
 
-        path = ROOT / src
-        local_count += 1
-        if path.suffix.lower() != ".webp":
-            error(f"photos.{photo_id}: local primary image must be WebP: {src}")
-
-        remote = photo.get("remoteSrc")
-        has_remote = isinstance(remote, str) and remote.startswith(("http://", "https://"))
-        if remote is not None and not has_remote:
-            error(f"photos.{photo_id}.remoteSrc must be an http(s) URL when present")
-        if has_remote:
-            remote_fallback_count += 1
-            if remote == src:
-                error(f"photos.{photo_id}: remoteSrc must not equal local src")
-
+        path = ROOT / local
+        local_declared += 1
         if path.is_file():
             local_bytes += path.stat().st_size
-        elif has_remote:
-            pending_local_count += 1
+            if width <= 0 or height <= 0:
+                error(f"images.{image_id}: packaged local image requires positive width/height")
+            elif Image is not None:
+                try:
+                    with Image.open(path) as im:
+                        actual = tuple(map(int, im.size))
+                    if actual != (width, height):
+                        error(f"images.{image_id}: width/height {width}x{height} do not match local file {actual[0]}x{actual[1]}")
+                except Exception as exc:
+                    error(f"images.{image_id}: cannot inspect local image dimensions: {exc}")
         else:
-            error(f"photos.{photo_id}: local image missing and no remoteSrc fallback exists: {src}")
+            pending_local_count += 1
+            if (width, height) != (0, 0):
+                error(f"images.{image_id}: missing local file must use width=0,height=0 until sync")
 
-    hero = trip.get("heroImage")
-    if isinstance(hero, str) and not hero.startswith(("http://", "https://")):
-        path = ROOT / hero
-        if not path.is_file():
-            error(f"heroImage missing: {hero}")
-        elif path.suffix.lower() != ".webp":
-            error(f"heroImage must be WebP: {hero}")
-    non_webp_files = [p.relative_to(ROOT).as_posix() for p in (ROOT / "images").rglob("*") if p.is_file() and p.suffix.lower() in {".jpg", ".jpeg", ".png"}]
+    # Hero uses the same registry rather than a second image path/credit schema.
+    if "heroImage" in trip or "imageCredit" in trip:
+        error("heroImage/imageCredit are obsolete; use heroImageId -> images registry")
+    hero_id = trip.get("heroImageId")
+    if not isinstance(hero_id, str) or hero_id not in images:
+        error("heroImageId must reference the images registry")
+    elif not (ROOT / images[hero_id]["local"]).is_file():
+        error("heroImageId local image must be packaged")
+
+    non_webp_files = [p.relative_to(ROOT).as_posix() for p in (ROOT / "images").rglob("*") if p.is_file() and p.suffix.lower() in {".jpg", ".jpeg", ".png"} and "_quarantine" not in p.parts]
     if non_webp_files:
         error("images/ must not contain JPEG/PNG primary assets: " + ", ".join(non_webp_files[:8]))
     else:
-        passed(f"photo src contract is local WebP-only ({local_count} records, {local_bytes/1024/1024:.2f} MiB packaged)")
-    if remote_fallback_count:
-        passed(f"{remote_fallback_count} photo records declare same-subject remoteSrc fallback; {pending_local_count} currently rely on it until BAT localization")
+        passed(f"unified image registry uses the strict 11-field schema ({len(images)} records, {local_bytes/1024/1024:.2f} MiB packaged)")
+    passed(f"image fallback contract is local -> exact remote -> no image ({len(images)} remote-backed, {pending_local_count} pending local sync)")
 
-    # Strict semantic matching: exact subjects stay exact; only broad activities/transit may use labeled context/illustration.
     strict_before = len(errors)
     allowed_generic_places = {"arrival", "carriage", "visit", "tea-diy", "city-free", "return", "night-live", "night-nanzhao", "custom-dali-marshal", "custom-dali-north-market"}
     allowed_matches = {"exact", "verified", "illustrative", "context", "representative"}
@@ -310,68 +339,82 @@ def validate_media(trip: dict) -> None:
     for item_id, obj in places.items():
         if not isinstance(obj, dict):
             continue
-        photo_id, match = obj.get("photoId"), obj.get("photoMatch")
-        if not photo_id:
-            error(f"places.{item_id}: photo coverage is required")
+        image_id, match = obj.get("imageId"), obj.get("imageMatch")
+        if not image_id:
+            error(f"places.{item_id}: image coverage is required")
         if match == "reference_only":
             error(f"places.{item_id}: reference_only must never be displayed")
         if match in {"illustrative", "context", "representative"} and item_id not in allowed_generic_places:
             error(f"places.{item_id}: named subject cannot use {match}; require exact/verified")
         if match and match not in allowed_matches:
-            error(f"places.{item_id}: unsupported photoMatch {match}")
+            error(f"places.{item_id}: unsupported imageMatch {match}")
     for collection in ("foods", "shopping"):
         for index, obj in enumerate(trip.get(collection, [])):
             if not isinstance(obj, dict):
                 continue
-            if not obj.get("photoId"):
-                error(f"{collection}[{index}]: photo coverage is required")
-            if obj.get("photoMatch") == "reference_only":
+            if "imageUnavailable" in obj:
+                error(f"{collection}[{index}]: imageUnavailable is obsolete; use imageId and registry fallback")
+            if not obj.get("imageId"):
+                error(f"{collection}[{index}]: imageId is required")
+            if obj.get("imageMatch") == "reference_only":
                 error(f"{collection}[{index}]: reference_only must never be displayed")
     for index, obj in enumerate(trip.get("culture", [])):
         if not isinstance(obj, dict):
             continue
-        if not obj.get("photoId"):
-            error(f"culture[{index}]: photo coverage is required")
-        if obj.get("photoMatch") in {"reference_only", "representative", "illustrative"}:
-            error(f"culture[{index}]: culture photos must be exact/verified/context")
+        if not obj.get("imageId"):
+            error(f"culture[{index}]: image coverage is required")
+        if obj.get("imageMatch") in {"reference_only", "representative", "illustrative"}:
+            error(f"culture[{index}]: culture images must be exact/verified/context")
+
+    pose_image_ids = []
+    pose_remote_urls = []
+    retired_pose_fields = {"sourceImage", "sourcePlatform", "sourceTitle", "sourceUrl", "sourceAuthor", "sourceDate", "sourceAlt", "sourceCaptured"}
     for index, obj in enumerate(trip.get("photoSpots", [])):
         if not isinstance(obj, dict):
             continue
-        if not obj.get("photoId"):
-            error(f"photoSpots[{index}]: photo coverage is required")
-        match = obj.get("photoMatch")
-        if match == "reference_only" or match == "representative" or match == "illustrative":
+        if not obj.get("imageId"):
+            error(f"photoSpots[{index}]: image coverage is required")
+        match = obj.get("imageMatch")
+        if match in {"reference_only", "representative", "illustrative"}:
             error(f"photoSpots[{index}]: photo spot requires exact/verified/context")
         if match == "context" and obj.get("id") != "photo-xizhou":
-            error(f"photoSpots[{index}]: context is only allowed for the broad Xizhou courtyard/field composition")
+            error(f"photoSpots[{index}]: context is only allowed for broad Xizhou composition")
         tips = obj.get("poseTips")
         if not isinstance(tips, list) or not tips:
             error(f"photoSpots[{index}]: poseTips must be a non-empty list")
-        else:
-            source_images_in_spot = []
-            for tip_index, tip in enumerate(tips):
-                if not isinstance(tip, dict):
-                    error(f"photoSpots[{index}].poseTips[{tip_index}] must be an object")
-                    continue
-                source_image = tip.get("sourceImage")
-                if isinstance(source_image, str) and source_image:
-                    source_images_in_spot.append(source_image)
-                remote_pose = isinstance(source_image, str) and source_image.startswith(("http://", "https://"))
-                if not remote_pose:
-                    error(f"photoSpots[{index}].poseTips[{tip_index}].sourceImage must be a remote http(s) source visual")
-                source_url = tip.get("sourceUrl")
-                if not isinstance(source_url, str) or not source_url.startswith(("http://", "https://")):
-                    error(f"photoSpots[{index}].poseTips[{tip_index}].sourceUrl must be an http(s) source page")
-                for field in ("sourcePlatform", "sourceTitle", "sourceCaptured"):
-                    value = tip.get(field)
-                    if not isinstance(value, str) or not value.strip():
-                        error(f"photoSpots[{index}].poseTips[{tip_index}].{field} is required for visible provenance")
-            duplicate_pose_images = [url for url, count in Counter(source_images_in_spot).items() if count > 1]
-            if duplicate_pose_images:
-                error(f"photoSpots[{index}]: each poseTip must use a different remote sourceImage URL")
+            continue
+        per_spot_ids = []
+        per_spot_urls = []
+        for tip_index, tip in enumerate(tips):
+            if not isinstance(tip, dict):
+                error(f"photoSpots[{index}].poseTips[{tip_index}] must be an object")
+                continue
+            for field in sorted(retired_pose_fields.intersection(tip)):
+                error(f"photoSpots[{index}].poseTips[{tip_index}]: obsolete image provenance field {field}; use images[imageId]")
+            image_id = tip.get("imageId")
+            image = images.get(image_id) if isinstance(image_id, str) else None
+            if not isinstance(image, dict):
+                error(f"photoSpots[{index}].poseTips[{tip_index}].imageId must reference images registry")
+            else:
+                remote = image.get("remote")
+                if not isinstance(remote, str) or not remote.startswith(("http://", "https://")):
+                    error(f"pose image {image_id} must keep an exact remote URL")
+                else:
+                    per_spot_urls.append(remote);pose_remote_urls.append(remote)
+                local = image.get("local")
+                if not isinstance(local, str) or not local.startswith("images/pose/") or not local.endswith(".webp"):
+                    error(f"pose image {image_id} must declare images/pose/*.webp local path")
+                per_spot_ids.append(image_id);pose_image_ids.append(image_id)
+            if tip.get("url") and not str(tip.get("url")).startswith(("http://", "https://")):
+                error(f"photoSpots[{index}].poseTips[{tip_index}].url must be an http(s) research URL when present")
+        if len(per_spot_ids) != len(set(per_spot_ids)):
+            error(f"photoSpots[{index}]: each poseTip must use a different imageId")
+        if len(per_spot_urls) != len(set(per_spot_urls)):
+            error(f"photoSpots[{index}]: each poseTip must use a different exact remote URL")
+    if len(pose_image_ids) != len(set(pose_image_ids)):
+        error("pose imageId values must be globally unique")
     if len(errors) == strict_before:
-        passed("photo coverage is complete and strict semantics hold: named subjects use exact/verified; broad imagery is explicitly labeled")
-
+        passed("image coverage and strict semantics hold; all image provenance lives in the unified registry")
 
 def validate_generated_index() -> None:
     path = ROOT / "data" / "source-index.json"
@@ -383,14 +426,14 @@ def validate_generated_index() -> None:
         passed("source-index.json matches generated data")
 
 
-def validate_generated_photo_sources() -> None:
-    path = ROOT / "docs" / "sources" / "PHOTO_SOURCES.md"
+def validate_generated_image_sources() -> None:
+    path = ROOT / "docs" / "sources" / "IMAGE_SOURCES.md"
     actual = path.read_text(encoding="utf-8") if path.exists() else ""
-    expected = generated_photo_sources_text()
+    expected = generated_image_sources_text()
     if actual != expected:
-        error("docs/sources/PHOTO_SOURCES.md is stale; run python tools/generate_photo_sources.py")
+        error("docs/sources/IMAGE_SOURCES.md is stale; run python tools/generate_image_sources.py")
     else:
-        passed("PHOTO_SOURCES.md matches trip-data photo metadata")
+        passed("IMAGE_SOURCES.md matches the unified image registry")
 
 
 def validate_generated_pose_sources() -> None:
@@ -572,14 +615,14 @@ def validate_offline_pwa(trip: dict) -> None:
     if actual != expected:
         error("offline-manifest.json is stale; run python tools/generate_offline_manifest.py")
     else:
-        passed("offline-manifest.json matches core assets, travel-photo assets and remote photos")
+        passed("offline-manifest.json matches core assets and unified image sources")
 
     if offline_manifest.get("schemaVersion") != "v1":
         error("offline-manifest schemaVersion must equal v1")
     core_assets = offline_manifest.get("coreAssets") if isinstance(offline_manifest.get("coreAssets"), list) else []
-    photo_assets = offline_manifest.get("photoAssets") if isinstance(offline_manifest.get("photoAssets"), list) else []
-    remote_photos = offline_manifest.get("remotePhotos") if isinstance(offline_manifest.get("remotePhotos"), list) else []
-    for group_name, assets in (("coreAssets", core_assets), ("photoAssets", photo_assets)):
+    image_assets = offline_manifest.get("imageAssets") if isinstance(offline_manifest.get("imageAssets"), list) else []
+    remote_images = offline_manifest.get("remoteImages") if isinstance(offline_manifest.get("remoteImages"), list) else []
+    for group_name, assets in (("coreAssets", core_assets), ("imageAssets", image_assets)):
         for asset in assets:
             if not isinstance(asset, str):
                 error(f"offline-manifest {group_name} entries must be strings")
@@ -590,47 +633,48 @@ def validate_offline_pwa(trip: dict) -> None:
             rel = rel.split("?", 1)[0]
             if not (ROOT / rel).is_file():
                 error(f"offline {group_name} asset missing: {asset}")
-    expected_local_photo_paths = []
+
+    expected_local_paths = []
     expected_remote_urls = []
-    for photo in (trip.get("photos") or {}).values():
-        if not isinstance(photo, dict):
+    for image in (trip.get("images") or {}).values():
+        if not isinstance(image, dict):
             continue
-        src = photo.get("src")
-        remote = photo.get("remoteSrc")
-        if isinstance(src, str) and src and not src.startswith(("http://", "https://")):
-            if (ROOT / src).is_file():
-                expected_local_photo_paths.append("./" + src.lstrip("./"))
+        local = image.get("local")
+        remote = image.get("remote")
+        if isinstance(local, str) and local and not local.startswith(("http://", "https://")):
+            if (ROOT / local).is_file():
+                expected_local_paths.append("./" + local.lstrip("./"))
             elif isinstance(remote, str) and remote.startswith(("http://", "https://")):
                 expected_remote_urls.append(remote)
             else:
-                expected_local_photo_paths.append("./" + src.lstrip("./"))
-    # Pose reference visuals are remote-only. The release ZIP must not carry stale
-    # images/pose-guides WebP copies, otherwise old mismatched files can reappear.
-    pose_dir = ROOT / "images" / "pose-guides"
-    packaged_pose_files = sorted(str(path.relative_to(ROOT)).replace("\\", "/") for path in pose_dir.glob("*.webp")) if pose_dir.exists() else []
-    if packaged_pose_files:
-        error(f"pose-guide package must be empty in remote-only mode; extra={packaged_pose_files}")
-    if set(photo_assets) != set(expected_local_photo_paths):
-        error("offline-manifest photoAssets must include exactly the currently packaged local primary photos and pose guides")
-    manifest_urls=[]
-    for record in remote_photos:
+                expected_local_paths.append("./" + local.lstrip("./"))
+    if set(image_assets) != set(expected_local_paths):
+        error("offline-manifest imageAssets must match currently packaged local images")
+    manifest_urls = []
+    for record in remote_images:
         if not isinstance(record, dict):
-            error("offline-manifest remotePhotos entries must be diagnostic objects")
+            error("offline-manifest remoteImages entries must be diagnostic objects")
             continue
-        url=record.get("url")
-        if not isinstance(url,str) or not url.startswith(("http://","https://")):
-            error("offline-manifest remote photo record missing valid url")
+        url = record.get("url")
+        if not isinstance(url, str) or not url.startswith(("http://", "https://")):
+            error("offline-manifest remote image record missing valid url")
         else:
             manifest_urls.append(url)
         if not record.get("id") or not record.get("label"):
-            error("offline-manifest remote photo record must include id and label")
+            error("offline-manifest remote image record must include id and label")
     if set(manifest_urls) != set(expected_remote_urls):
-        error("offline-manifest remotePhotos must include exactly the remoteSrc fallbacks whose local src is currently absent")
+        error("offline-manifest remoteImages must include exactly the exact remote fallbacks whose local file is absent")
 
+    allowed_image_dirs = {"food", "shopping", "hotels", "places", "pose", "airlines", "handbook", "_quarantine"}
+    unexpected_image_dirs = [p.name for p in (ROOT / "images").iterdir() if p.is_dir() and p.name not in allowed_image_dirs]
+    if unexpected_image_dirs:
+        error("images/ contains legacy/unexpected directories: " + ", ".join(sorted(unexpected_image_dirs)))
+    if (ROOT / "LOCALIZE_IMAGES_ANACONDA_SSL_FIX.bat").exists() or (ROOT / "tools" / "localize_remote_images.py").exists():
+        error("legacy image-localization tool names must be removed; use SYNC_IMAGES.bat / tools/sync_images.py")
     forbidden_remote_tags = re.findall(r'<(?:script|link)\b[^>]+(?:src|href)=["\']https?://', html, re.I)
     if forbidden_remote_tags:
         error("index.html required scripts/styles must be local for offline PWA")
-    for marker in ("PREPARE_OFFLINE", "RETRY_OFFLINE_PHOTOS", "CHECK_OFFLINE", "OFFLINE_PROGRESS", "photoLocalMissingItems", "remoteMissingItems", "includePhotos", "offline-manifest.json"):
+    for marker in ("PREPARE_OFFLINE", "RETRY_OFFLINE_PHOTOS", "CHECK_OFFLINE", "OFFLINE_PROGRESS", "photoLocalMissingItems", "remoteMissingItems", "includePhotos", "offline-manifest.json", "remoteImageRecords", "imageAssets", "remoteImages"):
         if marker not in sw:
             error(f"sw.js offline preparation contract missing {marker}")
     for marker in ("data-offline-prepare", "data-offline-select-photos", "data-offline-select-weather", "data-offline-select-all", "data-offline-select-none", "data-offline-retry-missing", "data-offline-missing-list", "data-offline-check", "yunnan-offline-prep-state-v1"):
@@ -639,7 +683,7 @@ def validate_offline_pwa(trip: dict) -> None:
     if "renderOfflineMap" not in map_js or "offline-map-marker" not in map_js:
         error("map.js must keep a no-tile offline schematic map fallback")
     if len(errors) == before:
-        passed("PWA install shell, selective offline download, travel-photo separation and schematic offline map contracts are valid")
+        passed("PWA selective offline download uses the unified image manifest")
 
 
 def validate_js_syntax() -> None:
@@ -663,7 +707,7 @@ def main() -> int:
     validate_json_and_ids(trip, social)
     validate_media(trip)
     validate_generated_index()
-    validate_generated_photo_sources()
+    validate_generated_image_sources()
     validate_generated_pose_sources()
     validate_generated_build_manifest()
     validate_release_and_views()
