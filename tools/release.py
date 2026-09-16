@@ -81,10 +81,10 @@ def sync_identification(version: str, build: str) -> None:
         html, build_count = re.subn(r'(<html\b[^>]*\bdata-app-version="[^"]+")', rf'\1 data-app-build="{build}"', html, count=1)
     if build_count != 1:
         raise SystemExit("Unable to synchronize data-app-build in index.html")
-    pattern = re.compile(r'((?:css/(?:style|banner)\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|banner|app)\.js)\?v=)[^"\']+')
-    html, count = pattern.subn(lambda m: m.group(1) + version, html)
+    pattern = re.compile(r'((?:css/(?:style|banner)\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|banner|app)\.js)\?(?:v|b)=)[^"\']+')
+    html, count = pattern.subn(lambda m: re.sub(r'\?(?:v|b)=$', '?b=', m.group(1)) + build, html)
     if count != 14:
-        raise SystemExit(f"Expected 14 versioned local CSS/JS references in index.html, found {count}")
+        raise SystemExit(f"Expected 14 build-identified local CSS/JS references in index.html, found {count}")
     with INDEX.open("w", encoding="utf-8", newline="\n") as fh:
         fh.write(html)
 

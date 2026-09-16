@@ -1,7 +1,7 @@
 {
   "meta": {
     "schemaVersion": "v1",
-    "checkedAt": "2026-09-16T01:55:00+08:00",
+    "checkedAt": "2026-09-16T19:10:00+08:00",
     "retentionPolicy": "Source Record 不因貼文刪除、轉私人、登入限制或失效而刪除；只更新 status / lastSeenAt / unavailableAt。",
     "note": "現行來源庫同時保存官方、一般網頁與可驗證的社群來源；無法直接存取的原始貼文保留 status 與可讀二次來源，不建立假社群來源。"
   },
@@ -2730,6 +2730,41 @@
         "collector": "ChatGPT web research",
         "parserVersion": "v1",
         "notes": "用於早市時段與飲品／早餐補充。"
+      }
+    },
+    "user_20260916_0001": {
+      "url": "https://xhslink.cn/o/9jqROa82iEe",
+      "canonicalUrl": "https://xhslink.cn/o/9jqROa82iEe",
+      "postId": null,
+      "contentType": "user-provided-screenshot",
+      "author": {
+        "name": "葡萄西柚",
+        "handle": null,
+        "profileUrl": null
+      },
+      "publishedAt": null,
+      "retrievedAt": "2026-09-16T19:01:00+08:00",
+      "lastSeenAt": "2026-09-16T19:01:00+08:00",
+      "status": "active",
+      "language": "zh-Hans",
+      "excerpt": "玉龍雪山氧氣瓶、松贊林寺門票與獨克宗古城紀念品價格分享。",
+      "tags": [
+        "雲南",
+        "價格",
+        "門票",
+        "氧氣瓶",
+        "紀念品",
+        "使用者提供"
+      ],
+      "sourceId": "user_20260916_0001",
+      "platform": "xiaohongshu",
+      "title": "小紅書「葡萄西柚」：雲南旅遊價格與省錢提醒",
+      "localFile": "docs/sources/reference/price-intel-xhs-20260916.jpg",
+      "collection": {
+        "method": "user-uploaded-screenshot",
+        "collector": "ChatGPT project edit",
+        "parserVersion": "v1",
+        "notes": "來源截圖由使用者提供；原始小紅書短連結為 https://xhslink.cn/o/9jqROa82iEe。價格屬網友當時分享，非官方價目；專區明確標示僅供比價參考，實際以現場與官方公告為準。"
       }
     }
   }

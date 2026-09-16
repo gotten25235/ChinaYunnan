@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant" data-app-version="1.6.9" data-app-build="20260916-175143">
+<html lang="zh-Hant" data-app-version="1.6.9" data-app-build="20260916-235435">
 <head>
   <meta charset="utf-8">
   <meta id="app-viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -44,20 +44,20 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <title>雲南慢時光 · 8 日雲南旅程</title>
-  <link rel="stylesheet" href="css/style.css?v=1.6.9">
-  <link rel="stylesheet" href="css/banner.css?v=1.6.9">
-  <script defer src="js/network.js?v=1.6.9"></script>
-  <script defer src="js/core.js?v=1.6.9"></script>
-  <script defer src="js/analytics.js?v=1.6.9"></script>
-  <script defer src="js/weather.js?v=1.6.9"></script>
-  <script defer src="js/offline.js?v=1.6.9"></script>
-  <script defer src="js/settings.js?v=1.6.9"></script>
-  <script defer src="js/reader.js?v=1.6.9"></script>
-  <script defer src="js/journey.js?v=1.6.9"></script>
-  <script defer src="js/map.js?v=1.6.9"></script>
-  <script defer src="js/library.js?v=1.6.9"></script>
-  <script defer src="js/banner.js?v=1.6.9"></script>
-  <script defer src="js/app.js?v=1.6.9"></script>
+  <link rel="stylesheet" href="css/style.css?b=20260916-235435">
+  <link rel="stylesheet" href="css/banner.css?b=20260916-235435">
+  <script defer src="js/network.js?b=20260916-235435"></script>
+  <script defer src="js/core.js?b=20260916-235435"></script>
+  <script defer src="js/analytics.js?b=20260916-235435"></script>
+  <script defer src="js/weather.js?b=20260916-235435"></script>
+  <script defer src="js/offline.js?b=20260916-235435"></script>
+  <script defer src="js/settings.js?b=20260916-235435"></script>
+  <script defer src="js/reader.js?b=20260916-235435"></script>
+  <script defer src="js/journey.js?b=20260916-235435"></script>
+  <script defer src="js/map.js?b=20260916-235435"></script>
+  <script defer src="js/library.js?b=20260916-235435"></script>
+  <script defer src="js/banner.js?b=20260916-235435"></script>
+  <script defer src="js/app.js?b=20260916-235435"></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到內容</a>
@@ -79,7 +79,7 @@
     <li class="yn-stop" style="--i:5"><button aria-pressed="false" class="yn-city" data-caption="昆明 · 山河歸途" type="button"><span aria-hidden="true" class="yn-dot"></span>昆明</button></li>
     </ol><button aria-label="暫停動畫" aria-pressed="false" class="yn-control" title="暫停動畫" type="button">Ⅱ</button>
     </section>
-    <nav class="section-nav" aria-label="主要功能"><button data-view="itinerary">🗓 旅程總覽</button><button data-view="map">🗺 探索地圖</button><button data-view="night"><span class="night-tab-mark" aria-hidden="true">☾</span> 夜間逍遙</button><button data-view="food">🥢 當地必吃</button><button data-view="shopping">🛍 雲南必買</button><button data-view="favorites">♡ 我的收藏 <span class="fav-count">0</span></button><button data-view="photos">📷 旅拍指南</button><button data-view="culture">📖 風俗與故事</button><button data-view="tips">🎒 出發提醒</button><button data-view="settings">⚙ 設定</button></nav>
+    <nav class="section-nav" aria-label="主要功能"><button data-view="itinerary">🗓 旅程總覽</button><button data-view="map">🗺 探索地圖</button><button data-view="night"><span class="night-tab-mark" aria-hidden="true">☾</span> 夜間逍遙</button><button data-view="food">🥢 當地必吃</button><button data-view="shopping">🛍 雲南必買</button><button data-view="favorites">♡ 我的收藏 <span class="fav-count">0</span></button><button data-view="photos">📷 旅拍指南</button><button data-view="culture">📖 風俗與故事</button><button data-view="priceintel">💸 不負責任專區</button><button data-view="tips">🎒 出發提醒</button><button data-view="settings">⚙ 設定</button></nav>
     <div class="workspace">
       <section id="view-itinerary" class="view is-active" aria-hidden="false" aria-labelledby="itinerary-title">
         <div class="section-heading itinerary-heading"><div><span class="eyebrow">THE ITINERARY</span><h2 id="itinerary-title">八天，剛剛好的遠方。</h2></div></div>
@@ -98,6 +98,7 @@
       <section id="view-map" class="view" hidden aria-hidden="true" aria-labelledby="map-title"><div class="section-heading"><div><span class="eyebrow">EXPLORE YUNNAN</span><h2 id="map-title">把喜歡的地方，連成旅程。</h2></div></div><div class="map-date-control" aria-label="探索地圖日期"><div class="map-date-head"><strong>日期</strong><span>左右滑動切換；停下後才更新地圖</span></div><div class="map-date-row"><button type="button" class="map-date-nav" data-map-date-nav="prev" aria-label="前一天">←</button><div id="map-date-rail" class="map-date-rail" tabindex="0" role="listbox" aria-label="日期滑動選擇"></div><button type="button" class="map-date-nav" data-map-date-nav="next" aria-label="後一天">→</button></div><select id="map-day" hidden aria-hidden="true" tabindex="-1"><option value="all">全部八天</option></select></div><p id="map-status" class="muted" role="status"></p><div class="location-help-row"><div class="location-controls"><button class="action" data-stop-location hidden>停止定位</button></div><p id="location-status" class="small" role="status">若被瀏覽器限制定位，需改用 HTTPS</p></div><div id="map-explorer" class="map-explorer"><div id="map" aria-label="雲南景點互動地圖"></div><aside id="map-feature-card" class="map-feature-card utility-card utility-card--map-feature" aria-live="polite" aria-hidden="true" hidden></aside></div><p class="small">點選有圖示的座標標記，可直接切換左側地點小卡。道路底圖有網路時，「國際版」使用 OpenStreetMap，「大陸版」使用高德並校正中國座標偏移；離線時改顯示本站地標簡圖。導航與連網模式可在「設定」分頁調整。標記為地區參考點，不代表入口。</p><section class="map-strip-section" aria-labelledby="map-strip-title"><div class="map-strip-head"><div><span class="eyebrow">FEATURED LOCATIONS</span><h3 id="map-strip-title">滑動探索地點</h3></div><div class="map-strip-tools"><span>左右滑動，點卡片看附近提案</span><button type="button" data-map-strip-nav="prev" aria-label="上一批地點">←</button><button type="button" data-map-strip-nav="next" aria-label="下一批地點">→</button></div></div><div id="map-filters" class="chips map-strip-filters" aria-label="地圖分類"></div><div id="map-strip-tabs" class="map-strip-tabs" role="tablist" aria-label="地點清單分類"><button type="button" role="tab" data-map-tab="all" aria-selected="false">全部</button><button type="button" role="tab" data-map-tab="scheduled" aria-selected="true" class="active">已安排</button><button type="button" role="tab" data-map-tab="custom" aria-selected="false">自定義</button></div><p class="card-click-hint">長壓一下圖卡，看更多內容</p><div id="map-list" class="map-place-strip rail rail--content rail--free rail--mouse-drag" tabindex="0" aria-label="地圖地點滑動卡片"></div></section><aside id="nearby-panel" class="nearby-panel" aria-live="polite"><h3>這附近有什麼可玩？</h3><p>點地圖或下方地點卡片，可顯示該位置直線 3 公里內、有座標的景點、美食與拍照提案；不是即時商家搜尋。</p></aside></section>
       <section id="view-food" class="view" hidden aria-hidden="true" aria-labelledby="food-title"><div class="section-heading"><div><span class="eyebrow">A TASTE OF YUNNAN</span><h2 id="food-title">用味蕾，記住一座城。</h2></div></div><p class="muted">「必吃」會排在前面；所有料理都補上典型口感、美食評鑑、最好吃法與踩雷提醒。評鑑依雲南常見做法、既有來源與公開旅客評價整理，實際仍依店家、季節與製法而異。</p><div id="food-filters" class="chips"></div><p class="card-click-hint">點一下圖卡，看更多內容</p><div id="food-list" class="content-grid rail rail--content rail--snap"></div></section>
       <section id="view-shopping" class="view" hidden aria-hidden="true" aria-labelledby="shopping-title"><div class="section-heading"><div><span class="eyebrow">BRING A LITTLE YUNNAN HOME</span><h2 id="shopping-title">🛍 雲南必買</h2></div><span class="muted">Day 8 · 留一點空間給伴手禮</span></div><div id="shopping-content"></div></section>
+      <section id="view-priceintel" class="view" hidden aria-hidden="true" aria-labelledby="priceintel-title"><div class="section-heading"><div><span class="eyebrow">PRICE INTEL · 價格情報</span><h2 id="priceintel-title">💸 不負責任專區</h2></div><span class="muted">網友經驗整理 · 價格僅供參考</span></div><div class="note warm"><strong>先看價格，再決定要不要下手。</strong><br><span class="small">以下為網友當時分享的價格情報，不是官方價目；可能因日期、規格、票種、平台或店家改變。請把它當成現場比價起點，實際以當日公告與成交價為準。</span></div><div class="note shopping-source-note price-intel-source-note"><strong>來源：小紅書「葡萄西柚」旅遊價格分享。</strong> <a href="https://xhslink.cn/o/9jqROa82iEe" target="_blank" rel="noopener noreferrer">查看原始貼文 ↗</a> <a href="docs/sources/reference/price-intel-xhs-20260916.jpg" target="_blank" rel="noopener noreferrer">查看來源截圖 ↗</a><br><span class="small">截圖由使用者提供並保留於專案來源資料；價格為貼文當時資訊，非官方固定售價。</span></div><div id="priceintel-content"></div></section>
       <section id="view-favorites" class="view" hidden aria-hidden="true" aria-labelledby="favorites-title"><div class="section-heading"><div><span class="eyebrow">SAVED FOR LATER</span><h2 id="favorites-title">我的口袋清單</h2></div><span class="muted">儲存在這個瀏覽器</span></div><p class="card-click-hint">點一下圖卡，看更多內容</p><div id="favorite-list" class="content-grid rail rail--content rail--snap"></div></section>
       <section id="view-photos" class="view" hidden aria-hidden="true" aria-labelledby="photos-title"><div class="section-heading"><div><span class="eyebrow">FRAME THE JOURNEY</span><h2 id="photos-title">📷 旅拍指南</h2></div></div><p class="muted">依實際行程日期看當天拍照機位與 Pose；日期與探索地圖、夜間逍遙同步。點開圖卡可直接看來源實拍、Pose、攝影位置與鏡頭建議。</p><div id="photo-summary-note" class="note">依八天實際行程排序；較值得優先拍的機位會直接排在前面。Pose 先參考小紅書／抖音／大眾點評等公開社群，再以可追溯的來源實拍直接顯示；來源頁只作追溯，現場先看圖片與拍法即可。</div><div class="map-date-control photo-date-control" aria-label="拍照日期"><div class="map-date-head"><strong>日期</strong><span>左右滑動切換；與探索地圖、夜間逍遙同步</span></div><div class="map-date-row"><button type="button" class="map-date-nav" data-photo-date-nav="prev" aria-label="前一天">←</button><div id="photo-date-rail" class="map-date-rail" tabindex="0" role="listbox" aria-label="拍照日期滑動選擇"></div><button type="button" class="map-date-nav" data-photo-date-nav="next" aria-label="後一天">→</button></div><select id="photo-day" hidden aria-hidden="true" tabindex="-1"><option value="all">全部八天</option></select></div><div id="photo-filters" class="chips" aria-label="拍照篩選"></div><div id="photo-list"></div></section><section id="view-culture" class="view" hidden aria-hidden="true" aria-labelledby="culture-title"><div class="section-heading"><div><span class="eyebrow">PEOPLE &amp; THE REPUBLICAN YEARS</span><h2 id="culture-title">風景背後，有人生活過。</h2></div></div><p class="muted">從民國往事，到今天的風俗。沿著八天路線，讀一段再出發。</p><div id="culture-filters" class="chips" aria-label="故事主題"></div><p class="small">本頁民國時期指 1912–1949 年。歷史、文學、傳說與「鄉野奇談」分別標示；奇談是民間故事／信仰資料，不當成真實靈異事件，故事也不另增加團體景點。</p><p class="card-click-hint">點一下圖卡，看完整故事</p><div id="culture-list" class="culture-grid rail rail--content rail--snap"></div><details class="photo-sources"><summary>實拍照片來源與授權</summary><div id="photo-sources"></div></details></section>
       <section id="view-tips" class="view" hidden aria-hidden="true" aria-labelledby="tips-title"><div class="section-heading"><div><span class="eyebrow">BEFORE YOU GO</span><h2 id="tips-title">準備好，慢慢玩。</h2></div></div><div id="tips-content"></div></section>
@@ -113,13 +114,45 @@
   <script>
     (() => {
       const canUseServiceWorker='serviceWorker' in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1');
-      if(!canUseServiceWorker)return;
       const localVersion=document.documentElement.dataset.appVersion||'';
       const localBuild=document.documentElement.dataset.appBuild||'';
       const checkInterval=30000;
-      let checking=null,lastChecked=0,retryTimer=null;
+      let checking=null,lastChecked=0,retryTimer=null,statusTimer=null;
+      const navigationType=performance.getEntriesByType?.('navigation')?.[0]?.type||'';
+      const wasManualReload=navigationType==='reload';
 
+      // A cache-busting query is used only as a no-Service-Worker fallback. Remove it
+      // from the visible URL after the replacement document has loaded.
+      try{
+        const cleanUrl=new URL(location.href);
+        if(cleanUrl.searchParams.has('__yunnan_reload')){
+          cleanUrl.searchParams.delete('__yunnan_reload');
+          history.replaceState(history.state,'',cleanUrl.pathname+cleanUrl.search+cleanUrl.hash);
+        }
+      }catch{}
+
+      const showStatus=(message,duration=2400)=>{
+        const el=document.getElementById('toast');if(!el||!message)return;
+        el.textContent=message;el.classList.add('visible');clearTimeout(statusTimer);statusTimer=setTimeout(()=>el.classList.remove('visible'),duration);
+      };
+      const updateButtons=()=>[...document.querySelectorAll('[data-app-check-update],[data-app-force-reload]')];
+      const setUpdateBusy=(kind,busy)=>{
+        updateButtons().forEach(button=>{
+          if(!button.dataset.updateIdleLabel)button.dataset.updateIdleLabel=button.textContent.trim();
+          button.disabled=Boolean(busy);
+          button.setAttribute('aria-busy',String(Boolean(busy)));
+          if(!busy)button.textContent=button.dataset.updateIdleLabel;
+          else if(kind==='force'&&button.hasAttribute('data-app-force-reload'))button.textContent='正在重新載入…';
+          else if(kind==='check'&&button.hasAttribute('data-app-check-update'))button.textContent='檢查中…';
+        });
+      };
+      const hardReload=token=>{
+        const url=new URL(location.href);
+        url.searchParams.set('__yunnan_reload',`${String(token||'force')}-${Date.now()}`);
+        location.replace(url.href);
+      };
       const ensureRegistration=async()=>{
+        if(!canUseServiceWorker)throw new Error('Service Worker unavailable in this URL context');
         const existing=await navigator.serviceWorker.getRegistration('./');
         if(existing)return existing;
         return navigator.serviceWorker.register('./sw.js',{scope:'./',updateViaCache:'none'});
@@ -135,51 +168,141 @@
         if(!worker||typeof MessageChannel==='undefined'){resolve(null);return;}
         const channel=new MessageChannel();let settled=false;
         const finish=value=>{if(settled)return;settled=true;clearTimeout(timer);try{channel.port1.close();}catch{}resolve(value||null);};
-        const timer=setTimeout(()=>finish(null),1400);
+        const timer=setTimeout(()=>finish(null),1600);
         channel.port1.onmessage=event=>{const data=event.data;if(data?.type==='BUILD_INFO'&&typeof data.version==='string'&&typeof data.build==='string')finish(data);};
         try{worker.postMessage({type:'GET_BUILD_INFO'},[channel.port2]);}catch{finish(null);}
       });
+      const workerRequest=(worker,type,timeout=30000)=>new Promise((resolve,reject)=>{
+        if(!worker||typeof MessageChannel==='undefined'){reject(new Error('Service Worker unavailable'));return;}
+        const channel=new MessageChannel();let settled=false;
+        const finish=(ok,value)=>{if(settled)return;settled=true;clearTimeout(timer);try{channel.port1.close();}catch{}ok?resolve(value):reject(value instanceof Error?value:new Error(String(value||'Service Worker request failed')));};
+        const timer=setTimeout(()=>finish(false,new Error('Service Worker request timeout')),timeout);
+        channel.port1.onmessage=event=>{const data=event.data||{};if(data.type==='RESULT')finish(data.ok!==false,data.result||data.error);};
+        try{worker.postMessage({type},[channel.port2]);}catch(error){finish(false,error);}
+      });
       const matchesTarget=(info,target)=>Boolean(info&&`${info.version}|${info.build}`===target);
-      const waitForTargetController=async(target,registration,{timeout=10000}={})=>{
+      const waitForTargetController=async(target,registration,{timeout=12000}={})=>{
         const current=await readWorkerBuild(navigator.serviceWorker.controller||registration.active);
         if(matchesTarget(current,target))return true;
         return new Promise(resolve=>{
           let settled=false,timer=null,poll=null;
           const finish=value=>{if(settled)return;settled=true;clearTimeout(timer);clearInterval(poll);navigator.serviceWorker.removeEventListener('controllerchange',check);resolve(Boolean(value));};
           const check=async()=>{const info=await readWorkerBuild(navigator.serviceWorker.controller||registration.active);if(matchesTarget(info,target))finish(true);};
-          navigator.serviceWorker.addEventListener('controllerchange',check);
-          poll=setInterval(check,450);
-          timer=setTimeout(()=>finish(false),timeout);
-          check();
+          navigator.serviceWorker.addEventListener('controllerchange',check);poll=setInterval(check,450);timer=setTimeout(()=>finish(false),timeout);check();
         });
       };
       const scheduleRetry=()=>{if(retryTimer||!navigator.onLine)return;retryTimer=setTimeout(()=>{retryTimer=null;checkBuild({force:true});},15000);};
-      const checkBuild=({force=false}={})=>{
-        if(checking)return checking;
-        if(!navigator.onLine)return Promise.resolve(false);
+      const reconcileCurrentImages=async registration=>{
+        const worker=navigator.serviceWorker.controller||registration?.active;
+        if(!worker)return {checked:0,updated:0,removed:0,failed:0};
+        return workerRequest(worker,'RECONCILE_IMAGES',45000);
+      };
+      const checkBuild=({force=false,userInitiated=false,forceReload=false,reconcileImages=false}={})=>{
+        if(checking){
+          if(!userInitiated)return checking;
+          showStatus('正在檢查更新…',4000);
+          return checking.then(()=>checkBuild({force:true,userInitiated:true,forceReload,reconcileImages}));
+        }
+        if(!navigator.onLine){
+          if(forceReload&&userInitiated){showStatus('目前離線，正在重新載入已下載版本…',1500);setTimeout(()=>location.reload(),260);return Promise.resolve({status:'reloading-offline'});}
+          if(userInitiated)showStatus('目前離線，使用已下載版本');return Promise.resolve({status:'offline'});
+        }
         const now=Date.now();
-        if(!force&&now-lastChecked<checkInterval)return Promise.resolve(false);
-        lastChecked=now;
+        if(!force&&now-lastChecked<checkInterval)return Promise.resolve({status:'throttled'});
+        lastChecked=now;if(userInitiated)showStatus(forceReload?'正在準備強制重新載入…':'正在檢查更新…',4000);
         checking=(async()=>{
           try{
             const remote=await remoteBuild(),target=`${remote.version}|${remote.build}`,local=`${localVersion}|${localBuild}`;
-            if(target===local)return false;
+
+            // Plain HTTP / file-like contexts cannot use a Service Worker. Update
+            // checking must still work and must never become a silent no-op.
+            if(!canUseServiceWorker){
+              if(target!==local){
+                showStatus('發現新版，正在重新載入…',1800);
+                setTimeout(()=>hardReload(remote.build),220);
+                return {status:'updated-no-sw'};
+              }
+              if(forceReload){
+                showStatus('網站版本已確認，正在強制重新載入…',1500);
+                setTimeout(()=>hardReload(remote.build||'force'),220);
+                return {status:'reloading-no-sw'};
+              }
+              if(userInitiated)showStatus('✓ 已是最新版 · 此環境不支援離線快取');
+              return {status:'current-no-sw'};
+            }
+
             const registration=await ensureRegistration();
             const activeInfo=await readWorkerBuild(navigator.serviceWorker.controller||registration.active);
-            if(matchesTarget(activeInfo,target)){location.reload();return true;}
+            const htmlCurrent=target===local,workerCurrent=matchesTarget(activeInfo,target);
+            if(htmlCurrent&&workerCurrent){
+              if(forceReload||reconcileImages){
+                showStatus('正在確認網站與圖片快取…',5000);
+                const imageResult=await reconcileCurrentImages(registration).catch(error=>{console.warn('Image reconciliation failed',error);return null;});
+                const updated=Number(imageResult?.updated||0),removed=Number(imageResult?.removed||0),failed=Number(imageResult?.failed||0);
+                if(forceReload){
+                  const detail=updated||removed?`已更新 ${updated} 張圖片${removed?`、移除 ${removed} 張舊圖`:''}`:'網站與圖片已是最新';
+                  showStatus(`${detail}，正在重新載入…`,1500);
+                  setTimeout(()=>location.reload(),220);
+                  return {status:'reloading',imageResult};
+                }
+                if(userInitiated){
+                  if(failed)showStatus(`網站已是最新版 · 圖片檢查有 ${failed} 張失敗`);
+                  else if(updated||removed)showStatus(`✓ 已同步圖片：更新 ${updated} · 移除 ${removed}`);
+                  else showStatus('✓ 網站與圖片已是最新版');
+                }
+                return {status:'current',imageResult};
+              }
+              if(userInitiated)showStatus('✓ 已是最新版');
+              return {status:'current'};
+            }
+            showStatus('發現新版，正在更新…',6000);
             await registration.update();
             registration.waiting?.postMessage({type:'SKIP_WAITING'});
             const ready=await waitForTargetController(target,registration);
-            if(!ready){console.warn('New build metadata is visible, but the matching Service Worker is not active yet; retrying without reload.',remote);scheduleRetry();return false;}
-            location.reload();
-            return true;
-          }catch(error){console.warn('Build check failed; keeping current offline-capable build:',error);scheduleRetry();return false;}
-          finally{checking=null;}
+            if(!ready){console.warn('New build metadata is visible, but the matching Service Worker is not active yet; retrying without reload.',remote);if(userInitiated)showStatus('新版正在部署，稍後會再檢查');scheduleRetry();return {status:'pending'};}
+            showStatus('新版已準備完成，正在重新載入…',1600);
+            setTimeout(()=>location.reload(),180);
+            return {status:'updated'};
+          }catch(error){
+            console.warn('Build check failed; keeping current offline-capable build:',error);
+            if(forceReload&&userInitiated){
+              showStatus('無法連線檢查版本，改用一般重新載入…',1500);
+              setTimeout(()=>{if(canUseServiceWorker)location.reload();else hardReload('fallback');},260);
+              return {status:'reload-fallback',error};
+            }
+            if(userInitiated)showStatus('更新檢查失敗，繼續使用目前版本');
+            scheduleRetry();return {status:'error',error};
+          }finally{checking=null;}
         })();
         return checking;
       };
+      const runUserAction=(kind,button)=>{
+        if(button&&!button.dataset.updateIdleLabel)button.dataset.updateIdleLabel=button.textContent.trim();
+        setUpdateBusy(kind,true);
+        showStatus(kind==='force'?'正在準備強制重新載入…':'正在檢查更新…',4000);
+        const task=kind==='force'
+          ?checkBuild({force:true,userInitiated:true,forceReload:true})
+          :checkBuild({force:true,userInitiated:true,reconcileImages:true});
+        return Promise.resolve(task).finally(()=>{
+          // Reloading paths replace the document almost immediately. Restoring the
+          // labels here is harmless if reload is pending and essential on failures.
+          setTimeout(()=>setUpdateBusy(kind,false),320);
+        });
+      };
 
-      window.addEventListener('load',()=>{ensureRegistration().then(()=>checkBuild({force:true})).catch(error=>{console.warn('Service Worker registration failed:',error);scheduleRetry();});},{once:true});
+      window.YunnanUpdateSystem={
+        checkNow:button=>runUserAction('check',button),
+        forceReload:button=>runUserAction('force',button),
+        checkBuild,
+        canUseServiceWorker
+      };
+      window.addEventListener('load',()=>{
+        if(canUseServiceWorker){
+          ensureRegistration().then(()=>checkBuild({force:true,userInitiated:wasManualReload,reconcileImages:wasManualReload})).catch(error=>{console.warn('Service Worker registration failed:',error);if(wasManualReload)showStatus('離線快取服務未就緒，仍會檢查網站版本');checkBuild({force:true,userInitiated:wasManualReload}).catch(()=>{});});
+        }else{
+          checkBuild({force:true,userInitiated:wasManualReload}).catch(()=>{});
+        }
+      },{once:true});
       window.addEventListener('online',()=>checkBuild({force:true}));
       window.addEventListener('pageshow',event=>{if(event.persisted)checkBuild({force:true});});
       document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkBuild();});

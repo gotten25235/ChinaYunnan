@@ -172,7 +172,7 @@ DEV ONLY 在不改變正式資料的前提下額外顯示：
 | `network.js` | 國際版／大陸版 profile（預設大陸版）、Leaflet runtime loader、OSM／高德底圖選擇、WGS84 ↔ GCJ-02 顯示座標轉換；同時提供 QWeather Grid 所需 converter |
 | `core.js` | Image System、Travel Utils、Favorites Store、Navigation Service、Date Rail、Horizontal Scroller；Image System 固定執行 `imageId → local 本地 WebP → remote（同一張精確原圖）→ 無此圖`，不做跨地點／同類商品／搜尋替代圖 fallback |
 | `analytics.js` | 可選 Umami tracker loader、匿名事件 queue 與 persistent anonymous browser ID；不記姓名、表單內容／精確定位；未啟用或本機開發時不載入外部 tracker |
-| `weather.js` | 高德 → QWeather Grid → Open-Meteo 欄位優先合併、API credential local settings、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots；可用 provider 並行請求，高順位既有欄位不被低順位覆蓋；另由 Open-Meteo / Copernicus DEM 90 m 維護每個 weather point 的座標海拔，與天氣 provider 優先合併分離。PUBLIC ONLY 顯示本次資料來源、約略海拔與完整天氣入口（高德使用站內實況／短期檢視器，Open-Meteo 使用站內 16 天／24 小時檢視器），DEV ONLY 顯示 API 文件、Elevation API、欄位優先順序、海拔原始值與查詢座標；同時集中管理小紅書搜尋詞、Deeplink 與共用確認彈窗 |
+| `weather.js` | 高德 → QWeather Grid → Open-Meteo 欄位優先合併、API credential local settings、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots；旅程總覽簡易卡顯示溫度／天氣 + 第二列 compact metrics（🏔 海拔、☂ 降雨、UV emoji + 指數）；可用 provider 並行請求，高順位既有欄位不被低順位覆蓋；另由 Open-Meteo / Copernicus DEM 90 m 維護每個 weather point 的座標海拔，與天氣 provider 優先合併分離。 UV 指數顯示共用標準分級 emoji：0–2 👩🏻‍🦲、3–5 👩🏼‍🦲、6–7 👩🏽‍🦲、8–10 👩🏾‍🦲、11+ 👩🏿‍🦲。PUBLIC ONLY 顯示本次資料來源、約略海拔與完整天氣入口（高德使用站內實況／短期檢視器，Open-Meteo 使用站內 16 天／24 小時檢視器），DEV ONLY 顯示 API 文件、Elevation API、欄位優先順序、海拔原始值與查詢座標；同時集中管理小紅書搜尋詞、Deeplink 與共用確認彈窗 |
 | `offline.js` | PWA 選擇式離線準備、Service Worker bridge、Cache 完整性檢查、缺失清單、只重試失敗照片、安裝提示、收藏／偏好匯出匯入；不保存天氣 API Key |
 | `settings.js` | Settings View 的顯示主題與介面版面 preference owner；主題支援 `system / light / dark`，版面支援 `mobile / desktop`；使用 `yunnan-2026-color-theme-v1` 與 `yunnan-2026-ui-layout-v1` |
 | `reader.js` | Content Reader、stack、return state、Reader swipe；每個 Item Reader 操作列向 Weather/XHS helper 取得對應搜尋資料並顯示 `📕 小紅書` 按鈕 |
@@ -196,7 +196,7 @@ Detail Reader 的小紅書入口共用同一彈窗與 Deeplink，不在圖卡表
 
 ## 6. View Registry / Action Router
 
-`app.js > VIEW_REGISTRY` 是主 View 的唯一登記處，合法 View、導覽順序與主頁 swipe 順序都由它推導。非地圖 View 在啟動時建立穩定 DOM；圖片仍由 Image System 使用原生 lazy loading 控制下載。Map 是唯一延後初始化的 View，必須先切成可見狀態，再於下一個 layout frame 建立或更新 Leaflet。
+`app.js > VIEW_REGISTRY` 是主 View 的唯一登記處，合法 View、導覽順序與主頁 swipe 順序都由它推導。 固定順序為：**旅程總覽 → 探索地圖 → 夜間逍遙 → 當地必吃 → 雲南必買 → 我的收藏 → 旅拍指南 → 風俗與故事 → 不負責任專區 → 出發提醒 → 設定**。非地圖 View 在啟動時建立穩定 DOM；圖片仍由 Image System 使用原生 lazy loading 控制下載。Map 是唯一延後初始化的 View，必須先切成可見狀態，再於下一個 layout frame 建立或更新 Leaflet。
 
 中央 `document click` 只保留一個，順序為：Offline → Weather → Journey → Reader → Map → Library → App shared actions。局部 gesture controller 只處理自己的 boundary，不再建立第二套 document-level router。
 
@@ -312,11 +312,11 @@ SHA-256 + remote URL + local path 寫入 image-sync-cache
 
 已打包且 cache 能證明 `remote + local + SHA-256` 一致的檔案只做 VERIFIED，不重抓。若 local 無法證明與目前 remote 一致，而此次遠端同步又失敗，工具會把未驗證 local 移到 `images/_quarantine/`，讓網站退回 exact remote；不得保留可能是錯圖的 local 來假裝成功。
 
-同步後輸出 `sync_images.log`、`sync_failures.txt`（若有）與 `docs/IMAGE_SYNC_REPORT.html`；報告依 `images/` 第一層資料夾分組，每區顯示 record 數與 `SYNCED / VERIFIED / FAILED` 統計，頁首提供分組快速跳轉與總統計。之後依序重建 `IMAGE_SOURCES.md` → `POSE_SCREENSHOT_SOURCES.md` → `offline-manifest.json` → build manifest → validator。只有所有 pending local 都同步完成時才建立 `*_all_local.zip`。 最後一定另外輸出 `sync_summary.txt` 與英文終端統計：`Total`＝本輪 remote-backed image records；`Success`＝本輪新下載並轉檔成功的 `SYNCED`；`Ignored`＝exact remote + local + SHA-256 已驗證一致的 `VERIFIED`，因此不重抓；`Failed`＝個別圖片下載／解碼／轉檔失敗、仍使用 exact remote fallback；`Errors`＝同步流程、generated artifacts、validator 或 ZIP 等工具層級異常。
+同步後輸出 `sync_images.log`、`sync_failures.txt`（若有）與 `docs/IMAGE_SYNC_REPORT.html`；報告依 `images/` 第一層資料夾分組，每區顯示 record 數與 `SYNCED / VERIFIED / FAILED` 統計，頁首提供分組快速跳轉與總統計。若本輪真的新增／替換／移除 local 圖或更新 registry 尺寸，`sync_images.py` 必須呼叫 `release.py --new-build`，確保已安裝客戶端可由 `build.json + imageHashes` 偵測圖片變更；若全部只是 VERIFIED 則維持既有 Build。之後重建 `IMAGE_SOURCES.md` → `POSE_SCREENSHOT_SOURCES.md` → `offline-manifest.json` → build manifest → validator。只有所有 pending local 都同步完成時才建立 `*_all_local.zip`。 最後一定另外輸出 `sync_summary.txt` 與英文終端統計：`Total`＝本輪 remote-backed image records；`Success`＝本輪新下載並轉檔成功的 `SYNCED`；`Ignored`＝exact remote + local + SHA-256 已驗證一致的 `VERIFIED`，因此不重抓；`Failed`＝個別圖片下載／解碼／轉檔失敗、仍使用 exact remote fallback；`Errors`＝同步流程、generated artifacts、validator 或 ZIP 等工具層級異常。
 
 ### 旅拍 Pose
 
-Pose 不再保存 `sourceImage` 或 `sourcePlatform/sourceTitle/sourceUrl/sourceAuthor/sourceDate/sourceAlt/sourceCaptured` 等第二套圖片 metadata。每個 Pose 只保存自己的 `imageId`；其來源頁、作者、授權、local 與 exact remote 全部由 `images[imageId]` 提供。現有 17 個 Pose 的 remote 保留目前已確認正確的精確來源圖，本地化後 remote 也不刪除。
+Pose 不再保存 `sourceImage` 或 `sourcePlatform/sourceTitle/sourceUrl/sourceAuthor/sourceDate/sourceAlt/sourceCaptured` 等第二套圖片 metadata。每個 Pose 只保存自己的 `imageId`；其來源頁、作者、授權、local 與 exact remote 全部由 `images[imageId]` 提供。現有 29 個 Pose 的 remote 保留目前已確認的精確來源圖，本地化後 remote 也不刪除。
 
 這個設計直接避免先前錯誤：**遠端顯示 A，本地化後卻因搜尋、舊檔或錯誤對應變成 B。** 同一 imageId 永遠只有一個核准的 remote 身分。
 
@@ -366,14 +366,14 @@ Validator 至少檢查：
 
 `tools/release.json` 保存對外軟體版本，格式為三段十進位整數。三段依專案內部約定分別是 proud / default / shame，且**獨立累加、不做 SemVer 式歸零**。UI 顯示細節依本文件「PUBLIC / DEV 顯示模式」執行。
 
-對外 Release Version、內部 Build ID 與 storage/schema 契約分離：HTML 同時保存 `data-app-version` 與 `data-app-build`；CSS / JS 的 `?v=` 繼續使用對外 Release Version，App Cache 使用 Release Version + Build ID。Build ID 可在對外版本固定時獨立更新；Favorites / Map / Network / UI theme / UI layout / Weather / Offline / Source parser 等 storage/schema key 維持 `v1`。只有真正做資料格式 migration 時才升 schema，不因一般 build 更新清除收藏、偏好或圖片快取。
+對外 Release Version、內部 Build ID 與 storage/schema 契約分離：HTML 同時保存 `data-app-version` 與 `data-app-build`；CSS / JS 使用 `?b=<Build ID>` 做部署級 cache busting，App Cache 使用 Release Version + Build ID。Build ID 可在對外版本固定時獨立更新；Favorites / Map / Network / UI theme / UI layout / Weather / Offline / Source parser 等 storage/schema key 維持 `v1`。只有真正做資料格式 migration 時才升 schema，不因一般 build 更新清除收藏、偏好或圖片快取。
 
 Cache 契約：
 
-- App Cache：`yunnan-app-<release version>-<build id>`。`build.json` 是日常唯一更新探針；版本＋ build 相同時 App Shell 使用 Cache First，不做 stale-while-revalidate 背景重抓。
-- 新 build 安裝時讀 `asset-manifest.json` 的 SHA-256；未變的 App Shell 從上一個 App Cache 直接複製，只有 hash 改變的核心檔才重新抓取。第一個導入 Build ID 的 legacy migration 會自動重載一次既有頁面。
+- App Cache：`yunnan-app-<release version>-<build id>`。`build.json` 是日常唯一更新探針；HTML navigation 為 Network First、離線才退回 App Cache；JS / CSS / JSON 仍由 build-aware App Cache 管理。
+- 新 build 安裝時讀 `asset-manifest.json` 的 SHA-256；雖然 CSS / JS URL 使用新的 `?b=<Build ID>`，仍會按去除 query 後的實體檔路徑比對前後 hash，未變 App Shell 從上一個 App Cache 直接複製，只有 hash 改變的核心檔才重新抓取。第一個導入 Build ID 的 legacy migration 會自動重載一次既有頁面。
 - 更新確認採 Worker handshake：Service Worker 回應 `GET_BUILD_INFO`，前台只有在目前 active/controller 回報的 `version + build` 與 `build.json` 目標完全相同時才 reload。若 GitHub Pages 部署暫時不同步，維持現有可用版本並 15 秒後重試；不再用固定 timeout 後無條件 reload，也不會因未成功接管而進入舊版重載循環。
-- Image Cache：`yunnan-images-v1`，Cache First；一般 build 更新不清除、不重抓圖片。
+- Image Cache：`yunnan-images-v1`，Runtime 仍為 Cache First；`offline-manifest.json > imageHashes` 保存每張 packaged local WebP 的 SHA-256。新 build 安裝或使用「強制重新載入」時，只檢查目前已快取的 local 圖片：hash 相同保留、不同才重抓、已從 manifest 移除才刪除。
 - Offline Meta Cache：`yunnan-offline-v1`；可見準備時間另存在 `yunnan-offline-prep-state-v1`。
 - Weather cache：`yunnan-weather-cache-v1`；provider 設定：`yunnan-weather-provider-config-v1`。
 - Network profile 切換後 App reload 一次，重建 Image System、Leaflet source 與底圖座標系。
@@ -383,7 +383,7 @@ Generated files：
 
 - `data/source-index.json` ← `trip-data.json + social-sources.json`
 - `docs/sources/IMAGE_SOURCES.md` ← `trip-data.json > images`
-- `offline-manifest.json` ← core assets + 每張照片單一路徑清單；manifest schemaVersion 仍是 `v1`
+- `offline-manifest.json` ← core assets + 每張照片單一路徑清單 + packaged local 圖片 `imageHashes`；manifest schemaVersion 仍是 `v1`
 - `build.json` ← 對外版本 + Build ID；前台每次開啟／回前景／重新連線時只用這個小檔案判斷是否需要更新
 - `asset-manifest.json` ← App Shell 每個資源的 SHA-256；只有偵測到新 build、Service Worker 安裝時才使用
 
@@ -446,7 +446,7 @@ python tools/release.py --bump shame --new-build --zip
 | 新功能不知道放哪 | renderer/state 塞進 `app.js` 或建第二套全域 handler | 先決定 Domain Owner；App 只做 bootstrap、協調與 router |
 | 天氣重複流量 | 每次切 Day／Map 都重新呼叫 API | `weather.js` 單一 owner；每點 1 小時 cache，離線沿用最後成功資料 |
 | 小紅書實況日期過期／誤用行程未來日期 | 把旅程日期寫進搜尋詞，或固定保存幾天前的「最新實況」 | 搜尋日期只取目前雲南日期；今日／昨日入口先顯示搜尋確認彈窗，再由使用者主動喚起小紅書 App；彈窗明示未安裝 App 無法直接使用並提供複製搜尋詞。跨日只重算內容，不觸發天氣 API 或重新發布 Build；絕不產生未來日期搜尋 |
-| 手機一直停舊版／同版號重抓流量 | 每次載入都 `registration.update()` + stale-while-revalidate，或偵測到 build 不同後固定等數秒就盲目 reload | 每次只 network-check `build.json`；version/build 相同零 reload、App Shell Cache First；不同才更新 SW，並用 asset hash 只抓變動核心檔；active Worker 必須回報目標 Build 才 reload，部署尚未同步則稍後重試 |
+| 手機一直停舊版／同版號重抓流量／圖片更新後仍看到舊圖 | HTML 與圖片都只 Cache First，或每次 reload 清掉整個 cache | HTML navigation Network First；CSS/JS 用 `?b=<Build ID>`；App Shell 用 asset hash、圖片用 `imageHashes`，只刷新內容真的變更的已快取檔；設定頁另提供「檢查更新／強制重新載入」並保留使用者資料；兩個動作都必須立即呈現按鈕 busy 狀態與 Toast，無 Service Worker 時仍以 build.json + cache-busting navigation 工作 |
 | 以為「開過一次」就一定離線完整 | 只靠 lazy image / stale cache | `offline.js` 明確觸發 `PREPARE_OFFLINE`、檢查缺失並可只重試失敗照片 |
 | UI 相似就全部共用 | 萬用 CardFactory + 大量 variant/options | 維持四套 Card；共用 service / 語意，不強迫共用所有 markup |
 | 工程文件越拆越多 | 每個功能再新增一份 MD，規則交叉重複 | 人工規格只放 `PROJECT.md`；使用者說明放 README；sources 只保留 generated/evidence ledger |
@@ -468,3 +468,10 @@ python tools/release.py --bump shame --new-build --zip
 - 同一旅拍場景不同 Pose 不得共用 imageId 或 exact remote。
 - `images/pose-guides/`、`sourceImage` 與 pose 專屬來源欄位都屬舊格式，不得復活。
 - 來源頁只負責追溯，不代表來源圖片具備可重用授權。
+
+
+### Price Intel / 不負責任專區
+
+- View key：`priceintel`；PUBLIC ONLY 對使用者顯示網友價格情報卡，資料位於 `trip-data.json > priceIntel[]`。
+- 第一批資料來源為 `user_20260916_0001` / `docs/sources/reference/price-intel-xhs-20260916.jpg`；原始小紅書短連結記錄為 `https://xhslink.cn/o/9jqROa82iEe`，截圖顯示作者「葡萄西柚」。卡片價格是網友當時分享，不得當作官方固定價格；PUBLIC ONLY 在專區頁首用與「🛍 雲南必買」相同的綠色 `.note shopping-source-note` 顯示「查看原始貼文／查看來源截圖」，不再把來源截圖藏在每張卡的 DEV ONLY footer。
+- 手動 browser reload 除 Build 檢查外，若 HTML 與 Service Worker 已是目前 Build，還會執行 `RECONCILE_IMAGES` 核對已快取圖片，並以 Toast 明確回報結果；不得因此清除整批 Image Cache 或使用者設定。

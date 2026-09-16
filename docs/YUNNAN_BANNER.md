@@ -61,7 +61,7 @@ yn-banner-animation-paused-v1
 ## 離線與版本
 
 - `css/banner.css` 與 `js/banner.js` 屬 App Shell，必須加入 Service Worker 與 `offline-manifest.json` 的核心資產。
-- 兩個檔案在 `index.html` 使用與主程式一致的 `?v=<release>` cache busting。
+- 兩個檔案在 `index.html` 使用與主程式一致的 `?b=<Build ID>` cache busting。
 - 一般 release 只更新軟體版本，不改 `yn-banner-animation-paused-v1`。
 
 ## 維護原則

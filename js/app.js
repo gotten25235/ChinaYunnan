@@ -3,6 +3,7 @@
   'use strict';
   const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
   const appVersion=document.documentElement.dataset.appVersion||'—';
+  const appBuild=document.documentElement.dataset.appBuild||'—';
   const isDev=(()=>{try{return new URLSearchParams(location.search).get('dev')==='1';}catch{return false;}})();
   let tripData;
   try{const response=await fetch('data/trip-data.json');if(!response.ok)throw new Error(`HTTP ${response.status}`);tripData=await response.json();}
@@ -79,7 +80,7 @@
   }
   function renderSettings(){
     const mainland=networkProfile.isMainland();
-    $('#settings-content').innerHTML=`<article class="network-profile-card utility-card utility-card--settings"><div><span class="eyebrow">NETWORK PROFILE</span><h3>連網模式</h3><p class="small">預設為大陸版。兩個模式都使用已打包的本地旅行圖片；大陸版使用高德底圖與 GCJ-02 座標校正，國際版則使用 OpenStreetMap。天氣兩個模式都採相同優先順序：高德 → QWeather Grid → Open-Meteo。</p></div><label>連網<select data-network-profile-select aria-label="連網模式"><option value="mainland">大陸版（預設）</option><option value="international">國際版</option></select></label></article><article class="nav-provider-card utility-card utility-card--settings"><div><span class="eyebrow">MAP NAVIGATION</span><h3>預設導航地圖</h3><p class="small">所有「導航」按鈕都會使用這個設定。${mainland?'大陸版建議使用高德地圖；Google 在中國大陸通常無法使用。':'預設高德地圖，也可切換 Google。'}偏好只儲存在此瀏覽器。</p></div><label>導航服務<select data-map-provider-select aria-label="預設導航地圖"><option value="amap">高德地圖（預設）</option><option value="google">Google 地圖</option></select></label></article>${settingsSystem.settingsHtml()}${weatherSystem.settingsHtml()}${offlineSystem.settingsHtml()}<article class="release-version-card utility-card utility-card--settings"><div><span class="eyebrow">SOFTWARE VERSION</span><h3>版本 ${esc(appVersion)}</h3>${isDev?'<p class="small">版本格式：驕傲．預設．羞恥。</p>':''}</div></article>`;
+    $('#settings-content').innerHTML=`<article class="network-profile-card utility-card utility-card--settings"><div><span class="eyebrow">NETWORK PROFILE</span><h3>連網模式</h3><p class="small">預設為大陸版。兩個模式都使用已打包的本地旅行圖片；大陸版使用高德底圖與 GCJ-02 座標校正，國際版則使用 OpenStreetMap。天氣兩個模式都採相同優先順序：高德 → QWeather Grid → Open-Meteo。</p></div><label>連網<select data-network-profile-select aria-label="連網模式"><option value="mainland">大陸版（預設）</option><option value="international">國際版</option></select></label></article><article class="nav-provider-card utility-card utility-card--settings"><div><span class="eyebrow">MAP NAVIGATION</span><h3>預設導航地圖</h3><p class="small">所有「導航」按鈕都會使用這個設定。${mainland?'大陸版建議使用高德地圖；Google 在中國大陸通常無法使用。':'預設高德地圖，也可切換 Google。'}偏好只儲存在此瀏覽器。</p></div><label>導航服務<select data-map-provider-select aria-label="預設導航地圖"><option value="amap">高德地圖（預設）</option><option value="google">Google 地圖</option></select></label></article>${settingsSystem.settingsHtml()}${weatherSystem.settingsHtml()}${offlineSystem.settingsHtml()}<article class="release-version-card utility-card utility-card--settings"><div><span class="eyebrow">SOFTWARE VERSION</span><h3>版本 ${esc(appVersion)}</h3><p class="small">手機／瀏覽器手動重新整理會檢查最新 Build，並核對目前已快取圖片；圖片以 SHA-256 比對，只更新內容真的改變的檔案，不會整批重抓。</p>${isDev?`<p class="small">Build ${esc(appBuild)} · 版本格式：驕傲．預設．羞恥。</p>`:''}<div class="actions"><button type="button" class="action" data-app-check-update>檢查更新</button><button type="button" class="action" data-app-force-reload>強制重新載入</button></div></div></article>`;
     markRendered('settings');offlineSystem.hydrate();settingsSystem.sync();networkProfile.sync();navigation.sync();
   }
   function openTodayDayIfPresent(){if(!todayDay)return;const dayEl=$('#day-'+todayDay.day);if(dayEl)dayEl.open=true;}
@@ -92,6 +93,7 @@
     favorites:{bootstrap:()=>librarySystem.renderFavorites()},
     photos:{bootstrap:()=>librarySystem.renderPhotos()},
     culture:{bootstrap:()=>librarySystem.renderCulture()},
+    priceintel:{bootstrap:()=>librarySystem.renderPriceIntel()},
     tips:{bootstrap:renderTips},
     settings:{bootstrap:renderSettings}
   });
@@ -147,6 +149,8 @@
     if(b.dataset.save){toggleFavorite(b.dataset.save);return;}
     if(b.dataset.copy){copyAddress(b.dataset.copy);return;}
     if(b.dataset.view){showView(b.dataset.view);return;}
+    if(b.hasAttribute('data-app-check-update')){if(window.YunnanUpdateSystem?.checkNow)window.YunnanUpdateSystem.checkNow(b);else toast('更新功能尚未就緒，請重新整理後再試');return;}
+    if(b.hasAttribute('data-app-force-reload')){if(window.YunnanUpdateSystem?.forceReload)window.YunnanUpdateSystem.forceReload(b);else{toast('更新功能尚未就緒，改用一般重新載入…');setTimeout(()=>location.reload(),320);}return;}
     if(b.hasAttribute('data-reload')){location.reload();return;}
   });
   document.addEventListener('keydown',event=>{if(!['Enter',' '].includes(event.key))return;const card=event.target.closest?.('[data-culture-story]');if(!card||event.target.closest('a,button,input,select,textarea,label'))return;event.preventDefault();analyticsSystem.trackStory(card.dataset.cultureStory);readerSystem.openStory(card.dataset.cultureStory,{opener:card});});

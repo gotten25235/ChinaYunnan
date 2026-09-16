@@ -239,11 +239,12 @@ def quarantine(target, image_id):
     return dest.relative_to(ROOT).as_posix()
 
 
-def run_tool(name):
-    print("\n> %s" % name)
-    proc = subprocess.run([sys.executable, str(ROOT / "tools" / name)], cwd=str(ROOT))
+def run_tool(name, *args):
+    label = " ".join([name] + list(args))
+    print("\n> %s" % label)
+    proc = subprocess.run([sys.executable, str(ROOT / "tools" / name)] + list(args), cwd=str(ROOT))
     if proc.returncode != 0:
-        raise RuntimeError("%s failed with exit code %s" % (name, proc.returncode))
+        raise RuntimeError("%s failed with exit code %s" % (label, proc.returncode))
 
 
 def build_zip():
@@ -426,6 +427,7 @@ def main():
 
     rows = []
     unresolved = []
+    project_changed = False
     for index, (image_id, image, remote, local_rel) in enumerate(records, 1):
         target = ROOT / local_rel
         referer = str(image.get("source") or image.get("licenseUrl") or "")
@@ -455,11 +457,14 @@ def main():
             print("  SYNCED -> %s" % local_rel)
             rows.append({"id": image_id, "remote": remote, "local": local_rel, "status": "SYNCED", "localExists": True})
             RUN_STATS["success"] += 1
+            project_changed = True
         except Exception as exc:
             reason = "%s: %s" % (type(exc).__name__, exc)
             quarantined = ""
             if target.exists() and not cache_matches(cache, image_id, remote, local_rel, target):
                 quarantined = quarantine(target, image_id)
+                if quarantined:
+                    project_changed = True
                 print("  quarantined unverified local: %s" % quarantined)
             print("  FAILED: %s" % reason)
             unresolved.append(image_id)
@@ -467,18 +472,21 @@ def main():
             RUN_STATS["failed"] += 1
 
     if refresh_registry_dimensions(data):
+        project_changed = True
         print("\nUpdated image width/height from packaged local WebP files.")
     write_text_report(rows)
     write_html_report(rows)
 
-    # Syncing can change which local files physically exist. Regenerate every
-    # derived artifact that depends on local image presence before validation.
-    # Order matters: build metadata hashes offline-manifest.json, so it must run last.
-    run_tool("generate_image_sources.py")
-    run_tool("generate_pose_sources.py")
-    run_tool("generate_offline_manifest.py")
-    run_tool("generate_build_manifest.py")
-    run_tool("validate_project.py")
+    # Any change to packaged images or image registry dimensions must publish a new Build ID.
+    # Otherwise installed clients would have no reliable signal that imageHashes changed.
+    if project_changed:
+        run_tool("release.py", "--new-build")
+    else:
+        run_tool("generate_image_sources.py")
+        run_tool("generate_pose_sources.py")
+        run_tool("generate_offline_manifest.py")
+        run_tool("generate_build_manifest.py")
+        run_tool("validate_project.py")
 
     if unresolved:
         print("\nSync incomplete: %d image(s) still use the exact remote fallback." % len(unresolved))

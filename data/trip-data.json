@@ -5896,6 +5896,15 @@
           "platform": "抖音",
           "url": "https://www.douyin.com/shipin/7328558222930102282",
           "imageId": "pose-fengyang-01"
+        },
+        {
+          "title": "古村小街・人物慢走",
+          "pose": "單人沿老街自然慢走或停在攤位旁，身體微側、眼神不必看鏡頭；讓土牆、木門與燈籠保留環境感。",
+          "camera": "攝影者退到街道安全側，用街道延伸線帶向人物；人物放下方或側邊三分之一。",
+          "lens": "1× / 2×",
+          "platform": "Trip.com",
+          "url": "https://tw.trip.com/moments/detail/dali-1445616-139386297/",
+          "imageId": "pose-fengyang-02"
         }
       ],
       "sourceRefs": [
@@ -6013,6 +6022,15 @@
           "platform": "抖音",
           "url": "https://jingxuan.douyin.com/m/video/7628619417974292443",
           "imageId": "pose-sideng-01"
+        },
+        {
+          "title": "古戲台正面・人小景大",
+          "pose": "單人站在廣場一側或慢慢走過，身體自然放鬆、看向古戲台；人物比例小一點，不遮住飛簷。",
+          "camera": "用 1× 保留完整戲台與廣場，人物放在下方或側邊三分之一，讓古建築成為主體。",
+          "lens": "1×",
+          "platform": "Trip.com",
+          "url": "https://sg.trip.com/moments/detail/jianchuan-2215-142401561/",
+          "imageId": "pose-sideng-02"
         }
       ],
       "sourceRefs": [
@@ -6064,6 +6082,15 @@
           "platform": "抖音",
           "url": "https://jingxuan.douyin.com/m/video/7628619417974292443",
           "imageId": "pose-yujin-01"
+        },
+        {
+          "title": "橋拱倒影・人物站橋頭",
+          "pose": "單人站在橋頭或石路邊，側身或背對鏡頭看向河面；人物維持小比例，讓石橋與倒影完整。",
+          "camera": "攝影者在河岸安全位置稍退後，先收完整橋拱與水面，再把人物放到橋頭端點。",
+          "lens": "1×",
+          "platform": "Trip.com",
+          "url": "https://my.trip.com/moments/detail/jianchuan-2215-134850704?locale=en-MY",
+          "imageId": "pose-yujin-02"
         }
       ],
       "sourceRefs": [
@@ -6115,6 +6142,15 @@
           "platform": "抖音",
           "url": "https://www.douyin.com/video/7637315779297398035",
           "imageId": "pose-blue-01"
+        },
+        {
+          "title": "湖邊坐姿・背影看水",
+          "pose": "單人在允許停留的安全位置坐下或微蹲，背影／側背面向湖水；圍巾、頭髮自然垂落即可。",
+          "camera": "以湖水作乾淨背景，人物放下方三分之一；先用 1× 留景，需要更突出人物再切 2×。",
+          "lens": "1× / 2×",
+          "platform": "Trip.com",
+          "url": "https://tw.trip.com/moments/detail/yulong-1446279-151905853/",
+          "imageId": "pose-blue-02"
         }
       ],
       "sourceRefs": [
@@ -6157,21 +6193,21 @@
       "coordinateNote": "已查證的地區參考點（非入口）",
       "poseTips": [
         {
-          "title": "四方街・廣場邊緣抓拍",
-          "pose": "人物站廣場邊緣或屋簷側，不必站正中央；自然走動或看向古城街景。",
-          "camera": "攝影者退到廣場外圈，用石板路和屋簷把視線帶向人物。",
+          "title": "水巷偶遇・肩上貓抓拍",
+          "pose": "人物微側身，不必看鏡頭，讓肩上的白貓成為視覺焦點；背景保留古鎮木屋與樹影，拍成自然偶遇感。",
+          "camera": "攝影者靠近拍半身或肩上特寫，人物放畫面左側，貓咪眼神清楚即可；背景不要塞太滿。",
           "lens": "1× / 2×",
-          "platform": "公開來源",
-          "url": "https://commons.wikimedia.org/wiki/File:%E4%B8%BD%E6%B1%9F%E5%9B%9B%E6%96%B9%E8%A1%97.JPG",
+          "platform": "攜程攻略",
+          "url": "https://you.ctrip.com/travels/Lijiang32/3977296.html",
           "imageId": "pose-lijiang-01"
         },
         {
-          "title": "屋瓦層次・人物放角落",
-          "pose": "找能看到大片屋瓦的公開位置，人物放在畫面角落或下方，讓古城屋頂成為主角。",
-          "camera": "用 1× 拍大景；人物若太小再切 2×，但不要裁掉屋瓦層次。",
+          "title": "燈籠花巷・單人坐姿",
+          "pose": "人物坐在木輪與花叢前，身體微側、手自然放在下巴或膝上；讓紅燈籠、木屋與花景形成層次。",
+          "camera": "攝影者稍退後，用直幅把前景花叢、人物與上方燈籠一起收進畫面；人物保持在畫面中央偏下。",
           "lens": "1× / 2×",
-          "platform": "公開來源",
-          "url": "https://commons.wikimedia.org/wiki/File:Lijiang_Yunnan_Old-town-01.jpg",
+          "platform": "Trip.com",
+          "url": "https://hk.trip.com/moments/detail/lijiang-32-142727762?locale=en-HK",
           "imageId": "pose-lijiang-02"
         }
       ],
@@ -6219,6 +6255,15 @@
           "platform": "抖音",
           "url": "https://www.douyin.com/shipin/7333880045604636724",
           "imageId": "pose-ideal-01"
+        },
+        {
+          "title": "白牆階梯・自然慢走",
+          "pose": "單人沿階梯自然走動，身體微側、視線看旁邊，不必刻意擺手；服裝線條簡潔更容易和白牆分離。",
+          "camera": "直幅優先，利用白牆與階梯幾何線條框住人物；可稍微退遠再用 2× 壓縮背景。",
+          "lens": "1× / 2×",
+          "platform": "Trip.com",
+          "url": "https://tw.trip.com/moments/detail/dali-1445616-120934549/",
+          "imageId": "pose-ideal-02"
         }
       ],
       "sourceRefs": [
@@ -6266,6 +6311,15 @@
           "platform": "抖音",
           "url": "https://www.douyin.com/video/7564445014941240635",
           "imageId": "pose-spruce-01"
+        },
+        {
+          "title": "木柵欄旁・雪山半身",
+          "pose": "單人靠近木柵欄自然坐／倚在允許停留的位置，身體約 45° 看向雪山；不要攀爬或跨越護欄。",
+          "camera": "攝影者稍退後用 2×，讓人物和雪山一起入鏡，人物放側邊、山峰留完整。",
+          "lens": "2×",
+          "platform": "Trip.com",
+          "url": "https://tw.trip.com/moments/detail/yulong-1446279-129573725/",
+          "imageId": "pose-spruce-02"
         }
       ],
       "sourceRefs": [
@@ -6315,6 +6369,15 @@
           "platform": "抖音",
           "url": "https://jingxuan.douyin.com/m/video/7598474662066748793",
           "imageId": "pose-ganhaizi-01"
+        },
+        {
+          "title": "雪山前展臂・半身動作",
+          "pose": "單人面向鏡頭或略側身，雙臂自然打開，讓外套或圍巾帶一點動態；不要把雪峰遮住。",
+          "camera": "以 2× 拍半身到全身，把人物壓在雪山前；先對人物曝光，再確認山峰沒有被裁掉。",
+          "lens": "2×",
+          "platform": "Trip.com",
+          "url": "https://my.trip.com/moments/detail/yulong-1446279-140235111?locale=en-MY",
+          "imageId": "pose-ganhaizi-02"
         }
       ],
       "sourceRefs": [
@@ -6365,6 +6428,15 @@
           "platform": "抖音",
           "url": "https://www.douyin.com/video/7490488001194233107",
           "imageId": "pose-tiger-01"
+        },
+        {
+          "title": "峽谷縱深・人物放遠端",
+          "pose": "單人只站在合法安全的觀景平台／護欄內側，側身看向峽谷；人物小一點，不為取景跨越護欄或靠近危險邊緣。",
+          "camera": "用 1× 收完整 V 形峽谷與河流延伸線，人物放遠端角落做比例尺。",
+          "lens": "1×",
+          "platform": "Feastography",
+          "url": "https://www.feastographyblog.com/blog/tiger-leaping-gorge",
+          "imageId": "pose-tiger-02"
         }
       ],
       "sourceRefs": [
@@ -6411,6 +6483,15 @@
           "platform": "抖音",
           "url": "https://www.douyin.com/shipin/7308225177497487412",
           "imageId": "pose-songzanlin-01"
+        },
+        {
+          "title": "長廊引導線・人物放遠端",
+          "pose": "單人沿允許拍照的長廊自然走或停在遠端三分之一，動作收斂、尊重寺院秩序；若現場禁止攝影就不拍。",
+          "camera": "用 1× 置中或微偏置，讓柱列／牆線形成引導線；人物維持小比例。",
+          "lens": "1×",
+          "platform": "Trip.com",
+          "url": "https://my.trip.com/moments/detail/shangri-la-106-125732812?locale=en-MY",
+          "imageId": "pose-songzanlin-02"
         }
       ],
       "sourceRefs": [
@@ -6458,6 +6539,15 @@
           "platform": "抖音",
           "url": "https://www.douyin.com/shipin/7350937894229428276",
           "imageId": "pose-dukezong-01"
+        },
+        {
+          "title": "古城屋頂・半身回眸",
+          "pose": "單人身體約 45°，肩膀放鬆，微微回頭看鏡頭或看向側邊；手自然放在身前即可。",
+          "camera": "用 2× 收半身到七分身，利用層疊屋頂做背景，避免背景線條直接穿過頭部。",
+          "lens": "2×",
+          "platform": "Trip.com",
+          "url": "https://hk.trip.com/moments/detail/shangri-la-106-137830554/",
+          "imageId": "pose-dukezong-02"
         }
       ],
       "sourceRefs": [
@@ -6507,6 +6597,15 @@
           "platform": "抖音",
           "url": "https://www.douyin.com/shipin/7643258814623451182",
           "imageId": "pose-pudacuo-01"
+        },
+        {
+          "title": "木棧道・回頭慢走",
+          "pose": "單人沿木棧道自然慢走，走兩三步再回頭；保持在步道內，不踩草地、不靠近野生動物。",
+          "camera": "攝影者在同一棧道後方保持距離跟拍，以 1× 留森林／湖面環境，人物放中央偏下。",
+          "lens": "1× / 2×",
+          "platform": "Mamakajima",
+          "url": "https://jxuantai.wixsite.com/mamakajima/single-post/china-yunanshangrila-%E4%B8%AD%E5%9C%8B%E9%9B%B2%E5%8D%97%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89-%E6%99%AE%E9%81%94%E6%8E%AA%E5%9C%8B%E5%AE%B6%E5%85%AC%E5%9C%92-%E8%B7%91%E6%AF%92%E6%97%A5%E8%AA%8C",
+          "imageId": "pose-pudacuo-02"
         }
       ],
       "sourceRefs": [
@@ -6554,6 +6653,15 @@
           "platform": "大眾點評",
           "url": "https://www.dianping.com/shop/5253400/photos/album",
           "imageId": "pose-shuhe-01"
+        },
+        {
+          "title": "水巷石沿・側身坐姿",
+          "pose": "單人坐在允許停留的安全石沿／座位，身體側向水巷，雙手自然放鬆；不要坐到濕滑或影響通行的位置。",
+          "camera": "用 2× 直幅收七分身，讓木窗、燈籠或水巷做背景層次，避開雜亂遊客。",
+          "lens": "2×",
+          "platform": "攜程攻略",
+          "url": "https://you.ctrip.com/travels/lijiang32/4137872.html",
+          "imageId": "pose-shuhe-02"
         }
       ],
       "sourceRefs": [
@@ -8520,29 +8628,29 @@
     },
     "pose-lijiang-01": {
       "local": "images/pose/lijiang-01.webp",
-      "remote": "https://dimg04.c-ctrip.com/images/0104n1200086t0l1z1554_W_640_0_Q90.jpg?proc=autoorient",
-      "alt": "麗江古城巷道手拿相機回頭的旅客實拍",
-      "caption": "麗江古城・屋瓦與水巷｜四方街・廣場邊緣抓拍 來源實拍",
+      "remote": "https://dimg04.c-ctrip.com/images/0106i1200086t0hi646A2_W_640_0_Q90.jpg?proc=autoorient",
+      "alt": "麗江古城旅途中男子肩上白貓的單人抓拍",
+      "caption": "麗江古城・屋瓦與水巷｜水巷偶遇・肩上貓抓拍 來源實拍",
       "source": "https://you.ctrip.com/travels/Lijiang32/3977296.html",
       "author": "攜程攻略",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://you.ctrip.com/travels/Lijiang32/3977296.html",
       "width": 600,
-      "height": 409,
-      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+      "height": 379,
+      "changes": "同一來源頁內換圖；使用來源頁中的肩上白貓單人抓拍。使用者提供的同張來源圖轉存為本地 WebP；remote 保留來源頁同張圖片直鏈。"
     },
     "pose-lijiang-02": {
       "local": "images/pose/lijiang-02.webp",
-      "remote": "https://ak-d.tripcdn.com/images/1mi3a224x98k04lak79F0.jpg?proc=source%2Ftrip",
-      "alt": "麗江古城水巷旁紅衣人物實拍",
-      "caption": "麗江古城・屋瓦與水巷｜屋瓦層次・人物放角落 來源實拍",
+      "remote": "https://ak-d.tripcdn.com/images/1mi3d224x98k08i107603_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "alt": "麗江古城紅燈籠與花叢前的紅衣單人坐姿實拍",
+      "caption": "麗江古城・屋瓦與水巷｜燈籠花巷・單人坐姿 來源實拍",
       "source": "https://hk.trip.com/moments/detail/lijiang-32-142727762?locale=en-HK",
-      "author": "Trip.com",
+      "author": "NiwNip / Trip.com",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://hk.trip.com/moments/detail/lijiang-32-142727762?locale=en-HK",
-      "width": 0,
-      "height": 0,
-      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+      "width": 640,
+      "height": 853,
+      "changes": "同一 Trip.com NiwNip 來源頁改用圖集中的紅衣單人坐姿實拍；目前保留 exact remote fallback，執行 SYNC_IMAGES.bat 本地化後再由同步流程寫入實際尺寸。"
     },
     "pose-ideal-01": {
       "local": "images/pose/ideal-01.webp",
@@ -8673,7 +8781,241 @@
       "width": 1016,
       "height": 1280,
       "changes": "新來源取代舊伴手禮榜單裁切圖；SYNC_IMAGES.bat 由 remote 精確下載，最長邊 1280px 並轉為 WebP。"
+    },
+    "pose-fengyang-02": {
+      "local": "images/pose/fengyang-02.webp",
+      "remote": "https://ak-d.tripcdn.com/images/1mi4b12000qj3gtie4307_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "alt": "鳳陽邑古村小街旅客慢走旅拍參考",
+      "caption": "鳳陽邑・有風小院外觀｜古村小街・人物慢走 來源實拍",
+      "source": "https://tw.trip.com/moments/detail/dali-1445616-139386297/",
+      "author": "Sophia Parrish31",
+      "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
+      "licenseUrl": "https://tw.trip.com/moments/detail/dali-1445616-139386297/",
+      "width": 640,
+      "height": 959,
+      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+    },
+    "pose-sideng-02": {
+      "local": "images/pose/sideng-02.webp",
+      "remote": "https://ak-d.tripcdn.com/images/1mi5a12000rnehl4k614E_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "alt": "沙溪寺登街古戲台正面旅拍構圖參考",
+      "caption": "沙溪・寺登街與古戲台｜古戲台正面・人小景大 來源實拍",
+      "source": "https://sg.trip.com/moments/detail/jianchuan-2215-142401561/",
+      "author": "FreeSpiritNomad",
+      "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
+      "licenseUrl": "https://sg.trip.com/moments/detail/jianchuan-2215-142401561/",
+      "width": 640,
+      "height": 426,
+      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+    },
+    "pose-yujin-02": {
+      "local": "images/pose/yujin-02.webp",
+      "remote": "https://ak-d.tripcdn.com/images/1mi62224x9443zx6x9781_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "alt": "沙溪玉津橋橋拱倒影與人物旅拍參考",
+      "caption": "沙溪・玉津橋｜橋拱倒影・人物站橋頭 來源實拍",
+      "source": "https://my.trip.com/moments/detail/jianchuan-2215-134850704?locale=en-MY",
+      "author": "MilesByFong",
+      "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
+      "licenseUrl": "https://my.trip.com/moments/detail/jianchuan-2215-134850704?locale=en-MY",
+      "width": 640,
+      "height": 480,
+      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+    },
+    "pose-blue-02": {
+      "local": "images/pose/blue-02.webp",
+      "remote": "https://ak-d.tripcdn.com/images/1mi4x12000tqkk414523A_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "alt": "藍月谷湖邊單人坐姿背影旅拍參考",
+      "caption": "藍月谷・水色與雪山｜湖邊坐姿・背影看水 來源實拍",
+      "source": "https://tw.trip.com/moments/detail/yulong-1446279-151905853/",
+      "author": "_TI***kr",
+      "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
+      "licenseUrl": "https://tw.trip.com/moments/detail/yulong-1446279-151905853/",
+      "width": 640,
+      "height": 948,
+      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+    },
+    "pose-ideal-02": {
+      "local": "images/pose/ideal-02.webp",
+      "remote": "https://ak-d.tripcdn.com/images/1mi3f12000dmljimw5520_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "alt": "大理理想邦白牆階梯單人慢走旅拍參考",
+      "caption": "理想邦・白色階梯與洱海框景｜白牆階梯・自然慢走 來源實拍",
+      "source": "https://tw.trip.com/moments/detail/dali-1445616-120934549/",
+      "author": "TranscontinentalWanderlust$11",
+      "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
+      "licenseUrl": "https://tw.trip.com/moments/detail/dali-1445616-120934549/",
+      "width": 640,
+      "height": 853,
+      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+    },
+    "pose-spruce-02": {
+      "local": "images/pose/spruce-02.webp",
+      "remote": "https://ak-d.tripcdn.com/images/1mi6y12000iqdhnobF6F4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "alt": "雲杉坪木欄旁單人與玉龍雪山旅拍參考",
+      "caption": "雲杉坪・雪山草甸與杉林｜木柵欄坐姿・雪山半身 來源實拍",
+      "source": "https://tw.trip.com/moments/detail/yulong-1446279-129573725/",
+      "author": "Trip.com",
+      "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
+      "licenseUrl": "https://tw.trip.com/moments/detail/yulong-1446279-129573725/",
+      "width": 640,
+      "height": 960,
+      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+    },
+    "pose-ganhaizi-02": {
+      "local": "images/pose/ganhaizi-02.webp",
+      "remote": "https://ak-d.tripcdn.com/images/1mi6t224x97u43xde1A1B_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "alt": "甘海子雪山前單人展臂旅拍參考",
+      "caption": "甘海子・雪山腳下大景｜雪山前展臂・半身動作 來源實拍",
+      "source": "https://my.trip.com/moments/detail/yulong-1446279-140235111?locale=en-MY",
+      "author": "Mandy Pua",
+      "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
+      "licenseUrl": "https://my.trip.com/moments/detail/yulong-1446279-140235111?locale=en-MY",
+      "width": 640,
+      "height": 853,
+      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+    },
+    "pose-tiger-02": {
+      "local": "images/pose/tiger-02.webp",
+      "remote": "https://images.squarespace-cdn.com/content/v1/62f1cb15a2cb083186ccd6d1/89bc1905-2512-48b5-a433-e997903154bc/2E6B6B98-CD12-4C2B-A020-3EBF0A5E9829-2209-000000D9F5E35AAB.jpg",
+      "alt": "虎跳峽峽谷縱深旅拍構圖參考",
+      "caption": "虎跳峽・人小峽谷大｜峽谷縱深・人物放遠端 來源實拍",
+      "source": "https://www.feastographyblog.com/blog/tiger-leaping-gorge",
+      "author": "Feastography",
+      "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
+      "licenseUrl": "https://www.feastographyblog.com/blog/tiger-leaping-gorge",
+      "width": 1280,
+      "height": 853,
+      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+    },
+    "pose-songzanlin-02": {
+      "local": "images/pose/songzanlin-02.webp",
+      "remote": "https://ak-d.tripcdn.com/images/1mi1t224x8x6y3cbl76B4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "alt": "松贊林寺長廊單人人物旅拍參考",
+      "caption": "松贊林寺・層疊金頂｜殿內長廊・人物放遠端 來源實拍",
+      "source": "https://my.trip.com/moments/detail/shangri-la-106-125732812?locale=en-MY",
+      "author": "Trip.com",
+      "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
+      "licenseUrl": "https://my.trip.com/moments/detail/shangri-la-106-125732812?locale=en-MY",
+      "width": 640,
+      "height": 640,
+      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+    },
+    "pose-dukezong-02": {
+      "local": "images/pose/dukezong-02.webp",
+      "remote": "https://ak-d.tripcdn.com/images/1mi5n12000pn3ctrs86BA_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "alt": "獨克宗古城屋頂前單人半身旅拍參考",
+      "caption": "獨克宗・龜山大轉經筒｜古城屋頂・半身回眸 來源實拍",
+      "source": "https://hk.trip.com/moments/detail/shangri-la-106-137830554/",
+      "author": "Trip.com",
+      "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
+      "licenseUrl": "https://hk.trip.com/moments/detail/shangri-la-106-137830554/",
+      "width": 640,
+      "height": 960,
+      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+    },
+    "pose-pudacuo-02": {
+      "local": "images/pose/pudacuo-02.webp",
+      "remote": "https://static.wixstatic.com/media/d5e5c4_e020a1b3c55646f1b356607fc4be1af9~mv2.jpg/v1/fill/w_980%2Ch_1307%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/d5e5c4_e020a1b3c55646f1b356607fc4be1af9~mv2.jpg",
+      "alt": "普達措木棧道單人慢走旅拍參考",
+      "caption": "普達措・湖、草地與森林｜木棧道・回頭慢走 來源實拍",
+      "source": "https://jxuantai.wixsite.com/mamakajima/single-post/china-yunanshangrila-%E4%B8%AD%E5%9C%8B%E9%9B%B2%E5%8D%97%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89-%E6%99%AE%E9%81%94%E6%8E%AA%E5%9C%8B%E5%AE%B6%E5%85%AC%E5%9C%92-%E8%B7%91%E6%AF%92%E6%97%A5%E8%AA%8C",
+      "author": "Mamakajima",
+      "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
+      "licenseUrl": "https://jxuantai.wixsite.com/mamakajima/single-post/china-yunanshangrila-%E4%B8%AD%E5%9C%8B%E9%9B%B2%E5%8D%97%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89-%E6%99%AE%E9%81%94%E6%8E%AA%E5%9C%8B%E5%AE%B6%E5%85%AC%E5%9C%92-%E8%B7%91%E6%AF%92%E6%97%A5%E8%AA%8C",
+      "width": 0,
+      "height": 0,
+      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+    },
+    "pose-shuhe-02": {
+      "local": "images/pose/shuhe-02.webp",
+      "remote": "https://dimg04.c-ctrip.com/images/1mf3p12000ehj1cnxA02A_W_640_0_Q90.jpg?proc=autoorient",
+      "alt": "束河古鎮水巷石沿單人側身坐姿旅拍參考",
+      "caption": "束河古鎮・青石路與水巷｜水巷石沿・側身坐姿 來源實拍",
+      "source": "https://you.ctrip.com/travels/lijiang32/4137872.html",
+      "author": "攜程攻略",
+      "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
+      "licenseUrl": "https://you.ctrip.com/travels/lijiang32/4137872.html",
+      "width": 640,
+      "height": 960,
+      "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     }
   },
-  "heroImageId": "blue-moon-photo"
+  "heroImageId": "blue-moon-photo",
+  "priceIntel": [
+    {
+      "id": "price-yulong-oxygen",
+      "title": "玉龍雪山氧氣瓶",
+      "city": "麗江",
+      "category": "景區價差",
+      "imageId": "yulong-open",
+      "primaryLabel": "景區分享價",
+      "primaryPrice": "¥39 / 瓶",
+      "comparisons": [
+        {
+          "label": "線上分享價",
+          "value": "約 ¥16 / 2 瓶"
+        }
+      ],
+      "note": "網友價格分享，可能因規格、平台與日期不同而變動。是否需要氧氣不以價格卡判斷，請依個人狀況、領隊與現場建議。",
+      "updated": "2026/09",
+      "sourceRefs": [
+        "user_20260916_0001"
+      ]
+    },
+    {
+      "id": "price-songzanlin-ticket",
+      "title": "松贊林寺門票",
+      "city": "香格里拉",
+      "category": "門票比價",
+      "imageId": "songzanlin",
+      "primaryLabel": "人工窗口分享價",
+      "primaryPrice": "¥65",
+      "comparisons": [
+        {
+          "label": "門票",
+          "value": "¥55"
+        },
+        {
+          "label": "觀光車",
+          "value": "¥10"
+        },
+        {
+          "label": "線上／自助機套票",
+          "value": "約 ¥90"
+        }
+      ],
+      "note": "網友分享持身分證至人工窗口購票的價格；票種、優惠資格與現場政策可能調整，以景區當日公告為準。",
+      "updated": "2026/09",
+      "sourceRefs": [
+        "user_20260916_0001"
+      ]
+    },
+    {
+      "id": "price-dukezong-souvenir",
+      "title": "獨克宗古城紀念品行情",
+      "city": "香格里拉",
+      "category": "伴手禮行情",
+      "imageId": "dukezong-sifang-web",
+      "primaryLabel": "披肩參考價",
+      "primaryPrice": "¥12–20",
+      "comparisons": [
+        {
+          "label": "頭巾",
+          "value": "約 ¥5"
+        },
+        {
+          "label": "草帽",
+          "value": "約 ¥16"
+        },
+        {
+          "label": "編織包",
+          "value": "約 ¥25"
+        }
+      ],
+      "note": "不同店家、材質與做工價差可能很大；這張卡只作現場比價起點，先看品質、再貨比三家。",
+      "updated": "2026/09",
+      "sourceRefs": [
+        "user_20260916_0001"
+      ]
+    }
+  ]
 }

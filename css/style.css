@@ -2109,22 +2109,77 @@ html.main-tab-swipe-active body{
 }
 .weather-inline strong{color:#234d43;font-weight:800;font-variant-numeric:tabular-nums}
 .weather-inline-icon{font-size:.9rem;line-height:1}
+.weather-inline-main,.weather-inline-metrics{display:inline-flex;align-items:center;gap:4px 7px;min-width:0}
+.weather-inline-metrics{flex-basis:100%;gap:4px 10px;color:#55756d;font-variant-numeric:tabular-nums}
 .weather-inline-empty{color:var(--muted);font-size:.69rem}
 .day-summary>.weather-inline{margin:0 0 7px}
 .itinerary-slide-card{height:510px;min-height:510px;max-height:510px}
+/* Summary card rhythm approved against the single-card spacing prototype:
+   title + route read as one group; weather has two clearly separated levels;
+   the hotel/footer stays bottom-aligned via flex auto-space. */
 .itinerary-slide-body{
-  grid-template-rows:20px 42px 20px 24px 84px 18px 32px 39px;
+  display:flex;
+  flex-direction:column;
+  flex:1 1 auto;
+  min-height:0;
+  padding:14px 15px 15px;
+  overflow:hidden;
+}
+.itinerary-slide-meta{flex:0 0 20px;margin:0;align-self:stretch}
+.itinerary-slide-intro{flex:none;margin-top:7px;min-width:0}
+.itinerary-slide-intro h3{
+  margin:0;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  font-size:1.02rem;
+  line-height:1.35;
+}
+.itinerary-slide-intro p{
+  margin:5px 0 0;
+  color:#7a867f;
+  font-size:.7rem;
+  line-height:1.4;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 .itinerary-slide-body>.weather-inline{
-  align-self:center;
-  flex-wrap:nowrap;
+  display:flex;
+  flex:none;
+  align-items:flex-start;
+  margin-top:11px;
   overflow:hidden;
-  white-space:nowrap;
-  text-overflow:ellipsis;
-  font-size:.64rem;
+  font-size:.62rem;
+  line-height:1.22;
 }
-.itinerary-slide-body>.weather-inline span,
-.itinerary-slide-body>.weather-inline strong{white-space:nowrap}
+.itinerary-slide-body>.weather-inline .weather-inline-main,
+.itinerary-slide-body>.weather-inline .weather-inline-metrics{white-space:nowrap;overflow:hidden;max-width:100%}
+.itinerary-slide-body>.weather-inline .weather-inline-main{flex-basis:100%}
+.itinerary-slide-body>.weather-inline .weather-inline-metrics{margin-top:8px}
+.itinerary-slide-body>ol{
+  flex:0 0 74px;
+  min-height:74px;
+  max-height:74px;
+  margin:13px 0 0;
+  align-content:start;
+  overflow:hidden;
+}
+.itinerary-slide-body>.itinerary-more{flex:0 0 18px;margin:0;line-height:18px}
+.itinerary-slide-body>.itinerary-slide-hotel{
+  flex:0 0 32px;
+  min-height:32px;
+  height:32px;
+  margin-top:auto;
+  padding-top:0;
+}
+.itinerary-slide-body>.itinerary-slide-open{
+  flex:0 0 39px;
+  min-height:39px;
+  height:39px;
+  margin-top:11px;
+}
 
 .weather-panel{
   margin:14px 0 24px;
@@ -2162,7 +2217,7 @@ html.main-tab-swipe-active body{
 
 @media(max-width:760px){
   .itinerary-slide-card{height:510px;min-height:510px;max-height:510px}
-  .itinerary-slide-body{grid-template-rows:20px 42px 20px 24px 84px 18px 32px 39px}
+  .itinerary-slide-body{display:flex;flex-direction:column}
   .weather-panel{padding:14px;margin:12px 0 20px}
   .weather-row{grid-template-columns:minmax(0,1fr) auto;padding:10px}
   .weather-source{flex-direction:column;align-items:flex-start}
@@ -2334,6 +2389,7 @@ html[data-runtime-layout="mobile-desktop"] .map-detail-shell{
 .shopping-filter-inline .shopping-filters{margin:0 0 4px;padding:3px 0}
 .shopping-filter-inline+.subheading{margin-top:18px}
 .shopping-source-note a{font-weight:650;white-space:nowrap}
+.price-intel-source-note a+a{margin-left:10px}
 .card-click-hint{display:flex;align-items:center;gap:6px;margin:-2px 0 12px;color:var(--muted);font-size:.72rem;line-height:1.45}
 .card-click-hint::before{content:'↗';display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;flex:0 0 17px;border:1px solid #d7e0d8;border-radius:50%;background:#f7faf5;color:var(--green);font-size:.62rem;font-weight:800}
 .itinerary-slide-card[role=button]{cursor:pointer}
@@ -2496,3 +2552,45 @@ html[data-theme="dark"] .text-copy-dialog textarea,html[data-theme="dark"] .xhs-
 html[data-theme="dark"] .xhs-live-warning{background:#30291f;border-color:#5b4d36;color:#d8c49e}
 html[data-theme="dark"] .xhs-live-warning strong{color:#efd29d}
 @media(max-width:520px){.text-copy-dialog,.xhs-live-dialog{padding:18px}.dialog-actions{display:grid;grid-template-columns:1fr 1fr}.xhs-live-dialog .dialog-actions .primary{grid-column:1/-1}}
+
+
+/* Price intel / 不負責任專區 */
+.price-intel-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.price-intel-card{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--card-system-shadow);display:flex;flex-direction:column}
+.price-intel-media{position:relative;height:190px;margin:0;overflow:hidden;background:#eef2eb}
+.price-intel-media img,.price-intel-media .photo-missing-box{width:100%;height:100%;object-fit:cover;display:block}
+.price-intel-media figcaption{display:none!important}
+.price-intel-body{display:flex;flex:1;flex-direction:column;padding:18px}
+.price-intel-head h3{margin:2px 0 12px;font-size:1.08rem}
+.price-intel-primary{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:14px 15px;border-radius:14px;background:#fbf3e6;border:1px solid #ead8b9}
+.price-intel-primary span{font-size:.75rem;color:#7b6540}
+.price-intel-primary strong{font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;line-height:1;color:#8a4f2a;white-space:nowrap}
+.price-intel-comparisons{display:grid;gap:7px;margin:12px 0 0}
+.price-intel-comparisons>div{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 10px;border:1px solid #e3e8df;border-radius:10px;background:#fafbf8;font-size:.8rem}
+.price-intel-comparisons span{color:var(--muted)}
+.price-intel-comparisons strong{min-width:88px;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.price-intel-note-spacer{flex:1 1 auto;min-height:12px}
+.price-intel-note{height:70px;margin:0 0 14px;color:var(--muted);font-size:.8rem;line-height:1.65;overflow:hidden}
+.price-intel-source{margin-top:0;padding-top:10px;border-top:1px solid #edf0eb;display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:.7rem}
+.price-intel-source a{color:var(--green);white-space:nowrap}
+html[data-theme="dark"] .price-intel-card{background:#1a2420;border-color:var(--line)}
+html[data-theme="dark"] .price-intel-primary{background:#30291d;border-color:#5c4c31}
+html[data-theme="dark"] .price-intel-comparisons>div{background:#18201d;border-color:var(--line)}
+@media(max-width:850px){.price-intel-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.price-intel-grid{grid-template-columns:none;gap:12px}.price-intel-card{height:100%;scroll-snap-align:start;scroll-snap-stop:normal}.price-intel-media{height:185px}.price-intel-body{padding:16px}.price-intel-primary strong{font-size:1.45rem}}
+
+/* EXPANDED JOURNAL DAY CARDS — keep only the approved upper information rhythm.
+   The lower itinerary / hotel / counts area uses the original natural-height card layout. */
+.day-card .day-meta{margin:0}
+.day-card .day-summary-intro{min-width:0;margin-top:7px}
+.day-card .day-summary-intro h3{margin:0;font-size:1.2rem;line-height:1.35}
+.day-card .day-summary-intro p{margin:5px 0 0;color:var(--muted);font-size:.85rem;line-height:1.4}
+.day-card .day-summary>.weather-inline{display:flex;align-items:flex-start;margin:11px 0 0}
+.day-card .day-summary>.weather-inline .weather-inline-main,
+.day-card .day-summary>.weather-inline .weather-inline-metrics{flex-basis:100%}
+.day-card .day-summary>.weather-inline .weather-inline-metrics{margin-top:8px}
+.day-card .day-itinerary-preview{margin:13px 0 12px;color:var(--muted);font-size:.85rem;line-height:1.5}
+@media(max-width:600px){
+  .day-card .day-summary-intro h3{font-size:1.1rem}
+  .day-card .day-summary-intro p,.day-card .day-itinerary-preview{font-size:.82rem}
+}

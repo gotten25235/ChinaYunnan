@@ -3,11 +3,12 @@
   - RELEASE_VERSION 是對外軟體版本；BUILD_ID 是內部部署版本，可在對外版本固定時獨立更新。
   - build.json 是唯一的日常更新探針；版本＋ build 相同時，App Shell 採 Cache First，不背景重抓 JS / CSS / JSON。
   - 新 build 安裝時讀 asset-manifest.json 的 SHA-256：未變的 App Shell 直接從上一版 App Cache 複製，只有變動資源才重新抓取。
-  - 圖片使用穩定的 Image Cache，不因一般 build 更新而重新下載。
+  - 圖片使用穩定的 Image Cache；offline-manifest.json 保存本地圖片 SHA-256，新 build 只刷新內容真的變更的已快取圖片。
+  - HTML navigation 採 Network First；離線才退回目前 App Cache，讓手機重新整理真的會向伺服器確認最新入口。
   - STORAGE_SCHEMA 維持 v1，避免一般升版清空使用者資料與圖片快取。
 */
 const RELEASE_VERSION = '1.6.9';
-const BUILD_ID = '20260916-175143';
+const BUILD_ID = '20260916-235435';
 const STORAGE_SCHEMA = 'v1';
 const APP_CACHE = `yunnan-app-${RELEASE_VERSION}-${BUILD_ID}`;
 const IMAGE_CACHE = `yunnan-images-${STORAGE_SCHEMA}`;
@@ -23,20 +24,20 @@ const CORE_SHELL = [
   './index.html',
   './manifest.webmanifest',
   './offline-manifest.json',
-  `./css/style.css?v=${RELEASE_VERSION}`,
-  `./css/banner.css?v=${RELEASE_VERSION}`,
-  `./js/network.js?v=${RELEASE_VERSION}`,
-  `./js/core.js?v=${RELEASE_VERSION}`,
-  `./js/analytics.js?v=${RELEASE_VERSION}`,
-  `./js/weather.js?v=${RELEASE_VERSION}`,
-  `./js/offline.js?v=${RELEASE_VERSION}`,
-  `./js/settings.js?v=${RELEASE_VERSION}`,
-  `./js/reader.js?v=${RELEASE_VERSION}`,
-  `./js/journey.js?v=${RELEASE_VERSION}`,
-  `./js/map.js?v=${RELEASE_VERSION}`,
-  `./js/library.js?v=${RELEASE_VERSION}`,
-  `./js/banner.js?v=${RELEASE_VERSION}`,
-  `./js/app.js?v=${RELEASE_VERSION}`,
+  `./css/style.css?b=${BUILD_ID}`,
+  `./css/banner.css?b=${BUILD_ID}`,
+  `./js/network.js?b=${BUILD_ID}`,
+  `./js/core.js?b=${BUILD_ID}`,
+  `./js/analytics.js?b=${BUILD_ID}`,
+  `./js/weather.js?b=${BUILD_ID}`,
+  `./js/offline.js?b=${BUILD_ID}`,
+  `./js/settings.js?b=${BUILD_ID}`,
+  `./js/reader.js?b=${BUILD_ID}`,
+  `./js/journey.js?b=${BUILD_ID}`,
+  `./js/map.js?b=${BUILD_ID}`,
+  `./js/library.js?b=${BUILD_ID}`,
+  `./js/banner.js?b=${BUILD_ID}`,
+  `./js/app.js?b=${BUILD_ID}`,
   './data/trip-data.json',
   './data/social-sources.json',
   './data/source-index.json',
@@ -47,6 +48,13 @@ const CORE_SHELL = [
 
 function canStore(response) { return !!response && (response.ok || response.type === 'opaque'); }
 function appCacheNames(names){return names.filter(name=>name.startsWith(APP_CACHE_PREFIX)&&name!==APP_CACHE);}
+function manifestAssetEntry(manifest,asset){
+  const assets=manifest?.assets&&typeof manifest.assets==='object'?manifest.assets:{};
+  if(Object.prototype.hasOwnProperty.call(assets,asset))return {key:asset,hash:assets[asset]};
+  const bare=String(asset).split('?',1)[0];
+  const key=Object.keys(assets).find(candidate=>candidate.split('?',1)[0]===bare);
+  return key?{key,hash:assets[key]}:null;
+}
 async function parseCachedAssetManifest(cacheName){
   try{
     const cache=await caches.open(cacheName);
@@ -63,6 +71,65 @@ async function fetchCurrentAssetManifest(){
   if(data?.version!==RELEASE_VERSION||data?.build!==BUILD_ID||!data?.assets)throw new Error('Asset manifest build mismatch');
   return data;
 }
+async function readOfflineManifestFromCache(cache){
+  try{
+    const response=await cache?.match('./offline-manifest.json');
+    if(!response?.ok)return null;
+    const data=await response.json();
+    return data&&typeof data==='object'?data:null;
+  }catch{return null;}
+}
+async function responseSha256(response){
+  if(!response||response.type==='opaque'||!globalThis.crypto?.subtle)return '';
+  try{
+    const buffer=await response.clone().arrayBuffer();
+    const digest=await crypto.subtle.digest('SHA-256',buffer);
+    return Array.from(new Uint8Array(digest),byte=>byte.toString(16).padStart(2,'0')).join('');
+  }catch{return '';}
+}
+async function replaceCachedLocalImage(imageCache,asset){
+  try{
+    const response=await fetch(new Request(asset,{cache:'reload'}));
+    if(!canStore(response))throw new Error(`HTTP ${response.status}`);
+    await imageCache.put(asset,response.clone());
+    return true;
+  }catch(error){
+    await imageCache.delete(asset);
+    console.warn('Changed image refresh failed; stale cache removed',asset,error);
+    return false;
+  }
+}
+async function reconcilePackagedImages(previousManifest,currentManifest,{verifyCached=false}={}){
+  const imageCache=await caches.open(IMAGE_CACHE);
+  const currentHashes=currentManifest?.imageHashes&&typeof currentManifest.imageHashes==='object'?currentManifest.imageHashes:{};
+  const previousHashes=previousManifest?.imageHashes&&typeof previousManifest.imageHashes==='object'?previousManifest.imageHashes:{};
+  const currentAssets=new Set(Array.isArray(currentManifest?.imageAssets)?currentManifest.imageAssets:[]);
+  const previousAssets=new Set(Array.isArray(previousManifest?.imageAssets)?previousManifest.imageAssets:[]);
+  let checked=0,updated=0,removed=0,failed=0;
+  for(const asset of previousAssets){
+    if(currentAssets.has(asset))continue;
+    if(await imageCache.delete(asset))removed++;
+  }
+  for(const asset of currentAssets){
+    const expected=String(currentHashes[asset]||'');
+    if(!expected)continue;
+    const cached=await imageCache.match(asset);
+    if(!cached)continue;
+    checked++;
+    let changed=Boolean(previousHashes[asset]&&previousHashes[asset]!==expected);
+    if(!changed&&(verifyCached||!previousHashes[asset])){
+      const actual=await responseSha256(cached);
+      changed=Boolean(actual&&actual!==expected);
+    }
+    if(!changed)continue;
+    if(await replaceCachedLocalImage(imageCache,asset))updated++;else failed++;
+  }
+  try{
+    const meta=await caches.open(OFFLINE_META_CACHE);
+    await meta.put('./last-image-reconcile.json',new Response(JSON.stringify({build:BUILD_ID,checked,updated,removed,failed,at:Date.now()}),{headers:{'Content-Type':'application/json'}}));
+  }catch{}
+  return {checked,updated,removed,failed};
+}
 async function installAppShell(){
   const cache=await caches.open(APP_CACHE);
   const names=await caches.keys();
@@ -75,9 +142,12 @@ async function installAppShell(){
   const currentManifest=await fetchCurrentAssetManifest();
   for(const asset of CORE_SHELL){
     let reused=false;
-    if(previousCache&&previousManifest?.assets?.[asset]&&previousManifest.assets[asset]===currentManifest.assets?.[asset]){
-      const cached=await previousCache.match(asset);
-      if(cached){await cache.put(asset,cached.clone());reused=true;}
+    if(previousCache){
+      const previousEntry=manifestAssetEntry(previousManifest,asset),currentEntry=manifestAssetEntry(currentManifest,asset);
+      if(previousEntry&&currentEntry&&previousEntry.hash===currentEntry.hash){
+        const cached=await previousCache.match(previousEntry.key);
+        if(cached){await cache.put(asset,cached.clone());reused=true;}
+      }
     }
     if(reused)continue;
     const response=await fetch(new Request(asset,{cache:'no-cache'}));
@@ -89,6 +159,9 @@ async function installAppShell(){
     const buildResponse=await fetch(`${BUILD_META_URL}?b=${encodeURIComponent(BUILD_ID)}`,{cache:'no-store'});
     if(buildResponse.ok)await cache.put(BUILD_META_URL,buildResponse.clone());
   }catch{}
+  const previousOffline=await readOfflineManifestFromCache(previousCache);
+  const currentOffline=await readOfflineManifestFromCache(cache);
+  if(currentOffline)await reconcilePackagedImages(previousOffline,currentOffline,{verifyCached:!previousOffline?.imageHashes});
   return previousName;
 }
 
@@ -145,6 +218,17 @@ async function cacheFirstImage(request) {
   }
 }
 
+async function documentNetworkFirst(request){
+  try{
+    const response=await fetch(request,{cache:'no-cache'});
+    if(canStore(response))return response;
+  }catch{}
+  const cache=await caches.open(APP_CACHE);
+  const fallback=await cache.match('./index.html')||await cache.match('./');
+  if(fallback)return fallback;
+  return new Response('Offline',{status:503,statusText:'Offline'});
+}
+
 async function appCacheFirst(request) {
   const cache = await caches.open(APP_CACHE);
   const cached = await cache.match(request);
@@ -178,7 +262,11 @@ self.addEventListener('fetch', event => {
     event.respondWith(fetch(request, {cache:'no-store'}).catch(() => new Response('{"enabled":false}', {headers:{'Content-Type':'application/json'}})));
     return;
   }
-  const appLike = request.mode === 'navigate' || request.destination === 'document' || request.destination === 'script' || request.destination === 'style' ||
+  if(sameOrigin&&(request.mode==='navigate'||request.destination==='document')){
+    event.respondWith(documentNetworkFirst(request));
+    return;
+  }
+  const appLike = request.destination === 'script' || request.destination === 'style' ||
     (sameOrigin && (/\/data\/[^/]+\.json$/i.test(url.pathname) || /\.(?:webmanifest|json)$/i.test(url.pathname)));
   if (appLike) event.respondWith(appCacheFirst(request));
 });
@@ -350,6 +438,17 @@ self.addEventListener('message', event => {
   const msg=event.data||{},port=event.ports?.[0];
   if(msg.type==='GET_BUILD_INFO'){port?.postMessage({type:'BUILD_INFO',version:RELEASE_VERSION,build:BUILD_ID});return;}
   if(msg.type==='SKIP_WAITING'){event.waitUntil(self.skipWaiting());return;}
+  if(msg.type==='RECONCILE_IMAGES'&&port){
+    event.waitUntil((async()=>{
+      try{
+        const cache=await caches.open(APP_CACHE),manifest=await readOfflineManifestFromCache(cache);
+        if(!manifest)throw new Error('offline manifest unavailable');
+        const result=await reconcilePackagedImages(manifest,manifest,{verifyCached:true});
+        port.postMessage({type:'RESULT',ok:true,result});
+      }catch(error){port.postMessage({type:'RESULT',ok:false,error:String(error?.message||error)});}
+    })());
+    return;
+  }
   const allowed=['PREPARE_OFFLINE','RETRY_OFFLINE_PHOTOS','CHECK_OFFLINE','CLEAR_OFFLINE_PHOTOS','CLEAR_OFFLINE_DOWNLOADS'];
   if (!port || !allowed.includes(msg.type)) return;
   event.waitUntil((async()=>{

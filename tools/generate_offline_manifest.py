@@ -6,7 +6,7 @@ Per image record choose exactly one offline source:
 - otherwise the exact remote URL when declared.
 """
 from __future__ import annotations
-import json, re
+import hashlib, json, re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'offline-manifest.json'
@@ -17,10 +17,12 @@ def release_version():
     if not re.fullmatch(r'\d+\.\d+\.\d+',version):raise SystemExit('tools/release.json version must be N.N.N')
     return version
 VERSION=release_version()
+BUILD=str(json.loads(CONFIG.read_text(encoding='utf-8')).get('build') or '')
+if not re.fullmatch(r'\d{8}-\d{6}',BUILD):raise SystemExit('tools/release.json build must be YYYYMMDD-HHMMSS')
 
 def core_assets():
-    assets=['./','./index.html','./manifest.webmanifest','./offline-manifest.json',f'./css/style.css?v={VERSION}',f'./css/banner.css?v={VERSION}',f'./js/banner.js?v={VERSION}']
-    for name in ('network','core','analytics','weather','offline','settings','reader','journey','map','library','app'):assets.append(f'./js/{name}.js?v={VERSION}')
+    assets=['./','./index.html','./manifest.webmanifest','./offline-manifest.json',f'./css/style.css?b={BUILD}',f'./css/banner.css?b={BUILD}',f'./js/banner.js?b={BUILD}']
+    for name in ('network','core','analytics','weather','offline','settings','reader','journey','map','library','app'):assets.append(f'./js/{name}.js?b={BUILD}')
     for path in sorted((ROOT/'data').glob('*.json')):
         if path.name!='analytics-config.json':assets.append('./'+path.relative_to(ROOT).as_posix())
     for path in sorted((ROOT/'icons').rglob('*')) if (ROOT/'icons').exists() else []:
@@ -51,11 +53,22 @@ def image_records():
             if normalized not in local:local.append(normalized)
     return local,list(by_url.values())
 
+def sha256(path):
+    digest=hashlib.sha256()
+    with path.open('rb') as fh:
+        for chunk in iter(lambda:fh.read(1024*1024),b''):
+            digest.update(chunk)
+    return digest.hexdigest()
+
 def generated():
     local,remote=image_records()
-    return {'schemaVersion':'v1','coreAssets':core_assets(),'imageAssets':local,'remoteImages':remote,'optionalRuntime':['https://unpkg.com/leaflet@1.9.4/dist/leaflet.css','https://unpkg.com/leaflet@1.9.4/dist/leaflet.js','https://unpkg.com.cn/leaflet@1.9.4/dist/leaflet.css','https://unpkg.com.cn/leaflet@1.9.4/dist/leaflet.js']}
+    image_hashes={}
+    for asset in local:
+        path=ROOT/asset.lstrip('./')
+        if path.is_file():image_hashes[asset]=sha256(path)
+    return {'schemaVersion':'v1','coreAssets':core_assets(),'imageAssets':local,'imageHashes':image_hashes,'remoteImages':remote,'optionalRuntime':['https://unpkg.com/leaflet@1.9.4/dist/leaflet.css','https://unpkg.com/leaflet@1.9.4/dist/leaflet.js','https://unpkg.com.cn/leaflet@1.9.4/dist/leaflet.css','https://unpkg.com.cn/leaflet@1.9.4/dist/leaflet.js']}
 
 def generated_text():return json.dumps(generated(),ensure_ascii=False,indent=2)+'\n'
 def main():
-    OUT.write_text(generated_text(),encoding='utf-8');data=generated();print(f"Generated {OUT.relative_to(ROOT)}: {len(data['coreAssets'])} core assets, {len(data['imageAssets'])} packaged local images, {len(data['remoteImages'])} exact remote fallbacks");return 0
+    OUT.write_text(generated_text(),encoding='utf-8');data=generated();print(f"Generated {OUT.relative_to(ROOT)}: {len(data['coreAssets'])} core assets, {len(data['imageAssets'])} packaged local images with SHA-256, {len(data['remoteImages'])} exact remote fallbacks");return 0
 if __name__=='__main__':raise SystemExit(main())

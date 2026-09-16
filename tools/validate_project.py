@@ -476,9 +476,9 @@ def validate_release_and_views() -> None:
     if not html_build or html_build.group(1) != build:
         error("index.html data-app-build must equal tools/release.json build")
 
-    versions = re.findall(r'(?:css/(?:style|banner)\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|banner|app)\.js)\?v=([^"\']+)', html)
-    if len(versions) != 14 or any(v != version for v in versions):
-        error(f"index.html local CSS/JS identification must be ?v={version}")
+    build_refs = re.findall(r'(?:css/(?:style|banner)\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|banner|app)\.js)\?b=([^"\']+)', html)
+    if len(build_refs) != 14 or any(v != build for v in build_refs):
+        error(f"index.html local CSS/JS identification must be ?b={build}")
 
     sw_version = re.search(r"const RELEASE_VERSION = '([^']+)';", sw)
     if not sw_version or sw_version.group(1) != version:
@@ -584,6 +584,7 @@ def validate_release_and_views() -> None:
 def validate_offline_pwa(trip: dict) -> None:
     config = read_json("tools/release.json")
     version = config.get("version") if isinstance(config, dict) else None
+    build = config.get("build") if isinstance(config, dict) else None
     html = (ROOT / "index.html").read_text(encoding="utf-8")
     sw = (ROOT / "sw.js").read_text(encoding="utf-8")
     offline_js = (ROOT / "js" / "offline.js").read_text(encoding="utf-8") if (ROOT / "js" / "offline.js").exists() else ""
@@ -594,10 +595,10 @@ def validate_offline_pwa(trip: dict) -> None:
     before = len(errors)
     if '<link rel="manifest" href="manifest.webmanifest">' not in html:
         error("index.html must link manifest.webmanifest")
-    if f'js/offline.js?v={version}' not in html:
-        error(f"index.html must load js/offline.js?v={version}")
-    if f'js/settings.js?v={version}' not in html:
-        error(f"index.html must load js/settings.js?v={version}")
+    if f'js/offline.js?b={build}' not in html:
+        error(f"index.html must load js/offline.js?b={build}")
+    if f'js/settings.js?b={build}' not in html:
+        error(f"index.html must load js/settings.js?b={build}")
     if 'id="connection-badge"' not in html:
         error("index.html must expose the connectivity badge")
     for key in ("name", "short_name", "start_url", "scope", "display", "icons"):
@@ -621,6 +622,7 @@ def validate_offline_pwa(trip: dict) -> None:
         error("offline-manifest schemaVersion must equal v1")
     core_assets = offline_manifest.get("coreAssets") if isinstance(offline_manifest.get("coreAssets"), list) else []
     image_assets = offline_manifest.get("imageAssets") if isinstance(offline_manifest.get("imageAssets"), list) else []
+    image_hashes = offline_manifest.get("imageHashes") if isinstance(offline_manifest.get("imageHashes"), dict) else {}
     remote_images = offline_manifest.get("remoteImages") if isinstance(offline_manifest.get("remoteImages"), list) else []
     for group_name, assets in (("coreAssets", core_assets), ("imageAssets", image_assets)):
         for asset in assets:
@@ -650,6 +652,15 @@ def validate_offline_pwa(trip: dict) -> None:
                 expected_local_paths.append("./" + local.lstrip("./"))
     if set(image_assets) != set(expected_local_paths):
         error("offline-manifest imageAssets must match currently packaged local images")
+    if set(image_hashes) != set(image_assets):
+        error("offline-manifest imageHashes must contain exactly every packaged local image")
+    else:
+        import hashlib
+        for asset in image_assets:
+            digest=hashlib.sha256((ROOT / asset.lstrip('./')).read_bytes()).hexdigest()
+            if image_hashes.get(asset) != digest:
+                error(f"offline-manifest image hash mismatch: {asset}")
+                break
     manifest_urls = []
     for record in remote_images:
         if not isinstance(record, dict):
@@ -674,7 +685,7 @@ def validate_offline_pwa(trip: dict) -> None:
     forbidden_remote_tags = re.findall(r'<(?:script|link)\b[^>]+(?:src|href)=["\']https?://', html, re.I)
     if forbidden_remote_tags:
         error("index.html required scripts/styles must be local for offline PWA")
-    for marker in ("PREPARE_OFFLINE", "RETRY_OFFLINE_PHOTOS", "CHECK_OFFLINE", "OFFLINE_PROGRESS", "photoLocalMissingItems", "remoteMissingItems", "includePhotos", "offline-manifest.json", "remoteImageRecords", "imageAssets", "remoteImages"):
+    for marker in ("PREPARE_OFFLINE", "RETRY_OFFLINE_PHOTOS", "CHECK_OFFLINE", "OFFLINE_PROGRESS", "photoLocalMissingItems", "remoteMissingItems", "includePhotos", "offline-manifest.json", "remoteImageRecords", "imageAssets", "imageHashes", "remoteImages", "RECONCILE_IMAGES", "reconcilePackagedImages", "documentNetworkFirst"):
         if marker not in sw:
             error(f"sw.js offline preparation contract missing {marker}")
     for marker in ("data-offline-prepare", "data-offline-select-photos", "data-offline-select-weather", "data-offline-select-all", "data-offline-select-none", "data-offline-retry-missing", "data-offline-missing-list", "data-offline-check", "yunnan-offline-prep-state-v1"):

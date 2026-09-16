@@ -4,14 +4,14 @@
     "data/trip-data.json",
     "data/social-sources.json"
   ],
-  "checkedAt": "2026-09-16T01:55:00+08:00",
+  "checkedAt": "2026-09-16T19:10:00+08:00",
   "batchIds": [
     "nearby20_20260908",
     "hotel_night_nearby20_20260908"
   ],
   "customItemCount": 35,
-  "sourceCount": 86,
-  "referencedSourceCount": 86,
+  "sourceCount": 87,
+  "referencedSourceCount": 87,
   "defaultCustomIds": [
     "custom-xizhou-yan",
     "custom-xizhou-woxiang",
@@ -185,6 +185,11 @@
       "puer",
       "tamarind-cake",
       "tile-cat"
+    ],
+    "user_20260916_0001": [
+      "price-dukezong-souvenir",
+      "price-songzanlin-ticket",
+      "price-yulong-oxygen"
     ],
     "web_20260908_0001": [
       "custom-xizhou-yan"
