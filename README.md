@@ -117,7 +117,16 @@ images/
 
 旅行圖片使用獨立的 `yunnan-images-v1` Cache。`offline-manifest.json` 為每張已打包 local WebP 保存 SHA-256；新 build 會只檢查已快取圖片，**沒變就保留、變更才重抓、已刪除才清除**，不會整批重新下載。第一次導入這套 hash 規則時，若舊 manifest 沒有 image hash，Service Worker 會在本機比對已快取圖片內容後只更新不一致的檔案。
 
-「設定 → 版本」提供「檢查更新」與「強制重新載入」。強制重新載入不會清掉收藏、偏好、API Key 或整批圖片；它會先檢查最新 Build，再用圖片 SHA-256 對現有 Image Cache 做一致性確認，只刷新真正變更的圖片後重新載入。重新整理時會以 Toast 顯示「正在檢查更新／已是最新版／發現新版／目前離線」等狀態。
+「設定 → 版本」提供「檢查更新」與「強制重新載入」。**強制重新載入不能只看 Build ID**：即使遠端 `version + build` 與目前完全相同，也必須重新抓取 App Shell（HTML / CSS / JS / JSON / manifest），覆寫目前 App Cache，再用圖片 SHA-256 對 Image Cache 做一致性確認；圖片仍只刷新真正變更的檔案。收藏、偏好、API Key 與其他使用者資料不得清除。重新整理時會以 Toast 顯示「正在檢查更新／已是最新版／發現新版／目前離線」等狀態。
+
+### 發布與快取更新硬性規則
+
+1. 只要公開 ZIP／GitHub Pages 內容有任何可見或執行層變更（`index.html`、`css/`、`js/`、`data/*.json`、圖片、manifest、Service Worker 等），**必須產生新的 Build ID**；即使對外版本仍是同一個 `1.6.9` 也一樣。
+2. 發布流程固定使用 `python tools/release.py --new-build --zip <輸出檔>`；`release.py --zip` 本身也會啟用 publish guard，自動產生新 Build，避免人工忘記。
+3. 新 Build 後必須同步更新 HTML 的 `?b=<Build ID>`、`sw.js` 的 `BUILD_ID`、`build.json`、`offline-manifest.json`、`asset-manifest.json`，並執行 validator 後才可打 ZIP。
+4. **禁止「檔案內容已變但 Build ID 沒變」的發布**。這會造成已安裝手機出現「新 HTML + 舊 CSS/JS」的半更新狀態；無痕模式正常而一般模式異常通常就是這類快取身分錯配。
+5. 一般更新依 `build.json` 判斷新 Build；「強制重新載入」則是不信任目前 App Cache 的救援路徑，必須在同 Build 下也能重新抓取 App Shell。
+6. 圖片仍與 App Shell 分流：App Shell 強制重抓時，Image Cache 不整批清空，仍由 `imageHashes` 只更新內容變更或已刪除的圖片。
 
 ## 離線 PWA
 

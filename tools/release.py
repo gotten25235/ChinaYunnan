@@ -15,6 +15,7 @@ Examples:
   python tools/release.py --new-build
   python tools/release.py --bump default --new-build
   python tools/release.py --new-build --zip ../ChinaYunnan.zip
+  python tools/release.py --zip ../ChinaYunnan.zip  # ZIP 會自動產生新 Build
 """
 from __future__ import annotations
 
@@ -138,11 +139,16 @@ def main() -> int:
         version = bump_version(version, args.bump)
         changed = True
         print(f"Version bump ({args.bump}): {old} -> {version}")
-    if args.new_build:
+    # A distributable ZIP is a publishable artifact. Never reuse the same Build ID
+    # by accident: clients use version + build as the update identity, so reusing it
+    # can leave an old App Shell (especially CSS/JS) in Service Worker cache.
+    auto_build_for_zip = args.zip is not None and not args.new_build and not args.bump
+    if args.new_build or auto_build_for_zip:
         old_build = build
         build = new_build_id()
         changed = True
-        print(f"Build refresh: {old_build} -> {build}")
+        reason = "ZIP publish guard" if auto_build_for_zip else "Build refresh"
+        print(f"{reason}: {old_build} -> {build}")
     if changed:
         write_release(version, build)
 

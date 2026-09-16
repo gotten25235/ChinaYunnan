@@ -374,6 +374,7 @@ Cache 契約：
 - 新 build 安裝時讀 `asset-manifest.json` 的 SHA-256；雖然 CSS / JS URL 使用新的 `?b=<Build ID>`，仍會按去除 query 後的實體檔路徑比對前後 hash，未變 App Shell 從上一個 App Cache 直接複製，只有 hash 改變的核心檔才重新抓取。第一個導入 Build ID 的 legacy migration 會自動重載一次既有頁面。
 - 更新確認採 Worker handshake：Service Worker 回應 `GET_BUILD_INFO`，前台只有在目前 active/controller 回報的 `version + build` 與 `build.json` 目標完全相同時才 reload。若 GitHub Pages 部署暫時不同步，維持現有可用版本並 15 秒後重試；不再用固定 timeout 後無條件 reload，也不會因未成功接管而進入舊版重載循環。
 - Image Cache：`yunnan-images-v1`，Runtime 仍為 Cache First；`offline-manifest.json > imageHashes` 保存每張 packaged local WebP 的 SHA-256。新 build 安裝或使用「強制重新載入」時，只檢查目前已快取的 local 圖片：hash 相同保留、不同才重抓、已從 manifest 移除才刪除。
+- 「強制重新載入」是 **App Shell 救援路徑**：即使 `build.json` 與目前 `version + build` 相同，也必須透過 Service Worker `FORCE_REFRESH_APP_SHELL` 重新抓取 CORE_SHELL（HTML / CSS / JS / JSON / manifests）並覆寫目前 App Cache；之後才做圖片 hash reconcile，再以 cache-busting navigation 重載。不得把同 Build 視為「不用重抓核心檔」。
 - Offline Meta Cache：`yunnan-offline-v1`；可見準備時間另存在 `yunnan-offline-prep-state-v1`。
 - Weather cache：`yunnan-weather-cache-v1`；provider 設定：`yunnan-weather-provider-config-v1`。
 - Network profile 切換後 App reload 一次，重建 Image System、Leaflet source 與底圖座標系。
@@ -410,7 +411,16 @@ python tools/release.py --bump default --new-build --zip
 python tools/release.py --bump shame --new-build --zip
 ```
 
-`release.py` 依需要累加指定版本段或產生新的 Build ID，同步 HTML / Service Worker、重建 Source / Photo / Offline / Build generated files、執行 validator，最後依需要產生 ZIP。公開部署只要內容有變，即使版本號固定，也應使用 `--new-build`。
+`release.py` 依需要累加指定版本段或產生新的 Build ID，同步 HTML / Service Worker、重建 Source / Photo / Offline / Build generated files、執行 validator，最後依需要產生 ZIP。公開部署只要內容有變，即使版本號固定，也應使用 `--new-build`。此外 `--zip` 現在有 **publish guard**：若沒有明確指定 `--new-build` 或版本 bump，仍會自動產生新 Build，避免把不同內容發布在同一個 Build 身分下。
+
+### 發布與快取更新硬性規則
+
+- **任何公開內容變更都必須使用新 Build ID**：包含 HTML、CSS、JS、JSON、圖片、manifest、Service Worker；不能只看 public version 是否改變。
+- **禁止同 Build 覆蓋不同檔案內容**。手機一般模式可能保留舊 App Cache，形成「新 HTML + 舊 CSS/JS」；無痕模式因沒有既有 Service Worker Cache，反而會正常，這是典型診斷訊號。
+- 標準發布命令為 `python tools/release.py --new-build --zip <output.zip>`；即使漏寫 `--new-build`，ZIP publish guard 也必須自動刷新 Build。
+- 新 Build 一定要同步 `data-app-build`、所有 `?b=<Build ID>`、`sw.js BUILD_ID`、`build.json`、`offline-manifest.json`、`asset-manifest.json`，最後 validator 必須通過才可交付。
+- 「檢查更新」以 `build.json` 為正常更新探針；「強制重新載入」不能依賴 Build 是否不同，必須重抓 App Shell。
+- 強制重抓 App Shell **不等於清空 Image Cache 或使用者資料**；圖片仍只依 SHA-256 更新，收藏、偏好、API Key、設定保持不動。
 
 ## 12. 最低驗證
 

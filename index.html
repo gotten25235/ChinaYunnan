@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-Hant" data-app-version="1.6.9" data-app-build="20260916-235000">
+<html lang="zh-Hant" data-app-version="1.6.9" data-app-build="20260917-005939">
 <head>
   <meta charset="utf-8">
   <meta id="app-viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -44,20 +44,20 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <title>雲南慢時光 · 8 日雲南旅程</title>
-  <link rel="stylesheet" href="css/style.css?b=20260916-235000">
-  <link rel="stylesheet" href="css/banner.css?b=20260916-235000">
-  <script defer src="js/network.js?b=20260916-235000"></script>
-  <script defer src="js/core.js?b=20260916-235000"></script>
-  <script defer src="js/analytics.js?b=20260916-235000"></script>
-  <script defer src="js/weather.js?b=20260916-235000"></script>
-  <script defer src="js/offline.js?b=20260916-235000"></script>
-  <script defer src="js/settings.js?b=20260916-235000"></script>
-  <script defer src="js/reader.js?b=20260916-235000"></script>
-  <script defer src="js/journey.js?b=20260916-235000"></script>
-  <script defer src="js/map.js?b=20260916-235000"></script>
-  <script defer src="js/library.js?b=20260916-235000"></script>
-  <script defer src="js/banner.js?b=20260916-235000"></script>
-  <script defer src="js/app.js?b=20260916-235000"></script>
+  <link rel="stylesheet" href="css/style.css?b=20260917-005939">
+  <link rel="stylesheet" href="css/banner.css?b=20260917-005939">
+  <script defer src="js/network.js?b=20260917-005939"></script>
+  <script defer src="js/core.js?b=20260917-005939"></script>
+  <script defer src="js/analytics.js?b=20260917-005939"></script>
+  <script defer src="js/weather.js?b=20260917-005939"></script>
+  <script defer src="js/offline.js?b=20260917-005939"></script>
+  <script defer src="js/settings.js?b=20260917-005939"></script>
+  <script defer src="js/reader.js?b=20260917-005939"></script>
+  <script defer src="js/journey.js?b=20260917-005939"></script>
+  <script defer src="js/map.js?b=20260917-005939"></script>
+  <script defer src="js/library.js?b=20260917-005939"></script>
+  <script defer src="js/banner.js?b=20260917-005939"></script>
+  <script defer src="js/app.js?b=20260917-005939"></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到內容</a>
@@ -236,14 +236,22 @@
             const htmlCurrent=target===local,workerCurrent=matchesTarget(activeInfo,target);
             if(htmlCurrent&&workerCurrent){
               if(forceReload||reconcileImages){
-                showStatus('正在確認網站與圖片快取…',5000);
+                let appResult=null;
+                if(forceReload){
+                  showStatus('正在強制重新抓取網站核心…',6000);
+                  const worker=navigator.serviceWorker.controller||registration.active;
+                  appResult=await workerRequest(worker,'FORCE_REFRESH_APP_SHELL',45000).catch(error=>{console.warn('Forced App Shell refresh failed',error);return {checked:0,updated:0,failed:1};});
+                }
+                showStatus(forceReload?'正在確認圖片快取…':'正在確認網站與圖片快取…',5000);
                 const imageResult=await reconcileCurrentImages(registration).catch(error=>{console.warn('Image reconciliation failed',error);return null;});
                 const updated=Number(imageResult?.updated||0),removed=Number(imageResult?.removed||0),failed=Number(imageResult?.failed||0);
                 if(forceReload){
-                  const detail=updated||removed?`已更新 ${updated} 張圖片${removed?`、移除 ${removed} 張舊圖`:''}`:'網站與圖片已是最新';
-                  showStatus(`${detail}，正在重新載入…`,1500);
-                  setTimeout(()=>location.reload(),220);
-                  return {status:'reloading',imageResult};
+                  const appUpdated=Number(appResult?.updated||0),appFailed=Number(appResult?.failed||0);
+                  const imageDetail=updated||removed?`圖片更新 ${updated}${removed?`、移除 ${removed}`:''}`:'圖片已確認';
+                  const appDetail=appFailed?`網站核心有 ${appFailed} 個檔案重抓失敗`:`網站核心已重抓${appUpdated?`（${appUpdated} 個檔案有變更）`:''}`;
+                  showStatus(`${appDetail} · ${imageDetail}，正在重新載入…`,1800);
+                  setTimeout(()=>hardReload(remote.build||'force'),260);
+                  return {status:'reloading',appResult,imageResult};
                 }
                 if(userInitiated){
                   if(failed)showStatus(`網站已是最新版 · 圖片檢查有 ${failed} 張失敗`);

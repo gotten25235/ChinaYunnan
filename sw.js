@@ -8,7 +8,7 @@
   - STORAGE_SCHEMA 維持 v1，避免一般升版清空使用者資料與圖片快取。
 */
 const RELEASE_VERSION = '1.6.9';
-const BUILD_ID = '20260916-235000';
+const BUILD_ID = '20260917-005939';
 const STORAGE_SCHEMA = 'v1';
 const APP_CACHE = `yunnan-app-${RELEASE_VERSION}-${BUILD_ID}`;
 const IMAGE_CACHE = `yunnan-images-${STORAGE_SCHEMA}`;
@@ -130,6 +130,34 @@ async function reconcilePackagedImages(previousManifest,currentManifest,{verifyC
   }catch{}
   return {checked,updated,removed,failed};
 }
+async function forceRefreshAppShell(){
+  const cache=await caches.open(APP_CACHE);
+  const currentManifest=await fetchCurrentAssetManifest();
+  let checked=0,updated=0,failed=0;
+  for(const asset of CORE_SHELL){
+    checked++;
+    try{
+      const request=new Request(asset,{cache:'reload'});
+      const response=await fetch(request);
+      if(!canStore(response))throw new Error(`HTTP ${response.status}`);
+      const previous=await cache.match(asset);
+      const before=previous?await responseSha256(previous):'';
+      const after=await responseSha256(response);
+      await cache.put(asset,response.clone());
+      if(!before||!after||before!==after)updated++;
+    }catch(error){
+      failed++;
+      console.warn('Forced App Shell refresh failed',asset,error);
+    }
+  }
+  await cache.put(ASSET_MANIFEST_URL,new Response(JSON.stringify(currentManifest),{headers:{'Content-Type':'application/json'}}));
+  try{
+    const buildResponse=await fetch(`${BUILD_META_URL}?force=${Date.now()}`,{cache:'no-store'});
+    if(buildResponse.ok)await cache.put(BUILD_META_URL,buildResponse.clone());
+  }catch{}
+  return {checked,updated,failed};
+}
+
 async function installAppShell(){
   const cache=await caches.open(APP_CACHE);
   const names=await caches.keys();
@@ -438,6 +466,15 @@ self.addEventListener('message', event => {
   const msg=event.data||{},port=event.ports?.[0];
   if(msg.type==='GET_BUILD_INFO'){port?.postMessage({type:'BUILD_INFO',version:RELEASE_VERSION,build:BUILD_ID});return;}
   if(msg.type==='SKIP_WAITING'){event.waitUntil(self.skipWaiting());return;}
+  if(msg.type==='FORCE_REFRESH_APP_SHELL'&&port){
+    event.waitUntil((async()=>{
+      try{
+        const result=await forceRefreshAppShell();
+        port.postMessage({type:'RESULT',ok:true,result});
+      }catch(error){port.postMessage({type:'RESULT',ok:false,error:String(error?.message||error)});}
+    })());
+    return;
+  }
   if(msg.type==='RECONCILE_IMAGES'&&port){
     event.waitUntil((async()=>{
       try{
