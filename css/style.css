@@ -619,31 +619,10 @@ html{scrollbar-gutter:stable}
 .nearby-copy small{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;line-height:1.45;margin-top:0}
 .nearby-distance{align-self:center;white-space:nowrap;font-size:12px;color:#36544b}
 
-.timeline>li.timeline-with-thumb{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 104px;
-  column-gap:15px;
-  align-items:start;
-}
-.timeline-copy{min-width:0}
-.timeline-thumb{
-  width:104px;
-  height:78px;
-  border-radius:11px;
-  border:1px solid #e0e6df;
-  box-shadow:0 2px 8px #173b340d;
-  margin-top:1px;
-}
-.timeline-with-thumb .timeline-head{min-width:0}
-.timeline-with-thumb .timeline-head h3{min-width:0}
-.timeline-with-thumb .actions{grid-column:1/-1}
-
 @media(max-width:600px){
   .nearby-row{grid-template-columns:64px minmax(0,1fr) auto;gap:9px;padding:9px}
   .nearby-thumb{width:64px;height:52px;border-radius:8px}
   .nearby-distance{font-size:11px}
-  .timeline>li.timeline-with-thumb{grid-template-columns:minmax(0,1fr) 82px;column-gap:10px}
-  .timeline-thumb{width:82px;height:66px;border-radius:9px}
 }
 
 
@@ -705,35 +684,26 @@ html{scrollbar-gutter:stable}
   min-width:0;
   max-width:100%;
 }
-.timeline>li.timeline-with-thumb{
-  display:grid;
-  grid-template-columns:minmax(0,1fr) 96px;
-  column-gap:14px;
-  align-items:start;
-  width:100%;
-  min-width:0;
-}
-.timeline-copy,
-.timeline-copy p,
-.timeline-head h3{
+/* Expanded itinerary stop layout ownership.
+   This is the single layout source of truth for Journey > expanded Day stops.
+   Mobile/tablet (<=700px) is a vertical travel-card flow: title -> wide photo ->
+   description -> actions. Desktop (>=701px) keeps copy left + photo right.
+   Do not add separate phone-width thumbnail overrides elsewhere. */
+.day-detail-flow .timeline-copy,
+.day-detail-flow .timeline-copy p,
+.day-detail-flow .timeline-head h3{
   min-width:0;
   overflow-wrap:break-word;
   word-break:normal;
 }
-.timeline-thumb{
-  width:96px;
-  height:72px;
-  justify-self:end;
-  align-self:start;
-}
-.timeline-with-thumb .timeline-head{
+.day-detail-flow .timeline-with-thumb .timeline-head{
   display:flex;
   align-items:flex-start;
   justify-content:space-between;
   gap:8px;
   min-width:0;
 }
-.timeline-with-thumb .timeline-head h3{
+.day-detail-flow .timeline-with-thumb .timeline-head h3{
   width:auto;
   white-space:normal;
 }
@@ -766,45 +736,64 @@ html{scrollbar-gutter:stable}
   .day-detail-flow>section+section{margin-top:20px;padding-top:20px}
   .day-detail-photo{width:100%;margin-bottom:18px}
   .day-detail-photo img{height:clamp(145px,34vw,190px)}
-  .timeline>li.timeline-with-thumb{grid-template-columns:minmax(0,1fr) 80px;column-gap:10px}
-  .timeline-thumb{width:80px;height:60px}
+
+  /* Mobile itinerary stop: title -> wide photo -> description -> actions.
+     display:contents lets the existing semantic copy wrapper keep its markup while
+     its children participate in the vertical card order. */
+  .day-detail-flow .timeline>li.timeline-with-thumb{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    width:100%;
+    min-width:0;
+  }
+  .day-detail-flow .timeline-with-thumb .timeline-copy{display:contents}
+  .day-detail-flow .timeline-with-thumb .timeline-head{order:1;margin:0 0 12px}
+  .day-detail-flow .timeline-with-thumb .timeline-thumb{
+    order:2;
+    width:100%;
+    height:auto;
+    max-height:170px;
+    aspect-ratio:16/9;
+    margin:0 0 12px;
+    border-radius:12px;
+    border:1px solid #e0e6df;
+    box-shadow:0 2px 8px #173b340d;
+    align-self:stretch;
+  }
+  .day-detail-flow .timeline-with-thumb .timeline-copy>p{order:3;margin:0 0 10px}
+  .day-detail-flow .timeline-with-thumb .timeline-copy>.actions{order:4;margin-top:0}
+  /* A missing/failed stop photo does not reserve a blank media row on mobile. */
+  .day-detail-flow .timeline-with-thumb>.timeline-thumb.item-thumbnail-empty,
+  .day-detail-flow .timeline-with-thumb>.timeline-thumb.photo-load-error{display:none!important}
+
   .day-stay-card{grid-template-columns:86px minmax(0,1fr);gap:12px;padding:16px}
   .stay-thumb{width:86px;height:68px;border-radius:10px}
 }
 @media(max-width:430px){
-  .timeline>li.timeline-with-thumb{grid-template-columns:minmax(0,1fr) 72px;column-gap:8px}
-  .timeline-thumb{width:72px;height:54px}
   .day-stay-card{grid-template-columns:1fr;align-items:start}
   .stay-thumb{width:100%;height:132px}
 }
 
-
-/* itinerary stop thumbnail visual target.
-   Desktop: approximately 96x72 (4:3), matching the compact reference size.
-   This applies only to expanded Day itinerary stops; map/nearby thumbnails are unchanged. */
-.day-detail-flow .timeline>li.timeline-with-thumb{grid-template-columns:minmax(0,1fr) 96px}
-.day-detail-flow .timeline-thumb{width:96px;height:72px;aspect-ratio:4/3}
-@media(max-width:700px){
-  .day-detail-flow .timeline>li.timeline-with-thumb{grid-template-columns:minmax(0,1fr) 80px}
-  .day-detail-flow .timeline-thumb{width:80px;height:60px}
-}
-@media(max-width:430px){
-  .day-detail-flow .timeline>li.timeline-with-thumb{grid-template-columns:minmax(0,1fr) 72px}
-  .day-detail-flow .timeline-thumb{width:72px;height:54px}
-}
-
-/* user-requested larger itinerary stop thumbnails only.
-   Keep every other thumbnail/layout unchanged. */
 @media(min-width:701px){
   .day-detail-flow .timeline>li.timeline-with-thumb{
+    display:grid;
     grid-template-columns:minmax(0,1fr) 300px;
     column-gap:18px;
+    align-items:start;
+    width:100%;
+    min-width:0;
   }
   .day-detail-flow .timeline-thumb{
     width:300px;
     height:140px;
     aspect-ratio:auto;
     border-radius:12px;
+    border:1px solid #e0e6df;
+    box-shadow:0 2px 8px #173b340d;
+    margin-top:1px;
+    justify-self:end;
+    align-self:start;
   }
 }
 
@@ -1925,42 +1914,117 @@ html{
 
 
 /* TIPS / SUN WISH — isolated departure-reminder easter egg. */
-.sun-wish{position:relative;isolation:isolate;overflow:hidden;min-width:0;margin:0 0 22px;padding:12px 14px 34px;border:1px solid var(--line);border-radius:var(--card-system-radius);background:linear-gradient(115deg,var(--paper) 10%,#e4ebdf 60%,#b6c8b7);text-align:center;color:var(--ink);box-shadow:var(--card-system-shadow)}
-.sun-wish__sky{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
-.sun-wish__button{display:block;position:relative;width:100px;height:112px;padding:2px 6px;margin:80px auto 4px;border-radius:18px;touch-action:manipulation}
-.sun-wish__button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.sun-wish{
+  --sunlight:0;
+  --whiteout:0;
+  --light-reach:36%;
+  --push-distance:0px;
+  --sun-wish-sky-a:#eef3e9;
+  --sun-wish-sky-b:#d7e4d5;
+  --sun-wish-sky-c:#b9cdbb;
+  --sun-wish-cloud:#c5d2cb;
+  --sun-wish-cloud-border:rgba(90,111,96,.24);
+  --sun-wish-cloud-shadow:0 9px 24px rgba(73,96,78,.13);
+  --sun-wish-chip-bg:rgba(255,255,255,.72);
+  --sun-wish-chip-text:#4f6258;
+  --sun-wish-figure-stroke:#84998c;
+  --sun-wish-face-stroke:#7f9084;
+  --sun-wish-detail:#424e46;
+  --sun-wish-hair:#373b39;
+  --sun-wish-figure-fold:#e7ece8;
+  --sun-wish-accent:#b65250;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-width:0;
+  margin:0 0 22px;
+  padding:12px 14px 42px;
+  border:1px solid var(--line);
+  border-radius:var(--card-system-radius);
+  background:linear-gradient(125deg,var(--sun-wish-sky-a) 5%,var(--sun-wish-sky-b) 56%,var(--sun-wish-sky-c));
+  text-align:center;
+  color:var(--ink);
+  box-shadow:var(--card-system-shadow);
+  transition:background .28s ease,border-color .28s ease,box-shadow .28s ease,color .25s ease;
+}
+.sun-wish::after{content:"";position:absolute;inset:0;z-index:1;background:#fff;opacity:var(--whiteout);pointer-events:none;transition:opacity .24s linear}
+.sun-wish.is-bright{color:#213e37;border-color:#b7c9bd}
+.sun-wish.is-bright .sun-wish__copy p,.sun-wish.is-bright .sun-wish__credit{color:#50635a}
+.sun-wish.is-bright .sun-wish__stat{border-color:#b7c9bd;background:rgba(255,255,255,.86);color:#354f43}
+.sun-wish__sky{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.sun-wish__sky::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 87% 12%,rgba(255,244,206,.86),rgba(255,243,203,.24) 32%,transparent var(--light-reach));opacity:var(--sunlight)}
+.sun-wish__sky::after{content:"";position:absolute;inset:0;background:#f4ebc9;opacity:0;transition:opacity .8s ease}
+.sun-wish.is-full-sun .sun-wish__sky::after{opacity:calc(var(--sunlight) * .2)}
+.sun-wish__sky-response{position:absolute;inset:0;opacity:0;background:radial-gradient(ellipse at 87% 12%,#fff5d6,transparent 70%);pointer-events:none}
+.sun-wish__cloud{
+  position:absolute;
+  height:42px;
+  border:1px solid var(--sun-wish-cloud-border);
+  border-radius:999px;
+  background:var(--sun-wish-cloud);
+  box-shadow:inset -3px 4px 10px rgba(255,246,222,calc(var(--sunlight) * .4)),var(--sun-wish-cloud-shadow);
+  opacity:.96;
+  animation:sunWishCloudDrift 13s ease-in-out infinite;
+  translate:0 0;
+  transition:translate 1.2s ease,background-color .28s ease,border-color .28s ease,opacity 1.2s ease;
+}
+.sun-wish__cloud::before,.sun-wish__cloud::after{content:"";position:absolute;border:1px solid var(--sun-wish-cloud-border);border-bottom:0;border-radius:50% 50% 42% 42%;background:var(--sun-wish-cloud)}
+.sun-wish__cloud::before{width:66px;height:66px;left:27px;bottom:10px}
+.sun-wish__cloud::after{width:48px;height:48px;right:25px;bottom:12px}
+.sun-wish__cloud--one{width:178px;left:-42px;top:46px;--cloud-angle:-2deg;--cloud-scale:1}
+.sun-wish__cloud--two{width:155px;right:-33px;top:76px;--cloud-angle:2deg;--cloud-scale:1;opacity:.9;animation-duration:17s;animation-delay:-5s}
+.sun-wish__cloud--three{width:116px;left:15%;bottom:36px;--cloud-angle:0deg;--cloud-scale:.82;opacity:.72;animation-duration:19s;animation-delay:-9s}
+.sun-wish.wish-active .sun-wish__cloud--one{translate:calc(-28px - var(--push-distance)) -3px}
+.sun-wish.wish-active .sun-wish__cloud--two{translate:calc(32px + var(--push-distance)) -4px}
+.sun-wish.wish-active .sun-wish__cloud--three{translate:calc(-22px - var(--push-distance)) 3px}
+.sun-wish.is-full-sun .sun-wish__cloud{opacity:.35}
+.sun-wish.clouds-cleared .sun-wish__cloud--one{translate:-210px -6px;opacity:.12}
+.sun-wish.clouds-cleared .sun-wish__cloud--two{translate:260px -6px;opacity:.12}
+.sun-wish.clouds-cleared .sun-wish__cloud--three{translate:-260px 4px;opacity:.12}
+.sun-wish__sun{position:absolute;z-index:1;width:80px;height:80px;top:5px;right:7%;opacity:0;visibility:hidden;transform:translateY(240px);filter:drop-shadow(0 5px 10px rgba(63,82,68,.2))}
+.sun-wish__sun-symbol{display:block;width:100%;height:100%;transform-origin:center}
+.sun-wish__button{display:block;position:relative;z-index:2;width:100px;height:112px;padding:0;margin:80px auto 4px;border-radius:18px;touch-action:manipulation}
+.sun-wish__button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .sun-wish__float,.sun-wish__figure{display:block;width:100%;height:100%;transform-origin:50% 40%}
 .sun-wish__float{animation:sunWishFloat 3.8s ease-in-out infinite}
-#view-tips[aria-hidden="true"] .sun-wish__float{animation-play-state:paused}
+#view-tips[aria-hidden="true"] .sun-wish__float,#view-tips[aria-hidden="true"] .sun-wish__cloud{animation-play-state:paused}
 .sun-wish__doll{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 3px 2px #284e3510)}
-.sun-wish__figure.is-praying{animation:sunWishPray .95s ease-in-out}
-.sun-wish__copy{position:relative;pointer-events:none}
+.sun-wish__happy-face{display:none}
+.sun-wish.is-happy .sun-wish__normal-eyes{display:none}
+.sun-wish.is-happy .sun-wish__happy-face{display:inline}
+.sun-wish__copy{position:relative;z-index:2;pointer-events:none}
 .sun-wish__copy h3{margin:0 0 2px;font-size:1rem;line-height:1.5;letter-spacing:.06em;font-weight:650}
-.sun-wish__copy p{margin:0;font-size:.8rem;color:var(--muted);line-height:1.7}
-.sun-wish__copy .sun-wish__count{margin-top:6px;font-size:.7rem;font-variant-numeric:tabular-nums}
-.sun-wish__credit{position:absolute;right:12px;bottom:8px;z-index:2;display:flex;align-items:center;gap:5px;font-size:.64rem;line-height:1.35;color:var(--muted);white-space:nowrap}
+.sun-wish__copy p{margin:0;font-size:.8rem;color:var(--muted);line-height:1.7;transition:color .25s ease;overflow-wrap:anywhere}
+.sun-wish__copy .sun-wish__hint{margin-top:4px;font-size:.68rem}
+.sun-wish__stats{position:absolute;left:12px;bottom:8px;z-index:3;display:flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums}
+.sun-wish__stat{display:inline-flex;align-items:center;gap:4px;min-height:26px;padding:4px 8px;border:1px solid var(--line);border-radius:999px;background:var(--sun-wish-chip-bg);color:var(--sun-wish-chip-text);font-size:.66rem;line-height:1;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);transition:background .25s ease,border-color .25s ease,color .25s ease}
+.sun-wish__stat strong{font-size:.68rem;font-weight:750}
+.sun-wish__credit{position:absolute;right:12px;bottom:8px;z-index:3;display:flex;align-items:center;gap:5px;font-size:.64rem;line-height:1.35;color:var(--muted);white-space:nowrap}
 .sun-wish__credit a{color:inherit;text-decoration:none;text-underline-offset:2px}
 .sun-wish__credit a:hover,.sun-wish__credit a:focus-visible{color:var(--ink);text-decoration:underline}
-.sun-wish__sun{position:absolute;width:80px;height:80px;top:5px;right:clamp(10px,6%,100px);opacity:0;visibility:hidden;transform:translateY(240px);transition:transform 3s cubic-bezier(.22,.55,.32,1) .15s,opacity 3s ease .15s,visibility 0s .15s}
-.sun-wish.is-sunny .sun-wish__sun{visibility:visible;opacity:1;transform:translateY(0)}
-.sun-wish:not(.is-sunny) .sun-wish__sun{transition:none}
-.sun-wish.is-fading .sun-wish__sun{opacity:0;transform:translateY(0);visibility:visible;transition:opacity 1.3s ease}
-.sun-wish__sun-symbol{display:block;width:100%;height:100%;filter:drop-shadow(0 0 4px #ffffff35)}
-.sun-wish__sun-symbol.is-glowing{animation:sunWishGlow 1s ease-in-out}
-.sun-wish__cloud{position:absolute;width:105px;height:40px;fill:#fff;opacity:.48;transition:transform 3s ease,opacity 3s ease}
-.sun-wish__cloud--left{left:5%;top:66px}
-.sun-wish__cloud--right{right:4%;top:52px;width:90px}
-.sun-wish.is-sunny .sun-wish__cloud--left{transform:translateX(-14px);opacity:.16}
-.sun-wish.is-sunny .sun-wish__cloud--right{transform:translateX(18px);opacity:.1}
 @keyframes sunWishFloat{0%,100%{transform:translateY(2px) rotate(-1.5deg)}50%{transform:translateY(-2px) rotate(1.5deg)}}
-@keyframes sunWishPray{0%,100%{transform:rotate(0)}25%{transform:translateY(-4px) rotate(-9deg)}60%{transform:translateY(-2px) rotate(8deg)}82%{transform:rotate(-3deg)}}
-@keyframes sunWishGlow{0%,100%{filter:drop-shadow(0 0 4px #ffffff35)}50%{filter:drop-shadow(0 0 9px #ffffffa0)}}
-@keyframes sunWishAcknowledge{50%{opacity:.65}}
-@media(min-width:761px){.sun-wish{padding-top:14px;padding-bottom:36px}.sun-wish__button{width:106px;height:118px;margin-top:87px}.sun-wish__sun{width:88px;height:88px;top:4px;right:17%}.sun-wish__cloud--left{left:18%}.sun-wish__cloud--right{right:18%}}
-@media(prefers-reduced-motion:reduce){.sun-wish__float{animation:none}.sun-wish__figure.is-praying{animation:sunWishAcknowledge .25s ease}.sun-wish__sun,.sun-wish__cloud,.sun-wish.is-fading .sun-wish__sun{transition:none}.sun-wish__sun-symbol.is-glowing{animation:none}}
-html[data-theme="dark"] .sun-wish{background:linear-gradient(115deg,#1b2521,#1b302d);border-color:var(--line)}
-html[data-theme="dark"] .sun-wish__cloud{fill:var(--muted);opacity:.13}
-html[data-theme="dark"] .sun-wish.is-sunny .sun-wish__cloud{opacity:.04}
+@keyframes sunWishCloudDrift{0%,100%{transform:translate(-8px,2px) rotate(var(--cloud-angle)) scale(var(--cloud-scale))}50%{transform:translate(10px,-2px) rotate(var(--cloud-angle)) scale(var(--cloud-scale))}}
+@media(min-width:761px){.sun-wish{padding-top:14px;padding-bottom:44px}.sun-wish__button{width:106px;height:118px;margin-top:87px}.sun-wish__sun{width:88px;height:88px;top:4px;right:17%}.sun-wish__cloud--one{left:-28px}.sun-wish__cloud--two{right:7%;top:69px}}
+@media(max-width:430px){.sun-wish__cloud--three{left:4%;bottom:44px}.sun-wish__stats{left:9px;gap:4px}.sun-wish__stat{padding:4px 6px}.sun-wish__credit{right:9px}}
+@media(prefers-reduced-motion:reduce){.sun-wish__float,.sun-wish__cloud{animation:none}.sun-wish::after,.sun-wish,.sun-wish__cloud,.sun-wish__sky::before,.sun-wish__sky::after{transition:none}}
+html[data-theme="dark"] .sun-wish{
+  --sun-wish-sky-a:#222b26;
+  --sun-wish-sky-b:#28342d;
+  --sun-wish-sky-c:#33443a;
+  --sun-wish-cloud:#66746c;
+  --sun-wish-cloud-border:rgba(236,244,239,.08);
+  --sun-wish-cloud-shadow:0 10px 28px rgba(0,0,0,.26);
+  --sun-wish-chip-bg:rgba(18,22,19,.56);
+  --sun-wish-chip-text:#d9e0db;
+  --sun-wish-figure-stroke:#9aa9a0;
+  --sun-wish-face-stroke:#97a59c;
+  --sun-wish-detail:#48534d;
+  --sun-wish-hair:#353a37;
+  --sun-wish-figure-fold:#e3e8e4;
+}
+html[data-theme="dark"] .sun-wish__sky::before{background:radial-gradient(ellipse at 87% 12%,rgba(231,236,186,.32),rgba(211,226,190,.1) 32%,transparent var(--light-reach))}
+html[data-theme="dark"] .sun-wish.is-full-sun .sun-wish__sky::after{opacity:calc(var(--sunlight) * .1)}
+html[data-theme="dark"] .sun-wish__cloud--three{opacity:.62}
 .utility-card--timetable{border-radius:9px}
 
 /* Missing thumbnails in Journey/Compact surfaces keep their slot and centered label. */
@@ -2512,8 +2576,8 @@ html[data-theme="light"]{
   --card-system-shadow:0 3px 14px #16392f08;
   --card-system-shadow-hover:0 8px 22px #16392f12;
   background:#f7f6f1;
+  color-scheme:only light;
 }
-html[data-theme-preference="light"]{color-scheme:only light}
 html[data-theme="light"] body{background:#f7f6f1;color:#213e37}
 html[data-theme="light"] :is(select,input,textarea){background:#fff;color:#213e37;border-color:#cbd5cc}
 html[data-theme="light"] :is(.day-card,.place-card,.flight-group,.culture-card,.content-card,.itinerary-slide-card,.map-strip-card,.map-detail-shell,.content-reader-dialog){background:#fff;color:#213e37}
@@ -2532,6 +2596,7 @@ html[data-theme="dark"]{
   --card-system-shadow:0 3px 14px rgba(0,0,0,.2);
   --card-system-shadow-hover:0 8px 22px rgba(0,0,0,.3);
   background:#121916;
+  color-scheme:dark;
 }
 html[data-theme="dark"] body{background:#121916;color:var(--ink)}
 html[data-theme="dark"] .section-nav{border-color:var(--line)}

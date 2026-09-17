@@ -1,15 +1,398 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>晴天娃娃 · 單頁範例</title>
 <style>
-:root{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;color:#213e37;background:#f7f6f1}*{box-sizing:border-box}body{margin:0;padding:28px 16px}.wrap{max-width:720px;margin:auto}h1{font-size:1.35rem}.sun-wish{position:relative;isolation:isolate;overflow:hidden;padding:12px 14px 34px;border:1px solid #e0e4dc;border-radius:20px;background:linear-gradient(115deg,#f7f6f1 10%,#e4ebdf 60%,#b6c8b7);text-align:center}.sky{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}.sun{position:absolute;width:80px;height:80px;top:5px;right:7%;opacity:0;visibility:hidden;transform:translateY(240px);transition:transform 3s cubic-bezier(.22,.55,.32,1) .15s,opacity 3s ease .15s}.sun-wish.sunny .sun{visibility:visible;opacity:1;transform:translateY(0)}button{display:block;width:100px;height:112px;margin:80px auto 4px;border:0;background:transparent;cursor:pointer}.float{display:block;width:100%;height:100%;animation:float 3.8s ease-in-out infinite}.copy h3{margin:0 0 2px}.copy p{margin:0;color:#68776f;font-size:.8rem;line-height:1.7}.count{margin-top:6px!important;font-size:.7rem!important}.credit{position:absolute;right:12px;bottom:8px;display:flex;gap:5px;font-size:.64rem;color:#68776f}.credit a{color:inherit;text-decoration:none}.credit a:hover{text-decoration:underline}@keyframes float{0%,100%{transform:translateY(2px) rotate(-1.5deg)}50%{transform:translateY(-2px) rotate(1.5deg)}}.source-preview{margin-top:22px;padding:14px;border:1px solid #e0e4dc;border-radius:14px;background:white}.source-preview img{display:block;max-width:100%;max-height:420px;margin:10px auto;border-radius:8px}.small{font-size:.78rem;color:#68776f}@media(min-width:761px){button{width:106px;height:118px;margin-top:87px}.sun{width:88px;height:88px;top:4px;right:17%}}
+:root{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;
+  color-scheme:light dark;
+  --page-bg:#f5f3ec;
+  --page-text:#213e37;
+  --muted:#66776f;
+  --border:#d9e0d7;
+  --panel:#ffffff;
+  --sky-a:#eef3e9;
+  --sky-b:#d7e4d5;
+  --sky-c:#b9cdbb;
+  --cloud:#c5d2cb;
+  --cloud-border:rgba(90,111,96,.24);
+  --cloud-shadow:0 9px 24px rgba(73,96,78,.13);
+  --chip-bg:rgba(255,255,255,.72);
+  --chip-text:#4f6258;
+  --figure-stroke:#84998c;
+  --figure-face-stroke:#7f9084;
+  --figure-detail:#424e46;
+  --figure-hair:#373b39;
+  --figure-fold:#e7ece8;
+  --accent:#b65250;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  padding:28px 16px;
+  background:var(--page-bg);
+  color:var(--page-text);
+  transition:background-color .25s ease,color .25s ease;
+}
+body[data-theme="dark"]{
+  color-scheme:dark;
+  --page-bg:#151816;
+  --page-text:#f3f5f1;
+  --muted:#b9c3bc;
+  --border:#37423b;
+  --panel:#202622;
+  --sky-a:#222b26;
+  --sky-b:#28342d;
+  --sky-c:#33443a;
+  --cloud:#66746c;
+  --cloud-border:rgba(236,244,239,.08);
+  --cloud-shadow:0 10px 28px rgba(0,0,0,.26);
+  --chip-bg:rgba(18,22,19,.56);
+  --chip-text:#d9e0db;
+  --figure-stroke:#9aa9a0;
+  --figure-face-stroke:#97a59c;
+  --figure-detail:#48534d;
+  --figure-hair:#353a37;
+  --figure-fold:#e3e8e4;
+}
+.wrap{max-width:720px;margin:auto}
+h1{font-size:1.35rem;margin:0 0 14px}
+.sun-wish{
+  --sunlight:0;
+  --whiteout:0;
+  --light-reach:36%;
+  --push-distance:0px;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  padding:12px 14px 34px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:linear-gradient(125deg,var(--sky-a) 5%,var(--sky-b) 56%,var(--sky-c));
+  text-align:center;
+  box-shadow:0 12px 32px rgba(48,71,56,.08);
+  transition:background .28s ease,border-color .28s ease,box-shadow .28s ease;
+}
+.sun-wish::after{content:"";position:absolute;inset:0;z-index:1;background:#fff;opacity:var(--whiteout);pointer-events:none;transition:opacity .24s linear}
+.sun-wish.bright-card{--page-text:#213e37;--muted:#50635a;--chip-text:#354f43;--chip-bg:rgba(255,255,255,.85);--border:#b7c9bd;color:var(--page-text)}
+.count,.milestone{overflow-wrap:anywhere}
+.sky{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.sky::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 87% 12%,rgba(255,244,206,.86),rgba(255,243,203,.24) 32%,transparent var(--light-reach));opacity:var(--sunlight)}
+.sky::after{content:"";position:absolute;inset:0;background:#f4ebc9;opacity:0;transition:opacity .8s ease}
+.sun-wish.full-sun .sky::after{opacity:calc(var(--sunlight) * .2)}
+body[data-theme="dark"] .sky::before{background:radial-gradient(ellipse at 87% 12%,rgba(231,236,186,.32),rgba(211,226,190,.1) 32%,transparent var(--light-reach))}
+body[data-theme="dark"] .sun-wish.full-sun .sky::after{opacity:calc(var(--sunlight) * .1)}
+.sky-response{position:absolute;inset:0;opacity:0;background:radial-gradient(ellipse at 87% 12%,#fff5d6,transparent 70%);pointer-events:none}
+.cloud{
+  position:absolute;
+  height:42px;
+  border:1px solid var(--cloud-border);
+  border-radius:999px;
+  background:var(--cloud);
+  box-shadow:inset -3px 4px 10px rgba(255,246,222,calc(var(--sunlight) * .4)),var(--cloud-shadow);
+  opacity:.96;
+  animation:cloud-drift 13s ease-in-out infinite;
+  translate:0 0;
+  transition:translate 1.2s ease,background-color .28s ease,border-color .28s ease,opacity 1.2s ease;
+}
+.cloud::before,.cloud::after{
+  content:"";
+  position:absolute;
+  border:1px solid var(--cloud-border);
+  border-bottom:0;
+  border-radius:50% 50% 42% 42%;
+  background:var(--cloud);
+}
+.cloud::before{width:66px;height:66px;left:27px;bottom:10px}
+.cloud::after{width:48px;height:48px;right:25px;bottom:12px}
+.cloud--one{width:178px;left:-42px;top:46px;--cloud-angle:-2deg;--cloud-scale:1}
+.cloud--two{width:155px;right:-33px;top:76px;--cloud-angle:2deg;--cloud-scale:1;opacity:.90;animation-duration:17s;animation-delay:-5s}
+.cloud--three{width:116px;left:15%;bottom:36px;--cloud-angle:0deg;--cloud-scale:.82;opacity:.72;animation-duration:19s;animation-delay:-9s}
+body[data-theme="dark"] .cloud--three{opacity:.62}
+.sun-wish.wish-active .cloud--one{translate:calc(-28px - var(--push-distance)) -3px}
+.sun-wish.wish-active .cloud--two{translate:calc(32px + var(--push-distance)) -4px}
+.sun-wish.wish-active .cloud--three{translate:calc(-22px - var(--push-distance)) 3px}
+.sun-wish.full-sun .cloud{opacity:.35}
+.sun-wish.clouds-cleared .cloud--one{translate:-210px -6px;opacity:.12}
+.sun-wish.clouds-cleared .cloud--two{translate:260px -6px;opacity:.12}
+.sun-wish.clouds-cleared .cloud--three{translate:-260px 4px;opacity:.12}
+@keyframes cloud-drift{0%,100%{transform:translate(-8px,2px) rotate(var(--cloud-angle)) scale(var(--cloud-scale))}50%{transform:translate(10px,-2px) rotate(var(--cloud-angle)) scale(var(--cloud-scale))}}
+.sun{
+  position:absolute;
+  z-index:1;
+  width:80px;height:80px;
+  top:5px;right:7%;
+  opacity:0;visibility:hidden;
+  transform:translateY(240px);
+  filter:drop-shadow(0 5px 10px rgba(63,82,68,.20));
+}
+.sun > svg{display:block;transform-origin:center}
+.wish-button{
+  position:relative;
+  z-index:2;
+  display:block;
+  width:100px;height:112px;
+  margin:80px auto 4px;
+  padding:0;
+  border:0;
+  background:transparent;
+  cursor:pointer;
+}
+.float{display:block;width:100%;height:100%;animation:float 3.8s ease-in-out infinite}
+.happy-face{display:none}
+.sun-wish.happy .normal-eyes{display:none}
+.sun-wish.happy .happy-face{display:inline}
+.wish-button:focus-visible{outline:2px solid var(--page-text);outline-offset:5px;border-radius:16px}
+.copy .milestone{font-size:.68rem;margin-top:4px}
+.copy{position:relative;z-index:2}
+.copy h3{margin:0 0 2px}
+.copy p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.7;transition:color .25s ease}
+.stats{position:absolute;z-index:3;left:12px;bottom:8px;display:flex;gap:6px;font-variant-numeric:tabular-nums}
+.stat{display:inline-flex;align-items:center;gap:4px;min-height:26px;padding:4px 8px;border:1px solid var(--border);border-radius:999px;background:var(--chip-bg);color:var(--chip-text);font-size:.66rem;line-height:1;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px)}
+.stat strong{font-size:.68rem}
+.credit{position:absolute;z-index:3;right:12px;bottom:8px;display:flex;gap:5px;font-size:.64rem;color:var(--muted)}
+.credit a{color:inherit;text-decoration:none}.credit a:hover{text-decoration:underline}
+@keyframes float{0%,100%{transform:translateY(2px) rotate(-1.5deg)}50%{transform:translateY(-2px) rotate(1.5deg)}}
+.source-preview{margin-top:22px;padding:14px;border:1px solid var(--border);border-radius:14px;background:var(--panel);transition:background .25s ease,border-color .25s ease}
+.source-preview img{display:block;max-width:100%;max-height:420px;margin:10px auto;border-radius:8px}.small{font-size:.78rem;color:var(--muted)}
+@media(min-width:761px){.wish-button{width:106px;height:118px;margin-top:87px}.sun{width:88px;height:88px;top:4px;right:17%}.cloud--one{left:-28px}.cloud--two{right:7%;top:69px}}
+@media(max-width:430px){.cloud--three{left:4%;bottom:44px}.stats{left:9px;gap:4px}.stat{padding:4px 6px}.credit{right:9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important}.float,.cloud{animation:none}.sun-wish::after,body,.sun-wish,.cloud,.sky::before,.sky::after{transition:none}}
 </style>
-</head><body><main class="wrap"><h1>準備好，慢慢玩。</h1>
-<section class="sun-wish" id="wish"><div class="sky"><div class="sun"><svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="24" fill="#fff"/><g fill="#fff"><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(0 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(30 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(60 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(90 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(120 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(150 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(180 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(210 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(240 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(270 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(300 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(330 50 50)"/></g></svg></div></div>
-<button id="btn" type="button" aria-label="點一下晴天娃娃祈晴"><span class="float"><svg viewBox="0 0 88 116" width="100%" height="100%" aria-hidden="true"><path d="M35 46C31 57 30 76 20 99C24 105 30 100 35 104C40 110 46 103 52 106C58 108 62 101 68 101C59 80 56 60 52 46Z" fill="#fff" stroke="#84998c" stroke-width="1.4"/><path d="M37 6C46 3 59 8 63 18C65 23 63 26 63 28C67 25 69 28 66 32C65 34 63 35 62 34C62 40 59 45 53 47C47 49 45 47 41 47C32 47 24 42 23 34C22 28 26 19 29 13C31 9 34 7 37 6Z" fill="#fff" stroke="#7f9084" stroke-width="1.4"/><path d="M30 13C32 5 41 3 48 5C60 7 66 15 65 25L62 35L59 35L60 23L58 17L54 18L52 14L47 16L45 12L40 14L39 10L35 12L34 8Z" fill="#373b39"/><ellipse cx="39" cy="24" rx="3.1" ry="4.5" fill="#fff" stroke="#424e46"/><ellipse cx="40" cy="25" rx="1.2" ry="1.7" fill="#343d36"/><ellipse cx="51" cy="25" rx="1.8" ry="2.2" fill="#343d36"/><ellipse cx="43" cy="32" rx="7.2" ry="4.6" fill="#fff" stroke="#424e46"/><path d="M35 47Q44 50 53 47" fill="none" stroke="#b65250" stroke-width="3" stroke-linecap="round"/></svg></span></button>
-<div class="copy"><h3>一路放晴 ☀️</h3><p>雲散一點，陽光多一點。</p><p class="count">點一下祈晴 · 已祈晴 <span id="count">0</span> 次</p></div>
-<div class="credit"><a href="https://media.teepr.com/wp-content/uploads/2022/02/DfKZUI4V4AA97g-.jpg" target="_blank" rel="noopener">圖片參考 ↗</a><span id="devcredit" hidden> · <a href="https://www.teepr.com/514733/sharonlian/%E6%99%B4%E5%A4%A9%E5%A8%83%E5%A8%83/" target="_blank" rel="noopener">來源頁 ↗</a></span></div></section>
-<section class="source-preview"><strong>來源素材預覽</strong><p class="small">此頁讀取 <code>../reference/DfKZUI4V4AA97g-.jpg</code> 的開發封存副本；正式卡片仍使用上方自行繪製 SVG。</p><img src="../reference/DfKZUI4V4AA97g-.jpg" alt="晴天娃娃參考圖片"> </section>
-</main><script>const card=document.querySelector('#wish'),btn=document.querySelector('#btn'),count=document.querySelector('#count'),COUNT_KEY='yunnan-2026-sun-wish-count-preview-v1';let n=0,t;try{const saved=Number(localStorage.getItem(COUNT_KEY));if(Number.isSafeInteger(saved)&&saved>=0)n=saved}catch{}count.textContent=n;btn.addEventListener('click',()=>{n+=1;try{localStorage.setItem(COUNT_KEY,String(n))}catch{}count.textContent=n;card.classList.add('sunny');clearTimeout(t);t=setTimeout(()=>card.classList.remove('sunny'),8000)});if(new URLSearchParams(location.search).get('dev')==='1')document.querySelector('#devcredit').hidden=false;</script></body></html>
+</head>
+<body>
+<main class="wrap">
+  <h1>準備好，慢慢玩。</h1>
+  <section class="sun-wish" id="wish">
+    <div class="sky" aria-hidden="true">
+      <div class="cloud cloud--one"></div>
+      <div class="cloud cloud--two"></div>
+      <div class="cloud cloud--three"></div>
+      <div class="sky-response" aria-hidden="true"></div>
+      <div class="sun">
+        <svg viewBox="0 0 100 100" width="100%" height="100%">
+          <circle cx="50" cy="50" r="24" fill="#fff"/>
+          <g fill="#fff">
+            <path d="M44.2 23L50 2L55.8 23Z" transform="rotate(0 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(30 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(60 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(90 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(120 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(150 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(180 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(210 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(240 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(270 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(300 50 50)"/><path d="M44.2 23L50 2L55.8 23Z" transform="rotate(330 50 50)"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <button class="wish-button" id="btn" type="button" aria-label="點一下晴天娃娃祈晴">
+      <span class="float">
+        <svg viewBox="0 0 88 116" width="100%" height="100%" aria-hidden="true">
+          <path d="M35 46C31 57 30 76 20 99C24 105 30 100 35 104C40 110 46 103 52 106C58 108 62 101 68 101C59 80 56 60 52 46Z" fill="#fff" stroke="var(--figure-stroke)" stroke-width="1.4"/>
+          <path d="M37 6C46 3 59 8 63 18C65 23 63 26 63 28C67 25 69 28 66 32C65 34 63 35 62 34C62 40 59 45 53 47C47 49 45 47 41 47C32 47 24 42 23 34C22 28 26 19 29 13C31 9 34 7 37 6Z" fill="#fff" stroke="var(--figure-face-stroke)" stroke-width="1.4"/>
+          <path d="M30 13C32 5 41 3 48 5C60 7 66 15 65 25L62 35L59 35L60 23L58 17L54 18L52 14L47 16L45 12L40 14L39 10L35 12L34 8Z" fill="var(--figure-hair)"/>
+          <g class="normal-eyes">
+          <ellipse cx="39" cy="24" rx="3.1" ry="4.5" fill="#fff" stroke="var(--figure-detail)"/>
+          <ellipse cx="40" cy="25" rx="1.2" ry="1.7" fill="#343d36"/>
+          <ellipse cx="51" cy="25" rx="1.8" ry="2.2" fill="#343d36"/>
+          </g>
+          <g class="happy-face" fill="none" stroke="var(--figure-detail)" stroke-width="1.7" stroke-linecap="round">
+            <path d="M36 25Q39 19 42 25M48 25Q51 20 54 25M40 39Q45 43 50 38"/>
+          </g>
+          <ellipse cx="43" cy="32" rx="7.2" ry="4.6" fill="#fff" stroke="var(--figure-detail)"/>
+          <path d="M35 47Q44 50 53 47" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </button>
+
+    <div class="copy">
+      <h3>一路放晴 ☀️</h3>
+      <p id="wishMessage" aria-live="polite">雲散一點，陽光多一點。</p>
+      <p class="milestone" id="milestoneHint">點一下，開始新一輪祈晴</p>
+    </div>
+    <div class="stats" id="sunWishStats" role="status" aria-live="polite" aria-atomic="true" aria-label="已祈晴 0 次，完成 0 輪祈晴">
+      <span class="stat" title="已祈晴次數"><span aria-hidden="true">🙏</span><strong id="count">0</strong></span>
+      <span class="stat" title="完成祈晴輪數"><span aria-hidden="true">☀️</span><strong id="roundCount">0</strong></span>
+    </div>
+    <div class="credit"><a href="https://media.teepr.com/wp-content/uploads/2022/02/DfKZUI4V4AA97g-.jpg" target="_blank" rel="noopener">圖片參考 ↗</a><span id="devcredit" hidden> · <a href="https://www.teepr.com/514733/sharonlian/%E6%99%B4%E5%A4%A9%E5%A8%83%E5%A8%83/" target="_blank" rel="noopener">來源頁 ↗</a></span></div>
+  </section>
+
+  <section class="source-preview">
+    <strong>來源素材預覽</strong>
+    <p class="small">此頁讀取 <code>../reference/DfKZUI4V4AA97g-.jpg</code> 的開發封存副本；正式卡片仍使用上方自行繪製 SVG。</p>
+    <img src="../reference/DfKZUI4V4AA97g-.jpg" alt="晴天娃娃參考圖片">
+  </section>
+</main>
+<script>
+const card=document.querySelector('#wish');
+const btn=document.querySelector('#btn');
+const count=document.querySelector('#count');
+const stats=document.querySelector('#sunWishStats');
+const sun=document.querySelector('.sun');
+const sunFigure=document.querySelector('.sun > svg');
+const skyResponse=document.querySelector('.sky-response');
+const message=document.querySelector('#wishMessage');
+const hint=document.querySelector('#milestoneHint');
+const roundCount=document.querySelector('#roundCount');
+const ROUND_KEY='yunnan-2026-sun-wish-preview-rounds-v1';
+const COUNT_KEY='yunnan-2026-sun-wish-count-preview-v1';
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+const milestones={1:'雲散一點，太陽收到你的願望了。',3:'晴天娃娃開心了，好天氣再靠近一點。',5:'大放晴！把這片陽光留給旅途。',7:'今天的好天氣，是你集氣來的。'};
+const phrases={2:'再推一把，陽光更近了。',4:'雲再散一點，好天氣正在路上。',6:'再集一點晴天，讓雲都讓開。'};
+const CYCLE_LENGTH=7n;
+const MILESTONE_STEPS=[1n,3n,5n,7n];
+function cycleStep(taps){return taps>0n?Number(((taps-1n)%CYCLE_LENGTH)+1n):0;}
+function nextMilestoneTap(taps){
+  if(taps<=0n)return 1n;
+  const cycleBase=((taps-1n)/CYCLE_LENGTH)*CYCLE_LENGTH;
+  const next=MILESTONE_STEPS.map(step=>cycleBase+step).find(value=>value>taps);
+  return next??(cycleBase+CYCLE_LENGTH+1n);
+}
+let n=0n,rounds=0n,roundTaps=0n,sunTimer,effectTimer,frame=null,segment=null;
+let sunState='hidden',progress=0,sunOpacity=0;
+const feedback=new Map();
+
+function readCount(key){
+  try{const value=localStorage.getItem(key);return /^\d+$/.test(value||'')?BigInt(value):0n;}catch{return 0n;}
+}
+n=readCount(COUNT_KEY);rounds=readCount(ROUND_KEY);
+function updateHint(){
+  const next=nextMilestoneTap(roundTaps);
+  hint.textContent=roundTaps===0n?'點一下，開始新一輪祈晴':`本輪 ${roundTaps} 次 · 下一個彩蛋：第 ${next} 次`;
+  roundCount.textContent=String(rounds);
+  stats.setAttribute('aria-label',`已祈晴 ${n} 次，完成 ${rounds} 輪祈晴`);
+}
+count.textContent=String(n);
+updateHint();
+function finishRound(){
+  sunState='hidden';rounds+=1n;roundTaps=0n;
+  try{localStorage.setItem(ROUND_KEY,String(rounds))}catch{}
+  clearTimeout(effectTimer);
+  card.classList.remove('wish-active','happy','full-sun','clouds-cleared');
+  card.style.setProperty('--push-distance','0px');
+  message.textContent='這輪晴天收好了，再點一次重新祈晴。';
+  updateHint();
+}
+
+// One shared progress value controls the sun's height and the sky's light.
+function renderSun(){
+  sun.style.visibility=sunState==='hidden'?'hidden':'visible';
+  sun.style.opacity=String(sunOpacity);
+  sun.style.transform=`translateY(${reducedMotion.matches?0:240*(1-progress)}px)`;
+  card.style.setProperty('--sunlight',String(progress*sunOpacity));
+  card.style.setProperty('--light-reach',`${36+progress*54}%`);
+  const whiteout=(roundTaps>=20n?1:Number(roundTaps)/20)*progress*sunOpacity;
+  card.style.setProperty('--whiteout',String(whiteout));
+  card.classList.toggle('bright-card',whiteout>.45);
+}
+function holdSun(){
+  sunState='holding';
+  clearTimeout(sunTimer);
+  sunTimer=setTimeout(()=>animateSun('fade',1,0,1000),3000);
+}
+function sampleSun(now){
+  if(!segment)return;
+  const active=segment;
+  const t=Math.max(0,Math.min(1,(now-active.start)/active.duration));
+  const eased=1-Math.pow(1-t,2);
+  progress=active.fromProgress+(active.toProgress-active.fromProgress)*eased;
+  sunOpacity=active.fromOpacity+(active.toOpacity-active.fromOpacity)*eased;
+  if(t===1){
+    segment=null;
+    if(active.kind==='fade')finishRound();
+    else holdSun();
+  }
+  renderSun();
+}
+function tick(now){
+  frame=null;
+  sampleSun(now);
+  if(segment)frame=requestAnimationFrame(tick);
+}
+function animateSun(kind,toProgress,toOpacity,duration){
+  if(frame!==null)cancelAnimationFrame(frame);
+  frame=null;
+  clearTimeout(sunTimer);
+  sunState=kind==='fade'?'fading':kind==='rise'?'rising':'restoring';
+  if(reducedMotion.matches){
+    segment=null;progress=toProgress;sunOpacity=toOpacity;
+    if(kind==='fade')finishRound();else holdSun();
+    renderSun();return;
+  }
+  segment={kind,fromProgress:progress,fromOpacity:sunOpacity,toProgress,toOpacity,start:performance.now(),duration};
+  renderSun();
+  frame=requestAnimationFrame(tick);
+}
+function showSun(){
+  const now=performance.now();
+  sampleSun(now);
+  if(sunState==='rising'){
+    const remaining=Math.max(1,segment.start+segment.duration-now);
+    // Retarget from the current position, with an earlier finish on every tap.
+    animateSun('rise',1,1,Math.min(remaining,Math.max(120,remaining*.58)));
+  }else if(sunState==='hidden'){
+    progress=0;sunOpacity=0;
+    animateSun('rise',1,1,2000);
+  }else if(sunState==='fading'||sunState==='restoring'){
+    animateSun('restore',1,1,240);
+  }else holdSun();
+}
+function playFeedback(key,node,keyframes,duration){
+  if(feedback.has(key)){feedback.get(key).cancel();feedback.delete(key);}
+  if(reducedMotion.matches||typeof node.animate!=='function')return;
+  const animation=node.animate(keyframes,{duration,easing:'ease-out'});
+  feedback.set(key,animation);
+  animation.onfinish=()=>{if(feedback.get(key)===animation)feedback.delete(key);};
+}
+function clearScene(){
+  clearTimeout(sunTimer);clearTimeout(effectTimer);
+  sunTimer=effectTimer=undefined;
+  if(frame!==null)cancelAnimationFrame(frame);
+  frame=null;segment=null;
+  feedback.forEach(animation=>animation.cancel());feedback.clear();
+  sunState='hidden';progress=0;sunOpacity=0;roundTaps=0n;
+  card.classList.remove('wish-active','happy','full-sun','clouds-cleared');
+  card.style.setProperty('--push-distance','0px');
+  renderSun();
+}
+renderSun();
+
+function syncPreviewTheme(){
+  document.body.dataset.theme=window.matchMedia?.('(prefers-color-scheme: dark)').matches?'dark':'light';
+}
+syncPreviewTheme();
+window.matchMedia?.('(prefers-color-scheme: dark)').addEventListener?.('change',syncPreviewTheme);
+
+btn.addEventListener('click',()=>{
+  // Settle an expired fade before deciding whether this tap starts a new round.
+  sampleSun(performance.now());
+  if(sunState==='hidden')clearScene();
+  n+=1n;roundTaps+=1n;
+  const step=cycleStep(roundTaps);
+  try{localStorage.setItem(COUNT_KEY,String(n))}catch{}
+  count.textContent=String(n);updateHint();
+  showSun();renderSun();
+  card.classList.add('wish-active');
+  if(step===3||step===5||step===7){
+    card.classList.add('happy');
+    if(step>=5)card.classList.add('full-sun');
+    if(step===7)card.classList.add('clouds-cleared');
+    clearTimeout(effectTimer);
+    effectTimer=setTimeout(()=>{
+      card.classList.remove('happy','full-sun','clouds-cleared');
+    },1400);
+  }
+  card.style.setProperty('--push-distance',`${roundTaps>=30n?120:Number(roundTaps)*4}px`);
+  message.textContent=milestones[step]||phrases[step]||(roundTaps>=20n?'整片天空都是你集來的陽光。':'繼續集氣，天空還能更亮。');
+  playFeedback('doll',btn,[
+    {transform:'translateY(0) rotate(0deg)'},
+    {transform:'translateY(-7px) rotate(-4deg)',offset:.3},
+    {transform:'translateY(-2px) rotate(3deg)',offset:.65},
+    {transform:'translateY(0) rotate(0deg)'}
+  ],720);
+  playFeedback('sun',sunFigure,[
+    {transform:'scale(1)'},{transform:'translateY(-3px) scale(1.055)',offset:.35},{transform:'scale(1)'}
+  ],440);
+  playFeedback('sky',skyResponse,[{opacity:0},{opacity:.09,offset:.35},{opacity:0}],650);
+});
+
+if(new URLSearchParams(location.search).get('dev')==='1')document.querySelector('#devcredit').hidden=false;
+</script>
+</body>
+</html>

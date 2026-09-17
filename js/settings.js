@@ -49,15 +49,18 @@
     function syncTheme(){
       const resolved=resolvedTheme();
       const root=document.documentElement;
-      const schemeValue=theme==='light'?'only light':theme==='dark'?'dark':'light dark';
+      const cssScheme=resolved==='dark'?'dark':'only light';
+      const metaScheme=resolved==='dark'?'dark':'light';
       root.dataset.themePreference=theme;
       root.dataset.theme=resolved;
-      root.style.colorScheme=schemeValue;
+      root.style.colorScheme=cssScheme;
       document.querySelectorAll('[data-color-theme-select]').forEach(select=>{select.value=theme;});
       const schemeMeta=document.querySelector('meta[name="color-scheme"]');
-      if(schemeMeta)schemeMeta.setAttribute('content',schemeValue);
+      if(schemeMeta)schemeMeta.setAttribute('content',metaScheme);
       const meta=document.querySelector('meta[name="theme-color"]');
       if(meta)meta.setAttribute('content',resolved==='dark'?'#121916':'#f7f6f1');
+      const appleStatusMeta=document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+      if(appleStatusMeta)appleStatusMeta.setAttribute('content',resolved==='dark'?'black-translucent':'default');
       window.dispatchEvent(new CustomEvent('yunnan:theme-change',{detail:{preference:theme,resolved}}));
     }
 
@@ -77,7 +80,7 @@
     }
 
     function settingsHtml(){
-      return `<article class="layout-mode-card utility-card utility-card--settings"><div><span class="eyebrow">INTERFACE LAYOUT</span><h3>介面版面</h3><p class="small">手機版為預設：手機使用觸控與窄版排版，電腦仍會依螢幕寬度正常顯示。選「電腦版」時，手機會以完整桌面寬度自動縮放到螢幕內，保留桌面版比例；同時仍可左右滑動切換主要 Tab。線上、離線與 PWA 都共用同一設定。</p></div><label>版面<select data-ui-layout-select aria-label="介面版面"><option value="mobile">手機版（預設）</option><option value="desktop">電腦版</option></select></label></article><article class="theme-mode-card utility-card utility-card--settings"><div><span class="eyebrow">APPEARANCE</span><h3>顯示主題</h3><p class="small">系統預設會跟隨裝置的淺色／深色外觀；也可以固定使用淺色或深色主題。偏好只儲存在此瀏覽器，線上、離線與 PWA 共用。</p></div><label>主題<select data-color-theme-select aria-label="顯示主題"><option value="system">系統預設</option><option value="light">淺色主題</option><option value="dark">深色主題</option></select></label></article>`;
+      return `<article class="layout-mode-card utility-card utility-card--settings"><div><span class="eyebrow">INTERFACE LAYOUT</span><h3>介面版面</h3><p class="small">手機版為預設：手機使用觸控與窄版排版，電腦仍會依螢幕寬度正常顯示。選「電腦版」時，手機會以完整桌面寬度自動縮放到螢幕內，保留桌面版比例；同時仍可左右滑動切換主要 Tab。線上、離線與 PWA 都共用同一設定。</p></div><label>版面<select data-ui-layout-select aria-label="介面版面"><option value="mobile">手機版（預設）</option><option value="desktop">電腦版</option></select></label></article><article class="theme-mode-card utility-card utility-card--settings"><div><span class="eyebrow">APPEARANCE</span><h3>顯示主題</h3><p class="small">系統預設會跟隨裝置的淺色／深色外觀；固定淺色或深色時，網站內容、原生表單與網站可控制的瀏覽器／PWA 色彩都以所選主題為準，不再受系統外觀切換影響。系統導覽列、鍵盤等裝置介面仍由手機系統控制。偏好只儲存在此瀏覽器，線上、離線與 PWA 共用。</p></div><label>主題<select data-color-theme-select aria-label="顯示主題"><option value="system">系統預設</option><option value="light">淺色主題</option><option value="dark">深色主題</option></select></label></article>`;
     }
 
     function handleChange(target){

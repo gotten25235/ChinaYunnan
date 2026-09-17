@@ -201,7 +201,7 @@ DEV ONLY 在不改變正式資料的前提下額外顯示：
 | `library.js` | Content/Story Card、Night/Food/Shopping/Favorites/Photo/Culture state/render |
 | `app.js` | JSON bootstrap、`VIEW_REGISTRY`、App Shell、shared day coordinator、單一 action router、全版面 Main Tab swipe |
 
-主要 state 只由各自 Owner 寫入：App 擁有 `currentView`；Network 擁有 profile；Core 擁有 Favorites IDs 與 navigation provider；Analytics 擁有 tracker runtime 與匿名 V-ID；Weather 擁有 provider credentials/cache；Offline 擁有離線選取與準備狀態；Settings 擁有顯示主題與介面版面；Journey／Map／Library／Reader 各自持有 Domain state；Tips 擁有出發提醒 renderer 與晴天娃娃 count / phase / timer；count 另以 `yunnan-2026-sun-wish-count-v1` 寫入 localStorage 以跨重新整理保留，phase / timer 僅為 runtime state。Map / Night 共用日期由 App 只做協調，不建立第三份 Domain state。
+主要 state 只由各自 Owner 寫入：App 擁有 `currentView`；Network 擁有 profile；Core 擁有 Favorites IDs 與 navigation provider；Analytics 擁有 tracker runtime 與匿名 V-ID；Weather 擁有 provider credentials/cache；Offline 擁有離線選取與準備狀態；Settings 擁有顯示主題與介面版面；Journey／Map／Library／Reader 各自持有 Domain state；Tips 擁有出發提醒 renderer 與晴天娃娃 `count / rounds / roundTaps / sunState / progress / timer / requestAnimationFrame`。`count` 以 `yunnan-2026-sun-wish-count-v1`、`rounds` 以 `yunnan-2026-sun-wish-rounds-v1` 寫入 localStorage 跨重新整理保留；未完成一輪的 `roundTaps / sunState / progress / timer` 只存在 runtime，重新載入後由隱藏待機重新開始。Map / Night 共用日期由 App 只做協調，不建立第三份 Domain state。
 
 小紅書天氣實況屬 Weather UI：今日／昨日按鈕先開啟站內確認彈窗，彈窗明示「需已安裝小紅書 App；未安裝無法直接使用」，並顯示完整搜尋詞。使用者再按「開啟小紅書」時才以官方 `xhsdiscover://search/result?keyword=...&target_search=notes&source=deeplink` 嘗試喚起 App，避免使用會被風控阻擋的 Web 搜尋頁；同一彈窗保留一鍵「複製搜尋詞」備援。今日／昨日入口點擊事件由 App 的單一 router 送出 `weather_live_search`，payload 僅記錄 `range=today/yesterday`、地點標籤、實況日期與旅程 Day，不讀取小紅書結果或使用者帳號。
 
@@ -370,9 +370,13 @@ Validator 至少檢查：
 
 修改 `touch-action`、`scroll-snap`、`overflow-x` 前先確認 Rail owner；新規則放回所屬區塊，不使用日期式 patch 區塊累積 override。
 
+「旅程總覽 → 展開 Day → 既定行程」由 `Expanded itinerary stop layout ownership` 區塊單一管理：`<=700px` 採直向閱讀流「標題／收藏 → 100% 寬 16:9 照片（最高 170px）→ 說明 → 操作按鈕」，缺圖或載入失敗時不保留空白圖片列；`>=701px` 維持「文字左＋圖片右」，圖片固定 `300×140`。禁止再於其他手機 breakpoint 對 `.timeline-thumb` / `.timeline-with-thumb` 疊加尺寸或排列 override；附近地圖縮圖與住宿縮圖各自維持自己的 owner。
+
+晴天娃娃 UI 由 `css/style.css` 的 `TIPS / SUN WISH` 區塊單一管理：正式卡片只保留「點娃娃」這個主要操作，不得加入重置按鈕、主題切換 toggle 或其他 demo control。左下固定顯示兩個不可點擊的 compact status：`🙏 N` 為累積祈晴次數、`☀️ R` 為完整淡出後的完成輪數；右下維持來源 credit。新版太陽與天空共用 `progress` 驅動高度／光照，連點可加速升起、向外推雲並累積亮度；彩蛋採 7 次循環，觸發序列為 `1/3/5/7 → 8/10/12/14 → 15/17/19/21 → …`，以 `((roundTaps - 1) % 7) + 1` 映射回同一組效果；完整淡出才算完成一輪。Theme 不屬於 Tips，所有深淺色只讀 Settings 已解析出的 `html[data-theme]`。
+
 設定頁 UI 順序固定為：**連網模式 → 預設導航地圖 → 介面版面 → 顯示主題**，其後再接天氣與離線相關設定。
 
-顯示主題由 `settings.js` 擁有：`system` 為預設並跟隨 `prefers-color-scheme`，`light` / `dark` 可強制固定。解析後的實際主題寫入 `html[data-theme="light|dark"]`；偏好寫入 `data-theme-preference`。所有深色樣式只綁定 `html[data-theme="dark"]`，不直接用 CSS `prefers-color-scheme: dark` 覆寫頁面。固定 `light` 時必須同時：設定 `html[data-theme="light"]` 的完整 light 色票、把 root `color-scheme` 設為 `only light`、同步 `meta[name="color-scheme"]="only light"`，並把 `theme-color` 設為淺色背景；目的是阻止 Android / Samsung 類瀏覽器在系統深色時再次自動 darken 網頁。固定 `dark` 時 root / meta 明確使用 dark；只有 `system` 模式才允許 `light dark` 並監聽 `prefers-color-scheme`。首頁 head 的 bootstrap 必須在 CSS 載入前套用同一規則，避免開頁先閃成錯誤主題。
+顯示主題由 `settings.js` 擁有：`system` 為預設並監聽 `prefers-color-scheme`，`light` / `dark` 可強制固定。偏好先解析成唯一的 `resolvedTheme`，寫入 `html[data-theme="light|dark"]`；原始偏好只寫入 `data-theme-preference`。後續所有外觀 ownership 都只能讀 `resolvedTheme`，禁止再由 OS 深色狀態直接旁路覆寫。所有深色 CSS 只綁定 `html[data-theme="dark"]`，不得新增 CSS `@media (prefers-color-scheme: dark)` 改主 App。`resolvedTheme=light` 時：完整 light 色票、root CSS `color-scheme: only light`、`meta[name="color-scheme"]="light"`（meta 只放標準 scheme token，不寫 `only light`）、`theme-color=#f7f6f1`、iOS PWA status-bar style=`default`；`resolvedTheme=dark` 時則使用 `color-scheme: dark`、meta=`dark`、`theme-color=#121916`、status-bar style=`black-translucent`。`manifest.webmanifest` 的靜態 `background_color` / `theme_color` 使用淺色紙張色作為冷啟動 fallback，runtime 由動態 meta 接管。首頁 head bootstrap 必須在 CSS 載入前以完全相同規則套用已儲存偏好，避免系統深色 + 固定淺色時先閃暗色或讓 Android / Samsung 自動 darken。驗收基準：在網站可控制範圍內，「系統深色 + 固定淺色」應與「系統淺色 + 固定淺色」一致；系統導覽列、鍵盤、通知中心等 OS UI 不在網站 ownership。
 
 ## 11. Release Version / Schema / Cache / Generated Data
 
