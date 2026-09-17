@@ -4,27 +4,27 @@
     "butter-tea": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Butter_tea_20120622.jpg",
       "local": "images/food/butter-tea.webp",
-      "sha256": "29e7972c39a7bba31e047a2b3f4f089ad534afdfa04883cd98d70704d4b07e74"
+      "sha256": "b4283dd9b3c4a1817acb518605d04357927ee90fc0f00d5196e35a5e7f883405"
     },
     "crossing-bridge-noodles": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Crossing_the_Bridge_Rice_Noodles_full_ingredients_in_Mengzi_(20200126132053).jpg",
       "local": "images/food/crossing-bridge-noodles.webp",
-      "sha256": "ad6e1aeea2092a8aa639b2b91b71760ca514932feda9dce236c8af4104ab0d2f"
+      "sha256": "eb988fd3d38a5d5eb8c150d90c78d94dec3989b610496fde2cf77dbaf854599b"
     },
     "xizhou-baba": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Xizhou_baba.jpg",
       "local": "images/food/xizhou-baba.webp",
-      "sha256": "ecfbebfbb8135f45c096d2844e64bf47127ead99643deb74cf8c30d79ecafeab"
+      "sha256": "fc44f4c4c6358c93dc40b601a4aeecc6e407ab3fdb669e62f0b5b408cb701147"
     },
     "lijiang-baba": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E4%B8%BD%E6%B1%9F%E7%B2%91%E7%B2%91_Lijiang_Ba_Ba_Bread_with_spring_onion_and_egg_-_street_vendor_CNY4.jpg",
       "local": "images/food/lijiang-baba.webp",
-      "sha256": "923ac43e21775497eb2b2297904d1e45f76f1739fc0d246928306d5be087788a"
+      "sha256": "554944761736648db4e65cd5a67d17fd1f2af44adc245835bc873a93983db813"
     },
     "chickpea-jelly": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E4%B8%BD%E6%B1%9F%E9%B8%A1%E8%B1%8C%E8%B1%86%E5%87%89%E7%B2%89_-_Chicken_pea_jelly.jpg",
       "local": "images/food/chickpea-jelly.webp",
-      "sha256": "ebc9e745e296549ae4fe99fc26b6f46859b733c477e26c827b1eea2eff4f4280"
+      "sha256": "02e528f2d26f8b29c5f94eb4bd8f6b75efa77e5e5a0e209be8a8dc7af8bec71e"
     },
     "flower-cake": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E4%BA%91%E5%8D%97%E7%8E%AB%E7%91%B0%E9%B2%9C%E8%8A%B1%E9%A5%BC-2164122.jpg",
@@ -34,7 +34,7 @@
     "rushan": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E5%A4%A7%E7%90%86%E8%A1%97%E8%BE%B9%E7%9A%84%E7%83%A4%E4%B9%B3%E6%89%87.jpg",
       "local": "images/shopping/rushan.webp",
-      "sha256": "c64f5fa125c682b51225051b5a4863684cfd9e2f98b2db772d16306980a530b6"
+      "sha256": "4e9873cf5446fc315227cad5b03b2e0e2098fe37ad3bc6c65d2d3ac3ccb48993"
     },
     "ersi": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E5%B7%8D%E5%B1%B1%E8%80%99%E8%82%89%E9%A5%B5%E4%B8%9D.jpg",
@@ -71,11 +71,6 @@
       "local": "images/food/wild-mushrooms.webp",
       "sha256": "d92c2d65826790c157721651ceb51131924340a290fbc0eb5a0f0917ef48f7bd"
     },
-    "xizhou-yan-courtyard": {
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Former_Residence_of_Yan_Zizhen_092_2017-09.jpg",
-      "local": "images/places/xizhou-yan-courtyard.webp",
-      "sha256": "37fe710291e5e5c6586effb345f01fb64e9dccc9a340a6b372cc94e0e4e48686"
-    },
     "shaxi-sideng": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Ancient_Tea_Horse_Road_in_Sideng_Street.JPG",
       "local": "images/places/shaxi-sideng.webp",
@@ -85,11 +80,6 @@
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Lijiang_Yunnan_Old-town-01.jpg",
       "local": "images/places/lijiang-old-town.webp",
       "sha256": "2e0ac58535fa679c114869bc0afef14a5817b87c2ebac2d7e994f1123e59ef6d"
-    },
-    "songzanlin": {
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Songzanlin_monastery.jpg",
-      "local": "images/places/songzanlin.webp",
-      "sha256": "e1c4d0468f01a53e67ee605f336763f4e6636874ed72fa7c4b0b644169300cf8"
     },
     "puer-tea": {
       "remote": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Pu-erh_tea.JPG",
@@ -130,11 +120,6 @@
       "remote": "https://gotten25235.github.io/ChinaYunnan/images/handbook/dali-old-town-handbook.webp",
       "local": "images/handbook/dali-old-town-handbook.webp",
       "sha256": "558caa94d7676c5c022e545e9e45a36a95283bbc6a0751f6519424639c1ed8ed"
-    },
-    "shuanglang-open": {
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Shuanglang,_Dali,_Yunnan,_China_02.jpg",
-      "local": "images/places/shuanglang-open.webp",
-      "sha256": "d771a57f1404cd526905dd91750a2f786eeb738895fd57d51c02eb2e2f3ff931"
     },
     "yulong-open": {
       "remote": "https://gotten25235.github.io/ChinaYunnan/images/handbook/yulong-handbook.webp",
@@ -186,11 +171,6 @@
       "local": "images/places/kunming-railway-open.webp",
       "sha256": "cbacd49bb07492a1b944e90d3320bffe86fafd2b58911228ddd5f11f6d159235"
     },
-    "dali-village-reference": {
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Former_Residence_of_Yan_Zizhen_092_2017-09.jpg",
-      "local": "images/places/xizhou-yan-courtyard.webp",
-      "sha256": "37fe710291e5e5c6586effb345f01fb64e9dccc9a340a6b372cc94e0e4e48686"
-    },
     "shaxi-reference": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Ancient_Tea_Horse_Road_in_Sideng_Street.JPG",
       "local": "images/places/shaxi-sideng.webp",
@@ -225,11 +205,6 @@
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Kunming_Jinma_Biji_Fang_20250813_183853.jpg",
       "local": "images/places/kunming-jinma-open.webp",
       "sha256": "9245d52993be3a506b7f58b178e3eb25ab4c365b942e9a72d95702fbe3f76e92"
-    },
-    "dali-history-reference": {
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Former_Residence_of_Yan_Zizhen_092_2017-09.jpg",
-      "local": "images/places/xizhou-yan-courtyard.webp",
-      "sha256": "37fe710291e5e5c6586effb345f01fb64e9dccc9a340a6b372cc94e0e4e48686"
     },
     "shangri-story-reference": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/20260225_Skyline_of_Dukezong_Ancient_Town_Shangri-La_12.jpg",
@@ -306,11 +281,6 @@
       "local": "images/places/baisha-old-town-web.webp",
       "sha256": "92600adf94dac41d55d7ae2f6d80278582f2e33c153837a1cd08f86b58d34a8e"
     },
-    "black-dragon-pool-web": {
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Black_Dragon_Pool.jpg",
-      "local": "images/places/black-dragon-pool-web.webp",
-      "sha256": "4a99e86ce42e89be756d86f41f56d2e21723a2e278913bee9319c891cfe473f2"
-    },
     "baiji-temple-web": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E7%99%BE%E9%B8%A1%E5%AF%BA_-_%E5%85%AD%E8%A7%92%E4%BA%AD_-_2025-05-09.jpg",
       "local": "images/places/baiji-temple-web.webp",
@@ -336,30 +306,10 @@
       "local": "images/places/green-lake-park-web.webp",
       "sha256": "5a60620b200c31a51e4cb34c440f2a5f1f9e41c10910e1d967901dde9092ad46"
     },
-    "three-course-tea-web": {
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Three-Course_Tea.jpg",
-      "local": "images/places/three-course-tea-web.webp",
-      "sha256": "c33772856da8139237c70071c76d933547d95a0d06d2dbf93e4105cbe8188a64"
-    },
     "dongba-glyphs-web": {
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dongba_pictographic_glyphs_-_Lijiang.jpg",
       "local": "images/shopping/dongba-glyphs-web.webp",
       "sha256": "4d6d6dc9545f175583be7fbb2ed3a068627a253317f18c77c0d3ebec97537c9c"
-    },
-    "joseph-rock-web": {
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rock_in_Yunnan.png",
-      "local": "images/places/joseph-rock-web.webp",
-      "sha256": "46e370629ceba6f262cc0fcd9b5280d765f5baa34c18063335a6d85df6c83316"
-    },
-    "cai-e-web": {
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E8%94%A1%E9%8D%94.jpg",
-      "local": "images/places/cai-e-web.webp",
-      "sha256": "e588b4aed886d8b6c38e3bec992ba9075238d7cda207239e4dac47f76bbc4b3a"
-    },
-    "swau-monument-web": {
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Monument_of_National_Southwest_Associated_University_01.jpg",
-      "local": "images/places/swau-monument-web.webp",
-      "sha256": "7b979777ccd55e28583807ec70c989ad2167a729ce79e3a1a11a5b841747cdc0"
     },
     "hotel-kmg-airport-photo": {
       "remote": "https://gotten25235.github.io/ChinaYunnan/images/hotels/kunming-airport-liyi.webp",
@@ -530,21 +480,6 @@
       "remote": "https://gotten25235.github.io/ChinaYunnan/images/places/shangri-home-visit-web.webp",
       "local": "images/places/shangri-home-visit-web.webp",
       "sha256": "35ef0c0849f027846103f13866d1e36d4a858a42c5ff3162b4444030f62d448f"
-    },
-    "huazhong-migration-museum-web": {
-      "remote": "https://gotten25235.github.io/ChinaYunnan/images/places/huazhong-migration-museum-web.webp",
-      "local": "images/places/huazhong-migration-museum-web.webp",
-      "sha256": "a9d7129a736651229823019ce9d5213ee8e856a6ac41e21b2b743aba150386c0"
-    },
-    "lost-horizon-book-web": {
-      "remote": "https://gotten25235.github.io/ChinaYunnan/images/places/lost-horizon-book-web.webp",
-      "local": "images/places/lost-horizon-book-web.webp",
-      "sha256": "40a90af4245d6b792eabb6c5b87622c88e3b531eddbf6f345d92db8aeaf461de"
-    },
-    "guozhuang-shangri-web": {
-      "remote": "https://gotten25235.github.io/ChinaYunnan/images/places/guozhuang-shangri-web.webp",
-      "local": "images/places/guozhuang-shangri-web.webp",
-      "sha256": "9adb5b56e75f5babc919774ed8f7cb212ab9a6eb80b890762114ee335c6b6588"
     },
     "souvenir-mohong-rose": {
       "remote": "https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-mohong-rose.webp",
@@ -730,6 +665,141 @@
       "remote": "https://static.foodtalks.cn/image/post/12c10dfb268cfa8af9fb818c1382037d.jpg",
       "local": "images/shopping/souvenir-wild-mushroom-beer.webp",
       "sha256": "4471d7a869765bfc4d6384ab6781d5ddcea54f2521f3ad1d93d67642ea5c283a"
+    },
+    "culture-huaguo": {
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E8%94%A1%E9%8D%94.jpg",
+      "local": "images/culture/huaguo.webp",
+      "sha256": "e588b4aed886d8b6c38e3bec992ba9075238d7cda207239e4dac47f76bbc4b3a"
+    },
+    "culture-lianda": {
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Monument_of_National_Southwest_Associated_University_01.jpg",
+      "local": "images/culture/lianda.webp",
+      "sha256": "7b979777ccd55e28583807ec70c989ad2167a729ce79e3a1a11a5b841747cdc0"
+    },
+    "culture-huazhong": {
+      "remote": "https://gotten25235.github.io/ChinaYunnan/images/culture/huazhong.webp",
+      "local": "images/culture/huazhong.webp",
+      "sha256": "a9d7129a736651229823019ce9d5213ee8e856a6ac41e21b2b743aba150386c0"
+    },
+    "culture-yan": {
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Former_Residence_of_Yan_Zizhen_092_2017-09.jpg",
+      "local": "images/culture/yan.webp",
+      "sha256": "37fe710291e5e5c6586effb345f01fb64e9dccc9a340a6b372cc94e0e4e48686"
+    },
+    "culture-rock": {
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rock_in_Yunnan.png",
+      "local": "images/culture/rock.webp",
+      "sha256": "46e370629ceba6f262cc0fcd9b5280d765f5baa34c18063335a6d85df6c83316"
+    },
+    "culture-hilton": {
+      "remote": "https://gotten25235.github.io/ChinaYunnan/images/culture/hilton.webp",
+      "local": "images/culture/hilton.webp",
+      "sha256": "40a90af4245d6b792eabb6c5b87622c88e3b531eddbf6f345d92db8aeaf461de"
+    },
+    "culture-three-teas": {
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Three-Course_Tea.jpg",
+      "local": "images/culture/three-teas.webp",
+      "sha256": "c33772856da8139237c70071c76d933547d95a0d06d2dbf93e4105cbe8188a64"
+    },
+    "culture-dongba": {
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dongba_pictographic_glyphs_-_Lijiang.jpg",
+      "local": "images/culture/dongba.webp",
+      "sha256": "4d6d6dc9545f175583be7fbb2ed3a068627a253317f18c77c0d3ebec97537c9c"
+    },
+    "culture-guozhuang": {
+      "remote": "https://gotten25235.github.io/ChinaYunnan/images/culture/guozhuang.webp",
+      "local": "images/culture/guozhuang.webp",
+      "sha256": "9adb5b56e75f5babc919774ed8f7cb212ab9a6eb80b890762114ee335c6b6588"
+    },
+    "culture-temple": {
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Songzanlin_monastery.jpg",
+      "local": "images/culture/temple.webp",
+      "sha256": "e1c4d0468f01a53e67ee605f336763f4e6636874ed72fa7c4b0b644169300cf8"
+    },
+    "culture-noodle-legend": {
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Crossing_the_Bridge_Rice_Noodles_full_ingredients_in_Mengzi_(20200126132053).jpg",
+      "local": "images/culture/noodle-legend.webp",
+      "sha256": "ad6e1aeea2092a8aa639b2b91b71760ca514932feda9dce236c8af4104ab0d2f"
+    },
+    "culture-erhai-black-dragon": {
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Shuanglang,_Dali,_Yunnan,_China_02.jpg",
+      "local": "images/culture/erhai-black-dragon.webp",
+      "sha256": "d771a57f1404cd526905dd91750a2f786eeb738895fd57d51c02eb2e2f3ff931"
+    },
+    "culture-tiger-leap-legend": {
+      "remote": "https://gotten25235.github.io/ChinaYunnan/images/handbook/tiger-gorge-handbook.webp",
+      "local": "images/culture/tiger-leap-legend.webp",
+      "sha256": "fe1dac771b59e5719e6a2fbde420df992175a22079ab24bee73fcc14c64372fc"
+    },
+    "culture-yulong-third-kingdom": {
+      "remote": "https://gotten25235.github.io/ChinaYunnan/images/handbook/spruce-handbook.webp",
+      "local": "images/culture/yulong-third-kingdom.webp",
+      "sha256": "2cc786b586d1fc5646d36cba2bf6efa23a48e59beaa7983338f28f0980da4e77"
+    },
+    "culture-black-dragon-taboo": {
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Black_Dragon_Pool.jpg",
+      "local": "images/culture/black-dragon-taboo.webp",
+      "sha256": "4a99e86ce42e89be756d86f41f56d2e21723a2e278913bee9319c891cfe473f2"
+    },
+    "pose-lijiang-02": {
+      "remote": "https://ak-d.tripcdn.com/images/1mi3d224x98k08i107603_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "local": "images/pose/lijiang-02.webp",
+      "sha256": "cd27b46be8fbc603732db2f1e2c6f29313240d62eb2ef7bbab5479e44b3f6064"
+    },
+    "pose-fengyang-02": {
+      "remote": "https://ak-d.tripcdn.com/images/1mi4b12000qj3gtie4307_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "local": "images/pose/fengyang-02.webp",
+      "sha256": "4436512460501ad7b2ffcd7c3715ce8ca72ce48983ecf7ef231639b894b18c59"
+    },
+    "pose-sideng-02": {
+      "remote": "https://ak-d.tripcdn.com/images/1mi5a12000rnehl4k614E_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "local": "images/pose/sideng-02.webp",
+      "sha256": "3d1b073ed8fd2e4b96614ba26fb8fe816a638669a624be61f6482d903ed92194"
+    },
+    "pose-yujin-02": {
+      "remote": "https://ak-d.tripcdn.com/images/1mi62224x9443zx6x9781_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "local": "images/pose/yujin-02.webp",
+      "sha256": "395d58bf7bf086f172f358866a9bc75720884de24685933ee1ec126878cfc8f2"
+    },
+    "pose-blue-02": {
+      "remote": "https://ak-d.tripcdn.com/images/1mi4x12000tqkk414523A_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "local": "images/pose/blue-02.webp",
+      "sha256": "c2ce2aa1c458b34752d8d235ebc69f18a70206f8cdedd93bcb438a792ab2ac84"
+    },
+    "pose-ideal-02": {
+      "remote": "https://ak-d.tripcdn.com/images/1mi3f12000dmljimw5520_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "local": "images/pose/ideal-02.webp",
+      "sha256": "9e7d80e2970f1a8d3e937901dbf744909a6f0d340b662f0e19826a822456ab2a"
+    },
+    "pose-spruce-02": {
+      "remote": "https://ak-d.tripcdn.com/images/1mi6y12000iqdhnobF6F4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "local": "images/pose/spruce-02.webp",
+      "sha256": "cf8fb42c3e1a7aa0ae821b663e862746f67b962f965b58c6862c9b573b19e978"
+    },
+    "pose-ganhaizi-02": {
+      "remote": "https://ak-d.tripcdn.com/images/1mi6t224x97u43xde1A1B_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "local": "images/pose/ganhaizi-02.webp",
+      "sha256": "bdd48c3582e7d58121ddc77683be8eaf4258619034b5c5197f4eeddc5f57e7ca"
+    },
+    "pose-tiger-02": {
+      "remote": "https://images.squarespace-cdn.com/content/v1/62f1cb15a2cb083186ccd6d1/89bc1905-2512-48b5-a433-e997903154bc/2E6B6B98-CD12-4C2B-A020-3EBF0A5E9829-2209-000000D9F5E35AAB.jpg",
+      "local": "images/pose/tiger-02.webp",
+      "sha256": "a0105a962b06b48476f38f73693fe3badd748a7b4c4e2483cdd666d8d733c037"
+    },
+    "pose-songzanlin-02": {
+      "remote": "https://ak-d.tripcdn.com/images/1mi1t224x8x6y3cbl76B4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "local": "images/pose/songzanlin-02.webp",
+      "sha256": "83bdda9f8111021be2a77b5d7fc8eb0f95da5a8e7745e54b22fa97c73e0acf1e"
+    },
+    "pose-dukezong-02": {
+      "remote": "https://ak-d.tripcdn.com/images/1mi5n12000pn3ctrs86BA_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
+      "local": "images/pose/dukezong-02.webp",
+      "sha256": "f3bff48942798d36dd48a7b2dd147ec6c23c2d99b8c24657b0f7af3b33d167a3"
+    },
+    "pose-shuhe-02": {
+      "remote": "https://dimg04.c-ctrip.com/images/1mf3p12000ehj1cnxA02A_W_640_0_Q90.jpg?proc=autoorient",
+      "local": "images/pose/shuhe-02.webp",
+      "sha256": "217a7ece1b8b8df91ab4266f254894c18eeb1f50770a5f16c8d48d672b543b44"
     }
   }
 }

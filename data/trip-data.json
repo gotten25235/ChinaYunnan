@@ -36,6 +36,17 @@
     {
       "title": "手機定位：MDN Geolocation watchPosition",
       "url": "https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/watchPosition"
+    },
+    {
+      "title": "晴天娃娃造型參考頁（TEEPR）",
+      "url": "https://www.teepr.com/514733/sharonlian/%E6%99%B4%E5%A4%A9%E5%A8%83%E5%A8%83/",
+      "note": "DEV：晴天娃娃造型參考的 TEEPR 來源頁；PUBLIC 卡片只直接提供「圖片參考 ↗」。",
+      "devOnly": true
+    },
+    {
+      "title": "晴天娃娃參考圖片（TEEPR Media）",
+      "url": "https://media.teepr.com/wp-content/uploads/2022/02/DfKZUI4V4AA97g-.jpg",
+      "note": "PUBLIC：晴天娃娃造型參考圖片直連；網站正式畫面仍使用自行繪製 SVG。"
     }
   ],
   "checkedAt": "2026-09-10",
@@ -111,7 +122,7 @@
       "rating": null,
       "coordinateSource": "https://en.wikipedia.org/wiki/Xizhou,_Dali",
       "imageId": "xizhou-web",
-      "imageReferenceId": "xizhou-yan-courtyard",
+      "imageReferenceId": "culture-yan",
       "imageMatch": "verified"
     },
     "carriage": {
@@ -229,7 +240,7 @@
       "duration": "依團體安排",
       "rating": null,
       "imageId": "idealbang-handbook",
-      "imageReferenceId": "shuanglang-open",
+      "imageReferenceId": "culture-erhai-black-dragon",
       "imageMatch": "verified"
     },
     "shuanglang": {
@@ -246,7 +257,7 @@
       "addressVerified": true,
       "duration": "依團體安排",
       "rating": null,
-      "imageId": "shuanglang-open",
+      "imageId": "culture-erhai-black-dragon",
       "imageMatch": "verified"
     },
     "shaxi": {
@@ -463,7 +474,7 @@
       "addressVerified": true,
       "duration": "依團體安排",
       "rating": null,
-      "imageId": "songzanlin",
+      "imageId": "culture-temple",
       "imageMatch": "verified"
     },
     "dukezong": {
@@ -1764,7 +1775,7 @@
       },
       "researchCheckedAt": "2026-09-08T14:00:00+08:00",
       "customResearch": true,
-      "imageId": "xizhou-yan-courtyard",
+      "imageId": "culture-yan",
       "imageMatch": "verified"
     },
     "custom-xizhou-woxiang": {
@@ -1856,7 +1867,7 @@
       "researchCheckedAt": "2026-09-16T00:50:00+08:00",
       "customResearch": true,
       "xhsQuery": "大理 总统兵马大元帅府 杜文秀 攻略",
-      "imageId": "dali-history-reference",
+      "imageId": "culture-yan",
       "imageMatch": "context"
     },
     "custom-dali-art-factory": {
@@ -2206,7 +2217,7 @@
       },
       "researchCheckedAt": "2026-09-08T14:00:00+08:00",
       "customResearch": true,
-      "imageId": "black-dragon-pool-web",
+      "imageId": "culture-black-dragon-taboo",
       "imageReferenceId": "lijiang-city-reference",
       "imageMatch": "verified"
     },
@@ -5243,7 +5254,7 @@
         "night-sanyue",
         "night-live"
       ],
-      "imageId": "xizhou-yan-courtyard"
+      "imageId": "culture-yan"
     },
     {
       "day": 3,
@@ -5382,7 +5393,7 @@
         "night-moon",
         "night-guishan"
       ],
-      "imageId": "songzanlin"
+      "imageId": "culture-temple"
     },
     {
       "day": 6,
@@ -5579,7 +5590,7 @@
       "sourceLabel": "雲南省社會科學院 · 護國運動百年研討",
       "source": "https://www.sky.yn.gov.cn/dtxx/csdt/02052636331943959106",
       "republic": true,
-      "imageId": "cai-e-web",
+      "imageId": "culture-huaguo",
       "imageReferenceId": "kunming-history-reference",
       "imageMatch": "verified"
     },
@@ -5600,7 +5611,7 @@
       "sourceLabel": "西南聯大博物館 · 1946 年紀念碑",
       "source": "https://bwg.ynnu.edu.cn/info/1057/1343.htm",
       "republic": true,
-      "imageId": "swau-monument-web",
+      "imageId": "culture-lianda",
       "imageReferenceId": "kunming-history-reference",
       "imageMatch": "verified"
     },
@@ -5619,7 +5630,7 @@
       "sourceLabel": "華中師範大學 · 前身之華中大學",
       "source": "https://120th.ccnu.edu.cn/info/1005/1057.htm",
       "republic": true,
-      "imageId": "huazhong-migration-museum-web",
+      "imageId": "culture-huazhong",
       "imageMatch": "verified"
     },
     {
@@ -5637,7 +5648,7 @@
       "sourceLabel": "紫荊 · 百年嚴家大院現場報導",
       "source": "https://bau.com.hk/article/2024-04/11/content_1227912648774078464.html",
       "republic": true,
-      "imageId": "xizhou-yan-courtyard",
+      "imageId": "culture-yan",
       "imageMatch": "verified"
     },
     {
@@ -5658,7 +5669,7 @@
       "sourceLabel": "Harvard Library · Joseph F. Rock Collection",
       "source": "https://library.harvard.edu/collections/joseph-f-rock-collection",
       "republic": true,
-      "imageId": "joseph-rock-web",
+      "imageId": "culture-rock",
       "imageReferenceId": "lijiang-old-town",
       "imageMatch": "verified"
     },
@@ -5678,7 +5689,7 @@
       "sourceLabel": "Google Books · Lost Horizon 書目",
       "source": "https://books.google.com/books/about/Lost_Horizon.html?id=eyNBAQAAIAAJ",
       "republic": true,
-      "imageId": "lost-horizon-book-web",
+      "imageId": "culture-hilton",
       "imageMatch": "exact"
     },
     {
@@ -5697,7 +5708,7 @@
       "sourceLabel": "中國非物質文化遺產數位博物館 · 白族三道茶",
       "source": "https://www.ihchina.cn/project_details/15248/",
       "republic": false,
-      "imageId": "three-course-tea-web",
+      "imageId": "culture-three-teas",
       "imageReferenceId": "three-tea-reference",
       "imageMatch": "verified"
     },
@@ -5719,7 +5730,7 @@
       "sourceLabel": "UNESCO · 納西東巴古籍",
       "source": "https://www.unesco.org/en/memory-world/ancient-naxi-dongba-literature-manuscripts",
       "republic": false,
-      "imageId": "dongba-glyphs-web",
+      "imageId": "culture-dongba",
       "imageReferenceId": "dongba-reference",
       "imageMatch": "verified"
     },
@@ -5739,7 +5750,7 @@
       "sourceLabel": "中國非物質文化遺產數位博物館 · 迪慶鍋莊舞",
       "source": "https://www.ihchina.cn/project_details/12932/",
       "republic": false,
-      "imageId": "guozhuang-shangri-web",
+      "imageId": "culture-guozhuang",
       "imageMatch": "context"
     },
     {
@@ -5757,7 +5768,7 @@
       "sourceLabel": "中國網藝術中國 · 香格里拉參訪介紹",
       "source": "https://art.china.cn/travel/2015-04/13/content_7820617_2.htm",
       "republic": false,
-      "imageId": "songzanlin",
+      "imageId": "culture-temple",
       "imageMatch": "verified"
     },
     {
@@ -5777,7 +5788,7 @@
       "sourceLabel": "雲南宣傳網轉載經濟日報 · 蒙自過橋米線",
       "source": "https://www.ynxc.gov.cn/html/2024/jicengjichugongzuochuangxin_0827/3014723.html",
       "republic": false,
-      "imageId": "crossing-bridge-noodles",
+      "imageId": "culture-noodle-legend",
       "imageMatch": "verified"
     },
     {
@@ -5796,7 +5807,7 @@
       "sourceLabel": "大理白族自治州人民政府 · 大理四景的傳說",
       "source": "https://www.dali.gov.cn/dlzrmzf/c101715/pc/content/1968886801664937984/content_1968886801664937984.html",
       "republic": false,
-      "imageId": "shuanglang-open",
+      "imageId": "culture-erhai-black-dragon",
       "imageMatch": "context"
     },
     {
@@ -5814,7 +5825,7 @@
       "sourceLabel": "雲南省民政廳 · 地名風采（虎跳峽）",
       "source": "https://ynmz.yn.gov.cn/cms/dimingfengcai/11924.html",
       "republic": false,
-      "imageId": "tiger-gorge-open",
+      "imageId": "culture-tiger-leap-legend",
       "imageMatch": "verified"
     },
     {
@@ -5832,7 +5843,7 @@
       "sourceLabel": "中央民族大學 · 略論玉龍雪山的神聖空間信仰",
       "source": "https://cnwec.muc.edu.cn/info/1008/4798.htm",
       "republic": false,
-      "imageId": "spruce-web",
+      "imageId": "culture-yulong-third-kingdom",
       "imageMatch": "verified"
     },
     {
@@ -5852,7 +5863,7 @@
       "sourceLabel": "雲南省社會科學院 · 略論納西族飲食習俗的文化意蘊",
       "source": "https://www.sky.yn.gov.cn/xsyj/zgsd/0981427782649988185",
       "republic": false,
-      "imageId": "black-dragon-pool-web",
+      "imageId": "culture-black-dragon-taboo",
       "imageMatch": "verified"
     }
   ],
@@ -6505,7 +6516,7 @@
           "douyin_20260915_0010"
         ]
       },
-      "imageId": "songzanlin",
+      "imageId": "culture-temple",
       "imageMatch": "verified"
     },
     {
@@ -6776,8 +6787,8 @@
       "author": "Laura Blankenship",
       "license": "CC BY-SA 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-      "width": 1200,
-      "height": 1025,
+      "width": 1280,
+      "height": 1093,
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "crossing-bridge-noodles": {
@@ -6789,8 +6800,8 @@
       "author": "N509FZ",
       "license": "CC BY-SA 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "width": 1200,
-      "height": 800,
+      "width": 1280,
+      "height": 853,
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "xizhou-baba": {
@@ -6802,8 +6813,8 @@
       "author": "Mx. Granger",
       "license": "CC0",
       "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "width": 1200,
-      "height": 900,
+      "width": 1280,
+      "height": 960,
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "lijiang-baba": {
@@ -6815,8 +6826,8 @@
       "author": "Alpha",
       "license": "CC BY-SA 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-      "width": 1200,
-      "height": 900,
+      "width": 1280,
+      "height": 960,
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "chickpea-jelly": {
@@ -6828,8 +6839,8 @@
       "author": "Kent Wang",
       "license": "CC BY-SA 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-      "width": 1200,
-      "height": 896,
+      "width": 1280,
+      "height": 956,
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "flower-cake": {
@@ -6854,8 +6865,8 @@
       "author": "tak.wing",
       "license": "CC BY-SA 2.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-      "width": 1200,
-      "height": 900,
+      "width": 1280,
+      "height": 960,
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "ersi": {
@@ -6949,19 +6960,6 @@
       "height": 900,
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
-    "xizhou-yan-courtyard": {
-      "local": "images/places/xizhou-yan-courtyard.webp",
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Former_Residence_of_Yan_Zizhen_092_2017-09.jpg",
-      "alt": "喜洲嚴子珍故居第三進 · 現代實景",
-      "caption": "喜洲嚴子珍故居第三進 · 現代實景",
-      "source": "https://commons.wikimedia.org/wiki/File:Former_Residence_of_Yan_Zizhen_092_2017-09.jpg",
-      "author": "猫猫的日记本",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "width": 1200,
-      "height": 797,
-      "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
-    },
     "shaxi-sideng": {
       "local": "images/places/shaxi-sideng.webp",
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Ancient_Tea_Horse_Road_in_Sideng_Street.JPG",
@@ -6986,19 +6984,6 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
       "width": 1200,
       "height": 800,
-      "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
-    },
-    "songzanlin": {
-      "local": "images/places/songzanlin.webp",
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Songzanlin_monastery.jpg",
-      "alt": "香格里拉松贊林寺 · 現代實景",
-      "caption": "香格里拉松贊林寺 · 現代實景",
-      "source": "https://commons.wikimedia.org/wiki/File:Songzanlin_monastery.jpg",
-      "author": "Mulligan Stu",
-      "license": "CC BY 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
-      "width": 1200,
-      "height": 900,
       "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。"
     },
     "puer-tea": {
@@ -7104,19 +7089,6 @@
       "width": 440,
       "height": 240,
       "changes": "來源為 2026 年度海外員工旅遊手冊 p.8 裁圖；本地檔為該裁圖，remote 使用專案公開鏡像以確保 fallback 為同一張圖。 另曾以 https://commons.wikimedia.org/wiki/File:1_dali_old_town_yunnan_2012.jpg 作公開參考比對。"
-    },
-    "shuanglang-open": {
-      "local": "images/places/shuanglang-open.webp",
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Shuanglang,_Dali,_Yunnan,_China_02.jpg",
-      "alt": "大理雙廊與洱海景觀實拍",
-      "caption": "大理雙廊與洱海景觀實拍",
-      "source": "https://commons.wikimedia.org/wiki/File:Shuanglang,_Dali,_Yunnan,_China_02.jpg",
-      "author": "Zhangmoon618",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
-      "width": 1280,
-      "height": 836,
-      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "yulong-open": {
       "local": "images/handbook/yulong-handbook.webp",
@@ -7248,19 +7220,6 @@
       "height": 447,
       "changes": "使用 Wikimedia Commons 原圖；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
-    "dali-village-reference": {
-      "local": "images/places/xizhou-yan-courtyard.webp",
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Former_Residence_of_Yan_Zizhen_092_2017-09.jpg",
-      "alt": "大理白族院落情境參考圖；非鳳陽邑或有風小院指定建築",
-      "caption": "大理白族院落情境參考圖；非鳳陽邑或有風小院指定建築",
-      "source": "https://commons.wikimedia.org/wiki/File:Former_Residence_of_Yan_Zizhen_092_2017-09.jpg",
-      "author": "猫猫的日记本",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "width": 1200,
-      "height": 797,
-      "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。 此卡作為情境參考圖，非指定地點／店家的實景。"
-    },
     "shaxi-reference": {
       "local": "images/places/shaxi-sideng.webp",
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Ancient_Tea_Horse_Road_in_Sideng_Street.JPG",
@@ -7351,19 +7310,6 @@
       "width": 1280,
       "height": 853,
       "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 此卡作為情境參考圖，非指定地點／店家的實景。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
-    },
-    "dali-history-reference": {
-      "local": "images/places/xizhou-yan-courtyard.webp",
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Former_Residence_of_Yan_Zizhen_092_2017-09.jpg",
-      "alt": "喜洲白族院落情境參考圖；非故事所述戰時校舍實景",
-      "caption": "喜洲白族院落情境參考圖；非故事所述戰時校舍實景",
-      "source": "https://commons.wikimedia.org/wiki/File:Former_Residence_of_Yan_Zizhen_092_2017-09.jpg",
-      "author": "猫猫的日记本",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "width": 1200,
-      "height": 797,
-      "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。 此卡作為情境參考圖，非指定地點／店家的實景。"
     },
     "shangri-story-reference": {
       "local": "images/places/shangri-story-reference.webp",
@@ -7560,19 +7506,6 @@
       "height": 847,
       "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
-    "black-dragon-pool-web": {
-      "local": "images/places/black-dragon-pool-web.webp",
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Black_Dragon_Pool.jpg",
-      "alt": "麗江黑龍潭實景",
-      "caption": "麗江黑龍潭實景",
-      "source": "https://commons.wikimedia.org/wiki/File:Black_Dragon_Pool.jpg",
-      "author": "Chris from Canada",
-      "license": "CC BY 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
-      "width": 1024,
-      "height": 768,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
-    },
     "baiji-temple-web": {
       "local": "images/places/baiji-temple-web.webp",
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E7%99%BE%E9%B8%A1%E5%AF%BA_-_%E5%85%AD%E8%A7%92%E4%BA%AD_-_2025-05-09.jpg",
@@ -7638,19 +7571,6 @@
       "height": 960,
       "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
-    "three-course-tea-web": {
-      "local": "images/places/three-course-tea-web.webp",
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Three-Course_Tea.jpg",
-      "alt": "大理白族三道茶茶席",
-      "caption": "白族傳統三道茶茶席實景",
-      "source": "https://commons.wikimedia.org/wiki/File:Three-Course_Tea.jpg",
-      "author": "Mcx8202229",
-      "license": "CC0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "width": 900,
-      "height": 675,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
-    },
     "dongba-glyphs-web": {
       "local": "images/shopping/dongba-glyphs-web.webp",
       "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dongba_pictographic_glyphs_-_Lijiang.jpg",
@@ -7662,45 +7582,6 @@
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "width": 1280,
       "height": 711,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
-    },
-    "joseph-rock-web": {
-      "local": "images/places/joseph-rock-web.webp",
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rock_in_Yunnan.png",
-      "alt": "約瑟夫・洛克在雲南的歷史影像",
-      "caption": "約瑟夫・洛克在雲南的歷史影像",
-      "source": "https://commons.wikimedia.org/wiki/File:Rock_in_Yunnan.png",
-      "author": "Fotobaby",
-      "license": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "width": 844,
-      "height": 1125,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
-    },
-    "cai-e-web": {
-      "local": "images/places/cai-e-web.webp",
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E8%94%A1%E9%8D%94.jpg",
-      "alt": "蔡鍔歷史照片",
-      "caption": "《雲南首義擁護共和始末記》相關蔡鍔歷史影像",
-      "source": "https://commons.wikimedia.org/wiki/File:%E8%94%A1%E9%8D%94.jpg",
-      "author": "庾恩暘",
-      "license": "Public domain",
-      "licenseUrl": "https://commons.wikimedia.org/wiki/File:%E8%94%A1%E9%8D%94.jpg",
-      "width": 633,
-      "height": 1004,
-      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
-    },
-    "swau-monument-web": {
-      "local": "images/places/swau-monument-web.webp",
-      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Monument_of_National_Southwest_Associated_University_01.jpg",
-      "alt": "昆明國立西南聯合大學紀念碑",
-      "caption": "位於今雲南師範大學校園內的西南聯大紀念碑",
-      "source": "https://commons.wikimedia.org/wiki/File:The_Monument_of_National_Southwest_Associated_University_01.jpg",
-      "author": "Zhangmoon618",
-      "license": "CC BY-SA 3.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
-      "width": 1280,
-      "height": 1920,
       "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "hotel-kmg-airport-photo": {
@@ -8144,45 +8025,6 @@
       "width": 640,
       "height": 418,
       "changes": "只作「藏民家訪」活動情境示意，明確不冒充本團指定住家。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
-    },
-    "huazhong-migration-museum-web": {
-      "local": "images/places/huazhong-migration-museum-web.webp",
-      "remote": "https://gotten25235.github.io/ChinaYunnan/images/places/huazhong-migration-museum-web.webp",
-      "alt": "喜洲華中大學西遷紀念館實景",
-      "caption": "大理喜洲華中大學西遷紀念館相關實景。",
-      "source": "https://news.qq.com/rain/a/20250815A0422100",
-      "author": "騰訊新聞／雲南新聞廣播",
-      "license": "來源頁未標示再利用授權",
-      "licenseUrl": "https://news.qq.com/rain/a/20250815A0422100",
-      "width": 457,
-      "height": 608,
-      "changes": "使用直接對應喜洲華中大學西遷紀念主題的來源圖片。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
-    },
-    "lost-horizon-book-web": {
-      "local": "images/places/lost-horizon-book-web.webp",
-      "remote": "https://gotten25235.github.io/ChinaYunnan/images/places/lost-horizon-book-web.webp",
-      "alt": "James Hilton《Lost Horizon》1933 年版本書影",
-      "caption": "《Lost Horizon》（失落的地平線）1933 年版本書影。",
-      "source": "https://onlineonly.christies.com/s/fine-printed-books-manuscripts/lost-horizon-187/171016",
-      "author": "Christie’s",
-      "license": "來源頁未標示再利用授權",
-      "licenseUrl": "https://onlineonly.christies.com/s/fine-printed-books-manuscripts/lost-horizon-187/171016",
-      "width": 1279,
-      "height": 1280,
-      "changes": "使用作品本身的精確書影，作為「香格里拉」小說淵源故事圖。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
-    },
-    "guozhuang-shangri-web": {
-      "local": "images/places/guozhuang-shangri-web.webp",
-      "remote": "https://gotten25235.github.io/ChinaYunnan/images/places/guozhuang-shangri-web.webp",
-      "alt": "香格里拉藏族宴席與鍋莊歌舞情境",
-      "caption": "香格里拉藏族宴席／鍋莊歌舞情境；非本團固定演出場地。",
-      "source": "https://www.klook.com/fr/activity/158909-zhaya-tusi-feast-in-shangri-la/",
-      "author": "Klook 活動圖片",
-      "license": "來源頁未標示再利用授權",
-      "licenseUrl": "https://www.klook.com/fr/activity/158909-zhaya-tusi-feast-in-shangri-la/",
-      "width": 1280,
-      "height": 745,
-      "changes": "用於鍋莊文化故事背景，明確標示為情境而非本團場地。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。"
     },
     "souvenir-mohong-rose": {
       "local": "images/shopping/souvenir-mohong-rose.webp",
@@ -8648,8 +8490,8 @@
       "author": "NiwNip / Trip.com",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://hk.trip.com/moments/detail/lijiang-32-142727762?locale=en-HK",
-      "width": 0,
-      "height": 0,
+      "width": 640,
+      "height": 853,
       "changes": "同一 Trip.com NiwNip 來源頁改用圖集中的紅衣單人坐姿實拍；目前保留 exact remote fallback，執行 SYNC_IMAGES.bat 本地化後再由同步流程寫入實際尺寸。"
     },
     "pose-ideal-01": {
@@ -8791,8 +8633,8 @@
       "author": "Sophia Parrish31",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://tw.trip.com/moments/detail/dali-1445616-139386297/",
-      "width": 0,
-      "height": 0,
+      "width": 640,
+      "height": 959,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-sideng-02": {
@@ -8804,8 +8646,8 @@
       "author": "FreeSpiritNomad",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://sg.trip.com/moments/detail/jianchuan-2215-142401561/",
-      "width": 0,
-      "height": 0,
+      "width": 640,
+      "height": 426,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-yujin-02": {
@@ -8817,8 +8659,8 @@
       "author": "MilesByFong",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://my.trip.com/moments/detail/jianchuan-2215-134850704?locale=en-MY",
-      "width": 0,
-      "height": 0,
+      "width": 640,
+      "height": 480,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-blue-02": {
@@ -8830,8 +8672,8 @@
       "author": "_TI***kr",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://tw.trip.com/moments/detail/yulong-1446279-151905853/",
-      "width": 0,
-      "height": 0,
+      "width": 640,
+      "height": 948,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-ideal-02": {
@@ -8843,8 +8685,8 @@
       "author": "TranscontinentalWanderlust$11",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://tw.trip.com/moments/detail/dali-1445616-120934549/",
-      "width": 0,
-      "height": 0,
+      "width": 640,
+      "height": 853,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-spruce-02": {
@@ -8856,8 +8698,8 @@
       "author": "Trip.com",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://tw.trip.com/moments/detail/yulong-1446279-129573725/",
-      "width": 0,
-      "height": 0,
+      "width": 640,
+      "height": 960,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-ganhaizi-02": {
@@ -8869,8 +8711,8 @@
       "author": "Mandy Pua",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://my.trip.com/moments/detail/yulong-1446279-140235111?locale=en-MY",
-      "width": 0,
-      "height": 0,
+      "width": 640,
+      "height": 853,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-tiger-02": {
@@ -8882,8 +8724,8 @@
       "author": "Feastography",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://www.feastographyblog.com/blog/tiger-leaping-gorge",
-      "width": 0,
-      "height": 0,
+      "width": 1280,
+      "height": 853,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-songzanlin-02": {
@@ -8895,8 +8737,8 @@
       "author": "Trip.com",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://my.trip.com/moments/detail/shangri-la-106-125732812?locale=en-MY",
-      "width": 0,
-      "height": 0,
+      "width": 640,
+      "height": 640,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-dukezong-02": {
@@ -8908,8 +8750,8 @@
       "author": "Trip.com",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://hk.trip.com/moments/detail/shangri-la-106-137830554/",
-      "width": 0,
-      "height": 0,
+      "width": 640,
+      "height": 960,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
     },
     "pose-pudacuo-02": {
@@ -8934,9 +8776,204 @@
       "author": "攜程攻略",
       "license": "來源頁未標示可重用授權／私人旅程 Pose 參考",
       "licenseUrl": "https://you.ctrip.com/travels/lijiang32/4137872.html",
-      "width": 0,
-      "height": 0,
+      "width": 640,
+      "height": 960,
       "changes": "Pose 參考採精確遠端圖作唯一同步來源；SYNC_IMAGES.bat 只下載 remote 指定的同一張圖，不搜尋、不替換其他圖片。"
+    },
+    "culture-huaguo": {
+      "local": "images/culture/huaguo.webp",
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E8%94%A1%E9%8D%94.jpg",
+      "alt": "蔡鍔歷史照片",
+      "caption": "《雲南首義擁護共和始末記》相關蔡鍔歷史影像",
+      "source": "https://commons.wikimedia.org/wiki/File:%E8%94%A1%E9%8D%94.jpg",
+      "author": "庾恩暘",
+      "license": "Public domain",
+      "licenseUrl": "https://commons.wikimedia.org/wiki/File:%E8%94%A1%E9%8D%94.jpg",
+      "width": 633,
+      "height": 1004,
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-lianda": {
+      "local": "images/culture/lianda.webp",
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Monument_of_National_Southwest_Associated_University_01.jpg",
+      "alt": "昆明國立西南聯合大學紀念碑",
+      "caption": "位於今雲南師範大學校園內的西南聯大紀念碑",
+      "source": "https://commons.wikimedia.org/wiki/File:The_Monument_of_National_Southwest_Associated_University_01.jpg",
+      "author": "Zhangmoon618",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "width": 1280,
+      "height": 1920,
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-huazhong": {
+      "local": "images/culture/huazhong.webp",
+      "remote": "https://gotten25235.github.io/ChinaYunnan/images/culture/huazhong.webp",
+      "alt": "喜洲華中大學西遷紀念館實景",
+      "caption": "大理喜洲華中大學西遷紀念館相關實景。",
+      "source": "https://news.qq.com/rain/a/20250815A0422100",
+      "author": "騰訊新聞／雲南新聞廣播",
+      "license": "來源頁未標示再利用授權",
+      "licenseUrl": "https://news.qq.com/rain/a/20250815A0422100",
+      "width": 457,
+      "height": 608,
+      "changes": "使用直接對應喜洲華中大學西遷紀念主題的來源圖片。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-yan": {
+      "local": "images/culture/yan.webp",
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Former_Residence_of_Yan_Zizhen_092_2017-09.jpg",
+      "alt": "喜洲嚴子珍故居第三進 · 現代實景",
+      "caption": "喜洲嚴子珍故居第三進 · 現代實景",
+      "source": "https://commons.wikimedia.org/wiki/File:Former_Residence_of_Yan_Zizhen_092_2017-09.jpg",
+      "author": "猫猫的日记本",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "width": 1200,
+      "height": 797,
+      "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-rock": {
+      "local": "images/culture/rock.webp",
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Rock_in_Yunnan.png",
+      "alt": "約瑟夫・洛克在雲南的歷史影像",
+      "caption": "約瑟夫・洛克在雲南的歷史影像",
+      "source": "https://commons.wikimedia.org/wiki/File:Rock_in_Yunnan.png",
+      "author": "Fotobaby",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "width": 844,
+      "height": 1125,
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-hilton": {
+      "local": "images/culture/hilton.webp",
+      "remote": "https://gotten25235.github.io/ChinaYunnan/images/culture/hilton.webp",
+      "alt": "James Hilton《Lost Horizon》1933 年版本書影",
+      "caption": "《Lost Horizon》（失落的地平線）1933 年版本書影。",
+      "source": "https://onlineonly.christies.com/s/fine-printed-books-manuscripts/lost-horizon-187/171016",
+      "author": "Christie’s",
+      "license": "來源頁未標示再利用授權",
+      "licenseUrl": "https://onlineonly.christies.com/s/fine-printed-books-manuscripts/lost-horizon-187/171016",
+      "width": 1279,
+      "height": 1280,
+      "changes": "使用作品本身的精確書影，作為「香格里拉」小說淵源故事圖。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-three-teas": {
+      "local": "images/culture/three-teas.webp",
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Three-Course_Tea.jpg",
+      "alt": "大理白族三道茶茶席",
+      "caption": "白族傳統三道茶茶席實景",
+      "source": "https://commons.wikimedia.org/wiki/File:Three-Course_Tea.jpg",
+      "author": "Mcx8202229",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "width": 900,
+      "height": 675,
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-dongba": {
+      "local": "images/culture/dongba.webp",
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Dongba_pictographic_glyphs_-_Lijiang.jpg",
+      "alt": "麗江東巴象形文字",
+      "caption": "麗江東巴象形文字實景",
+      "source": "https://commons.wikimedia.org/wiki/File:Dongba_pictographic_glyphs_-_Lijiang.jpg",
+      "author": "6-A04-W96-K38-S41-V38",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "width": 1280,
+      "height": 711,
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-guozhuang": {
+      "local": "images/culture/guozhuang.webp",
+      "remote": "https://gotten25235.github.io/ChinaYunnan/images/culture/guozhuang.webp",
+      "alt": "香格里拉藏族宴席與鍋莊歌舞情境",
+      "caption": "香格里拉藏族宴席／鍋莊歌舞情境；非本團固定演出場地。",
+      "source": "https://www.klook.com/fr/activity/158909-zhaya-tusi-feast-in-shangri-la/",
+      "author": "Klook 活動圖片",
+      "license": "來源頁未標示再利用授權",
+      "licenseUrl": "https://www.klook.com/fr/activity/158909-zhaya-tusi-feast-in-shangri-la/",
+      "width": 1280,
+      "height": 745,
+      "changes": "用於鍋莊文化故事背景，明確標示為情境而非本團場地。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-temple": {
+      "local": "images/culture/temple.webp",
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Songzanlin_monastery.jpg",
+      "alt": "香格里拉松贊林寺 · 現代實景",
+      "caption": "香格里拉松贊林寺 · 現代實景",
+      "source": "https://commons.wikimedia.org/wiki/File:Songzanlin_monastery.jpg",
+      "author": "Mulligan Stu",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "width": 1200,
+      "height": 900,
+      "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-noodle-legend": {
+      "local": "images/culture/noodle-legend.webp",
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Crossing_the_Bridge_Rice_Noodles_full_ingredients_in_Mengzi_(20200126132053).jpg",
+      "alt": "蒙自過橋米線與配料實拍",
+      "caption": "蒙自過橋米線與配料實拍",
+      "source": "https://commons.wikimedia.org/wiki/File:Crossing_the_Bridge_Rice_Noodles_full_ingredients_in_Mengzi_(20200126132053).jpg",
+      "author": "N509FZ",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "width": 1200,
+      "height": 800,
+      "changes": "等比縮小、JPEG 重新編碼；版面顯示裁切。圖片沿用原授權。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-erhai-black-dragon": {
+      "local": "images/culture/erhai-black-dragon.webp",
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Shuanglang,_Dali,_Yunnan,_China_02.jpg",
+      "alt": "大理雙廊與洱海景觀實拍",
+      "caption": "大理雙廊與洱海景觀實拍",
+      "source": "https://commons.wikimedia.org/wiki/File:Shuanglang,_Dali,_Yunnan,_China_02.jpg",
+      "author": "Zhangmoon618",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "width": 1280,
+      "height": 836,
+      "changes": "使用 Wikimedia Commons 縮圖；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-tiger-leap-legend": {
+      "local": "images/culture/tiger-leap-legend.webp",
+      "remote": "https://gotten25235.github.io/ChinaYunnan/images/handbook/tiger-gorge-handbook.webp",
+      "alt": "虎跳峽手冊實景截圖",
+      "caption": "虎跳峽手冊實景截圖",
+      "source": "https://github.com/gotten25235/ChinaYunnan/blob/main/docs/sources/HANDBOOK_IMAGE_CROPS.md",
+      "author": "2026年度海外員工旅遊手冊 p.13",
+      "license": "內部手冊截圖",
+      "licenseUrl": "https://github.com/gotten25235/ChinaYunnan/blob/main/docs/sources/HANDBOOK_IMAGE_CROPS.md",
+      "width": 530,
+      "height": 355,
+      "changes": "來源為 2026 年度海外員工旅遊手冊 p.13 裁圖；本地檔為該裁圖，remote 使用專案公開鏡像以確保 fallback 為同一張圖。 另曾以 https://commons.wikimedia.org/wiki/File:Tiger_Leaping_Gorge_(20571199494).jpg 作公開參考比對。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-yulong-third-kingdom": {
+      "local": "images/culture/yulong-third-kingdom.webp",
+      "remote": "https://gotten25235.github.io/ChinaYunnan/images/handbook/spruce-handbook.webp",
+      "alt": "雲杉坪手冊實景截圖",
+      "caption": "雲杉坪手冊實景截圖",
+      "source": "https://github.com/gotten25235/ChinaYunnan/blob/main/docs/sources/HANDBOOK_IMAGE_CROPS.md",
+      "author": "2026年度海外員工旅遊手冊 p.10",
+      "license": "內部手冊截圖",
+      "licenseUrl": "https://github.com/gotten25235/ChinaYunnan/blob/main/docs/sources/HANDBOOK_IMAGE_CROPS.md",
+      "width": 685,
+      "height": 460,
+      "changes": "來源為 2026 年度海外員工旅遊手冊 p.10 裁圖；本地檔為該裁圖，remote 使用專案公開鏡像以確保 fallback 為同一張圖。 另曾以 https://commons.wikimedia.org/wiki/File:%E9%9B%B2%E6%9D%89%E5%9D%AA_-_panoramio.jpg 作公開參考比對。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
+    },
+    "culture-black-dragon-taboo": {
+      "local": "images/culture/black-dragon-taboo.webp",
+      "remote": "https://commons.wikimedia.org/wiki/Special:Redirect/file/Black_Dragon_Pool.jpg",
+      "alt": "麗江黑龍潭實景",
+      "caption": "麗江黑龍潭實景",
+      "source": "https://commons.wikimedia.org/wiki/File:Black_Dragon_Pool.jpg",
+      "author": "Chris from Canada",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "width": 1024,
+      "height": 768,
+      "changes": "使用 Wikimedia Commons Special:Redirect 取得網頁顯示尺寸；網站版面以 CSS 裁切顯示。 本地化時重新編碼為 WebP（最長邊不超過 1280px），供離線與節省手機流量使用。 風俗與故事專用本地副本；來源與內容沿用原圖，不改變圖片身分。"
     }
   },
   "heroImageId": "blue-moon-photo",
@@ -8966,7 +9003,7 @@
       "title": "松贊林寺門票",
       "city": "香格里拉",
       "category": "門票比價",
-      "imageId": "songzanlin",
+      "imageId": "culture-temple",
       "primaryLabel": "人工窗口分享價",
       "primaryPrice": "¥65",
       "comparisons": [

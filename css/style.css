@@ -1922,6 +1922,45 @@ html{
 .utility-card--flight,.utility-card--settings{border-radius:16px}
 .utility-card--tip{background:#fff;border:1px solid var(--line);padding:22px;border-radius:var(--card-system-radius);box-shadow:var(--card-system-shadow)}
 .utility-card--tip .description{font-size:.9rem;color:var(--muted);margin:10px 0 12px}
+
+
+/* TIPS / SUN WISH — isolated departure-reminder easter egg. */
+.sun-wish{position:relative;isolation:isolate;overflow:hidden;min-width:0;margin:0 0 22px;padding:12px 14px 34px;border:1px solid var(--line);border-radius:var(--card-system-radius);background:linear-gradient(115deg,var(--paper) 10%,#e4ebdf 60%,#b6c8b7);text-align:center;color:var(--ink);box-shadow:var(--card-system-shadow)}
+.sun-wish__sky{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.sun-wish__button{display:block;position:relative;width:100px;height:112px;padding:2px 6px;margin:80px auto 4px;border-radius:18px;touch-action:manipulation}
+.sun-wish__button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.sun-wish__float,.sun-wish__figure{display:block;width:100%;height:100%;transform-origin:50% 40%}
+.sun-wish__float{animation:sunWishFloat 3.8s ease-in-out infinite}
+#view-tips[aria-hidden="true"] .sun-wish__float{animation-play-state:paused}
+.sun-wish__doll{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 3px 2px #284e3510)}
+.sun-wish__figure.is-praying{animation:sunWishPray .95s ease-in-out}
+.sun-wish__copy{position:relative;pointer-events:none}
+.sun-wish__copy h3{margin:0 0 2px;font-size:1rem;line-height:1.5;letter-spacing:.06em;font-weight:650}
+.sun-wish__copy p{margin:0;font-size:.8rem;color:var(--muted);line-height:1.7}
+.sun-wish__copy .sun-wish__count{margin-top:6px;font-size:.7rem;font-variant-numeric:tabular-nums}
+.sun-wish__credit{position:absolute;right:12px;bottom:8px;z-index:2;display:flex;align-items:center;gap:5px;font-size:.64rem;line-height:1.35;color:var(--muted);white-space:nowrap}
+.sun-wish__credit a{color:inherit;text-decoration:none;text-underline-offset:2px}
+.sun-wish__credit a:hover,.sun-wish__credit a:focus-visible{color:var(--ink);text-decoration:underline}
+.sun-wish__sun{position:absolute;width:80px;height:80px;top:5px;right:clamp(10px,6%,100px);opacity:0;visibility:hidden;transform:translateY(240px);transition:transform 3s cubic-bezier(.22,.55,.32,1) .15s,opacity 3s ease .15s,visibility 0s .15s}
+.sun-wish.is-sunny .sun-wish__sun{visibility:visible;opacity:1;transform:translateY(0)}
+.sun-wish:not(.is-sunny) .sun-wish__sun{transition:none}
+.sun-wish.is-fading .sun-wish__sun{opacity:0;transform:translateY(0);visibility:visible;transition:opacity 1.3s ease}
+.sun-wish__sun-symbol{display:block;width:100%;height:100%;filter:drop-shadow(0 0 4px #ffffff35)}
+.sun-wish__sun-symbol.is-glowing{animation:sunWishGlow 1s ease-in-out}
+.sun-wish__cloud{position:absolute;width:105px;height:40px;fill:#fff;opacity:.48;transition:transform 3s ease,opacity 3s ease}
+.sun-wish__cloud--left{left:5%;top:66px}
+.sun-wish__cloud--right{right:4%;top:52px;width:90px}
+.sun-wish.is-sunny .sun-wish__cloud--left{transform:translateX(-14px);opacity:.16}
+.sun-wish.is-sunny .sun-wish__cloud--right{transform:translateX(18px);opacity:.1}
+@keyframes sunWishFloat{0%,100%{transform:translateY(2px) rotate(-1.5deg)}50%{transform:translateY(-2px) rotate(1.5deg)}}
+@keyframes sunWishPray{0%,100%{transform:rotate(0)}25%{transform:translateY(-4px) rotate(-9deg)}60%{transform:translateY(-2px) rotate(8deg)}82%{transform:rotate(-3deg)}}
+@keyframes sunWishGlow{0%,100%{filter:drop-shadow(0 0 4px #ffffff35)}50%{filter:drop-shadow(0 0 9px #ffffffa0)}}
+@keyframes sunWishAcknowledge{50%{opacity:.65}}
+@media(min-width:761px){.sun-wish{padding-top:14px;padding-bottom:36px}.sun-wish__button{width:106px;height:118px;margin-top:87px}.sun-wish__sun{width:88px;height:88px;top:4px;right:17%}.sun-wish__cloud--left{left:18%}.sun-wish__cloud--right{right:18%}}
+@media(prefers-reduced-motion:reduce){.sun-wish__float{animation:none}.sun-wish__figure.is-praying{animation:sunWishAcknowledge .25s ease}.sun-wish__sun,.sun-wish__cloud,.sun-wish.is-fading .sun-wish__sun{transition:none}.sun-wish__sun-symbol.is-glowing{animation:none}}
+html[data-theme="dark"] .sun-wish{background:linear-gradient(115deg,#1b2521,#1b302d);border-color:var(--line)}
+html[data-theme="dark"] .sun-wish__cloud{fill:var(--muted);opacity:.13}
+html[data-theme="dark"] .sun-wish.is-sunny .sun-wish__cloud{opacity:.04}
 .utility-card--timetable{border-radius:9px}
 
 /* Missing thumbnails in Journey/Compact surfaces keep their slot and centered label. */
@@ -2459,6 +2498,29 @@ html[data-runtime-layout="mobile-desktop"] .map-detail-shell{
 @media(max-width:600px){.photo-pose-source{align-items:flex-start;flex-direction:column}.photo-pose-source a{min-height:32px}.photo-pose-image-fallback{min-height:220px}}
 
 /* APPEARANCE THEME — settings-owned light/dark presentation. System preference resolves to one of these data-theme values. */
+/* Explicit LIGHT theme. Fixed light uses `only light` in JS/meta so Android/Samsung
+   auto-dark must not reinterpret the page just because the OS itself is dark. */
+html[data-theme="light"]{
+  --paper:#f7f6f1;
+  --ink:#213e37;
+  --green:#183e36;
+  --muted:#68776f;
+  --line:#e0e4dc;
+  --gold:#ad8645;
+  --blue:#e9f2f1;
+  --white:#fff;
+  --card-system-shadow:0 3px 14px #16392f08;
+  --card-system-shadow-hover:0 8px 22px #16392f12;
+  background:#f7f6f1;
+}
+html[data-theme-preference="light"]{color-scheme:only light}
+html[data-theme="light"] body{background:#f7f6f1;color:#213e37}
+html[data-theme="light"] :is(select,input,textarea){background:#fff;color:#213e37;border-color:#cbd5cc}
+html[data-theme="light"] :is(.day-card,.place-card,.flight-group,.culture-card,.content-card,.itinerary-slide-card,.map-strip-card,.map-detail-shell,.content-reader-dialog){background:#fff;color:#213e37}
+html[data-theme="light"] :is(.theme-mode-card,.layout-mode-card,.network-profile-card,.nav-provider-card,.weather-provider-settings){background:#fff;color:#213e37}
+html[data-theme="light"] .bottom-nav{background:#fcfdf9f2;color:#213e37}
+html[data-theme="light"] #today{background:#e6eee1;color:#213e37}
+
 html[data-theme="dark"]{
   --paper:#121916;
   --ink:#e6eee9;

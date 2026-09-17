@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>雲南慢時光｜動態橫幅開發示範</title>
+  <link rel="stylesheet" href="../../css/banner.css">
+  <style>
+    :root{color-scheme:light;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Microsoft JhengHei",sans-serif;background:#f3f5f0;color:#203a34}
+    *{box-sizing:border-box}body{margin:0;padding:28px 0 48px}.dev-shell{width:min(100%,1320px);margin:auto}.dev-head{width:calc(100% - 60px);max-width:1240px;margin:0 auto 14px;display:flex;align-items:end;justify-content:space-between;gap:16px}.dev-head h1{font-size:18px;margin:0}.dev-head p{font-size:12px;color:#6b7b74;margin:0}.dev-note{width:calc(100% - 60px);max-width:1240px;margin:14px auto 0;font-size:12px;color:#6b7b74;line-height:1.7}@media(max-width:600px){body{padding-top:18px}.dev-head,.dev-note{width:calc(100% - 36px)}.dev-head{align-items:flex-start;flex-direction:column;gap:4px}}
+  </style>
+</head>
+<body>
+  <main class="dev-shell">
+    <header class="dev-head">
+      <h1>雲南慢時光 · 動態橫幅示範</h1>
+      <p>DEV harness · 直接載入正式 css/banner.css 與 js/banner.js</p>
+    </header>
+
+    <section aria-label="雲南慢時光旅程概覽" class="yn-banner">
+      <div class="yn-photo-wrap yn-back"><img alt="藍月谷雪山與藍天白雲" class="yn-photo" src="../../images/places/blue-moon-valley.webp"></div>
+      <div aria-hidden="true" class="yn-photo-wrap yn-fore"><img alt="" class="yn-photo" src="../../images/places/blue-moon-valley.webp"></div>
+      <canvas aria-hidden="true" class="yn-clouds"></canvas>
+      <div aria-hidden="true" class="yn-mist yn-mist-left"></div>
+      <div aria-hidden="true" class="yn-mist yn-mist-right"></div>
+      <div class="yn-shade"></div>
+      <div aria-hidden="true" class="yn-sun-glow"></div>
+      <div aria-hidden="true" class="yn-sun"></div>
+      <div aria-hidden="true" class="yn-explore"></div>
+      <div class="yn-copy">
+        <span class="yn-eyebrow">一場向山與風出發的旅行</span>
+        <h1>雲南<span>慢時光</span><i>Take it slow.</i></h1>
+        <p class="yn-cities">KUNMING · DALI · LIJIANG · SHANGRI-LA</p>
+        <span class="yn-date">2026.09.18 — 09.25</span>
+      </div>
+      <div class="yn-caption">藍月谷 · 把日子留給山海</div>
+      <ol aria-label="旅程路線" class="yn-route">
+        <li class="yn-stop" style="--i:0"><button aria-pressed="false" class="yn-city" data-caption="昆明 · 春城啟程" type="button"><span aria-hidden="true" class="yn-dot"></span>昆明</button><span aria-hidden="true" class="yn-track"></span></li>
+        <li class="yn-stop" style="--i:1"><button aria-pressed="false" class="yn-city" data-caption="大理 · 風從洱海來" type="button"><span aria-hidden="true" class="yn-dot"></span>大理</button><span aria-hidden="true" class="yn-track"></span></li>
+        <li class="yn-stop" style="--i:2"><button aria-pressed="false" class="yn-city" data-caption="麗江 · 古城與雪山之間" type="button"><span aria-hidden="true" class="yn-dot"></span>麗江</button><span aria-hidden="true" class="yn-track"></span></li>
+        <li class="yn-stop" style="--i:3"><button aria-pressed="false" class="yn-city" data-caption="香格里拉 · 向雲深處" type="button"><span aria-hidden="true" class="yn-dot"></span>香格里拉</button><span aria-hidden="true" class="yn-track"></span></li>
+        <li class="yn-stop" style="--i:4"><button aria-pressed="false" class="yn-city" data-caption="麗江 · 回望玉龍雪山" type="button"><span aria-hidden="true" class="yn-dot"></span>麗江</button><span aria-hidden="true" class="yn-track"></span></li>
+        <li class="yn-stop" style="--i:5"><button aria-pressed="false" class="yn-city" data-caption="昆明 · 山河歸途" type="button"><span aria-hidden="true" class="yn-dot"></span>昆明</button></li>
+      </ol>
+      <button aria-label="暫停動畫" aria-pressed="false" class="yn-control" title="暫停動畫" type="button">Ⅱ</button>
+    </section>
+
+    <p class="dev-note">此頁只供開發比對。正式網站仍由根目錄 <code>index.html</code> 使用同一組 production banner CSS / JS；刪除 <code>dev/</code> 不影響網站。</p>
+  </main>
+  <script src="../../js/banner.js"></script>
+</body>
+</html>

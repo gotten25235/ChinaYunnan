@@ -1,814 +1,884 @@
-﻿Remote-backed image records: 155
+﻿Remote-backed image records: 169
 Browser: imageId -> local -> remote -> no image
 SYNC: exact remote URL only -> decode/convert -> local WebP
 No search, no substitute image, no data-mode switching.
 
-[1/155] butter-tea
+[1/169] butter-tea
   local:  images/food/butter-tea.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Butter_tea_20120622.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
+  local exists but is NOT verified for this exact remote; refresh required
+  downloaded: 681 KiB (image/jpeg)
+  redirect: https://upload.wikimedia.org/wikipedia/commons/f/f3/Butter_tea_20120622.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original
+  SYNCED -> images/food/butter-tea.webp
 
-[2/155] crossing-bridge-noodles
+[2/169] crossing-bridge-noodles
   local:  images/food/crossing-bridge-noodles.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Crossing_the_Bridge_Rice_Noodles_full_ingredients_in_Mengzi_(20200126132053).jpg
-  VERIFIED: exact remote + local SHA-256 match cache
+  local exists but is NOT verified for this exact remote; refresh required
+  downloaded: 6661 KiB (image/jpeg)
+  redirect: https://upload.wikimedia.org/wikipedia/commons/b/bd/Crossing_the_Bridge_Rice_Noodles_full_ingredients_in_Mengzi_%2820200126132053%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original
+  SYNCED -> images/food/crossing-bridge-noodles.webp
 
-[3/155] xizhou-baba
+[3/169] xizhou-baba
   local:  images/food/xizhou-baba.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Xizhou_baba.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
+  local exists but is NOT verified for this exact remote; refresh required
+    retry 1/2: HTTPError: HTTP Error 429: Too many requests (f061ab2)
+    retry 2/2: HTTPError: HTTP Error 429: Too many requests (f061ab2)
+  downloaded: 3977 KiB (image/jpeg)
+  redirect: https://upload.wikimedia.org/wikipedia/commons/4/4a/Xizhou_baba.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original
+  SYNCED -> images/food/xizhou-baba.webp
 
-[4/155] lijiang-baba
+[4/169] lijiang-baba
   local:  images/food/lijiang-baba.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E4%B8%BD%E6%B1%9F%E7%B2%91%E7%B2%91_Lijiang_Ba_Ba_Bread_with_spring_onion_and_egg_-_street_vendor_CNY4.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
+  local exists but is NOT verified for this exact remote; refresh required
+  downloaded: 253 KiB (image/jpeg)
+  redirect: https://upload.wikimedia.org/wikipedia/commons/5/5d/%E4%B8%BD%E6%B1%9F%E7%B2%91%E7%B2%91_Lijiang_Ba_Ba_Bread_with_spring_onion_and_egg_-_street_vendor_CNY4.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original
+  SYNCED -> images/food/lijiang-baba.webp
 
-[5/155] chickpea-jelly
+[5/169] chickpea-jelly
   local:  images/food/chickpea-jelly.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E4%B8%BD%E6%B1%9F%E9%B8%A1%E8%B1%8C%E8%B1%86%E5%87%89%E7%B2%89_-_Chicken_pea_jelly.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
+  local exists but is NOT verified for this exact remote; refresh required
+    retry 1/2: HTTPError: HTTP Error 429: Too many requests (f061ab2)
+    retry 2/2: HTTPError: HTTP Error 429: Too many requests (f061ab2)
+  downloaded: 2695 KiB (image/jpeg)
+  redirect: https://upload.wikimedia.org/wikipedia/commons/f/f9/%E4%B8%BD%E6%B1%9F%E9%B8%A1%E8%B1%8C%E8%B1%86%E5%87%89%E7%B2%89_-_Chicken_pea_jelly.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original
+  SYNCED -> images/food/chickpea-jelly.webp
 
-[6/155] flower-cake
+[6/169] flower-cake
   local:  images/shopping/flower-cake.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E4%BA%91%E5%8D%97%E7%8E%AB%E7%91%B0%E9%B2%9C%E8%8A%B1%E9%A5%BC-2164122.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[7/155] rushan
+[7/169] rushan
   local:  images/shopping/rushan.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E5%A4%A7%E7%90%86%E8%A1%97%E8%BE%B9%E7%9A%84%E7%83%A4%E4%B9%B3%E6%89%87.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[8/155] ersi
+[8/169] ersi
   local:  images/food/ersi.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E5%B7%8D%E5%B1%B1%E8%80%99%E8%82%89%E9%A5%B5%E4%B8%9D.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[9/155] erkuai
+[9/169] erkuai
   local:  images/food/erkuai.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E6%98%86%E6%98%8E%E8%8B%B1%E5%87%A4%E7%83%A7%E9%A5%B5%E5%9D%97.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[10/155] steam-pot-chicken
+[10/169] steam-pot-chicken
   local:  images/food/steam-pot-chicken.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E6%B1%BD%E9%94%85%E9%B8%A1_-_5059256289.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[11/155] barley-cake
+[11/169] barley-cake
   local:  images/food/barley-cake.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E9%9D%92%E7%A8%9E%E9%A5%BC.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[12/155] bai-cuisine
+[12/169] bai-cuisine
   local:  images/food/bai-cuisine.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E6%B0%B4%E6%80%A7%E6%9D%A8%E8%8A%B1.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[13/155] tibetan-cuisine
+[13/169] tibetan-cuisine
   local:  images/food/tibetan-cuisine.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E9%85%A5%E6%B2%B9%E7%85%8E%E5%A5%B6%E6%B8%A3_Yak_milk_curd_in_yak_butter_-_Tibetan_Restaurant_CNY28.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[14/155] wild-mushrooms
+[14/169] wild-mushrooms
   local:  images/food/wild-mushrooms.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E9%87%8E%E7%94%9F%E8%8F%8C%E7%81%AB%E9%94%85-1813888.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[15/155] xizhou-yan-courtyard
-  local:  images/places/xizhou-yan-courtyard.webp
-  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Former_Residence_of_Yan_Zizhen_092_2017-09.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[16/155] shaxi-sideng
+[15/169] shaxi-sideng
   local:  images/places/shaxi-sideng.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Ancient_Tea_Horse_Road_in_Sideng_Street.JPG
   VERIFIED: exact remote + local SHA-256 match cache
 
-[17/155] lijiang-old-town
+[16/169] lijiang-old-town
   local:  images/places/lijiang-old-town.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Lijiang_Yunnan_Old-town-01.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[18/155] songzanlin
-  local:  images/places/songzanlin.webp
-  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Songzanlin_monastery.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[19/155] puer-tea
+[17/169] puer-tea
   local:  images/shopping/puer-tea.webp
   remote: https://upload.wikimedia.org/wikipedia/commons/1/1a/Pu-erh_tea.JPG
   VERIFIED: exact remote + local SHA-256 match cache
 
-[20/155] yunnan-coffee
+[18/169] yunnan-coffee
   local:  images/shopping/yunnan-coffee.webp
   remote: https://upload.wikimedia.org/wikipedia/commons/e/e7/Django_coffee_from_Yunnan%2C_China.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[21/155] xuanwei-ham
+[19/169] xuanwei-ham
   local:  images/shopping/xuanwei-ham.webp
   remote: https://upload.wikimedia.org/wikipedia/commons/4/45/%2824473506755%29Xuanwei_ham.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[22/155] bai-tiedye
+[20/169] bai-tiedye
   local:  images/shopping/bai-tiedye.webp
   remote: https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/%E5%A4%A7%E7%90%86%E5%96%9C%E6%B4%B2%E6%89%8E%E6%9F%93.jpg/960px-%E5%A4%A7%E7%90%86%E5%96%9C%E6%B4%B2%E6%89%8E%E6%9F%93.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[23/155] silver-craft
+[21/169] silver-craft
   local:  images/shopping/silver-craft.webp
   remote: https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/%E9%93%B6%E5%99%A8-%E5%A4%A7%E7%90%86%E7%A5%A5%E4%BA%91_1.jpg/960px-%E9%93%B6%E5%99%A8-%E5%A4%A7%E7%90%86%E7%A5%A5%E4%BA%91_1.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[24/155] yak-meat
+[22/169] yak-meat
   local:  images/shopping/yak-meat.webp
   remote: https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Dried_Meat_Yak_store%2C_Square_Street_2.JPG/960px-Dried_Meat_Yak_store%2C_Square_Street_2.JPG
   VERIFIED: exact remote + local SHA-256 match cache
 
-[25/155] blue-moon-photo
+[23/169] blue-moon-photo
   local:  images/places/blue-moon-valley.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1_%E8%93%9D%E6%9C%88%E8%B0%B7_Blue_Moon_Valley_-_panoramio.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[26/155] dali-old-town-open
+[24/169] dali-old-town-open
   local:  images/handbook/dali-old-town-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/dali-old-town-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[27/155] shuanglang-open
-  local:  images/places/shuanglang-open.webp
-  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Shuanglang,_Dali,_Yunnan,_China_02.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[28/155] yulong-open
+[25/169] yulong-open
   local:  images/handbook/yulong-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/yulong-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[29/155] impression-lijiang-open
+[26/169] impression-lijiang-open
   local:  images/handbook/impression-lijiang-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/impression-lijiang-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[30/155] first-bend-open
+[27/169] first-bend-open
   local:  images/handbook/first-bend-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/first-bend-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[31/155] tiger-gorge-open
+[28/169] tiger-gorge-open
   local:  images/handbook/tiger-gorge-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/tiger-gorge-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[32/155] dukezong-open
+[29/169] dukezong-open
   local:  images/handbook/dukezong-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/dukezong-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[33/155] pudacuo-open
+[30/169] pudacuo-open
   local:  images/handbook/pudacuo-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/pudacuo-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[34/155] shuhe-open
+[31/169] shuhe-open
   local:  images/handbook/shuhe-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/shuhe-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[35/155] kunming-jinma-open
+[32/169] kunming-jinma-open
   local:  images/places/kunming-jinma-open.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Kunming_Jinma_Biji_Fang_20250813_183853.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[36/155] kunming-nanping-open
+[33/169] kunming-nanping-open
   local:  images/places/kunming-nanping-open.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E6%98%86%E6%98%8E%E5%B8%82%E5%8D%97%E5%B1%8F%E8%A1%97_-_2025-05-16_01.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[37/155] kunming-railway-open
+[34/169] kunming-railway-open
   local:  images/places/kunming-railway-open.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Kunming_Railway_Station.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[38/155] dali-village-reference
-  local:  images/places/xizhou-yan-courtyard.webp
-  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Former_Residence_of_Yan_Zizhen_092_2017-09.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[39/155] shaxi-reference
+[35/169] shaxi-reference
   local:  images/places/shaxi-sideng.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Ancient_Tea_Horse_Road_in_Sideng_Street.JPG
   VERIFIED: exact remote + local SHA-256 match cache
 
-[40/155] lijiang-market-reference
+[36/169] lijiang-market-reference
   local:  images/shopping/xuanwei-ham.webp
   remote: https://upload.wikimedia.org/wikipedia/commons/4/45/%2824473506755%29Xuanwei_ham.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[41/155] tibetan-home-reference
+[37/169] tibetan-home-reference
   local:  images/food/tibetan-cuisine.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E9%85%A5%E6%B2%B9%E7%85%8E%E5%A5%B6%E6%B8%A3_Yak_milk_curd_in_yak_butter_-_Tibetan_Restaurant_CNY28.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[42/155] kunming-city-reference
+[38/169] kunming-city-reference
   local:  images/places/kunming-jinma-open.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Kunming_Jinma_Biji_Fang_20250813_183853.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[43/155] dali-city-reference
+[39/169] dali-city-reference
   local:  images/places/dali-city-reference.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/1_dali_old_town_yunnan_2012.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[44/155] lijiang-city-reference
+[40/169] lijiang-city-reference
   local:  images/places/lijiang-old-town.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Lijiang_Yunnan_Old-town-01.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[45/155] kunming-history-reference
+[41/169] kunming-history-reference
   local:  images/places/kunming-jinma-open.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Kunming_Jinma_Biji_Fang_20250813_183853.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[46/155] dali-history-reference
-  local:  images/places/xizhou-yan-courtyard.webp
-  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Former_Residence_of_Yan_Zizhen_092_2017-09.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[47/155] shangri-story-reference
+[42/169] shangri-story-reference
   local:  images/places/shangri-story-reference.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/20260225_Skyline_of_Dukezong_Ancient_Town_Shangri-La_12.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[48/155] three-tea-reference
+[43/169] three-tea-reference
   local:  images/food/bai-cuisine.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E6%B0%B4%E6%80%A7%E6%9D%A8%E8%8A%B1.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[49/155] dongba-reference
+[44/169] dongba-reference
   local:  images/places/lijiang-old-town.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Lijiang_Yunnan_Old-town-01.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[50/155] guozhuang-reference
+[45/169] guozhuang-reference
   local:  images/food/tibetan-cuisine.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E9%85%A5%E6%B2%B9%E7%85%8E%E5%A5%B6%E6%B8%A3_Yak_milk_curd_in_yak_butter_-_Tibetan_Restaurant_CNY28.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[51/155] xizhou-web
+[46/169] xizhou-web
   local:  images/handbook/xizhou-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/xizhou-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[52/155] yujin-web
+[47/169] yujin-web
   local:  images/handbook/yujin-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/yujin-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[53/155] spruce-web
+[48/169] spruce-web
   local:  images/handbook/spruce-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/spruce-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[54/155] ganhaizi-web
+[49/169] ganhaizi-web
   local:  images/handbook/ganhaizi-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/ganhaizi-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[55/155] lijiang-sifang-web
+[50/169] lijiang-sifang-web
   local:  images/places/lijiang-sifang-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E4%B8%BD%E6%B1%9F%E5%9B%9B%E6%96%B9%E8%A1%97.JPG
   VERIFIED: exact remote + local SHA-256 match cache
 
-[56/155] dukezong-sifang-web
+[51/169] dukezong-sifang-web
   local:  images/places/dukezong-sifang-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E7%8B%AC%E5%85%8B%E5%AE%97%E5%8F%A4%E5%9F%8E_-_%E5%9B%9B%E6%96%B9%E8%A1%97%E5%B9%BF%E5%9C%BA_-_2025-05-08.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[57/155] zhongyi-market-web
+[52/169] zhongyi-market-web
   local:  images/places/zhongyi-market-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Zhongyi_Market_(48366765802).jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[58/155] dali-sanyue-web
+[53/169] dali-sanyue-web
   local:  images/places/dali-sanyue-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E5%A4%A7%E7%90%86%E4%B8%89%E6%9C%88%E8%A1%97.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[59/155] kunming-old-street-web
+[54/169] kunming-old-street-web
   local:  images/places/kunming-old-street-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E6%98%86%E6%98%8E%E8%80%81%E8%A1%97-%E6%96%87%E5%BA%99%E7%9B%B4%E8%A1%97.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[60/155] three-pagodas-reflection-web
+[55/169] three-pagodas-reflection-web
   local:  images/places/three-pagodas-reflection-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Reflection_of_the_Three_Pagodas_in_the_Lake.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[61/155] baisha-old-town-web
+[56/169] baisha-old-town-web
   local:  images/places/baisha-old-town-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Baisha_Old_Town_(20572649363).jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[62/155] black-dragon-pool-web
-  local:  images/places/black-dragon-pool-web.webp
-  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Black_Dragon_Pool.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[63/155] baiji-temple-web
+[57/169] baiji-temple-web
   local:  images/places/baiji-temple-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E7%99%BE%E9%B8%A1%E5%AF%BA_-_%E5%85%AD%E8%A7%92%E4%BA%AD_-_2025-05-09.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[64/155] diqing-museum-web
+[58/169] diqing-museum-web
   local:  images/places/diqing-museum-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E8%BF%AA%E5%BA%86%E5%B7%9E%E5%8D%9A%E7%89%A9%E9%A6%86_-_2025-05-08_01.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[65/155] napa-lake-web
+[59/169] napa-lake-web
   local:  images/places/napa-lake-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Napa_Lake.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[66/155] yunnan-military-academy-web
+[60/169] yunnan-military-academy-web
   local:  images/places/yunnan-military-academy-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/2025-02-05_Yunnan_Military_Academy_%E9%9B%B2%E5%8D%97%E9%99%B8%E8%BB%8D%E8%AC%9B%E6%AD%A6%E5%A0%82_02.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[67/155] green-lake-park-web
+[61/169] green-lake-park-web
   local:  images/places/green-lake-park-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/GreenLakePark.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[68/155] three-course-tea-web
-  local:  images/places/three-course-tea-web.webp
-  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Three-Course_Tea.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[69/155] dongba-glyphs-web
+[62/169] dongba-glyphs-web
   local:  images/shopping/dongba-glyphs-web.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Dongba_pictographic_glyphs_-_Lijiang.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[70/155] joseph-rock-web
-  local:  images/places/joseph-rock-web.webp
-  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Rock_in_Yunnan.png
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[71/155] cai-e-web
-  local:  images/places/cai-e-web.webp
-  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E8%94%A1%E9%8D%94.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[72/155] swau-monument-web
-  local:  images/places/swau-monument-web.webp
-  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Monument_of_National_Southwest_Associated_University_01.jpg
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[73/155] hotel-kmg-airport-photo
+[63/169] hotel-kmg-airport-photo
   local:  images/hotels/kunming-airport-liyi.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/hotels/kunming-airport-liyi.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[74/155] hotel-dali-photo
+[64/169] hotel-dali-photo
   local:  images/hotels/dali-hilton-garden.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/hotels/dali-hilton-garden.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[75/155] hotel-aderman-photo
+[65/169] hotel-aderman-photo
   local:  images/hotels/lijiang-aderman-garden-villa.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/hotels/lijiang-aderman-garden-villa.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[76/155] hotel-shangri-photo
+[66/169] hotel-shangri-photo
   local:  images/hotels/shangri-la-lano.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/hotels/shangri-la-lano.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[77/155] hotel-mushroom-photo
+[67/169] hotel-mushroom-photo
   local:  images/hotels/lijiang-mushroom-south-building.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/hotels/lijiang-mushroom-south-building.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[78/155] hotel-holiday-photo
+[68/169] hotel-holiday-photo
   local:  images/hotels/kunming-holiday-inn-centre.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/hotels/kunming-holiday-inn-centre.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[79/155] airline-cathay-pacific
+[69/169] airline-cathay-pacific
   local:  images/airlines/cathay-pacific-a350-wide.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Cathay_Pacific_Airbus_A350_(35328009086).jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[80/155] airline-china-eastern
+[70/169] airline-china-eastern
   local:  images/airlines/china-eastern-787-wide.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/China_Eastern_Airlines_Boeing_787-9_Dreamliner_B-206k.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[81/155] flight-outbound-illustration
+[71/169] flight-outbound-illustration
   local:  images/airlines/cathay-pacific-a350-wide.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Cathay_Pacific_Airbus_A350_(35328009086).jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[82/155] flight-inbound-illustration
+[72/169] flight-inbound-illustration
   local:  images/airlines/china-eastern-787-wide.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/China_Eastern_Airlines_Boeing_787-9_Dreamliner_B-206k.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[83/155] idealbang-handbook
+[73/169] idealbang-handbook
   local:  images/handbook/idealbang-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/idealbang-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[84/155] yunnan-impression-handbook
+[74/169] yunnan-impression-handbook
   local:  images/handbook/yunnan-impression-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/yunnan-impression-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[85/155] guishan-handbook
+[75/169] guishan-handbook
   local:  images/handbook/guishan-handbook.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/guishan-handbook.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[86/155] xizhou-carriage
+[76/169] xizhou-carriage
   local:  images/places/xizhou-carriage.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/xizhou-carriage.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[87/155] dali-sour-fish
+[77/169] dali-sour-fish
   local:  images/food/dali-sour-fish.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/food/dali-sour-fish.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[88/155] lijiang-rib-hotpot
+[78/169] lijiang-rib-hotpot
   local:  images/food/lijiang-rib-hotpot.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/food/lijiang-rib-hotpot.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[89/155] yak-yogurt
+[79/169] yak-yogurt
   local:  images/food/yak-yogurt.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/food/yak-yogurt.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[90/155] fengyang-exact-web
+[80/169] fengyang-exact-web
   local:  images/places/fengyang-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/fengyang-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[91/155] youfeng-yard-exact-web
+[81/169] youfeng-yard-exact-web
   local:  images/places/youfeng-yard-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/youfeng-yard-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[92/155] dali-art-factory-exact-web
+[82/169] dali-art-factory-exact-web
   local:  images/places/dali-art-factory-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/dali-art-factory-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[93/155] zhuanxin-market-exact-web
+[83/169] zhuanxin-market-exact-web
   local:  images/places/zhuanxin-market-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/zhuanxin-market-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[94/155] qianwang-street-exact-web
+[84/169] qianwang-street-exact-web
   local:  images/places/qianwang-street-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/qianwang-street-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[95/155] kunming-hanglung-exact-web
+[85/169] kunming-hanglung-exact-web
   local:  images/places/kunming-hanglung-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/kunming-hanglung-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[96/155] kunming-jinge-verified-web
+[86/169] kunming-jinge-verified-web
   local:  images/places/kunming-jinge-verified-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/kunming-jinge-verified-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[97/155] dali-renmin-road-exact-web
+[87/169] dali-renmin-road-exact-web
   local:  images/places/dali-renmin-road-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/dali-renmin-road-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[98/155] kunming-nanqiang-exact-web
+[88/169] kunming-nanqiang-exact-web
   local:  images/places/kunming-nanqiang-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/kunming-nanqiang-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[99/155] xizhou-woxiang-exact-web
+[89/169] xizhou-woxiang-exact-web
   local:  images/places/xizhou-woxiang-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/xizhou-woxiang-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[100/155] shaxi-chichaqu-exact-web
+[90/169] shaxi-chichaqu-exact-web
   local:  images/places/shaxi-chichaqu-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/shaxi-chichaqu-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[101/155] shaxi-corvus-exact-web
+[91/169] shaxi-corvus-exact-web
   local:  images/places/shaxi-corvus-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/shaxi-corvus-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[102/155] shuhe-tingyin-exact-web
+[92/169] shuhe-tingyin-exact-web
   local:  images/places/shuhe-tingyin-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/shuhe-tingyin-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[103/155] naxi-grilled-meat-exact-web
+[93/169] naxi-grilled-meat-exact-web
   local:  images/food/naxi-grilled-meat-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/food/naxi-grilled-meat-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[104/155] yak-hotpot-exact-web
+[94/169] yak-hotpot-exact-web
   local:  images/food/yak-hotpot-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/food/yak-hotpot-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[105/155] smallpot-noodle-exact-web
+[95/169] smallpot-noodle-exact-web
   local:  images/food/smallpot-noodle-exact-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/food/smallpot-noodle-exact-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[106/155] shangri-home-visit-web
+[96/169] shangri-home-visit-web
   local:  images/places/shangri-home-visit-web.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/places/shangri-home-visit-web.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[107/155] huazhong-migration-museum-web
-  local:  images/places/huazhong-migration-museum-web.webp
-  remote: https://gotten25235.github.io/ChinaYunnan/images/places/huazhong-migration-museum-web.webp
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[108/155] lost-horizon-book-web
-  local:  images/places/lost-horizon-book-web.webp
-  remote: https://gotten25235.github.io/ChinaYunnan/images/places/lost-horizon-book-web.webp
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[109/155] guozhuang-shangri-web
-  local:  images/places/guozhuang-shangri-web.webp
-  remote: https://gotten25235.github.io/ChinaYunnan/images/places/guozhuang-shangri-web.webp
-  VERIFIED: exact remote + local SHA-256 match cache
-
-[110/155] souvenir-mohong-rose
+[97/169] souvenir-mohong-rose
   local:  images/shopping/souvenir-mohong-rose.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-mohong-rose.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[111/155] souvenir-boletus
+[98/169] souvenir-boletus
   local:  images/shopping/souvenir-boletus.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-boletus.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[112/155] souvenir-mushroom-sauce
+[99/169] souvenir-mushroom-sauce
   local:  images/shopping/souvenir-mushroom-sauce.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-mushroom-sauce.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[113/155] souvenir-xiangxun-mushroom
+[100/169] souvenir-xiangxun-mushroom
   local:  images/shopping/souvenir-xiangxun-mushroom.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-xiangxun-mushroom.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[114/155] souvenir-fruit-wine
+[101/169] souvenir-fruit-wine
   local:  images/shopping/souvenir-fruit-wine.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-fruit-wine.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[115/155] souvenir-xuanwei-ham
+[102/169] souvenir-xuanwei-ham
   local:  images/shopping/souvenir-xuanwei-ham.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-xuanwei-ham.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[116/155] souvenir-spicy-sausage
+[103/169] souvenir-spicy-sausage
   local:  images/shopping/souvenir-spicy-sausage.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-spicy-sausage.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[117/155] souvenir-rose-crisp
+[104/169] souvenir-rose-crisp
   local:  images/shopping/souvenir-rose-crisp.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-rose-crisp.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[118/155] souvenir-crossing-bridge-noodle
+[105/169] souvenir-crossing-bridge-noodle
   local:  images/shopping/souvenir-crossing-bridge-noodle.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-crossing-bridge-noodle.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[119/155] souvenir-tamarind-cake
+[106/169] souvenir-tamarind-cake
   local:  images/shopping/souvenir-tamarind-cake.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-tamarind-cake.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[120/155] souvenir-rose-cake
+[107/169] souvenir-rose-cake
   local:  images/shopping/souvenir-rose-cake.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-rose-cake.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[121/155] souvenir-green-preserved-plum
+[108/169] souvenir-green-preserved-plum
   local:  images/shopping/souvenir-green-preserved-plum.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-green-preserved-plum.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[122/155] souvenir-yuntui-cracker
+[109/169] souvenir-yuntui-cracker
   local:  images/shopping/souvenir-yuntui-cracker.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-yuntui-cracker.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[123/155] souvenir-mushroom-ganba
+[110/169] souvenir-mushroom-ganba
   local:  images/shopping/souvenir-mushroom-ganba.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-mushroom-ganba.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[124/155] souvenir-yuntui-small-cake
+[111/169] souvenir-yuntui-small-cake
   local:  images/shopping/souvenir-yuntui-small-cake.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-yuntui-small-cake.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[125/155] souvenir-milk-strip
+[112/169] souvenir-milk-strip
   local:  images/shopping/souvenir-milk-strip.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-milk-strip.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[126/155] souvenir-barley-crisp
+[113/169] souvenir-barley-crisp
   local:  images/shopping/souvenir-barley-crisp.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-barley-crisp.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[127/155] souvenir-sweet-sausage
+[114/169] souvenir-sweet-sausage
   local:  images/shopping/souvenir-sweet-sausage.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-sweet-sausage.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[128/155] souvenir-potato-shreds
+[115/169] souvenir-potato-shreds
   local:  images/shopping/souvenir-potato-shreds.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-potato-shreds.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[129/155] souvenir-bean-pod-doll
+[116/169] souvenir-bean-pod-doll
   local:  images/shopping/souvenir-bean-pod-doll.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-bean-pod-doll.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[130/155] souvenir-tile-cat
+[117/169] souvenir-tile-cat
   local:  images/shopping/souvenir-tile-cat.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-tile-cat.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[131/155] souvenir-jiama-craft
+[118/169] souvenir-jiama-craft
   local:  images/shopping/souvenir-jiama-craft.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-jiama-craft.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[132/155] souvenir-mushroom-dry-goods
+[119/169] souvenir-mushroom-dry-goods
   local:  images/shopping/souvenir-mushroom-dry-goods.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-mushroom-dry-goods.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[133/155] souvenir-elephant-pendant
+[120/169] souvenir-elephant-pendant
   local:  images/shopping/souvenir-elephant-pendant.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-elephant-pendant.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[134/155] souvenir-xiangxun-mushroom-alt
+[121/169] souvenir-xiangxun-mushroom-alt
   local:  images/shopping/souvenir-xiangxun-mushroom.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/shopping/souvenir-xiangxun-mushroom.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[135/155] dali-north-market-context
+[122/169] dali-north-market-context
   local:  images/places/dali-city-reference.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/1_dali_old_town_yunnan_2012.jpg
   VERIFIED: exact remote + local SHA-256 match cache
 
-[136/155] dali-corn-juice
+[123/169] dali-corn-juice
   local:  images/food/dali-corn-juice.webp
   remote: https://gotten25235.github.io/ChinaYunnan/images/food/dali-corn-juice.webp
   VERIFIED: exact remote + local SHA-256 match cache
 
-[137/155] pose-fengyang-01
+[124/169] pose-fengyang-01
   local:  images/pose/fengyang-01.webp
   remote: https://ak-d.tripcdn.com/images/1mi5r12000gej5c15BC75.jpg?proc=source%2Ftrip
   downloaded: 339 KiB (image/avif)
-  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EE8F8BD0>
+  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x000001841EBB7DB0>
 
-[138/155] pose-xizhou-01
+[125/169] pose-xizhou-01
   local:  images/pose/xizhou-01.webp
   remote: https://dimg04.c-ctrip.com/images/0103t1200091z661h47E7_W_640_0_Q90.jpg?proc=autoorient
-  downloaded: 101 KiB (image/jpeg)
-  SYNCED -> images/pose/xizhou-01.webp
+  VERIFIED: exact remote + local SHA-256 match cache
 
-[139/155] pose-xizhou-02
+[126/169] pose-xizhou-02
   local:  images/pose/xizhou-02.webp
   remote: https://dimg04.c-ctrip.com/images/0101a1200091z651t07D0_W_640_0_Q90.jpg?proc=autoorient
-  downloaded: 122 KiB (image/jpeg)
-  SYNCED -> images/pose/xizhou-02.webp
+  VERIFIED: exact remote + local SHA-256 match cache
 
-[140/155] pose-xizhou-03
+[127/169] pose-xizhou-03
   local:  images/pose/xizhou-03.webp
   remote: https://dimg04.c-ctrip.com/images/0106r1200091z670wD375_W_640_0_Q90.jpg?proc=autoorient
-  downloaded: 234 KiB (image/jpeg)
-  SYNCED -> images/pose/xizhou-03.webp
+  VERIFIED: exact remote + local SHA-256 match cache
 
-[141/155] pose-sideng-01
+[128/169] pose-sideng-01
   local:  images/pose/sideng-01.webp
   remote: https://ak-d.tripcdn.com/images/1mi16224x8zs812n12E62.jpg?proc=source%2Ftrip
   downloaded: 157 KiB (image/avif)
-  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8A9A90>
+  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x000001841EBB7CC0>
 
-[142/155] pose-yujin-01
+[129/169] pose-yujin-01
   local:  images/pose/yujin-01.webp
   remote: https://ak-d.tripcdn.com/images/1mi04224x9443yq4g4D5D_Q90.jpg?proc=source%2Ftrip
   downloaded: 210 KiB (image/avif)
-  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8A9EA0>
+  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x000001841EBB7E50>
 
-[143/155] pose-blue-01
+[130/169] pose-blue-01
   local:  images/pose/blue-01.webp
   remote: https://ak-d.tripcdn.com/images/1mi6n224x90hj2m6jB20A.jpg?proc=source%2Ftrip
   downloaded: 232 KiB (image/avif)
-  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8A92C0>
+  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x000001841EBA9AE0>
 
-[144/155] pose-lijiang-01
+[131/169] pose-lijiang-01
   local:  images/pose/lijiang-01.webp
-  remote: https://dimg04.c-ctrip.com/images/0104n1200086t0l1z1554_W_640_0_Q90.jpg?proc=autoorient
-  downloaded: 78 KiB (image/jpeg)
-  SYNCED -> images/pose/lijiang-01.webp
+  remote: https://dimg04.c-ctrip.com/images/0106i1200086t0hi646A2_W_640_0_Q90.jpg?proc=autoorient
+  VERIFIED: exact remote + local SHA-256 match cache
 
-[145/155] pose-lijiang-02
+[132/169] pose-lijiang-02
   local:  images/pose/lijiang-02.webp
-  remote: https://ak-d.tripcdn.com/images/1mi3a224x98k04lak79F0.jpg?proc=source%2Ftrip
-  downloaded: 212 KiB (image/avif)
-  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8A9C20>
+  remote: https://ak-d.tripcdn.com/images/1mi3d224x98k08i107603_W_640_0_R5_Q80.jpg?proc=source%2Ftrip
+  VERIFIED: exact remote + local SHA-256 match cache
 
-[146/155] pose-ideal-01
+[133/169] pose-ideal-01
   local:  images/pose/ideal-01.webp
   remote: https://dimg04.c-ctrip.com/images/1me3j12000ro7ko9c237C_R_640_10000_Q90.jpg?proc=source%2Ftripcommunity
-  downloaded: 250 KiB (image/jpeg)
-  SYNCED -> images/pose/ideal-01.webp
+  VERIFIED: exact remote + local SHA-256 match cache
 
-[147/155] pose-spruce-01
+[134/169] pose-spruce-01
   local:  images/pose/spruce-01.webp
   remote: https://ak-d.tripcdn.com/images/1mi6z12000qr7agt0FD1D.webp?proc=source%2Ftrip
   downloaded: 147 KiB (image/avif)
-  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8A9D10>
+  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x000001841EBB7C70>
 
-[148/155] pose-ganhaizi-01
+[135/169] pose-ganhaizi-01
   local:  images/pose/ganhaizi-01.webp
   remote: https://ak-d.tripcdn.com/images/1mi6a224x97u33mrs3550.jpg?proc=source%2Ftrip
   downloaded: 225 KiB (image/avif)
-  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8A9C70>
+  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x000001841C897900>
 
-[149/155] pose-tiger-01
+[136/169] pose-tiger-01
   local:  images/pose/tiger-01.webp
   remote: https://images.squarespace-cdn.com/content/v1/62f1cb15a2cb083186ccd6d1/47e67160-5ca7-46ce-90a7-fddb48409770/9B1B2342-540D-4652-B4D1-FC569811EEF7-2209-000000DAB2284851.jpg?format=1500w
-  downloaded: 300 KiB (image/webp)
-  SYNCED -> images/pose/tiger-01.webp
+  VERIFIED: exact remote + local SHA-256 match cache
 
-[150/155] pose-songzanlin-01
+[137/169] pose-songzanlin-01
   local:  images/pose/songzanlin-01.webp
   remote: https://ak-d.tripcdn.com/images/1mi5y224x8x6z43duBD76.jpg?proc=source%2Ftrip
   downloaded: 44 KiB (image/avif)
-  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8B56D0>
+  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x000001841EB9CBD0>
 
-[151/155] pose-dukezong-01
+[138/169] pose-dukezong-01
   local:  images/pose/dukezong-01.webp
   remote: https://ak-d.tripcdn.com/images/1mi3o12000pn3cy0iB6B4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip
-  downloaded: 116 KiB (image/jpeg)
-  SYNCED -> images/pose/dukezong-01.webp
+  VERIFIED: exact remote + local SHA-256 match cache
 
-[152/155] pose-pudacuo-01
+[139/169] pose-pudacuo-01
   local:  images/pose/pudacuo-01.webp
   remote: https://static.wixstatic.com/media/d5e5c4_f9a9867b037448d38ac3a94d2ebc1401~mv2.jpg/v1/fill/w_568%2Ch_758%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/d5e5c4_f9a9867b037448d38ac3a94d2ebc1401~mv2.jpg
   downloaded: 165 KiB (image/avif)
-  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x00000174EF8B5450>
+  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x000001841EB9CBD0>
 
-[153/155] pose-shuhe-01
+[140/169] pose-shuhe-01
   local:  images/pose/shuhe-01.webp
   remote: https://dimg04.c-ctrip.com/images/1mf3m12000ehj1jk43860_W_640_0_Q90.jpg?proc=autoorient
-  downloaded: 82 KiB (image/jpeg)
-  SYNCED -> images/pose/shuhe-01.webp
+  VERIFIED: exact remote + local SHA-256 match cache
 
-[154/155] souvenir-tamarind
+[141/169] souvenir-tamarind
   local:  images/shopping/souvenir-tamarind.webp
   remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Tamarind_fruits_%28Tamarindus_indica_%27Si_Thong%27%29.jpg
-  downloaded: 22302 KiB (image/jpeg)
-  redirect: https://upload.wikimedia.org/wikipedia/commons/c/cd/Tamarind_fruits_%28Tamarindus_indica_%27Si_Thong%27%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original
-  SYNCED -> images/shopping/souvenir-tamarind.webp
+  VERIFIED: exact remote + local SHA-256 match cache
 
-[155/155] souvenir-wild-mushroom-beer
+[142/169] souvenir-wild-mushroom-beer
   local:  images/shopping/souvenir-wild-mushroom-beer.webp
   remote: https://static.foodtalks.cn/image/post/12c10dfb268cfa8af9fb818c1382037d.jpg
-  downloaded: 204 KiB (image/jpg)
-  SYNCED -> images/shopping/souvenir-wild-mushroom-beer.webp
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[143/169] pose-fengyang-02
+  local:  images/pose/fengyang-02.webp
+  remote: https://ak-d.tripcdn.com/images/1mi4b12000qj3gtie4307_W_640_0_R5_Q80.jpg?proc=source%2Ftrip
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[144/169] pose-sideng-02
+  local:  images/pose/sideng-02.webp
+  remote: https://ak-d.tripcdn.com/images/1mi5a12000rnehl4k614E_W_640_0_R5_Q80.jpg?proc=source%2Ftrip
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[145/169] pose-yujin-02
+  local:  images/pose/yujin-02.webp
+  remote: https://ak-d.tripcdn.com/images/1mi62224x9443zx6x9781_W_640_0_R5_Q80.jpg?proc=source%2Ftrip
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[146/169] pose-blue-02
+  local:  images/pose/blue-02.webp
+  remote: https://ak-d.tripcdn.com/images/1mi4x12000tqkk414523A_W_640_0_R5_Q80.jpg?proc=source%2Ftrip
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[147/169] pose-ideal-02
+  local:  images/pose/ideal-02.webp
+  remote: https://ak-d.tripcdn.com/images/1mi3f12000dmljimw5520_W_640_0_R5_Q80.jpg?proc=source%2Ftrip
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[148/169] pose-spruce-02
+  local:  images/pose/spruce-02.webp
+  remote: https://ak-d.tripcdn.com/images/1mi6y12000iqdhnobF6F4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[149/169] pose-ganhaizi-02
+  local:  images/pose/ganhaizi-02.webp
+  remote: https://ak-d.tripcdn.com/images/1mi6t224x97u43xde1A1B_W_640_0_R5_Q80.jpg?proc=source%2Ftrip
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[150/169] pose-tiger-02
+  local:  images/pose/tiger-02.webp
+  remote: https://images.squarespace-cdn.com/content/v1/62f1cb15a2cb083186ccd6d1/89bc1905-2512-48b5-a433-e997903154bc/2E6B6B98-CD12-4C2B-A020-3EBF0A5E9829-2209-000000D9F5E35AAB.jpg
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[151/169] pose-songzanlin-02
+  local:  images/pose/songzanlin-02.webp
+  remote: https://ak-d.tripcdn.com/images/1mi1t224x8x6y3cbl76B4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[152/169] pose-dukezong-02
+  local:  images/pose/dukezong-02.webp
+  remote: https://ak-d.tripcdn.com/images/1mi5n12000pn3ctrs86BA_W_640_0_R5_Q80.jpg?proc=source%2Ftrip
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[153/169] pose-pudacuo-02
+  local:  images/pose/pudacuo-02.webp
+  remote: https://static.wixstatic.com/media/d5e5c4_e020a1b3c55646f1b356607fc4be1af9~mv2.jpg/v1/fill/w_980%2Ch_1307%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/d5e5c4_e020a1b3c55646f1b356607fc4be1af9~mv2.jpg
+  downloaded: 304 KiB (image/avif)
+  FAILED: UnidentifiedImageError: cannot identify image file <_io.BytesIO object at 0x000001841EB9CE00>
+
+[154/169] pose-shuhe-02
+  local:  images/pose/shuhe-02.webp
+  remote: https://dimg04.c-ctrip.com/images/1mf3p12000ehj1cnxA02A_W_640_0_Q90.jpg?proc=autoorient
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[155/169] culture-huaguo
+  local:  images/culture/huaguo.webp
+  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/%E8%94%A1%E9%8D%94.jpg
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[156/169] culture-lianda
+  local:  images/culture/lianda.webp
+  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Monument_of_National_Southwest_Associated_University_01.jpg
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[157/169] culture-huazhong
+  local:  images/culture/huazhong.webp
+  remote: https://gotten25235.github.io/ChinaYunnan/images/culture/huazhong.webp
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[158/169] culture-yan
+  local:  images/culture/yan.webp
+  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Former_Residence_of_Yan_Zizhen_092_2017-09.jpg
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[159/169] culture-rock
+  local:  images/culture/rock.webp
+  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Rock_in_Yunnan.png
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[160/169] culture-hilton
+  local:  images/culture/hilton.webp
+  remote: https://gotten25235.github.io/ChinaYunnan/images/culture/hilton.webp
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[161/169] culture-three-teas
+  local:  images/culture/three-teas.webp
+  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Three-Course_Tea.jpg
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[162/169] culture-dongba
+  local:  images/culture/dongba.webp
+  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Dongba_pictographic_glyphs_-_Lijiang.jpg
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[163/169] culture-guozhuang
+  local:  images/culture/guozhuang.webp
+  remote: https://gotten25235.github.io/ChinaYunnan/images/culture/guozhuang.webp
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[164/169] culture-temple
+  local:  images/culture/temple.webp
+  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Songzanlin_monastery.jpg
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[165/169] culture-noodle-legend
+  local:  images/culture/noodle-legend.webp
+  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Crossing_the_Bridge_Rice_Noodles_full_ingredients_in_Mengzi_(20200126132053).jpg
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[166/169] culture-erhai-black-dragon
+  local:  images/culture/erhai-black-dragon.webp
+  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Shuanglang,_Dali,_Yunnan,_China_02.jpg
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[167/169] culture-tiger-leap-legend
+  local:  images/culture/tiger-leap-legend.webp
+  remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/tiger-gorge-handbook.webp
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[168/169] culture-yulong-third-kingdom
+  local:  images/culture/yulong-third-kingdom.webp
+  remote: https://gotten25235.github.io/ChinaYunnan/images/handbook/spruce-handbook.webp
+  VERIFIED: exact remote + local SHA-256 match cache
+
+[169/169] culture-black-dragon-taboo
+  local:  images/culture/black-dragon-taboo.webp
+  remote: https://commons.wikimedia.org/wiki/Special:Redirect/file/Black_Dragon_Pool.jpg
+  VERIFIED: exact remote + local SHA-256 match cache
 
 Updated image width/height from packaged local WebP files.
 
-> generate_image_sources.py
-
-> generate_pose_sources.py
-
-> generate_offline_manifest.py
-
-> generate_build_manifest.py
-
-> validate_project.py
+> release.py --new-build
 
 Sync incomplete: 9 image(s) still use the exact remote fallback.
 No all-local ZIP was created. See:
@@ -817,9 +887,9 @@ No all-local ZIP was created. See:
 
 ============================================================
 FINAL IMAGE SYNC SUMMARY
-Total   : 155
-Success : 10
-Ignored : 136
+Total   : 169
+Success : 5
+Ignored : 155
 Failed  : 9
 Errors  : 0
 

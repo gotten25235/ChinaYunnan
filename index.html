@@ -1,8 +1,10 @@
 <!doctype html>
-<html lang="zh-Hant" data-app-version="1.6.9" data-app-build="20260917-095306">
+<html lang="zh-Hant" data-app-version="1.6.9" data-app-build="20260917-150456">
 <head>
   <meta charset="utf-8">
   <meta id="app-viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta id="app-color-scheme" name="color-scheme" content="light dark">
+  <meta id="app-theme-color" name="theme-color" content="#f7f6f1">
   <script>
     (() => {
       const key='yunnan-2026-ui-layout-v1';
@@ -31,12 +33,18 @@
       let themePreference='system';
       try{const savedTheme=localStorage.getItem(themeKey);if(savedTheme==='system'||savedTheme==='light'||savedTheme==='dark')themePreference=savedTheme;}catch{}
       const resolvedTheme=themePreference==='system'?(window.matchMedia?.('(prefers-color-scheme: dark)')?.matches?'dark':'light'):themePreference;
+      const schemeMeta=document.getElementById('app-color-scheme');
+      const themeMeta=document.getElementById('app-theme-color');
       document.documentElement.dataset.themePreference=themePreference;
       document.documentElement.dataset.theme=resolvedTheme;
-      document.documentElement.style.colorScheme=resolvedTheme;
+      // Fixed light must opt out of Android/Samsung auto-darkening. System mode
+      // may follow the OS; fixed dark remains explicitly dark.
+      const schemeValue=themePreference==='light'?'only light':themePreference==='dark'?'dark':'light dark';
+      document.documentElement.style.colorScheme=schemeValue;
+      if(schemeMeta)schemeMeta.setAttribute('content',schemeValue);
+      if(themeMeta)themeMeta.setAttribute('content',resolvedTheme==='dark'?'#121916':'#f7f6f1');
     })();
   </script>
-  <meta name="theme-color" content="#183e36">
   <meta name="description" content="雲南八日隨身旅遊助手：每日行程、夜間逍遙、地圖、美食與收藏。">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -44,20 +52,21 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <title>雲南慢時光 · 8 日雲南旅程</title>
-  <link rel="stylesheet" href="css/style.css?b=20260917-095306">
-  <link rel="stylesheet" href="css/banner.css?b=20260917-095306">
-  <script defer src="js/network.js?b=20260917-095306"></script>
-  <script defer src="js/core.js?b=20260917-095306"></script>
-  <script defer src="js/analytics.js?b=20260917-095306"></script>
-  <script defer src="js/weather.js?b=20260917-095306"></script>
-  <script defer src="js/offline.js?b=20260917-095306"></script>
-  <script defer src="js/settings.js?b=20260917-095306"></script>
-  <script defer src="js/reader.js?b=20260917-095306"></script>
-  <script defer src="js/journey.js?b=20260917-095306"></script>
-  <script defer src="js/map.js?b=20260917-095306"></script>
-  <script defer src="js/library.js?b=20260917-095306"></script>
-  <script defer src="js/banner.js?b=20260917-095306"></script>
-  <script defer src="js/app.js?b=20260917-095306"></script>
+  <link rel="stylesheet" href="css/style.css?b=20260917-150456">
+  <link rel="stylesheet" href="css/banner.css?b=20260917-150456">
+  <script defer src="js/network.js?b=20260917-150456"></script>
+  <script defer src="js/core.js?b=20260917-150456"></script>
+  <script defer src="js/analytics.js?b=20260917-150456"></script>
+  <script defer src="js/weather.js?b=20260917-150456"></script>
+  <script defer src="js/offline.js?b=20260917-150456"></script>
+  <script defer src="js/settings.js?b=20260917-150456"></script>
+  <script defer src="js/reader.js?b=20260917-150456"></script>
+  <script defer src="js/journey.js?b=20260917-150456"></script>
+  <script defer src="js/map.js?b=20260917-150456"></script>
+  <script defer src="js/library.js?b=20260917-150456"></script>
+  <script defer src="js/tips.js?b=20260917-150456"></script>
+  <script defer src="js/banner.js?b=20260917-150456"></script>
+  <script defer src="js/app.js?b=20260917-150456"></script>
 </head>
 <body>
   <a class="skip" href="#main">跳到內容</a>

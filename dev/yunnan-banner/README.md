@@ -1,6 +1,14 @@
 # 雲南慢時光｜動態橫幅 V1
 
+## 開發模型紀錄
+
+- 動態橫幅設計與開發：`ChatGPT SOL 5.6`
+
 本文件專門記錄首頁動態雲霧橫幅的互動、效能、安全與整合邊界。橫幅已直接合併到主網站「旅程總覽」上方，不使用 iframe，也不建立獨立 Tab。
+> 開發文件位置：`dev/yunnan-banner/YUNNAN_BANNER.md`  
+> 對應示範頁：`dev/yunnan-banner/yunnan-banner.html`  
+> `dev/yunnan-banner/` 僅供開發與回歸檢查，正式網站 runtime 不依賴此資料夾。
+
 
 ## 功能
 
@@ -16,7 +24,7 @@
 
 ## UI
 
-- 橫幅位於主網站「旅程總覽」最上方，取代舊靜態 Hero。
+- 橫幅位於主網站「旅程總覽」最上方，作為首頁 Hero。
 - 不顯示「點一下 · 雲開見晴」或其他點擊提示文字；互動功能本身保留。
 - 底部城市節點只控制橫幅 Caption、焦點與放晴效果，不直接切換 Day 1–8。
 - 主網站正式日期與 Day 導航仍由既有旅程資料與行程元件負責。
@@ -30,7 +38,7 @@
 - `IntersectionObserver` 在橫幅離開可視區域時停止動畫排程。
 - 頁面進入背景時停止動畫排程，回到前景後依原狀態續播。
 - WebGL context lost 時會停用程序霧層，避免錯誤持續影響頁面。
-- 使用單一 V1 現代瀏覽器實作，不保留舊版相容分支。
+- 使用單一 V1 現代瀏覽器實作。
 
 ## 狀態記憶
 
@@ -44,8 +52,8 @@ yn-banner-animation-paused-v1
 
 ## 圖片與授權
 
-- 橫幅前景與背景共用主專案既有的 `images/places/blue-moon-valley.webp`，不再把同一張 WebP 以 Base64 內嵌兩次。
-- 該圖也是原主網站 Hero 使用的藍月谷照片，因此沿用現有圖片來源與授權紀錄，不新增第二份圖片資產。
+- 橫幅前景與背景共用主專案 `images/places/blue-moon-valley.webp`，不重複內嵌圖片資料。
+- 圖片來源與授權沿用 Image Registry 的既有紀錄，只保留單一圖片資產。
 - 圖片來源與授權仍以 `trip-data.json` / generated source ledger 的既有紀錄為準。
 
 ## 主網站整合
@@ -66,7 +74,7 @@ yn-banner-animation-paused-v1
 
 ## 維護原則
 
-- 不重新加入已移除的右上提示文字。
+- 右上不顯示額外提示文字。
 - 不把橫幅再包成 iframe 或第二套獨立頁面。
 - 不複製 `blue-moon-valley.webp`；前景／背景維持共用同一檔案。
 - 若未來修改雲霧或拖曳效果，優先維持「不累積動畫、不阻塞主執行緒、離屏停止」三項約束。

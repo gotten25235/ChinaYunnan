@@ -5,20 +5,21 @@
     "./index.html",
     "./manifest.webmanifest",
     "./offline-manifest.json",
-    "./css/style.css?b=20260917-095306",
-    "./css/banner.css?b=20260917-095306",
-    "./js/banner.js?b=20260917-095306",
-    "./js/network.js?b=20260917-095306",
-    "./js/core.js?b=20260917-095306",
-    "./js/analytics.js?b=20260917-095306",
-    "./js/weather.js?b=20260917-095306",
-    "./js/offline.js?b=20260917-095306",
-    "./js/settings.js?b=20260917-095306",
-    "./js/reader.js?b=20260917-095306",
-    "./js/journey.js?b=20260917-095306",
-    "./js/map.js?b=20260917-095306",
-    "./js/library.js?b=20260917-095306",
-    "./js/app.js?b=20260917-095306",
+    "./css/style.css?b=20260917-150456",
+    "./css/banner.css?b=20260917-150456",
+    "./js/banner.js?b=20260917-150456",
+    "./js/network.js?b=20260917-150456",
+    "./js/core.js?b=20260917-150456",
+    "./js/analytics.js?b=20260917-150456",
+    "./js/weather.js?b=20260917-150456",
+    "./js/offline.js?b=20260917-150456",
+    "./js/settings.js?b=20260917-150456",
+    "./js/reader.js?b=20260917-150456",
+    "./js/journey.js?b=20260917-150456",
+    "./js/map.js?b=20260917-150456",
+    "./js/library.js?b=20260917-150456",
+    "./js/tips.js?b=20260917-150456",
+    "./js/app.js?b=20260917-150456",
     "./data/social-sources.json",
     "./data/source-index.json",
     "./data/trip-data.json",
@@ -41,10 +42,8 @@
     "./images/food/bai-cuisine.webp",
     "./images/food/tibetan-cuisine.webp",
     "./images/food/wild-mushrooms.webp",
-    "./images/places/xizhou-yan-courtyard.webp",
     "./images/places/shaxi-sideng.webp",
     "./images/places/lijiang-old-town.webp",
-    "./images/places/songzanlin.webp",
     "./images/shopping/puer-tea.webp",
     "./images/shopping/yunnan-coffee.webp",
     "./images/shopping/xuanwei-ham.webp",
@@ -53,7 +52,6 @@
     "./images/shopping/yak-meat.webp",
     "./images/places/blue-moon-valley.webp",
     "./images/handbook/dali-old-town-handbook.webp",
-    "./images/places/shuanglang-open.webp",
     "./images/handbook/yulong-handbook.webp",
     "./images/handbook/impression-lijiang-handbook.webp",
     "./images/handbook/first-bend-handbook.webp",
@@ -77,17 +75,12 @@
     "./images/places/kunming-old-street-web.webp",
     "./images/places/three-pagodas-reflection-web.webp",
     "./images/places/baisha-old-town-web.webp",
-    "./images/places/black-dragon-pool-web.webp",
     "./images/places/baiji-temple-web.webp",
     "./images/places/diqing-museum-web.webp",
     "./images/places/napa-lake-web.webp",
     "./images/places/yunnan-military-academy-web.webp",
     "./images/places/green-lake-park-web.webp",
-    "./images/places/three-course-tea-web.webp",
     "./images/shopping/dongba-glyphs-web.webp",
-    "./images/places/joseph-rock-web.webp",
-    "./images/places/cai-e-web.webp",
-    "./images/places/swau-monument-web.webp",
     "./images/hotels/kunming-airport-liyi.webp",
     "./images/hotels/dali-hilton-garden.webp",
     "./images/hotels/lijiang-aderman-garden-villa.webp",
@@ -120,9 +113,6 @@
     "./images/food/yak-hotpot-exact-web.webp",
     "./images/food/smallpot-noodle-exact-web.webp",
     "./images/places/shangri-home-visit-web.webp",
-    "./images/places/huazhong-migration-museum-web.webp",
-    "./images/places/lost-horizon-book-web.webp",
-    "./images/places/guozhuang-shangri-web.webp",
     "./images/shopping/souvenir-mohong-rose.webp",
     "./images/shopping/souvenir-boletus.webp",
     "./images/shopping/souvenir-mushroom-sauce.webp",
@@ -152,21 +142,48 @@
     "./images/pose/xizhou-02.webp",
     "./images/pose/xizhou-03.webp",
     "./images/pose/lijiang-01.webp",
+    "./images/pose/lijiang-02.webp",
     "./images/pose/ideal-01.webp",
     "./images/pose/tiger-01.webp",
     "./images/pose/dukezong-01.webp",
     "./images/pose/shuhe-01.webp",
     "./images/shopping/souvenir-tamarind.webp",
-    "./images/shopping/souvenir-wild-mushroom-beer.webp"
+    "./images/shopping/souvenir-wild-mushroom-beer.webp",
+    "./images/pose/fengyang-02.webp",
+    "./images/pose/sideng-02.webp",
+    "./images/pose/yujin-02.webp",
+    "./images/pose/blue-02.webp",
+    "./images/pose/ideal-02.webp",
+    "./images/pose/spruce-02.webp",
+    "./images/pose/ganhaizi-02.webp",
+    "./images/pose/tiger-02.webp",
+    "./images/pose/songzanlin-02.webp",
+    "./images/pose/dukezong-02.webp",
+    "./images/pose/shuhe-02.webp",
+    "./images/culture/huaguo.webp",
+    "./images/culture/lianda.webp",
+    "./images/culture/huazhong.webp",
+    "./images/culture/yan.webp",
+    "./images/culture/rock.webp",
+    "./images/culture/hilton.webp",
+    "./images/culture/three-teas.webp",
+    "./images/culture/dongba.webp",
+    "./images/culture/guozhuang.webp",
+    "./images/culture/temple.webp",
+    "./images/culture/noodle-legend.webp",
+    "./images/culture/erhai-black-dragon.webp",
+    "./images/culture/tiger-leap-legend.webp",
+    "./images/culture/yulong-third-kingdom.webp",
+    "./images/culture/black-dragon-taboo.webp"
   ],
   "imageHashes": {
-    "./images/food/butter-tea.webp": "29e7972c39a7bba31e047a2b3f4f089ad534afdfa04883cd98d70704d4b07e74",
-    "./images/food/crossing-bridge-noodles.webp": "ad6e1aeea2092a8aa639b2b91b71760ca514932feda9dce236c8af4104ab0d2f",
-    "./images/food/xizhou-baba.webp": "ecfbebfbb8135f45c096d2844e64bf47127ead99643deb74cf8c30d79ecafeab",
-    "./images/food/lijiang-baba.webp": "923ac43e21775497eb2b2297904d1e45f76f1739fc0d246928306d5be087788a",
-    "./images/food/chickpea-jelly.webp": "ebc9e745e296549ae4fe99fc26b6f46859b733c477e26c827b1eea2eff4f4280",
+    "./images/food/butter-tea.webp": "b4283dd9b3c4a1817acb518605d04357927ee90fc0f00d5196e35a5e7f883405",
+    "./images/food/crossing-bridge-noodles.webp": "eb988fd3d38a5d5eb8c150d90c78d94dec3989b610496fde2cf77dbaf854599b",
+    "./images/food/xizhou-baba.webp": "fc44f4c4c6358c93dc40b601a4aeecc6e407ab3fdb669e62f0b5b408cb701147",
+    "./images/food/lijiang-baba.webp": "554944761736648db4e65cd5a67d17fd1f2af44adc245835bc873a93983db813",
+    "./images/food/chickpea-jelly.webp": "02e528f2d26f8b29c5f94eb4bd8f6b75efa77e5e5a0e209be8a8dc7af8bec71e",
     "./images/shopping/flower-cake.webp": "8b14ce10dfdf0fd3299e85c289c386805843fde2971de648aeea4f31e5ae1f6a",
-    "./images/shopping/rushan.webp": "c64f5fa125c682b51225051b5a4863684cfd9e2f98b2db772d16306980a530b6",
+    "./images/shopping/rushan.webp": "4e9873cf5446fc315227cad5b03b2e0e2098fe37ad3bc6c65d2d3ac3ccb48993",
     "./images/food/ersi.webp": "f2688c8b70a624bdb6e5c2947ae76175dea0537e696ea7e6bd5611ee70bc7b9a",
     "./images/food/erkuai.webp": "f35815d38a6c98e21791bc6cde09100f29b529652cad9011af0214f629baaf0d",
     "./images/food/steam-pot-chicken.webp": "e5eeec83a1c9f85878581bf19311a0ac22d88c9902171a5ab3d3660d14695911",
@@ -174,10 +191,8 @@
     "./images/food/bai-cuisine.webp": "58129a93b13a491fc342b000691030cb5f204f17d6218863ed916e9baafd0832",
     "./images/food/tibetan-cuisine.webp": "ebab7b30817b0471560c2a2dcc5e525d96eb5bbde75083d6ee9992a40cb5d97e",
     "./images/food/wild-mushrooms.webp": "d92c2d65826790c157721651ceb51131924340a290fbc0eb5a0f0917ef48f7bd",
-    "./images/places/xizhou-yan-courtyard.webp": "37fe710291e5e5c6586effb345f01fb64e9dccc9a340a6b372cc94e0e4e48686",
     "./images/places/shaxi-sideng.webp": "4c90fc53349a6771b053704e763231d234f44ca432e860c4156971d00a4e6502",
     "./images/places/lijiang-old-town.webp": "2e0ac58535fa679c114869bc0afef14a5817b87c2ebac2d7e994f1123e59ef6d",
-    "./images/places/songzanlin.webp": "e1c4d0468f01a53e67ee605f336763f4e6636874ed72fa7c4b0b644169300cf8",
     "./images/shopping/puer-tea.webp": "44ff29ab29399b5204e3b6cc34c3356854b1f9345dfaaf50b3dabf2fc250aa7d",
     "./images/shopping/yunnan-coffee.webp": "36ce8c077705272f31a1da614db63c3d7f09f65793761a97db3730b9a53c3b21",
     "./images/shopping/xuanwei-ham.webp": "82dd873cf8505bdf144e431f885c7f12b6996e7dfc62bad6a95336a0f12e1a54",
@@ -186,7 +201,6 @@
     "./images/shopping/yak-meat.webp": "8d034b2b00881cc1ef743aae2c884108a225f013d4e8d6ef88e8d80bb516c3a8",
     "./images/places/blue-moon-valley.webp": "a453f7abb8fe56e512c7bbcd3d260749fad843aa59ce9bba5bb595c5b1be7d70",
     "./images/handbook/dali-old-town-handbook.webp": "558caa94d7676c5c022e545e9e45a36a95283bbc6a0751f6519424639c1ed8ed",
-    "./images/places/shuanglang-open.webp": "d771a57f1404cd526905dd91750a2f786eeb738895fd57d51c02eb2e2f3ff931",
     "./images/handbook/yulong-handbook.webp": "f3c2e7a453c45ba38f62fe15829c7b841a6c4f96e2b2456d679ea981d44cc973",
     "./images/handbook/impression-lijiang-handbook.webp": "c92bcef143521fcbf688ed4fad6fe188296d5a103b8c5c21db52b00392f0e567",
     "./images/handbook/first-bend-handbook.webp": "f67787b8ac31774882c37687683e4ed41d9c7b1ad728c43d6079a31b4759c737",
@@ -210,17 +224,12 @@
     "./images/places/kunming-old-street-web.webp": "5e071cbc4bf1dabe591991d612f9d22aa96dacb8955d748f72eca74f96b96c9d",
     "./images/places/three-pagodas-reflection-web.webp": "320a4c334ebd8d31da43076a4a23117044d38989b530c8cf34a74b7219f9b943",
     "./images/places/baisha-old-town-web.webp": "92600adf94dac41d55d7ae2f6d80278582f2e33c153837a1cd08f86b58d34a8e",
-    "./images/places/black-dragon-pool-web.webp": "4a99e86ce42e89be756d86f41f56d2e21723a2e278913bee9319c891cfe473f2",
     "./images/places/baiji-temple-web.webp": "30c175974fc218a3497f126cb63306dffa4e281da328dd20a9fabb63a2b4b36e",
     "./images/places/diqing-museum-web.webp": "2f9d3f42acd72e6076601fadbad30cac2ac227459f1febddf5ff88d94c734995",
     "./images/places/napa-lake-web.webp": "5e9fa5e25559ef66c87010e3f72a28b9b5a4f3991aeee8e4156839f42afa4865",
     "./images/places/yunnan-military-academy-web.webp": "b89c2c14d91b3a3a001e95db270787d2cfc89d3b65215d80aa6b2f86b89c8cea",
     "./images/places/green-lake-park-web.webp": "5a60620b200c31a51e4cb34c440f2a5f1f9e41c10910e1d967901dde9092ad46",
-    "./images/places/three-course-tea-web.webp": "c33772856da8139237c70071c76d933547d95a0d06d2dbf93e4105cbe8188a64",
     "./images/shopping/dongba-glyphs-web.webp": "4d6d6dc9545f175583be7fbb2ed3a068627a253317f18c77c0d3ebec97537c9c",
-    "./images/places/joseph-rock-web.webp": "46e370629ceba6f262cc0fcd9b5280d765f5baa34c18063335a6d85df6c83316",
-    "./images/places/cai-e-web.webp": "e588b4aed886d8b6c38e3bec992ba9075238d7cda207239e4dac47f76bbc4b3a",
-    "./images/places/swau-monument-web.webp": "7b979777ccd55e28583807ec70c989ad2167a729ce79e3a1a11a5b841747cdc0",
     "./images/hotels/kunming-airport-liyi.webp": "273203394fb3bb111d55df2315a1ad682f3d7b5c664db2bcc7dbe2f689fa9706",
     "./images/hotels/dali-hilton-garden.webp": "4c165652eabc908b6b33c65e9312bad5553f84d175ee940388db1a29299dad10",
     "./images/hotels/lijiang-aderman-garden-villa.webp": "8fa2a2a983703bf576d71dd2ed2cdec842206b763a21678649064cba6a9b8aad",
@@ -253,9 +262,6 @@
     "./images/food/yak-hotpot-exact-web.webp": "5aedc7a447b546a1aa4e4aa5038a48d41edbf7f3abebcaae55495a87e3a5724f",
     "./images/food/smallpot-noodle-exact-web.webp": "1ab11f1883370b74f3d245d7d5b7fbdf3d94d57f66c6f3ab58d91ea4f9379b48",
     "./images/places/shangri-home-visit-web.webp": "35ef0c0849f027846103f13866d1e36d4a858a42c5ff3162b4444030f62d448f",
-    "./images/places/huazhong-migration-museum-web.webp": "a9d7129a736651229823019ce9d5213ee8e856a6ac41e21b2b743aba150386c0",
-    "./images/places/lost-horizon-book-web.webp": "40a90af4245d6b792eabb6c5b87622c88e3b531eddbf6f345d92db8aeaf461de",
-    "./images/places/guozhuang-shangri-web.webp": "9adb5b56e75f5babc919774ed8f7cb212ab9a6eb80b890762114ee335c6b6588",
     "./images/shopping/souvenir-mohong-rose.webp": "4681ca962cddf0e79a3383fcd40875e28cfa89f736e888513c064d6a1a3c56fb",
     "./images/shopping/souvenir-boletus.webp": "9cc118a97d853195e4577c5eae0c14ab462740f4bd60c36d9254a6af82cd6ebb",
     "./images/shopping/souvenir-mushroom-sauce.webp": "5ca01d5e8005e54c038d922c87fcc842fbcf0bfbf7935cfbffb64ac3990ba381",
@@ -285,12 +291,39 @@
     "./images/pose/xizhou-02.webp": "c3593be98ab37b1f537d31256c6cb4e35fb55a930838554ac7318aeaff6866b9",
     "./images/pose/xizhou-03.webp": "5ad616712b499f18d38cd95445e01f4658d18d5258c2be5c7af5bf197dd0e545",
     "./images/pose/lijiang-01.webp": "371f68f1e26d27ce76236b0edc675a19daad73ef081bcbc78c66a7fa3cb7d193",
+    "./images/pose/lijiang-02.webp": "cd27b46be8fbc603732db2f1e2c6f29313240d62eb2ef7bbab5479e44b3f6064",
     "./images/pose/ideal-01.webp": "8ced920fce0b73c193a0f68f1bd70a8689dac4efe06be450585893d744fb6ed5",
     "./images/pose/tiger-01.webp": "44bec57b4462a5f324b8b9f9de108daf522b0fb9d4b381c4aae3ae294dc4c693",
     "./images/pose/dukezong-01.webp": "cf57359bb7ea0b000442501c841a965f1eea2b7d0fa36ab41b48dc954bf8b1f8",
     "./images/pose/shuhe-01.webp": "45db979faf89d43e8696a76df976d1954baa28b46d7a53009d950f33c314008c",
     "./images/shopping/souvenir-tamarind.webp": "ffb2f78346c2ba466781bb8952f22e3621374fc186e5ee650dcb77f358794dba",
-    "./images/shopping/souvenir-wild-mushroom-beer.webp": "4471d7a869765bfc4d6384ab6781d5ddcea54f2521f3ad1d93d67642ea5c283a"
+    "./images/shopping/souvenir-wild-mushroom-beer.webp": "4471d7a869765bfc4d6384ab6781d5ddcea54f2521f3ad1d93d67642ea5c283a",
+    "./images/pose/fengyang-02.webp": "4436512460501ad7b2ffcd7c3715ce8ca72ce48983ecf7ef231639b894b18c59",
+    "./images/pose/sideng-02.webp": "3d1b073ed8fd2e4b96614ba26fb8fe816a638669a624be61f6482d903ed92194",
+    "./images/pose/yujin-02.webp": "395d58bf7bf086f172f358866a9bc75720884de24685933ee1ec126878cfc8f2",
+    "./images/pose/blue-02.webp": "c2ce2aa1c458b34752d8d235ebc69f18a70206f8cdedd93bcb438a792ab2ac84",
+    "./images/pose/ideal-02.webp": "9e7d80e2970f1a8d3e937901dbf744909a6f0d340b662f0e19826a822456ab2a",
+    "./images/pose/spruce-02.webp": "cf8fb42c3e1a7aa0ae821b663e862746f67b962f965b58c6862c9b573b19e978",
+    "./images/pose/ganhaizi-02.webp": "bdd48c3582e7d58121ddc77683be8eaf4258619034b5c5197f4eeddc5f57e7ca",
+    "./images/pose/tiger-02.webp": "a0105a962b06b48476f38f73693fe3badd748a7b4c4e2483cdd666d8d733c037",
+    "./images/pose/songzanlin-02.webp": "83bdda9f8111021be2a77b5d7fc8eb0f95da5a8e7745e54b22fa97c73e0acf1e",
+    "./images/pose/dukezong-02.webp": "f3bff48942798d36dd48a7b2dd147ec6c23c2d99b8c24657b0f7af3b33d167a3",
+    "./images/pose/shuhe-02.webp": "217a7ece1b8b8df91ab4266f254894c18eeb1f50770a5f16c8d48d672b543b44",
+    "./images/culture/huaguo.webp": "e588b4aed886d8b6c38e3bec992ba9075238d7cda207239e4dac47f76bbc4b3a",
+    "./images/culture/lianda.webp": "7b979777ccd55e28583807ec70c989ad2167a729ce79e3a1a11a5b841747cdc0",
+    "./images/culture/huazhong.webp": "a9d7129a736651229823019ce9d5213ee8e856a6ac41e21b2b743aba150386c0",
+    "./images/culture/yan.webp": "37fe710291e5e5c6586effb345f01fb64e9dccc9a340a6b372cc94e0e4e48686",
+    "./images/culture/rock.webp": "46e370629ceba6f262cc0fcd9b5280d765f5baa34c18063335a6d85df6c83316",
+    "./images/culture/hilton.webp": "40a90af4245d6b792eabb6c5b87622c88e3b531eddbf6f345d92db8aeaf461de",
+    "./images/culture/three-teas.webp": "c33772856da8139237c70071c76d933547d95a0d06d2dbf93e4105cbe8188a64",
+    "./images/culture/dongba.webp": "4d6d6dc9545f175583be7fbb2ed3a068627a253317f18c77c0d3ebec97537c9c",
+    "./images/culture/guozhuang.webp": "9adb5b56e75f5babc919774ed8f7cb212ab9a6eb80b890762114ee335c6b6588",
+    "./images/culture/temple.webp": "e1c4d0468f01a53e67ee605f336763f4e6636874ed72fa7c4b0b644169300cf8",
+    "./images/culture/noodle-legend.webp": "ad6e1aeea2092a8aa639b2b91b71760ca514932feda9dce236c8af4104ab0d2f",
+    "./images/culture/erhai-black-dragon.webp": "d771a57f1404cd526905dd91750a2f786eeb738895fd57d51c02eb2e2f3ff931",
+    "./images/culture/tiger-leap-legend.webp": "fe1dac771b59e5719e6a2fbde420df992175a22079ab24bee73fcc14c64372fc",
+    "./images/culture/yulong-third-kingdom.webp": "2cc786b586d1fc5646d36cba2bf6efa23a48e59beaa7983338f28f0980da4e77",
+    "./images/culture/black-dragon-taboo.webp": "4a99e86ce42e89be756d86f41f56d2e21723a2e278913bee9319c891cfe473f2"
   },
   "remoteImages": [
     {
@@ -334,16 +367,6 @@
       "local": "images/pose/blue-01.webp"
     },
     {
-      "id": "pose-lijiang-02",
-      "ids": [
-        "pose-lijiang-02"
-      ],
-      "url": "https://ak-d.tripcdn.com/images/1mi3d224x98k08i107603_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "label": "麗江古城紅燈籠與花叢前的紅衣單人坐姿實拍",
-      "source": "https://hk.trip.com/moments/detail/lijiang-32-142727762?locale=en-HK",
-      "local": "images/pose/lijiang-02.webp"
-    },
-    {
       "id": "pose-spruce-01",
       "ids": [
         "pose-spruce-01"
@@ -384,106 +407,6 @@
       "local": "images/pose/pudacuo-01.webp"
     },
     {
-      "id": "pose-fengyang-02",
-      "ids": [
-        "pose-fengyang-02"
-      ],
-      "url": "https://ak-d.tripcdn.com/images/1mi4b12000qj3gtie4307_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "label": "鳳陽邑古村小街旅客慢走旅拍參考",
-      "source": "https://tw.trip.com/moments/detail/dali-1445616-139386297/",
-      "local": "images/pose/fengyang-02.webp"
-    },
-    {
-      "id": "pose-sideng-02",
-      "ids": [
-        "pose-sideng-02"
-      ],
-      "url": "https://ak-d.tripcdn.com/images/1mi5a12000rnehl4k614E_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "label": "沙溪寺登街古戲台正面旅拍構圖參考",
-      "source": "https://sg.trip.com/moments/detail/jianchuan-2215-142401561/",
-      "local": "images/pose/sideng-02.webp"
-    },
-    {
-      "id": "pose-yujin-02",
-      "ids": [
-        "pose-yujin-02"
-      ],
-      "url": "https://ak-d.tripcdn.com/images/1mi62224x9443zx6x9781_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "label": "沙溪玉津橋橋拱倒影與人物旅拍參考",
-      "source": "https://my.trip.com/moments/detail/jianchuan-2215-134850704?locale=en-MY",
-      "local": "images/pose/yujin-02.webp"
-    },
-    {
-      "id": "pose-blue-02",
-      "ids": [
-        "pose-blue-02"
-      ],
-      "url": "https://ak-d.tripcdn.com/images/1mi4x12000tqkk414523A_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "label": "藍月谷湖邊單人坐姿背影旅拍參考",
-      "source": "https://tw.trip.com/moments/detail/yulong-1446279-151905853/",
-      "local": "images/pose/blue-02.webp"
-    },
-    {
-      "id": "pose-ideal-02",
-      "ids": [
-        "pose-ideal-02"
-      ],
-      "url": "https://ak-d.tripcdn.com/images/1mi3f12000dmljimw5520_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "label": "大理理想邦白牆階梯單人慢走旅拍參考",
-      "source": "https://tw.trip.com/moments/detail/dali-1445616-120934549/",
-      "local": "images/pose/ideal-02.webp"
-    },
-    {
-      "id": "pose-spruce-02",
-      "ids": [
-        "pose-spruce-02"
-      ],
-      "url": "https://ak-d.tripcdn.com/images/1mi6y12000iqdhnobF6F4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "label": "雲杉坪木欄旁單人與玉龍雪山旅拍參考",
-      "source": "https://tw.trip.com/moments/detail/yulong-1446279-129573725/",
-      "local": "images/pose/spruce-02.webp"
-    },
-    {
-      "id": "pose-ganhaizi-02",
-      "ids": [
-        "pose-ganhaizi-02"
-      ],
-      "url": "https://ak-d.tripcdn.com/images/1mi6t224x97u43xde1A1B_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "label": "甘海子雪山前單人展臂旅拍參考",
-      "source": "https://my.trip.com/moments/detail/yulong-1446279-140235111?locale=en-MY",
-      "local": "images/pose/ganhaizi-02.webp"
-    },
-    {
-      "id": "pose-tiger-02",
-      "ids": [
-        "pose-tiger-02"
-      ],
-      "url": "https://images.squarespace-cdn.com/content/v1/62f1cb15a2cb083186ccd6d1/89bc1905-2512-48b5-a433-e997903154bc/2E6B6B98-CD12-4C2B-A020-3EBF0A5E9829-2209-000000D9F5E35AAB.jpg",
-      "label": "虎跳峽峽谷縱深旅拍構圖參考",
-      "source": "https://www.feastographyblog.com/blog/tiger-leaping-gorge",
-      "local": "images/pose/tiger-02.webp"
-    },
-    {
-      "id": "pose-songzanlin-02",
-      "ids": [
-        "pose-songzanlin-02"
-      ],
-      "url": "https://ak-d.tripcdn.com/images/1mi1t224x8x6y3cbl76B4_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "label": "松贊林寺長廊單人人物旅拍參考",
-      "source": "https://my.trip.com/moments/detail/shangri-la-106-125732812?locale=en-MY",
-      "local": "images/pose/songzanlin-02.webp"
-    },
-    {
-      "id": "pose-dukezong-02",
-      "ids": [
-        "pose-dukezong-02"
-      ],
-      "url": "https://ak-d.tripcdn.com/images/1mi5n12000pn3ctrs86BA_W_640_0_R5_Q80.jpg?proc=source%2Ftrip",
-      "label": "獨克宗古城屋頂前單人半身旅拍參考",
-      "source": "https://hk.trip.com/moments/detail/shangri-la-106-137830554/",
-      "local": "images/pose/dukezong-02.webp"
-    },
-    {
       "id": "pose-pudacuo-02",
       "ids": [
         "pose-pudacuo-02"
@@ -492,16 +415,6 @@
       "label": "普達措木棧道單人慢走旅拍參考",
       "source": "https://jxuantai.wixsite.com/mamakajima/single-post/china-yunanshangrila-%E4%B8%AD%E5%9C%8B%E9%9B%B2%E5%8D%97%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89-%E6%99%AE%E9%81%94%E6%8E%AA%E5%9C%8B%E5%AE%B6%E5%85%AC%E5%9C%92-%E8%B7%91%E6%AF%92%E6%97%A5%E8%AA%8C",
       "local": "images/pose/pudacuo-02.webp"
-    },
-    {
-      "id": "pose-shuhe-02",
-      "ids": [
-        "pose-shuhe-02"
-      ],
-      "url": "https://dimg04.c-ctrip.com/images/1mf3p12000ehj1cnxA02A_W_640_0_Q90.jpg?proc=autoorient",
-      "label": "束河古鎮水巷石沿單人側身坐姿旅拍參考",
-      "source": "https://you.ctrip.com/travels/lijiang32/4137872.html",
-      "local": "images/pose/shuhe-02.webp"
     }
   ],
   "optionalRuntime": [

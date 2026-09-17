@@ -20,7 +20,7 @@
 - **旅程總覽**：首頁以動態雲霧橫幅呈現雲南路線，可點擊撥雲放晴、拖曳產生輕量視差；下方提供 Day 01–08 路線、住宿、行程與旅程日天氣。
 - **探索地圖**：行程地點、附近提案與導航。
 - **夜間逍遙**：依日期查看飯店附近晚間活動；綠色行動提示固定放在頁面標題下方，切換日期時只更新文字。
-- **當地必吃**：雲南料理、小吃、典型口感與踩雷提醒。 必吃排序／口感評鑑說明改為與「風俗與故事」頁首相同的輕量文字說明，不使用綠色提示框。
+- **當地必吃**：雲南料理、小吃、典型口感與踩雷提醒；必吃排序／口感評鑑使用輕量文字說明。
 - **雲南必買**：伴手禮、適合當地享用的品項與可食用品評鑑。
 - **我的收藏**：集中查看已收藏內容。
 - **旅拍指南**：依旅行日期查看當日拍照機位、Pose 與《去有風的地方》取景參考；日期與探索地圖、夜間逍遙同步。只有當天確實有相關取景內容時，才顯示《去有風的地方》篩選。頁首順序固定為：輕量灰色日期／Pose 說明 → 綠色來源／排序提示 → 日期切換。
@@ -50,7 +50,7 @@
 
 ## 顯示主題
 
-設定提供三種外觀：**系統預設 / 淺色主題 / 深色主題**。系統預設會跟隨裝置的淺色／深色設定；固定主題則不受系統切換影響。主題偏好會保存在此瀏覽器，並與離線／PWA 模式共用。
+設定提供三種外觀：**系統預設 / 淺色主題 / 深色主題**。系統預設會跟隨裝置的淺色／深色設定；固定主題則不受系統切換影響。固定「淺色主題」會同時使用 `color-scheme: only light`、動態 `meta[name="color-scheme"]` 與明確的 light theme 色票，避免 Android / Samsung 瀏覽器因系統為深色而再次自動把頁面轉暗；固定「深色主題」則明確使用 dark theme。主題偏好會保存在此瀏覽器，並與離線／PWA 模式共用。
 
 ## 地圖與導航
 
@@ -64,7 +64,7 @@
 
 天氣固定採 **高德 → QWeather Weather v1 → Open-Meteo** 的欄位優先順序。可用 provider 會並行取得資料；同一天、同一欄位若高順位已有值，就不會被低順位覆蓋，低順位只補空缺。若未設定高德／QWeather Key 或個別來源失敗，仍由其他可用來源補資料。
 
-QWeather provider 已全面使用現行 **Weather v1**：`/weather/v1/daily/{latitude}/{longitude}` 直接以 weather point 經緯度查詢，本站不再呼叫已棄用的 `/v7/grid-weather/...`。API Host 仍使用帳號專屬 `*.qweatherapi.com`，靜態前端沿用官方支援的 `key` query parameter 認證，避免額外的自訂 Header preflight；API Key 仍只保存在使用者瀏覽器。主資料只取每日預報欄位；QWeather 官方 Weather v1 逐日／逐時 API 均標示 1 km 解析度。
+QWeather provider 使用 **Weather v1**：`/weather/v1/daily/{latitude}/{longitude}` 直接以 weather point 經緯度查詢。API Host 使用帳號專屬 `*.qweatherapi.com`，靜態前端以官方支援的 `key` query parameter 認證；API Key 只保存在使用者瀏覽器。主資料取每日預報欄位。
 
 天氣自動更新間隔為 1 小時；按「↻ 更新」可隨時手動強制更新。離線時使用最後一次成功快取。 天氣卡 UV 指數前會依標準等級顯示膚色漸深的禿頭女性 emoji：0–2 👩🏻‍🦲、3–5 👩🏼‍🦲、6–7 👩🏽‍🦲、8–10 👩🏾‍🦲、11+ 👩🏿‍🦲。每個 weather point 另外保存 Open-Meteo / Copernicus DEM 90 m 的座標海拔，PUBLIC ONLY 顯示「海拔：約 N m」；這是查詢座標的地形高度，不代表整座城市或景區所有位置。玉龍雪山／雲杉坪、普達措等高海拔地點有獨立 weather point；跨城日也會保留出發地／沿途主要城市的 weather point：9/20「大理 → 沙溪 → 麗江」除麗江主天氣外另顯示大理，9/24「麗江 → 昆明」除昆明主天氣外另顯示麗江。出發當天仍應以最新氣象與現場公告為準。
 
@@ -72,11 +72,10 @@ QWeather provider 已全面使用現行 **Weather v1**：`/weather/v1/daily/{lat
 
 PUBLIC ONLY 會直接顯示「本次資料來源」，並提供「查看完整天氣：高德天氣 / QWeather / Open-Meteo / Open-Meteo (CMA)」。高德與兩個 Open-Meteo 入口都使用站內完整天氣視窗：高德直接使用已設定的 Web Service Key 顯示實況與短期逐日預報；若尚未設定 Key，視窗會提示到天氣 API 設定完成設定。QWeather 仍連到可閱讀的城市天氣頁。一般 Open-Meteo 顯示目前狀況、未來 16 天逐日預報與接下來 24 小時逐時預報；Open-Meteo (CMA) 固定使用 CMA GRAPES GFS，顯示最長約 10 天與約 24 小時模型時次，僅供模型對照，不加入主資料合併。站內完整天氣視窗會顯示同一 weather point 的約略海拔；海拔固定由 Open-Meteo Elevation / Copernicus DEM 90 m 提供，不參與高德 → QWeather → Open-Meteo 的天氣欄位優先合併。DEV ONLY 額外顯示高德、QWeather、Open-Meteo、CMA 與 Elevation API 文件、provider 欄位優先順序、海拔原始值與查詢座標。
 
-每個天氣定位點旁另提供 **小紅書近期實況**：搜尋日期永遠以目前雲南日期為準，不會因行程日是未來日期而搜尋未來內容。例如 9/15 查看 9/21 玉龍雪山，仍搜尋 `9.15 玉龙雪山 云杉坪 实况 穿搭 天气`。點「今日實況」或「資料少？看昨天」會先開啟站內確認彈窗，顯示實際搜尋詞與「需已安裝小紅書 App」提示；使用者再按「開啟小紅書」時，才以官方 `xhsdiscover://search/result` Deeplink 嘗試喚起 App。不再使用容易被風控攔截的 Web 搜尋網址。彈窗同時提供一鍵「複製搜尋詞」備援；日期跨日後會在前台自動更新，不需要重新發布網站。
+每個天氣定位點旁另提供 **小紅書近期實況**：搜尋日期永遠以目前雲南日期為準，不會因行程日是未來日期而搜尋未來內容。例如 9/15 查看 9/21 玉龍雪山，仍搜尋 `9.15 玉龙雪山 云杉坪 实况 穿搭 天气`。點「今日實況」或「資料少？看昨天」會先開啟站內確認彈窗，顯示實際搜尋詞與「需已安裝小紅書 App」提示；使用者再按「開啟小紅書」時，才以官方 `xhsdiscover://search/result` Deeplink 嘗試喚起 App。搜尋流程固定使用 App Deeplink，不使用 Web 搜尋網址。彈窗同時提供一鍵「複製搜尋詞」備援；日期跨日後會在前台自動更新，不需要重新發布網站。
 
-所有可開啟 **更多內容 / Detail Reader** 的圖卡，在操作列加入 `📕 小紅書`。景點、飯店、美食、伴手禮、夜遊與旅拍會依類型產生不同搜尋詞；只有玉龍雪山、雲杉坪、藍月谷、甘海子、虎跳峽、松贊林寺、普達措等即時型景點會使用目前雲南日期，並在彈窗內提供「資料少？改搜昨天」。旅拍指南的小紅書搜尋固定使用「拍照／機位／構圖／姿勢」類關鍵字，不再切成天氣實況搜尋。按鈕只開站內確認彈窗，不會在未確認前直接跳 App；`xhs_search_open` 會記錄圖卡 ID、類型與搜尋模式。
+所有可開啟 **更多內容 / Detail Reader** 的圖卡，在操作列加入 `📕 小紅書`。景點、飯店、美食、伴手禮、夜遊與旅拍會依類型產生不同搜尋詞；只有玉龍雪山、雲杉坪、藍月谷、甘海子、虎跳峽、松贊林寺、普達措等即時型景點會使用目前雲南日期，並在彈窗內提供「資料少？改搜昨天」。旅拍指南的小紅書搜尋固定使用「拍照／機位／構圖／姿勢」類關鍵字，不使用天氣實況模式。按鈕只開站內確認彈窗，不會在未確認前直接跳 App；`xhs_search_open` 會記錄圖卡 ID、類型與搜尋模式。
 
-Day 2 大理古城補充 `南詔十二時辰`、`總統兵馬大元帥府（杜文秀帥府）`，並將既有人民路升級為 `人民路・聽歌散步`；Day 5 獨克宗夜遊卡改為 `獨克宗・鍋莊打跳`，明確區分四方街自發鍋莊與另行付費的篝火打跳／土司宴體驗。
 
 ## 圖片與省流量
 
@@ -90,7 +89,7 @@ imageId → local 本地 WebP → remote 同一張精確遠端圖 → 無此圖
 
 每一筆 Image Registry 固定只有 11 個欄位：`local`、`remote`、`alt`、`caption`、`source`、`author`、`license`、`licenseUrl`、`width`、`height`、`changes`。**即使 local 已經本地化，remote 也必須永久保留。** `remote` 是同一張圖的 runtime fallback／同步目標；`source` 才是用來追溯來源頁與權利資訊的頁面。兩者不可混用。
 
-本地圖片實體依用途分七類：
+本地圖片實體依用途分八類：
 
 ```text
 images/
@@ -98,18 +97,18 @@ images/
 ├─ shopping/
 ├─ hotels/
 ├─ places/
+├─ culture/
 ├─ pose/
 ├─ airlines/
 └─ handbook/
 ```
 
-`images/airlines/` 保留航空公司／航班示意圖，`images/handbook/` 保留由旅遊手冊裁出的實景圖；這兩類不混入 `places/`。舊的 `images/library/`、`images/remote/` 不再使用。手冊裁圖的頁碼與裁切證據仍保存在 `docs/sources/HANDBOOK_IMAGE_CROPS.md`。
+`images/culture/` 是「風俗與故事」圖片的 canonical asset；其他 Domain 若需要同一張圖，直接引用既有 `culture-*` imageId，不在 `images/places/` 再存一份。`images/airlines/` 保存航空公司／航班示意圖，`images/handbook/` 保存由旅遊手冊裁出的實景圖；手冊裁圖的頁碼與裁切證據記錄在 `docs/sources/HANDBOOK_IMAGE_CROPS.md`。
 
-`SYNC_IMAGES.bat` 只會下載 registry 中指定的 exact `remote`，轉成 WebP 後寫入該筆 `local`；不搜尋、不換圖、不拿來源頁第一張圖、不用舊快取圖冒充。同步後會回寫 local WebP 的實際 `width` / `height`。只要本輪真的新增／替換／移除 local 圖或更新 registry 尺寸，`SYNC_IMAGES.bat` 會自動產生新的 Build ID，再重建圖片來源文件、Pose 來源文件、離線 manifest 與 build manifest，最後執行 validator；若全部只是 VERIFIED、沒有網站內容變更，就不製造無意義的新 Build。同步結果可在 `docs/IMAGE_SYNC_REPORT.html` 逐張檢查；報告會依 `images/food/`、`shopping/`、`hotels/`、`places/`、`pose/`、`airlines/`、`handbook/` 分組，每區顯示筆數與 `SYNCED / VERIFIED / FAILED` 統計，頁首另提供資料夾快速跳轉與總統計。 執行結束時固定輸出英文統計：`Total / Success / Ignored / Failed / Errors`，並寫入 `sync_summary.txt`；其中 Success＝本次實際 SYNCED、Ignored＝已由 cache 驗證 local + exact remote + SHA-256 一致而不重抓、Failed＝單張圖片下載／解碼／轉檔失敗、Errors＝同步流程／衍生檔生成／validator／ZIP 等工具層級錯誤。
+`SYNC_IMAGES.bat` 只會下載 registry 中指定的 exact `remote`，轉成 WebP 後寫入該筆 `local`；不搜尋、不換圖、不拿來源頁第一張圖，也不用未驗證快取圖冒充。同步後會回寫 local WebP 的實際 `width` / `height`。只要本輪真的新增／替換／移除 local 圖或更新 registry 尺寸，`SYNC_IMAGES.bat` 會自動產生新的 Build ID，再重建圖片來源文件、Pose 來源文件、離線 manifest 與 build manifest，最後執行 validator；若全部只是 VERIFIED、沒有網站內容變更，就不製造無意義的新 Build。同步結果可在 `docs/IMAGE_SYNC_REPORT.html` 逐張檢查；報告會依 `images/food/`、`shopping/`、`hotels/`、`places/`、`culture/`、`pose/`、`airlines/`、`handbook/` 分組，每區顯示筆數與 `SYNCED / VERIFIED / FAILED` 統計，頁首另提供資料夾快速跳轉與總統計。 執行結束時固定輸出英文統計：`Total / Success / Ignored / Failed / Errors`，並寫入 `sync_summary.txt`；其中 Success＝本次實際 SYNCED、Ignored＝已由 cache 驗證 local + exact remote + SHA-256 一致而不重抓、Failed＝單張圖片下載／解碼／轉檔失敗、Errors＝同步流程／衍生檔生成／validator／ZIP 等工具層級錯誤。
 
 旅拍 Pose 目前保留 29 個可追溯的精確遠端圖片網址，仍與全站共用同一套 registry。若 `images/pose/*.webp` 尚未建立，前台直接讀該筆 `remote`；同步成功後優先讀 local，但 `remote` 不刪除。
 
-`酸角`與`野生菌精釀啤酒`已改用新的可追溯圖片來源，不再使用先前的小紅書榜單裁切圖。兩筆新圖分別使用 `souvenir-tamarind` 與 `souvenir-wild-mushroom-beer` imageId，local 固定放在 `images/shopping/`；本地檔尚未同步時直接使用各自 exact remote。
 
 ## 自動更新與省流量
 
@@ -117,9 +116,7 @@ images/
 
 若偵測到新 build，Service Worker 才更新 App Shell；`asset-manifest.json` 以 SHA-256 比對核心檔，未變資源直接沿用上一個 App Cache，只有內容真的改變的檔案重新下載。前台會等待 active Worker 與 `build.json` 目標 Build 完全一致後才 reload；GitHub Pages 正在部署時則保留目前可用版本並稍後重試。
 
-旅行圖片使用獨立的 `yunnan-images-v1` Cache。`offline-manifest.json` 為每張已打包 local WebP 保存 SHA-256；新 build 會只檢查已快取圖片，**沒變就保留、變更才重抓、已刪除才清除**，不會整批重新下載。第一次導入這套 hash 規則時，若舊 manifest 沒有 image hash，Service Worker 會在本機比對已快取圖片內容後只更新不一致的檔案。
-
-「設定 → 版本」提供「檢查更新」與「強制重新載入」。**強制重新載入不能只看 Build ID**：即使遠端 `version + build` 與目前完全相同，也必須重新抓取 App Shell（HTML / CSS / JS / JSON / manifest），覆寫目前 App Cache，再用圖片 SHA-256 對 Image Cache 做一致性確認；圖片仍只刷新真正變更的檔案。收藏、偏好、API Key 與其他使用者資料不得清除。重新整理時會以 Toast 顯示「正在檢查更新／已是最新版／發現新版／目前離線」等狀態。
+旅行圖片使用獨立的 `yunnan-images-v1` Cache。`offline-manifest.json` 為每張已打包 local WebP 保存 SHA-256；新 build 會只檢查已快取圖片，**沒變就保留、變更才重抓、已刪除才清除**，不會整批重新下載。「設定 → 版本」提供「檢查更新」與「強制重新載入」。**強制重新載入不能只看 Build ID**：即使遠端 `version + build` 與目前完全相同，也必須重新抓取 App Shell（HTML / CSS / JS / JSON / manifest），覆寫目前 App Cache，再用圖片 SHA-256 對 Image Cache 做一致性確認；圖片仍只刷新真正變更的檔案。收藏、偏好、API Key 與其他使用者資料不得清除。重新整理時會以 Toast 顯示「正在檢查更新／已是最新版／發現新版／目前離線」等狀態。
 
 ### 發布與快取更新硬性規則
 
@@ -142,34 +139,33 @@ Android Chrome 若支援會提供安裝到主畫面；iPhone / iPad 請使用 Sa
 
 「鄉野奇談」屬地方傳說／民俗閱讀，會與史實或已證實資訊分開標示。
 
-「旅拍指南」的 Pose 與機位會搜尋小紅書、抖音、大眾點評等公開內容做研究；PUBLIC ONLY 前台顯示可追溯的來源實拍與來源頁，再搭配人物姿勢、攝影位置與鏡頭倍率。Pose 圖片與全站其他圖片共用同一套 `imageId → local → remote → 無此圖` 流程，不再另設 `sourceImage` 或專屬讀圖邏輯。完整清單見 `docs/sources/POSE_SCREENSHOT_SOURCES.md`。工程細節只在 DEV ONLY 顯示；PUBLIC ONLY 為預設旅客介面。
+「旅拍指南」的 Pose 與機位會搜尋小紅書、抖音、大眾點評等公開內容做研究；PUBLIC ONLY 前台顯示可追溯的來源實拍與來源頁，再搭配人物姿勢、攝影位置與鏡頭倍率。Pose 圖片與全站其他圖片共用同一套 `imageId → local → remote → 無此圖` 流程。完整清單見 `docs/sources/POSE_SCREENSHOT_SOURCES.md`。工程細節只在 DEV ONLY 顯示；PUBLIC ONLY 為預設旅客介面。
 
 ## 出發提醒
+
+頁首保留「準備好，慢慢玩。」並加入可點擊的晴天娃娃祈晴小彩蛋；點擊會累計本頁祈晴次數並讓白色 12 芒太陽升起、停留後淡出。計數寫入瀏覽器 localStorage，重新整理、關閉後再開啟仍會保留；只有清除該網站的瀏覽器網站資料／儲存空間時才會歸零。晴天娃娃為自行繪製 SVG，造型參考來源會公開列在「內容來源與查核」。
 
 「內容來源與查核」預設閉合，需要時可展開。航班、景區、交通、飯店與營業時間可能變動，出發前仍應再確認票券、官方公告與旅行社通知。
 
 ## 維護文件
 
-一般使用只需閱讀本 README。開發架構、PUBLIC / DEV、圖片本地化、來源契約、版本、Cache 與驗證規則統一放在 `docs/PROJECT.md`；動態雲霧橫幅因包含獨立互動、效能與安全行為，另保留 `docs/YUNNAN_BANNER.md`；圖片來源帳本與手冊裁圖證據則保留在 `docs/sources/`。
+一般使用只需閱讀本 README。開發架構、PUBLIC / DEV、圖片本地化、來源契約、版本、Cache 與驗證規則統一放在 `docs/PROJECT.md`。純開發規格、示範頁與參考素材集中放在 `dev/`：晴天娃娃為 `dev/sunwish/README.md`，動態雲霧橫幅為 `dev/yunnan-banner/`。正式網站不依賴 `dev/` 內容；圖片來源帳本與手冊裁圖證據仍保留在 `docs/sources/`。
 
-Day 2 大理補充：床單廠藝術區加入附近清單；新增大理古城北門菜市場與「玉米大叔・鮮榨玉米汁」。北門菜市場導航以高德「大理古城集貿市場」為錨點；玉米大叔攤位位置以當天現場為準。
 
 ### 探索地圖
 
-探索地圖預設顯示「全部」，地圖上的地標與下方卡片清單會隨「全部／已安排／自定義」同步切換。既有使用者若已經有舊版自定義地圖 localStorage，2026-09-16 新增的大理北門菜市場、總統兵馬大元帥府與南詔十二時辰會做一次性補種，避免更新後地圖少點。
+探索地圖預設顯示「全部」，地圖上的地標與下方卡片清單會隨「全部／已安排／自定義」同步切換。自定義地標保存在瀏覽器 localStorage。
 
 
 ### 旅拍 Pose 圖片完整性
 
-旅拍 Pose 與一般圖片完全共用 Image Registry。每個 Pose 只在 `poseTips` 保存 `imageId` 與姿勢／鏡頭／機位研究資料；圖片來源、作者、授權、local、remote 全部只存在 `images[imageId]`。`remote` 本地化後仍保留，validator 會檢查 Pose imageId、`images/pose/*.webp` 路徑與 exact remote 唯一性，避免再發生「遠端是 A、本地下載後變成 B」。
+旅拍 Pose 與一般圖片完全共用 Image Registry。每個 Pose 只在 `poseTips` 保存 `imageId` 與姿勢／鏡頭／機位研究資料；圖片來源、作者、授權、local、remote 全部只存在 `images[imageId]`。`remote` 本地化後仍保留，validator 會檢查 Pose imageId、`images/pose/*.webp` 路徑與 exact remote 唯一性，確保本地與遠端圖片身分一致。
 
 
-## 不負責任專區與刷新
+## 不負責任專區
 
-主導覽固定順序：**旅程總覽 → 探索地圖 → 夜間逍遙 → 當地必吃 → 雲南必買 → 我的收藏 → 旅拍指南 → 風俗與故事 → 不負責任專區 → 出發提醒 → 設定**。主 Tab 左右滑動順序與此完全一致。
+主導覽固定順序：**旅程總覽 → 探索地圖 → 夜間逍遙 → 當地必吃 → 雲南必買 → 我的收藏 → 旅拍指南 → 風俗與故事 → 不負責任專區 → 出發提醒 → 設定**；主 Tab 左右滑動順序一致。
 
-- 主導覽新增「💸 不負責任專區」，以價格圖卡整理網友當時分享的氧氣瓶、松贊林寺票價與獨克宗古城紀念品行情。價格不是官方公告；每張卡固定標示更新月份與「價格僅供參考」。專區頁首另以與「🛍 雲南必買」相同的綠色來源提示卡公開提供原始小紅書貼文與來源截圖。
-- 手機／瀏覽器手動重新整理會主動檢查最新 Build，且在 Build 已相同時再核對目前已快取圖片的 SHA-256；畫面會用 Toast 回報「網站與圖片已是最新版」或實際更新／移除數量。設定頁的「檢查更新／強制重新載入」不再允許 silent no-op：按下後按鈕立即顯示忙碌狀態並一定回報 Toast。若網址環境不支援 Service Worker，仍會直接比對 `build.json`；強制重新載入改用 cache-busting navigation。收藏、偏好與 API Key 不會因此清除。
+「💸 不負責任專區」以價格圖卡整理網友分享的氧氣瓶、松贊林寺票價與獨克宗古城紀念品行情。價格不是官方公告；每張卡固定標示更新月份與「價格僅供參考」，頁首提供原始小紅書貼文與來源截圖。
 
-
-- 天氣排序規則：同一天有多個 weather point 時，依 itinerary 實際先後排序；只在住宿／抵達點出現的城市排後。旅程總覽簡易天氣、完整天氣卡與來源入口必須共用同一順序。
+天氣排序規則：同一天有多個 weather point 時，依 itinerary 實際先後排序；只在住宿／抵達點出現的城市排後。旅程總覽簡易天氣、完整天氣卡與來源入口共用同一順序。

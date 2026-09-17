@@ -22,7 +22,7 @@ if not re.fullmatch(r'\d{8}-\d{6}',BUILD):raise SystemExit('tools/release.json b
 
 def core_assets():
     assets=['./','./index.html','./manifest.webmanifest','./offline-manifest.json',f'./css/style.css?b={BUILD}',f'./css/banner.css?b={BUILD}',f'./js/banner.js?b={BUILD}']
-    for name in ('network','core','analytics','weather','offline','settings','reader','journey','map','library','app'):assets.append(f'./js/{name}.js?b={BUILD}')
+    for name in ('network','core','analytics','weather','offline','settings','reader','journey','map','library','tips','app'):assets.append(f'./js/{name}.js?b={BUILD}')
     for path in sorted((ROOT/'data').glob('*.json')):
         if path.name!='analytics-config.json':assets.append('./'+path.relative_to(ROOT).as_posix())
     for path in sorted((ROOT/'icons').rglob('*')) if (ROOT/'icons').exists() else []:

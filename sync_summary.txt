@@ -1,7 +1,7 @@
 ﻿FINAL IMAGE SYNC SUMMARY
-Total   : 155
-Success : 10
-Ignored : 136
+Total   : 169
+Success : 5
+Ignored : 155
 Failed  : 9
 Errors  : 0
 

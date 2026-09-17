@@ -49,12 +49,15 @@
     function syncTheme(){
       const resolved=resolvedTheme();
       const root=document.documentElement;
+      const schemeValue=theme==='light'?'only light':theme==='dark'?'dark':'light dark';
       root.dataset.themePreference=theme;
       root.dataset.theme=resolved;
-      root.style.colorScheme=resolved;
+      root.style.colorScheme=schemeValue;
       document.querySelectorAll('[data-color-theme-select]').forEach(select=>{select.value=theme;});
+      const schemeMeta=document.querySelector('meta[name="color-scheme"]');
+      if(schemeMeta)schemeMeta.setAttribute('content',schemeValue);
       const meta=document.querySelector('meta[name="theme-color"]');
-      if(meta)meta.setAttribute('content',resolved==='dark'?'#121916':'#183e36');
+      if(meta)meta.setAttribute('content',resolved==='dark'?'#121916':'#f7f6f1');
       window.dispatchEvent(new CustomEvent('yunnan:theme-change',{detail:{preference:theme,resolved}}));
     }
 

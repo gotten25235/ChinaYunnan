@@ -251,7 +251,7 @@ def build_zip():
     if OUT_ZIP.exists():
         OUT_ZIP.unlink()
     with zipfile.ZipFile(str(OUT_ZIP), "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
-        for directory in ("food", "shopping", "hotels", "places", "pose", "airlines", "handbook"):
+        for directory in ("food", "shopping", "hotels", "places", "culture", "pose", "airlines", "handbook"):
             zf.writestr("images/%s/" % directory, b"")
         for path in sorted(ROOT.rglob("*")):
             if not path.is_file():
@@ -291,7 +291,7 @@ def write_text_report(rows):
 def write_html_report(rows):
     REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
 
-    preferred_order = ["food", "shopping", "hotels", "places", "pose", "airlines", "handbook"]
+    preferred_order = ["food", "shopping", "hotels", "places", "culture", "pose", "airlines", "handbook"]
     grouped = {}
     for row in rows:
         local_rel = str(row.get("local") or "")

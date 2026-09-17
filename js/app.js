@@ -10,7 +10,7 @@
   catch(error){console.error('Unable to load trip data:',error);document.body.insertAdjacentHTML('afterbegin','<div class="data-load-error"><strong>行程資料載入失敗。</strong> 請用 HTTP/HTTPS 開啟；Windows 本機版請直接執行 <code>START.bat</code>，不要雙擊 index.html。</div>');return;}
 
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  if(!window.YunnanNetworkSystem||!window.YunnanCore||!window.YunnanAnalyticsSystem||!window.YunnanWeatherSystem||!window.YunnanOfflineSystem||!window.YunnanSettingsSystem||!window.YunnanReaderSystem||!window.YunnanJourneySystem||!window.YunnanMapSystem||!window.YunnanLibrarySystem)throw new Error('UI module bootstrap failed');
+  if(!window.YunnanNetworkSystem||!window.YunnanCore||!window.YunnanAnalyticsSystem||!window.YunnanWeatherSystem||!window.YunnanOfflineSystem||!window.YunnanSettingsSystem||!window.YunnanReaderSystem||!window.YunnanJourneySystem||!window.YunnanMapSystem||!window.YunnanLibrarySystem||!window.YunnanTipsSystem)throw new Error('UI module bootstrap failed');
   const networkProfile=YunnanNetworkSystem.create();
   const leafletReady=networkProfile.loadLeaflet();
 
@@ -27,7 +27,7 @@
   const dateRail=YunnanCore.createDateRailController({tripData,esc,$,todayDay});
   const readerInteraction=YunnanReaderSystem.createInteraction({$});
   const renderedViews=new Set();
-  let currentView='itinerary',lastTrackedView=null,toastTimer,mapSystem,librarySystem,readerSystem,journeySystem,weatherSystem,offlineSystem,settingsSystem;
+  let currentView='itinerary',lastTrackedView=null,toastTimer,mapSystem,librarySystem,readerSystem,journeySystem,tipsSystem,weatherSystem,offlineSystem,settingsSystem;
 
   const markRendered=name=>renderedViews.add(name);
   const toast=message=>{const el=$('#toast');if(!el)return;el.textContent=message;el.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),3000);};
@@ -65,6 +65,7 @@
   librarySystem=YunnanLibrarySystem.create({$,tripData,items,esc,imageSystem,travelUtils,favoritesStore,navigation,dateRail,markRendered,setSharedDay,getJourney:()=>journeySystem,getReader:()=>readerSystem,showView,isDev});
   readerSystem=YunnanReaderSystem.create({$,tripData,items,esc,imageSystem,travelUtils,favoritesStore,navigation,interaction:readerInteraction,getLibrary:()=>librarySystem,getMap:()=>mapSystem,toggleFavorite,toast,weatherSystem,isDev,onItemOpen:(id,meta)=>analyticsSystem.trackItem(id,meta)});
   journeySystem=YunnanJourneySystem.create({$,$$,tripData,items,esc,imageSystem,travelUtils,favoritesStore,navigation,bindHorizontalScroller:YunnanCore.bindHorizontalScroller,toast,getLibrary:()=>librarySystem,markRendered,weatherSystem});
+  tipsSystem=YunnanTipsSystem.create({$,tripData,esc,networkProfile,journeySystem,markRendered,isDev});
 
   // Populate mirrored hidden selects before date-rail controllers build their cards.
   $('#night-day')?.insertAdjacentHTML('beforeend',tripData.days.map(d=>`<option value="${d.day}">Day ${d.day} · ${d.date.slice(5)} · ${esc(d.city)}</option>`).join(''));
@@ -73,11 +74,6 @@
   mapSystem.init();librarySystem.init();setSharedDay('all',{renderMap:false,renderNight:false,renderPhotos:false,center:false});
   leafletReady.then(ok=>{if(ok&&currentView==='map')mapSystem.render(false);});
 
-  function renderTips(){
-    const mainland=networkProfile.isMainland();
-    $('#tips-content').innerHTML=`<div class="content-grid">${tripData.tips.map(t=>`<article class="utility-card utility-card--tip"><h3>${esc(t.title)}</h3><p class="description">${esc(t.text)}</p>${t.source?`<a class="small" href="${esc(t.source)}" target="_blank" rel="noopener noreferrer">官方說明 ↗</a>`:''}</article>`).join('')}</div>${journeySystem.flightBlock('outbound')}${journeySystem.flightBlock('inbound')}<details class="photo-sources tips-sources-disclosure"><summary>內容來源與查核</summary>${mainland?'<p class="small network-source-note">大陸版仍保留原始來源 URL 作查核紀錄；Google、Instagram、Wikimedia 等外部來源在中國大陸可能無法直接開啟，但不影響已打包的主要行程內容。</p>':''}<ul class="source-list">${tripData.sources.map(s=>`<li>${s.url?`<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title)}</a>`:esc(s.title)}${s.note?`<p class="small">${esc(s.note)}</p>`:''}</li>`).join('')}</ul></details>`;
-    markRendered('tips');
-  }
   function renderSettings(){
     const mainland=networkProfile.isMainland();
     $('#settings-content').innerHTML=`<article class="network-profile-card utility-card utility-card--settings"><div><span class="eyebrow">NETWORK PROFILE</span><h3>連網模式</h3><p class="small">預設為大陸版。兩個模式都使用已打包的本地旅行圖片；大陸版使用高德底圖與 GCJ-02 座標校正，國際版則使用 OpenStreetMap。天氣兩個模式都採相同優先順序：高德 → QWeather Weather v1 → Open-Meteo。</p></div><label>連網<select data-network-profile-select aria-label="連網模式"><option value="mainland">大陸版（預設）</option><option value="international">國際版</option></select></label></article><article class="nav-provider-card utility-card utility-card--settings"><div><span class="eyebrow">MAP NAVIGATION</span><h3>預設導航地圖</h3><p class="small">所有「導航」按鈕都會使用這個設定。${mainland?'大陸版建議使用高德地圖；Google 在中國大陸通常無法使用。':'預設高德地圖，也可切換 Google。'}偏好只儲存在此瀏覽器。</p></div><label>導航服務<select data-map-provider-select aria-label="預設導航地圖"><option value="amap">高德地圖（預設）</option><option value="google">Google 地圖</option></select></label></article>${settingsSystem.settingsHtml()}${weatherSystem.settingsHtml()}${offlineSystem.settingsHtml()}<article class="release-version-card utility-card utility-card--settings"><div><span class="eyebrow">SOFTWARE VERSION</span><h3>版本 ${esc(appVersion)}</h3><p class="small">手機／瀏覽器手動重新整理會檢查最新 Build，並核對目前已快取圖片；圖片以 SHA-256 比對，只更新內容真的改變的檔案。強制重新載入即使 Build 相同也會重新抓取網站核心檔（HTML / CSS / JS / JSON）後再重載，不會清除收藏、偏好或 API Key。</p>${isDev?`<p class="small">Build ${esc(appBuild)} · 版本格式：驕傲．預設．羞恥。</p>`:''}<div class="actions"><button type="button" class="action" data-app-check-update>檢查更新</button><button type="button" class="action" data-app-force-reload>強制重新載入</button></div></div></article>`;
@@ -94,7 +90,7 @@
     photos:{bootstrap:()=>librarySystem.renderPhotos()},
     culture:{bootstrap:()=>librarySystem.renderCulture()},
     priceintel:{bootstrap:()=>librarySystem.renderPriceIntel()},
-    tips:{bootstrap:renderTips},
+    tips:{bootstrap:()=>tipsSystem.render()},
     settings:{bootstrap:renderSettings}
   });
   const VIEW_ORDER=Object.freeze(Object.keys(VIEW_REGISTRY));
@@ -141,6 +137,7 @@
     if(readerSystem.handleAction(b))return;
     if(mapSystem.handleAction(b))return;
     if(librarySystem.handleAction(b))return;
+    if(tipsSystem.handleAction(b))return;
     if(b.hasAttribute('data-copy-dialog-copy')){
       const value=$('#copy-value')?.value||'';
       copyPlainText(value).then(()=>{const original=b.textContent;b.textContent='✓ 已複製';toast('已複製');setTimeout(()=>{if(b.isConnected)b.textContent=original;},1500);}).catch(()=>{const el=$('#copy-value');el?.focus();el?.select();toast('無法自動複製，已選取文字');});
@@ -231,7 +228,7 @@
   window.addEventListener('hashchange',()=>showView(location.hash.slice(1),false));
   window.addEventListener('resize',()=>{syncAppStageMetrics();if(currentView==='map')requestAnimationFrame(()=>mapSystem.invalidate());},{passive:true});
   window.addEventListener('yunnan:connection-change',()=>{if(currentView!=='map')return;networkProfile.loadLeaflet().finally(()=>requestAnimationFrame(()=>mapSystem.render(false)));});
-  window.addEventListener('pagehide',()=>{mapSystem.cleanup();journeySystem.cleanup();weatherSystem.cleanup();});
+  window.addEventListener('pagehide',()=>{mapSystem.cleanup();journeySystem.cleanup();tipsSystem.cleanup();weatherSystem.cleanup();});
   if('ResizeObserver' in window){const observer=new ResizeObserver(syncAppStageMetrics);const top=$('.section-nav'),bottom=$('.bottom-nav');if(top)observer.observe(top);if(bottom)observer.observe(bottom);}
   showView(location.hash.slice(1)||'itinerary',false);
   if(!favoritesStore.isStorageAvailable()||!navigation.isStorageAvailable()||!mapSystem.isStorageAvailable()||!weatherSystem.isStorageAvailable()||!networkProfile.isStorageAvailable()||!settingsSystem.isStorageAvailable())toast('瀏覽器儲存功能受限；部分偏好或天氣快取可能無法保留');

@@ -245,7 +245,7 @@ def validate_media(trip: dict) -> None:
     images = trip.get("images") if isinstance(trip.get("images"), dict) else {}
     required_fields = ("local", "remote", "alt", "caption", "source", "author", "license", "licenseUrl", "width", "height", "changes")
     required_set = set(required_fields)
-    allowed_dirs = {"food", "shopping", "hotels", "places", "pose", "airlines", "handbook"}
+    allowed_dirs = {"food", "shopping", "hotels", "places", "culture", "pose", "airlines", "handbook"}
     local_declared = pending_local_count = 0
     local_bytes = 0
 
@@ -279,7 +279,7 @@ def validate_media(trip: dict) -> None:
             continue
         parts = Path(local).parts
         if len(parts) < 3 or parts[0] != "images" or parts[1] not in allowed_dirs:
-            error(f"images.{image_id}.local must be under images/food|shopping|hotels|places|pose|airlines|handbook: {local}")
+            error(f"images.{image_id}.local must be under images/food|shopping|hotels|places|culture|pose|airlines|handbook: {local}")
         if not isinstance(remote, str) or not remote.startswith(("http://", "https://")):
             error(f"images.{image_id}.remote is required and must be an http(s) image URL")
         if remote == local:
@@ -476,8 +476,8 @@ def validate_release_and_views() -> None:
     if not html_build or html_build.group(1) != build:
         error("index.html data-app-build must equal tools/release.json build")
 
-    build_refs = re.findall(r'(?:css/(?:style|banner)\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|banner|app)\.js)\?b=([^"\']+)', html)
-    if len(build_refs) != 14 or any(v != build for v in build_refs):
+    build_refs = re.findall(r'(?:css/(?:style|banner)\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|tips|banner|app)\.js)\?b=([^"\']+)', html)
+    if len(build_refs) != 15 or any(v != build for v in build_refs):
         error(f"index.html local CSS/JS identification must be ?b={build}")
 
     sw_version = re.search(r"const RELEASE_VERSION = '([^']+)';", sw)
@@ -495,7 +495,7 @@ def validate_release_and_views() -> None:
     if "const OFFLINE_META_CACHE = `yunnan-offline-${STORAGE_SCHEMA}`;" not in sw:
         error("sw.js OFFLINE_META_CACHE must use the stable storage schema")
 
-    expected_shell = ["index.html", "manifest.webmanifest", "offline-manifest.json", "build.json", "asset-manifest.json", "css/style.css", "css/banner.css", "js/network.js", "js/core.js", "js/analytics.js", "js/weather.js", "js/offline.js", "js/settings.js", "js/reader.js", "js/journey.js", "js/map.js", "js/library.js", "js/banner.js", "js/app.js", "data/trip-data.json", "data/social-sources.json", "data/source-index.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png"]
+    expected_shell = ["index.html", "manifest.webmanifest", "offline-manifest.json", "build.json", "asset-manifest.json", "css/style.css", "css/banner.css", "js/network.js", "js/core.js", "js/analytics.js", "js/weather.js", "js/offline.js", "js/settings.js", "js/reader.js", "js/journey.js", "js/map.js", "js/library.js", "js/tips.js", "js/banner.js", "js/app.js", "data/trip-data.json", "data/social-sources.json", "data/source-index.json", "icons/icon-192.png", "icons/icon-512.png", "icons/icon-maskable-512.png"]
     for rel in expected_shell:
         if not (ROOT / rel).is_file():
             error(f"APP_SHELL file missing: {rel}")
@@ -676,7 +676,7 @@ def validate_offline_pwa(trip: dict) -> None:
     if set(manifest_urls) != set(expected_remote_urls):
         error("offline-manifest remoteImages must include exactly the exact remote fallbacks whose local file is absent")
 
-    allowed_image_dirs = {"food", "shopping", "hotels", "places", "pose", "airlines", "handbook", "_quarantine"}
+    allowed_image_dirs = {"food", "shopping", "hotels", "places", "culture", "pose", "airlines", "handbook", "_quarantine"}
     unexpected_image_dirs = [p.name for p in (ROOT / "images").iterdir() if p.is_dir() and p.name not in allowed_image_dirs]
     if unexpected_image_dirs:
         error("images/ contains legacy/unexpected directories: " + ", ".join(sorted(unexpected_image_dirs)))

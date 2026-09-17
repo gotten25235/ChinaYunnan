@@ -82,10 +82,10 @@ def sync_identification(version: str, build: str) -> None:
         html, build_count = re.subn(r'(<html\b[^>]*\bdata-app-version="[^"]+")', rf'\1 data-app-build="{build}"', html, count=1)
     if build_count != 1:
         raise SystemExit("Unable to synchronize data-app-build in index.html")
-    pattern = re.compile(r'((?:css/(?:style|banner)\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|banner|app)\.js)\?(?:v|b)=)[^"\']+')
+    pattern = re.compile(r'((?:css/(?:style|banner)\.css|js/(?:network|core|analytics|weather|offline|settings|reader|journey|map|library|tips|banner|app)\.js)\?(?:v|b)=)[^"\']+')
     html, count = pattern.subn(lambda m: re.sub(r'\?(?:v|b)=$', '?b=', m.group(1)) + build, html)
-    if count != 14:
-        raise SystemExit(f"Expected 14 build-identified local CSS/JS references in index.html, found {count}")
+    if count != 15:
+        raise SystemExit(f"Expected 15 build-identified local CSS/JS references in index.html, found {count}")
     with INDEX.open("w", encoding="utf-8", newline="\n") as fh:
         fh.write(html)
 
@@ -114,7 +114,7 @@ def make_zip(destination: Path) -> None:
     with zipfile.ZipFile(destination, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
         # Preserve canonical image categories even when a category (for example pose)
         # has not been localized yet. This keeps the extracted project layout deterministic.
-        for directory in ("food", "shopping", "hotels", "places", "pose", "airlines", "handbook"):
+        for directory in ("food", "shopping", "hotels", "places", "culture", "pose", "airlines", "handbook"):
             archive.writestr("images/%s/" % directory, b"")
         for path in sorted(ROOT.rglob("*")):
             if not path.is_file() or any(part in excluded_dirs for part in path.relative_to(ROOT).parts):
