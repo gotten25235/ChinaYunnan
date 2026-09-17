@@ -62,13 +62,15 @@
 
 ## 天氣
 
-天氣固定採 **高德 → QWeather Grid → Open-Meteo** 的欄位優先順序。可用 provider 會並行取得資料；同一天、同一欄位若高順位已有值，就不會被低順位覆蓋，低順位只補空缺。若未設定高德／QWeather Key 或個別來源失敗，仍由其他可用來源補資料。
+天氣固定採 **高德 → QWeather Weather v1 → Open-Meteo** 的欄位優先順序。可用 provider 會並行取得資料；同一天、同一欄位若高順位已有值，就不會被低順位覆蓋，低順位只補空缺。若未設定高德／QWeather Key 或個別來源失敗，仍由其他可用來源補資料。
 
-天氣自動更新間隔為 1 小時；按「↻ 更新」可隨時手動強制更新。離線時使用最後一次成功快取。 天氣卡 UV 指數前會依標準等級顯示膚色漸深的禿頭女性 emoji：0–2 👩🏻‍🦲、3–5 👩🏼‍🦲、6–7 👩🏽‍🦲、8–10 👩🏾‍🦲、11+ 👩🏿‍🦲。每個 weather point 另外保存 Open-Meteo / Copernicus DEM 90 m 的座標海拔，PUBLIC ONLY 顯示「海拔：約 N m」；這是查詢座標的地形高度，不代表整座城市或景區所有位置。玉龍雪山／雲杉坪、普達措等高海拔地點有獨立 weather point；出發當天仍應以最新氣象與現場公告為準。
+QWeather provider 已全面使用現行 **Weather v1**：`/weather/v1/daily/{latitude}/{longitude}` 直接以 weather point 經緯度查詢，本站不再呼叫已棄用的 `/v7/grid-weather/...`。API Host 仍使用帳號專屬 `*.qweatherapi.com`，靜態前端沿用官方支援的 `key` query parameter 認證，避免額外的自訂 Header preflight；API Key 仍只保存在使用者瀏覽器。主資料只取每日預報欄位；QWeather 官方 Weather v1 逐日／逐時 API 均標示 1 km 解析度。
+
+天氣自動更新間隔為 1 小時；按「↻ 更新」可隨時手動強制更新。離線時使用最後一次成功快取。 天氣卡 UV 指數前會依標準等級顯示膚色漸深的禿頭女性 emoji：0–2 👩🏻‍🦲、3–5 👩🏼‍🦲、6–7 👩🏽‍🦲、8–10 👩🏾‍🦲、11+ 👩🏿‍🦲。每個 weather point 另外保存 Open-Meteo / Copernicus DEM 90 m 的座標海拔，PUBLIC ONLY 顯示「海拔：約 N m」；這是查詢座標的地形高度，不代表整座城市或景區所有位置。玉龍雪山／雲杉坪、普達措等高海拔地點有獨立 weather point；跨城日也會保留出發地／沿途主要城市的 weather point：9/20「大理 → 沙溪 → 麗江」除麗江主天氣外另顯示大理，9/24「麗江 → 昆明」除昆明主天氣外另顯示麗江。出發當天仍應以最新氣象與現場公告為準。
 
 旅程總覽簡易天氣會在最高／最低溫與天氣狀況下方同步顯示 **🏔 海拔約 N m · ☂ 降雨機率 · UV emoji + 指數**；缺少某欄資料時只省略該欄，不顯示假值。
 
-PUBLIC ONLY 會直接顯示「本次資料來源」，並提供「查看完整天氣：高德天氣 / QWeather / Open-Meteo」。高德與 Open-Meteo 都使用站內完整天氣視窗：高德直接使用已設定的 Web Service Key 顯示實況與短期逐日預報；若尚未設定 Key，視窗會提示到天氣 API 設定完成設定。QWeather 仍連到可閱讀的城市天氣頁。Open-Meteo 顯示目前狀況、未來 16 天逐日預報與接下來 24 小時逐時預報。高德與 Open-Meteo 的站內完整天氣視窗都會顯示同一 weather point 的約略海拔；海拔固定由 Open-Meteo Elevation / Copernicus DEM 90 m 提供，不參與高德 → QWeather → Open-Meteo 的天氣欄位優先合併。DEV ONLY 才額外顯示三家 API 文件、Elevation API、provider 欄位優先順序、海拔原始值與查詢座標。
+PUBLIC ONLY 會直接顯示「本次資料來源」，並提供「查看完整天氣：高德天氣 / QWeather / Open-Meteo / Open-Meteo (CMA)」。高德與兩個 Open-Meteo 入口都使用站內完整天氣視窗：高德直接使用已設定的 Web Service Key 顯示實況與短期逐日預報；若尚未設定 Key，視窗會提示到天氣 API 設定完成設定。QWeather 仍連到可閱讀的城市天氣頁。一般 Open-Meteo 顯示目前狀況、未來 16 天逐日預報與接下來 24 小時逐時預報；Open-Meteo (CMA) 固定使用 CMA GRAPES GFS，顯示最長約 10 天與約 24 小時模型時次，僅供模型對照，不加入主資料合併。站內完整天氣視窗會顯示同一 weather point 的約略海拔；海拔固定由 Open-Meteo Elevation / Copernicus DEM 90 m 提供，不參與高德 → QWeather → Open-Meteo 的天氣欄位優先合併。DEV ONLY 額外顯示高德、QWeather、Open-Meteo、CMA 與 Elevation API 文件、provider 欄位優先順序、海拔原始值與查詢座標。
 
 每個天氣定位點旁另提供 **小紅書近期實況**：搜尋日期永遠以目前雲南日期為準，不會因行程日是未來日期而搜尋未來內容。例如 9/15 查看 9/21 玉龍雪山，仍搜尋 `9.15 玉龙雪山 云杉坪 实况 穿搭 天气`。點「今日實況」或「資料少？看昨天」會先開啟站內確認彈窗，顯示實際搜尋詞與「需已安裝小紅書 App」提示；使用者再按「開啟小紅書」時，才以官方 `xhsdiscover://search/result` Deeplink 嘗試喚起 App。不再使用容易被風控攔截的 Web 搜尋網址。彈窗同時提供一鍵「複製搜尋詞」備援；日期跨日後會在前台自動更新，不需要重新發布網站。
 
@@ -168,3 +170,6 @@ Day 2 大理補充：床單廠藝術區加入附近清單；新增大理古城�
 
 - 主導覽新增「💸 不負責任專區」，以價格圖卡整理網友當時分享的氧氣瓶、松贊林寺票價與獨克宗古城紀念品行情。價格不是官方公告；每張卡固定標示更新月份與「價格僅供參考」。專區頁首另以與「🛍 雲南必買」相同的綠色來源提示卡公開提供原始小紅書貼文與來源截圖。
 - 手機／瀏覽器手動重新整理會主動檢查最新 Build，且在 Build 已相同時再核對目前已快取圖片的 SHA-256；畫面會用 Toast 回報「網站與圖片已是最新版」或實際更新／移除數量。設定頁的「檢查更新／強制重新載入」不再允許 silent no-op：按下後按鈕立即顯示忙碌狀態並一定回報 Toast。若網址環境不支援 Service Worker，仍會直接比對 `build.json`；強制重新載入改用 cache-busting navigation。收藏、偏好與 API Key 不會因此清除。
+
+
+- 天氣排序規則：同一天有多個 weather point 時，依 itinerary 實際先後排序；只在住宿／抵達點出現的城市排後。旅程總覽簡易天氣、完整天氣卡與來源入口必須共用同一順序。

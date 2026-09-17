@@ -169,10 +169,10 @@ DEV ONLY 在不改變正式資料的前提下額外顯示：
 
 | Module | Ownership |
 | --- | --- |
-| `network.js` | 國際版／大陸版 profile（預設大陸版）、Leaflet runtime loader、OSM／高德底圖選擇、WGS84 ↔ GCJ-02 顯示座標轉換；同時提供 QWeather Grid 所需 converter |
+| `network.js` | 國際版／大陸版 profile（預設大陸版）、Leaflet runtime loader、OSM／高德底圖選擇、WGS84 ↔ GCJ-02 顯示座標轉換 |
 | `core.js` | Image System、Travel Utils、Favorites Store、Navigation Service、Date Rail、Horizontal Scroller；Image System 固定執行 `imageId → local 本地 WebP → remote（同一張精確原圖）→ 無此圖`，不做跨地點／同類商品／搜尋替代圖 fallback |
 | `analytics.js` | 可選 Umami tracker loader、匿名事件 queue 與 persistent anonymous browser ID；不記姓名、表單內容／精確定位；未啟用或本機開發時不載入外部 tracker |
-| `weather.js` | 高德 → QWeather Grid → Open-Meteo 欄位優先合併、API credential local settings、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots；旅程總覽簡易卡顯示溫度／天氣 + 第二列 compact metrics（🏔 海拔、☂ 降雨、UV emoji + 指數）；可用 provider 並行請求，高順位既有欄位不被低順位覆蓋；另由 Open-Meteo / Copernicus DEM 90 m 維護每個 weather point 的座標海拔，與天氣 provider 優先合併分離。 UV 指數顯示共用標準分級 emoji：0–2 👩🏻‍🦲、3–5 👩🏼‍🦲、6–7 👩🏽‍🦲、8–10 👩🏾‍🦲、11+ 👩🏿‍🦲。PUBLIC ONLY 顯示本次資料來源、約略海拔與完整天氣入口（高德使用站內實況／短期檢視器，Open-Meteo 使用站內 16 天／24 小時檢視器），DEV ONLY 顯示 API 文件、Elevation API、欄位優先順序、海拔原始值與查詢座標；同時集中管理小紅書搜尋詞、Deeplink 與共用確認彈窗 |
+| `weather.js` | 高德 → QWeather Weather v1 → Open-Meteo 欄位優先合併、API credential local settings、1 小時 cache、offline fallback、weather alert、Journey／Map weather slots；QWeather 主資料只使用現行 `/weather/v1/daily/{lat}/{lon}`，不再呼叫 deprecated `/v7/grid-weather/...`；旅程總覽簡易卡顯示溫度／天氣 + 第二列 compact metrics（🏔 海拔、☂ 降雨、UV emoji + 指數）；可用 provider 並行請求，高順位既有欄位不被低順位覆蓋；另由 Open-Meteo / Copernicus DEM 90 m 維護每個 weather point 的座標海拔，與天氣 provider 優先合併分離；跨城日可同時掛多個 weather point，9/20 額外顯示大理、9/24 額外顯示麗江，並重用既有城市 weather point cache，避免重複抓取；多 weather point 的顯示順序必須依當日 itinerary 實際先後排列，若某城市只在住宿／抵達點出現則排在後面，旅程總覽簡易天氣、完整天氣卡與來源入口共用同一順序。 UV 指數顯示共用標準分級 emoji：0–2 👩🏻‍🦲、3–5 👩🏼‍🦲、6–7 👩🏽‍🦲、8–10 👩🏾‍🦲、11+ 👩🏿‍🦲。PUBLIC ONLY 顯示本次資料來源、約略海拔與完整天氣入口（高德使用站內實況／短期檢視器，Open-Meteo 使用站內 16 天／24 小時檢視器，另提供 Open-Meteo (CMA) / CMA GRAPES GFS 模型對照入口；CMA 不參與主資料合併），DEV ONLY 顯示 API 文件、Elevation API、欄位優先順序、海拔原始值與查詢座標；同時集中管理小紅書搜尋詞、Deeplink 與共用確認彈窗 |
 | `offline.js` | PWA 選擇式離線準備、Service Worker bridge、Cache 完整性檢查、缺失清單、只重試失敗照片、安裝提示、收藏／偏好匯出匯入；不保存天氣 API Key |
 | `settings.js` | Settings View 的顯示主題與介面版面 preference owner；主題支援 `system / light / dark`，版面支援 `mobile / desktop`；使用 `yunnan-2026-color-theme-v1` 與 `yunnan-2026-ui-layout-v1` |
 | `reader.js` | Content Reader、stack、return state、Reader swipe；每個 Item Reader 操作列向 Weather/XHS helper 取得對應搜尋資料並顯示 `📕 小紅書` 按鈕 |
@@ -360,7 +360,7 @@ Validator 至少檢查：
 
 設定頁 UI 順序固定為：**連網模式 → 預設導航地圖 → 介面版面 → 顯示主題**，其後再接天氣與離線相關設定。
 
-顯示主題由 `settings.js` 擁有：`system` 為預設並跟隨 `prefers-color-scheme`，`light` / `dark` 可強制固定。解析後的實際主題寫入 `html[data-theme="light|dark"]`；偏好寫入 `data-theme-preference`。既有 dark media rules 在固定主題時由 Settings 同步啟用／停用，避免「固定淺色」仍被作業系統深色規則污染。
+顯示主題由 `settings.js` 擁有：`system` 為預設並跟隨 `prefers-color-scheme`，`light` / `dark` 可強制固定。解析後的實際主題寫入 `html[data-theme="light|dark"]`；偏好寫入 `data-theme-preference`。所有深色樣式只綁定 `html[data-theme="dark"]`，不直接用 CSS `prefers-color-scheme: dark` 覆寫頁面；因此固定「淺色主題」時，即使手機系統為深色，也必須保持淺色。`system` 模式才由 Settings 監聽 `prefers-color-scheme` 並更新 `data-theme`。
 
 ## 11. Release Version / Schema / Cache / Generated Data
 
@@ -444,7 +444,8 @@ python tools/release.py --bump shame --new-build --zip
 | 主 View 增加後多份清單 | whitelist、`VIEW_ORDER`、初始化 render 各自手寫 | 全部由 `VIEW_REGISTRY` 推導 |
 | Leaflet 首次空白或尺寸錯誤 | 在 inactive View 先建立地圖 | 先顯示 Map View，再用 `requestAnimationFrame` 建立；之後顯示時 `invalidateSize()` |
 | 中國大陸國際服務失效 | 假設 OSM / Wikimedia / Google 一定可達，或把 WGS84 直接畫到高德 | Network Profile：國際版 OSM；大陸版高德 + WGS84→GCJ-02；圖片固定本地→同圖 remote→無圖 |
-| 天氣單一來源失效／精度不足 | 只依賴單一 API 或低優先來源覆蓋高優先來源 | `weather.js` 固定高德 → QWeather Grid → Open-Meteo，以欄位優先＋補缺方式合併；可用 provider 並行請求；海拔獨立固定使用 Open-Meteo / Copernicus DEM 90 m，不和天氣欄位混合 |
+| 天氣單一來源失效／精度不足 | 只依賴單一 API 或低優先來源覆蓋高優先來源 | `weather.js` 固定高德 → QWeather Weather v1 → Open-Meteo，以欄位優先＋補缺方式合併；可用 provider 並行請求；海拔獨立固定使用 Open-Meteo / Copernicus DEM 90 m，不和天氣欄位混合 |
+| QWeather 舊 Grid API 停服 | 繼續依賴 deprecated `/v7/grid-weather/...` | 主 provider 已改用 Weather v1 經緯度端點；設定與文件只保留新版 Weather v1，舊 Grid 不再作 fallback |
 | Nearby 大量 `0.0 km` | 共用參考座標當精確店址、或硬補假座標 | 排除同項／別名；共用原點顯示「同區域」，1 km 內用公尺，其餘用直線公里 |
 | 手機主分頁 swipe 掉幀 | `touchmove` 中 render 目標 View 或初始化 Leaflet | gesture 期間只做位移、clone 既有 DOM 與 commit 判斷 |
 | 手機圖片流量過大 | 重複 render／重抓同圖／保留大型 JPEG/PNG | 穩定 View DOM + lazy loading + Image System + WebP + Image Cache First |

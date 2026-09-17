@@ -9,7 +9,6 @@
     const VALID_THEMES=new Set(['system','light','dark']);
     const darkScheme=window.matchMedia?.('(prefers-color-scheme: dark)');
     let storageAvailable=true;
-    let darkMediaRules=null;
 
     function readLayout(){
       try{
@@ -42,32 +41,6 @@
       catch{storageAvailable=false;return false;}
     }
 
-    function collectDarkMediaRules(){
-      if(darkMediaRules)return darkMediaRules;
-      const found=[];
-      const visit=rules=>{
-        if(!rules)return;
-        for(const rule of rules){
-          try{
-            if(rule.media&&/prefers-color-scheme\s*:\s*dark/i.test(rule.media.mediaText||'')){
-              found.push({rule,original:rule.media.mediaText});
-            }
-            if(rule.cssRules)visit(rule.cssRules);
-          }catch{}
-        }
-      };
-      for(const sheet of document.styleSheets){try{visit(sheet.cssRules);}catch{}}
-      darkMediaRules=found;
-      return found;
-    }
-
-    function syncDarkMediaRules(){
-      const target=theme==='dark'?'all':theme==='light'?'not all':null;
-      for(const entry of collectDarkMediaRules()){
-        try{entry.rule.media.mediaText=target||entry.original;}catch{}
-      }
-    }
-
     function resolvedTheme(){
       if(theme==='dark'||theme==='light')return theme;
       return darkScheme?.matches?'dark':'light';
@@ -79,7 +52,6 @@
       root.dataset.themePreference=theme;
       root.dataset.theme=resolved;
       root.style.colorScheme=resolved;
-      syncDarkMediaRules();
       document.querySelectorAll('[data-color-theme-select]').forEach(select=>{select.value=theme;});
       const meta=document.querySelector('meta[name="theme-color"]');
       if(meta)meta.setAttribute('content',resolved==='dark'?'#121916':'#183e36');
