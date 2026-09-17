@@ -8,7 +8,7 @@
   - STORAGE_SCHEMA 維持 v1，避免一般升版清空使用者資料與圖片快取。
 */
 const RELEASE_VERSION = '1.6.9';
-const BUILD_ID = '20260917-175427';
+const BUILD_ID = '20260917-191913';
 const STORAGE_SCHEMA = 'v1';
 const APP_CACHE = `yunnan-app-${RELEASE_VERSION}-${BUILD_ID}`;
 const IMAGE_CACHE = `yunnan-images-${STORAGE_SCHEMA}`;

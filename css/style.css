@@ -1954,7 +1954,7 @@ html{
 .sun-wish__sky{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .sun-wish__sky::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 87% 12%,rgba(255,244,206,.86),rgba(255,243,203,.24) 32%,transparent var(--light-reach));opacity:var(--sunlight)}
 .sun-wish__sky::after{content:"";position:absolute;inset:0;background:#f4ebc9;opacity:0;transition:opacity .8s ease}
-.sun-wish.is-full-sun .sun-wish__sky::after{opacity:calc(var(--sunlight) * .2)}
+.sun-wish.is-full-sun .sun-wish__sky::after{opacity:calc(var(--sunlight) * .34)}
 .sun-wish__sky-response{position:absolute;inset:0;opacity:0;background:radial-gradient(ellipse at 87% 12%,#fff5d6,transparent 70%);pointer-events:none}
 .sun-wish__cloud{
   position:absolute;
@@ -1977,7 +1977,7 @@ html{
 .sun-wish.wish-active .sun-wish__cloud--one{translate:calc(-28px - var(--push-distance)) -3px}
 .sun-wish.wish-active .sun-wish__cloud--two{translate:calc(32px + var(--push-distance)) -4px}
 .sun-wish.wish-active .sun-wish__cloud--three{translate:calc(-22px - var(--push-distance)) 3px}
-.sun-wish.is-full-sun .sun-wish__cloud{opacity:.35}
+.sun-wish.is-full-sun .sun-wish__cloud{opacity:.22}
 .sun-wish.clouds-cleared .sun-wish__cloud--one{translate:-210px -6px;opacity:.12}
 .sun-wish.clouds-cleared .sun-wish__cloud--two{translate:260px -6px;opacity:.12}
 .sun-wish.clouds-cleared .sun-wish__cloud--three{translate:-260px 4px;opacity:.12}
@@ -1990,12 +1990,11 @@ html{
 #view-tips[aria-hidden="true"] .sun-wish__float,#view-tips[aria-hidden="true"] .sun-wish__cloud{animation-play-state:paused}
 .sun-wish__doll{display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 3px 2px #284e3510)}
 .sun-wish__happy-face{display:none}
-.sun-wish.is-happy .sun-wish__normal-eyes{display:none}
+.sun-wish.is-happy .sun-wish__normal-face{display:none}
 .sun-wish.is-happy .sun-wish__happy-face{display:inline}
 .sun-wish__copy{position:relative;z-index:2;pointer-events:none}
 .sun-wish__copy h3{margin:0 0 2px;font-size:1rem;line-height:1.5;letter-spacing:.06em;font-weight:650}
 .sun-wish__copy p{margin:0;font-size:.8rem;color:var(--muted);line-height:1.7;transition:color .25s ease;overflow-wrap:anywhere}
-.sun-wish__copy .sun-wish__hint{margin-top:4px;font-size:.68rem}
 .sun-wish__stats{position:absolute;left:12px;bottom:8px;z-index:3;display:flex;align-items:center;gap:6px;font-variant-numeric:tabular-nums}
 .sun-wish__stat{display:inline-flex;align-items:center;gap:4px;min-height:26px;padding:4px 8px;border:1px solid var(--line);border-radius:999px;background:var(--sun-wish-chip-bg);color:var(--sun-wish-chip-text);font-size:.66rem;line-height:1;backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);transition:background .25s ease,border-color .25s ease,color .25s ease}
 .sun-wish__stat strong{font-size:.68rem;font-weight:750}
@@ -2023,7 +2022,7 @@ html[data-theme="dark"] .sun-wish{
   --sun-wish-figure-fold:#e3e8e4;
 }
 html[data-theme="dark"] .sun-wish__sky::before{background:radial-gradient(ellipse at 87% 12%,rgba(231,236,186,.32),rgba(211,226,190,.1) 32%,transparent var(--light-reach))}
-html[data-theme="dark"] .sun-wish.is-full-sun .sun-wish__sky::after{opacity:calc(var(--sunlight) * .1)}
+html[data-theme="dark"] .sun-wish.is-full-sun .sun-wish__sky::after{opacity:calc(var(--sunlight) * .18)}
 html[data-theme="dark"] .sun-wish__cloud--three{opacity:.62}
 .utility-card--timetable{border-radius:9px}
 

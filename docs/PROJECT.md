@@ -201,7 +201,7 @@ DEV ONLY 在不改變正式資料的前提下額外顯示：
 | `library.js` | Content/Story Card、Night/Food/Shopping/Favorites/Photo/Culture state/render |
 | `app.js` | JSON bootstrap、`VIEW_REGISTRY`、App Shell、shared day coordinator、單一 action router、全版面 Main Tab swipe |
 
-主要 state 只由各自 Owner 寫入：App 擁有 `currentView`；Network 擁有 profile；Core 擁有 Favorites IDs 與 navigation provider；Analytics 擁有 tracker runtime 與匿名 V-ID；Weather 擁有 provider credentials/cache；Offline 擁有離線選取與準備狀態；Settings 擁有顯示主題與介面版面；Journey／Map／Library／Reader 各自持有 Domain state；Tips 擁有出發提醒 renderer 與晴天娃娃 `count / rounds / roundTaps / sunState / progress / timer / requestAnimationFrame`。`count` 以 `yunnan-2026-sun-wish-count-v1`、`rounds` 以 `yunnan-2026-sun-wish-rounds-v1` 寫入 localStorage 跨重新整理保留；未完成一輪的 `roundTaps / sunState / progress / timer` 只存在 runtime，重新載入後由隱藏待機重新開始。Map / Night 共用日期由 App 只做協調，不建立第三份 Domain state。
+主要 state 只由各自 Owner 寫入：App 擁有 `currentView`；Network 擁有 profile；Core 擁有 Favorites IDs 與 navigation provider；Analytics 擁有 tracker runtime 與匿名 V-ID；Weather 擁有 provider credentials/cache；Offline 擁有離線選取與準備狀態；Settings 擁有顯示主題與介面版面；Journey／Map／Library／Reader 各自持有 Domain state；Tips 擁有出發提醒 renderer 與晴天娃娃 `count / sceneTaps / sunState / progress / timer / requestAnimationFrame`。只有 `count` 以 `yunnan-2026-sun-wish-count-v1` 寫入 localStorage 跨重新整理保留，而且只作趣味祈晴紀錄；`sceneTaps / sunState / progress / timer` 都是暫態視覺 state，重新載入後由隱藏待機重新開始。舊版完成輪數資料不再讀寫，也不得參與 UI 或效果判定。Map / Night 共用日期由 App 只做協調，不建立第三份 Domain state。
 
 小紅書天氣實況屬 Weather UI：今日／昨日按鈕先開啟站內確認彈窗，彈窗明示「需已安裝小紅書 App；未安裝無法直接使用」，並顯示完整搜尋詞。使用者再按「開啟小紅書」時才以官方 `xhsdiscover://search/result?keyword=...&target_search=notes&source=deeplink` 嘗試喚起 App，避免使用會被風控阻擋的 Web 搜尋頁；同一彈窗保留一鍵「複製搜尋詞」備援。今日／昨日入口點擊事件由 App 的單一 router 送出 `weather_live_search`，payload 僅記錄 `range=today/yesterday`、地點標籤、實況日期與旅程 Day，不讀取小紅書結果或使用者帳號。
 
@@ -372,7 +372,7 @@ Validator 至少檢查：
 
 「旅程總覽 → 展開 Day → 既定行程」由 `Expanded itinerary stop layout ownership` 區塊單一管理：`<=700px` 採直向閱讀流「標題／收藏 → 100% 寬 16:9 照片（最高 170px）→ 說明 → 操作按鈕」，缺圖或載入失敗時不保留空白圖片列；`>=701px` 維持「文字左＋圖片右」，圖片固定 `300×140`。禁止再於其他手機 breakpoint 對 `.timeline-thumb` / `.timeline-with-thumb` 疊加尺寸或排列 override；附近地圖縮圖與住宿縮圖各自維持自己的 owner。
 
-晴天娃娃 UI 由 `css/style.css` 的 `TIPS / SUN WISH` 區塊單一管理：正式卡片只保留「點娃娃」這個主要操作，不得加入重置按鈕、主題切換 toggle 或其他 demo control。左下固定顯示兩個不可點擊的 compact status：`🙏 N` 為累積祈晴次數、`☀️ R` 為完整淡出後的完成輪數；右下維持來源 credit。新版太陽與天空共用 `progress` 驅動高度／光照，連點可加速升起、向外推雲並累積亮度；彩蛋採 7 次循環，觸發序列為 `1/3/5/7 → 8/10/12/14 → 15/17/19/21 → …`，以 `((roundTaps - 1) % 7) + 1` 映射回同一組效果；完整淡出才算完成一輪。Theme 不屬於 Tips，所有深淺色只讀 Settings 已解析出的 `html[data-theme]`。
+晴天娃娃 UI 由 `css/style.css` 的 `TIPS / SUN WISH` 區塊單一管理：正式卡片只保留「點娃娃」這個主要操作，不得加入重置按鈕、主題切換 toggle 或其他 demo control。左下只顯示不可點擊的 `🙏 N` 趣味祈晴紀錄；不得顯示完成輪數、本輪次數、「下一個彩蛋」或其他彩蛋文字敘述；右下維持來源 credit。太陽與天空共用 `progress` 驅動高度／光照，`sceneTaps` 只負責當次可見場景的連點加速、推雲與累積亮度，太陽完整淡出後歸零。彩蛋改以持久 `count` 做 7 次循環，觸發序列為 `1/3/5/7 → 8/10/12/14 → 15/17/19/21 → …`，以 `((count - 1) % 7) + 1` 映射回同一組視覺效果；第 3／5／7 格切換笑臉時必須完整隱藏一般 facial group，避免表情重疊。Theme 不屬於 Tips，所有深淺色只讀 Settings 已解析出的 `html[data-theme]`。
 
 設定頁 UI 順序固定為：**連網模式 → 預設導航地圖 → 介面版面 → 顯示主題**，其後再接天氣與離線相關設定。
 
