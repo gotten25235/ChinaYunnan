@@ -217,7 +217,6 @@
   // Static shell content.
   $('#header-date').textContent=tripData.dateLabel+' · 8 DAYS';const bannerDate=$('.yn-banner .yn-date');if(bannerDate)bannerDate.textContent=tripData.dateLabel;
   const credit=imageSystem.get(tripData.heroImageId);$('#credits').innerHTML=credit?`照片：<a href="${esc(credit.source)}" target="_blank" rel="noopener noreferrer">${esc(credit.caption)} · ${esc(credit.author)}</a> / <a href="${esc(credit.licenseUrl)}" target="_blank" rel="noopener noreferrer">${esc(credit.license)}</a><br>行程依手冊整理 · 資料查核 ${esc(tripData.checkedAt)}`:`行程依手冊整理 · 資料查核 ${esc(tripData.checkedAt)}`;
-  if(todayDay){$('#today').hidden=false;$('#today').innerHTML=`<span class="eyebrow">TODAY</span><h3>Day ${todayDay.day} · ${esc(todayDay.city)}</h3><p>今天：${todayDay.itinerary.map(id=>esc(items[id].name)).join(' → ')}<br>今晚：${todayDay.nightRecommendations.length?esc(items[todayDay.nightRecommendations[0]].name):'休息／返程'}</p><button class="primary" data-night-day="${todayDay.day}">查看今晚安排</button>`;}
   bootstrapStaticViews();
   networkProfile.sync();
   offlineSystem.start();
